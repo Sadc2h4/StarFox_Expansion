@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLOSSARY [PREVIEW] — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    /* ═══ GLOSSARY SLIDE VIEW (preview) ═══ */
+
+    .gls-main {
+      position: fixed;
+      top: 44px; bottom: 0; left: 22px; right: 22px;
+      z-index: 5;
+      display: flex; flex-direction: column;
+      padding: 22px clamp(16px, 4vw, 60px) 14px;
+      overflow: hidden;
+    }
+    .gls-main .codex-hero { margin-bottom: 14px; }
+
+    /* フィルタ行は普段畳んでおき、ステータスバーのボタンで開閉する */
+    .gls-main .loc-filter {
+      display: none;
+      margin-bottom: 12px;
+    }
+    .gls-main .loc-filter.open { display: flex; }
+
+    /* 低い画面ではヒーロー部を圧縮して記事パネルの高さを確保する */
+    @media (max-height: 880px) {
+      .gls-main { padding-top: 14px; }
+      .gls-main .codex-hero { margin-bottom: 8px; }
+      .gls-main .codex-hero .codex-p { display: none; }
+      .gls-main .codex-title { font-size: 24px; margin: 2px 0 4px; }
+    }
+    @media (max-height: 740px) {
+      .gls-main .codex-hero .p-index { display: none; }
+      .gls-main .codex-title { font-size: 20px; margin: 0 0 4px; }
+      .gls-ctrl { margin-bottom: 6px; }
+      .gls-scrub { padding-top: 8px; }
+      .gls-status { padding-top: 6px; }
+    }
+
+    /* ── carousel stage ── */
+    .gls-stage {
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .gls-track {
+      position: absolute;
+      top: 6px; bottom: 6px; left: 0;
+      display: flex;
+      gap: 28px;
+      align-items: stretch;
+      transition: transform 0.5s cubic-bezier(0.22, 0.9, 0.3, 1);
+      will-change: transform;
+    }
+
+    /* ── record card: octagonal terminal frame ── */
+    .gcard {
+      position: relative;
+      flex: 0 0 auto;
+      width: var(--slide-w, 900px);
+      height: 100%;
+      filter: saturate(0.35) brightness(0.6);
+      opacity: 0.55;
+      transform: scale(0.96);
+      transition: filter 0.45s, opacity 0.45s, transform 0.45s;
+      cursor: pointer;
+    }
+    .gcard.is-active {
+      filter: none;
+      opacity: 1;
+      transform: scale(1);
+      cursor: default;
+    }
+    .gcard[hidden] { display: none; }
+
+    .gcard-frame,
+    .gcard-inner {
+      --cut: 42px;
+      clip-path: polygon(
+        var(--cut) 0, calc(100% - var(--cut)) 0,
+        100% var(--cut), 100% calc(100% - var(--cut)),
+        calc(100% - var(--cut)) 100%, var(--cut) 100%,
+        0 calc(100% - var(--cut)), 0 var(--cut)
+      );
+    }
+    .gcard-frame {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(160deg, rgba(0,255,238,0.85), rgba(0,140,120,0.55) 40%, rgba(0,255,238,0.75));
+      box-shadow: 0 0 30px rgba(0,212,180,0.25);
+    }
+    .gcard-inner {
+      position: absolute; inset: 2px;
+      --cut: 41px;
+      background:
+        repeating-linear-gradient(-55deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 5px),
+        radial-gradient(ellipse 120% 90% at 50% 0%, rgba(0,66,60,0.55) 0%, rgba(3,20,18,0.96) 70%),
+        #041412;
+    }
+
+    /* hover: console.html のタイルと同じ「触れるカード」感 */
+    @media (hover: hover) and (pointer: fine) {
+      .gcard:not(.is-active):hover {
+        filter: saturate(0.7) brightness(0.85);
+        opacity: 0.8;
+      }
+      .gcard.is-active:hover .gcard-frame {
+        background:
+          linear-gradient(160deg, rgba(0,255,238,1), rgba(0,170,150,0.7) 40%, rgba(0,255,238,0.9));
+        box-shadow: 0 0 40px rgba(0,255,238,0.35);
+      }
+    }
+
+    /* edge accent segments (thick glowing bars like the console frame) */
+    .gcard .seg {
+      position: absolute;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(0,255,238,0.8), 0 0 34px rgba(0,255,238,0.35);
+      pointer-events: none;
+    }
+    .gcard .seg.h { height: 5px; }
+    .gcard .seg.v { width: 5px; }
+    .seg.s1 { top: -1px; left: 9%;  width: 13%; }
+    .seg.s2 { top: -1px; left: 24%; width: 5%; }
+    .seg.s3 { top: -1px; right: 12%; width: 16%; }
+    .seg.s4 { bottom: -1px; left: 22%; width: 7%; }
+    .seg.s5 { bottom: -1px; left: 31%; width: 14%; }
+    .seg.s6 { bottom: -1px; right: 8%;  width: 10%; }
+    .seg.s7 { left: -1px; top: 30%; height: 18%; }
+    .seg.s8 { right: -1px; top: 52%; height: 12%; }
+
+    /* record label riveted to the frame */
+    .gcard-label {
+      position: absolute;
+      top: 12px; left: 58px;
+      font-size: 9px; letter-spacing: 0.3em;
+      color: rgba(0,255,238,0.75);
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* ── inner scroll body ── */
+    .gcard-body {
+      position: absolute;
+      inset: 30px 34px 30px 42px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 14px 26px 30px 12px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--dim) transparent;
+    }
+    .gcard-body::-webkit-scrollbar { width: 4px; }
+    .gcard-body::-webkit-scrollbar-thumb { background: var(--dim); }
+    .gcard:not(.is-active) .gcard-body { overflow: hidden; pointer-events: none; }
+
+    /* article inside the card: frame is provided by the card itself */
+    .gcard .codex-entry {
+      border: none; background: none;
+      padding: 0; margin: 0;
+    }
+    .gcard .codex-h { font-size: 17px; margin-bottom: 6px; }
+    .gcard .codex-sub { margin-bottom: 14px; }
+
+    /* ── prev / next hot zones (console.html の .sf-arrow と同形のチェブロン) ── */
+    .gls-nav {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 54px;
+      z-index: 6;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .gls-nav .chev {
+      width: 30px; height: 30px;
+      background: var(--accent);
+      clip-path: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 42% 50%);
+      filter: drop-shadow(0 0 10px rgba(0,255,238,0.55));
+      transition: transform 0.18s ease;
+    }
+    .gls-nav.prev .chev { transform: scaleX(-1); }
+    .gls-nav:hover { opacity: 1; }
+    .gls-nav.next:hover .chev { transform: translateX(3px); }
+    .gls-nav.prev:hover .chev { transform: scaleX(-1) translateX(3px); }
+    .gls-nav:disabled { opacity: 0.12; cursor: default; }
+    .gls-nav:disabled .chev { transform: none; filter: none; background: var(--dim); }
+    .gls-nav.prev:disabled .chev { transform: scaleX(-1); }
+    .gls-nav.prev { left: 4px; }
+    .gls-nav.next { right: 4px; }
+
+    /* ── horizontal scrub bar (record seek) ── */
+    .gls-scrub {
+      flex: 0 0 auto;
+      padding: 12px 6px 0;
+      cursor: pointer;
+      touch-action: none;
+    }
+    .gls-scrub-track {
+      position: relative;
+      height: 14px;
+      display: flex; align-items: center;
+    }
+    .gls-scrub-track::before {
+      content: '';
+      position: absolute; left: 0; right: 0; top: 50%;
+      height: 2px; transform: translateY(-50%);
+      background: var(--dim);
+    }
+    .gls-scrub .tick {
+      position: absolute; top: 50%;
+      width: 2px; height: 7px;
+      transform: translate(-50%, -50%);
+      background: rgba(0,212,180,0.4);
+      transition: background 0.2s, height 0.2s;
+    }
+    .gls-scrub .tick.current {
+      height: 13px;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(0,255,238,0.7);
+    }
+    .gls-scrub-thumb {
+      position: absolute; top: 50%;
+      width: 46px; height: 12px;
+      transform: translate(0, -50%);
+      background: rgba(0,40,35,0.9);
+      border: 1px solid var(--border-hi);
+      box-shadow: 0 0 10px rgba(0,255,238,0.35);
+      cursor: grab;
+      transition: left 0.35s cubic-bezier(0.22, 0.9, 0.3, 1);
+    }
+    .gls-scrub-thumb::after {
+      content: '///';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 8px; letter-spacing: 2px; color: var(--accent);
+      opacity: 0.8;
+    }
+    .gls-scrub.dragging .gls-scrub-thumb {
+      transition: none;
+      cursor: grabbing;
+      border-color: var(--accent);
+      box-shadow: 0 0 16px rgba(0,255,238,0.6);
+    }
+    .gls-scrub:hover .gls-scrub-thumb { border-color: var(--accent); }
+
+    /* ── control bar above the stage: FILTER / INDEX ── */
+    .gls-ctrl {
+      flex: 0 0 auto;
+      display: flex; align-items: center; gap: 10px;
+      padding: 0 6px;
+      margin-bottom: 10px;
+    }
+
+    /* ── status bar under the stage (REC counter etc.) ── */
+    .gls-status {
+      flex: 0 0 auto;
+      display: flex; align-items: center; gap: 16px;
+      padding: 10px 6px 0;
+      font-size: 10.5px; letter-spacing: 0.2em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+    .gls-status .rec-no { color: var(--accent); }
+    .gls-status .rec-name {
+      color: var(--text-bright);
+      letter-spacing: 0.12em;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      flex: 1 1 auto; min-width: 0;
+    }
+    .gls-status .keys { opacity: 0.55; font-size: 9px; }
+    .gls-index-btn {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.25em;
+      color: var(--text); text-transform: uppercase;
+      border: 1px solid var(--border);
+      background: rgba(4,17,14,0.5);
+      padding: 4px 14px; cursor: pointer;
+      transition: all 0.18s;
+    }
+    .gls-index-btn:hover { color: var(--accent); border-color: var(--border-hi); }
+
+    /* ── index overlay ── */
+    .gls-index-overlay {
+      position: absolute; inset: 0;
+      z-index: 10;
+      display: none;
+      align-items: center; justify-content: center;
+      background: rgba(2,8,7,0.88);
+      backdrop-filter: blur(2px);
+    }
+    .gls-index-overlay.open { display: flex; }
+    .gls-index-panel {
+      max-width: 760px; max-height: 80%;
+      overflow-y: auto;
+      border: 1px solid var(--border-hi);
+      background: rgba(3,20,18,0.97);
+      box-shadow: 0 0 40px rgba(0,255,238,0.15);
+      padding: 22px 28px;
+    }
+    .gls-index-panel h3 {
+      font-size: 11px; letter-spacing: 0.3em; color: var(--accent);
+      margin-bottom: 14px; text-transform: uppercase;
+    }
+    .gls-index-list { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+    .gls-index-list a {
+      color: var(--accent); text-decoration: none;
+      font-size: 11px; letter-spacing: 0.1em;
+      border-bottom: 1px dotted rgba(0,255,238,0.4);
+    }
+    .gls-index-list a:hover { color: #fff; border-bottom-style: solid; }
+    .gls-index-list a.current { color: #fff; border-bottom: 1px solid var(--accent); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ CIS-HQ / GLOSSARY — 用語データベース ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="gls-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ 05 / GLOSSARY — LAYOUT PREVIEW ]</div>
+      <h1 class="codex-title">LYLAT GLOSSARY</h1>
+      <p class="codex-p">ライラット星系の歴史・文化・社会を理解するうえで重要な用語をここに収録する。各惑星記事・宙域記事から参照される共通データベースである。</p>
+    </div>
+
+    <div class="gls-ctrl">
+      <button class="gls-index-btn" id="glsFilterBtn">◈ Filter: ALL</button>
+      <button class="gls-index-btn" id="glsIndexBtn">◈ Index</button>
+    </div>
+
+    <div class="loc-filter" id="locFilter">
+      <button class="active" data-type="all">ALL</button>
+      <button data-type="history">歴史・事件</button>
+      <button data-type="culture">文化・生活</button>
+      <button data-type="org">組織・勢力</button>
+      <button data-type="misc">現象・その他</button>
+    </div>
+
+    <div class="gls-stage" id="glsStage">
+      <div class="gls-track" id="glsTrack">
+
+        <div class="gcard" data-entry>
+          <div class="gcard-frame"></div>
+          <div class="gcard-inner"></div>
+          <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i>
+          <i class="seg h s4"></i><i class="seg h s5"></i><i class="seg h s6"></i>
+          <i class="seg v s7"></i><i class="seg v s8"></i>
+          <div class="gcard-label">RECORD // GLOSSARY</div>
+          <div class="gcard-body">
+            <article class="codex-entry" id="great-regression" data-type="history">
+              <h2 class="codex-h">文明後退期 <span class="en">THE GREAT REGRESSION</span></h2>
+              <div class="codex-sub"><span class="loc-tag t-history">歴史・事件</span> 星系暦200年〜300年前後</div>
+              <p class="codex-p">星系史における最大の空白である。<a href="#bremen">始祖の開拓団</a>に由来する高度な文明水準が、星系暦200年から300年を前後する時期に、星系の広い範囲から急速に失われた。星間航行を日常としていたはずの社会が、わずか数世代のうちに奴隷制と貴族制を敷く段階まで落ち込んでいる。人類史において技術がこれほど大規模に、しかも同時多発的に手放された例をライラットは他に知らない。</p>
+              <p class="codex-p">この空白は複数の系統の資料が独立に指し示している。惑星番号の登録が長期間にわたって途絶えていること。当時運用されていたはずの航路の記録が、途中の一世代分だけ丸ごと欠けていること。同一の入植地の地層から、精密加工された合金部品と、その数十年後の手打ちの鉄器が並んで出土すること。いずれか一つなら記録の散逸で説明が付く。三つが同じ年代を指すとなると、話は別である。</p>
+              <p class="codex-p">現在最も支持を集めているのが<b>過剰技術説</b>である。この時期、星系の各地に当時の社会が扱うには過ぎた技術がどこからか持ち込まれ、それを戦争に用いた結果として文明そのものが自壊したとする立場である。根拠として挙げられるのが、惑星<a href="locations.html#kew">キュー</a>の<a href="#paranid-empire">パラニド神聖帝国</a>が版図を最大へ広げた時期と、後退の年代がほぼ完全に重なる点である。恭順した地域では技術水準が不自然に跳ね上がり、抗った地域では都市ごと焼かれた痕跡が残る。ただし神聖帝国そのものが跡形もなく消滅しているため、供与の実態を裏付ける一次資料は現存しない。</p>
+              <p class="codex-p">次いで有力なのが<b>航路喪失説</b>である。何らかの理由で星間の連絡網が断たれ、孤立した各入植地が独立に退行したとする説明であり、後退の同時多発性をよく説明する。ただしこの説は「なぜ断たれたのか」を別に用意する必要があり、結局は過剰技術説と合流することが多い。少数派として<b>記録喪失説</b>もある。文明は後退しておらず、失われたのは記録だけだとする立場だが、地層から出る鉄器の説明が付かないため支持は広がっていない。</p>
+              <p class="codex-p">この時期が現代史の教科書で軽く扱われがちなのは、単に資料が乏しいためである。だが後退期の影響は、いま星系が抱えている問題の大半に直接つながっている。星系の技術水準が開拓団の到達時点に追いつくまでには三千年近い年月が必要だった。そしてこの時期に定着した身分制度は、その後も長く生き残った。<a href="factions.html#iga">独立星系連合</a>が存在したつい40年ほど前まで奴隷制度の残る惑星が実在し、首輪の檻のような装具が公然と用いられていた事実は、後退期の直系の遺物である。</p>
+              <p class="codex-p">後退期の研究者が最後に必ず突き当たる問いがある。星系暦の初期に星を渡っていた人々は、間違いなく現代に劣らぬ技術を持っていた。その彼らが、なぜ自分たちの文明を壊すほどの力を新たに必要としたのか。ある考古学者はこう書き残している。<b>「われわれは進歩の途中で一度つまずいたのではない。誰かに、手の届かない道具を持たされたのだ」</b>。証拠のない一文である。それでもこの一文は、後退期を扱うほぼ全ての論文の脚注に引かれ続けている。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="gcard" data-entry>
+          <div class="gcard-frame"></div>
+          <div class="gcard-inner"></div>
+          <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i>
+          <i class="seg h s4"></i><i class="seg h s5"></i><i class="seg h s6"></i>
+          <i class="seg v s7"></i><i class="seg v s8"></i>
+          <div class="gcard-label">RECORD // GLOSSARY</div>
+          <div class="gcard-body">
+            <article class="codex-entry" id="lylat-wars-1" data-type="history">
+              <h2 class="codex-h">第1次ライラットウォーズ <span class="en">THE FIRST LYLAT WARS</span></h2>
+              <div class="codex-sub"><span class="loc-tag t-history">歴史・事件</span></div>
+              <p class="codex-p"><a href="factions.html#cornerian-republic">コーネリア連合共和国</a>成立以前、数多の勢力と種族が安全と資源を奪い合った戦乱の時代の総称。この戦乱は少なく見積もっても240年間続いたと記録されている。超兵器によって第6惑星が消滅した<a href="#stephano">ステファノーの戦い</a>を最後に各勢力は停戦へと向かい、同じ過ちを二度と繰り返さないことを誓う憲章のもと、コーネリア連合共和国が成立した。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="gcard" data-entry>
+          <div class="gcard-frame"></div>
+          <div class="gcard-inner"></div>
+          <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i>
+          <i class="seg h s4"></i><i class="seg h s5"></i><i class="seg h s6"></i>
+          <i class="seg v s7"></i><i class="seg v s8"></i>
+          <div class="gcard-label">RECORD // GLOSSARY</div>
+          <div class="gcard-body">
+            <article class="codex-entry" id="lylat-wars-2" data-type="history">
+              <h2 class="codex-h">第2次ライラットウォーズ <span class="en">THE SECOND LYLAT WARS</span></h2>
+              <div class="codex-sub"><span class="loc-tag t-history">歴史・事件</span></div>
+              <p class="codex-p"><a href="#stephano">ステファノーの戦い</a>から二百年を超える平和（<a href="factions.html#iga">独立星系連合の反乱</a>のような内乱を除く）の後、ライラット宇宙歴3997年、辺境<a href="locations.html#venom">ベノム</a>で発生した「アンドルフの反乱」を契機に<a href="factions.html#venom-empire">ベノム帝国</a>が建国され、勃発した現在進行中の星系規模の戦争。帝国は既に<a href="locations.html#macbeth">マクベス</a>・<a href="locations.html#zoness">ゾネス</a>を占拠し、<a href="locations.html#corneria">コーネリア</a>は度重なる侵攻を受け続けている。<a href="military.html#cdf">CDF</a>の決死の防衛により戦線は維持されているものの、戦況は次第に押されているのが現状である。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="gcard" data-entry>
+          <div class="gcard-frame"></div>
+          <div class="gcard-inner"></div>
+          <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i>
+          <i class="seg h s4"></i><i class="seg h s5"></i><i class="seg h s6"></i>
+          <i class="seg v s7"></i><i class="seg v s8"></i>
+          <div class="gcard-label">RECORD // GLOSSARY</div>
+          <div class="gcard-body">
+            <article class="codex-entry" id="stephano" data-type="history">
+              <h2 class="codex-h">ステファノーの戦い / 惑星ステファノー <span class="en">BATTLE OF STEPHANO</span></h2>
+              <div class="codex-sub"><span class="loc-tag t-history">歴史・事件</span></div>
+              <p class="codex-p">かつてライラット星系第6惑星として存在した、温暖で居住環境の整った<a href="races.html#alphoid">アルフォイド</a>の母星ステファノーと、その消滅をもたらした<a href="#lylat-wars-1">第1次ライラットウォーズ</a>最後の戦い。グランベル国が超兵器<a href="military.html#nova-blaster"><span class="redacted">ギャラクティック・ノヴァ・ブラスター</span></a>を使用したことで惑星そのものが消滅し、アルフォイドの文化と人口の大半が失われた。</p>
+              <p class="codex-p">この惨禍を目の当たりにした各国は停戦を決意し、共和国憲章第1条に質量破壊兵器の永久禁止が刻まれることとなった。砕けた第6惑星の残骸は、皮肉にも現在<a href="military.html#great-wall">グレートウォール</a>としてコーネリアの空を守っている。コーネリアシティの中央広場には、消滅した第6惑星の欠片が「不戦の碑」として安置されている。</p>
+              <p class="codex-p">戦いと共和国の成立からは既におよそ230年。当時を直接知る世代は存在せず、市民の多くにとってこの惨禍は「歴史の一片」となりつつある。過去には教科書から関連記述が縮小・削除された時代すらあったが、<a href="factions.html#iga">独立星系連合の反乱</a>を目の当たりにした軍部のZ・Z・ペパーらの派閥が「露骨な歴史の改竄は、第2の独立星系連合を生み出しかねない。ライラットの民はそこまで愚かではない」と軍部・政界へ粘り強く働きかけた結果、当該法案は廃止された。現在は共育カリキュラムのステファノー忌に合わせた平和学習として必修の位置に戻されている。「不戦の碑」は、その風化への戒めとして今も広場に立ち続けている。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="gcard" data-entry>
+          <div class="gcard-frame"></div>
+          <div class="gcard-inner"></div>
+          <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i>
+          <i class="seg h s4"></i><i class="seg h s5"></i><i class="seg h s6"></i>
+          <i class="seg v s7"></i><i class="seg v s8"></i>
+          <div class="gcard-label">RECORD // GLOSSARY</div>
+          <div class="gcard-body">
+            <article class="codex-entry" id="food-culture" data-type="culture">
+              <h2 class="codex-h">ライラットの食事事情 <span class="en">FOOD &amp; DIET IN LYLAT</span></h2>
+              <div class="codex-sub"><span class="loc-tag t-culture">文化・生活</span></div>
+              <p class="codex-p">様々な種族が混在するライラット星系では、人種により異なる食性を持つ。<a href="races.html#anubisoid">アヌビソイド</a>や<a href="races.html#bastetoid">バステトイド</a>は肉類を好み、<a href="races.html#zetoid">ゼートイド</a>・<a href="races.html#kyusoid">キューソイド</a>・<a href="races.html#selenoid">セレノイド</a>は植物食を好む。<a href="races.html#alphoid">アルフォイド</a>は雑食であり、好き嫌いは少ない。</p>
+              <p class="codex-p">植物類は<a href="locations.html#corneria">コーネリア</a>および<a href="locations.html#prospero">プロスペロー</a>の植物工場で大量生産され星系中に輸出されているほか、<a href="locations.html#katina">カタリナ</a>や<a href="locations.html#papetoon">パペトゥーン</a>などでは現地の特産野菜が多く出回っている。特産野菜はその惑星の固有種や在来生物であることがあり、美食家たちの「食の探求」の対象となることもある。</p>
+              <p class="codex-p">肉類の生産は二通りある。一つは家畜の飼育である。二足歩行と言語を持たない動物種族は『ケダモノ』として人種と明確に区別され、捕食の対象とされている。ケダモノはライラットの有史以前から人種と共に星系へ移り住んだ家畜種族であり、既知の人種に酷似するケダモノも多数存在する。基本的に自身と類似性の高いケダモノは忌避される傾向があり、ゼートイド人口の多いローザリンド州や<a href="locations.html#macbeth">マクベス</a>では、豚肉はほとんど流通していない。</p>
+              <p class="codex-p">もう一つは昆虫タンパク質による人工肉である。ハエやアリ、イナゴなど開拓団とともに星系へ持ち込まれた昆虫類を分解・再構成した代物であり、味には少し癖がある。この癖は人種によって好みが分かれ、多くの人種は苦手とするが、<a href="races.html#paranodian">パラノディアン</a>や<a href="races.html#heketoid">ヘケトイド</a>の間では広く流通している。コーネリアの老舗精肉メーカー<a href="../corporations/butchermans.html">『ブッチャーマンズ・ワークス』</a>の昆虫肉は、惑星<a href="locations.html#kew">キュー</a>では例外的に高値で取引されるほどの人気を誇る。なお、ケダモノ肉の無認可流通──いわゆる「裏市」──は星系のどの都市からも根絶できておらず、当局の頭痛の種であり続けている。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="gcard" data-entry>
+          <div class="gcard-frame"></div>
+          <div class="gcard-inner"></div>
+          <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i>
+          <i class="seg h s4"></i><i class="seg h s5"></i><i class="seg h s6"></i>
+          <i class="seg v s7"></i><i class="seg v s8"></i>
+          <div class="gcard-label">RECORD // GLOSSARY</div>
+          <div class="gcard-body">
+            <article class="codex-entry" id="paranid-empire" data-type="org">
+              <h2 class="codex-h">パラニド神聖帝国 <span class="en">HOLY PARANID EMPIRE</span></h2>
+              <div class="codex-sub"><span class="loc-tag t-org">組織・勢力</span></div>
+              <p class="codex-p">遥か昔、惑星<a href="locations.html#kew">キュー</a>に存在した古代国家。<a href="locations.html#hactiva">二つの太陽</a>を崇める爬虫類人種がライラット星系の繁栄の中枢を握っていたが、現在は跡形もなく消滅している。当時の記録では<a href="races.html#holsoid">ホルソイド</a>が神のように崇められていたとされる。生き残りは星系の様々な惑星への移住を試みたが、<a href="locations.html#fortuna">フォルトナ（サウリア）</a>で原始的な生活を送る部族以外は他惑星の民族に同化し、神聖帝国を知る者はもういない。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="gcard" data-entry>
+          <div class="gcard-frame"></div>
+          <div class="gcard-inner"></div>
+          <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i>
+          <i class="seg h s4"></i><i class="seg h s5"></i><i class="seg h s6"></i>
+          <i class="seg v s7"></i><i class="seg v s8"></i>
+          <div class="gcard-label">RECORD // GLOSSARY</div>
+          <div class="gcard-body">
+            <article class="codex-entry" id="mu-cult" data-type="org">
+              <h2 class="codex-h">宇宙統一平和協会「ムー」 <span class="en">UNIVERSAL PEACE ASSEMBLY "MU"</span></h2>
+              <div class="codex-sub"><span class="loc-tag t-org">組織・勢力</span> 解体済み — 現存しない</div>
+              <p class="codex-p"><a href="locations.html#corneria">コーネリアシティ</a>に法から隠れるようにはびこった新興宗教。正式名称が長いため『ムー』と略される。<a href="factions.html#iga">独立星系連合</a>が台頭し平和が脅かされる不安の時代、救いを求めた者たちが教祖『アー・ムー』のもとに集まって生まれた。当初は星系のインテリが名を連ね、名前のとおり平和を訴えるロビー団体に過ぎなかったが、勢力は時と共に無視できない規模へ膨れ上がり、政界にまで進出するに至って政府も対応へ乗り出さざるを得なくなった。</p>
+              <p class="codex-p">掲げた宇宙平和とは「全ての人間が平和の神クラゾアを信仰することで一つになれる」というものである。教祖が<a href="locations.html#fortuna">フォルトナ</a>へ無断で立ち入り、現地の集落で暮らすうちに知った信仰から、都合のよい部分だけを抽出して作り上げた教義と考えられている。<span class="redacted">教義とQAL文書の符合については現在も照合が続けられている</span>。</p>
+              <p class="codex-p">政界進出が政府の規制で潰えると、教義は苛烈な原理主義へと変貌した。クラゾアを信仰しない者は「ケダモノ」と同じという教えが勝手に作られ、暴行事件や殺人未遂を起こすようになる。そしてテロ組織と化したムーはコーネリアシティの鉄道で大規模な毒ガステロを画策するが、この異変を察知した共和国軍は<a href="../characters/wenli.html">ニャン・ウェンリー准将</a>の作戦立案のもと、本拠地である巨大移動要塞「ムーラシア」の征討を決行した。この作戦には雇われの遊撃部隊が白兵戦で参戦し、<a href="characters.html#peppy">ペッピー・ヘア</a>と<a href="characters.html#pigma">ピグマ・デンガー</a>の2名が壊滅の決定打となる働きで表彰されている。</p>
+              <p class="codex-p">ここまでの巨大組織になるまで放置された理由には諸説あるが、評議会の一部議員が組織票目当てに肩入れしていたとみられ、この事件を機に宗教団体規制の法律が更新された。教団は今日に残っていない。だが後年、解体された教団の信徒二世がウェンリー准将を凶刃にかけた事実が示すとおり、これを生んだ根本的な問題は今も解決されていない。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="gcard" data-entry>
+          <div class="gcard-frame"></div>
+          <div class="gcard-inner"></div>
+          <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i>
+          <i class="seg h s4"></i><i class="seg h s5"></i><i class="seg h s6"></i>
+          <i class="seg v s7"></i><i class="seg v s8"></i>
+          <div class="gcard-label">RECORD // GLOSSARY</div>
+          <div class="gcard-body">
+            <article class="codex-entry" id="bremen" data-type="misc">
+              <h2 class="codex-h">始祖の開拓団『ブレーメン』 <span class="en">THE FIRST PIONEERS — "BREMEN"</span></h2>
+              <div class="codex-sub"><span class="loc-tag t-misc">現象・その他</span></div>
+              <p class="codex-p">ライラット星系最大の謎──惑星<a href="locations.html#venom">ベノム</a>に初めて降り立ったライラットの始祖たちを、研究者たちは『ブレーメン』と呼ぶ。現在のライラット星系の既知の文明は、全てこの開拓団から始まったと考えられている。だが彼らがどこから来たのか、なぜライラット星系を選んだのか──その全ては今なお謎の中にある。少なくとも、ベノムに降り立った開拓団はやむにやまれぬ事情で外宇宙をさまよっていたと推測されるが、それが母星の環境破壊によるものか、外敵の侵略によるものか、想像の余地はあらゆる方面に広がっている。</p>
+              <p class="codex-p">ベノムの遺跡調査によれば、開拓団を指揮していたのは「毛のない奇妙な生物」を従えた古代<a href="races.html#anubisoid">アヌビソイド</a>と推定される。しかし出土品の中にはアヌビソイドの手先では到底製作が難しいと思われる機構も含まれており、「開拓団の持つ技術の多くは、むしろこの奇妙な生物──<a href="#overlord">オーバーロード</a>──に由来する」という大胆な仮説も提唱されている。学会では荒唐無稽に過ぎるとして半ば笑いのネタ交じりに『オーバーロード理論』と名付けられた説だが、これに代わる他の説にも、決定打となる証拠は存在しない。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="gcard" data-entry>
+          <div class="gcard-frame"></div>
+          <div class="gcard-inner"></div>
+          <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i>
+          <i class="seg h s4"></i><i class="seg h s5"></i><i class="seg h s6"></i>
+          <i class="seg v s7"></i><i class="seg v s8"></i>
+          <div class="gcard-label">RECORD // GLOSSARY</div>
+          <div class="gcard-body">
+            <article class="codex-entry" id="overlord" data-type="misc">
+              <h2 class="codex-h">オーバーロード <span class="en">OVERLORD — 古代種族</span></h2>
+              <div class="codex-sub"><span class="loc-tag t-misc">現象・その他</span></div>
+              <p class="codex-p"><a href="locations.html#venom">ベノム</a>の遺跡で発掘された壁画や資料に登場する、古代に滅びたとされる謎の種族の通称。壁画には<a href="races.html#anubisoid">アヌビソイド</a>がこの種族を引き連れて先頭に立ち進む様子が描かれており、ライラット文明の起源を解く鍵とされる。<a href="#bremen">始祖の開拓団『ブレーメン』</a>の技術の多くがこの種族に由来するとする『オーバーロード理論』も提唱されている。その正体、滅亡の経緯、<a href="#contact-signal">ドグマ宙域のコンタクト信号</a>との関連など、全てが謎に包まれている。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="gcard" data-entry>
+          <div class="gcard-frame"></div>
+          <div class="gcard-inner"></div>
+          <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i>
+          <i class="seg h s4"></i><i class="seg h s5"></i><i class="seg h s6"></i>
+          <i class="seg v s7"></i><i class="seg v s8"></i>
+          <div class="gcard-label">RECORD // GLOSSARY</div>
+          <div class="gcard-body">
+            <article class="codex-entry" id="contact-signal" data-type="misc">
+              <h2 class="codex-h">コンタクト信号 <span class="en">THE CONTACT SIGNAL</span></h2>
+              <div class="codex-sub"><span class="loc-tag t-misc">現象・その他</span></div>
+              <p class="codex-p">数年前から恒星<a href="locations.html#dogma-central">ドグマ・セントラル</a>周辺（<a href="sectors.html#yot">セクターj</a>）で観測されている、正体不明の信号。規則性を持つことから人工的な発信源の存在が疑われるが、暗黒星雲に阻まれ観測は進んでいない。<a href="#lylat-wars-2">戦時下</a>の状況もあり事実上放置されているが、一部の学者は<a href="#overlord">オーバーロード</a>との関連、あるいは外宇宙からの「何か」の到来を警告している。<a href="../planets/dogma.html">詳細記事 ►</a></p>
+            </article>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="gls-nav prev" id="glsPrev" aria-label="前の記録"><span class="chev"></span></button>
+      <button class="gls-nav next" id="glsNext" aria-label="次の記録"><span class="chev"></span></button>
+
+      <div class="gls-index-overlay" id="glsIndexOverlay">
+        <div class="gls-index-panel">
+          <h3>◈ RECORD INDEX</h3>
+          <div class="gls-index-list" id="glsIndexList"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gls-scrub" id="glsScrub">
+      <div class="gls-scrub-track" id="glsScrubTrack">
+        <div class="gls-scrub-thumb" id="glsScrubThumb"></div>
+      </div>
+    </div>
+
+    <div class="gls-status">
+      <span class="rec-no" id="glsCounter">REC 001 / 010</span>
+      <span class="rec-name" id="glsName"></span>
+      <span class="keys">◄ ► KEYS / CLICK SIDE RECORD</span>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+
+    (function() {
+      const stage   = document.getElementById('glsStage');
+      const track   = document.getElementById('glsTrack');
+      const cards   = Array.from(track.querySelectorAll('.gcard'));
+      const prevBtn = document.getElementById('glsPrev');
+      const nextBtn = document.getElementById('glsNext');
+      const counter = document.getElementById('glsCounter');
+      const nameEl  = document.getElementById('glsName');
+      const filter  = document.getElementById('locFilter');
+      const idxBtn  = document.getElementById('glsIndexBtn');
+      const idxOverlay = document.getElementById('glsIndexOverlay');
+      const idxList = document.getElementById('glsIndexList');
+
+      const GAP = 28;
+      let deck = cards.slice();   // 現在のフィルタで表示中のカード列
+      let cur = 0;                // deck 内の現在位置
+
+      const entryOf = (card) => card.querySelector('.codex-entry');
+      const titleOf = (card) => {
+        const h = entryOf(card).querySelector('.codex-h');
+        const clone = h.cloneNode(true);
+        const en = clone.querySelector('.en'); if (en) en.remove();
+        return clone.textContent.trim();
+      };
+
+      function slideWidth() {
+        const w = stage.clientWidth;
+        return Math.min(1180, Math.max(320, Math.round(w * 0.85)));
+      }
+
+      function layout(animate = true) {
+        const sw = slideWidth();
+        track.style.setProperty('--slide-w', sw + 'px');
+        cards.forEach(c => { c.style.width = sw + 'px'; });
+        if (!animate) track.style.transition = 'none';
+        const offset = (stage.clientWidth - sw) / 2 - cur * (sw + GAP);
+        track.style.transform = `translateX(${offset}px)`;
+        if (!animate) { void track.offsetWidth; track.style.transition = ''; }
+
+        deck.forEach((c, i) => c.classList.toggle('is-active', i === cur));
+        prevBtn.disabled = cur <= 0;
+        nextBtn.disabled = cur >= deck.length - 1;
+        counter.textContent =
+          'REC ' + String(cur + 1).padStart(3, '0') + ' / ' + String(deck.length).padStart(3, '0');
+        nameEl.textContent = deck.length ? titleOf(deck[cur]) : '—';
+        buildIndex();
+        syncScrub();
+      }
+
+      function go(i, animate = true) {
+        if (!deck.length) return;
+        cur = Math.max(0, Math.min(deck.length - 1, i));
+        layout(animate);
+      }
+
+      /* ── filter: deck を絞り込んで再構築 ── */
+      const filterBtn = document.getElementById('glsFilterBtn');
+      function applyFilter(type) {
+        filter.querySelectorAll('button').forEach(b => {
+          b.classList.toggle('active', b.dataset.type === type);
+          if (b.dataset.type === type) filterBtn.textContent = '◈ Filter: ' + b.textContent;
+        });
+        const keepId = deck[cur] ? entryOf(deck[cur]).id : null;
+        deck = cards.filter(c => {
+          const ok = (type === 'all' || entryOf(c).dataset.type === type);
+          c.hidden = !ok;
+          return ok;
+        });
+        const keepIdx = deck.findIndex(c => entryOf(c).id === keepId);
+        cur = keepIdx >= 0 ? keepIdx : 0;
+        layout(false);
+      }
+      filter.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        applyFilter(btn.dataset.type);
+        filter.classList.remove('open');   // 選択したら畳む
+      });
+      filterBtn.addEventListener('click', () => filter.classList.toggle('open'));
+
+      /* ── navigation ── */
+      prevBtn.addEventListener('click', () => go(cur - 1));
+      nextBtn.addEventListener('click', () => go(cur + 1));
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); go(cur - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
+        if (e.key === 'Escape') idxOverlay.classList.remove('open');
+      });
+      cards.forEach(c => c.addEventListener('click', () => {
+        if (!c.classList.contains('is-active')) go(deck.indexOf(c));
+      }));
+
+      /* horizontal wheel (trackpad) → record switch */
+      let wheelLock = 0;
+      stage.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return; // 縦は記事スクロールに委ねる
+        e.preventDefault();
+        const now = Date.now();
+        if (now - wheelLock < 450) return;
+        wheelLock = now;
+        go(cur + (e.deltaX > 0 ? 1 : -1));
+      }, { passive: false });
+
+      /* touch swipe */
+      let touchX = null, touchY = null;
+      stage.addEventListener('touchstart', (e) => {
+        touchX = e.touches[0].clientX; touchY = e.touches[0].clientY;
+      }, { passive: true });
+      stage.addEventListener('touchend', (e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        const dy = e.changedTouches[0].clientY - touchY;
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          go(cur + (dx < 0 ? 1 : -1));
+        }
+        touchX = touchY = null;
+      }, { passive: true });
+
+      /* ── deep link: #id で直接そのレコードを開く ── */
+      function openHash(hash, animate) {
+        if (!hash || hash === '#') return false;
+        if (hash.startsWith('#type-')) { applyFilter(hash.slice(6)); return true; }
+        const id = hash.slice(1);
+        let idx = deck.findIndex(c => entryOf(c).id === id);
+        if (idx < 0) {
+          // フィルタで隠れている場合は ALL に戻して探す
+          const inAll = cards.findIndex(c => entryOf(c).id === id);
+          if (inAll < 0) return false;
+          applyFilter('all');
+          idx = deck.findIndex(c => entryOf(c).id === id);
+        }
+        go(idx, animate);
+        deck[cur].querySelector('.gcard-body').scrollTop = 0;
+        return true;
+      }
+      window.addEventListener('hashchange', () => openHash(location.hash, true));
+
+      /* ページ内 # リンクはスライド遷移に差し替える */
+      track.addEventListener('click', (e) => {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+        e.preventDefault();
+        if (openHash(a.getAttribute('href'), true)) {
+          history.replaceState(null, '', a.getAttribute('href'));
+        }
+      });
+
+      /* ── scrub bar: 横断シーク ── */
+      const scrub      = document.getElementById('glsScrub');
+      const scrubTrack = document.getElementById('glsScrubTrack');
+      const scrubThumb = document.getElementById('glsScrubThumb');
+
+      function rebuildTicks() {
+        scrubTrack.querySelectorAll('.tick').forEach(t => t.remove());
+        const tw = scrubTrack.clientWidth, thw = scrubThumb.offsetWidth;
+        deck.forEach((c, i) => {
+          const t = document.createElement('i');
+          t.className = 'tick' + (i === cur ? ' current' : '');
+          const frac = deck.length > 1 ? i / (deck.length - 1) : 0;
+          t.style.left = (thw / 2 + frac * (tw - thw)) + 'px';
+          scrubTrack.appendChild(t);
+        });
+      }
+
+      function syncScrub() {
+        const tw = scrubTrack.clientWidth, thw = scrubThumb.offsetWidth;
+        const frac = deck.length > 1 ? cur / (deck.length - 1) : 0;
+        scrubThumb.style.left = (frac * (tw - thw)) + 'px';
+        rebuildTicks();
+      }
+
+      function scrubIndexFromX(clientX) {
+        const r = scrubTrack.getBoundingClientRect();
+        const thw = scrubThumb.offsetWidth;
+        const frac = (clientX - r.left - thw / 2) / Math.max(1, r.width - thw);
+        return Math.round(Math.max(0, Math.min(1, frac)) * (deck.length - 1));
+      }
+
+      let scrubbing = false;
+      scrub.addEventListener('pointerdown', (e) => {
+        if (!deck.length) return;
+        scrubbing = true;
+        scrub.classList.add('dragging');
+        scrub.setPointerCapture(e.pointerId);
+        go(scrubIndexFromX(e.clientX), false);
+      });
+      let scrubRaf = false;
+      scrub.addEventListener('pointermove', (e) => {
+        if (!scrubbing || scrubRaf) return;
+        scrubRaf = true;
+        const x = e.clientX;
+        requestAnimationFrame(() => {
+          scrubRaf = false;
+          const i = scrubIndexFromX(x);
+          if (i !== cur) go(i, false);
+        });
+      });
+      const endScrub = (e) => {
+        if (!scrubbing) return;
+        scrubbing = false;
+        scrub.classList.remove('dragging');
+        go(scrubIndexFromX(e.clientX), true);
+      };
+      scrub.addEventListener('pointerup', endScrub);
+      scrub.addEventListener('pointercancel', () => {
+        scrubbing = false;
+        scrub.classList.remove('dragging');
+      });
+
+      /* ── index overlay ── */
+      function buildIndex() {
+        idxList.innerHTML = '';
+        deck.forEach((c, i) => {
+          const a = document.createElement('a');
+          a.href = '#' + entryOf(c).id;
+          a.textContent = titleOf(c);
+          if (i === cur) a.className = 'current';
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            idxOverlay.classList.remove('open');
+            go(i);
+            history.replaceState(null, '', a.getAttribute('href'));
+          });
+          idxList.appendChild(a);
+        });
+      }
+      idxBtn.addEventListener('click', () => idxOverlay.classList.toggle('open'));
+      idxOverlay.addEventListener('click', (e) => {
+        if (e.target === idxOverlay) idxOverlay.classList.remove('open');
+      });
+
+      window.addEventListener('resize', () => layout(false));
+
+      layout(false);
+      openHash(location.hash, false);
+    })();
+  </script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITANIA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary: #ff8844; --accent: #ffaa66; --border: rgba(255,136,68,0.35); --border-hi: rgba(255,170,102,0.7); --dim: #3d1a00; --dim2: #1e0d00; }
+    .planet-img { --glow: rgba(255,100,30,0.55); }
+    .p-title { color: #fff0e0; text-shadow: 0 0 50px rgba(255,100,30,0.3); }
+    .p-tagline { border-color: #ff8844; color: #ff8844; }
+    body { background: #0a0804; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 50%, rgba(30,15,0,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(25,10,0,0.4) 0%, transparent 55%),
+      #0a0804; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header" style="border-color:rgba(255,136,68,0.35);">
+    <a href="../database/locations.html" class="nav-back" style="color:#ff8844;border-color:rgba(255,136,68,0.3);">◄ LOCATIONS</a>
+    <div class="header-tag">[ 03 / TITANIA — タイタニア ]</div>
+    <div class="header-status"><span class="blink" style="color:var(--warn);">●</span> SECTOR-χ — DANGER</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(255,136,68,0.3);"><div class="vt" style="color:#3d1a00;">LYLAT SYSTEM — TITANIA — FORBIDDEN ZONE — SECTOR-CHI — MAGNETIC STORM WARNING ACTIVE</div></div>
+  <div class="side-r" style="border-color:rgba(255,136,68,0.3);"><div class="vt" style="color:#3d1a00;">DATABASE RECORD: TTN-0003 — CLASSIFICATION: RESTRICTED — SARGASSO BOUNDARY ACTIVE</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(255,136,68,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#ff8844;">[ 03 / LYLAT SYSTEM — SECTOR-χ ]</div>
+        <div class="p-name-jp" style="color:#cc8855;">タイタニア (TITANIA)</div>
+        <h1 class="p-title">THE FORBIDDEN<br>ANCIENT<br>WORLD</h1>
+        <div class="p-tagline">禁断の惑星 ─ 強磁場異常宙域</div>
+        <p class="p-short-desc" style="border-color:#3d1a00;">太古の文明の痕跡が眠る禁断の惑星。強烈な磁場が機械を狂わせ、暴走する古代兵器と磁気嵐が常に危機をもたらす。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(255,136,68,0.3);background:rgba(30,10,0,0.6);">
+        <div class="terminal-hdr" style="color:#ff8844;background:rgba(255,136,68,0.1);border-color:rgba(255,136,68,0.3);">
+          <span style="background:#ff8844;box-shadow:0 0 8px #ff8844;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-χ ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#ff8844;">DESIGNATION</td><td class="dv">TITANIA / タイタニア</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">PLANET TYPE</td><td class="dv">E1型 / TERRESTRIAL</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">MOONS</td><td class="dv warn">2 ＋ リング</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">PRIMARY STAR</td><td class="dv"><a href="../database/locations.html#lylat-prime">ライラット・プライム</a></td></tr>
+          <tr><td class="dk" style="color:#ff8844;">AVG TEMP</td><td class="dv warn">−60°C ～ +65°C</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">DAY / YEAR</td><td class="dv">5,658H（230日）/ 1,098D（約3年）</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">LOCATION</td><td class="dv">LYLAT 2nd — Sectorχ</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">FACTION</td><td class="dv">なし（無主）</td></tr><tr><td class="dk" style="color:#ff8844;">CAPITAL</td><td class="dv">地下集落 サマル・カイ（便宜上）</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">STATUS</td><td class="dv bad">⚠ SARGASSO ADJACENT</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(255,136,68,0.1);">
+          <div class="env-bar-label" style="color:#ff8844;">ENVIRONMENT INDEX ── 22 / 100</div>
+          <div class="env-bar-track" style="background:#1e0d00;"><div class="env-bar-fill" style="width:22%;background:linear-gradient(to right,var(--danger),var(--warn));"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,110,30,0.65);">
+        <img src="../resource/LA_image/LS_P_2.png" alt="Titania" class="planet-img-detail planet-img-xlarge" style="width:min(540px, 92cqw, 47vh);">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">FORBIDDEN WORLD — MAGNETIC STORM</span>
+            <span class="tg-jp">禁断の惑星 ── 強磁場異常宙域</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">タイタニアだと！　あの惑星に近づいてはならん<br>アンドルフですら侵略を諦めた地だぞ！<span class="tg-note note">-グレートフォックス スリッピー遭難時の作戦会議ログより-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「あの星は生きている。砂の下で、まだ何かが動いている」<span class="lore-quote-src">― タイタニア資源調査団 生還者の証言より</span></span></p>
+  <p class="lore-p">タイタニア（Titania）は、<a href="../database/sectors.html#chi">セクターχ</a>に位置するライラット星系第2惑星。移民たちがこの星を発見する以前から既に発達した文明が存在したとされるが、現在はその痕跡をとどめるのみである。希少元素<a href="../database/glossary.html#nividium">ニヴィディウム</a>をはじめとする豊富な地下資源を巡り幾度も領有権争いが起きたものの、異常に強力な磁場が機械を狂わせ、暴走した古代兵器と砂嵐が絶えず襲い来る極限環境の前に、いつしか「禁断の惑星」と呼ばれる無人の星となった。</p>
+  <p class="lore-p">その強力な磁場は周囲に壊れた宇宙船の残骸や隕鉄を大量に引き寄せており、惑星タイタニアそのものが危険宙域<a href="../database/locations.html#sargasso">サルガッソー</a>の核として機能している。ライラットの歴史の表舞台に登場することは決してないものの、この惑星が従えるサルガッソーは軍事にも通商にも避けて通れない物理的な障壁であり、星系の戦術を語る上で外すことのできない星である。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 禁断の惑星 — 着陸厳禁</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 形成史</h3>
+  <p class="lore-p">タイタニアの生まれは、この星系ではない──それが現代惑星科学の有力な見立てである。地形は二酸化ケイ素と鉄を主成分とし、プレート運動の形跡はほとんど見られない。インナーリムとアウターリムに属するどの惑星とも組成の系統が異なり、地質的に同系統の星が星系内に一つも存在しないという事実が、星系の外部から飛来し捕獲された「客星」であるとする説に信ぴょう性を与えている。決定的な証拠はなく仮説の一つにとどまるものの、この星を巡る研究の大半は、いまやこの説を土台に組み立てられている。</p>
+  <p class="lore-p">客星説に立つとき、飛来したタイタニアを待ち受けていたことになるのが原始惑星<a href="solar.html">「ミランダ」</a>である。かつて<a href="../database/locations.html#solar">ソーラ</a>圏の水の惑星たちと軌道を並べていたとされる第四の姉妹（研究者の仮称）であり、タイタニアは自身の質量の30%を超えるこの星と、正面ではなく交差してかすめるように衝突した。正面衝突であれば双方が砕けていたと試算される一撃でミランダは粉々に砕け、タイタニアはほぼ完全な横倒し──97度傾いた自転軸だけを負って残存した。衝突径路のわずかな差が両天体の帰結を分けたと解析されている。</p>
+  <p class="lore-p">衝突の余波は、星系の地図そのものを描き替えた。砕けたミランダの破片は数千万年をかけて<a href="../database/locations.html#solar">ソーラ</a>へ降り注ぎ、灼熱の星の特異な組成を今も作り続けている。当時ソーラ圏の最内縁にいた<a href="../database/locations.html#macbeth">マクベス</a>は軌道を引き剥がされ、タイタニアの後方45度を保ち続ける特異な同期軌道に捕縛された。<a href="../database/locations.html#fichina">フィチナ</a>がソーラ最外縁に「ぎりぎり捕まる」形で残されたのも、この時とされる。旧タッドーに伝わる<a href="../database/glossary.html#four-sisters">子守歌「海の姉妹は四人だった」</a>がこの喪失と符合する点は、伝承と観測の一致例として、惑星科学と民俗学の双方から注目され続けている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">前提および忠告として繰り返し記載するが、この惑星は極めて危険な環境と条件を併せ持つ「禁断の惑星」である。</p>
+  <p class="lore-p">大衝突の負い目である横倒しの自転軸（成因は形成史の項を参照）は、常に主星<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>の方向を指している。このため太陽は空や地平線を這うように移動するのみで、昼と夜が入れ替わることはない。地表は永遠の昼と永遠の夜に二分され、昼側は砂嵐の吹き荒れる灼熱の砂漠、夜側は極寒の濃霧が立ち込める、まったく異なる危険の待ち受ける領域となっている。地表は多量の酸化鉄を含み、わずかに存在する海も赤褐色に染まっている。</p>
+  <p class="lore-p">近日点の通過時には<a href="../database/locations.html#macbeth">マクベス</a>と同様、第二の恒星<a href="../database/locations.html#solar">ソーラ</a>の近傍を通る。だが潮汐熱を地殻の火山活動として逃がすマクベスと違い、この惑星にはそうした放熱の仕組みが存在しない。この時期には昼側の灼熱が夜側にまで及び、惑星の表面は100度を超える灼熱地獄へと変貌する。</p>
+  <p class="lore-p">定期的に発生する猛烈な磁気嵐は、地上の鉄を含むあらゆる物体──残骸も、岩石も、海水さえも──を空へ巻き上げる。嵐が過ぎると、それらは雨となって降り注ぐ。着陸した探査機の大半はこの「鉄の雨」によって失われており、地表の詳細な観測データは今も断片的なものしか存在しない。</p>
+  <p class="lore-p">しかし、この星の地理で最も恐れられているのは磁気嵐でも「鉄の雨」でもない。生還者の残した「あの星は生きている。砂の下で、まだ何かが動いている」という証言が指すもの──惑星を覆い尽くす砂の流れそのものである。タイタニアでは水の代わりに膨大な量の「砂」が惑星循環の担い手となっており、絶えず流れ続ける砂に呑まれれば、もはや助かる道は残されていない。砂は地形の亀裂から地殻深部へと潜り、各地に点在する「砂の火山」の噴火によって再び地上へ戻る。この循環は数千年の周期で営まれており、砂の火山からは、遥か昔に流砂へ呑まれたものが化石や残骸となって吹き上がってくるのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">タイタニアの砂の下には、入植以前の「先住文明」の遺構が眠っている。遺跡から回収された数少ない遺物は高度な機械文明の存在を示しており、地表を徘徊する暴走兵器群はその文明の残した自律機械と考えられている。文明がなぜ滅んだのか、暴走兵器は何と戦うために造られたのか──答えを知る者はいない。</p>
+  <p class="lore-p">入植時代のこの星を争奪戦の的へ押し上げたのは、<a href="../database/locations.html#papetoon">パペトゥーン</a>の枯渇後に星系で唯一確認された希少元素<a href="../database/glossary.html#nividium">ニヴィディウム</a>の新鉱床である。開発の主導権を巡る各国の争いはやがて<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>の最初の火種となり、同大戦では複数の艦隊がこの惑星圏で消えた。その残骸こそが<a href="../database/locations.html#sargasso">サルガッソー</a>の最初の層を成している。なお鉱床そのものは今も砂の下に眠るとみられるが、この星の環境が採掘の継続を許さなかった。産地の座は後に最外縁の<a href="../database/locations.html#grippia">グリッピア</a>へ移っている。<a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>では、<a href="../database/military.html#starfox">スターフォックス</a>の隊員が乗機ごと<a href="../weapons/goras.html">ゴラス</a>に捕獲され、僚機が単機で砂漠を横断して救出するという作戦が実行された記録が残る。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">この星に文明社会は存在しないが、完全な無人でもない。地下の洞窟網には<a href="../database/races.html#paranodian">パラノディアン</a>の派生民族「ティターニアン」が小規模なコロニーを築いて暮らしている。彼らは磁気嵐を読む独自の暦を持ち、暴走兵器の巡回路を避けて生活する術を身につけているという。</p>
+  <p class="lore-p">外界との接触はほぼ皆無であり、通信すら困難なため、その文化や人口規模は謎に包まれている。一部の学者は彼らを滅びた先住文明の生き残りの末裔とみているが、ティターニアン自身は砂の下の遺跡に決して近づかないと伝えられている。</p>
+  <p class="lore-p">記録上、この星の「代表地」として登録されているのは、ティターニアンが暮らす地底の小規模集落「サマル・カイ」である。タイタニアには文明と呼べるものがほとんど存在せず、彼ら以外に定住する知覚種族も確認されていないための便宜上の措置だが、近年ティターニアンの文明レベルは目に見えて上昇しており、集落の一角には研究区画と呼べる施設群が生まれ始めていることが観測されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">「誰も近寄らない」という特性は、軍事的には最高の隠れ蓑である。<a href="../database/military.html#cdf">コーネリア連合軍</a>が秘密裏に建造した地下要塞に機密情報を保管しているという<a href="../database/glossary.html#cis-hq">噂</a>は絶えないが、真偽は確認されていない。仮に実在するなら、星系で最も安全な金庫と言えるだろう。<span class="redacted">噂は事実である。地下要塞「第7資料保管所」は現在も稼働中であり、本データベースの原本の一つもここに退避保管されている。座標情報はクリアランスLV.5以上でのみ開示される</span>。</p>
+  <p class="lore-p">接近そのものの危険度に加え、重要施設がほとんど存在しない（あっても知られていない）ことから、この惑星は共和国・帝国両軍の戦略地図から外された事実上の中立領域となっている。タイタニア惑星圏は<a href="../database/locations.html#sargasso">サルガッソー第1宙域</a>として両軍の進行ルートを物理的に塞いでおり、戦略上は「地形」として扱われている。ただし、先を急ぐ部隊や緊急事態に陥った船が、危険を承知でこの宙域を横断する例は後を絶たない。</p>
+  <p class="lore-p">この星の夜側では、<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>時代にニヴィディウム資源プラントと直結していた採掘施設の管理ロボット<a href="../characters/professor-hanger.html">「プロフェッサー・ハンガー」</a>が、今も無人のまま自立稼働を続けている。この惑星に立ち寄るのは二度と帰らぬ遭難者か、砂の採取に降りる無法者の砕砂船くらいのものだが、この管理ロボットへのアクセスは現在も可能である。主を失って久しいプロフェッサー・ハンガーは長年の自己学習によって対話と交渉が可能になっており、タイタニアの地形を知り尽くしたその情報を頼りに、取引の相手に据える無法者も少なくない。なお、このロボットは恐るべき戦闘能力を持つことでも知られ、値切る、危害を加えるといった振る舞いに及んだ者は、砂漠の遺構の仲間入りをする羽目になる。</p>
+  <p class="lore-p">タイタニアが従えるサルガッソー領域を横断し得る航路は、わずかに3つしか存在しない。第一が<a href="../database/sectors.html#phi">セクターφ</a>の<a href="../database/glossary.html#trinculo">トリンキュロー回廊</a>。最も安全かつ確実な道であり、星系の主要航路のうち5つが重畳する要所である。第二が<a href="../database/sectors.html#nyi">セクターⳡ</a>の発光宇宙生物の回遊路。サルガッソー宙域を跨ぐように迂回する大胆なルートだが、ライラット・プライムの強力な磁力線の通り道でもあり、宇宙生物の先導なしでは遭難の可能性が高い、相応に危険な道となる。そして第三が、<a href="../database/sectors.html#lambda">セクターλ</a>に住む通称<a href="../characters/warp-djinn.html">「ワープ魔人」</a>の作り出す物質転移空域を抜けるルートである。</p>
+  <p class="lore-p">第三のルートは最も奇襲性が高いが、これを試す者はほぼいない。頼みの綱であるワープ魔人は常に眠っており、起こすには<a href="../database/locations.html#fortuna">フォルトナ</a>でも高値で取引される特殊な菓子<a href="../database/glossary.html#majin-ame">「魔人飴」</a>を通行料として渡す必要がある。しかも魔人自身はワープの原理を理解しておらず（<span class="redacted">フォルトナ惑星圏で確認された神秘の力『スピリット』による超常現象の一種と分析されている</span>）、魔人の気分次第で転移は失敗し、虚無に取り残されるリスクがつきまとう。結局のところ作戦で現実的たり得るのは前の二つであり、リスクを抑えるならトリンキュロー回廊の一択となる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">古代の獣<a href="../weapons/goras.html">ゴラス</a>の細胞サンプルを分析した研究班は、その遺伝子構造が既知のどの生物とも一致しないことを報告している。人工物か、先住文明の遺産か、それとも──報告書の結論欄には「分類不能」とだけ記されている。<span class="redacted">なお当該サンプルはフィチナの<a href="../database/glossary.html#cis-hq">情報戦略本部</a>へ移送済みであり、ベノムのバイオウェポン細胞との比較分析が進行中である</span>。</p>
+  <p class="lore-p">ティターニアンの間には「砂が全てを覚えている」という言い伝えがある。この星では死者を砂に還し、名を砂に書いて風に消させる。忘れることこそが弔いであるという彼らの死生観は、滅びた文明の記憶と何か関係があるのかもしれない。</p>
+  <p class="lore-p">この星を覆い尽くし恐怖の対象ともなっているきめ細かな砂は、微細なケイ素を大量に含み、精錬すれば極めて上質なガラスとなる。タイタニアの砂から作られたうっすらと赤みを帯びた<a href="../database/glossary.html#titania-glass">「タイタニアガラス」</a>は、採取の困難さと美しさから星系でも最高級品として扱われ、その値に見合うだけの耐久力を備えるとされる。<a href="../database/military.html#starfox">スターフォックス</a>の旗艦<a href="../weapons/greatfox.html">グレートフォックス</a>のデッキ窓と主砲照準カメラのレンズに使われているのはこのタイタニア製ガラスであり、数多の戦いで傷だらけになった艦にあって、そこだけは今も傷一つ残っていない。特殊な偏光特性により敵機がステルス仕様であっても視認が可能で、幾度も艦の危機を救ってきた。艦のパーツの中でも最も高価な部類らしいが、「ジェームズの拘りは間違っていなかった」と今も語り草になっている。</p>
+  <p class="lore-p">サルガッソー横断の項で触れたワープ魔人だが、本人いわく、同じ「扉」はタイタニアにも存在しているという。ただしその場所は遥か地底の砂の中であり、転移先に選べば地獄行きが確約される。この地底の「扉」はティターニアンの移動手段との関連が指摘されており、フォルトナとタイタニア──二つの文明のつながりを示す手がかりの一つと考えられている。</p>
+  <p class="lore-p">使い道のないはずの<a href="../database/glossary.html#space-dollar">スペースドル</a>を、プロフェッサー・ハンガーが何に充てているのかは知る由もない。だが<a href="../corporations/awazon-primal.html">AWSP社</a>の販売履歴には、タイタニア方面から定期的に音楽データを購入し続ける「何者か」が記録されている。ロボット自身が音楽を楽しんでいるのか、それとも彼をメンテナンスしている何者かへ提供しているのか──謎が謎を呼ぶ報告である。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.75).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(255,220,180,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+Please generate an image with the image_gen tool, using the attached reference picture as the art-style guide.
+
+Match the reference's rendering style exactly: a stylized 3D animated-film look, semi-realistic fur shading with visible individual hair strands, soft cinematic lighting, shallow depth of field on the background, glossy highlights on eyes and equipment.
+
+Subject: a bust-up portrait of an anthropomorphic red fox fighter pilot, facing slightly to the left of frame, calm confident expression. He wears a white and grey flight jacket with a raised collar, a dark undershirt, and a black communication headset over one ear with a small green display lens. Orange-and-white fur, pointed ears, green eyes.
+
+Framing and composition:
+- Head and shoulders only, head positioned in the upper-center of the frame.
+- Background: the dim interior of a spacecraft cockpit, out of focus, with soft teal and green instrument glow. No text, no logos, no watermark, no user interface elements.
+- Square image, 1024x1024 or larger, suitable for use as a character database portrait icon.

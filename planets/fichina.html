@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FICHINA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#88ccff;--accent:#aaddff;--border:rgba(136,204,255,0.32);--border-hi:rgba(170,221,255,0.7);--dim:#0d2035;--dim2:#06101c; }
+    .p-title { color:#eef8ff; text-shadow: 0 0 50px rgba(100,180,255,0.35); }
+    .p-tagline { border-color:#88ccff; color:#88ccff; }
+    body { background:#040709; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(5,15,30,0.65) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(0,10,25,0.45) 0%,transparent 55%),
+      #040709; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(136,204,255,0.32);">
+    <a href="../database/locations.html" class="nav-back" style="color:#88ccff;border-color:rgba(136,204,255,0.3);">◄ LOCATIONS</a>
+    <div class="header-tag">[ 08 / FICHINA — フィチナ ]</div>
+    <div class="header-status"><span class="blink" style="color:#88ccff;">●</span> SECTOR-ξ — ICE WORLD</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(136,204,255,0.3);"><div class="vt" style="color:#0d2035;">LYLAT SYSTEM — FICHINA — FROZEN FRONTIER — SECTOR-XI — CLIMATE CONTROL BASE</div></div>
+  <div class="side-r" style="border-color:rgba(136,204,255,0.3);"><div class="vt" style="color:#0d2035;">DATABASE RECORD: FCH-0008 — CLASSIFICATION: STRATEGIC — FORMER CORNERIAN FACILITY</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(136,204,255,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#88ccff;">[ 08 / LYLAT SYSTEM — SECTOR-ξ ]</div>
+        <div class="p-name-jp" style="color:#6699bb;">フィチナ (FICHINA)</div>
+        <h1 class="p-title">THE FROZEN<br>FRONTIER</h1>
+        <div class="p-tagline">極寒氷結惑星 ─ 気候制御基地跡</div>
+        <p class="p-short-desc" style="border-color:#0d2035;">惑星気候制御装置クライメート・コントロールの「気候の傘」の下に都市が息づく極寒の氷結惑星。開戦緒戦で帝国軍に装置を奪われ、全土が人質となった過去を持つ。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(136,204,255,0.3);background:rgba(5,15,28,0.65);">
+        <div class="terminal-hdr" style="color:#88ccff;background:rgba(136,204,255,0.1);border-color:rgba(136,204,255,0.3);">
+          <span style="background:#88ccff;box-shadow:0 0 8px #88ccff;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-ξ ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#88ccff;">DESIGNATION</td><td class="dv">FICHINA / フィチナ</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">PLANET TYPE</td><td class="dv">E1型 / ICE WORLD</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">MOONS</td><td class="dv">0</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">PRIMARY STAR</td><td class="dv"><a href="../database/locations.html#solar">ソーラ</a></td></tr>
+          <tr><td class="dk" style="color:#88ccff;">AVG TEMP</td><td class="dv bad">−80°C ～ −20°C</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">DAY / YEAR</td><td class="dv">35.2H / 520D</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">LOCATION</td><td class="dv">LYLAT 8th — Sectorξ</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">FACTION</td><td class="dv">コーネリア連合共和国（フィチナ州）</td></tr><tr><td class="dk" style="color:#88ccff;">CAPITAL</td><td class="dv">フィチナ州都 モスクマ</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">FACILITY</td><td class="dv warn">⚠ 残存部隊掃討継続中</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(136,204,255,0.1);">
+          <div class="env-bar-label" style="color:#88ccff;">ENVIRONMENT INDEX ── 30 / 100</div>
+          <div class="env-bar-track" style="background:#06101c;"><div class="env-bar-fill" style="width:30%;background:linear-gradient(to right,var(--danger),#5588aa,#88ccff);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(100,180,255,0.65);">
+        <img src="../resource/LA_image/LS_P_6.png" alt="Fichina" class="planet-img-detail planet-img-small"
+          style="filter:drop-shadow(0 0 28px rgba(100,180,255,0.65)) hue-rotate(170deg);">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ICE WORLD — CLIMATE CONTROL</span>
+            <span class="tg-jp">極寒氷結惑星 ── 気候制御基地跡</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">情報戦略本部ねぇ<br>どうせ、お偉いサンたちの汚ねぇ秘密の隠し場所だろ？<span class="tg-note note">-グレートフォックス 作戦会議会話記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「ここでは寒さは敵ではない。計器を疑い始めた自分の心が敵だ」<span class="lore-quote-src">― フィチナ観測所 越冬隊員の日誌より</span></span></p>
+  <p class="lore-p">フィチナ（Fichina）は、<a href="../database/sectors.html#xi">セクターξ</a>に位置するライラット星系第8惑星。恒星<a href="../database/locations.html#solar">ソーラ</a>圏の最外縁を巡る極寒の氷結惑星である。同じソーラ圏の<a href="../database/locations.html#aquas">アクアス</a>や<a href="../database/locations.html#zoness">ゾネス</a>が水資源と温暖な気候に恵まれる一方、姉妹たちから倍近く離れた軌道を巡るこの星だけは、厚い氷雪のアルベドも相まって、地表は年間を通して氷点下の世界が広がっている。<br>
+かつては<a href="../database/factions.html#cornerian-republic">コーネリア連合共和国</a>を構成する5国家の一つ「旧・サルジーナヤ連邦」の母星であり、現在は共和国フィチナ州としてその政治基盤を引き継いでいる。</p>
+  <p class="lore-p">この辺境の氷の惑星が星系の戦略地図に太字で記されるようになったのは、惑星気候制御装置<a href="../database/glossary.html#climate-control">クライメート・コントロール</a>の運用が始まってからである。<a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>緒戦では<a href="../database/factions.html#venom-empire">ベノム帝国軍</a>に装置を掌握され、フィチナ全土の生存環境が丸ごと人質となった。<a href="../database/military.html#starfox">スターフォックス</a>の決死の作戦により危機は回避されたものの、地下施設には今も帝国軍残存部隊が潜伏しているとされる。さらに本星には<span class="redacted">コーネリア防衛軍の秘密<a href="../database/glossary.html#cis-hq">情報戦略本部</a>が置かれており、星系全域の諜報・防諜活動の中枢として機能している</span>。<br><span class="badge badge-warn" style="margin-top:6px;display:inline-block;">⚠ 一部エリア係争中</span><span class="badge badge-classified" style="margin-top:6px;margin-left:6px;display:inline-block;">▮ 本記事は検閲済み</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 形成史</h3>
+  <p class="lore-p">地質データと力学計算が描き出す原初のソーラ圏は、現在とまるで違う姿をしている。最内縁を回るのは<a href="../database/locations.html#macbeth">マクベス</a>であり、<a href="../database/locations.html#aquas">アクアス</a>・<a href="../database/locations.html#zoness">ゾネス</a>・フィチナの3惑星はほぼ同じ軌道を分け合う姉妹のような配置にあった。そしてこの姉妹には、もう一人の妹がいたとされる。後の研究者が<a href="solar.html">「ミランダ」</a>の仮称で呼ぶ原始惑星である。<a href="../database/locations.html#solar">ソーラ</a>の点火が外側へ押し出した水を分配された4惑星が、若い恒星を取り巻く姉妹軌道を構成していた──これが観測と力学計算から復元される星域の初期配置である（ソーラの項も参照）。</p>
+  <p class="lore-p">この配置を打ち砕いたのが、ライラット系の黎明期に外宙域から突如飛来した客星<a href="../database/locations.html#titania">タイタニア</a>である。タイタニアはミランダと掠めるように衝突して姉妹の一人を粉々に砕き、乱れた軌道の中で星々の綱引きが始まった。軌道を挿げ替えようとするタイタニアと、繋ぎ止めようとするソーラの相互作用の末、マクベスは双方の力を受ける現在の特異な公転軌道に固定され、フィチナはソーラの最外縁に「ぎりぎり捕まる」形で残された。あくまで計算上の仮説にすぎないが、タイタニアを星系外からの客星とする前提に立つとき、地質と軌道の観測事実は驚くほどの整合性を示すという。</p>
+  <p class="lore-p">結果として、衝突を生き延びた3惑星のうちフィチナのみが大きく軌道を移した。なお旧タッドーの<a href="../database/glossary.html#four-sisters">子守歌「海の姉妹は四人だった」</a>は、文明成立以前の喪失と符合する伝承として、惑星科学と民俗学の双方から参照されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">地表の約90%が幾層もの雪氷に覆われ、平均気温は－80℃から－20℃。オレンジ色の恒星ソーラの淡い光が氷原に反射し、この星特有の「燃える氷原」と呼ばれる夕景を作り出す。大気中の氷晶がソーラの太陽風と反応して発生する極光は星系随一の美しさと言われるが、それを観に来る観光客は皆無に等しい。<br>
+ブリザードは数週間単位で続くことがあり、屋外活動が可能な「凪」の期間は年間を通してわずかしかない。</p>
+  <p class="lore-p">この寒さの第一の要因は軌道にある。フィチナはソーラ圏の最外縁を周回する惑星であり、アクアスやゾネスの倍近い距離からあの淡い光を受け取っている。この最果ての軌道に至る経緯は、形成史の項に譲る。</p>
+  <p class="lore-p">フィチナの氷は「積もっている」という表現では足りない。本来の地表の上に2,000から3,000メートルもの氷の層が堆積しており、住民が立つ「地面」は、惑星全体が高山域に相当する薄い大気の世界となっている。加えて地表のアルベド（光反射率）は星系の惑星でも極めて高く、フィチナは「純白の星」の異名を持つ。不純物の少ない雪の堆積層が惑星表面の半分以上を占め、季節風のブリザードが絶えず新しい雪で表面を更新するため、この白さが曇ることはない。そして純白こそが、この星をより過酷な寒さたらしめている要因でもある。降り注ぐ太陽光の大部分は白い氷にそのまま反射されて熱源として機能せず、自然環境から得られる熱は事実上、地熱に限られる。</p>
+  <p class="lore-p">その地熱が、氷の下にもう一つの世界を作っている。赤道帯では氷層の下部が地熱により融解し、氷床の下に隠された海が形成されている。この「氷下海」は惑星上に4か所確認されており、最大のものは州都モスクマの東に広がる「ヒヒョーツク海」の名で呼ばれる。太陽光の届かない暗黒の水中には、地熱噴出孔を基盤とする独自の生態系が息づいている。フィチナ州の住民には、この海へ潜水艦で乗り入れて漁を行う<a href="../database/glossary.html#salvager">「サルベージャー」</a>で生計を立てる者も少なくない。なお<a href="../database/locations.html#sargasso">サルガッソー宙域</a>で廃部品を回収する業者やならず者たちも同じく「サルベージャー」を名乗るが、言葉としての源流は、氷の下から糧を引き揚げてきたフィチナの漁師たちにある。</p>
+  <p class="lore-p">例外は<a href="../database/glossary.html#climate-control">クライメート・コントロール</a>の直下に広がる制御圏である。装置の稼働範囲内のみ気温と天候が人工的に調整されており、州都モスクマと基地群はこの「気候の傘」の下に築かれている。装置が停止すれば都市機能は数日で麻痺するため、フィチナの住民にとって装置は文字通りの生命線である。</p>
+  <p class="lore-p">自転周期は35.2標準時間、公転周期は520日。一日が<a href="../database/locations.html#corneria">コーネリア</a>の1.4倍も長いため、着任直後の兵士や技術者を悩ませる<a href="../database/glossary.html#standard-time">「惑星時差」</a>は星系でも指折りの過酷さで知られる。もっとも地下都市と気候制御圏の生活は最初から<a href="../database/glossary.html#standard-time">標準時</a>で組まれており、35.2時間の「本当の一日」に従って暮らすのは地表の測候員くらいのものである。どうせブリザードで太陽など見えない、というのが住民の弁である。<br>
+また恒星ソーラ自身も約8年で主星を公転しているため、フィチナの気候にはこの周期に沿った長い波が存在する。ブリザードが著しく穏やかになる年は「大凪」と呼ばれ、旧サルジーナヤ連邦の地下都市網が拡張されたのも、代々この大凪の年だったと記録されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p"><a href="../database/factions.html#cornerian-republic">コーネリア連合共和国</a>の国章に刻まれる五つの星──その最後の一つが<a href="../database/glossary.html#state-fichina">フィチナ州</a>である。この州が連合に加わるまでの道のりは五つの中で最も遅く、そして最も前途多難だった。転機は、二度訪れている。</p>
+  <p class="lore-p">旧・サルジーナヤ連邦は、氷の下に点在する地下都市国家の連合体を起源とする、辺境の弱小軍事国家だった。<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>では他勢力に大きく戦力で劣りながら、宙域をまたいだ着弾を可能とする長距離星間ミサイル「<a href="../weapons/man-drill.html#dread-kong">ドレッド・コング</a>」の製造能力を誇示しては、隣国<a href="../database/factions.html#cornerian-republic">タッドー共和国</a>から支援をせびるという、劣悪と評するほかない国家運営で戦乱の時代を生き延びていた。「星系で最も愚かな国」──当時の外交記録に残る評である。</p>
+  <p class="lore-p">最初の転機は、暴走した<a href="../database/glossary.html#stephano">グランベルの超兵器</a>を討つ共同戦線だった。超兵器の力を目の当たりにした国民の多くが逃げ腰になる中、惑星<a href="../database/glossary.html#stephano">ステファノー</a>にルーツを持つ当時の国家元首は、同胞と父祖の星が無残に崩壊するさまを他人事として見てはいられなかった。せびり続けた相手であるタッドー共和国の母星アリエル（現・<a href="../database/locations.html#aquas">アクアス</a>）へ超兵器が矛先を向けた──コーディリア艦隊からその報が届いたとき、元首は気づけば全星民に向けた演説を行っていたと伝えられる。星系で最も愚かと呼ばれた国の王が、初めて「誰かのために立ち上がる決意」を示した瞬間だった。<br>
+サルジーナヤは<a href="../database/military.html#starblade">統合艦隊</a>に合流し、持ち前のミサイル技術のすべてを無償で共有。最終決戦<a href="../database/glossary.html#star-dream">『スター・ドリーム作戦』</a>では宙域外からの超長距離飽和攻撃で無人兵器群を引き剥がし、2機の強襲機が超兵器の心臓部たるリアクター群へ達する侵入経路の確保に貢献した。星系を脅かした技術が星系を救う切り札の一端を担ったこの逸話は、「サルジーナヤの夜明け」の一頁として広く知られている。</p>
+  <p class="lore-p">夜明けを経てなお、停戦交渉の席でサルジーナヤは最後まで併合に抵抗した。<a href="../database/glossary.html#stephano">ステファノーの戦い</a>の後にようやく共和国への参加を決めた経緯を持つが、このとき併合に反発した「融和反対派」の国民が大量に星を離れ、後の<a href="../database/factions.html#venom-empire">ベノム帝国</a>の中核的な人口基盤となったことは、この星の歴史に今も暗い影を落としている。</p>
+  <p class="lore-p">二つ目の転機は、ステファノー系<a href="../database/races.html#alphoid">アルフォイド</a>移民の大量流入である。本来アルフォイドは温暖な緑地を好む種族であり、失われた母星ステファノーも穏やかな森林の惑星だった。第1次ライラットウォーズの終結とともに種族ごと祖国を失った彼らは、未開発地域の開拓を条件にコーネリアでの居住権を求めたが、多数派である<a href="../database/races.html#anubisoid">アヌビソイド</a>系──とりわけワングロサクソン系の住民たちは「コーネリアが移民で埋め尽くされる」と危惧し、<a href="../database/locations.html#corneria">コーネリアシティ</a>では大規模な<a href="../database/glossary.html#racial-friction">排斥デモ</a>が繰り返された。首都を擁する<a href="../database/glossary.html#state-cordelia">コーディリア州</a>と<a href="../database/glossary.html#state-granbel">グランベル州</a>の境には、州知事が公約に掲げた分厚い「移民対策の壁」が築かれ、移民たちは市内でも最も治水の悪い低地の一角に住むほかなかった。このスラム街がのちに、元老院<a href="../database/characters.html#five-elders">シキ老</a>の尽力で移民街区<a href="../database/glossary.html#racial-friction">ニッコータウン</a>へと発展していくことになる。</p>
+  <p class="lore-p">もっとも、住処を得られた者はまだ幸運だった。特別な技術を持たない多くの難民は市民権すら得られず、膨れ上がる衛生問題と人道問題に悩み抜いた議会が出した結論が、当時都市群の外はほぼ手つかずだったフィチナの本格開拓に移民を活用する政策である。温暖な気候を好むアルフォイドにとって極寒の惑星への移住指令は受け入れがたいものだったが、祖国も後ろ盾も失った民族に、この命令を覆す力はなかった。政府に見放されたと自暴自棄になる者、手つかずの開拓地に再起を懸ける者──さまざまな思いを乗せて、移民船団はフィチナへ向かった。<br>
+結果から言えば、この移民団こそがサルジーナヤを作り直した。彼らは類まれな技術力と創意工夫で氷の下の都市網を今日の姿へ拡張し、数世代を経て共和国の属州でも指折りの経済力を築き上げる。政府も無視できない影響力を得たこの地が名実ともに五大州の一角として遇されるようになったとき、国章の五つ目の星は初めて本当の輝きを得たのである。</p>
+  <p class="lore-p">共和国への併合後、サルジーナヤ連邦が自国の凍土を融かすために計画していた気候制御施設は、フィチナ全土をカバーする環境制御網<a href="../database/glossary.html#climate-control">クライメート・コントロール</a>として完成した。温暖な母星を追われたアルフォイド移民にとって、凍土を融かすこの計画は単なる開発事業ではなく、第二のステファノーを築く夢そのものだった。その悲願を成就させたのが、かつて併合に最後まで抵抗した相手である共和国だったという事実は、この州の複雑な歴史における数少ない和解点とされている。装置が初めて全力稼働し、モスクマの空に「調整された晴天」が広がった日は、現在も州の祝日「傘の日」として祝われている。</p>
+  <p class="lore-p">第2次ライラットウォーズでは、開戦初期に帝国軍の急襲を受けて装置が掌握された。帝国は制御圏を意図的に狭めては戻す示威行為を繰り返し、フィチナ全土の生存環境そのものを交渉材料とした──砲弾を一発も撃たずに惑星をまるごと人質へ変えた手口として、戦史に特筆される事例である。<a href="../database/glossary.html#climate-recapture">奪還作戦</a>では要請を受けた<a href="../database/military.html#starfox">スターフォックス</a>が、装置に仕掛けられた大型爆弾の起動阻止に成功。撤収する隊の前に立ち塞がった謎の傭兵部隊<a href="../characters/wolf.html">スターウルフ</a>との交戦が記録されている。両部隊の因縁の始まりを巡っては諸説あるが、公式記録に「初交戦」と明記されているのは、このフィチナ上空である。</p>
+  <p class="lore-p">なお併合直後の混乱期については、公式史の記述が不自然に薄い。<span class="redacted">共和国成立から2年後の宇宙歴3770年、残留した融和反対派による武装蜂起「サルジーナヤの三日間」が州都モスクマを中心に発生。蜂起の舞台からとった通称<a href="../database/glossary.html#moskma-three-days">「モスクマの三日間」</a>の名でも知られる。鎮圧作戦の詳細は現在も封印されており、公式記録上この事件は「大規模雪害」として処理されている。後年、教科書からの記述抹消もこの線に沿って行われた。なお当該法案が廃止され多くの史実が教科書へ復帰した後も、この項目のみは「大規模雪害」のまま残されている</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">住民の大半は寒冷地への適応力と高い知性で知られる<a href="../database/races.html#alphoid">アルフォイド</a>──その多くがステファノー系移民の子孫である。「寒冷地の種族」という今日の評判は生来の性質ではなく、温暖な森林の星に生まれた種族が移民の時代に知性と工夫で勝ち取った、後天の勲章にほかならない。人口のほとんどは州都モスクマをはじめとする地下都市と、気候制御圏内の測候都市に集中している。<br>
+併合時には融和反対派の流出で人口が最盛期の半分以下まで落ち込み、その穴を埋めたのが移民の大量流入だった。旧サルジーナヤ系の住民には、共和国への忠誠と去っていった同胞への複雑な感情が今も同居している。</p>
+  <p class="lore-p">それでもフィチナ州は共和国有数の頭脳供給地であり続けている。極限環境で培われた工学・気象科学の水準は高く、<a href="../database/military.html#cdf">コーネリア防衛軍</a>の技術部門にはフィチナ出身の士官が数多く名を連ねている。</p>
+  <p class="lore-p">州都モスクマには、積雪と極低温に耐えるよう設計された独特の形状の建物が並び立つ。州知事にして惑星代表<a href="../database/glossary.html#gori-bachov">ゴリ・バチョフ</a>の像が立つ中央広場は、厳冬の中でも多くの住人が行き交う、この街随一の待ち合わせスポットである。</p>
+  <p class="lore-p">州第二の都市<a href="../database/glossary.html#city-eterburg">サルクトエテルブルグ</a>は、気候制御圏の縁に位置する古い工業都市である。都市暖房を支える巨大なボイラー網と地熱井が街の心臓部であり、住民は自らの街を「炉の街」と呼ぶ。ボイラー技師は街で最も尊敬される職業の一つであり、共和国軍の天才指揮官<a href="../database/characters.html#amber">アンバー・シルフェイド</a>少佐が、この街のボイラー修理業の家庭から出たことは地元の誇りとなっている。</p>
+  <p class="lore-p">数週間のブリザードに閉ざされる暮らしは、この州に独特の屋内文化を育てた。フィチナの家庭には一冬では読み切れない量の長編文学と盤上遊戯が備わり、モスクマ放送局の深夜朗読番組は三世代にわたり続く長寿番組である。<a href="../database/glossary.html#hibernation-leave">冬眠休暇</a>の季節には街の窓明かりが目に見えて減り、起きている種族だけで街を回す「静かな冬」が訪れる。そしてブリザードが明けた「凪」の日には、学校も職場も申し合わせたように「晴れ休み」となり、住民が一斉に氷原へ繰り出す──晴天を理由に休むのは、星系でもこの州だけである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ECONOMY ─ 経済・産業</h3>
+  <p class="lore-p">フィチナ州の経済は、星系でも例を見ない「チケット配給制」の上に成り立っている。<a href="../database/glossary.html#warp-route">メジャーワープドライブ航路</a>を持たず、貧相な州営航路と<a href="../database/glossary.html#state-aquas">アクアス州</a>経由の輸送に物流の大半を頼る以上、域外からの物資は常に有限であり、州政府はこれを戦前から配給チケットで管理してきた。もっとも基礎食料は地下都市の水耕農場と地熱温室、そして氷下海のサルベージャーたちが揚げる漁獲でおおむね自給されており、配給の対象は嗜好品と工業製品が中心である。開戦後、星系中が配給制の不便を嘆き始めた際も、フィチナ市民は眉ひとつ動かさなかった──「ようこそ、我々の日常へ」というモスクマ市民の投書が、星系ネットで広く共有されている。</p>
+  <p class="lore-p">輸出品の柱は「頭脳」と「低温」である。前者は前述の人材供給に加え、州立気象科学院の気象演算モデルが星系の航行管制で広く採用されている。後者は氷点下の外気をそのまま冷却材として使える立地を生かした精密産業であり、フィチナ製の超伝導演算素子と観測機器は星系有数のブランドとなっている。各社の新型機材が持ち込まれる越冬耐久試験も州の定番産業であり、雪の結晶を模した「フィチナ認証」の刻印は「氷点下60度で拗ねない機械」の証として、星系中の整備士から信頼を集めている。</p>
+  <p class="lore-p">この過酷な物流事情そのものから生まれた企業が、州都モスクマに本社を置く<a href="../corporations/white-fang.html">ホワイトファング急便</a>である。大手が断る「最後の一区間」を専門とする極地・僻地配送の雄であり、いまやフィチナ州で最も有名な「輸出品」はこの会社の仕事ぶりだという声すらある。同社を星系の人気者にしたドキュメンタリー番組については、記録余話の項に譲る。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">フィチナには<a href="../database/glossary.html#warp-route">メジャーワープドライブ航路</a>が一本も接続されておらず、州が独自に管理する州営ワープ航路だけが外部との唯一の接続手段である。州営航路の規模はメジャー航路に比肩するが、その性能は<a href="../corporations/vector-prime.html">ベクター・プライム社</a>製とは比較にならないほど粗末であり、州経済の大部分はアクアス州の輸送経路に依存している──州内が今なおチケットによる配給制である要因の一つである。大艦隊の迅速な展開も困難であるため、防衛は駐留部隊と自動防衛網に大きく依存している。帝国軍が緒戦でこの星を狙ったのも、まさにこの「援軍の来ない星」という弱点を突いたものだった。</p>
+  <p class="lore-p"><a href="../database/glossary.html#climate-control">クライメート・コントロール</a>は制御を奪われればフィチナ全域を人質に取る気象兵器と化すため、現在は<a href="../database/military.html#cdf">CDF</a>直轄の厳重な管理下に置かれている。地下施設に潜伏する帝国軍残存部隊の掃討作戦は現在も断続的に続いており、雪原の下では今日も静かな戦闘が続いている。</p>
+  <p class="lore-p">一方で、この星の過酷な環境は防衛資産でもある。ブリザードは侵攻側の航空戦力と観測網を等しく無力化するため、防衛計画には気象条件を組み込んだ「白い壁」と呼ばれる防衛線が設定されている。またモスクマ郊外には<a href="../database/military.html#cdf">CDF</a>の寒冷地戦訓練学校が置かれており、寒冷地装備の運用と35.2時間の惑星時差を耐え抜いた修了生は「フィチナ帰り」として各部隊で一目置かれる存在となる。曰く──「フィチナ帰りに寒がりなし」。</p>
+  <p class="lore-p">また、この星が「ただの辺境」ではないことを示す事実として、<span class="redacted">氷冠の直下に<a href="../database/glossary.html#cis-hq">情報戦略本部</a>の中枢施設が存在する。ワープドライブ航路が通らない辺境であること、氷雪が探査波を減衰させることが、機密保管地としての適性を最高評価たらしめている</span>。当該施設に関する問い合わせには、いかなる階級であっても回答されない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">星系外の旅行者はしばしばフィチナ（Fichina）と<a href="../database/locations.html#fortuna">フォルトナ（Fortuna）</a>の名を混同する。単なる言い間違いで済めば良いのだが、フォルトナは航路に宇宙生物が大量に生息する危険地帯であり、惑星そのものも攻撃性の強い生態系と非友好的な<a href="fortuna.html#tribe-sharpclaw">シャープクロウ族</a>・<a href="fortuna.html#tribe-redeye">レッドアイ族</a>を擁する「誰も近づかない星」である。フィチナ行きの船舶が航路端末で誤ってフォルトナを選択し、大変なことになる事例は後を絶たず、コーネリア航行局は両星の航路コードを意図的に離して再割り当てする措置まで行っている。</p>
+  <p class="lore-p">貧相な州営航路に加え、エンジンオイルすら凍り付く劣悪な気候も相まって、フィチナの田舎町へ物資を運ぶ運送業は星系最高難度と称される。地元企業<a href="../corporations/white-fang.html">ホワイトファング急便</a>の配達の一部始終を追ったドキュメンタリー番組<a href="../database/glossary.html#dogsled">『ドッグスレッド 氷原を駆ける犬たち』</a>は星系中で大人気を博しており、帝国軍人も隠れて視聴するほどである。番組終盤、配達を終えた運送人が受取人と交わす何気ない世間話は、「星系で最も温かい放送」と評されている。</p>
+  <p class="lore-p">越冬隊員たちの間には「氷原の下から誰かに呼ばれる」という怪談が古くから伝わっている。学術的には低周波の氷震がもたらす錯覚と説明されているが、旧サルジーナヤの民話では、氷の下に眠る<a href="../database/glossary.html#bremen">「最初の入植船」</a>の乗員たちが今も帰りを待っているのだと語られている。</p>
+  <p class="lore-p">星系の俗語に「フィチナ時間」という言い回しがある。35.2時間の長い一日に由来し、「締切はゆるやかに解釈してよい」という意味で使われる──が、当のフィチナ人はこの言葉を心底嫌っている。便数の少ない州営航路では一便逃せば次は数週間後であり、フィチナ人は星系で最も時間に几帳面な人々だからである。モスクマの発着場には古い標語が掲げられている──「船は凪を待つ。凪は誰も待たない」。</p>
+  <p class="lore-p"><span class="badge badge-classified">▮ 検閲済み — INTELLIGENCE ARCHIVE</span><br>
+  本星の情報アーカイブに保管されている機密ファイルのうち、臨時閲覧権限では以下の表題のみ確認できる。内容の開示には上級士官の承認が必要となる。<br>
+  ─ <span class="redacted">FCH-119:「<a href="../database/glossary.html#andorf">アンドルフの反乱</a>」に関する再調査報告 — 科学技術省爆発事故の被害記録には改竄の痕跡が認められる</span><br>
+  ─ <span class="redacted">FCH-204: フィチナ州武装蜂起 鎮圧作戦全記録（別名「三日間」文書）</span><br>
+  ─ <span class="redacted">FCH-311: ブラックホール観測に伴う第4偵察艦隊 集団行方不明事件 — 生存者1名の証言記録を含む</span><br>
+  ─ <span class="redacted">FCH-450: <a href="../characters/james.html">J・マクラウド</a>および<a href="../characters/pigma.html">P・デンガー</a>の前歴照会 — 夜盗団『スライフォックス』関連（減刑措置の経緯を含む）</span></p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 300; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.15 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(200,230,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body>
+</html>

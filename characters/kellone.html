@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRAND ADMIRAL KELLONE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#4488dd;--accent:#88bbff;--border:rgba(68,136,221,0.32);--border-hi:rgba(68,136,221,0.7);--dim:#0e1e3a;--dim2:#070f1f; }
+    .p-title    { color: #eaf2ff; text-shadow: 0 0 50px rgba(68,136,221,0.35); }
+    .p-tagline  { border-color: #4488dd; color: #4488dd; }
+    .terminal-hdr { color: #88bbff; }
+    .terminal-hdr::before { background: #88bbff; box-shadow: 0 0 8px #88bbff; }
+    .dk { color: #4488dd; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-21 / GRAND ADMIRAL M. KELLONE — ミズローヌ・ケローン大提督 ]</div>
+    <div class="header-status"><span class="blink" style="color:#88bbff;">●</span> HOSTILE — SUPREME COMMANDER</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — GRAND ADMIRAL MIZROUNE KELLONE — VENOM EMPIRE SUPREME COMMANDER</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0021 — CLEARANCE: PARTIAL — SEE ALSO FILE BLS-0009</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-21 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ミズローヌ・ケローン (GRAND ADMIRAL MIZROUNE KELLONE)</div>
+        <h1 class="p-title">GRAND ADMIRAL KELLONE</h1>
+        <div class="p-tagline">THE ARTIST OF WAR ── ベノム帝国軍 最高司令官 ─ AREA6管理主任</div>
+        <p class="p-short-desc">帝国軍の頂点に立つ「大提督」。敵の歴史と芸術から戦術を読み解く異能の名将であり、敵である<a href="../database/military.html#cdf">CDF</a>の戦史資料さえ彼を「紛れもない星系随一の名将」と記す。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 21 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">MIZROUNE KELLONE / ミズローヌ・ケローン</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#heketoid">ヘケトイド</a>（コバルト・ヤドクガエル系）</td></tr><tr><td class="dk">AGE</td><td class="dv">60歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#kew">キュー</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/factions.html#venom-empire">ベノム帝国軍</a>（最高司令官）</td></tr><tr><td class="dk">RANK</td><td class="dv">大提督（帝国軍籍で唯一）</td></tr><tr><td class="dk">FORMER</td><td class="dv">独立星系連合 参謀 / 共和国軍 提督</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 最高警戒</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING -- 97 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 97%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(68,136,221,0.55);">
+        <img src="" alt="GRAND ADMIRAL MIZROUNE KELLONE" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">VENOM EMPIRE — SUPREME COMMANDER</span>
+            <span class="tg-jp">帝国軍最高司令官 ──「大提督」</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">慌てる必要はない。敵の次の一手なら、彼らの芸術がとうに教えてくれている。<span class="tg-note note">-AREA6 旗艦艦橋の傍受記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">敵を知るとは、戦術を知ることではない。その歴史を、哲学を、そして芸術を知ることである<span class="lore-quote-src">― 帝国軍士官教育課程 特別講義録より</span></span></p>
+  <p class="lore-p">ミズローヌ・ケローンは<a href="../database/factions.html#venom-empire">ベノム帝国軍</a>の全軍を預かる最高司令官にして、最終防衛ライン<a href="../database/locations.html#area6">AREA6</a>の管理主任。「大提督」の階級は帝国の軍制に本来存在しない。皇帝<a href="../database/characters.html#andorf">アンドルフ</a>がこの男ひとりのために新設した地位であり、いまでは敵である共和国将兵までもがこの敬称で彼を呼ぶ。</p>
+  <p class="lore-p">青灰色の肌に緋色の眼を持つ<a href="../database/races.html#heketoid">ヘケトイド</a>の偉丈夫。常に純白の軍服をまとい、艦橋で声を荒げた記録が一度もない。部下の報告を決して遮らず、聞き終えてから一言だけ問いを返す。その一言が常に核心を突くため、幕僚たちは報告の前夜に眠れなくなるという。</p>
+  <p class="lore-p">CDF戦史研究室が敵性人物の評定に費やす文字数は通常一行に満たない。だがこの男の項にだけは、異例の一文が公式に残されている。「紛れもない星系随一の名将。彼我の別を問わず、この評に異を唱える者は前線にいない」。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">惑星<a href="../database/locations.html#kew">キュー</a>の軍系名門ケローン家に生まれる。宇宙歴2600年頃の大移民で<a href="../database/locations.html#aquas">アクアス</a>へ渡った同胞と袂を分かち、故郷に残留した家系である。16人の兄弟はそれぞれ異なる才能に恵まれ、一族には天体物理学者も外科医も詩人もいるが、軍史に名を刻んだのはケローンひとりであった。彼が目覚めたのは指揮の才である。</p>
+  <p class="lore-p">一族は長く、<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>から<a href="../database/locations.html#solar">ソーラ</a>、<a href="../database/locations.html#venom">ベノム</a>へ至る内星系の政治を<a href="../database/locations.html#hactiva">ハクティバ圏</a>から傍観する不文律を守ってきた。それを破らせたのは、内星系にはびこる人種差別である。<a href="../database/races.html#paranodian">パラノディアン</a>への迫害や難民の排斥を看過できず、一族は<a href="../database/factions.html#iga">独立星系連合</a>の発足に加担し、若きケローンも参謀として従軍した。</p>
+  <p class="lore-p">しかし連合の内実は、掲げた理想から遠かった。生還者皆無の収容所<a href="../planets/setebos.html">ムィンシャンクル</a>に象徴される内部の腐敗を目の当たりにしたケローンは、戦役の半ばで連合に見切りをつけ、新しい秩序の建設を共和国側に賭ける。後の連合の崩壊は、皮肉にもその見立ての正しさを証明した。</p>
+  <p class="lore-p">連合出身の異邦人という経歴は、共和国軍で歓迎されるものではない。ケローンはその警戒と偏見のすべてを戦果で黙らせ、ついには提督にまで昇った。経歴も出自も味方しない士官がここまで昇った例は共和国軍史でも他になく、彼の昇進はそのまま実力主義の証明として士官学校の教材に載っている。<a href="../planets/starblade.html">スターブレード</a>の五流派を内側から学び尽くしたのもこの時期である。後年この知識が何に使われたかを思えば、共和国にとってこれほど高くついた授業もない。</p>
+  <p class="lore-p">転機は緩やかに訪れた。より強い権力で固められていく共和国の政治体制、そして科学省長官<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a>の追放である。<span class="redacted">FCH関連記録の再分析によれば、彼はこの時期に五大元老院の統治の実態に職務上触れており、以後の人事評価記録から「共和国」への言及が消えている。そしてアンドルフがベノムへ追放された年、ケローンの私用端末に差出人不明の短い通信が一件届いた。文面の意味を解読できた分析官はいない。だが彼は差出人を即座に理解したと供述調書は推定している</span>。</p>
+  <p class="lore-p"><span class="redacted">以後7年、ケローンは共和国軍の中枢に籍を置いたまま、帝国建国の礎を固める水面下の活動を続けた。放棄衛星プロトボルスの価値を見抜きsectorτで大改修を主導したのもこの間である。計画を見抜いたのはただ一人、彼が育てた弟子<a href="wenli.html">ニャン・ウェンリー准将</a>だけであった。ケローンはこれを機に決別を表明しプロトボルスを起動、敗北する。サイレント・ナイトメア事件として封印されたこの戦いの詳細は防衛衛星<a href="../planets/bolse.html">ボルス</a>の項に、師弟の対決の顛末は後述の項に譲る</span>。公式の人事記録において彼は「特務任務中の消息不明」として処理されており、次に公文書へその名が現れるのは帝国の建国宣言である。</p>
+  <p class="lore-p">建国後は最高司令官として、<a href="../database/locations.html#area6">AREA6</a>を要とする絶対防衛圏構想を設計。<a href="../planets/bolse.html">ボルス</a>の再建を主導し、開戦劈頭の電撃的な諸惑星占領の作戦設計者と目されている。<a href="../planets/starblade.html">スターブレード</a>主力の過半を沈めた<a href="../database/glossary.html#zeta-tragedy">セクターζの惨劇</a>について、CDFは「あの包囲は五流派の癖を知り尽くした人間にしか描けない」と結論している。また帝国の造船区画では、彼の座乗だけを予定した三胴合体式の決戦旗艦<a href="../weapons/great-commander.html">グレート・コマンダー</a>の存在が確認されており、大提督がその艦橋に立つ日は「帝国の本気の証」として恐れられている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">用兵思想 ─ DOCTRINE</h3>
+  <p class="lore-p">ケローンの用兵を語るとき、必ず引かれるのが冒頭の講義録である。彼は交戦が予想される敵指揮官について、経歴や戦績よりも先に出身地の絵画と音楽を取り寄せる。旗艦の私室は小さな画廊になっており、作戦会議より画廊で過ごす時間のほうが長いと言われる。芸術には民族の誇りと恐れがそのまま描かれており、誇りと恐れこそが指揮官の次の一手を決めるというのが彼の持論である。</p>
+  <p class="lore-p">戦術面での代名詞は、ワープ航法の精密な短距離跳躍を艦隊運動へ応用した機動である。ケローン艦隊の増援は常に「あり得ない方位」から現れると恐れられ、CDFの操艦教範はこの機動に丸々一章を割いている。もっとも本人は跳躍機動すら小手先と見なしているようで、幕僚には「力だけにたよる戦術は無意味である」と繰り返し説いていたと伝わる。</p>
+  <p class="lore-p">部下への態度を示す逸話が一つ残っている。ある迎撃戦の後、目標を取り逃がした二人の艦長が旗艦に呼ばれた。部下に責任を転嫁した艦長はその場で更迭され、独断で新しい迎撃法を試みて失敗した艦長は昇進した。「工夫の末の失敗は帝国の資産である。保身の弁明は帝国の損失である」。この言葉以来、ケローン艦隊の士官は失敗を隠さなくなったという。</p>
+  <p class="lore-p">等級制が敷かれた帝国にあって、ケローンの幕僚人事だけは等級を一切問わない。三等国民の参謀も異種族の航法士官も、才があれば白い軍服の隣に立つ。この「治外法権」を皇帝は黙認しており、帝国の頂点に立つのが中枢種族ならぬヘケトイドである事実そのものが、彼の実力主義の何よりの証明となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">師弟 ─ MASTER AND PUPIL</h3>
+  <p class="lore-p">弟子との出会いは、戦場でも教室でもなく遺品整理の席であった。父を亡くし、頼みの美術品がことごとく贋作と判明して無一文となった若い士官の売り立てに現れたケローンは、山積みの贋作からただ一枚の「本物」を掘り当て、値札の30倍で買い取っている。歴史書ばかり読み、出世欲の欠片もなく、しかし盤上では誰にも負けない青年<a href="wenli.html">ニャン・ウェンリー</a>である。ケローンは彼を副官に取り立てて手ずから育て、休暇のたびに自室の画廊へ招いて茶を振る舞い、一時期は同じ屋根の下に暮らした。周囲が「上司と部下というより家族」と評した関係である。</p>
+  <p class="lore-p">ウェンリーが生涯守り続けた二つの教えは、いずれもこの時期のケローンのものである。「力だけにたよる戦術は無意味である」。そして「力なき正義が無力であるのと同じく、正義なき力もまた無力である」。後年この教えは、教えた本人へ向けられることになる。</p>
+  <p class="lore-p"><span class="redacted">水面下の活動の7年目、ケローンの計画を悟った唯一の人物がウェンリー准将であった。決別を告げたケローンはsectorτでプロトボルスを起動し、師弟は初めて敵味方として対峙する。ウェンリーは正面からの艦隊戦を捨て、外部の遊撃士3名と連携して要塞の弱点を突かせた。力に力で応じず、正義の側に立つ力を外へ求めたこの用兵は、ケローンの二つの教えの忠実な実践であった。撤退する旗艦の艦橋で、彼が浮かべたのは笑みだったと記録は伝える。「見事だ。実に美しい手際だ」</span></p>
+  <p class="lore-p">帝国の建国後も、二人は艦隊戦や降下作戦で幾度も相まみえた。互いの手の内を知り尽くした両者の戦いは最後まで決定打を許さず、若い士官たちはこれを「教師と教え子の模擬戦」と呼んだ。その最終講となったのが<a href="../database/glossary.html#chrono-ares">刻の軍神作戦</a>である。その対局を終わらせたのは、どちらの艦隊でもない。<a href="wenli.html">ウェンリー</a>が戦場の外で<a href="../database/glossary.html#wenli-last">凶刃に倒れた</a>後、大提督は数か月以上にわたり帝都からも<a href="../database/locations.html#area6">AREA6</a>からも姿を消した。帝国軍部はあえて行き先を追及せず、好機とされた侵攻作戦は彼が戻るまで保留されたままであった。詳細はウェンリーの項に譲る。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">若き日のケローンには一度だけ遭難歴がある。<a href="../planets/sargasso.html">サルガッソー</a>横断航路の事故で脱出ポッドごと流され、雪深い山岳地帯に漂着した。彼はそこを<a href="../database/locations.html#fichina">フィチナ</a>と信じ、救助までの日々を雪山で生き延びた。実際の漂着地は<a href="../database/locations.html#fortuna">フォルトナ</a>奥地の<a href="../database/glossary.html#snow-mountain">スノーマウンテン</a>であり、本人は最後までそれを認めなかったという。星系随一の名将が残した唯一にして最も有名な「誤答」である。</p>
+  <p class="lore-p"><a href="../database/sectors.html#lambda">セクターλ</a>に眠る<a href="warp-djinn.html">ワープ魔人</a>はこの頃の彼と面識があったとみられ、後年「これまで出会ったアニマリアの中で一番面白いやつだった」と評している。アニマリアとはフォルトナの部族が森の外の者を指して使う言葉であり、魔人が特定の個人を名指しで評した記録は他に存在しない。また好戦的で知られるシャープクロウ族の族長<a href="scales.html">「スケール」将軍</a>とも誼を結んだとされ、外の世界の者が同族の長と友好を保った例はこの一件しか確認されていない。</p>
+  <p class="lore-p"><span class="redacted">アンドリュー・オイッコニーのフォルトナ駐屯について、CDF情報部は作戦の真の責任者をケローンと断定している。私設軍隊が短期間で駐屯を成立させた正確な地形データ、森に呑み込まれない設営法、そして恐竜語の学習資材はいずれも彼の知識に由来する。有事にはワープ魔人の物質転移とシャープクロウ族の協力で即座に救援へ駆け付けられる体制まで敷かれており、皇帝が甥の任地にフォルトナを選んだ最後の理由はここにあったと分析される</span>。</p>
+  <p class="lore-p">ケローンが恐れられる場所は、実は戦場だけではない。意外にもそれは浴室である。彼の系統は皮膚から星系屈指の猛毒を作り出すことで知られるコバルト・ヤドクガエル系のヘケトイドであり、共和国時代には彼の入浴後に続けて浴室を使った同僚が立て続けに体調不良で入院し、作戦指揮にまで支障が及んだ記録が残る（<a href="../database/glossary.html#venom-etiquette">毒のエチケット</a>の項も参照）。常に白い手袋をはめ潔癖に振る舞うのは綺麗好きだからではなく、本人の周囲への配慮による。この問題は帝国に移った後も健在であり、彼が将旗を掲げる艦には必ず「大提督専用シャワールーム」が設けられている。</p>
+  <p class="lore-p">旗艦の画廊には一枚だけ、戦争と関わりのない絵が掛かっている。吹雪の山を描いた小品で、彼はこれを「フィチナの山」と説明するという。その稜線がフォルトナの<a href="../database/glossary.html#snow-mountain">スノーマウンテン</a>の実測地形と一致することを、指摘できた者はまだいない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

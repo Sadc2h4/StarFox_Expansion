@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANDREW OIKONNY — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#8899cc;--accent:#bbc8ee;--border:rgba(136,153,204,0.32);--border-hi:rgba(136,153,204,0.7);--dim:#181c3a;--dim2:#0c0e1d; }
+    .p-title    { color: #eef0ff; text-shadow: 0 0 50px rgba(136,153,204,0.35); }
+    .p-tagline  { border-color: #8899cc; color: #8899cc; }
+    .terminal-hdr { color: #bbc8ee; }
+    .terminal-hdr::before { background: #bbc8ee; box-shadow: 0 0 8px #bbc8ee; }
+    .dk { color: #8899cc; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-13 / ANDREW OIKONNY — アンドリュー・オイッコニー ]</div>
+    <div class="header-status"><span class="blink" style="color:#bbc8ee;">●</span> HOSTILE — MERCENARY</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — ANDREW OIKONNY — STAR WOLF — NEPHEW OF THE EMPEROR</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0013 — CLEARANCE: OPEN — THREAT ASSESSMENT: LOW-VOLATILE</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-13 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">アンドリュー・オイッコニー (ANDREW OIKONNY)</div>
+        <h1 class="p-title">ANDREW OIKONNY</h1>
+        <div class="p-tagline">THE HEIR NOBODY ASKED FOR ── スターウルフ 隊員 ─ 皇帝の甥</div>
+        <p class="p-short-desc">皇帝アンドルフの甥という血筋でスターウルフに座る問題児。腕は未熟、忠誠は本物、そしてそれゆえに危うい。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 13 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">ANDREW OIKONNY / アンドリュー・オイッコニー</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#alphoid">アルフォイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">22歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#corneria">コーネリア</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">傭兵部隊スターウルフ</td></tr><tr><td class="dk">FAMILY</td><td class="dv">祖父: ヒットリン ／ 父: オトットニー ／ 弟: アッシュ ／ 妹: アンナ ／ 伯父: <a href="../database/characters.html#andorf">アンドルフ・ボウマン</a></td></tr><tr><td class="dk">EVALUATION</td><td class="dv">技量D / 野心A+</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 55 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 55%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(136,153,204,0.55);">
+        <img src="" alt="ANDREW OIKONNY" class="planet-img-detail planet-img-medium portrait" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR WOLF — ROOKIE</span>
+            <span class="tg-jp">スターウルフ ── 皇帝の甥</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">ぼ、僕を誰だと思ってる！　アンドルフ様の甥だぞ！<span class="tg-note note">-交戦時の傍受通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">脅威度は低い。ただし、彼を撃墜した場合の皇帝の反応は誰にも予測できない。ゆえに扱いにくい<span class="lore-quote-src">― CDF情報部 脅威評価より</span></span></p>
+  <p class="lore-p">アンドリュー・オイッコニーは皇帝<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a> の甥にあたる青年である。スターウルフの四番機だがその技量は隊の水準に遠く及ばず、隊内での扱いは「預かりもの」に近い。</p>
+  <p class="lore-p">しかし伯父への心酔は本物であり、帝国の理念を最も純粋に信じているのは皮肉にも帝国軍人ではなくこの青年だと言われる。</p>
+  <p class="lore-p">性格は短気で抜けており、プライドが高く窮地に陥るとすぐ伯父の名を出す。人物評だけを見れば典型的な小物である。だが彼の弱さは才能の欠如よりも実戦経験の少なさと慢心に起因するとみられ、<a href="../database/military.html#cdf">CDF</a>は近年この青年を「成長途中の危険物」として評価を改めつつある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ FAMILY</h3>
+  <p class="lore-p">父オトットニーは皇帝アンドルフの実弟であり、婿養子としてオイッコニー家に入った人物である。アンドリューが生まれる前、オイッコニー家は事業の失敗によりマフィア<a href="../database/glossary.html#arpeggio">アルペジオ</a> 系の闇金融に一家の命運を握られた。特許も家財も投げ打ってこの負債を肩代わりし一家を救ったのがボウマン本家である。家訓のように語り継がれたこの恩義の物語は、幼い彼の中で伯父を「一家を救ったヒーロー」に変えた。</p>
+  <p class="lore-p">オイッコニー家は穏やかな家庭であり、アンドルフが<a href="../planets/papetoon.html">パペトゥーン</a> で隠棲していた時期にも一家で何度も彼のもとを訪ねている。兄弟3人はアンドルフ本人によく可愛がられ、手作りのゲームで遊んでもらい壊れた玩具を直してもらった。コーネリアで受けた嫌な思い出を払拭してくれた叔父は、幼いアンドリューと弟アッシュにとって「ヒーロー」そのものだった。妄信的とまで評される忠誠心の根底にあるのはこの感謝と憧れに他ならない。</p>
+  <p class="lore-p">一家が今も本拠を置くのは惑星<a href="../planets/kew.html">キュー</a> である。かつて政治的に嵌められてコーネリアを追われた祖父ヒットリンが、名を変えたこの星でガラス加工の事業を成功させ、偏光ガラスの特許と技術で<a href="../database/factions.html#hactiva-union">ハクティバ圏</a> 20番目の規模に数えられる大企業を築いていた。アンドルフの追放後に「反逆者の一族」への冷たい視線が強まると、父の経緯を知るオトットニーはコーネリアがもはや安全でないと判断し、少し時間をおいて一家でキューへ移っている。ヒットリン創業時の出資元が<a href="../corporations/emeraldas-bank.html">エメラルダス・星系銀行</a> であり、以来両家は家族ぐるみの付き合いである。オトットニーは現在この事業を継ぎ、<a href="../corporations/diamond-cities.html">ダイヤモンドシティズ.inc</a> と共にキューの白亜の摩天楼を作り続けている。</p>
+  <p class="lore-p">3人兄弟の長男であり、次男のアッシュ・オイッコニー、長女のアンナ・オイッコニーとは今も良好な間柄である。もっとも弟妹は帝国軍の最前線で戦う危険を理解しており、できれば兄に戦ってほしくないというのが本音だと伝えられる。何でも初見でそつなくこなす弟の有能ぶりは、兄の焦りの源でもある（後述のベノム圏の一件を参照）。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">ネットに広がる叔父の帝国建設の噂を目にして以来、彼はベノムへの関心を隠さなくなった。そして成人の頃、ついに置手紙だけを残して家を飛び出し強行的に帝国へ合流してしまう。以後は伯父の指示でスターウルフに預けられた。実戦経験を積ませるための措置とされるが「皇帝が身内を手元に置きたくない理由」を巡っては様々な憶測がある。</p>
+  <p class="lore-p"><span class="redacted">弟のアッシュは兄が暴走すればすぐ連れ帰れるよう、表向きは協力的に徹するお目付け役として後を追った。現在はピグマを経由して兄が愚行を繰り返さないか見張っているとみられる。またオトットニー家は共和国への宣戦布告を境に人が変わったような判断を重ねる皇帝の様子へ薄々違和感を抱いており、アッシュに内情を調査させている節がある。CDFはこの一族の動向を最重要監視対象の一つに位置付けている</span></p>
+  <p class="lore-p">操縦の腕前は控えめに言って酷いの一言である。「大丈夫だろう」という慢心が抜けず、操縦時の事故率は平均的な帝国兵を上回る。免許取得の実地試験には4回落ち、見かねた伯父が免許センターを<a href="../database/locations.html#eladard">エラダード</a> から田舎の<a href="../database/locations.html#papetoon">パペトゥーン</a> へ変更したという逸話が残るほどの雑な操縦技術である。一応現在は大型艦船の免許も取得しており、旗艦<a href="../weapons/brain-crusher.html">ブレイン・クラッシャーmk-Ⅳ</a> を自力で操艦できるまでにはなっていた。</p>
+  <p class="lore-p">一方で本人も能力の低さにコンプレックスを抱いているのか、毎日の筋力訓練と座学を欠かしたことがない。決してただの怠け者や無能ではなく、弱さの正体は実戦の少なさと慢心、そしてプライドの高さに起因する煽り耐性のなさだと指摘される。裏を返せば今後大幅に強くなる可能性を秘めた成長株である。初見で何でもこなす弟の有能さに隠れて余計に小物へ見えるとの意見もあるが、その分だけ感性は一般人に近く、凡才が努力で天才に食らいつこうとする姿を応援する帝国民は多い。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ベノム圏の一件 ─ THE VENOM INCIDENT</h3>
+  <p class="lore-p">帝国入り直後、見習いとして参加した<a href="../database/locations.html#venom">ベノム</a> 惑星圏の軍事演習で彼は「バッジ機能不全事故」に遭遇している。対<a href="../weapons/venom-cell.html">ベノム・セル</a> 信号を発する国章バッジの一斉システムエラーにより部隊の大半がセルに浸食される中、<span class="redacted">セルの群体はアンドリュー機からのみ距離を取り、王に頭を下げる臣下のように静止したと救助隊員たちは証言している。本人は失神しており記憶はない。公式報告は「偶然の復旧」で処理された</span></p>
+  <p class="lore-p">このとき搭乗機の複座に座っていたのが、軍事演習へ同席する形で幾度か参加していた弟のアッシュである。彼の咄嗟の判断による緊急通信は救助隊の到着を大幅に早め、兄弟以外の救助人数を大きく押し上げたとして帝国から勲章を受章した。兄より先に武勲を挙げた弟の存在が、アンドリューが成果を急ぐ一因になっているとみる分析官は多い。</p>
+  <p class="lore-p">事故を目撃した救助隊員たちと、一部始終を伝え聞いた熱狂的な志願者たちは彼を深く慕うようになった。戦闘力や人望が高いとは言えないにもかかわらず、アンドリューが専用の<a href="../other/imperial-guard.html">親衛隊</a> と私設軍隊を持つに至った経緯である。呆れる者は多くとも、彼を支持する者は今も帝国に多い。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">フォルトナ独立任務 ─ INDEPENDENT OPERATION</h3>
+  <p class="lore-p">転機は防衛衛星<a href="../planets/bolse.html">ボルス</a>への攻撃を想定した帝国の合同軍事訓練で訪れた。未熟な超低空飛行の末に航法ビーコンへ正面から激突し、次期スターウルフ強襲作戦の切り札として帝国軍事予算の実に3分の1を注ぎ込んだとされる新鋭機「ウルフェンⅡ」を大破させたのである。本人も全身の複雑骨折と頸椎損傷という重傷を負い、後遺症の残らない全治3か月に収まった。この経過を軍医は「それすら奇跡的」と称している。もっともこの「不幸中の幸い」を境に帝国軍の多くは彼の才能の限界を悟り、ウルフとピグマも隊の再編成を検討し始める。かねてより帝国軍内で高い支持を集めていた傭兵<a href="../database/characters.html#panther">パンサー・カルロッソ</a>が「アンドリュー復帰までの補欠」としてスターウルフに正式に迎え入れられたのはこの時である。日頃は何かと彼を庇うピグマですら流石に実力不足を擁護できなかったのか、このときばかりはアンドリューを庇わず静養だけを忠告している。</p>
+  <p class="lore-p">この事実に酷く狼狽したアンドリューは、汚名返上の機会を求めて伯父に直談判する。与えられた任務は、私設軍隊を率いての<a href="../database/locations.html#fortuna">フォルトナ</a>駐屯──かつて全滅に終わった生体兵器化施設の再建と、この星に眠るとされる神秘の力「スピリット」の手がかりの調査である。皇帝がフォルトナを指名した理由についてCDF情報部は、両軍の要衝から遠く離れていること、前回の失敗を雪ごうとする甥のプライドを損なわない適度な難度であること、そして有事には<a href="../database/glossary.html#trinculo">トリンキュロー回廊</a>経由で即座に増援を送り込めることなど、複数の配慮が重なった結果と推測している。このとき旗艦としてかつて皇帝自身が艦長兼司令官として戦場に立った<a href="../weapons/brain-crusher.html">「ブレイン・クラッシャーmk-Ⅳ」</a>が与えられていることも、この任務が単なる左遷ではなかったことを物語る。</p>
+  <p class="lore-p">駐屯はフォックス・マクラウドの<a href="../other/fortuna-survey-1.html">単独潜入作戦</a>によって終わりを迎えた。施設は再起不能の打撃を受け、旗艦も失われた。しかし脱出したアンドリューは、<span class="redacted">惑星を取り囲むオベリスク群の集める力がある一点へ集束していること、それを制御する技術体系が実在すること、フォルトナの大地を特殊な石が繋ぎ留めていること</span>──という調査結果を持ち帰っている。帝国軍部の作戦会議は艦隊喪失への失望と怒号に包まれたと傍受記録は伝えるが、皇帝はこれを「帝国軍始まって以来最大の成果」と上機嫌に評したという。実際、この情報により<span class="redacted">「スピリット」を用いた全く新規の兵器開発に必要な基礎情報が一挙に帝国側へ揃った</span>と共和国は分析しており、その評価は誇張ではない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p">交戦記録では常に最初に撃墜されるか、最初に離脱している。ただし対戦したパイロットたちは「あの機体は逃げ方だけ妙に上手い」と口を揃えており、隊の誰かが彼に「死なない飛び方」だけを徹底的に仕込んだ形跡がうかがえる。</p>
+  <p class="lore-p">近年CDFが注目するのはむしろ艦隊指揮官としての彼である。土壇場での逃走の速さと、混戦の中でも重要な情報を逃さず目ざとく持ち帰る手腕は高く評価されている。士気の高さから全機が撃墜覚悟で攻める帝国有人機師団にあって、彼の率いる私設軍隊は引き際をわきまえ、損傷率の低さでは帝国のどの部隊にも並ぶものがない。逃げると見せかけた奇襲も得意とし、総じて単騎のドッグファイトより艦隊指揮に向いた男である。</p>
+  <p class="lore-p">敗色が濃くなると自分だけ逃げるように見えるが、その際に彼はわざわざ自分の位置と逃走先を通信へ聞こえるよう大声で話す。実際には本人が囮となって友軍に離脱の猶予を与えているのである。スターウルフの戦闘機戦では脅威に値せずとも、艦隊戦の彼を舐めてかかってはいけない──CDFはいま彼の評価をそう改めつつある。</p>
+  <p class="lore-p">口を開けば「伯父上」の名を出すため、傍受記録の解析班は彼の通信を「帝国内部事情の貴重な情報源」として重宝している。もちろんそのことを本人は知らない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">隊での日々 ─ LIFE IN STAR WOLF</h3>
+  <p class="lore-p">隊では普段からウルフと方向性の違いで喧嘩が絶えない。資金の出資元たるアンドリューの「子守り」を任されていると感じているウルフは基本的に彼を子供扱いしており、それが本人には気に食わないらしい。仲裁役はいつもピグマである。アンドリューから多額のキックバックを受け取っているピグマは、チームが崩壊しないよう巧みに立ち回っている。</p>
+  <p class="lore-p"><a href="leon.html">レオン</a> の得体の知れない趣味を何かと覗き込んでしまうのも彼である。偶然なのか、冷や汗を垂らすアンドリューの顔をレオンがわざと楽しんでいるのかは分かっていない。危機感に鈍いおかげで趣味と部屋を毛嫌いしながらも、他の帝国兵と異なりレオンとは臆せずつるんでいる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">ウルフは彼を「荷物」と呼ぶが、戦域で彼が狙われると誰より速く割って入るのもウルフである。契約条項なのか別の理由なのかは不明である。</p>
+  <p class="lore-p">親衛隊「赤の12」<a href="../other/imperial-guard.html#red-12">アルジー・V・エメラルダス</a> とは、祖父の代から続く家族ぐるみの付き合いを経た無二の親友にして兄弟のような間柄である。キューの首都アルピニア最大のカジノ<a href="../planets/kew.html">「ツインサン・パレス」</a>の最上階で開かれたアルジーの誕生日パーティには真っ先に駆け付け、手作りの<a href="../database/glossary.html#corneria-cake">コーネリアケーキ</a> を贈っている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

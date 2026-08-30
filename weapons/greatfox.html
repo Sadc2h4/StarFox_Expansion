@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GREAT FOX — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#d4dcea;--accent:#f2f6fd;--border:rgba(212,220,234,0.32);--border-hi:rgba(242,246,253,0.7);--dim:#28303e;--dim2:#14181f; }
+    .p-title    { color: #f8faff; text-shadow: 0 0 50px rgba(212,220,234,0.35); }
+    .p-tagline  { border-color: #d4dcea; color: #d4dcea; }
+    .terminal-hdr { color: #f2f6fd; }
+    .terminal-hdr::before { background: #f2f6fd; box-shadow: 0 0 8px #f2f6fd; }
+    .dk { color: #d4dcea; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-15 / GREAT FOX — グレートフォックス ]</div>
+    <div class="header-status">● IN SERVICE — STAR FOX</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — GREAT FOX — CARRIER BATTLESHIP — SPACE DYNAMICS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0015 — CLEARANCE: OPEN — LOAN BALANCE: CLASSIFIED BY CREW</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-15 / ARMORY FILE ]</div>
+        <div class="p-name-jp">グレートフォックス (GREAT FOX)</div>
+        <h1 class="p-title">GREAT FOX</h1>
+        <div class="p-tagline">THE HOME THAT FIGHTS ── 空母兼宇宙戦艦</div>
+        <p class="p-short-desc">初代スターフォックスの結成時から部隊と共にあり続ける、純白の空母兼宇宙戦艦。その航海記録は、そのままスターフォックスの歴史である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 15 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">GREAT FOX / グレートフォックス</td></tr><tr><td class="dk">CLASS</td><td class="dv">空母兼宇宙戦艦</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv"><a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a></td></tr><tr><td class="dk">EXTERIOR</td><td class="dv">耐熱装甲パネル（<a href="../corporations/diamond-cities.html">ダイヤモンドシティズ.inc</a> 特注）</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">連装ハイパーレーザー砲（主砲）/ 狙撃タレット群</td></tr><tr><td class="dk">HANGAR</td><td class="dv"><a href="arwing.html">アーウィン</a> 4機 / <a href="landmaster.html">ランドマスター</a> ほか</td></tr><tr><td class="dk">CREW</td><td class="dv">艦載AIロボ「ナウス」＋ 隊員4名</td></tr><tr><td class="dk">OWNER</td><td class="dv"><a href="../database/military.html#starfox">スターフォックス</a></td></tr><tr><td class="dk">FINANCING</td><td class="dv warn">80標準年ローン — 返済中</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 運用中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">COMBAT RATING -- 94 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 94%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(212,220,234,0.55);">
+        <img src="" alt="GREAT FOX" class="planet-img-detail planet-img-medium" style="animation: 11s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">CARRIER BATTLESHIP — MOBILE HOME</span>
+            <span class="tg-jp">傭兵部隊の動く我が家</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">コチラ ナウス。ホキュウブッシツヲ トウカ シマス<span class="tg-note note">-作戦中の艦内通信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">艦って呼ぶな。あれは俺たちの家だ<span class="lore-quote-src">― F・ランバルディ、艦を「旧式」と評した整備士への返答</span></span></p>
+  <p class="lore-p">グレートフォックス（Great Fox）は、雇われ遊撃隊<a href="../database/military.html#starfox">スターフォックス</a>の母艦を務める空母兼宇宙戦艦である。創始者<a href="../database/characters.html#james">ジェームズ・マクラウド</a>が80標準年ローンで購入して以来、部隊の傭兵稼業の大部分はこの艦と共にあり、その航海記録はそのまま「スターフォックスの歴史」といっても過言ではない。</p>
+  <p class="lore-p">艦の性格は、設計に関わった三人の頭文字で説明される。ジェームズの拘り、<a href="../database/characters.html#peppy">ペッピー</a>の心配性、そして<a href="../database/characters.html#pigma">ピグマ</a>の堅実さ。三つの要素が結集した艦体は、並の戦艦の機動力と戦闘力を遥かに凌駕する。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">設計・機構 ─ MECHANISM</h3>
+  <p class="lore-p">建造は<a href="arwing.html">アーウィン</a>と同じ<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>である。大型艦でありながら<a href="g-diffuser.html">Gディフューザー</a>応用の姿勢制御を備え、この排水量の艦としては星系最速級の艦隊機動をこなす。部隊の窮地に使用される連装ハイパーレーザー砲は、バリアを展開した戦艦を二撃で沈める威力を持ち、「母艦」の語感から敵がこの艦を輸送船と侮った回数だけ、撃沈記録が増えてきた。</p>
+  <p class="lore-p">細部には持ち主の拘りが宿る。狙撃タレットの照準系と管制塔の窓には、奇襲に備えて高純度の<a href="../database/glossary.html#titania-glass">タイタニアガラス</a>が贅沢に使われている（対ステルス偏光を持つ星系最高級の光学素材である。ジェームズの強い指定だったことは<a href="../database/locations.html#titania">タイタニア</a>の項に詳しい）。純白の外装を成す耐熱装甲パネルは<a href="../planets/kew.html">キュー</a>の<a href="../corporations/diamond-cities.html">ダイヤモンドシティズ.inc</a>の特注品であり、並の光学兵器や恒星の熱では傷一つ付かない。</p>
+  <p class="lore-p">用意周到さは退路にも及ぶ。有事の際の高機能脱出ポッドを完備するほか、起きることのない想定と断りつつ、艦を丸ごと用いた自爆特攻を最終手段の戦力として運用計画に残している。この艦は家であると同時に、乗員を生かして帰すための機械でもある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">艦載AIロボ「ナウス」 ─ NAUS</h3>
+  <p class="lore-p">艦のメンテナンスと操縦を一手に担うのが、専属の自立型AIロボ<a href="../characters/naus.html">「ナウス」</a>である。艦内管理から航行、作戦中の補給物資の投下と援護射撃までを黙々とこなし、隊の出撃中この艦を預かるのは常に彼である。</p>
+  <p class="lore-p">機体そのものは旧型である。だが初代時代の<a href="../database/characters.html#pigma">ピグマ</a>と現行の<a href="../database/characters.html#slippy">スリッピー</a>、二代のメカニックによる魔改造が積み重なった結果、時として最新型を超える性能を見せることがある。スリッピーの整備を手伝う姿は今や艦の日常風景であり、隊員たちは「うちの一番の働き者はナウス」と口を揃えている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">運用史 ─ HISTORY</h3>
+  <p class="lore-p">この艦の歴史は、初代スターフォックスの歴史と完全に重なる。結成から<a href="../database/locations.html#venom">ベノム</a>偵察作戦の悲劇まで、隊の拠点であり工房であり家であり続けた。ジェームズの消息不明後は、隊名と共に息子<a href="../database/characters.html#fox">フォックス</a>へと引き継がれ、現在も新生スターフォックスの母艦として星系各地の戦域を飛び続けている。</p>
+  <p class="lore-p">引き継がれたものは、艦だけではない。兵装と設備の購入額は「とても家族には言えない単位」であったと伝えられ、知り合いの伝手で安くしてもらったパーツを差し引いても、艦には莫大な借金が残されていた。<a href="../database/characters.html#peppy">ペッピー・ヘア</a>はこの借金の話を遺児に切り出すことがどうしてもできず、結局フォックスは、届き続ける督促記録から自ずと全てを理解するに至ったという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">借金の正確な金額を知る者は隊内でも限られる。唯一の公式なコメントは、経理データを覗いてしまったスリッピーの証言である。「全身の毛が抜け落ちるくらいの金額だよ」。両生類の彼に抜ける毛はない。それほどの金額である。</p>
+  <p class="lore-p">外装パネルの発注記録には小さな謎が残っている。ダイヤモンドシティズ.incの請求額が、相場より大幅に安いのである。理由を尋ねた整備士に、同社の担当者は「創業期の恩人の縁」とだけ答えたと記録されている。</p>
+  <p class="lore-p">ローンの完済予定は、いまから数十年後である。ペッピーは折に触れてこう言うという。「完済の日まで、この隊は絶対に潰れられんのだ」。借金がこの部隊の一番古い安全装置だという冗談は、あながち冗談でもない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

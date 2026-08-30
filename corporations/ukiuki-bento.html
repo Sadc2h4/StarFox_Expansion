@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UKIUKI BENTO — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#f0c860;--accent:#ffe8a0;--border:rgba(240,200,96,0.32);--border-hi:rgba(255,232,160,0.7);--dim:#3a3018;--dim2:#1a150a; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/corporations.html" class="nav-back">◄ CORPORATE DB</a>
+    <div class="header-tag">[ CIS-HQ / CORPORATION — うっきうき弁当 ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ / CORPORATE FILE 15 ]</div>
+      <h1 class="codex-title">UKIUKI BENTO</h1>
+      <p class="codex-p">うっきうき弁当 ── ライラット星系にこの店がない場所は「太陽の中心だけ」と言われる弁当チェーン。スローガンは人畜無害、味は健康的、出店戦略だけは星系一無茶をしている。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#overview">概要</a>
+      <a href="#expansion">出店戦略</a>
+      <a href="#custom">カスタム弁当</a>
+      <a href="#archives">記録余話</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="../database/corporations.html">企業DB</a> / <a href="../database/locations.html#fichina">フィチナ</a> / <a href="pizza-cat.html">ピザ・キャット</a></span>
+    </nav>
+
+    <article class="codex-entry" id="overview">
+      <h2 class="codex-h">概要 <span class="en">OVERVIEW</span></h2>
+      <p class="codex-p">うっきうき弁当は、<a href="../planets/corneria.html">コーネリア</a>でも有名なチェーン店の弁当屋である。だがこの弁当屋が出店している場所の「広さ」を真面目に考える人は少ない。本社は<a href="../database/locations.html#fichina">フィチナ</a>の都市モスクマに置かれ、「いつでもうきうき、おいしく健康」をスローガンに掲げる人畜無害な弁当屋でありながら、その経営戦略はかなりの無茶をしている。</p>
+      <p class="codex-p">創業地モスクマは大規模雪害の歴史を持つ街である。「どんな吹雪の日でも温かい飯を」という創業当時の心意気がスローガンの原点だと、社史は語っている。</p>
+    </article>
+
+    <article class="codex-entry" id="expansion">
+      <h2 class="codex-h">出店戦略 <span class="en">EXPANSION</span></h2>
+      <p class="codex-p">なんと辺境の氷晶帯<a href="../database/sectors.html#vau">フロスト・リーフ</a>や<a href="../database/sectors.html#chima">凪宙域</a>、灼熱の恒星圏セクターαのブラグザ・ソーラークリスタル充填基地にまで店を構え、さらには帝国首都ベノム・インペリアル・シティにも8店舗が存在する。もはやライラット星系にこのチェーン店が存在しない場所は「太陽の中心だけ」とまで言われており、この展開の幅広さこそが星系中で有名な理由の一つとなっている。</p>
+      <p class="codex-p">敵国の首都で8店舗が繁盛している理由は、実のところ単純である。<a href="../planets/venom.html">帝国</a>民の多くを占めるサルジーナヤ系の亡命民にとって、サルジーナヤ生まれのこの弁当は故郷の味そのものだからである。政治がどれだけ星系を分断しても、昼飯の列だけは分断できていない。</p>
+    </article>
+
+    <article class="codex-entry" id="custom">
+      <h2 class="codex-h">カスタム弁当 <span class="en">CUSTOM BENTO</span></h2>
+      <p class="codex-p">売れ筋は、その地域の様々な特産品を自分で選んで組み合わせられる「カスタム弁当」である。組み合わせの数は店舗にもよるが、コーネリアシティのとある店舗では約2000通りに達するという。</p>
+      <p class="codex-p">また20年ほど前からはデリバリーも始めており、<a href="pizza-cat.html">ピザ・キャット</a>と並んで「どこへでも駆けつける出前」の代名詞になっている。前線基地からの注文も両社は原則断らない。戦場の兵士がその日の夕飯を選べるのは、この二社の意地のおかげである。</p>
+    </article>
+
+    <article class="codex-entry" id="archives">
+      <h2 class="codex-h">記録余話 <span class="en">ARCHIVES</span></h2>
+      <p class="codex-p">帝国首都の軍施設前にある「帝国支店」は、帝国史にささやかな足跡を残している。売り切れたAランチの代わりにと店員が提案した「別の弁当のおかずの組み合わせ」が、ある将校に量産空母<a href="../weapons/attack-carrier.html">アタック・キャリアー</a>の換装システムを閃かせたのである。考案者カーマス・ピヨット提督は功績の褒賞として、同店の生涯ドリンク無料権を保持している。星系の戦局を変えた発明の対価としては、史上最も安い部類である。</p>
+      <p class="codex-p">ピザ・キャットが掲げる「ライラットに猫とピザ・キャットの届かない場所はない」の宣言に対し、同社は公式なコメントを出していない。ただ、新店舗の出店地を決める社内会議で最初に開かれる資料はピザ・キャットの店舗地図だと言われている。</p>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GENERAL Z.Z. PEPPER — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff6655;--accent:#ffaa99;--border:rgba(255,102,85,0.32);--border-hi:rgba(255,102,85,0.7);--dim:#401410;--dim2:#200a08; }
+    .p-title    { color: #ffeeea; text-shadow: 0 0 50px rgba(255,102,85,0.35); }
+    .p-tagline  { border-color: #ff6655; color: #ff6655; }
+    .terminal-hdr { color: #ffaa99; }
+    .terminal-hdr::before { background: #ffaa99; box-shadow: 0 0 8px #ffaa99; }
+    .dk { color: #ff6655; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-06 / GENERAL Z.Z. PEPPER — Z・Z・ペパー将軍 ]</div>
+    <div class="header-status">● ACTIVE — SUPREME COMMAND</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — GENERAL Z.Z. PEPPER — CDF SUPREME COMMANDER</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0006 — CLEARANCE: OPEN — COMMAND AUTHORITY ALPHA</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-06 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">Z・Z・ペパー将軍 (GENERAL Z.Z. PEPPER)</div>
+        <h1 class="p-title">GENERAL Z.Z. PEPPER</h1>
+        <div class="p-tagline">THE MAN WHO SPARED THE STORM ── コーネリア防衛軍 総司令官</div>
+        <p class="p-short-desc">星系全域の防衛作戦を統括するCDFの最高指揮官。アンドルフの助命とジェームズの減刑──この戦争の因果の多くは、彼の二つの決断に遡る。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 06 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">Z.Z. PEPPER / Z・Z・ペパー</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#anubisoid">アヌビソイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">66歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#corneria">コーネリア</a>（<a href="../database/glossary.html#state-granbel">グランベル州</a> 州都グランディルフィア）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#cdf">コーネリア防衛軍</a> 総司令部</td></tr><tr><td class="dk">RANK</td><td class="dv">将軍（総司令官）</td></tr><tr><td class="dk">FORMER</td><td class="dv">精鋭部隊<a href="../database/glossary.html#unit-sword">「ソード」</a>隊長 / 軍事防衛長官</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">COMMAND RATING -- 92 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 92%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,102,85,0.55);">
+        <img src="" alt="GENERAL Z.Z. PEPPER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">CDF — SUPREME COMMANDER</span>
+            <span class="tg-jp">コーネリア防衛軍 総司令官</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">待っていたぞ スターフォックス。もはや頼みは君たちだけだ。<span class="tg-note note">-第2次LW 極秘通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">わしの決裁印は二種類ある。共和国のための印と、後悔のための印だ<span class="lore-quote-src">― 本人が副官に語ったとされる言葉より</span></span></p>
+  <p class="lore-p">Z・Z・ペパーは、<a href="../database/military.html#cdf">コーネリア防衛軍</a> の全軍を預かる総司令官。星系全域の防衛作戦は<a href="../database/locations.html#corneria">コーネリア</a> の総司令部から、彼の名で発令される。厳格な軍人でありながら情の深さで知られ、兵からの人望は歴代総司令でも随一とされる。</p>
+  <p class="lore-p">その経歴は、二つの「寛容」によって語られる。一つは軍法会議にかけられた夜盗の青年を減刑したこと。もう一つは、死刑判決を受けた天才科学者の助命を嘆願したことである。前者は星系最高の傭兵を生み、後者は──星系最悪の敵を生んだ。そして記録をさらに半世紀さかのぼると、人ならざる相手へ向けられたもう一つの「寛容」に行き当たる（初陣の項を参照）。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ HOUSE OF PEPPER</h3>
+  <p class="lore-p">Z・Z・ペパーはコーネリアの<a href="../database/glossary.html#state-granbel">グランベル州</a> 州都グランディルフィアに居を構える貴族の家系の出身である。代々有能な士官を輩出してきた名門であり、彼自身も誰もが期待する通りの戦績を残してきた生粋の軍人である。もっとも若い頃の彼の姿が現在の将軍像とほぼ真逆であったことは、あまり知られていない。</p>
+  <p class="lore-p">ペパー家は家督を継ぐ男子が代々同じ名を襲う襲名制を敷いており、現在の将軍は6代目にあたる。父が現役だった少年時代の彼が「ペパーJr」の名で通っていた所以である。</p>
+  <p class="lore-p">家風を一言で表すなら「先手必勝」である。敵に攻撃される前に徹底的に相手を潰すことこそ最も確実な防衛であるという思想は、曾祖父の代からペパー家が貫いてきたスタイルであった。旧・大グランベル国以来の武の伝統が色濃く残る州にあっても、その徹底ぶりは際立っていたと伝わる。</p>
+  <p class="lore-p">他の貴族と異なり選民思想や種族による差別を一切持ち合わせない家である一方、苛烈な実力主義を掲げて誰に対しても高い水準の応答を求める。ゆえに軍閥の中では圧倒的な地位と恐れを同時に集める一族であった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">神童 ─ THE PRODIGY</h3>
+  <p class="lore-p">幼少期の彼は父の英才教育のもと、持ち合わせた身体能力と判断力でみるみる頭角を現した。共和国の官僚もCDFの関係者も皆この少年を「神童」と褒めたたえ、その特別さが当たり前であることを信じて疑わなかった。才能は異例の数値を幾度も叩き出し、圧倒的な身体能力には改造手術の疑惑まで囁かれたが、検査が示したものは何もない。あくまでも彼個人の才能と経験だけで周囲をねじ伏せたのである。</p>
+  <p class="lore-p">故郷の州都には精鋭校と名高い<a href="../database/glossary.html#academy-branches">士官学校第1分校</a> が置かれているが、ペパー家の跡取りは代々コーネリアシティの本校に籍を置く習わしであった。破竹の勢いを持つ少年の噂はやがて元老院のケルベス老の耳にまで届き、老人がお忍びで士官学校本校へ足を運ぶ事態にまで至る。</p>
+  <p class="lore-p">ケルベス老は軍部の高官を装い、ペパーの在籍する教練クラスへ一つの「依頼」を持ち込んだ。コーネリアのバーミリオン州に拠点を構える反政府組織の制圧である。明らかに学生へ任せる内容ではない。だが同伴する部隊まで用意された本格的な攻勢であり、これを試験と見破れた学生は一人もいなかった。「いざというときは国に命を差し出す覚悟がいる」というケルベスの念押しの前に正面から依頼を受ける者は現れず、ただ一人ペパーだけが二つ返事でこれを承諾した。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">初陣 ─ BAPTISM BY FIRE</h3>
+  <p class="lore-p">征討作戦は誰もが予感した通り、最早試験と呼べるものではなかった。実際に殉職者を出してきた危険な組織を相手に、ペパーは専用の精鋭部隊と共に拠点へ潜入する。この時同行したのが当時のCDFが誇る無敵の精鋭部隊<a href="../database/glossary.html#unit-sword">「ソード」</a> であり、この人事が彼の半生を大きく方向づけることになる。</p>
+  <p class="lore-p">征討のさなか味方が足を負傷する不測の事態が起きた際も、ペパーはひるむことなく味方の止血を済ませてそのまま攻勢に転じた。一切の迷いがない動きは敵に反撃の隙を与えず、たった一人の少年兵が戦場を塗り替えていく様子は歴戦のソード隊員の間でも「伝説」の一つとして語り草になっている。</p>
+  <p class="lore-p">予想外は敵の懐にも眠っていた。組織の拠点深部には、噂でしか語られてこなかった超兵器級の戦略兵器が実在したのである。名を「フェンリル」という。かつてローザリンドの州都を火の海にしたと伝わる狼型の機動兵器であり、古い記録に「機械の獣」として現れる存在である。到底人の制御できる代物でないことは明白だった。組織はこの獣を起動しかけていたがメインプログラムの解除方法を突き止められず、半ば操縦式で操ることしかできていなかった。発揮されていた戦闘力は本来の3割にも満たなかったと解析されており、これが不幸中の幸いであったことは論を俟たない。</p>
+  <p class="lore-p">それでも3割の獣は一個部隊を圧倒する火力を振るった。交戦の中でペパーは機体の挙動に同じ「型」が繰り返されることを見抜く。獣は自分の意思で動いていない。そう判断した彼は砲火の死角を縫って背部へ取りつき、操縦区画を単身で制圧した。操り手を失った機体はその場で沈黙し、超兵器級の戦略兵器は無傷のまま共和国の手に落ちたのである。</p>
+  <p class="lore-p">超兵器の捕獲にまで至る顛末はケルベス老の想定を大きく超えていたが、少年は予想以上の結果だけを残して帰還した。後日、超兵器を無傷で捕縛した立役者の元にはコーネリア中央大学への推薦状が届いている。</p>
+  <p class="lore-p">なおこの反政府組織の出自や正体には諸説が残る。公式記録は名称の一切を検閲し「バーミリオン残置勢力」の呼称だけを与えているが、後年の検証は幹部の生き残りが<a href="../database/factions.html#iga">独立星系連合（IGA）</a> の結成に複数関与していたことを突き止めている。差別への抗議を掲げた政治結社だった連合が選民思想の武装組織へ変質していく過程を、この系譜から読み解く研究者は少なくない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">学生時代 ─ ACADEMY DAYS</h3>
+  <p class="lore-p">冷静さを崩さない作戦立案能力と規格外の身体能力を見込まれ、ペパーは15歳でコーネリア中央大学に飛び級入学した。だが華々しい学生生活の内側で、彼の心に空いた虚しさは埋まらなかった。何をしても結果が出てしまう者にとって、努力も競争も交友もその必要性を失いつつあったのである。</p>
+  <p class="lore-p">奇しくも同じ年、元老院直々の許可状で入学してきた16歳の<a href="../database/races.html#alphoid">アルフォイド</a> の少年がいた。当時まだ少数人種だったアルフォイドの入学に学内は騒然となり、差別の空気は学生のみならず教師や管理者にまで及んでいたが…ペパーはそれを許さなかった。少年を取り囲んだ上級生数人をものの数分で「鎮圧」した一件を経て、二人は同じ寮の同室となる。互いを「アンディ」「ジジ」と呼び合った友情は双方にとって生涯唯一無二のものであり、少年の名は<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a> という。天才と神童ではその向かう方向こそ違えど、意気投合した二人が共に過ごした歳月をペパーは後年「人生の宝」と呼んでいる。二人の元へ同じ年に届いた推薦状と許可状がいずれも同じ元老院の筆によるものだったのかを、公式記録は語らない。</p>
+  <p class="lore-p">後年に軍事兵器開発の方針を巡って二人は袂を分かったが、直筆の手紙のやり取りはあの事件の直前まで途切れることがなかったとされる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦役 ─ THE LONG WAR</h3>
+  <p class="lore-p">卒業後の彼は迷わず軍籍を選んだ。行き着いた先はかつての初陣で背中を預け合った精鋭部隊<a href="../database/glossary.html#unit-sword">「ソード」</a> である。旧コーディリア王国の系譜を継ぐこの名門にグランベル貴族の跡取りが加わる人事を、当時の軍閥は複雑な顔で見守ったと伝わる。やがて彼は同隊の隊長として、負け知らずの部隊史にその名を刻むことになる。</p>
+  <p class="lore-p">宇宙歴3960年に火のついた<a href="../database/glossary.html#iga-war">IGA戦役</a> は、彼のキャリアの中でも特に長い戦いとなった。カタリナやコーネリアでのテロ鎮圧を皮切りに戦役の主要な局面へ投入され続け、その過程で連合最強の野戦指揮官<a href="nahash.html">ナハシュ・ギルバスター</a> と相まみえる。記録に残るだけで8度の交戦を重ねた人生の宿敵である。皮肉なことに星系へ知れ渡った「ギルバスター」の名は、最初の交戦で相手の名乗りを聞き取れなかった若きペパーの誤認に端を発している（ギルバスターの項を参照）。</p>
+  <p class="lore-p">戦役終盤の<a href="../database/glossary.html#trinculo-recapture">トリンキュロー回廊奪還戦</a> では、鹵獲補給艇に偽装したソードを率いて難攻不落の廃艦要塞へ入城し、管制中枢を内側から制圧した。立ち塞がったギルバスターに生涯初の敗北を刻んだのもこの戦いである。</p>
+  <p class="lore-p">決着の地は宇宙歴3975年、連合本拠<a href="../database/glossary.html#sycorax-ruins">セティボスⅣ「シコラクス」</a> の白兵戦である。追い詰められた連合が起動した<a class="apx-lock" href="../classified/gigarilla.html">超兵器</a> を前に将兵が浮足立つ中、ペパーは一歩も退かずに交戦を優位に運び続けた。少年の日にフェンリルと刃を交えた経験が、人知を超えた機動兵器との間合いを彼にだけ教えていたのである。超兵器そのものは新人部隊長の咄嗟の采配によるハッキングで無力化された（この部隊長の氏名には現在も検閲がかかっている）。それでも決闘は終わらなかった。ギルバスターは操作系を手動へ切り替えて自らのサイバネティクスと直接同期し、因縁の男との戦いを続行したのである。激闘の末にペパーは宿敵を機体から引き剥がして拘束した。8度目にして最後の交戦であった。</p>
+  <p class="lore-p"><span class="redacted">後年の解析班はフェンリルと当該超兵器の制御系統に共通する設計思想の痕跡を指摘している。連合の技術水準を大きく逸脱していたはずの超兵器がなぜ組み上がったのか。バーミリオンの残置勢力から連合へ流れた人材の名簿と併せて、この符合を偶然と見なさない分析官は多い</span></p>
+  <p class="lore-p">同じ年、IGA総統追跡作戦の過程で夜盗団『スライフォックス』を拘束している（<a href="../database/glossary.html#decoy-ship">IGA総統偽装船襲撃事件</a> の項を参照）。軍法会議の席でリーダーの青年の資質に目を留めた彼は減刑を取り計らい、後年には士官学校の特例入学権限を添えて青年を軍へ導いた。その青年<a href="../database/characters.html#james">ジェームズ・マクラウド</a> は彼の予感通り星系最高のパイロットとなった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">転回 ─ THE ANSWER</h3>
+  <p class="lore-p">現在の彼が公言する信条に「最善の戦い方とは、戦わないことである」という一句がある。先制攻撃の家風とは正反対のこの答えへ彼を導いたものこそギルバスターとの8度の戦いだったと、側近たちは口を揃える。撃ち破っても立ち上がる宿敵の姿と勝利のたびに増えていく墓標が、先制の一撃で守れるものの少なさを彼に教えたのである。</p>
+  <p class="lore-p">現在知られる穏健で謙虚、人望に篤く優しい人物像が定着したのは司令官への就任以後である。数多の血で血を洗う戦いを重ね、それらを腕っぷしでねじ伏せた男が最後にたどり着いた答えが今の姿なのである。シコラクスの跡地に立つ<a href="../database/glossary.html#sycorax-ruins">建立者不明の慰霊碑</a> の除幕が彼の長官就任の年と重なることを、偶然と見なさない者は今も絶えない。</p>
+  <p class="lore-p">戦後、教科書から<a href="../database/glossary.html#moskma-three-days">「モスクマの三日間」</a>などの記述を抹消していた歴史法案の廃止に道筋を付けたのも、ペパーらの派閥である──「露骨な歴史の改竄は、第2の独立星系連合を生み出しかねない。ライラットの民はそこまで愚かではない」。この時の彼の弁は、今も政治学の講義に引かれている。<a href="../database/glossary.html#academy-branches">士官学校の分校間</a> に横たわっていたカースト的な序列の解体に長年働きかけてきたのも彼である。</p>
+  <p class="lore-p">IGA壊滅の功績により軍事防衛長官に任命された直後には、禁止兵器研究の罪で死刑を言い渡された科学省長官<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a> の助命を嘆願し、<a href="../database/locations.html#venom">ベノム</a> への追放へと減刑させた。10年後、その男が帝国を率いて帰ってきた時、ペパーは辞任を申し出たが議会は以下の理由で却下している ──「あなたより上手くこの戦争を戦える者がいない」。</p>
+  <p class="lore-p"><span class="redacted">FCH-119関連記録によれば、彼は爆発事故現場の検証に誰より早く駆け付け、いくつもの反証を最高裁へ提出したが全て却下された。嘆願の原案は「自身の解任と引き換えに、セティボスのムィンシャンクル刑務所への流刑」。矯正当局の記録によれば同刑務所の監獄長はペパーの防衛軍時代からの旧友である。評議会の決定を完全に覆すことは不可能と判断した上で表向きは死刑に次ぐ重刑を科しつつ、中央の眼が届きにくい辺境で信頼できる人物の管理下に旧友を置く──嘆願にはそうした思惑があったと分析されている。だが下された判決はベノムへの追放と皮肉にも彼自身の長官留任だった。判決後の彼について副官はこう証言している。「あの人が牙を剥き出しにして怒るところを、初めて見た」</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p"><a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a> 開戦後は総司令として全戦域を統括。<a href="../database/locations.html#starblade">スターブレード艦隊</a> の壊滅、<a href="../database/locations.html#prospero">プロスペロー</a> の占領と続く劣勢の中でも防衛線を維持し続けている手腕は、敵である帝国軍参謀部からも高く評価されている。</p>
+  <p class="lore-p">正規軍の限界を誰より理解する彼は、<a href="../database/military.html#starfox">スターフォックス</a> への依頼を「屈辱ではなく保険」と公言し、議会の傭兵反対派を黙らせた。フォックスへの依頼通信の第一声「待っていたぞ」は、かつて父親を軍へ迎えた日の言葉と同じである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">執務室には決裁印が二つ並んでいる。よく見ると片方は摩耗が激しい。どちらが「後悔のための印」なのかを聞いた者はいない。</p>
+  <p class="lore-p">アンドルフ助命の理由を問われた際の答えは記録に残っている──「あの頭脳を失うことが、いつか共和国の損失になると思った。……その通りになったよ。最悪の形でな」。</p>
+  <p class="lore-p">総司令官の私室には、差出人の名のない古い直筆の手紙の束が今も保管されているという噂がある。真偽を確かめた者はいない。</p>
+  <p class="lore-p">執務室の壁には出所の記されない古い刀が一振り飾られている。6振りの刀を振るった宿敵の得物のうち、行方不明とされる最後の1振りとの関連を将軍は一度も語ったことがない（<a href="nahash.html">ギルバスターの項</a> を参照）。</p>
+  <p class="lore-p"><span class="redacted">フェンリルは現在もCDFの厳重な管理下にある。長期の保全運用の中でAI人格の形成が確認され、現在は<a href="../database/military.html#vorpal">ヴォーパル隊</a> のコードネーム「白の3」として編成に迎えられた。同機の管理記録の決裁欄には毎年同じ日付で総司令官の印が捺されている。二種類あるうちのどちらの印が捺されているのかを、記録は語らない</span></p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../apx-lock.js"></script>
+</body></html>

@@ -1,0 +1,16 @@
+Please generate an image with the image_gen tool, using the attached photo (lunatimage.png: Saturn's moon Titan seen as a crescent doubled by a hazy dust halo) as the reference for the visual phenomenon.
+
+Create a single wide sci-fi space rendering of the "double moon" of Sector Lunate: a crescent of a small, pale, Earth-like ocean moon (Setebos III) seen through a thin veil of interstellar dust, so that the crescent appears twice — a sharp inner crescent and a larger, soft, ghostly outer crescent wrapped around it, exactly like the doubled crescent in the reference photo.
+
+Content and detailing:
+- The inner crescent: a small terrestrial world with faint blue-green oceans and pale cloud bands, lit from the upper right, rendered softly and desaturated (a "faded little Earth"), not a grey rock.
+- The outer crescent: a translucent, hazy duplicate of the same crescent, roughly 1.6x larger, glowing faintly with a pale blue-white rim, produced by forward-scattered light in the dust. The thin gap between the two arcs should glow very slightly.
+- Around and behind the moon: a very faint, almost invisible haze of fine dust; no bright nebula clouds anywhere. The scene must read as "no nebula, only dust and a ghost moon".
+- Deep black space background with a sparse scattering of tiny dim stars, a few with a subtle soft halo, matching the look of a catalogue thumbnail.
+- Optional: far in the lower left, the faint edge of a huge pale-gold gas giant limb (Setebos) barely visible in the dark, no more than 5% of the frame.
+
+Composition requirements (very important):
+- Wide image, 1100x720 pixels (or the same 55:36 aspect ratio, at least that size).
+- The doubled crescent is centered slightly right of center and occupies about 45% of the frame height. Everything else stays dark and quiet.
+- Mostly black frame, muted colors, no lens flare, no text, no watermark, no spacecraft, no planets other than the ones described.
+- Photographic, restrained, slightly grainy deep-space look consistent with a military database observation record.

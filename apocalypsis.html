@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APOCALYPSIS — CLASSIFIED INDEX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="planet.css">
+  <style>
+    :root { --apx:#ff4455; --apx-dim:rgba(255,68,85,0.35); --apx-amber:#ffdd88; }
+    body { background:#050307; font-family:"Share Tech Mono",monospace; }
+    html, body { overflow-y:auto; }
+    .console-msg, .index-list, .auth-note { font-family:'NitalagoRuika','Share Tech Mono','Yu Gothic UI','Meiryo',monospace; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 50% 40%, rgba(40,5,10,0.55) 0%,transparent 60%),
+      #050307; }
+
+    .apx-main { position:relative; z-index:5; max-width:760px; margin:0 auto; padding:70px 24px 60px; }
+    .apx-title { font-family:Orbitron,monospace; font-weight:900; letter-spacing:6px;
+      color:#ffeaea; text-align:center; font-size:26px; text-shadow:0 0 30px var(--apx-dim); }
+    .apx-sub { text-align:center; color:var(--apx); font-size:11px; letter-spacing:3px; margin-top:6px; }
+
+    /* ── 認証コンソール ── */
+    .console-box { margin:36px auto 0; border:1px solid var(--apx-dim); background:rgba(18,4,8,0.85);
+      box-shadow:0 0 40px rgba(255,68,85,0.12), inset 0 0 30px rgba(255,68,85,0.05); }
+    .console-hdr { display:flex; align-items:center; gap:8px; padding:9px 14px; font-size:11px;
+      letter-spacing:2px; color:var(--apx); background:rgba(255,68,85,0.1);
+      border-bottom:1px solid var(--apx-dim); }
+    .console-hdr .dot { width:7px; height:7px; border-radius:50%; background:var(--apx);
+      box-shadow:0 0 8px var(--apx); animation:apxblink 1.2s steps(2,start) infinite; }
+    @keyframes apxblink { 50% { opacity:0.2; } }
+    .console-msg { text-align:center; color:#cc9999; font-size:12px; letter-spacing:2px; padding:20px 16px 4px; }
+    .console-msg b { color:var(--apx-amber); font-weight:normal; }
+
+    /* 入力インジケータ */
+    .seq-row { display:flex; flex-wrap:wrap; justify-content:center; gap:5px; padding:16px 10px 4px; }
+    .seq-cell { width:24px; height:24px; border:1px solid rgba(255,68,85,0.3); background:rgba(0,0,0,0.4);
+      display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--apx-amber);
+      transition:background .12s, border-color .12s; }
+    .seq-cell.on { border-color:var(--apx-amber); background:rgba(255,221,136,0.12);
+      box-shadow:0 0 10px rgba(255,221,136,0.25); }
+    .seq-row.err .seq-cell { border-color:var(--apx); background:rgba(255,68,85,0.2); color:var(--apx); }
+
+    /* ── NES風コントローラー ── */
+    .pad { position:relative; width:min(460px, 92%); margin:38px auto 26px; background:#23262c;
+      border:1px solid #3a3f48; border-radius:10px; padding:22px 26px 26px;
+      box-shadow:0 6px 0 #101216, inset 0 1px 0 rgba(255,255,255,0.08);
+      display:flex; align-items:center; justify-content:space-between; gap:18px;
+      user-select:none; -webkit-user-select:none; }
+    .pad-mid { flex:1; align-self:stretch; margin:4px 6px; display:flex; flex-direction:column;
+      justify-content:center; gap:12px; min-width:0; }
+    .pad-mid .stripes { height:52px; border-radius:4px;
+      background:repeating-linear-gradient(180deg,#191b1f 0 8px,transparent 8px 16px); }
+    .pad-mid .logo { text-align:center; font-family:Orbitron,monospace; font-size:9px;
+      letter-spacing:2px; color:var(--apx); white-space:nowrap; overflow:hidden; }
+
+    .shoulder { position:absolute; left:0; right:0; top:-16px; display:flex; justify-content:space-between;
+      padding:0 18px; pointer-events:none; }
+    .shoulder button { pointer-events:auto; width:92px; height:26px; border-radius:8px 8px 3px 3px; cursor:pointer;
+      font-family:Orbitron,monospace; font-weight:700; font-size:12px; color:#9aa0ab; background:#2c3037;
+      border:1px solid #3a3f48; box-shadow:0 3px 0 #15171b, inset 0 1px 0 rgba(255,255,255,0.08); }
+    .shoulder button:active { transform:translateY(2px); box-shadow:0 1px 0 #15171b; }
+    .dpad { position:relative; width:118px; height:118px; flex:none; }
+    .dpad button { position:absolute; width:40px; height:40px; background:#0c0d10; border:1px solid #33363d;
+      color:#5b616c; font-size:15px; cursor:pointer; font-family:inherit;
+      box-shadow:inset 0 -3px 0 rgba(0,0,0,0.6); }
+    .dpad button:active { background:#1a1c21; transform:translateY(1px); box-shadow:none; }
+    .dpad .up    { left:39px; top:0;    border-radius:6px 6px 0 0; }
+    .dpad .down  { left:39px; bottom:0; border-radius:0 0 6px 6px; }
+    .dpad .left  { left:0;    top:39px; border-radius:6px 0 0 6px; }
+    .dpad .right { right:0;   top:39px; border-radius:0 6px 6px 0; }
+    .dpad .hub { position:absolute; left:39px; top:39px; width:40px; height:40px; background:#0c0d10;
+      border:1px solid #33363d; display:flex; align-items:center; justify-content:center; }
+    .dpad .hub::after { content:""; width:14px; height:14px; border-radius:50%;
+      background:radial-gradient(circle at 35% 30%, #2a2d33, #0a0b0d); }
+
+    .btns { position:relative; width:150px; height:130px; flex:none; }
+    .btns button { position:absolute; width:46px; height:46px; border-radius:50%; cursor:pointer;
+      font-family:Orbitron,monospace; font-weight:700; font-size:15px; color:#ffd9d9;
+      background:radial-gradient(circle at 35% 30%, #a3202f, #5e0f18);
+      border:1px solid #c8323f; box-shadow:0 4px 0 #3c0a10, inset 0 2px 3px rgba(255,255,255,0.25); }
+    .btns button:active { transform:translateY(3px); box-shadow:0 1px 0 #3c0a10; }
+    .btns .bx { left:52px;  top:0; }
+    .btns .by { left:0;     top:42px; }
+    .btns .ba { right:0;    top:42px; }
+    .btns .bb { left:52px;  bottom:0; }
+    .btns .lbl { position:absolute; font-size:9px; color:#5b616c; letter-spacing:1px; }
+
+    .console-foot { text-align:center; color:#775555; font-size:10px; letter-spacing:2px; padding:0 10px 18px; }
+
+    /* ── ACCEPT 降下演出（GBブート風） ── */
+    .accept-overlay { position:fixed; inset:0; z-index:9500; background:#050307;
+      display:none; align-items:center; justify-content:center; overflow:hidden; }
+    .accept-overlay.run { display:flex; }
+    .accept-logo { font-family:Orbitron,monospace; font-weight:900; font-size:min(64px,10vw);
+      letter-spacing:14px; color:#e8f8ff; text-shadow:0 0 40px rgba(136,204,255,0.4);
+      border:4px solid #e8f8ff; border-radius:20px; padding:18px 26px 18px 40px;
+      box-shadow:0 0 40px rgba(136,204,255,0.25), inset 0 0 24px rgba(136,204,255,0.1);
+      transform:translateY(-58vh); }
+    .accept-overlay.run .accept-logo { animation:gbdrop 2.2s steps(28) forwards; }
+    @keyframes gbdrop { 0% { transform:translateY(-58vh); } 82% { transform:translateY(0); }
+      100% { transform:translateY(0); } }
+    .accept-overlay .tm { position:absolute; margin-top:86px; font-size:11px; letter-spacing:3px;
+      color:#557788; opacity:0; animation:tmfade .4s 2.3s forwards; }
+    @keyframes tmfade { to { opacity:1; } }
+    .accept-overlay.done { animation:ovfade .8s 3.1s forwards; }
+    @keyframes ovfade { to { opacity:0; visibility:hidden; } }
+
+    /* ── 解錠後インデックス ── */
+    .index-box { display:none; margin-top:36px; border:1px solid var(--apx-dim);
+      background:rgba(18,4,8,0.85); }
+    .index-box.open { display:block; animation:idxin .5s ease-out; }
+    @keyframes idxin { from { opacity:0; transform:translateY(10px);} to { opacity:1; transform:none; } }
+    .index-list { list-style:none; margin:0; padding:14px 18px 20px; }
+    .index-list li { padding:10px 6px; border-bottom:1px dashed rgba(255,68,85,0.2);
+      font-size:13px; letter-spacing:1px; }
+    .index-list a { color:var(--apx-amber); text-decoration:none; }
+    .index-list a:hover { text-shadow:0 0 8px rgba(255,221,136,0.5); }
+    .index-list .tag { display:inline-block; margin-right:10px; padding:1px 8px; font-size:10px;
+      color:var(--apx); border:1px solid var(--apx-dim); letter-spacing:2px; }
+    .index-list .wip { color:#775555; }
+    .auth-note { text-align:center; color:#557755; font-size:10px; letter-spacing:2px; padding:10px 0 0; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(255,68,85,0.3);">
+    <a href="console.html" class="nav-back" style="color:#ff4455;border-color:rgba(255,68,85,0.3);">◄ CONSOLE</a>
+    <div class="header-tag">[ CLASSIFIED / APOCALYPSIS — 最高機密インデックス ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff4455;">●</span> RESTRICTED — KEY REQUIRED</div>
+  </header>
+
+  <main class="apx-main">
+    <div class="apx-title">APOCALYPSIS</div>
+    <div class="apx-sub">▮ 機密レベル《アポカリュプシス》 — 超兵器記録アーカイブ ▮</div>
+
+    <!-- 認証コンソール -->
+    <div class="console-box" id="authBox">
+      <div class="console-hdr"><span class="dot"></span>▌ AUTHORIZATION CONSOLE — 認証キー入力 ▐</div>
+      <div class="console-msg">旧式入力機器を検出 ── <b>認証キー</b>を入力せよ<br>（物理キーボードの方向キーおよび A / B / X / Y / L / R キーにも対応）</div>
+      <div class="seq-row" id="seqRow"></div>
+      <div class="pad">
+        <div class="shoulder"><button class="sl" data-k="L">L</button><button class="sr" data-k="R">R</button></div>
+        <div class="dpad">
+          <button class="up"    data-k="up"    aria-label="up">▲</button>
+          <button class="left"  data-k="left"  aria-label="left">◀</button>
+          <div class="hub"></div>
+          <button class="right" data-k="right" aria-label="right">▶</button>
+          <button class="down"  data-k="down"  aria-label="down">▼</button>
+        </div>
+        <div class="pad-mid"><div class="stripes"></div><div class="logo">LYLAT ENTERTAINMENT SYSTEM</div></div>
+        <div class="btns">
+          <button class="bx" data-k="X">X</button>
+          <button class="by" data-k="Y">Y</button>
+          <button class="ba" data-k="A">A</button>
+          <button class="bb" data-k="B">B</button>
+        </div>
+      </div>
+      <div class="console-foot">AUTHORIZATION CONSOLE READY — 認証キー入力待機中</div>
+    </div>
+
+    <!-- 解錠後インデックス（プレースホルダ） -->
+    <div class="index-box" id="indexBox">
+      <div class="console-hdr"><span class="dot"></span>▌ CLASSIFIED RECORDS — 超兵器記録一覧 ▐</div>
+      <ul class="index-list">
+        <li><span class="tag">SW-01</span><a href="classified/nova-blaster.html">ギャラクティック・ノヴァ・ブラスター — 惑星破壊級超兵器（討伐済・残骸封印）</a></li>
+        <li><span class="tag">SW-02</span><a href="classified/gigarilla.html">ギガリラ — 地上戦略級超兵器（原型機消失・封印記録）</a></li>
+        <li><span class="tag">SW-03</span><a href="classified/gigarilla.html#jr">ギガリラ.Jr — 帝国による模倣改良機（プロスペロー展開中）</a></li>
+        <li><span class="tag">SW-04</span><span class="wip">スピリット系兵器群 — QAL関連記録（移設準備中）／機構の出所は <a href="classified/krazoa.html">X-01</a> を参照</span></li>
+      </ul>
+      <div class="auth-note">— AUTHORIZED: このセッションの間、認証は維持される —</div>
+    </div>
+
+    <div class="index-box" id="originBox">
+      <div class="console-hdr"><span class="dot"></span>▌ ORIGIN RECORD — 起源記録 ▐</div>
+      <ul class="index-list">
+        <li><span class="tag">X-01</span><a href="classified/krazoa.html">クアン・アタ・ラチュ — 外宇宙由来知的存在（「平和の神クラゾア」の実体）</a><br>
+          <span style="color:#cc9999;font-size:12px;line-height:2;display:inline-block;padding:6px 0 0 8px;">
+          ─ <b style="color:#ffdd88;font-weight:normal;">取扱区分 LV.6</b> ── 開示による社会的損害が最大と評価された唯一の文書<br>
+          ─ 飛来・神聖帝国建国・文明後退・生命エネルギー収集・唯一の天敵・復活の兆候</span></li>
+        <li><span class="tag">X-02</span><a href="classified/andorf-truth.html">アンドルフ・ボウマン — 二人の皇帝（ベノム帝国勃興の実相）</a><br>
+          <span style="color:#cc9999;font-size:12px;line-height:2;display:inline-block;padding:6px 0 0 8px;">
+          ─ <b style="color:#ffdd88;font-weight:normal;">取扱区分 LV.5</b> ── タイタニア発信号の解読報告（解読継続中）<br>
+          ─ 現「皇帝」の正体・追放からの十年・国章バッジの起源・誤配された国号</span></li>
+        <li><span class="tag">X-03</span><a href="classified/septentrion.html">セプテントリオン計画 — 人類保存計画（星系文明の起源に関する仮説報告）</a><br>
+          <span style="color:#cc9999;font-size:12px;line-height:2;display:inline-block;padding:6px 0 0 8px;">
+          ─ <b style="color:#ffdd88;font-weight:normal;">取扱区分 LV.5</b> ── ベノム発極秘通信の解析報告（整合率97%・公開予定なし）<br>
+          ─ 八隻の箱舟・操縦士「熊 十号」・ポラリソイドの語源・万物の霊長の最終結論</span></li>
+      </ul>
+      <div class="auth-note">— X-01 に対応する公開記事は存在しない。表層の信仰記録のみ用語データベースに残置。X-02 の公開層は人物データベースの当該記事。X-03 の公開層は用語データベースの『ブレーメン』『オーバーロード』 —</div>
+    </div>
+
+    <div class="index-box" id="personnelBox">
+      <div class="console-hdr"><span class="dot"></span>▌ RESTRICTED PERSONNEL — 機密人事記録 ▐</div>
+      <ul class="index-list">
+        <li><span class="tag">P-01</span><a href="classified/vorpal-members.html">特殊戦闘部隊ヴォーパル隊「白の7」— 全構成記録</a><br>
+          <span style="color:#cc9999;font-size:12px;line-height:2;display:inline-block;padding:6px 0 0 8px;">
+          ─ <b style="color:#ffdd88;font-weight:normal;">取扱区分 LV.5</b> ── 全7名の実名照合記録（公開記事は軍事データベースに残置）<br>
+          ─ 白の2『ジョン・シルバー』／白の3『フェンリル』／白の4『リュカオン・キルヒアイズ』／白の5『フェイ・シンクレア』<br>
+          ─ 旧公開名簿の「シルバー・リュカオン」「ブチ・アルジャーノ」は欺瞞名 ── 経緯は本記録を参照</span></li>
+        <li><span class="tag">P-02</span><a href="classified/five-elders.html">五大元老院 — 構成員の素性照合記録</a><br>
+          <span style="color:#cc9999;font-size:12px;line-height:2;display:inline-block;padding:6px 0 0 8px;">
+          ─ 全5名の正体・経歴・延命措置・FCH-119関連疑義の詳細（公開記事は人物データベースに残置）</span></li>
+        <li><span class="tag">P-03</span><a href="classified/andorf-dummy.html">アンドルフ・ダミー — 潜称の皇帝</a><br>
+          <span style="color:#cc9999;font-size:12px;line-height:2;display:inline-block;padding:6px 0 0 8px;">
+          ─ <b style="color:#ffdd88;font-weight:normal;">取扱区分 LV.5</b> ── 機密側のみで閲覧可能な人物ファイル（通常書式）<br>
+          ─ 現「皇帝」の人物記録・真体ソドム・ポリヴィアス直結・脅威評価98</span></li>
+      </ul>
+      <div class="auth-note">— 単体記事は公開データベースに残置（機密部は redacted 表示）—</div>
+    </div>
+  </main>
+
+  <div class="accept-overlay" id="acceptOv">
+    <div class="accept-logo">ACCEPT</div>
+    <div class="tm">CLEARANCE LV.5 — APOCALYPSIS</div>
+  </div>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 220; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.1 + Math.random()*0.6).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(255,200,200,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script>
+    (function () {
+      var SEQ = ['up','up','down','down','left','right','left','right','B','A','X','Y','R','R','L','L','A','R','B','R'];
+      var GLYPH = { up:'▲', down:'▼', left:'◀', right:'▶', A:'A', B:'B', X:'X', Y:'Y', L:'L', R:'R' };
+      var pos = 0;
+      var locked = false;
+      var seqRow = document.getElementById('seqRow');
+      var authBox = document.getElementById('authBox');
+      var indexBoxes = document.querySelectorAll('.index-box');
+      var acceptOv = document.getElementById('acceptOv');
+
+      // 入力スロット生成
+      SEQ.forEach(function () {
+        var c = document.createElement('div');
+        c.className = 'seq-cell';
+        seqRow.appendChild(c);
+      });
+      var cells = seqRow.querySelectorAll('.seq-cell');
+
+      function render() {
+        cells.forEach(function (c, i) {
+          c.classList.toggle('on', i < pos);
+          c.textContent = i < pos ? GLYPH[SEQ[i]] : '';
+        });
+      }
+
+      function fail() {
+        seqRow.classList.add('err');
+        setTimeout(function () { seqRow.classList.remove('err'); pos = 0; render(); }, 320);
+      }
+
+      function beep() {
+        try {
+          var ctx = new (window.AudioContext || window.webkitAudioContext)();
+          [[1046.5, 0], [2093.0, 0.13]].forEach(function (n) {
+            var o = ctx.createOscillator(), g = ctx.createGain();
+            o.type = 'square'; o.frequency.value = n[0];
+            g.gain.setValueAtTime(0.06, ctx.currentTime + n[1]);
+            g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + n[1] + 0.22);
+            o.connect(g); g.connect(ctx.destination);
+            o.start(ctx.currentTime + n[1]); o.stop(ctx.currentTime + n[1] + 0.25);
+          });
+        } catch (e) { /* no audio */ }
+      }
+
+      function unlock(skipAnim) {
+        locked = true;
+        sessionStorage.setItem('apx-authorized', '1');
+        if (skipAnim) {
+          authBox.style.display = 'none';
+          indexBoxes.forEach(function (b) { b.classList.add('open'); });
+          return;
+        }
+        acceptOv.classList.add('run');
+        // GB風: ロゴが降り切った瞬間にビープ
+        setTimeout(beep, 1850);
+        setTimeout(function () { acceptOv.classList.add('done'); }, 100);
+        setTimeout(function () {
+          authBox.style.display = 'none';
+          indexBoxes.forEach(function (b) { b.classList.add('open'); });
+          acceptOv.classList.remove('run', 'done');
+        }, 4000);
+      }
+
+      function press(k) {
+        if (locked) return;
+        if (k === SEQ[pos]) {
+          pos++;
+          render();
+          if (pos === SEQ.length) unlock(false);
+        } else {
+          pos = (k === SEQ[0]) ? 1 : 0;
+          if (pos === 0) fail(); else render();
+        }
+      }
+
+      document.querySelectorAll('.pad button').forEach(function (b) {
+        b.addEventListener('click', function () { press(b.dataset.k); });
+      });
+
+      var KEYMAP = { ArrowUp:'up', ArrowDown:'down', ArrowLeft:'left', ArrowRight:'right',
+        KeyA:'A', KeyB:'B', KeyX:'X', KeyY:'Y', KeyL:'L', KeyR:'R' };
+      document.addEventListener('keydown', function (e) {
+        var k = KEYMAP[e.code];
+        if (!k) return;
+        e.preventDefault();
+        press(k);
+      });
+
+      // セッション内は認証を記憶（タブを閉じるまで）
+      if (sessionStorage.getItem('apx-authorized') === '1') unlock(true);
+    })();
+  </script>
+</body>
+</html>

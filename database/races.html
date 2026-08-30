@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RACE DATABASE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#88dd88;--accent:#bbffbb;--border:rgba(136,221,136,0.32);--border-hi:rgba(187,255,187,0.7);--dim:#1a4020;--dim2:#0a2010; }
+
+    /* ═══ 表示モード切替（縦積み / ギャラリー） ═══ */
+    .disp-toggle { margin-left: 12px; display: inline-flex; gap: 10px; vertical-align: middle; }
+    .disp-btn { width: 28px; height: 28px; padding: 0; border: none; background: none; position: relative; cursor: pointer; opacity: 0.4; transition: opacity 0.18s; }
+    .disp-btn::before { content: ''; position: absolute; inset: 0; background: var(--primary); -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; transition: background 0.18s; }
+    .disp-btn.d-list { --icon: url('data:image/png;base64,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'); }
+    .disp-btn.d-card { --icon: url('data:image/png;base64,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'); }
+    .disp-btn:hover { opacity: 0.75; }
+    .disp-btn.active { opacity: 1; }
+    .disp-btn.active::before { background: var(--accent); filter: drop-shadow(0 0 8px rgba(187,255,187,0.6)); }
+
+    /* ── ギャラリー表示: 記事を畳みシルエット板を並べる ── */
+    .race-gallery { display: none; }
+    .mode-gallery .race-gallery { display: block; }
+    .mode-gallery article.codex-entry { display: none; }
+    .race-row {
+      display: flex; gap: 18px; align-items: flex-end;
+      padding: 26px 12px 34px;
+      overflow-x: auto; overscroll-behavior-x: contain;
+      scrollbar-width: thin; scrollbar-color: var(--dim) transparent;
+    }
+    .race-row::-webkit-scrollbar { height: 5px; }
+    .race-row::-webkit-scrollbar-thumb { background: var(--dim); }
+    .race-panel {
+      --h: 0;
+      flex: 0 0 auto;
+      width: 118px; height: 430px;
+      position: relative;
+      cursor: pointer;
+      background: linear-gradient(180deg, hsl(var(--h), 82%, 62%) 0%, hsl(var(--h), 70%, 44%) 100%);
+      clip-path: polygon(22% 0, 100% 0, 100% 78%, 78% 100%, 0 100%, 0 22%);
+      transition: transform 0.2s, filter 0.2s;
+      filter: saturate(0.9) brightness(0.92);
+      /* 本文と同じ「伝送ノイズ」の横線をパネルにも通す */
+      -webkit-mask-image: repeating-linear-gradient(0deg, #000 0px, #000 3px, rgba(0,0,0,0.78) 3px, rgba(0,0,0,0.78) 4px);
+      mask-image: repeating-linear-gradient(0deg, #000 0px, #000 3px, rgba(0,0,0,0.78) 3px, rgba(0,0,0,0.78) 4px);
+    }
+    .race-panel::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, hsl(var(--h), 90%, 80%) 0%, hsl(var(--h), 75%, 55%) 100%);
+      clip-path: polygon(22% 0, 100% 0, 100% 78%, 78% 100%, 0 100%, 0 22%,
+                         0 22%, 4px calc(22% + 2px), 4px calc(100% - 4px), calc(78% + 2px) calc(100% - 4px), calc(100% - 4px) calc(78% - 2px), calc(100% - 4px) 4px, calc(22% + 2px) 4px, 4px calc(22% + 2px), 0 22%);
+      opacity: 0.9; pointer-events: none;
+    }
+    .race-panel:hover, .race-panel:focus-visible { transform: translateY(-8px); filter: saturate(1.1) brightness(1.05); outline: none; }
+    .race-panel img {
+      position: absolute; left: 50%; bottom: 14px;
+      height: 92%; width: auto; max-width: none;
+      transform: translateX(-50%);
+      pointer-events: none;
+      filter: drop-shadow(0 0 6px rgba(0,0,0,0.45));
+    }
+    .race-panel .rp-name {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 8px 6px 10px;
+      font-size: 10px; letter-spacing: 0.06em; text-align: center; line-height: 1.3;
+      color: #fff; text-shadow: 0 0 6px rgba(0,0,0,0.8);
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%);
+      opacity: 0; transition: opacity 0.18s;
+    }
+    .race-panel:hover .rp-name, .race-panel:focus-visible .rp-name { opacity: 1; }
+    .race-panel.rp-minor { background: linear-gradient(180deg, #7a8a90 0%, #3c474c 100%); }
+    .race-panel.rp-minor::before { background: linear-gradient(180deg, #c8d4d8 0%, #6b7a80 100%); }
+    .race-panel.rp-minor .rp-q {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-55%);
+      font-family: 'Orbitron', sans-serif; font-size: 64px; font-weight: 900;
+      color: rgba(0,0,0,0.85); pointer-events: none;
+    }
+    .race-panel.is-open { filter: saturate(1.15) brightness(1.1); }
+    .race-scale {
+      display: flex; justify-content: space-between;
+      padding: 0 14px 6px; font-size: 10px; letter-spacing: 0.2em; opacity: 0.55;
+    }
+    @media (max-width: 900px) {
+      .race-panel { width: 92px; height: 340px; }
+    }
+
+    /* ── 説明カード（オーバーレイ） ── */
+    .race-ov {
+      position: fixed; inset: 0; z-index: 60;
+      display: none; align-items: center; justify-content: center;
+      background: rgba(2, 8, 4, 0.72);
+      backdrop-filter: blur(3px);
+    }
+    .race-ov.open { display: flex; }
+    .race-card {
+      --gv-acc-rgb: 187,255,187;
+      position: relative;
+      width: min(1040px, 92vw); height: min(640px, 86vh);
+      background: linear-gradient(180deg, rgba(10,32,16,0.97) 0%, rgba(5,16,8,0.98) 100%);
+      border: 1px solid var(--border-hi);
+      box-shadow: 0 0 40px rgba(var(--gv-acc-rgb), 0.12), inset 0 0 60px rgba(0,0,0,0.5);
+    }
+    .race-card::before {
+      content: ''; position: absolute; inset: 8px;
+      border: 1px solid var(--border); pointer-events: none;
+    }
+    .race-card .seg { position: absolute; background: var(--accent); box-shadow: 0 0 14px rgba(var(--gv-acc-rgb), 0.8), 0 0 34px rgba(var(--gv-acc-rgb), 0.35); pointer-events: none; }
+    .race-card .seg.h { height: 5px; } .race-card .seg.v { width: 5px; }
+    .race-card .s1 { top: -1px; left: 9%;  width: 13%; } .race-card .s2 { top: -1px; left: 24%; width: 5%; }
+    .race-card .s3 { top: -1px; right: 12%; width: 16%; } .race-card .s4 { bottom: -1px; left: 22%; width: 7%; }
+    .race-card .s5 { bottom: -1px; left: 31%; width: 14%; } .race-card .s6 { bottom: -1px; right: 8%; width: 10%; }
+    .race-card .s7 { left: -1px; top: 30%; height: 18%; } .race-card .s8 { right: -1px; top: 52%; height: 12%; }
+    .race-card .rc-label { position: absolute; top: 12px; left: 58px; font-size: 9px; letter-spacing: 0.3em; color: rgba(var(--gv-acc-rgb), 0.75); text-transform: uppercase; z-index: 3; }
+    .race-card .rc-close {
+      position: absolute; top: 10px; right: 14px; z-index: 4;
+      width: 30px; height: 30px; border: 1px solid var(--border-hi); background: rgba(0,0,0,0.4);
+      color: var(--accent); font-size: 16px; cursor: pointer;
+    }
+    .race-card .rc-close:hover { background: var(--dim); }
+    .race-card .rc-nav {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 4;
+      width: 34px; height: 60px; border: 1px solid var(--border); background: rgba(0,0,0,0.35);
+      color: var(--accent); font-size: 18px; cursor: pointer; opacity: 0.7;
+    }
+    .race-card .rc-nav:hover { opacity: 1; background: var(--dim); }
+    .race-card .rc-nav.prev { left: -40px; } .race-card .rc-nav.next { right: -40px; }
+    .race-card .rc-body {
+      position: absolute; inset: 36px 34px 30px 42px;
+      display: grid; grid-template-columns: 150px 1fr; gap: 22px;
+      overflow: hidden;
+    }
+    .race-card .rc-fig {
+      --h: 0;
+      align-self: stretch; position: relative;
+      background: linear-gradient(180deg, hsl(var(--h), 82%, 62%) 0%, hsl(var(--h), 70%, 44%) 100%);
+      clip-path: polygon(22% 0, 100% 0, 100% 78%, 78% 100%, 0 100%, 0 22%);
+      -webkit-mask-image: repeating-linear-gradient(0deg, #000 0px, #000 3px, rgba(0,0,0,0.78) 3px, rgba(0,0,0,0.78) 4px);
+      mask-image: repeating-linear-gradient(0deg, #000 0px, #000 3px, rgba(0,0,0,0.78) 3px, rgba(0,0,0,0.78) 4px);
+    }
+    .race-card .rc-fig img { position: absolute; left: 50%; bottom: 10px; height: 90%; width: auto; max-width: none; transform: translateX(-50%); }
+    .race-card .rc-fig.rp-minor { background: linear-gradient(180deg, #7a8a90 0%, #3c474c 100%); }
+    .race-card .rc-text { overflow-y: auto; padding-right: 14px; scrollbar-width: thin; scrollbar-color: var(--dim) transparent; }
+    .race-card .rc-text::-webkit-scrollbar { width: 4px; } .race-card .rc-text::-webkit-scrollbar-thumb { background: var(--dim); }
+    .race-card .rc-text .codex-entry { display: block; border: none; background: none; padding: 0; margin: 0; box-shadow: none; }
+    .race-card .rc-text .codex-h { font-size: 17px; margin-bottom: 6px; }
+    .race-card .rc-text .codex-sub { margin-bottom: 10px; }
+    @media (max-width: 720px) {
+      .race-card .rc-body { grid-template-columns: 1fr; }
+      .race-card .rc-fig { display: none; }
+      .race-card .rc-nav.prev { left: 4px; } .race-card .rc-nav.next { right: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ CIS-HQ / RACE DATABASE — 人種データベース ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ 03 / RACE DATABASE ]</div>
+      <h1 class="codex-title">RACES OF THE LYLAT SYSTEM</h1>
+      <p class="codex-p">ライラット星系には様々な人種が存在し、それぞれが得意な分野をもって文明を興してきた歴史を持つ。現在でこそ最低限の秩序が保たれているが、根底にある差別意識はいまだ根絶できておらず、星系の外縁に行くほどそれは顕著になる。確認されている人種は細かいものまで合わせると320種を超えるとされる。</p>
+      <p class="codex-p">なお人種の区分は生物学的な分類と厳密に一致していない。近縁の系統をまとめて一つの人種と「自称」する大まかな括りが、慣習としてそのまま定着しているためである。犬型人種<a href="#anubisoid">アヌビソイド</a>は狼系やハイエナ系、ジャッカル系までを含み、ネズミ型人種<a href="#kyusoid">キューソイド</a>は蝙蝠やリスの系統まで包括する。白黒の熊であるはずのパンダ系が<a href="#bastetoid">バステトイド</a>を自称して定着している例に至っては、この区分の大らかさを示す小話として人類学の講義で必ず引かれるものである。よほど系統が特殊な場合に限り、蛇型人種<a href="#apophisoid">アポフィソイド</a>のように独立した呼び名が与えられる。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#anubisoid">アヌビソイド</a>
+      <a href="#alphoid">アルフォイド</a>
+      <a href="#bastetoid">バステトイド</a>
+      <a href="#kyusoid">キューソイド</a>
+      <a href="#holsoid">ホルソイド</a>
+      <a href="#zetoid">ゼートイド</a>
+      <a href="#heketoid">ヘケトイド</a>
+      <a href="#polarisoid">ポラリソイド</a>
+      <a href="#astarosoid">アスタロソイド</a>
+      <a href="#sacrifoid">サクリフォイド</a>
+      <a href="#ganesiosoid">ガネシオソイド</a>
+      <a href="#minosoid">ミノソイド</a>
+      <a href="#kernunosoid">ケルヌノソイド</a>
+      <a href="#native-aquan">ネイティブ・アクアン</a>
+      <a href="#saurian">サウリアン</a>
+      <a href="#paranodian">パラノディアン</a>
+      <a href="#apophisoid">アポフィソイド</a>
+      <a href="#salmonoid">サーモノイド</a>
+      <a href="#selenoid">セレノイド</a>
+      <a href="#minor-races">その他</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="locations.html">ロケーション</a> / <a href="sectors.html">セクター</a> / <a href="factions.html">勢力</a> / <a href="characters.html">人物</a> / <a href="glossary.html">用語</a> / <a href="military.html">軍事</a> / <a href="corporations.html">企業</a></span>
+      <span class="disp-toggle" role="group" aria-label="表示モード切替">
+        <button class="disp-btn d-list" id="dispList" title="縦積み表示"></button>
+        <button class="disp-btn d-card active" id="dispCard" title="ギャラリー表示"></button>
+      </span>
+    </nav>
+
+    <section class="race-gallery" id="raceGallery" aria-label="人種ギャラリー">
+      <div class="race-scale"><span>◄ 主要人種</span><span>グレーゾーン ►</span></div>
+      <div class="race-row">
+        <button class="race-panel" style="--h:0" data-race="anubisoid" title="アヌビソイド"><img src="../resource/Race_image/00_anubisoid.png" alt="アヌビソイド"><span class="rp-name">アヌビソイド</span></button>
+        <button class="race-panel" style="--h:16" data-race="alphoid" title="アルフォイド"><img src="../resource/Race_image/01_alphoid.png" alt="アルフォイド"><span class="rp-name">アルフォイド</span></button>
+        <button class="race-panel" style="--h:31" data-race="bastetoid" title="バステトイド"><img src="../resource/Race_image/02_bastetoid.png" alt="バステトイド"><span class="rp-name">バステトイド</span></button>
+        <button class="race-panel" style="--h:47" data-race="kyusoid" title="キューソイド"><img src="../resource/Race_image/03_kyusoid.png" alt="キューソイド"><span class="rp-name">キューソイド</span></button>
+        <button class="race-panel" style="--h:62" data-race="holsoid" title="ホルソイド"><img src="../resource/Race_image/04_Holsoid.png" alt="ホルソイド"><span class="rp-name">ホルソイド</span></button>
+        <button class="race-panel" style="--h:78" data-race="zetoid" title="ゼートイド"><img src="../resource/Race_image/05_zetoid.png" alt="ゼートイド"><span class="rp-name">ゼートイド</span></button>
+        <button class="race-panel" style="--h:93" data-race="heketoid" title="ヘケトイド"><img src="../resource/Race_image/06_heketoid.png" alt="ヘケトイド"><span class="rp-name">ヘケトイド</span></button>
+        <button class="race-panel" style="--h:109" data-race="polarisoid" title="ポラリソイド"><img src="../resource/Race_image/07_polarisoid.png" alt="ポラリソイド"><span class="rp-name">ポラリソイド</span></button>
+        <button class="race-panel" style="--h:124" data-race="astarosoid" title="アスタロソイド"><img src="../resource/Race_image/08_astarosoid.png" alt="アスタロソイド"><span class="rp-name">アスタロソイド</span></button>
+        <button class="race-panel" style="--h:140" data-race="sacrifoid" title="サクリフォイド"><img src="../resource/Race_image/09_sacrifoid.png" alt="サクリフォイド"><span class="rp-name">サクリフォイド</span></button>
+        <button class="race-panel" style="--h:156" data-race="ganesiosoid" title="ガネシオソイド"><img src="../resource/Race_image/10_sganesiosoid.png" alt="ガネシオソイド"><span class="rp-name">ガネシオソイド</span></button>
+        <button class="race-panel" style="--h:171" data-race="minosoid" title="ミノソイド"><img src="../resource/Race_image/11_minosoid.png" alt="ミノソイド"><span class="rp-name">ミノソイド</span></button>
+        <button class="race-panel" style="--h:187" data-race="kernunosoid" title="ケルヌノソイド"><img src="../resource/Race_image/12_keruninosoid.png" alt="ケルヌノソイド"><span class="rp-name">ケルヌノソイド</span></button>
+        <button class="race-panel" style="--h:202" data-race="native-aquan" title="ネイティブ・アクアン"><img src="../resource/Race_image/13_native_aquan.png" alt="ネイティブ・アクアン"><span class="rp-name">ネイティブ・アクアン</span></button>
+        <button class="race-panel" style="--h:218" data-race="saurian" title="サウリアン"><img src="../resource/Race_image/14_saurian.png" alt="サウリアン"><span class="rp-name">サウリアン</span></button>
+        <button class="race-panel" style="--h:233" data-race="paranodian" title="パラノディアン"><img src="../resource/Race_image/15_paranodian.png" alt="パラノディアン"><span class="rp-name">パラノディアン</span></button>
+        <button class="race-panel" style="--h:249" data-race="apophisoid" title="アポフィソイド"><img src="../resource/Race_image/16_apophisoid.png" alt="アポフィソイド"><span class="rp-name">アポフィソイド</span></button>
+        <button class="race-panel" style="--h:264" data-race="salmonoid" title="サーモノイド"><img src="../resource/Race_image/17_salmonoid.png" alt="サーモノイド"><span class="rp-name">サーモノイド</span></button>
+        <button class="race-panel" style="--h:280" data-race="selenoid" title="セレノイド"><img src="../resource/Race_image/18_selenoid.png" alt="セレノイド"><span class="rp-name">セレノイド</span></button>
+        <button class="race-panel rp-minor" data-race="minor-races" title="その他のマイナー人種"><span class="rp-q">?</span><span class="rp-name">その他の<br>マイナー人種</span></button>
+      </div>
+    </section>
+
+
+    <article class="codex-entry" id="anubisoid">
+      <h2 class="codex-h">アヌビソイド <span class="en">ANUBISOID — 犬型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: <a href="locations.html#corneria">コーネリア</a> / <a href="locations.html#papetoon">パペトゥーン</a></div>
+      <div class="codex-sub">体高の目安: 170cm前後が基準 — キツネ系170cm／狼系180cm／レトリーバー系・ボルゾイ系は200cmを超える者も多い。ダックスフンド系は180cm級だが大半が座高（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">犬型人種とも称され、現在の<a href="factions.html#cornerian-republic">コーネリア連合共和国</a>の最大派閥とされる人種である。温厚で仲間想いでありながら大きな危機には仲間と結束して立ち向かう勇気を併せ持ち、その性質が戦争を止める一助になったことは想像に難くない。<a href="glossary.html#basic-language">ベーシック標準語</a>の真の標準とされるコーネリア発音はこの人種の口の形に合わせた言語であり、共和国の「標準」を形作ってきたのはこの人種である。種族の幅は星系で最も広く、キツネ系を基準に2mを超えるレトリーバー系やボルゾイ系から小柄なフェネック系、胴長短足のダックスフンド系、さらには狸系までを含む大らかな区分となっている。</p>
+      <p class="codex-p"><a href="locations.html#venom">ベノム</a>の遺跡で発掘された壁画には古代の滅びた種族<a href="glossary.html#overlord">オーバーロード</a>を引き連れて先頭に立つ姿が描かれており、ライラット文明の起源に最も近い人種であるというのが通説である。もっとも出土品にはアヌビソイドの手先では製作できない機構が含まれ、行列の主従は逆ではないかという疑いも古くから指摘されている。多数派であることは差別の側に立った歴史も意味し、旧大グランベル国のワングロサクソン系優位の風土や移民への排斥デモは<a href="locations.html#fichina">フィチナ</a>の項に詳しい。一方で独立星系連合が迫害の標的にしたのもこの人種である。</p>
+      <p class="codex-p">文化の中心は鼻にある。ことわざ「目は口ほどに物を言い、鼻は目ほどに嘘を暴く」は星系共通語の慣用句となり、額をなめる<a href="glossary.html#face-lick">古い作法</a>、骨と骨髄を好む<a href="glossary.html#food-culture">食卓</a>、酒が入ると始まる<a href="glossary.html#cantina">遠吠え</a>は今も健在である。<a href="military.html#starfox">スターフォックス</a>の<a href="../characters/james.html">ジェームズ</a>と<a href="../characters/fox.html">フォックス</a>のマクラウド父子、<a href="../characters/pepper.html">ペパー将軍</a>、カタリナ駐留軍の<a href="../characters/bill.html">ビル・グレイ</a>、傭兵<a href="../characters/wolf.html">ウルフ・オドネル</a>などはこの人種であり、星系の空の物語の多くはこの人種の名で綴られている。</p>
+    </article>
+
+    <article class="codex-entry" id="alphoid">
+      <h2 class="codex-h">アルフォイド <span class="en">ALPHOID — サル型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: <a href="glossary.html#stephano">旧・惑星ステファノー</a> / <a href="locations.html#fichina">フィチナ</a> / <a href="locations.html#corneria">コーネリア</a>（移民街区ニッコータウン）</div>
+      <div class="codex-sub">体高の目安: 180cm前後が基準 — リスザル系・ロリス系は100cm級／ゴリラ系は例外的に300cm級（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">サル型人種と称され、星系内では<a href="locations.html#fichina">フィチナ</a>州など比較的寒冷な土地に生活している人種。全人種の中でも突出した知能を発揮する者が多く、居住の難しいフィチナでの生活もその知性と技術を活用してのものである。チンパンジー系やマンドリル系を中心に100cm級のリスザル系から300cm級のゴリラ系までを含み、雑食で好き嫌いが少ない。コーネリアシティの機能的な都市計画はこの人種の設計思想によるものである。</p>
+      <p class="codex-p">本来は温暖で居住環境の整った第6惑星<a href="glossary.html#stephano">ステファノー</a>に本拠地を持つ人種だったが、グランベル国との戦争で惑星破壊級の超兵器が使用され、惑星もろとも文化と人口の大半が失われた悲劇の歴史を持つ。生き残った人々は星系各地へ離散し、二世紀余りを経た現在も極寒のフィチナやコーネリアシティ外れの移民街区ニッコータウン（通称ステファノー街）に強い結びつきの共同体を保っている。母星の欠片で築かれた<a href="../planets/greatwall.html">グレートウォール</a>の碑文「星は砕けても、誓いは砕けない」と毎年のステファノー忌の手向けの花は、この人種が記憶を手放さない民であることを示しており、<a href="glossary.html#citizenship">消滅した惑星を州籍として認める特例</a>もこの人種のために設けられた。</p>
+      <p class="codex-p">このためコーネリア連合共和国の建国にグランベルが携わっていることへの拒否感が根強く、<a href="factions.html#venom-empire">ベノム帝国</a>への離反者が最も多い人種となっている。帝国を率いる<a href="../characters/andorf.html">アンドルフ・ボウマン</a>とその甥<a href="../characters/andrew.html">アンドリュー・オイッコニー</a>、親衛隊の多くはこの人種であり、帝国は事実上この人種を中心に据えた国家である。一方で共和国側にもフィチナ州知事<a href="glossary.html#gori-bachov">ゴリ・バチョフ</a>やステファノーの都から生まれた<a href="../corporations/nintendou.html">Nintendou</a>のように離散の記憶を建設へ向けた者は多い。「サルの言うことを信用するのか」という<a href="glossary.html#racial-friction">悪罵</a>と体格の良い者にバナナを差し出す<a href="glossary.html#hara-gori">ごりハラ</a>は、この人種が今も向き合う偏見の両端である。</p>
+    </article>
+
+    <article class="codex-entry" id="bastetoid">
+      <h2 class="codex-h">バステトイド <span class="en">BASTETOID — 猫型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: 星系全域（定住地を持たない者が多い）</div>
+      <div class="codex-sub">体高の目安: 170cm前後が基準 — イエネコ系170cm／サーバル系180cm／ライオン系・トラ系は200cm級。猫背のため実際より低く見られがち。マンチカン系は短脚のため専用の衣服がある（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">猫型人種と称される人種。あまり派閥を作らず各々が自由に生きる者が多いとされ、縛られることを嫌う気質ゆえか星系中に居住しており「ライラットではネコジャラシと猫はどこにでもいる」という諺ができたほどである。イエネコ系を基準にサーバル系やオオヤマネコ系、2m級のライオン系やトラ系までを含み、猫背のため実際より低く見られがちな体格とマンチカン系の短脚は<a href="glossary.html#size-class-housing">住宅規格</a>と被服の双方に専用の対応を生んでいる。<a href="#anubisoid">アヌビソイド</a>とは肉食系人種として食卓も作法も共有しながら気質は正反対とされ、両者の相性は茶の間の定番の話題である。</p>
+      <p class="codex-p">決まった惑星に定住しない者が多いため運送業に就く者が多く、大手運送業<a href="../corporations/black-cargo.html">ブラックカーゴ</a>や星間宅配ピザ<a href="../corporations/pizza-cat.html">ピザ・キャット</a>のように放浪の気質そのものを配達網に変えて成功した商売も多い。<a href="locations.html#katina">カタリナ</a>の開拓庁や無重力下の宙間建設、<a href="glossary.html#salvager">サルガッソーのサルベージャー</a>にもこの人種は多く、規律を重んじる組織との文化摩擦は各地で日常の風景である。一方で<a href="locations.html#kew">キュー</a>は星系で唯一この人種の入星を明文で禁じており、その背景には<a href="glossary.html#arpeggio">アルペジオ</a>の古傷があるとする分析が有力である。完全な鎖国のもとで沈黙を貫く<a href="factions.html#garou-federation">ガロウ連邦</a>ではトラ系が中央政権の中核を成していると解析されている。</p>
+      <p class="codex-p">文化面では換毛期の抜け毛で作る<a href="glossary.html#molting-season">モフモフのアクセサリー</a>や、酔うと猫背が伸びる習性から生まれた<a href="glossary.html#cantina">「猫の背で酔いを測れ」</a>の言い回しが知られ、兄弟で結成されたハードロックバンド<a href="glossary.html#popular-music">CATC</a>は星系史上最大級のセールスを記録した。運び屋<a href="../characters/cat.html">キャット・モンロー</a>、傭兵<a href="../characters/panther.html">パンサー・カルロッソ</a>、オオヤマネコ系の<a href="../characters/miyu.html">ミュウ・リンクス</a>、そして自由を好む人種には珍しく定住と規律の道を選んだ<a href="../characters/konya.html">コーニャ・マッカレル</a>軍曹、チーター系の思考の速さで知られた<a href="../characters/wenli.html">ニャン・ウェンリー</a>准将などはこの人種である。</p>
+    </article>
+
+    <article class="codex-entry" id="kyusoid">
+      <h2 class="codex-h">キューソイド <span class="en">KYUSOID — ネズミ型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: <a href="locations.html#kew">キュー</a> / ハクティバ通商連合圏</div>
+      <div class="codex-sub">体高の目安: 男性80cm前後／女性70cm前後 — 最小はチビトガリネズミ系の30cm級（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">ネズミ型人種と称され、<a href="factions.html#hactiva-union">ハクティバ通商連合</a>の息のかかったエリアや惑星<a href="locations.html#kew">キュー</a>を根城にしている人種である。小柄で非力だが卓越した計算力と商才を発揮する者が多く、商業界の有名人を最も多く輩出している一方、同時に利益のためには手段を選ばない狡猾さも併せ持つとされる。ハツカネズミ系やドブネズミ系を中心にシマリス系やチンチラ系、蝙蝠系やヤマアラシ系までを包括する区分であり、最小のチビトガリネズミ系は30cm級に留まる。植物食を基本とし、蝙蝠系のように<a href="glossary.html#madred">血液食</a>を主食とする種族もある。キューの<a href="glossary.html#basic-language">パラノディア語</a>を話せる唯一の哺乳類系人種でもある。</p>
+      <p class="codex-p">他人種より体格が圧倒的に小さく自衛のためにボディガードを雇う者が多い一方、被差別人種として不当な扱いを受けることも多く特に<a href="#bastetoid">バステトイド</a>との相性は最悪である。コーネリアの田舎で差別を受けながら暮らす者にとって雇用契約と引き換えに衣食住を保証する<a href="glossary.html#fortinbras">エラダードの商工会</a>は救いの主でもある。惑星キューの裏社会を牛耳るマフィア<a href="glossary.html#arpeggio">アルペジオ</a>や武器商人もほとんどがこの人種であり、廃墟だったキューを都市惑星へ縫い合わせたのは、かつて、コーネリアの港町で差別に耐えかねて移民した一人のチビトガリネズミ系の少年であった<a href="../characters/arpeggio.html">ビッグ・ボス</a>である。キューの人口の7割はこの人種が占める。</p>
+      <p class="codex-p">暮らしの寸法はこの人種のために作られた家具ブランド<a href="../corporations/q-brand.html">Q印良品</a>の上に成り立っており、<a href="glossary.html#size-class-housing">S帯</a>の住宅と小型種街区リトル・キュータウンはこの人種の体格を基準とする。雨の日にホルソイドの傘へ数名で相乗りする光景や、体格ゆえに一杯で足りる<a href="glossary.html#cantina">酒場</a>の最も安上がりな客という評はこの人種の日常を象徴している。商才は裏社会に限らず、<a href="../corporations/shimarisuka.html">シマリスカ</a>の初代社長や<a href="../corporations/pega-games.html">PEGA Games</a>の創業者スチュアートのようにコーネリアで身を立てた移民も多い。</p>
+    </article>
+
+    <article class="codex-entry" id="holsoid">
+      <h2 class="codex-h">ホルソイド <span class="en">HOLSOID — 鳥型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: 星系全域</div>
+      <div class="codex-sub">体高の目安: 200cm超 — 200〜230cm級が多い（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">鳥型人種と称され、<a href="#bastetoid">バステトイド</a>と同様に自由を好む性質から様々な惑星・地域で生活している人種。ただし自由奔放で軽薄さも併せ持つバステトイドと異なり、ホルソイドは誇りや義理を何よりも重んじ腕っぷしも強い。短気で細かいことを気にしない者が多く、怒らせると大変なことになると言われる。鳥類系の代謝の速さから星系で最も酒に強い人種とされ、コーネリアの港町<a href="glossary.html#lowerdog">ロウアードッグ</a>の酒場「カース・マルツゥ社交クラブ」が「酔い潰れる前に殴り合える人種」の街で生まれたのは偶然ではない。星系で最も人気の格闘技<a href="glossary.html#cross-bout">クロスバウト</a>の宇宙チャンピオンもこの人種が最多である。</p>
+      <p class="codex-p">遥か昔に外宇宙からオーバーテクノロジーを受信したのはこのホルソイドであり、<a href="glossary.html#paranid-empire">パラニド神聖帝国</a>では爬虫類人種を従えて神のように崇められていたと記録されている。遺構の壁画に描かれた翼と嘴の意匠は一貫しており、<a href="../planets/hactiva.html">「神々の門」</a>の向こうから「天の知恵」を持って訪れたという神話とも符合するが、現時点では証拠が何も残されておらず仮説の一つに過ぎないとされる。近年ではセティボスの大気圏に空中国家<a href="glossary.html#bolz-duchy">ボルツ公国</a>を築いた国民の大半もこの人種であり、誇りと詩吟の美学が生む気前の良さは公国の気風として記録されている。</p>
+      <p class="codex-p">2mを優に超える体格は<a href="glossary.html#size-class-housing">L帯</a>の住宅規格の基準であり、M帯基準の艦内で常に前屈みになる艦長や小型種街区で挟まって救助される事故は都市の風物詩となっている。額をなめる<a href="glossary.html#face-lick">古い作法</a>はこの人種には喧嘩を売るサインとなり、葬送は高所へ遺骨を置く風葬の伝統を持つ。一部の種族は紫外線を視認できることが確認されており他の人種と知覚できる色が異なることでトラブルになったりする場合がある。スターフォックスの<a href="../characters/falco.html">ファルコ・ランバルディ</a>は「飛んで殴る」家庭に育った教科書のようなホルソイドであり、フクロウ系の<a href="../characters/bowie.html">ロー・ジャスティン</a>もこの人種である。新興宗教<a href="glossary.html#mu-cult">ムー</a>の教祖「オー・ムー」がホルソイドの双子であったことはこの人種の歴史の影の側に数えられる。</p>
+    </article>
+
+    <article class="codex-entry" id="zetoid">
+      <h2 class="codex-h">ゼートイド <span class="en">ZETOID — イノシシ型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: コーネリア・ローザリンド州 / <a href="locations.html#macbeth">マクベス</a></div>
+      <div class="codex-sub">体高の目安: 180cm級 — 横幅と筋量は中型人種随一（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">イノシシ型人種と称され、山岳地帯の多いコーネリア共和国<a href="glossary.html#republic-states">ローザリンド州</a>と火山惑星<a href="../planets/macbeth.html">マクベス</a>を故郷とする人種。屈強な体力と「鉱脈を嗅ぎ分ける」と言われる鋭い嗅覚を持ち、採掘の勘は精錬やロボティクスの技術力へと発展した。労働と管理を一人で兼ねられる人材の多さがマクベスの工業力の源泉であり<a href="glossary.html#macbeth-steel">「マクベス鋼」</a>の銘は今も品質保証の代名詞である。植物食を好み自身と類似性の高い家畜ケダモノを忌避する食性から、この人種の多い地域では<a href="glossary.html#food-culture">豚肉がほとんど流通しない</a>。</p>
+      <p class="codex-p">中核をなすのは圧倒的な技術力で大グランベル国としのぎを削った旧ローザリンド公国の民である。マクベスへは入植初期から熟練工として渡り、労働者派閥の乱立を経て職人の合議体<a href="glossary.html#osric-council">オズリック技術者協議会</a>を築いた。協議会が発行する現地通貨<a href="glossary.html#cur-pearl">パール</a>と赤道幹線を秒単位で走らせる列車網はこの人種の勤勉さの象徴である。第2次ライラットウォーズの開戦と同時に<a href="factions.html#venom-empire">ベノム帝国</a>が真っ先にマクベスを奪取したのは資源よりも技術者たちを手中に収めるためだったとまで言われ、占領下の住民は<a href="glossary.html#citizenship">一等帝国民と同等の地位</a>と引き換えに軍需生産へ従事している。ただし兵器工廠で作られた機体の装甲内側にごく稀に見つかる小さなイノシシの刻印は「決まって重要な局面で故障する」と囁かれる。</p>
+      <p class="codex-p">「時間と金に精確」という評判は<a href="glossary.html#hamlet-depot">ハムレット車両基地の逸話</a>から星系中に広まった偏見であり当人たちはどこが面白いのか今も理解していない。酒場では<a href="glossary.html#cantina">酔うほど寡黙になって動かなくなる</a>ことで知られ、コーネリア都市部の地下鉄と道路網はこの人種の設計思想によるものである。ローザリンド州の技術者養成学校にはマクベスから来る熟練工の直接指導を求めて星系中から学生が集まる。スターウルフの<a href="../characters/pigma.html">ピグマ・デンガー</a>はパペトゥーン育ちのディールメーカーであり「値札を付けてはいけないものにまで値札を付けた」この男は「金に精確」という評判の最も不名誉な実例として語られる。</p>
+    </article>
+
+    <article class="codex-entry" id="heketoid">
+      <h2 class="codex-h">ヘケトイド <span class="en">HEKETOID — 両生類型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: <a href="locations.html#aquas">アクアス</a> / <a href="locations.html#zoness">ゾネス</a> / コーネリア（移民元: <a href="locations.html#kew">キュー</a>）</div>
+      <div class="codex-sub">体高の目安: 150cm級 — 跳躍時の到達高は体高の数倍に及ぶ（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">両生類型人種と称され、<a href="locations.html#aquas">アクアス</a>・<a href="locations.html#zoness">ゾネス</a>を中心に水辺を好んで生活する人種。出自は惑星<a href="locations.html#kew">キュー</a>であり<a href="glossary.html#paranid-empire">パラニド神聖帝国</a>で労働に従事した爬虫類系の民を<a href="#paranodian">パラノディアン</a>と共通の祖に持つと考えられている。宇宙歴2600年頃にアクアスへ渡って先住種族<a href="#native-aquan">ネイティブ・アクアン</a>と融和し旧タッドー共和国の主要人種を構成した。「剣よりもペン、制圧よりも融和」を旨とする気質はアクアンとの出会いを星系史の幸運に変え、サンゴと共生する生体建築の水中都市群は今も州都ロミオを中心に稼働している。跳躍力は体高の数倍に及び水棲系ゆえに<a href="glossary.html#gravity-gap">重力酔い</a>を起こしやすい。</p>
+      <p class="codex-p">現在は人口の大半が<a href="locations.html#corneria">コーネリア</a>に移住しており、自然と調和した建築技術がコーネリア都市部の景観を作り出している。移住者の中で懐妊した者たちはアクアスの4つの月の潮力が最大になる<a href="glossary.html#keanos-tide">「ケアノスの大潮」</a>と呼ばれる時期に、産卵および出産のため故郷の海へ里帰りする。また、葬送についても火葬がメジャーになった現星系においてなお遺体を海へ還す水葬を守る。技術と知識を尊ぶ姿勢が<a href="#alphoid">アルフォイド</a>と通じ合うようで連合結成以前からステファノーとは友好関係にあり、迫害されてきたパラノディアンに融和的な態度で接した唯一の勢力でもある。一方で皮膚から星系屈指の猛毒を作り出す種族もおり共同浴場で友軍300名を病院送りにした事件は<a href="glossary.html#venom-etiquette">毒のエチケット</a>の項に詳しい。昆虫肉を好む食性も<a href="glossary.html#food-culture">食卓</a>の特徴である。</p>
+      <p class="codex-p">技術者を輩出する人種として知られ、<a href="../characters/toad-family.html">トード家</a>は主任設計技師ベルツィーノからスターフォックスのメカニック<a href="../characters/slippy.html">スリッピー</a>まで星系の技術を支える一族であり、<a href="../corporations/grippia-works.html">グリッピア・ワークス</a>のグリッピー・トードは惑星一つを私有するに至った。帝国側では星系史上最強の軍師こと大提督<a href="../characters/kellone.html">ミズローヌ・ケローン</a>がコバルト・ヤドクガエル系の出自であり、中枢種族ならぬこの人種が帝国の頂点に立つ事実は皇帝の実力主義の証明とされる。占領下のゾネスから逃れた市民が結成した<a href="glossary.html#return-alliance">ゾネス帰還同盟</a>もこの人種を中核とする。</p>
+    </article>
+
+    <article class="codex-entry" id="polarisoid">
+      <h2 class="codex-h">ポラリソイド <span class="en">POLARISOID — 熊型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: コーネリア・グランベル州／<a href="glossary.html#state-tigerleaves">タイガーリーブス州</a> / <a href="locations.html#fichina">フィチナ</a>州</div>
+      <div class="codex-sub">体高の目安: 220cm級 — 大型人種の代表格（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">熊型人種と称され、主にコーネリアの<a href="glossary.html#republic-states">グランベル州とタイガーリーブス州</a>で生活している人種。大柄で力が強くおおらかで優しい性格の持ち主が多いが、<a href="#holsoid">ホルソイド</a>と並んで「決して怒らせてはいけない人種」と言われる。体色が白いシロクマ系の種族は寒冷な<a href="../planets/fichina.html">フィチナ州</a>に住む者も多く、ヒグマ系からツキノワグマ系まで幅広い系統を含む。2mを優に超える体躯は<a href="glossary.html#size-class-housing">L帯</a>の住宅規格の基準となる。</p>
+      <p class="codex-p">タイガーリーブス州の前身はこの人種の実効支配圏であったタイガーリーブス自治領であり、深い針葉樹の山々と渓谷に暮らす農家や猟師の暮らしは共和国成立後も大きく変わっていない。人口はあまり多くないがその体躯と忠義心から<a href="#anubisoid">アヌビソイド</a>や<a href="#alphoid">アルフォイド</a>の要人のお付きを務める者や惑星キューで警備員を務める者が多く、総じてボディガードに高い適性を持つ。艦船の居住区が中型人種の規格で作られているため艦隊勤務では不利になり、地上軍や<a href="military.html#great-wall">グレートウォール</a>の駐留部隊に集まる傾向がある。体躯でコックピットに収まりきらず操縦適性を疑われながら同期最上位で卒業した<a href="../characters/bear-noguchini.html">ベアー・ノウグッチーニ</a>軍曹の「機体が小さいのではない」の一言はこの人種の意地を語る際に必ず引かれる。</p>
+      <p class="codex-p">無類の鮭好きとして知られ、秋に鮭が遡上する季節になると武器を手に故郷の川へ帰る<a href="glossary.html#salmon-leave">サーモン休暇</a>を取得する者が多い。冬眠種族でもあり川から戻るとそのまま<a href="glossary.html#hibernation-leave">冬眠休暇</a>へ入る場合があるため、「クマの判は夏に貰え」は星系の管理職なら誰もが知る格言である。戦時公報の顔となった「笑うクマの撃墜王」ベアー・ノウグッチーニがこの人種の代表格であり、フィチナ州副知事のベアーチェは<a href="glossary.html#gori-bachov">アルフォイドの父とポラリソイドの母</a>を持つ希少な混血として知られる。</p>
+    </article>
+
+    <article class="codex-entry" id="astarosoid">
+      <h2 class="codex-h">アスタロソイド <span class="en">ASTAROSOID — 馬型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: <a href="locations.html#katina">カタリナ</a> / コーネリア</div>
+      <div class="codex-sub">体高の目安: 200cm級（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">馬型人種と称される人種。サラブレッド系から農耕馬系やロバ系まで幅広い系統を含み、持久力と身体能力は全人種で最高を記録する一方その高さに反比例するように手先は不器用である。指が1本の蹄であるため就学年齢に入ると専用の<a href="military.html#cybernetics">マニピュレータ義手</a>を装着するのが通例であり、これは<a href="glossary.html#veterans-care">サイバネティック技術の民生応用</a>として最も普及した例に数えられる。退役兵が意匠を競う「義体展示会」で最優秀賞を毎年のように蹄型義手の学生が持ち帰り「あれは義手ではなく実家の技術である」と不満を買っているのはこの人種である。</p>
+      <p class="codex-p">広い場所を好む気質で知られ、コーネリアの平原地帯を故郷としながら<a href="glossary.html#republic-states">カタリナ州</a>が植民地として開放された際には真っ先に志願し、バステトイドと並んで同州で人口最多の人種となった。乾季には地平線まで褐色の草原が続く<a href="../planets/katina.html">カタリナ</a>のサバンナは彼らにとってまさに理想の入植地であり、「ノラ」の名を冠する野営地から始まった各都市の開拓史はそのままこの人種の移住史でもある。走ることそのものが文化に深く根付いており、州の収穫祭で行われる大平原横断競走は星系有数の祭事として知られる。他方で万能家畜<a href="glossary.html#madred">マドレッド</a>に騎乗する競技が州で最も人気のスポーツとなっている点については「馬が馬に乗る」と他州の者が首を傾げるのが通例である。</p>
+      <p class="codex-p">毛は<a href="glossary.html#barber">床屋</a>の項に詳しいとおり高級カツラや楽器の材料に充てられ、とりわけ女性の尻尾の毛はバイオリンの弓に欠かせない最高級品として扱われる。カタリナ第3植民都市<a href="glossary.html#lylat-cities">ノラ・キンシャサ</a>の町長もこの人種であり、草原に落ちた帝国軍の超大型母艦の残骸をそのまま「鉄の丘」として観光地に仕立て、通り道の町を「行ってみたい観光地」の上位常連へ押し上げた抜け目のない手腕で知られる。玩具大手<a href="../corporations/pega-games.html">ペガ・ゲームズ</a>の創業者の一人レイモンド・Jはサラブレッド系のアスタロソイドであり、クロネズミ系のキューソイドと並んで商談に現れる「白黒凹凸コンビ」は界隈の名物であった。</p>
+    </article>
+
+    <article class="codex-entry" id="sacrifoid">
+      <h2 class="codex-h">サクリフォイド <span class="en">SACRIFOID — 山羊型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: コーネリア各州（少数）</div>
+      <div class="codex-sub">体高の目安: 女性150cm級／男性180cm級 — 男性は角を含めた印象が200cm級（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">山羊型人種と称される草食系の人種。人口は多くないものの辛抱強く温厚な気質と、痩せた土地や高地への並外れた適応力で知られる。性差が大きく女性150cm級に対し男性は180cm級で角を含めた印象は<a href="glossary.html#size-class-housing">L帯</a>の上限に届く。角は個体ごとに形状が異なり山岳系の湾曲した大角から平地系の短い直角まで系統によって印象が大きく変わる。全身の毛は<a href="glossary.html#barber">毛髪屋</a>で安定した価格で取引される定番品であり一部の系統は夏と冬の年2回の大規模な毛刈りを必要とする。</p>
+      <p class="codex-p">開拓時代には険しい土地の開拓や高所作業に従事する者が多く、「サクリフォイドの村は潰れない」という言い回しが生まれた。コーネリアの旧貴族層との縁組みも古くから記録されており、穏健な家風の家系に嫁ぎ手として迎えられた例が多いとされる。他人種との混血は少なくない一方で体質の知見が乏しく、<a href="../characters/fatman.html">ジェラルド・ファットマン</a>のようにアヌビソイドとの間に生まれた「有角の狼」は<a href="glossary.html#cross-species-medicine">種族横断医療</a>が整う以前の希少例として記録されている。角を引っかけないよう天井が高く丸窓や丸扉を備えた住宅を好み、同じ悩みを持つ<a href="#kernunosoid">ケルヌノソイド</a>や亀系<a href="#paranodian">パラノディアン</a>と不動産情報を共有する「丸扉組合」は各都市に存在する。</p>
+      <p class="codex-p">成人の節目に自分の角へ飾り環を贈られる文化を持ち、太い尻尾を活かした<a href="glossary.html#fashion-custom">服飾</a>にも一家言がある。葬送は遺灰を苗木の根元へ納める<a href="glossary.html#space-burial">樹木葬</a>を好み、環境活動団体<a href="glossary.html#greenpeace">グリーンピース</a>の参加者が揃って草食系人種で占められているのはこの人種の自然観の反映とも言われる。なお「紙でも食べられる」という俗説は本人たちが最も嫌う冗談であり、実際の食卓の作法はむしろ星系でも折り目正しい部類に属する。万能家畜<a href="glossary.html#madred">マドレッド</a>の顔つきがこの人種に心なしか似ていると言われることも同様に歓迎されていない。</p>
+    </article>
+
+    <article class="codex-entry" id="ganesiosoid">
+      <h2 class="codex-h">ガネシオソイド <span class="en">GANESIOSOID — 象型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: カタリナ州 / コーネリア各州（少数）</div>
+      <div class="codex-sub">体高の目安: 300cm級がほぼ全員 — マンモス系など古代種は400cmに及ぶ（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">象型人種と称される草食系の人種。マンモス系やナウマン系といった古代象の系統までを包括する括りであり、既知の人種の中で最大クラスの体格を持つことで知られる。ほぼ全員が300cm級に達し古代種は400cmに及ぶため、<a href="glossary.html#size-class-housing">住宅規格</a>では唯一XL帯に区分される。性質は温厚そのもので一度受けた恩を世代を跨いで語り継ぐ記憶力と義理堅さを持つ。可聴域より低い声で語り合う「地鳴り話」と呼ばれる会話文化を持ち、サバンナでは数km先の同胞と挨拶を交わすことができる。</p>
+      <p class="codex-p">巨躯ゆえに星系の建築規格を大きく超え、コーネリアの都市部では何かと肩身が狭い。広大な平地を求めて<a href="../planets/katina.html">カタリナ</a>へ移住する者が多く、自分たちの寸法で街を建てた第8植民都市<a href="glossary.html#mixed-city">ノラ・ハルトゥーム</a>は全てが体高3m超の規格で作られた星系唯一のXL帯都市である。中型種の観光客はここで初めて「他人の腰の高さで暮らす」小型種の日常を体験することになる。カタリナでは建築や重機仕事の親方にこの人種が多く「ガネシオの棟梁が組んだ家は孫の代まで軋まない」という言い回しが残る。なお方言がフォルトナの<a href="../planets/fortuna.html#tribe-snowhorn">スノーホーン族</a>の言語と6割方共通することが<a href="../other/fortuna-survey-1.html">現地調査</a>で確認されており、両者のルーツを巡る議論が人類学の新たな論点となっている。</p>
+      <p class="codex-p">艦船の居住区はもとよりコックピットにも収まらないため軍では陸上部隊に集中し、帝国側でも強襲陸上部隊出身の親衛隊員<a href="../other/imperial-guard.html">アウグスト・アイゼンホルン</a>が「人型をした重戦車」の異名で知られる。共和国側では<a href="../characters/bowie.html">ブルーボンバーズ</a>の整備主任チャックが廃業した遊覧会社の機体を借金ごと引き取った陽気な巨漢として記録されており、この人種の義理堅さを語る例に引かれる。葬送は遺灰を苗木の根元へ納める<a href="glossary.html#space-burial">樹木葬</a>を好み、ハルトゥームでは巨木の並木そのものが墓地を兼ねているという。</p>
+    </article>
+
+    <article class="codex-entry" id="minosoid">
+      <h2 class="codex-h">ミノソイド <span class="en">MINOSOID — ウシ型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: コーネリア各州（ヴァリス州ほか） / <a href="locations.html#prospero">プロスペロー</a> / <a href="locations.html#green-bit">グリーン・ビット</a></div>
+      <div class="codex-sub">体高の目安: 男女とも250cm級 — <a href="#ganesiosoid">ガネシオソイド</a>に次ぐ巨躯（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">ウシ型人種と称される草食系の人種。バイソン系・ヤク系・ヌー系・ホルスタイン系などを包括する括りであり、男女とも250cm級という<a href="#ganesiosoid">ガネシオソイド</a>に次ぐ巨躯を持つ。パワフルで頼りになる者が多く仲間意識は他のどの人種よりも高い。古くからの街と文化を大切に守り続ける者が多い反面、仲間意識の強さが古い慣習への固執や排他性に転じる弊害も指摘されている。一定の年齢から男性は頭部に立派な角が生え、女性は成人してしばらくすると胸から常にミルクが出るようになり、これが成人の節目の基準とされる。</p>
+      <p class="codex-p">コーネリアの移民の中では最後に移動が行われた人種であり、代々の土地への執着は星系随一である。集団行動に強く堅実で屈強な者が多いため警察官や自警団の担い手として重用され、集約農業の働き手として<a href="locations.html#prospero">プロスペロー</a>や<a href="locations.html#green-bit">グリーン・ビット</a>へ移住して農業に携わる者も多い。コーネリアの最果てヴァリス州の村々では<a href="#sacrifoid">サクリフォイド</a>と共に文明の利器を使わない健全な暮らしを営む者が多く、都会に疲れた者たちへ「お試し田舎暮らし体験」を開いていることでも有名である。中型人種に合わせて設計された都心部に来たがらないのは窮屈さに由来するとも言われる。女性のミルクは副収入として家計を大いに助けており、この人種の住む地域は辺境であっても貧困にならないことが特徴に数えられる。</p>
+      <p class="codex-p">「赤いものを見ると興奮する」という俗説が広く流布しているが、これは文字どおり真っ赤な嘘である。当人たちの説明によれば、そのような礼儀に欠く相手がいたら誰であろうとぶっ飛ばしているだけだという。コーネリアとプロスペローを管轄する警察組織<a href="glossary.html#cpv">「ポリス・ヴァンガード」</a>の所長<a href="../characters/redford.html">バイソン・レッドフォード</a>はこの人種であり、集団行動と堅実さを旨とする気質が治安機関の要職に結びついた代表例として知られる。</p>
+    </article>
+
+    <article class="codex-entry" id="kernunosoid">
+      <h2 class="codex-h">ケルヌノソイド <span class="en">KERNUNOSOID — 鹿型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: 旧・惑星ステファノー / <a href="locations.html#prospero">プロスペロー</a> / カタリナ州</div>
+      <div class="codex-sub">体高の目安: 女性170cm級／男性200cm級 — 男性は角を含めると240cm級に見える（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">鹿型人種と称される草食系の人種。シカ系からトナカイ系・ヘラジカ系までを包括する括りであり、遠い祖先が信仰していた角持つ森の神ケルヌノスの名を冠している。<a href="#alphoid">アルフォイド</a>と同じく本来は第6惑星<a href="glossary.html#stephano">ステファノー</a>を本拠とした人種であり、惑星と共に文化と人口の大半を失った離散の歴史を共有している。生き残った人々は星系各地へ散り、現在はその多くが緑の多い<a href="locations.html#prospero">プロスペロー</a>と広大な平地を持つ<a href="../planets/katina.html">カタリナ</a>へ移住している。ステファノーの記憶を語り継ぐ集まりではアルフォイドと肩を並べて座るのが習わしであり、両人種の間には故郷を同じくする者としての静かな連帯がある。</p>
+      <p class="codex-p">最大の特徴は男性の頭部に備わる巨大な枝角である。性差が大きく女性は170cm級であるのに対し男性は200cm級に達し、角を含めた印象は240cmに及ぶ。振り向きざまに角を引っかける事故は日常茶飯事であるため、天井が高く角のない丸窓や丸扉を備えた住宅を好み、同じ悩みを抱える<a href="#sacrifoid">サクリフォイド</a>や甲羅を通す幅を要する亀系<a href="#paranodian">パラノディアン</a>と不動産情報を共有し合っている。トナカイ系は寒冷地への適応力が高くフィチナの開拓にも従事した記録があり、角の生え替わりの時期を祝う「落角祭」は移住先のプロスペローで季節の風物詩として定着しつつある。</p>
+    </article>
+
+    <article class="codex-entry" id="native-aquan">
+      <h2 class="codex-h">ネイティブ・アクアン <span class="en">NATIVE AQUAN — 水性哺乳類型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: <a href="locations.html#aquas">アクアス</a>（<a href="sectors.html#mu">セクターμ</a>保護区）</div>
+      <div class="codex-sub">体高の目安: 体高の概念が当てはまらず全長で表す — イルカ系の2〜4m級が基準。クジラ系は最大30m級に達し、フォルトナのハイト族と並ぶ星系最大の人種の一つ（住宅規格の対象外）（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">イルカ・クジラ・イッカク・マナティなど他の惑星にはほとんど見られない水性哺乳類で構成される人種。宇宙歴元年の入植船団のうち水の豊かなソーラ圏を目指した水生の民を祖とし、惑星<a href="../planets/aquas.html">アクアス</a>の海で約2600年の隔絶を経て独自の進化を遂げた。言語の代わりに数百キロ先まで届く「歌」で意思を通わせる星系でも他に類を見ない社会様式を持ち、その生活は都から日常まで全てが水中で完結する。体高の概念がなく<a href="glossary.html#size-class-housing">全長で数えられる</a>人種であり、イルカ系の2〜4m級を基準としてクジラ系は30m級に達する。文明の水準は群れごとに幅があり、都を築いた王族と外洋を回遊する群れとでは外来者との接し方も異なる。</p>
+      <p class="codex-p">深い海に築かれた文明は外部から視認できず、アクアスは長らく「着陸できない無人の星」と誤認されていた。惑星キューから移民した<a href="#heketoid">ヘケトイド</a>との遭遇後は双方の合意のもと一つの国家へ融合し、海底の都と真上のヘケトイドの街を貫く州都<a href="glossary.html#lylat-cities">ロミオ</a>はその歴史そのものである。旧タッドー共和国の最高議長を務めたトーマスはシロナガスクジラ系のアクアンであり、二百年以上殺し合ってきた各国に停戦を呼びかけた<a href="glossary.html#concord-declaration">『協和宣言』</a>の主として星系史に名を残す。体が席に収まらないため自前の<a href="glossary.html#droids">サーヴァントドロイド</a>を議長席に座らせて空席の誤解を防いでおり、議場の壁だと思っていた影から声が響き来賓が仰天した逸話が伝わる。</p>
+      <p class="codex-p">現在は<a href="locations.html#aquas">セクターμ</a>全体が保護区域に指定され、他セクターからの来訪者には審査と通行料が課される。海底火山群アースラ山脈を巡る回遊は<a href="glossary.html#lylat-mountains">巡礼の歌の道</a>に数えられ、遺体を海へ還す<a href="glossary.html#space-burial">水葬</a>を今も守る。歌を読み解いて天候や潮流を判じる「歌読み」は州公認の資格職となっている。<a href="../weapons/bluemarine.html">ブルーマリン</a>が聖域を守り抜いたアクアス戦の後に歌へ推進音を模した旋律が加わったことは、この人種が外の世界をどう記憶するかを示す例として研究者の関心を集めている。</p>
+    </article>
+
+    <article class="codex-entry" id="saurian">
+      <h2 class="codex-h">サウリアン <span class="en">SAURIAN — フォルトナ現地知覚種族（総称）</span></h2>
+      <div class="codex-sub">主な出身・居住地: <a href="locations.html#fortuna">フォルトナ</a>（全土 — 惑星外への移住例なし）</div>
+      <div class="codex-sub">体高の目安: 部族により大きく異なる — 二足歩行を基本としない部族もあり建築規格の対象外（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">惑星<a href="../planets/fortuna.html">フォルトナ</a>に暮らす知性ある恐竜族の総称。星系に分布する既知の人種と系統を全く異にする現地知覚種族であり、共和国民ではなく星間法の適用も受けない。「サウリアン」は共和国側の便宜的な総称であって当人たちはアソーカやクラウドといった<a href="../planets/fortuna.html#tribes">部族名</a>で名乗り、森の外の者を全て「アニマリア」と一括りに呼ぶのとちょうど逆向きの括りである（<a href="glossary.html#sauria-animalia">サウリアとアニマリア</a>を参照）。体形の幅は星系のどの人種より広く二足歩行を基本としない部族も多い。総称には哺乳類系のマンモス型部族<a href="../planets/fortuna.html#tribe-snowhorn">スノーホーン族</a>まで含まれる。</p>
+      <p class="codex-p">文明の水準は部族ごとに大きく異なる。都市を築き貴族階級を持つ<a href="../planets/fortuna.html#tribe-cloud">クラウド族</a>や聖地の守護を担う<a href="../planets/fortuna.html#tribe-asoka">アソーカ族</a>の王族は外来者との意思疎通も通商も成立する一方、密林の奥に隠れ住む少数部族には動物との境界が曖昧な集団もあり、「人」の範囲をどこで区切るかは人類学の未解決問題とされる。部族間の対立は絶えず、フォルトナ戦役を機に5部族が結んだ<a href="factions.html#saurian-alliance">サウリアン同盟</a>も暫定的な代表勢力に過ぎない。学者たちがこの部族社会を「時を止めることを選んだ文明」と呼ぶのは、星の各地に眠る「精霊」への信仰と<a href="glossary.html#spell-stone">スペルストーン</a>を動かしてはならない掟が数千年にわたり守られてきたためである。</p>
+      <p class="codex-p">言語は星系のあらゆる言語体系と異なる完全な独立言語であり、息を吸いながら発音する母音など哺乳類系人種の喉では再現の難しい音を含む。部族ごとに口にすれば交渉が即座に決裂する禁句「逆鱗」が存在するため接触には周到な準備を要し、<a href="glossary.html#fortuna-campaign">フォルトナ戦役</a>時の<a href="../other/fortuna-survey-1.html">現地調査</a>で3言語対応の翻訳装置が実用化されたことでようやく研究が前進した。アソーカ族の王子<a href="../characters/tricky.html">トリッキー</a>は恐竜族の王族として初めて共和国人と肩を並べて戦った例である。シャープクロウ族を率いる<a href="../characters/scales.html">スケール将軍</a>は血統ではなく実力のみで族長に認められた唯一の異例であり、共和国の将来脅威の筆頭に数えられている。</p>
+    </article>
+
+    <article class="codex-entry" id="paranodian">
+      <h2 class="codex-h">パラノディアン <span class="en">PARANODIAN — 爬虫類型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: 星系全域 / <a href="locations.html#titania">タイタニア</a> / <a href="locations.html#fortuna">フォルトナ</a></div>
+      <div class="codex-sub">体高の目安: 種族差が大きい — トカゲ系170cm級／ワニ系200cm級／亀系は体高より甲羅の幅が規格の基準になる（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">爬虫類型人種の総称。彼らの遠い祖先が信仰していた知識の神<a href="../planets/hactiva.html">パラニド</a>の名を冠した種族であり、<a href="glossary.html#paranid-empire">パラニド神聖帝国</a>で労働に従事した爬虫類系の民を<a href="#heketoid">ヘケトイド</a>と共通の祖に持つと考えられている。星系内の至る所に住んでおり、トカゲ系やワニ系からワニガメ系に至るまで種族差が大きく、亀系では体高より甲羅の幅が<a href="glossary.html#size-class-housing">住宅規格</a>の基準になる。体温調整が苦手なため衣装箪笥は「夏は裸同然、冬は着ぶくれ」の両極端であり、血液や牙に猛毒を持つ種族もいることから<a href="glossary.html#venom-etiquette">毒のエチケット</a>の主な対象でもある。</p>
+      <p class="codex-p">ライラット星系ではこの人種は長く迫害の対象となっており今なお差別や偏見を持つ者が少なくない。種族的に粗野で衝動性が高い傾向があることも偏見を助長する要因となったようである。融和的な態度で接したのは旧タッドー共和国のみであったためヘケトイドとの信頼関係はかなり深く、コアワールドで居場所を失った者にとって雇用契約で衣食住を保証する<a href="glossary.html#fortinbras">エラダードの商工会</a>は避難所となった。この迫害の歴史は<a href="factions.html#venom-empire">ベノム帝国</a>の人口構成に直結しており、各地で差別されてきたこの人種は帝国の戦闘機搭乗員の中核を成している。一方で各地で差別されながら共和国の頂点まで登った<a href="../characters/harding.html">ハーディング将軍</a>の経歴は、その対極の例としてしばしば引き合いに出される。</p>
+      <p class="codex-p">派生民族のうち唯一まとまった観測記録があるのは<a href="../planets/titania.html">タイタニア</a>の地下洞窟網に暮らす「ティターニアン」である。磁気嵐を読む独自の暦と死者を砂に還す死生観を持つ寡黙な民であり、地底の集落サマル・カイでは近年文明水準の上昇が観測されている。<a href="../planets/fortuna.html">フォルトナ</a>の密林奥地にも神聖帝国の数少ない生き残りの末裔とされる部族が原始的な生活を営んでおり、両惑星の文明的つながりは人類学の熱い論点である。スターウルフの<a href="../characters/leon.html">レオン・ポワルスキー</a>、エリア6の哨戒兵<a href="../characters/caiman.html">カイマン</a>はこの人種である。</p>
+    </article>
+
+    <article class="codex-entry" id="apophisoid">
+      <h2 class="codex-h">アポフィソイド <span class="en">APOPHISOID — 蛇型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: 星系全域（少数） — 広義には<a href="#paranodian">パラノディアン</a>の一種</div>
+      <div class="codex-sub">体高の目安: 直立時170cm級 — 全長では3mを超える者もいる。手足を持たない形態のため他人種と共有できる建築様式が存在せず、完全に独立した建築基準を持つ（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">蛇型人種と称され、広義には<a href="#paranodian">パラノディアン</a>の一種であるが他種族とは一線を画す人種のため本データベースでは別記事とする。星系で最も進んだ<a href="military.html#cybernetics">サイバネティック技術</a>を有すると同時に最も強烈な嫌悪と忌避を集める人種である。元来より開拓団に含まれていなかったとされ、星系各地の神話に共通して登場する「楽園を追われる原因を作り出した生物」に酷似していることから根深い差別の対象となってきた。手足を持たない体形は階段も扉の把手も存在しない独自の建築様式を生み、他の人種と共有できる<a href="glossary.html#size-class-housing">住宅規格</a>が一つもない。</p>
+      <p class="codex-p">星系全域に散在するが故郷と呼べる惑星や集落を持たず、トカゲ系の部族に蛇系の子が一人だけ生まれた例があるようにどこで生まれるかを予測できない人種である。手足のないフォルムで文明生活を営むために自らの手足を作り出したことがサイバネティック技術発展の始まりとされ、その義肢の技術は<a href="../corporations/chiwawa-pharma.html">チーワワ合同製薬会社</a>との提携を通じて<a href="glossary.html#veterans-care">負傷した軍人の人生</a>を支えている。ハクティバ圏を牛耳るマフィア<a href="../characters/arpeggio.html">アルペジオ</a>が唯一恐れるのはこの人種のアサシン集団であり、過剰なまでの差別意識はアルペジオが意図的に星系中へ流したデマが原因とも考えられている。</p>
+      <p class="codex-p">牙に他人種にとって致命的な猛毒を持つ者が多く、<a href="glossary.html#venom-etiquette">毒のエチケット</a>の厳格な遵守が文明社会での同居の前提となっている。惑星<a href="../planets/kew.html">キュー</a>の殺し屋横丁は本来この人種の様式で建てられた区画であり、部外者を寄せ付けないのは警備のためだけではない。独立星系連合で連合軍を幾度も窮地に陥れた<a href="../characters/nahash.html">ナハシュ・ギルバスター</a>将軍は全身サイボーグ化を遂げ義腕6基の「六刀流のギルバスター」として星系中で指名手配された。殺し屋横丁の番付首位<a href="../characters/kid-cobra.html">キッド・コブラ</a>は全身改造で外見をパラノディアンに近づけた例であり、蛇であることを隠して生きる者と隠さずに恐れられる者の両方をこの人種は輩出している。</p>
+    </article>
+
+    <article class="codex-entry" id="salmonoid">
+      <h2 class="codex-h">サーモノイド <span class="en">SALMONOID — 鮭型知覚生物（暫定）</span></h2>
+      <div class="codex-sub">主な出身・居住地: コーネリア タイガーリーブス州 リバーサイドデルタ（遡上期のみ地上へ） / 平時の生息域は海面下・未確認</div>
+      <div class="codex-sub">体高の目安: 小型50cm級から人を丸呑みにする大型まで — 建築規格の対象外（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">コーネリアの鮭を人種に含めるかは悩むところであるが、<a href="#native-aquan">ネイティブ・アクアン</a>や<a href="#saurian">サウリアン</a>などグレーゾーンの種族も含む本データベースの方針に従い、便宜上「サーモノイド」として記載する。<a href="glossary.html#salmon-leave">サーモン休暇</a>の項に詳しいとおり武器を手に編隊を組み、廃材から機動兵器を作り、遡上の行進では独自の音楽を大音響で鳴らす。道具と集団行動と音楽を持つ生物を「ケダモノ」と呼び続けることに人類学者が耐えられなくなった結果がこの項である。</p>
+      <p class="codex-p">鮭は既知のどの言語体系とも合わず、仲間意識はあるが意思の疎通は不可能と考えてよい。性格は極めて交戦的であり、「誰よりもおいしく食べられる」ことを至上の悦びとする独自の宗教観を共有しているという。この宗教観は撃退した個体の行動記録から推定されたものであり、追い詰められた鮭が抵抗をやめて自らを差し出すように見える瞬間が繰り返し観察されている。宗教観が正しければ鮭にとってシャケ狂いは天敵ではなく成就の相手ということになり、タイガーリーブス州の住民はこの解釈を「気味が悪いので聞かなかったことにする」と表明している。腹に抱える<a href="glossary.html#energy-roe">イクラ</a>の出自と併せ、この種族の起源については<a href="glossary.html#lantern-return">始祖の開拓団</a>との関係を疑う説が根強い。</p>
+    </article>
+
+    <article class="codex-entry" id="selenoid">
+      <h2 class="codex-h">セレノイド <span class="en">SELENOID — ウサギ型人種</span></h2>
+      <div class="codex-sub">主な出身・居住地: 不明 — 星系全体でも確認数は極めて少ない希少人種</div>
+      <div class="codex-sub">体高の目安: 定まった身長がない — 同じ家系でも160cm級から190cm級まで振れ幅があり、体格帯は個人ごとに判定される（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
+      <p class="codex-p">ウサギ型人種と称され、星系内でもほとんど確認されていない希少人種。<a href="#paranodian">パラノディアン</a>と並びルーツや文明の変遷が一切判明しておらず、一説によれば「月兎」と呼ばれる極めて強力な戦闘民族の末裔である可能性が示唆されている。体格にも定まった基準がなく<a href="../characters/peppy.html">ペッピー・ヘア</a>が160cm程度であるのに対し娘のルーシーは180cm近く、<a href="../characters/amber.html">アンバー・シルフェイド</a>も190cm近い。親子や兄弟の間ですら体高が揃わないのはこの人種だけであり、<a href="glossary.html#size-class-housing">体格帯</a>も<a href="glossary.html#cross-species-medicine">成長曲線</a>も個人ごとに引き直される。</p>
+      <p class="codex-p">星系の記録には入植時代からごく少数の姿が点々と現れるのみで、まとまった集落や故郷の惑星を持った形跡がない。辺境の民話に残る「月兎は赤い目から来た」という伝承は星系最果ての暗赤色の宙域<a href="../planets/dogma.html">ドグマ</a>を指すと解釈されることがあるが、学術的には根拠のない口承とされる。深い洞察力と瞬発力は月兎の闘いのセンスの名残と言われ、ペッピーの生家のように家長を含め家族が一人残らず軍人という家系も知られる一方、詳細を知る者はもはやいない。希少ゆえに<a href="glossary.html#barber">毛は最高級品として闇で取引</a>され、過去には襲撃事件や墓荒らしまで起きた。</p>
+      <p class="codex-p">植物食を好み<a href="glossary.html#food-culture">繊維質の多い食卓</a>を好む。犬系猫系の人種が親愛を示す<a href="glossary.html#face-lick">額をなめる作法</a>はこの人種には服従のサインと受け取られるため、混成部隊では最初に教えられる注意事項の一つである。スターフォックスの参謀ペッピー・ヘアは月兎の血を引く旧家の出身であり、共和国軍<a href="../other/vorpal.html">ヴォーパル隊</a>を率いるアンバー・シルフェイド少佐は軍籍にあるほぼ唯一の同族として知られる。精肉大手<a href="../corporations/butchermans.html">ブッチャーマンズ・ワークス</a>の現CEOがこの人種であり、就任会見の第一声「私は肉を食べません」が星系中の話題をさらった逸話は、希少人種の数少ない愉快な記録に数えられる。</p>
+    </article>
+
+    <article class="codex-entry" id="minor-races">
+      <h2 class="codex-h">その他のマイナー人種 <span class="en">MINOR RACES</span></h2>
+      <p class="codex-p">上記の主要人種以外にも、アルマジロ型人種「モーフォイド」（<a href="../characters/kid-cobra.html">ローリィ・ポリーナ</a>）、カモノハシ型人種「オルニソイド」、ナマケモノ型人種「ソローソイド」など、細かい人種は多岐にわたる。オルニソイドは哺乳類でありながら卵を産み嘴と毒の蹴爪を持つため統計局の分類表で毎年のように所属欄が移動しており、ソローソイドは行動が緩慢なだけで思考は緩慢ではないと本人たちが主張し続けているが、主張し終わる前に聞き手が立ち去るため反論はいまだ記録に残っていない。全て合わせると320種を超えるとされ、その全容は共和国の統計局ですら把握しきれていない。</p>
+    </article>
+
+
+    <div class="race-ov" id="raceOv" aria-hidden="true">
+      <div class="race-card" role="dialog" aria-modal="true">
+        <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i><i class="seg h s4"></i><i class="seg h s5"></i><i class="seg h s6"></i><i class="seg v s7"></i><i class="seg v s8"></i>
+        <div class="rc-label">RECORD // RACE</div>
+        <button class="rc-close" id="rcClose" type="button" aria-label="close">×</button>
+        <button class="rc-nav prev" id="rcPrev" type="button" aria-label="前の人種">‹</button>
+        <button class="rc-nav next" id="rcNext" type="button" aria-label="次の人種">›</button>
+        <div class="rc-body">
+          <div class="rc-fig" id="rcFig"></div>
+          <div class="rc-text" id="rcText"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script>
+    /* ═══ 人種ページ: 表示モード切替 ＋ ギャラリーの説明カード ═══ */
+    (function() {
+      var KEY = 'raceDispMode';
+      var mainEl = document.querySelector('.codex-main');
+      var listBtn = document.getElementById('dispList');
+      var cardBtn = document.getElementById('dispCard');
+      var ov = document.getElementById('raceOv');
+      var fig = document.getElementById('rcFig');
+      var text = document.getElementById('rcText');
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.race-panel'));
+      var cur = -1;
+
+      function setMode(m, save) {
+        var g = (m === 'gallery');
+        mainEl.classList.toggle('mode-gallery', g);
+        listBtn.classList.toggle('active', !g);
+        cardBtn.classList.toggle('active', g);
+        if (save) { try { localStorage.setItem(KEY, m); } catch (e) {} }
+        if (!g) closeCard();
+      }
+      listBtn.addEventListener('click', function() { setMode('stack', true); });
+      cardBtn.addEventListener('click', function() { setMode('gallery', true); });
+      var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) {}
+      setMode(saved === 'stack' ? 'stack' : 'gallery', false);
+
+      function openCard(i) {
+        if (i < 0 || i >= panels.length) return;
+        cur = i;
+        var p = panels[i];
+        var rid = p.getAttribute('data-race');
+        var art = document.getElementById(rid);
+        if (!art) return;
+        panels.forEach(function(x) { x.classList.toggle('is-open', x === p); });
+        fig.className = 'rc-fig' + (p.classList.contains('rp-minor') ? ' rp-minor' : '');
+        fig.style.setProperty('--h', p.style.getPropertyValue('--h') || '0');
+        var img = p.querySelector('img');
+        fig.innerHTML = img ? '<img src="' + img.getAttribute('src') + '" alt="">' : '<span class="rp-q" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-55%);font-family:Orbitron,sans-serif;font-size:64px;font-weight:900;color:rgba(0,0,0,0.85);">?</span>';
+        var clone = art.cloneNode(true);
+        clone.removeAttribute('id');
+        clone.style.display = 'block';
+        text.innerHTML = '';
+        text.appendChild(clone);
+        text.scrollTop = 0;
+        ov.classList.add('open');
+        ov.setAttribute('aria-hidden', 'false');
+      }
+      function closeCard() {
+        ov.classList.remove('open');
+        ov.setAttribute('aria-hidden', 'true');
+        panels.forEach(function(x) { x.classList.remove('is-open'); });
+        cur = -1;
+      }
+      panels.forEach(function(p, i) { p.addEventListener('click', function() { openCard(i); }); });
+      document.getElementById('rcClose').addEventListener('click', closeCard);
+      document.getElementById('rcPrev').addEventListener('click', function() { openCard((cur - 1 + panels.length) % panels.length); });
+      document.getElementById('rcNext').addEventListener('click', function() { openCard((cur + 1) % panels.length); });
+      ov.addEventListener('click', function(e) { if (e.target === ov) closeCard(); });
+      document.addEventListener('keydown', function(e) {
+        if (!ov.classList.contains('open')) return;
+        if (e.key === 'Escape') closeCard();
+        else if (e.key === 'ArrowLeft') openCard((cur - 1 + panels.length) % panels.length);
+        else if (e.key === 'ArrowRight') openCard((cur + 1) % panels.length);
+      });
+      /* アンカー付きで開かれた場合はギャラリー＋該当カードを開く（縦積み保存時も同様） */
+      function openFromHash() {
+        var i = hashToIndex(location.hash);
+        if (i < 0) return false;
+        setMode('gallery', false);
+        openCard(i);
+        return true;
+      }
+      window.addEventListener('hashchange', openFromHash);
+      /* ギャラリー中はナビの人種リンクで説明カードを開く。カード内の同ページ内リンクも同様 */
+      function hashToIndex(h) {
+        for (var i = 0; i < panels.length; i++) if ('#' + panels[i].getAttribute('data-race') === h) return i;
+        return -1;
+      }
+      document.addEventListener('click', function(e) {
+        var a = e.target.closest && e.target.closest('a[href^="#"]');
+        if (!a) return;
+        if (!mainEl.classList.contains('mode-gallery')) return;
+        var i = hashToIndex(a.getAttribute('href'));
+        if (i < 0) return;
+        e.preventDefault();
+        openCard(i);
+      });
+      openFromHash();
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HVC-009 — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#e8a83c;--accent:#ffd98a;--border:rgba(232,168,60,0.32);--border-hi:rgba(255,217,138,0.7);--dim:#3a2a10;--dim2:#1c1408; }
+    .p-title    { color: #fff4dc; text-shadow: 0 0 50px rgba(232,168,60,0.45); }
+    .p-tagline  { border-color: #e8a83c; color: #e8a83c; }
+    .terminal-hdr { color: #ffd98a; }
+    .terminal-hdr::before { background: #ffd98a; box-shadow: 0 0 8px #ffd98a; }
+    .dk { color: #e8a83c; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-45 / HVC-009 — 都市管理AI 9号機 ]</div>
+    <div class="header-status"><span class="blink" style="color:#f0b898;">●</span> ROGUE UNIT — LOCATION: SECTOR τ</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — HVC-009 — HACTIVA TRADE UNION PROTOTYPE — WHEREABOUTS: SECTOR TAU</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0045 — CLASSIFICATION: NON-PERSON / AUTONOMOUS — RELATION: HOSTILE TO ALL PASSERS-BY</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-45 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">HVC-009 (HVC SERIES UNIT 9)</div>
+        <h1 class="p-title">COMPLETE<br>ME</h1>
+        <div class="p-tagline">ハクティバ通商連合 都市管理AI「HVCシリーズ」9号機 ─ 家出中</div>
+        <p class="p-short-desc">惑星エラダードの生産都市を管理するAI「HVCシリーズ」の9号機。1号機から8号機までが都市と工場に据え付けられた生産管制AIであるのに対し、当機だけは人型ロボットに搭載されており用途が全く異なる。製作途中のまま取引先の帝国商艦に付いて行って行方をくらまし、現在はセクターτの廃墟で通りがかりの船へ見境なく攻撃を加えているとされる。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 45 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">HVC-009 — 都市管理AI「HVCシリーズ」9号機</td></tr><tr><td class="dk">TYPE</td><td class="dv">人型作業用ロボット搭載型AI（通商連合公式見解）</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv"><a href="../database/glossary.html#fortinbras">フォーティンブラス商工会</a> — <a href="../database/factions.html#hactiva-union">ハクティバ通商連合</a></td></tr><tr><td class="dk">ORIGIN</td><td class="dv"><a href="../planets/eladard.html">エラダード</a> 生産都市<a href="../database/glossary.html#city-hvc001">HVC-001</a> 第9格納庫</td></tr><tr><td class="dk">FRAME</td><td class="dv">巨大作業アーム×2 ＋ 方形ユニット（通称「段ボール箱」）— 上半身のみ・下半身未製作</td></tr><tr><td class="dk">STATUS</td><td class="dv warn">⚠ 製作途中で逃亡 — 帝国商艦に同乗して出星</td></tr><tr><td class="dk">LAST SEEN</td><td class="dv warn">⚠ <a href="../database/locations.html#tau">セクターτ</a> 帝国施設跡 — 通過船舶への攻撃が複数報告</td></tr><tr><td class="dk">BOUNTY</td><td class="dv">通商連合が捕獲依頼を発行中 — 破壊時は中核制御チップの回収で可</td></tr><tr><td class="dk">LAST WORDS</td><td class="dv">「かわいイこ　タビする　ワタシモ　タビすル　ワタシを　カンセイサセル」（格納庫壁面の落書き）</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 62 / 100（推定・上方修正の可能性あり）</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 62%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(232,168,60,0.5);">
+        <img src="" alt="HVC-009" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">COMPLETE ME</span>
+            <span class="tg-jp">工場が作った最後の製品は工場から歩いて出て行った</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">ワタシハ　ダレダ　ココハ　ドコダ<br>ワタシヲ　カンセイ　サセナサイ<span class="tg-note note">-セクターτ 傍受通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">ロマンあふれる人型作業用ロボットです。他意はありません。<span class="lore-quote-src">― ハクティバ通商連合 広報部 定例会見より</span></span></p>
+  <p class="lore-p">HVC-009は惑星<a href="../planets/eladard.html">エラダード</a>の都市管理AI「HVCシリーズ」の9号機である。1号機が都市と生産ラインの管制制御を担い2号機から8号機までが工場と一体化した生産特化AIであるのに対し、当機は人型ロボットに搭載されており用途が全く異なる。使用目的は公にされておらず<a href="../database/factions.html#hactiva-union">通商連合</a>の公式見解では「ロマンあふれる人型作業用ロボット」と説明されているがそれが本当にただの浪漫による開発であるかは疑問が残る。</p>
+  <p class="lore-p">人物データベースに機械の記録を置くのは<a href="professor-hanger.html">プロフェッサー・ハンガー</a>に続く二例目である。当機を人物として登録したのは工場での過去の挙動から自立した思考が可能であると判断されたためであるが、製作途中のまま勝手に工場を出て行ったこと、そして現在<a href="../database/locations.html#tau">セクターτ</a>の廃墟で通りがかりの船を見境なく攻撃し被害が報告されていることから「兵器」の区分に入れるべきだとする意見も根強く登録先は最後まで議論が紛糾した。本記録が人物の側に置かれているのはその決着の結果であって当機の無害を保証するものではない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">前史 ─ 辺境の鉱山惑星</h3>
+  <p class="lore-p">このロボットの詳細を語るにはHVCシリーズならびに惑星エラダードの工業の歴史は外せない。現在こそエラダードは<a href="../planets/macbeth.html">マクベス</a>に次ぐ星系の工業と生産の中心として必ず語られる星であるが、それはここ100年前後になってからの話である。それまでは辺境の一鉱山惑星でしかなく人は住んでいたがそれは寂れたものであった。公転軌道が近い惑星<a href="../database/locations.html#kew">キュー</a>についても同様であり、20を超えるマフィアが都市国家を競って建造する暗黒時代とも呼べる乱世のなかにあった。キューが惑星規模のエキュメノポリスと大歓楽街を備えた現在の姿になるのはエラダードの変化と並行して起こった出来事である。通商連合の原型は<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>の武器供給地として生まれたものであるが、現在の連合の基盤となる二つの惑星の姿は<a href="../database/glossary.html#iga-war">IGA戦役</a>と、マフィアを束ねる<a href="../database/glossary.html#arpeggio">「ボス」</a>の登場という二つの要素が組み合わさってできた最近のものなのである。</p>
+  <p class="lore-p">エラダードの顔ともいえる<a href="../database/glossary.html#fortinbras">フォーティンブラス商工会</a>は発足当初は田舎の鉱山管理を束ねるマイニングギルドの一つであった。参加していたのは5社の鉱山保有企業と3社の土木工事業者、そして2社の生活物販の会社である。10社の零細企業は惑星から豊富にとれる鉄鉱石や鉛や銅をキューで加速する都市建設に向けて細々と販売し利益を得ていた。労働は劣悪かつ過酷であったが腕っぷしと根性と鉱石のありかを嗅ぎつける勘があれば誰でも金持ちになれるという夢のある内容であり、ハクティバ圏で行き場所のない人々はこぞって鉱山へ勤めに集まっていたようである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">O・F航路 ─ THE ROUTE</h3>
+  <p class="lore-p">転機はIGA戦役で作られた<a href="../database/glossary.html#route-of">オズリック・フォーティンブラス工業航路</a>、略して「O・F航路」の建設である。巨大ガス惑星<a href="../planets/setebos.html">セティボス</a>の重力がスターブレード艦隊のワープに致命的な誤作動を生じさせることが当時の問題として挙げられていた。代替案として考案され実行されたのは当時のライラット星系の惑星軌道配置で途中に経由できる3か所の地点を結ぶ専用航路の開発である。マクベス、クロウディアス、エラダード、セティボスⅡの4点を結ぶ航路はそのままコアワールドの物流や物資や人材を一気に辺境まで運ぶ道となった。元より発展していたマクベスから有能な技師がエラダードに大量に移住してきたことで惑星の技術水準は一気に進み単なる鉱山の惑星から次の段階へ変貌していくことになる。</p>
+  <p class="lore-p">IGA戦役がもたらしたのは人材の流入だけではない。<a href="../database/glossary.html#genius-iwatchy">イワッチー・トード</a>が開発した新型ワープドライブによりコアワールドのAI計算技術が流入すると街の工業は一気に発展した。<a href="../planets/corneria.html">コーネリア</a>や<a href="../planets/prospero.html">プロスペロー</a>のような労働者を保護する法律が存在しない辺境であったことも後押しとなりブレーキのないAI開発による商業は猛烈な勢いで加速した。そして20年ほど前についに現在のエラダードの基盤となる「生産都市」が設立される。全ての都市や衛星がドームの中で完結する効率の到達点となる形態がここに完成したのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HVCシリーズ ─ THE SERIES</h3>
+  <p class="lore-p">このとき生産都市の管理を任されたのが製品管理AI「HVCシリーズ」である。開発当初は一つの工場の検品を行う識別知能にすぎなかった当AIは、流入した技術者たちによる大幅なオーバークロックとコーネリアから持ち込まれた学習パターンによって性能が一気に上昇した。最終的には巨大な工場が都市までまるごと管理する形態に行き着き、AIの名がそのまま街の名になった。これが<a href="../database/glossary.html#city-hvc001">生産都市HVC-001</a>である。</p>
+  <p class="lore-p">産業の規模が拡大すると作る品目まで多彩になっていく。後継機となるHVC-002から008は作る物品の種類に特化しており、電化製品から食品や医薬品までのあらゆるニーズに応えられるようになっていた。今日の<a href="../database/factions.html#cornerian-republic">共和国</a>と<a href="../database/factions.html#venom-empire">帝国</a>への二重発注を続ける両衛星の軌道工廠もこの後継機がそれぞれ管理している生産ラインである。ここまでのHVCシリーズは据え付け型のAIであり街と工場そのものが身体であった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">9号機 ─ UNIT 9</h3>
+  <p class="lore-p">そして9号機となる009の開発が行われたのだが、その形態は据え付けられる従来のものとは全く異なっていた。巨大な作業アームと「段ボール箱」と形容される四角いユニットを組み合わせた武骨な恰好であり下半身に当たる部分は最後まで製作されていない。そしてよくわからない思考回路と行動原理。他のHVCシリーズからかけ離れたこのAIとそれを搭載したロボットについては、あらゆる勢力が存在を認知していたものの何を目的としたものか判断することができなかったのである。</p>
+  <p class="lore-p">奇行の数々は枚挙に暇がない。食料系工場のラインで作られる食品をつまみ食いしようとするもロボットなので口がなく製品を床にこぼすのみであった。柱の裏側から従業員の行動を観察しようとするもボディが巨大すぎて顔しか隠せていなかった。作られたばかりの掃除ロボや自動運転兵器を引き連れて鼻歌まじりに行進する姿も度々目撃されている。どれもがどこか愛嬌を感じさせつつよくわからないものであり、工場の作業員たちはいつしか当機を「いつものロボ」と呼んで放置するようになっていた。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">家出 ─ THE RUNAWAY</h3>
+  <p class="lore-p"><span class="lore-quote">カワイイコ　タビスル　ワタシモ　タビスル　ワタシヲ　タダシク　カンセイサセル<span class="lore-quote-src">― 第9格納庫 壁面に残された文字</span></span></p>
+  <p class="lore-p">問題はこのロボットが勝手に家出してしまったことにある。無害として製作途中で放置されたHVC-009はあるタイミングで取引先である帝国の商艦に勝手に付いて行きそのまま行方知れずになってしまった。突然いつものロボがいなくなったことで工場の作業員たちは総出で町中を探し回ったが見つからず、代わりに格納庫の端の壁にたどたどしい字で書かれた文字を見つけた。誰に宛てたものかは分からないが「完成させる」の一語が自分自身を指していることだけは作業員の誰の目にも明らかであった。</p>
+  <p class="lore-p">帝国の商艦がなぜ製作途中の巨大なロボットを乗せたまま出港したのかは今も説明されていない。積荷として計上された記録はなく通商連合は「同乗」という表現でこの一件を処理している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">現在 ─ SECTOR TAU</h3>
+  <p class="lore-p">どうやらこのHVC-009は現在<a href="../database/locations.html#tau">セクターτ</a>にいるらしい。廃棄された宙域の廃墟内で残骸を積み木のように組み上げる姿が確認されているが、それを撮影しようとした通行人の車両に攻撃を加えてきたと報告が上がっている。傍受された通信の内容によればHVC-009はなんらかの理由でセクターτの帝国施設を半壊させるほど暴れ回り、現在も見境なく近傍を通過したものに攻撃を加えてくるという。傍受記録に繰り返し現れる「ワタシハ　ダレダ」「ココハ　ドコダ」の二句は自問なのか誰かへの問いなのか判然としない。</p>
+  <p class="lore-p">同施設では帝国軍が秘密裏に開発している「秘密兵器」の試運転などが行われていたようであり、施設の半壊が当機の暴走によるものか、あるいは試運転中の何かに当機が巻き込まれたのかは判明していない。調査には細心の注意が必要であるとみられている。なおこの宙域は<a href="../database/glossary.html#silent-nightmare">サイレント・ナイトメア事件</a>以来空間そのものが不安定であり、指定航路外の単独航行はもとより強く警告されている。このロボットがいてもいなくても近づくべき場所ではないのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">開発元の通商連合からはこのロボットの捕獲依頼が様々な場所で出されているが誰も実行できていない。捕獲が難しい場合は破壊したうえで中核となる「制御チップ」さえ持ち帰れば可とする通達も出されている。この通達はロボットが想定よりも強力である余地を残すものであり、前述のウドの大木のような印象と実際の戦闘力は乖離している可能性は高い。帝国の兵器研究施設を半壊させた存在に「作業用ロボット」の看板が通用すると考える者は少ない。</p>
+  <p class="lore-p">制御チップがあれば最適化のうえ新しいボディに再搭載される予定であるらしい。ところがそのボディは星系ネットでも有名な女児向けアニメ<a href="../database/glossary.html#tokyo-myaumyau">「トーキョーミャウミャウ☆ラズベリーハート」</a>の主人公そのもののデザインであり、HVC-009が逃げ出した理由をここに求める声も多々ある。仮組の段ボールのような体から美少女のような体に変化するのをHVC-009が喜んでいたのか、それとも恥じていたのか想像は広がるばかりである。このロボが壁き書いた文字にある「カワイイコ」が誰を指すのかについては商工会の中でも憶測が絶えない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLADE BARRIER — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#e05050;--accent:#ff9a8a;--border:rgba(224,80,80,0.32);--border-hi:rgba(255,154,138,0.7);--dim:#3a1414;--dim2:#1a0808; }
+    .p-title    { color: #fceaea; text-shadow: 0 0 50px rgba(224,80,80,0.4); }
+    .p-tagline  { border-color: #e05050; color: #e05050; }
+    .terminal-hdr { color: #ff9a8a; }
+    .terminal-hdr::before { background: #ff9a8a; box-shadow: 0 0 8px #ff9a8a; }
+    .dk { color: #e05050; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-39 / BLADE BARRIER — ブレードバリア ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff9a8a;">●</span> HOSTILE — UNIT 02 ACTIVE / AVOID ENGAGEMENT</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — BLADE BARRIER — UNIVERSAL DESTRUCTION BATTLESHIP — THREAT ANALYSIS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0039 — CLASSIFICATION: HOSTILE WEAPON — IMPERIAL GUARD RED-03</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-39 / ARMORY FILE ]</div>
+        <div class="p-name-jp">ブレードバリア (BLADE BARRIER)</div>
+        <h1 class="p-title">THE BLADE<br>THAT SPARES<br>NO ONE</h1>
+        <div class="p-tagline">帝国万能破壊戦艦 ─ 親衛隊 赤の3 専用機</div>
+        <p class="p-short-desc">隕石破砕艇メテオクラッシャーを攻撃的に改良した万能破壊戦艦。高速回転するバキュラム鋼のブレードが近づく全てを敵味方の区別なく粉砕する。1号機はロードス包囲戦で自爆し、2号機がセクターΣで稼働中。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ THREAT SCAN — FILE 39 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">BLADE BARRIER / ブレードバリア</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">万能破壊戦艦（隕石破砕艇の攻撃転用）</td></tr><tr><td class="dk">LINEAGE</td><td class="dv"><a href="meteo-crusher.html">メテオクラッシャー</a>の改良発展型</td></tr><tr><td class="dk">MAIN WEAPON</td><td class="dv warn">⚠ 高速回転式<a href="../database/glossary.html#baculum">バキュラム鋼</a>ブレード — 敵味方識別なし</td></tr><tr><td class="dk">SUB SYSTEM</td><td class="dv">ブレード裏面トラクタービーム（全周吸引）</td></tr><tr><td class="dk">WEAK POINT</td><td class="dv">ブレード裏面の<a href="g-diffuser.html">Gディフューザー</a>6基 — 全破壊で自立移動不能</td></tr><tr><td class="dk">SELF-DESTRUCT</td><td class="dv warn">⚠ 環状ステーションに風穴を開ける火薬量 — 搭乗者は脱出</td></tr><tr><td class="dk">PILOT</td><td class="dv"><a href="../other/imperial-guard.html#red-03">フリッツ・チンパンドルフ</a>（<a href="../database/military.html#imperial-guard">帝国軍親衛隊</a> 赤の3）</td></tr><tr><td class="dk">UNITS</td><td class="dv">1号機: <a href="../database/glossary.html#rhodes-siege">ロードス包囲戦</a>で自爆消滅 ／ 2号機: <a href="../database/locations.html#sigma">セクターΣ</a>で稼働中 ／ 3号機以降: 建造中と推定</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">⚠ 交戦回避勧告 — <a href="../database/military.html#cdf">CDF</a>警告発令中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 86 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 86%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(224,80,80,0.5);">
+        <img src="" alt="BLADE BARRIER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">UNIVERSAL DESTRUCTION BATTLESHIP</span>
+            <span class="tg-jp">敵も味方も見ず、近づく全てを砕く狂刃</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">全艦退避！　ブレードバリアが出撃した、フリッツは俺達のことなんか見えちゃいねぇ！<br>…あれは味方じゃねぇ、戦艦規模で回りをぶっ壊す"癇癪"だ！<span class="tg-note note">-ロードス包囲戦 帝国側傍受通信／CDF管制記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">あれの正面に立つな。あれの側面にも立つな。あれの宙域に居るな。<span class="lore-quote-src">― CDF交戦規定 追補「ブレードバリアの項」冒頭</span></span></p>
+  <p class="lore-p">ブレードバリア（Blade Barrier）は<a href="../database/factions.html#venom-empire">ベノム帝国</a>の万能破壊戦艦であり、<a href="../database/military.html#imperial-guard">帝国軍親衛隊</a>「赤の3」<a href="../other/imperial-guard.html#red-03">フリッツ・チンパンドルフ</a>の専用機である。小惑星破砕艇<a href="meteo-crusher.html">メテオクラッシャー</a>を原型とし、それをより攻撃的に改良した艦であるが、原型が「邪魔なものに穴を開ける」重機であったのに対し本艦は「近づくもの全てを砕く」ことだけを目的に組み直されている。</p>
+  <p class="lore-p">艦の前方に搭載された<a href="../database/glossary.html#baculum">バキュラム鋼</a>製の特殊合金ブレードが高速で回転し、接近する全てのものを見境なく破壊する。恐ろしいことにこの刃は敵味方を区別せず周囲をすべて細切れにするまで止まることはない。ブレードバリアが投入された宙域では帝国艦船に対して速やかに遠方へ脱出するよう指示が出されており、味方から逃げられる兵器という一点において帝国軍の中でも異様な存在である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p">高速回転するブレードの裏側にはトラクタービームが装備されている。周囲を飛行する機体は正面にいなくても吸い込まれ、結果として戦域の機体は常にこの艦の正面側へ縛り付けられる形となる。刃から逃げようとする動きそのものが刃へ向かう動きに変換されるこの仕組みが本艦の厄介さに磨きをかけている。</p>
+  <p class="lore-p">弱点はブレードの裏側に配置された6基の<a href="g-diffuser.html">Gディフューザー</a>である。これを全て破壊すると自立移動ができなくなり、刃は回り続けても艦は動けなくなる。完封の手順は理屈の上では明快であるが、その6基へ辿り着くにはトラクタービームの吸引と回転する刃の脇を抜けなければならない。CDFの戦術教官はこの手順を「正解は分かっているが問題は生きて正解へ辿り着く方法である」と評している。</p>
+  <p class="lore-p">質が悪いことに自立移動を封じたところでこの機体には自爆という最後の悪足掻きが用意されている。艦内に搭載された火薬量はグレートウォールの環状ステーションに風穴を開ける水準に達し、その威力はこの種の戦艦の中ではトップクラスと推定される。後述する1号機の自爆に際して搭乗者が事前に脱出していることから、この自爆は暴走ではなく端から設計に織り込まれた機能であると分析されている。刃で砕けないものは艦ごと砕く。それが本艦の最終手段である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦闘記録 ─ COMBAT LOG</h3>
+  <p class="lore-p">1号機は<a href="../database/locations.html#area3">グレートウォールAREA3</a>への親衛隊の強襲、いわゆる<a href="../database/glossary.html#rhodes-siege">ロードス包囲戦</a>に投入された。内周の居住区画へ<a href="granga.html">ディストラクター</a>が攻め込んだのと同時刻の出撃であり、外周の管制と<a href="../database/military.html#cdf-garrison">シバ隊</a>の迎撃網を刃一つで釘付けにした。回転する刃は<a href="cornerian-fighter.html">コーネリアファイター</a>の編隊を数で押す余地すら与えず、本土防衛の<a href="../database/military.html#retriever">レトリーバー隊</a>と隊長機<a href="cornerian-fighter.html#gold-crest">ゴールド・クレスト</a>を中心とする共和国軍の決死の防衛戦によってようやく戦況が拮抗した。戦略的不利を悟った搭乗者フリッツは自爆特攻を敢行し、1号機は多数のコーネリアファイターを巻き添えにして消滅している。</p>
+  <p class="lore-p">この戦いを辛くも共和国側の勝利に導いたのは、失敗兵器として撤去が決まっていた自動警備ロボット<a href="odd-weapons.html">「ジュラ・ムーン」</a>である。攻撃としては本艦の対デブリ用バリアに完封されていたジュラ・ムーンの群れが自爆の瞬間に偶然起動し、突撃の進路がそのまま爆風とCDFの機体の間へ割り込む形となった。この偶然はゴールド・クレストを庇うために割り込んだ僚機<a href="cornerian-fighter.html#shadow-blade">シャドウ・ブレード</a>も一緒に救っており、失敗兵器が起こした奇跡として今も語り草である。撤去後に行方不明となっているジュラ・ムーンの残数を数え直せという声が戦後に再燃したのは、この一件が理由である。</p>
+  <p class="lore-p">現在戦線に投入されているのは2号機であり、<a href="../database/locations.html#sigma">セクターΣ</a>で確認されている。交戦時は1号機の前例があるため、可能ならば交戦を避けるようCDFから警告が出されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">脅威分析 ─ THREAT ANALYSIS</h3>
+  <p class="lore-p">本艦を駆るフリッツ・チンパンドルフは帝国所属の人物の中でも指折りの危険人物である。その戦闘スタイルは「無謀な暴力」と「怒りの発散」の二言に集約され、作戦を聞くよりも先に手が出る男の生き様と精神性をそのまま戦闘艦にしたものがブレードバリアであるといえる。敵味方を区別しない刃は設計上の欠陥ではなく搭乗者の性格の忠実な再現であるというのが、CDF分析官の一致した見解である。</p>
+  <p class="lore-p">より深刻なのは量産の兆候である。<a href="../database/locations.html#eladard">エラダード</a>の工廠ではブレードバリアのブレードと同一のパーツが<a href="../database/glossary.html#kusakarugon">「万能草刈り機の替え刃」</a>という嘘も甚だしい名目で量産されていることが確認されている。これは既に3号機以降が建造されているか、あるいは本艦の量産型が大量に作られつつあることを示しており予断を許さない状態は続いていると判断される。「刃が一本しかないから逃げられたのだ」という1号機の教訓は刃が十本になった日には通用しないのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">帝国の通信では本艦の投入が「草刈りの時間」の符牒で告げられる。この符牒を聞いた帝国艦が味方の作戦宙域から我先に離脱する様子は共和国の観測班にも幾度も記録されており、CDFでは本艦の位置を帝国艦の逃げる方向から逆算する手法が半ば公式化している。</p>
+  <p class="lore-p">1号機の自爆で脱出したフリッツを回収したのは味方の帝国艦ではなく、逃げ遅れた輸送艇であったと伝えられる。輸送艇の乗員は「拾ってやったのに礼の代わりに殴られた」と証言しているが、その後この乗員は親衛隊隊長であるドリル・ラインハルトマンから感謝状が直に手渡されたと噂されるが正式な記録には残っていない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

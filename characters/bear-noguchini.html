@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BEAR NOGUCHINI — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#d09878;--accent:#f0c4a8;--border:rgba(208,152,120,0.32);--border-hi:rgba(240,196,168,0.7);--dim:#3a281c;--dim2:#1a120c; }
+    .p-title    { color: #fcf2ea; text-shadow: 0 0 50px rgba(208,152,120,0.4); }
+    .p-tagline  { border-color: #d09878; color: #d09878; }
+    .terminal-hdr { color: #f0c4a8; }
+    .terminal-hdr::before { background: #f0c4a8; box-shadow: 0 0 8px #f0c4a8; }
+    .dk { color: #d09878; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-27 / BEAR NOGUCHINI — ベアー・ノウグッチーニ ]</div>
+    <div class="header-status"><span class="blink" style="color:#f0c4a8;">●</span> MIA — SIGNAL LOST</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — BEAR NOGUCHINI — ACE PILOT / INTELLIGENCE RECON — MISSING IN ACTION</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0027 — CLASSIFICATION: MIA — LAST CONTACT: NEAR SECTOR RHO</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-27 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ベアー・ノウグッチーニ (BEAR NOGUCHINI)</div>
+        <h1 class="p-title">GONE<br>FISHING</h1>
+        <div class="p-tagline">元エースパイロット / 諜報部 特殊第2小隊 ─ 消息不明</div>
+        <p class="p-short-desc">タイガーリーブスの渓谷が育てた撃墜王にして、星系一有名なクマの軍曹。宇宙を泳ぐクジラを追って消息を絶った。彼のサーモン休暇の申請書は、今年も仲間の手で提出されている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 27 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">BEAR NOGUCHINI / ベアー・ノウグッチーニ</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#polarisoid">ポラリソイド</a></td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv">コーネリア <a href="../database/glossary.html#state-tigerleaves">タイガーリーブス州</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">コーネリア諜報部 特殊第2小隊</td></tr><tr><td class="dk">RANK / FORMER</td><td class="dv">軍曹 — 元・戦闘飛行隊エース（公認撃墜64機）</td></tr><tr><td class="dk">CRAFT</td><td class="dv">Mスカウター（<a href="../weapons/arwing.html">アーウィン</a>型指令偵察機）FX003-57</td></tr><tr><td class="dk">SQUAD CODE</td><td class="dv">COR-XX3C743（小隊共通識別）</td></tr><tr><td class="dk">LAST CONTACT</td><td class="dv warn">⚠ セクターρ近傍 X667-Y885-Z1045</td></tr><tr><td class="dk">ENCOUNTER</td><td class="dv warn">⚠ 未確認物体B「スペースホエール」</td></tr><tr><td class="dk">STATUS</td><td class="dv">消息不明 — 戦死認定は保留中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">SEARCH PROGRESS -- 0 / 100 (NO WRECKAGE FOUND)</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 2%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(208,152,120,0.5);">
+        <img src="" alt="BEAR NOGUCHINI" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE SMILING ACE</span>
+            <span class="tg-jp">笑うクマの撃墜王 ── クジラを追って空の向こうへ</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">巨大な魚……クジラが見えます！　エネルギー体を放出しながら宇宙を泳いで……俺の目がどうかなっちまったのか？<span class="tg-note note">-フライトレコーダー2 最終交信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">戦争は待ってくれるが、鮭は待ってくれない<span class="lore-quote-src">― 本人がサーモン休暇の申請書に毎年書き添えた一文</span></span></p>
+  <p class="lore-p">ベアー・ノウグッチーニは、コーネリア諜報部特殊第2小隊に所属した偵察搭乗員である。前歴は戦闘飛行隊の公認エースであり、その顔と名は戦時公報を通じて市民にも広く知られていた。任務航行中に「宇宙を泳ぐクジラ」と遭遇して消息を絶ち、同じ日に同小隊の<a href="tesla-kober.html">テスラー・コバー</a>も別宙域で失踪したことから、この「二重失踪」は諜報部最大の未解決案件となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">前半生 ─ EARLY LIFE</h3>
+  <p class="lore-p">コーネリアの<a href="../database/glossary.html#state-tigerleaves">タイガーリーブス州</a>、針葉樹の渓谷に暮らす<a href="../database/races.html#polarisoid">ポラリソイド</a>の農家に生まれた。少年時代は州の名物である鮭の遡上とともに育ち、素手掴みの腕前は「川の主」と呼ばれるほどだったという。空との出会いは農薬散布機の操縦であり、渓谷の谷風を縫って低空を飛ぶ日々が、後年の異名「渓谷飛び」の原点となった。</p>
+  <p class="lore-p"><a href="../database/glossary.html#academy-branches">士官学校</a>では大柄な体格から操縦適性を疑われたが、卒業時の総合評価は同期最上位。「機体が小さいのではない。俺がちょうどいいのだ」という卒業答辞は、今も学校の逸話集に収められている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">伝説の始まり ─ THE LEGEND BEGINS</h3>
+  <p class="lore-p">彼の伝説の起点は、士官学校よりさらに前に遡る。IGA戦役終結後の冬にタイガーリーブス州を襲った<a href="../database/glossary.html#arkham-incident">「アーカムからの使者事件」</a>、すなわち鮭の極大遡上である。義勇軍が開戦30分で壊滅し、州の町々が陥落し、遡上の矛先が首都へ向かい始めた絶望的な戦局に、一人の若者が立ち上がった。</p>
+  <p class="lore-p">大量の鮭をサーフボードで押しのけ、得意の武器であるバズーカを片手に縦横無尽に飛び回るその若者は、戦況を好転させた。鮭の親玉個体の眼前でバズーカを放ちこれを撃破すると、鮭の指揮は目に見えて乱れた。笑顔で鮭をしばき倒していくその若者こそ、若き日のベアー・ノウグッチーニである。</p>
+  <p class="lore-p">彼と、その仲間である3名は鮭の弱点を的確に突き、そして誰もが無限と信じた鮭の増援の「出入り口」を発見する。この発見によって防衛側は初めて反攻の目処を得た。もっとも当の本人たちに悲壮感はなく、この絶望的な戦局をむしろ楽しんでいるかのような姿は、当時の軍上層部の目にも留まった。彼が後に「雪上の暴れ熊」の異名とともに軍へ迎え入れられることになったのは、この日の戦いぶりによる。後年、機体をサーフボードのように乗りこなす彼の白兵戦法は、この日の戦いをそのまま宇宙へ持ち込んだものにほかならない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">活躍 ─ SERVICE</h3>
+  <p class="lore-p">開戦後は戦闘飛行隊に配属され、公認撃墜64機のエースとなった。渓谷仕込みの超低空機動と、笑顔のまま敵編隊へ突っ込む豪胆さで知られ、戦時公報のポスターに起用された「笑うクマの撃墜王」の顔は、コーネリアの街角で今も見掛けることができる。故郷タイガーリーブス州では州の英雄であり、州都の収穫祭では毎年、彼の等身大の氷像が彫られている。</p>
+  <p class="lore-p">エースの地位を極めた後、本人の希望により諜報部特殊第2小隊へ転属した。理由を問う上官に、彼はこう答えたと伝えられる。「撃ち落とすものは見飽きた。次は、誰も見たことのないものが見たい」。皮肉にも、その願いは最後の任務で叶うことになる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">雪上の暴れ熊 ─ RAGING BEAR</h3>
+  <p class="lore-p">その穏やかな笑顔の下にもう一つの顔があることを共和国軍が知ったのは、<a href="../database/glossary.html#state-tigerleaves">タイガーリーブス州</a>都バンクーマーシティの防衛戦においてである。諜報部転属後のある冬、彼は<a href="../planets/area3.html">エリア3</a>方面の遠征任務が長引き、恒例の<a href="../database/glossary.html#salmon-leave">サーモン休暇</a>を2週間遅れで取ることになっていた。まるで示し合わせたかのようにその冬、雪のバンクーマーシティを帝国の襲撃部隊が強襲する。投入されたのはいつもの都市制圧兵器<a href="../weapons/granga.html">グランガ</a>ではなく、豪雪地帯での戦闘向けに改修された派生機<a href="../weapons/granga.html#snonga">スノンガ</a>だった。</p>
+  <p class="lore-p">襲撃は<a href="../planets/corneria.html">コーネリアシティ</a>への食糧補給を担う補給列車の車列を狙い撃ちにした。横転した列車の復旧は蹂躙された線路上で暴れ回るスノンガと無人機の群れに阻まれ、「パンかご」の動脈は寸断され、州は無視できない被害を出した。搭乗していたのが<a href="granga-pilot.html">例のグランガパイロット</a>である以上、元エースの不在を狙った奇襲だったのかどうか、因果関係は今も不明のままである。</p>
+  <p class="lore-p">休暇で帰郷した彼が最初に受けた報告は二つ。州都が奇襲で大規模な被害を出したこと。そして補給列車の車掌を務める弟のテディ・ノウグッチーニがその現場に居合わせたことである。この時、居合わせた共和国軍の将兵は息を呑んだ。どんな時も温厚で朗らかだったベアーの顔が、鬼神のごとき怒りの形相へ変わったのである。彼の上官だけが静かに言った。「お前らは初めて見るか、"雪上の暴れ熊 ベアー・ノウグッチーニ"を……」</p>
+  <p class="lore-p">偵察部隊への転身で腕が鈍るどころか、新たな操縦技術を得てなお洗練されていたことは、この日の交戦記録が証明している。応戦するスノンガは腕部を対空射撃にも対応するザッパーへ換装し、雪原を爆走しながら吹雪に紛れて狙撃を仕掛けた。味方機の一機をかばって被弾したベアーは、あろうことか操縦を自動制御へ切り替え、バズーカ片手にコックピットの外へ乗り出した。機体をサーフボードのように乗りこなし、白兵で敵の急所へ肉薄する。都市伝説とまで言われた「雪上の暴れ熊」の戦法を目の当たりにしたグランガパイロットは、目を剥いて叫んだという。「ば、ば、馬鹿かおまえ！！　そんなことしたら……！」その言葉が終わる前に、ベアーはコックピットの正面へ跳び移り、重い一撃を叩き込んでいた。</p>
+  <p class="lore-p">轟沈するスノンガから友軍機の翼へ飛び移った時、その表情はすでに「いつもの穏やかなベアー」へ戻っていた。冷静に僚機へ状況を報告し、倒れた列車の救護へ直行して車掌と乗客、弟テディの無事を確保すると、彼は一言だけ残して雪の彼方へ去ったと記録されている。「よし、後始末はまかせた！　僕はこれから鮭をシバきにいくからね。テディも後で合流できたら一緒にやろう。でわ～」</p>
+  <p class="lore-p">なお強襲された列車から一人の死者も出なかったことは幸運と語られがちであるが、<a href="../database/military.html#cdf">CDF</a>の分析はこれを「パイロットが緊急停止した列車を押し倒すだけだったため」と結論している。他の侵攻部隊にはミサイルで幹線道路ごと爆破した事例が確認されており、襲撃部隊のリーダーがあの間抜けなグランガパイロットだったことは、この結果に少なからず関係しているとされる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">現在 ─ MISSING</h3>
+  <p class="lore-p">失踪当日、彼は偵察任務を終えて<a href="../database/sectors.html#rho">セクターρ</a>近傍の哨戒線を帰投中だった。交信記録によれば、彼はまず先に失踪した同僚の「怪鳥」の調査状況を照会している。司令部の回答は、目撃報告が複数宙域に及ぶこと、そしていずれも「補給リングを通過し損ねた直後」という同一パターンで発生していることを伝えていた。その直後である。宇宙生物「アトミックレイ」の群れを冗談まじりに追い払っていた彼の声が、突然裏返った。「巨大な魚……クジラが見えます！」──エネルギー体を次々と放出しながら宇宙空間を泳ぐクジラ。それが、彼の残した最後の観測報告となった。</p>
+  <p class="lore-p">諜報部はこの巨大生物を未確認物体B、コードネーム「スペースホエール」として登録している。<a href="../database/sectors.html#nyi">回遊路</a>の発光生物の迷い個体とする説も検討されたが、既知の回遊生物にエネルギー体の放出は確認されておらず、現在は同僚の「シルバーフェニックス」と同じく別次元由来とする説が有力である。機体の残骸は発見されておらず、物体AとBに共通する「遭遇の条件」が存在するというのが、諜報部の統一見解となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">CDFの人事課には<a href="../database/glossary.html#salmon-leave">「サーモン休暇」</a>という俗語がある。<a href="../database/glossary.html#hibernation-leave">冬眠休暇</a>と並ぶポラリソイド兵士の慣習で、秋の遡上期に故郷の川へ帰るための長期休暇のことである。制度上の正式名称は存在しないが、申請書の理由欄に「鮭」とだけ書けば人事課には通じるとされ、この運用を半ば公認させた立役者こそ、毎年欠かさず申請しては渓谷へ帰っていたノウグッチーニ本人だった。曰く、「戦争は待ってくれるが、鮭は待ってくれない」。</p>
+  <p class="lore-p">彼が消息を絶った年の秋、提出されないはずだった彼のサーモン休暇申請書が、人事課に届いた。差出人は特殊第2小隊の同僚一同。以来この申請書は毎年秋に提出され、人事課は毎年「本人帰還後に承認」の判を押して受理している。彼の故郷の川では、今年も鮭が遡上する。あの巨大なクジラの泳ぐどこかの海にも、鮭がいればよいのだが。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

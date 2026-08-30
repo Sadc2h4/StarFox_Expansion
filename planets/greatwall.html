@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GREAT WALL — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ffaa22;--accent:#ffcc66;--border:rgba(255,170,34,0.35);--border-hi:rgba(255,204,102,0.7);--dim:#30200a;--dim2:#180d05; }
+    .planet-visual::before { background: none; }
+    .p-title { color:#fff4e0; text-shadow: 0 0 50px rgba(255,170,34,0.4); }
+    .p-tagline { border-color:#ffaa22; color:#ffcc66; }
+    body { background:#080604; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(35,20,5,0.7) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(28,12,0,0.5) 0%,transparent 55%),
+      #080604; }
+    .col-r { padding-top:12px; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(255,170,34,0.35);">
+    <a href="../database/locations.html" class="nav-back" style="color:#ffcc66;border-color:rgba(255,170,34,0.3);">◄ LOCATIONS</a>
+    <div class="header-tag">[ Sectorγ–ε / GREAT WALL — 最終防衛ライン ]</div>
+    <div class="header-status"><span class="blink" style="color:var(--good);">●</span> ACTIVE — RESTRICTED AIRSPACE</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(255,170,34,0.3);"><div class="vt" style="color:#30200a;">LYLAT SYSTEM — GREAT WALL DEFENSE LINE — AREA1 — AREA2 — AREA3 — RESTRICTED AIRSPACE</div></div>
+  <div class="side-r" style="border-color:rgba(255,170,34,0.3);"><div class="vt" style="color:#30200a;">DATABASE RECORD: GWL-0006 — CLASSIFICATION: MILITARY INSTALLATION — CDF COMMAND</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(255,170,34,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#ffcc66;">[ SECTOR-γ–ε / GREAT WALL ]</div>
+        <div class="p-name-jp" style="color:#aa7733;">グレートウォール (GREAT WALL)</div>
+        <h1 class="p-title">THE LAST<br>LINE</h1>
+        <div class="p-tagline">最終防衛ライン ─ 共和国の盾</div>
+        <p class="p-short-desc" style="border-color:#30200a;">砕かれた第6惑星ステファノーの残骸を再構成した、星系最大の人工防壁。セクターγからεへ弧を描き、首都惑星コーネリアの空を守り続けている。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(255,170,34,0.3);background:rgba(25,15,5,0.7);">
+        <div class="terminal-hdr" style="color:#ffcc66;background:rgba(255,170,34,0.12);border-color:rgba(255,170,34,0.3);">
+          <span style="background:var(--good);box-shadow:0 0 8px var(--good);width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 0.8s infinite;"></span>
+          ▌ DEFENSE LINE STATUS — CDF COMMAND ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#ffcc66;">DESIGNATION</td><td class="dv">GREAT WALL / グレートウォール</td></tr>
+          <tr><td class="dk" style="color:#ffcc66;">ZONE TYPE</td><td class="dv">DEFENSE LINE / 制限空域</td></tr>
+          <tr><td class="dk" style="color:#ffcc66;">ORIGIN</td><td class="dv"><a href="../database/glossary.html#stephano">第6惑星ステファノー</a>の残骸</td></tr>
+          <tr><td class="dk" style="color:#ffcc66;">AREA 1</td><td class="dv">セクターγ — カタリナ管制</td></tr>
+          <tr><td class="dk" style="color:#ffcc66;">AREA 2</td><td class="dv">セクターδ — ベルト核心部</td></tr>
+          <tr><td class="dk" style="color:#ffcc66;">AREA 3</td><td class="dv">セクターε — 環状ステーション</td></tr>
+          <tr><td class="dk" style="color:#ffcc66;">FACTION</td><td class="dv ok">コーネリア連合共和国（CDF）</td></tr>
+          <tr><td class="dk" style="color:#ffcc66;">STATUS</td><td class="dv ok">● ACTIVE — 厳戒態勢</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(255,170,34,0.1);">
+          <div class="env-bar-label" style="color:#ffcc66;">DEFENSE READINESS ── 96 / 100</div>
+          <div class="env-bar-track" style="background:#180d05;"><div class="env-bar-fill" style="width:96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <!-- Asteroid wall — wide landscape scene -->
+      <div class="planet-visual scene-wide">
+        <img src="../resource/LA_image/s01.jpg" alt="Great Wall Asteroid Line"
+          style="position:relative;z-index:2;width:100%;height:100%;object-fit:cover;filter:brightness(0.85) drop-shadow(0 0 20px rgba(255,170,34,0.4));animation:none;">
+        <div class="planet-hover-tagline tagline-tr" style="z-index:10;">
+          <div class="tg-inner" style="border-color:rgba(255,204,102,0.7);">
+            <span class="tg-en" style="color:#ffcc66;">GREAT WALL — LAST LINE OF DEFENSE</span>
+            <span class="tg-jp" style="color:#fff0d8;">最終防衛ライン ── 共和国の盾</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl" style="z-index:10;">
+          <div class="tg-inner" style="border-color:rgba(255,204,102,0.7);">
+            <span class="tg-jp" style="color:#fff0d8;">この領域を超えれば惑星フィチナだ<br>大事な機体に傷をつけるなよ！<span class="tg-note note">-アステロイド通過時 ペッピーからの通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore" style="margin-top:14px;">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「あの壁は石でできているのではない。滅びた星の記憶と、二度と繰り返さぬという誓いでできている」<span class="lore-quote-src">― CDF士官学校 入校式訓示より</span></span></p>
+  <p class="lore-p">グレートウォール（Great Wall）は、<a href="../database/sectors.html#gamma">セクターγ</a>から<a href="../database/sectors.html#epsilon">セクターε</a>にかけて弧状に展開する、ライラット星系最大の人工防衛構造体である。その実体は、<a href="../database/glossary.html#stephano">第1次ライラットウォーズ</a>末期に消滅した第6惑星ステファノーの残骸——すなわちアステロイドベルトを、<a href="../database/factions.html#cornerian-republic">コーネリア連合共和国</a>が防壁として再構成したものだ。</p>
+  <p class="lore-p">首都惑星<a href="../database/locations.html#corneria">コーネリア</a>へ至る侵攻経路を塞ぐ位置に横たわり、共和国防衛戦略における「最終防衛ライン」を担う。管理空域は3つのエリアに区分され、常時<a href="../database/military.html#cdf">CDF</a>の厳戒管制下に置かれている。
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">STRUCTURE ─ 構造</h3>
+  <p class="lore-p">グレートウォールは天然のアステロイドベルトと人工管理技術の複合体である。中核となる隕石群は、惑星<a href="../database/locations.html#katina">カタリナ</a>軌道上の重力的ラグランジュ点に配置された「人工の隕石群」であり、漂流していたステファノーの名残を一つずつ磁力キャプチャして編み上げたものだ。小惑星自体に特殊な磁力で反発し合う性質が付与されているため、隕石同士が接触しても大衝突には至らず、壁としての密度を保ったまま安定を維持する。なお残骸の組成解析と防壁への転用設計は、ステファノーとほぼ同じ物質帯から生まれた兄弟星カタリナの地質を比較試料とする研究を基礎に確立された（<a href="katina.html">カタリナの惑星記録</a>、形成史の項を参照）。</p>
+  <p class="lore-p">管理区分は以下の通りである。エリア1（<a href="../database/sectors.html#gamma">セクターγ</a>）はカタリナ駐留軍が管制する第1宙域で、壁の「要石」と呼ばれる。エリア2（<a href="../database/sectors.html#delta">セクターδ</a>）はアステロイドベルトの核心部であり、最も密度が高い。エリア3（<a href="../database/sectors.html#epsilon">セクターε</a>）は環状宇宙ステーション<a href="../database/locations.html#area3">AREA3</a>が管理を担い、壁を潜る3か所の公式検問口を一元運用している。本来の門は壁を半周する<a href="../database/glossary.html#route-greatwall">グレートウォール航路</a>の検問口であり、後に<a href="../database/glossary.html#route-core-ring">コア・ワールド環状線</a>の開通へ合わせて<a href="../database/glossary.html#route-prospero">プロスペロー・ライン</a>と<a href="../database/glossary.html#route-fortuna">フォルトナ・ライン</a>の接続口が加わった。壁周辺の危険を避けるため、民間船はカタリナとAREA3を除いて壁の内側を巡る決まりとなっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">グレートウォールの原材料は、悲劇の記念碑である。<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>末期、グランベル国が<a href="../database/glossary.html#stephano">超兵器</a>を使用し、温暖な居住惑星であった第6惑星ステファノーは<a href="../database/races.html#alphoid">アルフォイド</a>の文化もろとも砕け散った。この惨禍が各国に停戦を決意させ、共和国憲章第1条「質量破壊兵器の永久禁止」を生んだことは、<a href="../database/glossary.html#stephano">ステファノーの戦い</a>の項に詳しい。</p>
+  <p class="lore-p">戦後、漂流する残骸は長らく航行障害として放置されていた。これを「撤去する」のではなく「盾に変える」と決めたのが、統一後の共和国である。半世紀近くに及ぶキャプチャ・整列作業の末、砕けた星はコーネリアを守る壁として再生された。滅ぼされた星が首都の盾となって蘇る——その皮肉と敬意を込めて、人々はこの壁をグレートウォールと呼ぶ。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">現行の<a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>において、グレートウォールは共和国生存の生命線である。<a href="../database/factions.html#venom-empire">ベノム帝国</a>がコーネリアへ大規模侵攻を行うには、この壁を突破するか、大きく迂回して補給線を晒すかの二択を強いられる。壁の内側には迎撃機雷網とセンサーアレイが張り巡らされ、隕石の陰には即応飛行隊の秘匿ハンガーが点在する。</p>
+  <p class="lore-p">エリア1の管制を担う<a href="../database/locations.html#katina">カタリナ</a>には、<a href="../characters/bill.html">ビル・グレイ</a>隊長率いる第7飛行隊<a href="../database/military.html#bernard">「バーナード」「ドーベル」</a>をはじめとする駐留軍が展開し、「第二のホームタウン」の民間入植と防衛任務が同居する特異な前線を形成している。壁の各所で帝国軍の威力偵察が繰り返されており、CDFは「壁が破られる日は共和国が終わる日」として、稼働率の維持に総力を挙げている。</p>
+  <p class="lore-p"><span class="redacted">なお対艦隊運用の切り札として、壁の一部区画の軌道を意図的に「開閉」し、侵攻艦隊を袋小路へ誘い込む運用構想「壁の呼吸」が存在する。詳細は共和国軍の最高機密の一つである。帝国の大規模奇襲計画の発覚を受け、現在は第1宙域の軌道補正権限が<a href="area3.html">AREA3</a>管制司令へ臨時移管されており、構想の立案から半世紀を経て、史上初の実戦使用が見込まれている</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">グレートウォールは軍事施設であると同時に、星系最大の「墓標」でもある。生き残った<a href="../database/races.html#alphoid">アルフォイド</a>たちにとって、壁を成す一つ一つの隕石は母星の欠片に他ならない。毎年のステファノー忌には、許可を得た巡礼船が壁の外縁を周回し、砕けた故郷に花に見立てた発光体を手向ける。その日ばかりは、検問のCDF管制官も無線に祈りの言葉を流すという。</p>
+  <p class="lore-p">コーネリアシティ中央広場の「不戦の碑」に安置された第6惑星の欠片は、このグレートウォールから切り出されたものである。碑文にはアルフォイドの古語と共通語でこう刻まれている——「星は砕けても、誓いは砕けない」。</p>
+  <p class="lore-p">壁はまた、見上げる者にとっては夜空の名所でもある。カタリナの地表からは、壁の隕石群が星明かりを反射し、地平線から地平線まで天球を横切る淡い光の帯として見える。入植者たちが「天の川」ならぬ<a href="../database/glossary.html#wall-river">「壁の川」</a>と呼ぶこの輝きは、今やカタリナの暮らしの原風景となっている。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 350; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.1 + Math.random()*0.6).toFixed(2);
+        const col = Math.random() > 0.7 ? `255,200,120` : `255,255,255`;
+        s.push(`${x}px ${y}px 0px 1px rgba(${col},${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body>
+</html>

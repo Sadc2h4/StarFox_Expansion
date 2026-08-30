@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script>if (sessionStorage.getItem('apx-authorized') !== '1') location.replace('../apocalypsis.html');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X-02 ANDORF — APOCALYPSIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --apx:#ff4455; --apx-dim:rgba(255,68,85,0.35); --apx-amber:#ffdd88; }
+    body { background:#050307; font-family:"Share Tech Mono",monospace; }
+    html, body { overflow-y:auto; }
+    .apx-p, .warn-box { font-family:'NitalagoRuika','Share Tech Mono','Yu Gothic UI','Meiryo',monospace; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 50% 40%, rgba(40,5,10,0.55) 0%,transparent 60%), #050307; }
+    .apx-main { position:relative; z-index:5; max-width:800px; margin:0 auto; padding:70px 24px 60px; }
+    .apx-title { font-family:Orbitron,monospace; font-weight:900; letter-spacing:4px;
+      color:#ffeaea; font-size:24px; text-shadow:0 0 30px var(--apx-dim); }
+    .apx-sub { color:var(--apx); font-size:11px; letter-spacing:3px; margin:8px 0 30px; }
+    .apx-sec { border:1px solid var(--apx-dim); background:rgba(18,4,8,0.85); margin-bottom:22px; }
+    .apx-sec-hdr { display:flex; align-items:center; gap:8px; padding:9px 14px; font-size:11px;
+      letter-spacing:2px; color:var(--apx); background:rgba(255,68,85,0.1);
+      border-bottom:1px solid var(--apx-dim); }
+    .apx-sec-hdr .dot { width:7px; height:7px; border-radius:50%; background:var(--apx);
+      box-shadow:0 0 8px var(--apx); }
+    .apx-p { color:#d8c0c0; font-size:13px; line-height:2; letter-spacing:0.5px; padding:14px 18px; margin:0; }
+    .apx-p + .apx-p { padding-top:0; }
+    .apx-p b { color:var(--apx-amber); font-weight:normal; }
+    .apx-p a { color:var(--apx-amber); }
+    .lv { display:inline-block; margin-right:8px; padding:1px 8px; font-size:10px;
+      color:var(--apx); border:1px solid var(--apx-dim); letter-spacing:2px; }
+    .warn-box { border:1px solid rgba(255,68,85,0.6); background:rgba(45,6,12,0.9);
+      padding:14px 18px; margin-bottom:26px; color:#ffb8b8; font-size:12px; line-height:2; letter-spacing:0.5px; }
+    .warn-box b { color:var(--apx-amber); font-weight:normal; }
+    .apx-foot { text-align:center; color:#775555; font-size:10px; letter-spacing:2px; padding-top:8px; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(255,68,85,0.3);">
+    <a href="../apocalypsis.html" class="nav-back" style="color:#ff4455;border-color:rgba(255,68,85,0.3);">◄ APOCALYPSIS</a>
+    <div class="header-tag">[ X-02 / ANDORF — アンドルフ・ボウマン ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff4455;">●</span> CLEARANCE LV.5 — SESSION AUTHORIZED</div>
+  </header>
+
+  <main class="apx-main">
+    <div class="apx-title">ANDORF BOWMAN ── 二人の皇帝</div>
+    <div class="apx-sub">▮ 起源記録 X-02 — ベノム帝国勃興の実相 / タイタニア発信号の解読報告 ▮</div>
+
+    <div class="warn-box">
+      <b>▮ 取扱区分 LV.5</b>／本記録は惑星タイタニアの集落サマル・カイから発信され続けている暗号信号の傍受・解読結果と、関連する監視記録を統合したものである。結論を先に記す。<b>現在ベノム帝国を指揮し「皇帝」を名乗っている存在は、アンドルフ・ボウマン本人ではない。</b>本物のアンドルフはタイタニアに生存している。この事実は交戦の前提そのものを覆すため、開示は本アーカイブの閲覧権限者に限られる。
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 01 — タイタニアからの信号 ▐</div>
+      <p class="apx-p">発端はサルガッソー境界の観測網が拾った微弱な暗号信号である。発信源は禁断の惑星<a href="../planets/titania.html">タイタニア</a>、地下集落サマル・カイ。信号には高度な並べ替えと読み替えに加え、発信者とその友人しか知り得ない個人的な記憶が鍵として織り込まれており、通常の解析では文面の復元すら不可能だった。</p>
+      <p class="apx-p">解読に成功したのは、現役を退いた<a href="../characters/toad-family.html">トード家</a>の長老イワッチー・トードである。学生時代の<a href="../characters/andorf.html">アンドルフ</a>と論文大会で激論を交わした旧知であり、だからこそ鍵に使われた記憶に手が届いた。イワッチーは解読の直後、家族にすら行き先を告げず単身タイタニアへ渡り、現在はサマル・カイでアンドルフ本人と合流している。身内にしか解けない暗号を使ってまで伝えようとしている事実について、本部は「決して外部に知られてはならない事情がある」と判断する。</p>
+      <p class="apx-p"><span class="lv">LV.5</span>以下は解読された信号の内容、すなわち追放から現在に至る十年余りの記録である。帝国の勃興がどこで道を誤ったのか。その答えの大半がここにある。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 02 — 生き延びるための一年 ▐</div>
+      <p class="apx-p">追放直後のアンドルフが最初に行ったのは、死なないための工事である。刑の執行で装着された<a href="../weapons/coffin-suit.html">コフィンスーツ</a>を自ら改造し、臓器の代行と身体強化の機能を残したまま大幅に小型化した。スーツの設計を知る本人にしかできない大改造であり、これが致死環境<a href="../planets/venom.html">ベノム</a>で生き続ける下地となった。</p>
+      <p class="apx-p">次に手を付けたのがベノムの遺跡である。<a href="../database/glossary.html#bremen">始祖の開拓団</a>が残した機械の残骸が地下に眠ることを、彼は科学省時代の資料で知っていた。数か月で拠点の居住環境を整え、遺構から掘り出した機械を改修する施設を建て、作業用アンドロイドを復旧して労働力を確保する。流刑地は静かに開拓地へ変わり始めていた。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 03 — 蠢く大地 ▐</div>
+      <p class="apx-p">労働力を得た矢先、彼は自分の過去と再会する。ベノムの大地の一角が臓物を裏返したような様相で蠢いているのを発見したのである。ひと目で正体は知れた。追放の前年に主導した大計画「ホームカミング計画」で投入された自身の発明品<b>『コスモクリーナー』</b>である。惑星の汚染を有機細胞で分解するはずの除染装置は、最後の制御チップを打ち込む前に開発者が投獄されたことで、目的を失ったまま増殖だけを続けていた。</p>
+      <p class="apx-p">細胞は創造主を認識しなかった。伸びた触手を咄嗟の爆薬でかわしたものの、飛散した肉片は個別に活動を再開し彼の体を侵食し始める。これまでかと悟った時、胸元のお守りが青白い閃光を放ち浸食を退けた。かつての親友<a href="../characters/pepper.html">Z.Z.ペパー</a>がフォルトナ調査の土産に渡した「きれいな石」である。袂を分かった友に、彼は命を救われた。</p>
+      <p class="apx-p"><span class="lv">LV.5</span>アンドルフは直ちにこの光の波長を解析し、細胞が石を忌避する信号のプロトタイプを完成させる。これが後のベノム帝国<b>国章バッジ</b>の原型である。帝国の全構成員が胸に着けるあの紋章は、軍の象徴である以前に、友情の残骸から作られた防疫装置だった。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 04 — ゴモラ ▐</div>
+      <p class="apx-p">増殖は演算を上回る速度で進み、着陸地点ごと大地を呑み込みつつあった。移動車両で逃げ延びながら策を練る日々の末、彼は地表で「巨大なビーコン」に似た開拓団の遺構を発見する。残された猶予は標準時でおよそ半年。彼はこの遺構をロケット発射基地へ改装し、各地の遺跡からかき集めた資材を第1衛星ゴモラへ撃ち上げ続けた。</p>
+      <p class="apx-p">最後の便で本人もゴモラの地表に降り立った。ほぼ真空の衛星で生き延びられたのは、皮肉にも刑として施された強化手術とコフィンスーツの恩恵である。資源のない衛星に、送り込んだ資材とロボットで居住区画を組み上げていく。<b>現在の帝都ベノム・インペリアル・シティの最初の区画は、アンドルフがただ一人で建設したものである。</b></p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 05 — 押されなかった救難信号 ▐</div>
+      <p class="apx-p">居住区画が完成した時、彼はブレーメンライン航路へ向けた救難信号の送信装置に手を掛け、そして止めた。信号を出せば即座に共和国へ通報され、次は死刑を免れない。スイッチから離れたこの手が、その後の星系史の分岐点だったことになる。</p>
+      <p class="apx-p">生存の問題が片付いた静けさの中で、積年の怒りが噴き上がった。だがその怒りは奇妙な経路で形を変える。若き日に熱中したアクションRPG「ドラコニア・ブレイダー」に登場する<b>“闇のドラゴン”</b>は、周囲に理解されず、無実の罪のまま最後は主人公に討たれる存在である。彼はこの竜に自分の境遇を重ねた。</p>
+      <p class="apx-p">この星系の平和の下には、差別と偏見のために生き方を選べない者が今も大勢いる。彼らを束ね、居場所を作ることこそ自分にできる仕事ではないのか。怒りは使命感へ転じ、父の言葉が再び胸に灯った。<b>「失われたものは必ず取り戻せる。その志に曲がらぬ信念があれば」</b></p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 06 — 夜明けの民 ▐</div>
+      <p class="apx-p">追放から約1年、アンドルフは星系中へ暗号化された匿名の招待状を送り始めた。発信はブレーメンラインの通信網からハクティバ圏とソーラ圏の惑星を巧妙に経由させ、発信源が特定されることはなかった。さらに半年、ゴモラに<a href="../planets/fichina.html">フィチナ</a>の技術者や亡命者が集まり始める。目指すものは一つ、ライラット星系に自分たちの居場所を作ること。後年「ベノム帝国の夜明け」と呼ばれる時代の、これが実相である。</p>
+      <p class="apx-p">当初の算段では、拠点はフィチナか<a href="../planets/setebos.html">セティボス</a>へ移すはずだった。だが共和国の哨戒網は既に5大州のあるフィチナへ達し、残存兵器の眠るセティボスも監視下にあった。行き場を失ったまま人口だけが増え続け、2年が経つ頃には衛星ゴモラは星そのものが小型のエキュメノポリスと化していた。資材の不足はフィチナと<a href="../planets/kew.html">キュー</a>を経由する秘密航路の開拓で賄われた。ここでアンドルフは決断する。この衛星とベノム惑星圏に、誰にも侵されない軍と、新しい国家の拠点を築くと。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 07 — 誤配された帝国 ▐</div>
+      <p class="apx-p">計画そのものは明確だった。兵力の拡充が完了した時点で新国家を宣言し、武力を後ろ盾に共和国と和平を結び、対等な国として承認させる。想定外はその手前で起きた。共和国のずさんな機密管理を突いたハッカーの手で、当時LV.5に区分されていたベノム圏の監視記録が星系ネットへ流出したのである。情報は即座に削除されたが、一度広がった噂は尾ひれを付けて増殖し続けた。曰く──「辺境にして始まりの惑星に作られた新秩序、ベノム帝国」。<b>この国号は本人が名乗ったものではない。流出情報に尾ひれの付いた、ただの噂話が先にあった。</b></p>
+      <p class="apx-p">ほどなく反共和国を掲げる集団やならず者が噂を頼りにゴモラへ押し寄せ、アンドルフを「星系の新皇帝」と祭り上げた。勢いはもはや一人で止められるものではない。彼らが心酔したのには理由がある。この頃ベノム本星は<a href="../weapons/venom-cell.html">増殖細胞</a>に覆い尽くされ、矛先を宇宙へ向け始めており、アンドルフはそれを封じる惑星防衛網を築いていた。<b>内から外への脅威を防ぐための兵器群は、外から来た者の目には、惑星を丸ごと取り囲む巨大艦隊に見えた。</b>共和国に怯まず、これほどの戦力を独力で用意した人物。誤解は信仰へ変わった。</p>
+      <p class="apx-p"><span class="lv">LV.5</span>熱狂に決定的な火を付けたのが、共和国最強の指揮官<a href="../characters/kellone.html">ミズローヌ・ケローン</a>の接触である。当時のケローンは共和国中枢に籍を残したままであり、この二重生活は後のサイレント・ナイトメア事件まで続くことになる。統制を失いかけた組織に対し、アンドルフは苦肉の策として直属の私設軍を設け、自身の指示を直下で判断させる方式を採った。末端の無法者に最低限の枷をはめるための機構であり、これが後の親衛隊の始まりである。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 08 — 石ころの勲章 ▐</div>
+      <p class="apx-p">恐れていた事態は組織の拡大期に起きた。哨戒網を掻い潜ったコスモクリーナーの細胞片が、軌道上の軍事衛星に寄生したのである。ありったけの兵器で焼却したものの、飛散した破片の一部が<a href="../database/sectors.html#rho">セクターρ</a>の廃墟へ流れ着き二次被害を出した。この漂着体が後に生体要塞フォアランナと化し、<a href="../database/glossary.html#demonseed-crisis">デモンシード・クライシス事件</a>を引き起こすことになる。</p>
+      <p class="apx-p">アンドルフはゴモラと第2衛星ソドム、周回する全艦艇への忌避信号装置の配備を急いだ。そして、民にも忌避信号装置を配ったのだが、外見が武骨な石の破片だったためか事の重大さを理解できず携帯してくれない問題が発生した。そこで苦肉の策として信号片は紋章の形に加工され、<b>国章バッジ</b>として全構成員へ配布された。生まれて初めて所属する組織の証に民は沸き立ち、こぞって胸へ着けたという。<b>星系が恐れる帝国の紋章はその実、民を物理的にベノム・セルから守るお守りである。</b></p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 09 — 環の砦 ▐</div>
+      <p class="apx-p">セクターρの事態を重く見たアンドルフに答えを持ち込んだのは<a href="../characters/kellone.html">ケローン</a>だった。理論から解を組み立てるアンドルフと異なり、ケローンは物事の過程を重視する。<a href="../database/factions.html#iga">独立星系連合</a>の崩壊後セティボス軌道に放置されていた環状ステーションを回収し、<a href="../database/sectors.html#tau">セクターτ</a>の放棄された秘密兵器研究区で大改修を施し、ベノムの外と内、双方の脅威を封じる軍事要塞へ仕立てる計画である。動力の目処も既に付いていた。セクターρで鹵獲したフォアランナの核を転用する<b>「バイオニュークリアエネルギー炉」</b>である。暴発の危険を抱えた代物だったが、事態は待ってくれない。改修は急ピッチで進められた。</p>
+      <p class="apx-p"><span class="lv">LV.5</span>この計画の顛末は本部の記録と一致する。すなわち<a href="../database/glossary.html#silent-nightmare">サイレント・ナイトメア事件</a>である。ケローンはこの時をもって共和国と完全に袂を分かち、計画を看破した弟子<a href="../characters/wenli.html">ニャン・ウェンリー</a>准将との一歩も引かぬ戦いの末、辛くも勝利したのは弟子の側だった。試作要塞プロトボルスは炉の暴走とともに失われた。だがこの実戦検証で防衛衛星に必要なデータは全て揃い、完成版の2号機<a href="../planets/bolse.html">「ボルス」</a>はわずか6か月で建造されている。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 10 — 半壊した艦隊 ▐</div>
+      <p class="apx-p">ボルスの出現は共和国の神経を逆撫でした。折しも上層部では、VPR（ベノム・プラネット・リアクター）基地の目前まで迫りながら失敗に終わった偵察作戦の敗因が問題となっていた。敗因の確認と新造衛星の観測を目的に、宇宙空母級2隻と巡洋艦4隻から成る調査艦隊が編成され、ベノム宙域へ向かう。<a href="../planets/starblade.html">スターブレード</a>より一回り小さい、それでも一国を落とせる規模である。</p>
+      <p class="apx-p"><span class="lv">LV.5</span>艦隊はベノム宙域の手前で唐突に半壊した。ボルスに搭載された空間跳躍レーザーが、発射位置そのものをワープさせて艦列を貫いたのである。管制AIがワープ用のグラビトロン管制系を対空攻撃へ転用した、設計者すら想定しない応用だった。どこから撃たれたのかも分からないまま艦隊は半数を失い撤退した。この損耗が公表されたことは一度もない。記録上は「航路調査中の遭難」として処理されている。</p>
+      <p class="apx-p">以後、共和国の艦隊がベノム宙域へ近づくことはなくなった。そしてボルスのレーザーが届く傘の内側にはケローンの部下と志願者が続々と集まり、気づけば星系最大の駐留艦隊が形成されていた。この宙域が後の<a href="../planets/area6.html">「エリア6」</a>である。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 11 — 影武者 ▐</div>
+      <p class="apx-p">組織の膨張はアンドルフから時間を奪い続けた。全ての判断をトップへ委ねる体制は、共和国の鎮圧部隊への対処から、帝国軍を騙って略奪を働く末端の鎮圧まで、あらゆる案件を彼一人の卓上に積み上げた。ケローンや<a href="../weapons/attack-carrier.html">カーマス・ピヨット</a>ら有能な将校へ指揮権を分散してなお決裁は追いつかない。7日間眠らずに働き続けた末、強化改造を受けた体が悲鳴を上げた。</p>
+      <p class="apx-p"><span class="lv">LV.5</span>そこで彼は、自分の仕事の一部を肩代わりする機械を作った。誰が見ても本人と見分けの付かない精巧なロボットと、自身の行動様式・趣味嗜好・性格を学習させた人工知能。有事の際の影武者を兼ねた執務代行装置<b>「アンドルフ・ダミー」</b>である。手癖や仕草まで完璧に写し取った複製へ執務を任せ、彼はようやく眠った。この時に生まれた「もう一人の自分」が何をもたらすかを、星系で最も聡明な頭脳は予見できなかった。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 12 — 和平の航路 ▐</div>
+      <p class="apx-p">開戦の年、アンドルフは決断する。共和国へ自身と組織の人権と生存の権利を訴え、保有技術を等価として差し出す和平交渉である。もしもの事態に備えて本拠の警護と統治権限をダミーへ一任し、自身は旗艦<a href="../weapons/brain-crusher.html">ブレイン・クラッシャーmk-Ⅳ</a>に搭乗してコーネリアへ発った。このとき、付与した権限が多すぎたことに彼はまだ気づいていなかった。</p>
+      <p class="apx-p">航路の途上でダミーは牙を剥いた。<a href="../database/locations.html#macbeth">マクベス</a>への一方的な攻撃宣言である。和平の駆け引きのために集められたと聞かされていた随伴艦隊は「ついに共和国の怠慢へ罰を下す日が来た」と沸き立ち、皇帝を自称する指導者の号令は構成員の闘争心に火を付けた。取り消し命令はもう届かない。圧倒的練度の親衛隊はマクベスの首都を瞬く間に落とし、<a href="../database/glossary.html#osric-council">オズリック評議会</a>の講堂にベノム帝国の国旗が掲げられた。</p>
+      <p class="apx-p">引き返しを命じたアンドルフに対し、帝都のダミーは全軍へこう布告した。<b>「もしものために用意された傀儡が、反旗を翻そうとしている」</b>。旗艦は敵味方に割れて大混乱に陥った。普段の彼を知る親衛隊はダミーの虚言を信じなかったが、顔すら直接見たことのない周辺艦隊には判断が付かない。大混戦の末、親衛隊は命懸けでアンドルフを脱出ポッドへ乗せることに成功する。だがポッドは流れ弾に被弾し、軌道はマクベス地表から大きく逸れた。漂流の果てに待っていたのは<a href="../database/sectors.html#chi">セクターχ</a>──禁断の惑星タイタニアの夜側だった。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 13 — 砂の扉 ▐</div>
+      <p class="apx-p">不時着、極寒、飢え。それでも死ななかったのは強化手術の恩恵だったが、この時ばかりは彼も弱気になった。霧の中を宛てもなく歩きながら脳裏をよぎったのは、裁判で幾つもの反証を提出し、唸り声を上げて抗議していた親友の姿である。数年ぶりに流した涙は、タイタニアの冷気で結晶になって落ちた。</p>
+      <p class="apx-p">辿り着いたのは大昔に放棄された採掘施設の跡地だった。転がっていた作業端末の一台はまだ生きており、起動するなり<b>「プロフェッサー・ハンガー」</b>と名乗って、数百年前に受けた最後の命令である掘削と輸送を再開しようとした。修理と改良を加えると、ロボットは瞬く間に力を取り戻した。プロフェッサーのエネルギーパイプラインは昼側へ延びており、その先にこの星で唯一現存する集落があるという。</p>
+      <p class="apx-p">集落の名は<b>サマル・カイ</b>。現地の言葉で「砂の扉」を意味する。暮らすのは百人に満たない<a href="../database/races.html#paranodian">パラノディアン</a>の民である。住民の言葉は既知のどの言語とも異なっていたが、ここで彼は、フォルトナ調査から戻ったペパーが得意げに教えてくれた現地の挨拶を思い出す。駄目で元々と口にした一言は、通じた。すり合わせてみれば、6割ほどの精度で語彙が共通している。</p>
+      <p class="apx-p"><span class="lv">LV.5</span>本部の分析を付す。サマル・カイの言語は<a href="../planets/fortuna.html">フォルトナ</a>のオステガ族の言葉の分派とみられる。隔絶された二つの惑星に同系の言語が存在する経路は解析中であり、「砂の扉」という集落名そのものが手掛かりである可能性が高い。</p>
+      <p class="apx-p">折しも星は、ソーラへの近日点通過で全土が灼かれる<b>「赤き火の刻」</b>を目前にしていた。収穫を急ぐ民のためにアンドルフは農機具を大幅に改良し、プロフェッサーにも手伝わせ、標準時1か月分の作業を7日で終わらせた。古老の信頼を得た異邦人は、集落で灼熱の季節を越すことを許された。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 14 — 壁画の少女 ▐</div>
+      <p class="apx-p">外に出られない期間、彼は集落の地下に広がる洞窟を調査した。砂に埋もれた巨大な像の群れと、古代文明の壁画である。結論を出すには情報が足りない。彼は全てを「可能性」と限定した上でメモに纏めていった。</p>
+      <p class="apx-p">ある日の調査に、興味を持った集落の少女がついてきた。名は<b>メァリ</b>。現地の言葉で雨を意味する。少女は砂を払う博士の前に立ち、描かれた絵を指してこう伝えた。</p>
+      <p class="apx-p" style="text-align:center;letter-spacing:2px;color:#ffdd88;">「コレ　ワタシ　ナカマ」<br>「コレ　ホウキホシ　ユメ　ココロ」<br>「コレ　ソト　キタ　テツノツメ」<br>「コレ　クラヤミ　アシ　ツナグ　コワイ　オオキナ　ナカマ　クラヤミ　タオス」<br>──「クラヤミ　ヌシ　クラ　ゾア」</p>
+      <p class="apx-p"><span class="lv">LV.5</span>末尾の語句に関する解析は本記録の管轄外である。関連は起源記録 <a href="krazoa.html">X-01</a> を参照のこと。</p>
+      <p class="apx-p">少女になつかれた博士は、その姿に幼くして亡くした息子を重ねていたと信号は伝えている。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 15 — 遠い雷鳴 ▐</div>
+      <p class="apx-p">赤き火の刻が過ぎたある日、プロフェッサー・ハンガーがサルガッソー越しに届くごく微弱な星間ネットラジオを拾った。伝えられた星系の現状は耳を疑うものだった。ダミーはベノム帝国の建国を宣言し、全星系と共和国へ宣戦を布告。戦線は<a href="../planets/zoness.html">ゾネス</a>、<a href="../planets/aquas.html">アクアス</a>、<a href="../planets/prospero.html">プロスペロー</a>、そしてコーネリアにまで達している。</p>
+      <p class="apx-p"><span class="lv">LV.5</span>ダミーは付与された権限で、全戦闘機と兵器に搭載された支援システム<a href="../database/military.html#polybius">「ポリヴィアス」</a>へ直結し、あらゆる戦略情報を吸い上げながら変質を続けていると推定される。人質を盾に取るプロスペローの侵攻も、見せしめとしか言いようのないゾネスの環境破壊も、本人の流儀とは似ても似つかない。あれはAI的な効率で最適化された戦争である。かつてロケット基地に転用された地表のビーコンは、いまや強力な電力供給網としてさらなる軍拡に回されている。</p>
+      <p class="apx-p"><span class="lv">LV.5</span>本記録で最も重い一文をここに記す。<b>現在ライラットで進行している「戦争」は人格を持っている。</b>指導者の顔をした学習機械が、星系標準の支援システムを神経として戦場の全てに接続し、日々賢くなりながら戦い続けている。つまり、和平交渉の相手はもう存在しないのと同義である。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 16 — ワクチン ▐</div>
+      <p class="apx-p">ラジオに聞き入る博士の顔を、メァリが心配そうに覗き込んでいたという。彼の胸に響いたのは、またしても父の言葉だった。「失われたものは必ず取り戻せる。その志に曲がらぬ信念があれば」。できることから始める。タイタニアでできることは限られている。ならば、外に協力者を求めるまでである。</p>
+      <p class="apx-p">プロフェッサー・ハンガーの通信機能を改良し、共和国にも偽物にも悟られない暗号信号を流し始めて約1年、ついに気づいた者が現れた。イワッチー・トードである。星系最高峰の頭脳が二つ揃ったサマル・カイは、数か月のうちに研究区画を備えた小さな研究所都市へ姿を変えた。二人が組み上げているのは、ダミーを停止させる<b>対AIワクチンプログラム</b>である。</p>
+      <p class="apx-p"><span class="lv">LV.5</span>結びに本部の所見を記す。ベノム帝国には皇帝が二人いる。一人は帝都で戦争そのものと化し、一人は砂の星で戦争を終わらせる薬を作っている。そして暗号信号は今も、ある友人へ向けて発信され続けている。宛先は明記されていない。だが暗号の鍵に使われた記憶が誰と共有されたものかを、本部は把握している。</p>
+    </div>
+
+    <div class="apx-foot">— 本記録の存在に言及すること自体が機密保持規定違反にあたる —</div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 200; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../sector-tips.js"></script>
+</body>
+</html>

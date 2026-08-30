@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPR — VENOM PLANET REACTOR — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#e6c84a;--accent:#fff0a0;--border:rgba(230,200,74,0.32);--border-hi:rgba(230,200,74,0.7);--dim:#3a3010;--dim2:#1c1706; }
+    .p-title    { color: #fff8dc; text-shadow: 0 0 50px rgba(230,200,74,0.35); }
+    .p-tagline  { border-color: #e6c84a; color: #e6c84a; }
+    .terminal-hdr { color: #fff0a0; }
+    .terminal-hdr::before { background: #fff0a0; box-shadow: 0 0 8px #fff0a0; }
+    .dk { color: #e6c84a; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-34 / VPR — ベノム・プラネット・リアクター ]</div>
+    <div class="header-status"><span class="blink" style="color:#fff0a0;">●</span> HOSTILE — ACTIVE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">WEAPON FILE — VENOM PLANET REACTOR — PLANETARY POWER FACILITY — VENOM SURFACE — THE ONLY VITAL POINT</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0034 — CLEARANCE: MILITARY — PRIORITY TARGET: RANK 1</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-34 / WEAPON FILE — FACILITY ]</div>
+        <div class="p-name-jp">ベノム・プラネット・リアクター (VPR基地)</div>
+        <h1 class="p-title">THE HEART<br>OF THE<br>DEAD LAND</h1>
+        <div class="p-tagline">惑星規模発電基地 ─ 帝国唯一の急所</div>
+        <p class="p-short-desc">ベノム本星の地表に置かれた帝国の電力供給リアクター基地。惑星を覆うベノム・セルの生体電位を一点に収束させ、帝都と艦隊・衛星網へ送り出す「惑星そのものを利用した発電施設」。共和国軍が最重要攻略目標に指定する帝国唯一の急所である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ FACILITY SCAN — FILE 34 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">VPR / ベノム・プラネット・リアクター</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">軍事拠点（電力供給基地）</td></tr><tr><td class="dk">LOCATION</td><td class="dv"><a href="../planets/venom.html">ベノム</a>本星地表 — SectorΩ</td></tr><tr><td class="dk">CLASS</td><td class="dv">惑星規模発電・送電施設</td></tr><tr><td class="dk">POWER SOURCE</td><td class="dv"><a href="venom-cell.html">ベノム・セル</a>群の生体電位（ダイナモ増幅）</td></tr><tr><td class="dk">OUTPUT</td><td class="dv">帝都および帝国艦船・衛星電力網の基幹</td></tr><tr><td class="dk">STRUCTURE</td><td class="dv">収束変換設備群 / 中央尖塔（指向性指示器）</td></tr><tr><td class="dk">DERIVATIVE</td><td class="dv"><a href="../planets/bolse.html">ボルス</a>搭載バイオニュークリアエネルギー炉</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../database/factions.html#venom-empire">ベノム帝国</a></td></tr><tr><td class="dk">APPROACH</td><td class="dv warn">AREA6突破 → ボルス → 本星浸食性細胞</td></tr><tr><td class="dk">CLOSEST ATTEMPT</td><td class="dv"><a href="../database/glossary.html#venom-recon">ベノム偵察作戦</a>（3994・先代スターフォックス）</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 稼働中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">STRATEGIC PRIORITY -- 100 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 100%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(230,200,74,0.55);">
+        <img src="" alt="VPR" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">Sector Ω — VENOM PLANET REACTOR</span>
+            <span class="tg-jp">ベノム・プラネット・リアクター ── 死の大地の心臓</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">目標の破壊には 奇跡を何度も続けて起こす必要がある<br>本項は 実行計画ではなく可能性の記述である。<span class="tg-note note">-共和国戦略白書 VPR攻略頁 立案評価より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">発電所と呼ぶな。あれは帝国の心臓であり、我々がまだ一度も触れたことのない唯一の急所である<span class="lore-quote-src">― CDF統合参謀本部 攻略研究班 会議録より</span></span></p>
+  <p class="lore-p">ベノム・プラネット・リアクター（Venom Planet Reactor）は<a href="../database/factions.html#venom-empire">ベノム帝国</a>が本星<a href="../planets/venom.html">ベノム</a>の地表に配備した電力供給リアクター基地である。名称が長いため軍民を問わず略称の「VPR基地」で呼ばれることが多い。</p>
+  <p class="lore-p">電力供給基地と記すとただの発電所のような扱いを受けがちであるが、この基地は規模の面でも戦略面でも重要性の桁が違う。星系では<a href="../planets/lylat_prime.html">ブラグザ・ソーラークリスタル</a>による<a href="../database/glossary.html#energy-revolutions">4回目のエネルギー革命</a>が起きて以来、電力面で苦労することはほぼなくなった。それでも極大出力のAIやスーパーコンピュータを稼働させるには相応の電力が必要になる局面があり、そうした局所的需要のために効率化された核融合炉などが備え付けられている例は存在する。VPR基地はその行き着く極地というべき存在である。端的に表せば惑星そのものを利用した発電施設にほかならない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">発電機構 ─ MECHANISM</h3>
+  <p class="lore-p">ベノムを死の星たらしめている<a href="venom-cell.html">バイオウェポン細胞</a>の発する生体電位は単体では大したものではない。しかし大量に集まるとダイナモ効果による増幅が発生し、大気中に絶え間なく雷を発生させるほどの規模の電力を生み出す。細胞同士の交信電流が惑星の嵐と反応して雷を誘発しているとするコーネリア諜報部隊の報告は<a href="../planets/venom.html">惑星記録</a>に詳しく、「巨大な頭脳」仮説として知られる。VPR基地はこの散逸する電力を一点に収束させ、直接使用可能な電力へ変換して帝都<a href="../database/military.html#atropolis">ベノム・インペリアル・シティ</a>へ送り出す装置なのである。</p>
+  <p class="lore-p">施設の中央にそびえる尖塔は装飾のモニュメントではなく、エネルギーの送信先を指定する指向性指示器として機能しているとみられる。地表の基地から衛星軌道の帝都へ、そしてそこから<a href="../planets/area6.html">AREA6</a>の艦隊と衛星網へと電力を配る帝国の電力網はこの塔の指す先で束ねられている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">帝国唯一の急所 ─ STRATEGIC VALUE</h3>
+  <p class="lore-p">この基地は現時点で帝国の唯一の急所である。<a href="../database/military.html#space-armada">スペースアマダ</a>の艦隊や防衛衛星<a href="../planets/bolse.html">ボルス</a>、<a href="salvadora.html">サルバドーラ</a>といった大戦力を擁する帝国領の宙域は練度の高い兵站と管制AI群の完璧な制御によって一切の隙がない水準で統制されており、どれか一つが欠けても残りが継続して戦闘を行える。</p>
+  <p class="lore-p"><a href="../database/glossary.html#zeta-tragedy">北十字</a>の陥落で主力である<a href="../planets/starblade.html">スターブレード</a>艦隊の大半を失った今、正面からの総力戦を挑んでどれか一つを壊滅できたとしても残りが猛攻を続ける。最善で相打ち。判断を一つでも誤れば共和国側が圧倒的な不利に立たされることは明白である。</p>
+  <p class="lore-p">その中で全ての帝国艦船および衛星が頼っている電力網こそがVPR基地である。防衛衛星ボルスも例外ではない。あの衛星が独自に抱えるバイオニュークリアエネルギー炉は主砲パージ・キャノンの専用動力であり、シールド連環と管制系を含む基幹系はこの電力網に繋がれている。これを破壊することに成功すれば帝国の戦力は実質、自前の動力で動くスペースアマダとサルバドーラのみとなる。これは総戦力の大半を機能不全に陥らせることを意味し、いかにこの基地の電力が重要であるかを物語っている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">攻略 ─ ASSAULT</h3>
+  <p class="lore-p">この基地の破壊は共和国軍の最重要項目に指定されているが実行は難航を極める。<a href="../database/sectors.html#psi">セクターψ</a>の<a href="../planets/area6.html">AREA6</a>の突破と防衛衛星ボルスの猛攻。そして<a href="../database/sectors.html#omega">セクターΩ</a>のベノム本星に巣食う浸食性細胞の抵抗。これら全てを掻い潜るという幾つもの奇跡を立て続けに起こし続けなければ到底不可能であり、戦略白書がこの頁を「奇跡を何度も続けて起こす必要がある」と評したまま長く空論の扱いを受けてきた理由もここにある。</p>
+  <p class="lore-p">現時点でこれを成功直前まで導いたのはリーダーが交代する前の<a href="../database/military.html#starfox">先代スターフォックス</a>のみである。宇宙歴3994年の<a href="../database/glossary.html#venom-recon">ベノム偵察作戦</a>において編隊は基地の灯を目視できる位置まで迫りながら、僚機の裏切りによって目標の手前で崩れた。共和国側の翼がこの基地をその目で捉えた記録は後にも先にもこの一度きりである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">略称は本来「VR基地」となる予定であり、現在よりさらに短かった。ところが先に同名のバーチャルリアリティ体感ゲームが発売されており、これを避ける形で現在の名称へ変更された経緯がある。わざわざ共和国側の商標権まで確認する律義さはかえって不気味さを呼び、様々な憶測が流れた。またこの登録確認によってベノムのどこかに重要な施設があるという噂は<a href="../database/military.html#cdf">CDF</a>中に広まったとされる。これを帝国の慢心ととらえるか宣戦布告ととらえるかは判断の分かれるところである。</p>
+  <p class="lore-p">このVPR基地の基本理念を応用した小型動力炉こそ<a href="../planets/bolse.html">ボルス</a>に搭載されている「バイオニュークリアエネルギー炉」である。ただしこちらは要塞内部に埋め込む小型化の代償として非常に不安定であり、暴発した際は宙域を丸ごと消し飛ばすほどの爆発を起こす代物であった。最低限の安全を確保したうえでの安定した供給に至るまでには幾度も失敗を重ねたといわれている。</p>
+  <p class="lore-p">本基地は最初から発電基地であったわけではない可能性が示唆されている。中央にそびえる尖塔は当初の用途がロケット発射基地だった際の名残と言われているのである。現時点でこの尖塔は役割を変えて指向性指示器として機能しているとみられるが、仮に本当にロケット発射基地であった場合は何の目的で作られたのかという新たな謎が残ることになる。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,240,160,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

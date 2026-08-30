@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELADARD — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ffaa33;--accent:#ffcc77;--border:rgba(255,170,51,0.32);--border-hi:rgba(255,204,119,0.7);--dim:#402808;--dim2:#201404; }
+    .p-title    { color: #fff4e0; text-shadow: 0 0 50px rgba(255,170,51,0.3); }
+    .p-tagline  { border-color: #ffaa33; color: #ffaa33; }
+    .terminal-hdr { color: #ffcc77; }
+    .terminal-hdr::before { background: #ffcc77; box-shadow: 0 0 8px #ffcc77; }
+    .dk { color: #ffaa33; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/locations.html" class="nav-back">◄ LOCATIONS</a>
+    <div class="header-tag">[ 17 / ELADARD — エラダード ]</div>
+    <div class="header-status">● SECTOR-ϝ — NEUTRAL ZONE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">LYLAT SYSTEM — ELADARD — HACTIVA TRADE UNION HEADQUARTERS — SECTOR-DIGAMMA</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: ELD-0017 — CLASSIFICATION: NEUTRAL TERRITORY — ARMS TRADE HUB</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ 17 / LYLAT SYSTEM — SECTOR-ϝ ]</div>
+        <div class="p-name-jp">エラダード (ELADARD)</div>
+        <h1 class="p-title">THE FORGE<br>THAT ARMS<br>BOTH SIDES</h1>
+        <div class="p-tagline">工業惑星 ─ ハクティバ通商連合本拠地</div>
+        <p class="p-short-desc">恒星ハクティバ圏に浮かぶ工業惑星。ハクティバ通商連合の本拠地として、共和国と帝国の双方に武器を売り続ける「中立」の名の武器庫。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PLANETARY SCAN — SECTOR-ϝ ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">ELADARD / エラダード</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">アウター・リム（ハクティバ圏）</td></tr><tr><td class="dk">LOCATION</td><td class="dv">LYLAT 11th — Sectorϝ</td></tr><tr><td class="dk">PLANET TYPE</td><td class="dv">E1型 工業惑星</td></tr><tr><td class="dk">MOONS</td><td class="dv">2（軌道工廠群）</td></tr><tr><td class="dk">PRIMARY STAR</td><td class="dv">ハクティバ / パラニド</td></tr><tr><td class="dk">AVG TEMP</td><td class="dv">-14°C ～ +16°C（鉱塵による寒冷化）</td></tr><tr><td class="dk">DAY / YEAR</td><td class="dv">28H / 113D</td></tr><tr><td class="dk">FACTION</td><td class="dv warn">ハクティバ通商連合（中立地帯）</td></tr><tr><td class="dk">CAPITAL</td><td class="dv">生産都市 <a href="../database/glossary.html#city-hvc001">HVC-001</a></td></tr><tr><td class="dk">RESIDENT RACES</td><td class="dv">キューソイド / ゼートイド ほか</td></tr><tr><td class="dk">ALBEDO</td><td class="dv">藤色（鉱塵による散乱 / 上層=紫・下層=黄）</td></tr><tr><td class="dk">ATMOSPHERE</td><td class="dv warn">⚠ 夏: 光化学スモッグ — 星系最悪水準 / 冬: 鉱塵混じりの降雪 / 全都市が密閉ドーム</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">ENVIRONMENT INDEX -- 42 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 42%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,170,51,0.6);">
+        <img src="../resource/LA_image/LS_P_11.png" alt="Eladard" class="planet-img-detail planet-img-medium" style="animation: 8s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">Outer Rim — INDUSTRIAL WORLD</span>
+            <span class="tg-jp">通商連合本拠地 ── 武器取引中立地</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">戦争?　なにいってるんだ。俺達は公正な商売をしてるだけだ。<br>これからもご贔屓にしてくれよ?<span class="tg-note note">-通商連合とCDF高官の通話記録より抜粋-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「新入りの諸君、耳をかっぽじってよぉ聞け。『エラダードに敵はいない。』　全員が客だからな！」<span class="lore-quote-src">― ハクティバ通商連合 交易憲章 前文より</span></span></p>
+  <p class="lore-p">エラダード（Eladard）は、<a href="../database/sectors.html#digamma">セクターϝ</a>に位置するライラット星系第11惑星。双子星<a href="../database/locations.html#hactiva">ハクティバ</a>と<a href="../database/locations.html#paranid">パラニド</a>の共通重心を公転する工業惑星であり、<a href="../database/factions.html#hactiva-union">ハクティバ通商連合</a>の本拠地である。<a href="../database/factions.html#cornerian-republic">コーネリア連合共和国</a>・<a href="../database/factions.html#venom-empire">ベノム帝国</a>双方と武器取引が行われているため、両軍から中立地として指定されている。</p>
+  <p class="lore-p">「中立」とは名ばかりで、その実態は星系最大の武器工場である。<a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>の両陣営はいずれもこの星からの武器供与に依存しており、エラダードの工廠が止まれば戦争そのものが止まるとまで言われる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 形成史</h3>
+  <p class="lore-p">エラダードは、双子星<a href="../database/locations.html#hactiva">ハクティバ</a>と<a href="../database/locations.html#paranid">パラニド</a>の共通重心を回る周連星軌道を占めている。二つの星が近接して互いを回るこの連星系では、片方の星だけを巡る軌道は他方の重力に絶えず引き伸ばされ、細長い楕円と化して安定を保てない。惑星の軌道は<a href="../database/locations.html#kew">キュー</a>と同じく、連星を丸ごと囲む形に落ち着くほかないのである。公転周期113日はキューのすぐ外側を回る勘定であり、周連星軌道の内縁ぎりぎりに二つの惑星が並ぶ構図は、星系外の天文学からも長く注目を集めてきた。エラダードは連星の重力が支配する内側の領域で生まれた惑星ではなく、より外側の軌道から落ちてきたところを連星の重力に捕らえられ、この軌道へ落ち着いたとする捕獲説が、現在最も広い支持を得ている。</p>
+  <p class="lore-p">この星が星系有数の金属惑星である理由は、その荒々しい前半生に求められる。エラダードの平均密度は同規模の岩石惑星に比べて著しく高く、岩石質のマントルは本来あるべき厚みの半分に満たないと解析されている。形成期の末に巨大な天体との衝突を受け、外殻の大半を宇宙へ剥ぎ取られた結果と考えられており、金属核がきわめて浅い位置にまで迫るという特異な内部構造がここで生まれた。他の惑星であれば地下数百キロに眠るはずの高品位の鉱床が、この星では露天掘りの届く深さに横たわっている。工業惑星としての資質は住民が掘り当てたものではなく、衝突が置いていったものである。</p>
+  <p class="lore-p">二つの衛星もまた同じ衝突の産物とみられる。飛散した外殻の破片のうち惑星の重力圏に留まったものが再集積し、小さな二つの球体を成した。現在この両衛星はまるごと軌道工廠へ改造されており、かつて剥ぎ取られた外殻は、いま兵器の形をとって星系へ送り出されている。地質学の講義でこの経緯が「星が自分の骨を売っている」と紹介されるのは、必ずしも比喩の遊びだけによるものではない。</p>
+  <p class="lore-p">衝突は大気にも爪痕を残した。多量の揮発成分が失われたため大気は薄く、代わりに金属質の鉱塵を元来多く含んでいる。<a href="../database/locations.html#hactiva">ハクティバ</a>の白い光はこの鉱塵に散乱し、上層では紫を、下層では黄を拡散させる。宇宙から望むエラダードが鮮やかな藤色の球体として見えるのはこのためであり、星の色そのものが衝突の置き土産にあたる。労働者が「金の匂いの空」と呼ぶ黄金色の靄も起源をたどれば工廠の煙ではなく剥ぎ取られた外殻の粉であり、ロマンのカケラもない言い方をするとただの鉱塵である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">地表の大半は工業地帯と<a href="../database/glossary.html#ai-revolution">資源採掘場</a>が占め、大気には常に工廠の排煙が漂う。鉱塵に由来する藤色の空へ排煙が上乗せされた結果、灰色の底に黄の雲が沈み、舞い上がる塵がそれを絶えず輝かせる。この空を人々は「金の匂いの空」と呼ぶ。遠目には美しい景色であるものの、実際にその下で暮らす者にとっては悠長に眺めていられる代物ではない。近年は光化学スモッグの発生が星系で最も激しい水準に達しており、環境汚染は通商連合が公式に認めた数少ない失点となっている。</p>
+  <p class="lore-p">空を覆う鉱塵は星の気候そのものも変えてしまった。ハクティバの光が上層で散乱されて地表へ届く熱量が減り、エラダードは<a href="../database/locations.html#fichina">フィチナ</a>ほどではないものの寒冷な星となっている。年間の平均気温は氷点近くにとどまり、季節は二つの顔を持つ。夏は工廠の排煙が滞留して光化学スモッグが地表を這い、冬は鉱塵を核として凝結した雪が舞う。黄色く輝きながら降るこの雪を住民は「金粉雪」と呼ぶが、触れれば肌が荒れ吸えば肺を痛める代物である。外から来た者が最初に不気味さを覚えるのはこの気候ではなく、ドームの外に人がほとんどいないことである。輸送路を行き交うのは無人の貨物車両ばかりであり、鉱塵の雪の中に人影を見ることはまずない。ドームの中の賑わいと外の無人の景色の落差が、この星を訪れた者の記憶に最も強く残る。</p>
+  <p class="lore-p">こうした事情から、この星の都市は例外なくドーム型の完全密閉構造を採る。外の空気を一切入れない代わりに、内部の生活環境は徹底して管理されており、居住性という一点においては<a href="../database/locations.html#katina">カタリナ</a>や<a href="../database/locations.html#fichina">フィチナ</a>を大きく上回る。環境指数の低さと住み心地の良さが同居するというこの星の奇妙な二面性は、利益の一部を福利厚生へ確実に還元する「企業国家」の合理性によるものである。</p>
+  <p class="lore-p">2つの衛星はまるごと軌道工廠に改造されており、第1衛星では共和国向け、第2衛星では帝国向けの生産ラインが稼働しているというのが公然の秘密である。両衛星の間で部品が融通されることもあるといい、皮肉にも両軍の兵器は「兄弟」であることが少なくない。</p>
+  <p class="lore-p">自転周期は28標準時間、公転周期は113日。一日が<a href="../database/locations.html#corneria">コーネリア</a>より3時間以上長いにもかかわらず、この星の生活は徹頭徹尾<a href="../database/glossary.html#standard-time">標準時</a>で刻まれている。工廠の操業が両軍の納期に縛られている以上、現地の日の出に合わせて働く理由がどこにもないためである。三交代の勤務表は標準時の24時間で組まれ、28時間の「本当の一日」が意識されるのは年に一度の設備停止日くらいのものである。この星では太陽ではなく受注が昼夜を決めるという言い回しは、エラダードの勤め人にとって皮肉ですらない事実である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">エラダードは元々、ハクティバ圏の資源惑星として細々と採掘が行われる辺境だった。最初の転機は<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>である。星系中央の戦乱から距離を置いたこの星は「どの陣営にも属さない武器供給地」として急成長し、その利益構造がそのまま通商連合の原型となった。第二の転機は戦後の<a href="../database/factions.html#iga">独立星系連合（IGA）</a>討伐戦役だった。当時の<a href="../database/glossary.html#warp-drive">ワープドライブ</a>は<a href="../database/locations.html#setebos">セティボス</a>の重力で航路を狂わされるため、共和国は<a href="../database/locations.html#macbeth">マクベス</a>とエラダードを経由する<a href="../database/glossary.html#route-of">中継航路</a>を組まざるを得ず、この航路の開通と技術者の流入が両工業惑星の飛躍の始まりとなったのである。</p>
+  <p class="lore-p">第2次ライラットウォーズの勃発は、エラダードに空前の好況をもたらした。連合は双方に協力すると見せかけて互いの戦意を煽り、競わせることで利益を生み続ける構造を作り上げている。両軍から嫌悪と不快感を示されながらも取引が途絶えないのは、この星なしでは戦線を維持できないからに他ならない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">住民は商才に長けた<a href="../database/races.html#kyusoid">キューソイド</a>の管理職層と、<a href="../database/races.html#zetoid">ゼートイド</a>をはじめとする熟練工層で構成される。市民権は「雇用契約」とほぼ同義であり、失職は事実上の国外追放を意味する。過酷なようだが、星系外縁で<a href="../database/glossary.html#racial-friction">差別</a>に晒されてきた人種にとって「金さえ稼げば出自を問われない」この星はある種の避難所でもある。</p>
+  <p class="lore-p">政治の実権は通商連合の理事会が握り、首都機能は<a href="../database/locations.html#kew">キュー</a>の歓楽都市アルピニアと分担されている。エラダードが「工場」、キューが「店先」というのが連合圏の基本構造である。</p>
+  <p class="lore-p">その「工場」を実際に切り盛りしているのが<a href="../database/glossary.html#fortinbras">フォーティンブラス商工会</a>である。掲げる流儀は「効率と手軽さ」。同人誌から戦闘機まで何でも綺麗に大量生産すると評される星系製造業の巨人であり、<a href="../database/locations.html#macbeth">マクベス</a>の<a href="../database/glossary.html#osric-council">オズリック技術者協議会</a>と並んで「ライラットの技術の双璧」と称される。険悪で知られる両者が裏では互いの技術を融通し合っていることも含め、詳細は商工会の項に譲る。工員に衣食住と医療を保証する徹底した管理体制は、この星が「避難所」たり得ている理由の半分を担っている。</p>
+  <p class="lore-p">効率と商売を軸に組み上げられたこの星の文化は、星系で最も進んだ形に到達したと評される。費用に対する成果、時間に対する成果。あらゆる行動がこの二つの尺度で測られ、無駄と判定された習慣は容赦なく削られてきた。住民は不自由のない生活を約束されているにもかかわらず、この星で長く働いた者の多くが、自分は工場の部品のひとつでしかないという虚しさを訴える。効率の徹底が幸福の徹底と一致しなかったことは、通商連合が今も答えを出せていない問題である。</p>
+  <p class="lore-p">その気質は言葉にも表れている。エラダードの放送はラジオも映像番組も既定で1.5倍速で流され、等倍の再生は「間延びしていて聞くに堪えない」と敬遠される。会話では大半の物事が二文字へ短縮され、昼休みは「LB」、給料日は「PD」と呼ばれる。赴任者がこの星の言葉に慣れるまでには相応の時間を要し、そして慣れた頃に帰郷すると、今度は故郷での会話に不可逆の爪痕が残る。中央の家族から「何を言っているのか分からない」と言われて初めて自分の変化に気づく、というのが赴任者の定番の土産話である。</p>
+  <p class="lore-p">この星の評判を決定的にしているのが食事である。工廠で配給される<a href="../database/glossary.html#dmg-001">標準食</a>は栄養価の設計こそ完璧であるものの、無駄という無駄を削ぎ落とした結果、餌を通り越して「消しゴム」と称される乾燥固形物へ行き着いた。味は一応ついているが食感はぼそぼそと乾き、付属のビタミン飲料か蛋白飲料で流し込まなければ飲み下すことすら難しい。体験労働に訪れた者が最初に心を折られるのは、決まってこの一食目である。さすがに標準食のみでは心を病む者が絶えなかったため、夕食だけは各自の自炊に委ねられているものの、家庭料理の定番が揚げ物に直接塩を振ったものであることから、結局この星の食事はまずいという評価は覆っていない。</p>
+  <p class="lore-p">代表都市は生産都市<a href="../database/glossary.html#city-hvc001">HVC-001</a>。街そのものが工業製品の生産ラインの一部品として設計された特殊な都市であり、都市群から排出される有害なスモッグは星全体を常に覆い、この星の不穏さをそのまま景色にしたかのようだと評される。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">エラダード自体は固有の大艦隊を持たないが、防衛力は侮れない。自社製最新兵器で武装した<a href="../database/glossary.html#corporate-fleet">企業警備艦隊</a>に加え、「この星を攻撃すれば自軍への武器供給が止まる」という構造そのものが最大の抑止力となっている。両軍にとってエラダードは、攻撃できない敵であり、信用できない味方である。</p>
+  <p class="lore-p">同じ工業惑星でありながら、エラダードと<a href="../database/locations.html#macbeth">マクベス</a>の役割は明確に異なる。マクベスは<a href="../database/glossary.html#osric-council">熟練の技術者</a>が代々腰を据える鍛冶場であり、帝国の決定力となる兵器は今もあの星でのみ打ち上げられている。対するエラダードは、相手を選ばず注文を受け続ける工場である。この星の生産ラインが吐き出すのは無人機と機雷、すなわち数で戦況を動かす量産兵器であり、一機ごとに職人の手が入る類の兵器ではない。最高の一振りを鍛えるマクベスと、同じものを際限なく刷り続けるエラダード。両者が競合しないという事実こそ、通商連合が帝国と長く付き合えている理由でもある。</p>
+  <p class="lore-p">帝国がこの星へ発注を出すに至った経緯は、帝国側の事情に根ざしている。皇帝<a href="../database/characters.html#andorf">アンドルフ</a>は統治者であると同時に軍部の技術主任を兼ね、主力兵器の設計を自ら手がけているが、その筆はしばしば大規模な可変機構、宇宙戦闘用でありながら人型を選ぶ機体構成、機体出力に見合わない巨大レーザー砲へと走る。無人機や哨戒機の設計には初めから気乗りしない様子が図面ににじみ出ており、これを見かねた<a href="../database/characters.html#pigma">ピグマ・デンガー</a>の進言によって、現在は小規模無人機のおよそ6割がエラダードへの外注に切り替えられている。帝国向け兵器「<a href="../weapons/lw2-drones.html#dragon">ドラゴン</a>」「ドラゴンⅡ」の設計図をこの星が保有しているのも、それが皇帝の手になる兵器ではないためである。</p>
+  <p class="lore-p">もっとも、設計から完全に外注されているのは「ドラゴン」系と「<a href="../weapons/lw2-drones.html#garuda">ガルーダ</a>」系の無人機など一部にとどまる。「<a href="../weapons/lw2-drones.html#venom-fighter">ベノムファイター</a>」や「<a href="../weapons/lw2-drones.html#crude">クルード</a>」といった主力機の設計は依然として帝国側が握って離さない。加えて「<a href="../weapons/lw2-drones.html#killer-bee">キラービー</a>」「<a href="../weapons/lw2-drones.html#transam">トランザム</a>」のように防衛用途を前提とした兵器は、製造そのものをエラダードへ回さずマクベスで直接手がけている。理由は言うまでもなく、通商連合がいつか裏切った際に、その連合製の兵器で応戦する事態を避けるためである。両者の蜜月が信頼の上に成り立っているという見方は、帝国の発注書を一枚めくれば直ちに崩れる。</p>
+  <p class="lore-p"><a href="../database/glossary.html#cis-hq">共和国情報部</a>は、帝国向け製造ラインで次世代兵器の試作が進んでいるとの情報を掴んでおり、「中立」の看板の下で力の均衡が静かに傾きつつあると警告している。通商連合がどちらかへ本格的に肩入れした時、それは戦争の転換点となるだろう。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">エラダードの工廠には「戦勝記念日を作らない」という不文律がある。どちらの陣営の勝利を祝っても、半分の顧客を失うからである。代わりに祝われるのは「創業記念日」と「受注記録更新日」だ。この星の暦は、戦争ではなく商売で刻まれている。</p>
+  <p class="lore-p">一方で、工廠の片隅には出荷前の兵器にこっそり花の刻印を彫る職人たちがいるという。「殺す道具に、せめて祈りを」──匿名の彼らは「<a href="../database/glossary.html#flower-culture">フラワーマーカー</a>」と呼ばれ、両軍の兵士たちの間では花の刻印がある機体は撃たれにくいというジンクスさえ生まれている。</p>
+  <p class="lore-p">この星の製造ラインが一度だけ沸き立った日として語り継がれているのが、有人戦闘機の試作依頼「<a href="../weapons/sardes.html#zz">サルデス-ZZ</a>」の受注である。量産可能な汎用機構のみで構成されながら人型と戦闘機形態を自在に往復するという設計であり、なにより、その凛々しい佇まいが工員たちを一斉に童心へ帰らせた。結局のところ帝国の方針転換により「サルデス」系列の製造は<a href="../database/locations.html#macbeth">マクベス</a>へ移り、量産の発注がこの星に来ることは二度となかった。それでも試作のために組み上げられた「皇帝の自信作」は今も惑星首都の広場に据えられ続けており、通商連合が撤去を提案するたび、工員たちの猛烈な反対で立ち消えになっている。</p>
+  <p class="lore-p">後年<a href="../database/locations.html#grippia">グリッピア</a>の惑星開発モデルを練るため、<a href="../database/characters.html#grippy">グリッピー・トード</a>が3か月にわたり一労働者としてこの星で働いた記録が残る。栄養素は満たしているのに何かが決定的に欠けている食事、日の出も日の入りも勘定に入れない標準時換算のタイムカード、残業のない8時間きっかりの勤務。条件はいずれも申し分なく揃っていたにもかかわらず、体験労働の最終日、彼は理由の説明できない涙が止まらなくなったという。</p>
+  <p class="lore-p">この経験は、グリッピアの企業都市の設計に決定的な影響を残した。同星の施策にはエラダードを反面教師とした条項が数多く盛り込まれており、理由のない休息や、生産性に何ら寄与しない趣味の時間までが制度として尊重されている。導入後、業績は目に見えて落ち込んだ。そして従業員の満足度は、それを補って余りあるほど跳ね上がったと記録されている。</p>
+  <p class="lore-p">生産都市の第9格納庫には今も空いたままの区画がある。都市管理AI「HVCシリーズ」の9号機として製作されていた人型ロボット<a href="../characters/hvc-009.html">HVC-009</a>が製作途中のまま帝国の商艦に付いて行き、壁にたどたどしい文字を残して出星した跡である。工員たちはこの区画を片付けずに残しており、通商連合が出した捕獲依頼書は格納庫の壁に貼られたまま日に焼けている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body></html>

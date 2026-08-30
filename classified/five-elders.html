@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script>if (sessionStorage.getItem('apx-authorized') !== '1') location.replace('../apocalypsis.html');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P-02 FIVE ELDERS — APOCALYPSIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --apx:#ff4455; --apx-dim:rgba(255,68,85,0.35); --apx-amber:#ffdd88; }
+    body { background:#050307; font-family:"Share Tech Mono",monospace; }
+    html, body { overflow-y:auto; }
+    .apx-p { font-family:'NitalagoRuika','Share Tech Mono','Yu Gothic UI','Meiryo',monospace; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 50% 40%, rgba(40,5,10,0.55) 0%,transparent 60%), #050307; }
+    .apx-main { position:relative; z-index:5; max-width:800px; margin:0 auto; padding:70px 24px 60px; }
+    .apx-title { font-family:Orbitron,monospace; font-weight:900; letter-spacing:4px;
+      color:#ffeaea; font-size:24px; text-shadow:0 0 30px var(--apx-dim); }
+    .apx-sub { color:var(--apx); font-size:11px; letter-spacing:3px; margin:8px 0 30px; }
+    .apx-sec { border:1px solid var(--apx-dim); background:rgba(18,4,8,0.85); margin-bottom:22px; }
+    .apx-sec-hdr { display:flex; align-items:center; gap:8px; padding:9px 14px; font-size:11px;
+      letter-spacing:2px; color:var(--apx); background:rgba(255,68,85,0.1);
+      border-bottom:1px solid var(--apx-dim); }
+    .apx-sec-hdr .dot { width:7px; height:7px; border-radius:50%; background:var(--apx);
+      box-shadow:0 0 8px var(--apx); }
+    .apx-p { color:#d8c0c0; font-size:13px; line-height:2; letter-spacing:0.5px; padding:14px 18px; margin:0; }
+    .apx-p + .apx-p { padding-top:0; }
+    .apx-p b { color:var(--apx-amber); font-weight:normal; }
+    .apx-p a { color:var(--apx-amber); }
+    .lv { display:inline-block; margin-right:8px; padding:1px 8px; font-size:10px;
+      color:var(--apx); border:1px solid var(--apx-dim); letter-spacing:2px; }
+    .roster { list-style:none; margin:0; padding:14px 18px; }
+    .roster li { padding:9px 4px; border-bottom:1px dashed rgba(255,68,85,0.2);
+      color:#d8c0c0; font-size:13px; line-height:1.9; }
+    .roster b { color:var(--apx-amber); font-weight:normal; }
+    .apx-foot { text-align:center; color:#775555; font-size:10px; letter-spacing:2px; padding-top:8px; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(255,68,85,0.3);">
+    <a href="../apocalypsis.html" class="nav-back" style="color:#ff4455;border-color:rgba(255,68,85,0.3);">◄ APOCALYPSIS</a>
+    <div class="header-tag">[ P-02 / THE FIVE ELDERS — 五大元老院 ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff4455;">●</span> CLEARANCE LV.5 — SESSION AUTHORIZED</div>
+  </header>
+
+  <main class="apx-main">
+    <div class="apx-title">THE FIVE ELDERS ── 五大元老院</div>
+    <div class="apx-sub">▮ 機密人事記録 P-02 — 構成員の素性照合記録（公開記事: <a href="../database/characters.html#five-elders" style="color:var(--apx-amber);">人物データベース</a>）▮</div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 01 — 素性照合一覧 ▐</div>
+      <ul class="roster">
+        <li><b>アームストロング老</b>（コーディリア代表）── 超兵器討伐『スター・ドリーム作戦』の総司令官にして、共和国の初代評議会議長。</li>
+        <li><b>ケルベス老</b>（グランベル代表）── 超兵器の砲撃に散ったグランベルの<b>オルトス総帥の実弟</b>。</li>
+        <li><b>ニルジャゼル老</b>（ローザリンド代表）── ローザリンドの復興と<a href="../database/locations.html#macbeth">マクベス</a>の開拓を指揮した、オズリック技術者協議会の初代会長。</li>
+        <li><b>トーマス老</b>（アクアス代表）── 各国に停戦と統合艦隊の編成を呼びかけた<a href="../database/glossary.html#concord-declaration">『協和宣言』</a>の提案者にして、旧タッドー共和国の最高議長。</li>
+        <li><b>シキ老</b>（サルジーナヤ代表）── 超兵器討伐作戦に参戦した機械技師、<b>アーノルド・トモウキ本人</b>。ステファノー全軍総司令官の息子。</li>
+      </ul>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 02 — 延命措置 ▐</div>
+      <p class="apx-p"><span class="lv">LV.5</span>元老院は結成当初から一度も構成員が入れ替わっていない。5名は延命手術によって存命しており、最高齢は既に<b>250歳</b>を超える──人工知能を除けば、旧戦時下を直接知る星系唯一の存在である。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 03 — 行動原理に関する分析 ▐</div>
+      <p class="apx-p">彼らは共和国──ひいてはライラット星系の存続のためであれば、多少の犠牲も、歴史の改変すらも厭わない。かつて教科書から<a href="../database/glossary.html#moskma-three-days">「モスクマの三日間」</a>の記述を抹消した法案を元老院が黙認した事実は、その静かな実例といえる。</p>
+      <p class="apx-p"><span class="lv">LV.5</span>FCH-119関連文書には、憲章第1条に抵触する某研究の承認欄に<b>ケルベス老の署名</b>が確認された旨の記載がある（<a href="../database/glossary.html#hybrid-marriage">用語集・封印項目</a>を参照）。当人は一度も査問を受けておらず、元老院の免責特権がその理由とされる。かつて<a href="../database/glossary.html#stephano">あの超兵器</a>を生んだ国の代表が、その禁を破る研究を承認していたという皮肉について、公式記録は沈黙している。</p>
+    </div>
+
+    <div class="apx-foot">— 本記録の存在に言及すること自体が機密保持規定違反にあたる —</div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 200; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.1 + Math.random()*0.6).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(255,200,200,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+</body>
+</html>

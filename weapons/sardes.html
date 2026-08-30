@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SARDES — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#9ec87a;--accent:#c8e8a0;--border:rgba(158,200,122,0.32);--border-hi:rgba(200,232,160,0.7);--dim:#2a3820;--dim2:#141c10; }
+    .p-title    { color: #f0fae4; text-shadow: 0 0 50px rgba(158,200,122,0.4); }
+    .p-tagline  { border-color: #9ec87a; color: #9ec87a; }
+    .terminal-hdr { color: #c8e8a0; }
+    .terminal-hdr::before { background: #c8e8a0; box-shadow: 0 0 8px #c8e8a0; }
+    .dk { color: #9ec87a; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-17 / SARDES — サルデス ]</div>
+    <div class="header-status"><span class="blink" style="color:#c8e8a0;">●</span> HOSTILE — ACTIVE THREAT</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — SARDES SERIES — IMPERIAL MANNED HUMANOID FIGHTERS — THREAT ANALYSIS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0017 — CLASSIFICATION: HOSTILE WEAPON — MANUFACTURER: MACBETH</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-17 / ARMORY FILE ]</div>
+        <div class="p-name-jp">サルデス (SARDES)</div>
+        <h1 class="p-title">KNIGHTS<br>OF THE<br>EMPIRE</h1>
+        <div class="p-tagline">帝国軍有人人型戦闘機 ─ 系列総称</div>
+        <p class="p-short-desc">帝国軍が艦隊戦で投入する有人人型戦闘機の総称。宇宙戦闘に不向きなはずの人型が、戦場では騎士のように振る舞い、共和国将兵の悪夢となっている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ THREAT SCAN — FILE 17 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">SARDES SERIES / サルデス</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">有人人型戦闘機（系列総称）</td></tr><tr><td class="dk">DESIGN</td><td class="dv">帝国内製 — 皇帝の直轄と分析</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv">マクベス直営工廠</td></tr><tr><td class="dk">PROTOTYPE</td><td class="dv">サルデス-ZZ（可変試作機・エラダード）</td></tr><tr><td class="dk">ACE UNITS</td><td class="dv warn">赤・青・黒・白の専用機4種を確認</td></tr><tr><td class="dk">CONTROL</td><td class="dv warn">⚠ 一部機体に遠隔操作端末 — 解析中</td></tr><tr><td class="dk">FIRST CONTACT</td><td class="dv"><a href="../database/glossary.html#zeta-tragedy">セクターζの惨劇</a>（白の初確認）</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">現役 — 配備・搭乗員練度とも拡大中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 91 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 91%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(158,200,122,0.5);">
+        <img src="" alt="SARDES" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">IMPERIAL HUMANOID FIGHTER</span>
+            <span class="tg-jp">帝国の騎士 ── 皇帝の拘りが生んだ人型</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">人型だと? 笑うなよ。あれが振り向いた瞬間、うちの小隊は三機減ったんだ。<span class="tg-note note">-セクターζ生還パイロットの証言記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">艦隊の穴は無人機が埋め、戦場の要は騎士が突く。陛下の軍隊は中世と未来で出来ている<span class="lore-quote-src">― CDF情報部 帝国軍編成分析メモより</span></span></p>
+  <p class="lore-p">サルデス（Sardes）は、<a href="../database/factions.html#venom-empire">ベノム帝国</a>軍が艦隊戦の際に使用する有人人型戦闘機の総称である。宇宙戦闘には明らかに不向きな人型で製造され続けていることについては、帝国軍部の並々ならぬ拘り──とりわけ主力兵器の設計を自ら手がける皇帝<a href="../database/characters.html#andorf">アンドルフ</a>の嗜好が反映されていると分析されている。</p>
+  <p class="lore-p">操縦が難しい人型機ではあるものの、その性能は決して趣味にとどまらない。四肢による姿勢制御と武装換装の柔軟さは艦隊戦の接近戦闘で猛威を振るい、<a href="../weapons/lw2-drones.html">無人機の物量</a>が空けた戦線の穴へ、決定打としてこの騎士たちが投入される。編成の思想そのものは中世の騎兵と何ら変わらないが、笑った将兵から順に撃墜されているのが現状である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">系譜 ─ LINEAGE</h3>
+  <p class="lore-p" id="zz">系列の原点は、開戦前に<a href="../planets/eladard.html">エラダード</a>へ発注された試作依頼「サルデス-ZZ」である。量産可能な汎用機構のみで構成されながら人型と戦闘機形態を自在に往復するという意欲的な設計で、「皇帝の自信作」と呼ばれた。しかし帝国の方針転換により量産はエラダードへ発注されず、以後の系列の製造はすべて<a href="../database/locations.html#macbeth">マクベス</a>の直営工廠が担っている。帝国の決定力となる兵器は職人の星でのみ打ち上げられるという原則に、サルデスも忠実である。</p>
+  <p class="lore-p">現行の系列は、艦隊に随伴する量産機と、後述するエース専用機の二層で構成される。量産機ですら一機ごとにマクベスの職人の手が入っており、無人機のような損耗前提の運用は一切されていない。撃墜された機体は可能な限り回収され、修復歴が機体銘板に誇らしげに刻まれるという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">エース専用機 ─ ACE UNITS</h3>
+  <p class="lore-p">報告によると、搭乗員の中でも特に優れた者には専用機の使用が認められている。交戦記録から存在が確認されているのは以下の4機である。</p>
+  <p class="lore-p" id="red"><strong>赤い機体</strong>──通常機の3倍速と報告される猛攻を繰り出す。解析班は当初この数値を計器の故障と疑ったが、三度の交戦でいずれも同じ値が記録され、以後は疑っていない。</p>
+  <p class="lore-p" id="blue"><strong>青い機体</strong>──鞭状に爆薬を連結した専用武器を振るう重装備機。艦艇の装甲へ爆薬の鞭を巻き付けて起爆する強襲戦法を得意とし、対艦戦果では4機中最大とみられる。</p>
+  <p class="lore-p" id="black"><strong>黒い機体</strong>──3機一組で編隊を組み、巧みな連携で攻めてくる。縦一列に重なって射線と機影を隠し、時間差で仕掛ける連続攻撃は、頭で理解していても回避が困難と報告されている。</p>
+  <p class="lore-p" id="white"><strong>白い機体</strong>──多数の遠隔操作ビットを展開しオールレンジ攻撃を行う。系列中最大の脅威であり、詳細は次項に譲る。</p>
+  <p class="lore-p">いずれの機体についても搭乗員の練度が明らかに向上し続けており、専用機パイロットを養成する特殊訓練カリキュラムが帝国内に存在するという報告もあるなど、予断を許さない状況が続いている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">白い機体 ─ THE WHITE UNIT</h3>
+  <p class="lore-p">白い専用機が初めて確認されたのは、<a href="../database/locations.html#starblade">スターブレード艦隊</a>に大損害をもたらした<a href="../database/sectors.html#zeta">セクターζ</a>の強襲作戦である。艦隊のエースパイロットは撃墜され、主力艦も損傷し、文字どおり後がない状況で「最後の手段」として<a href="../database/military.html#vorpal">ヴォーパル隊</a>の2名──隊長<a href="../database/characters.html#amber">アンバー・シルフェイド</a>少佐と隊員1名が投入された。このとき白い機体の最新機は無数のビットを用いてオールレンジ戦闘を繰り広げ、少佐と互角の戦闘に及んだと報告されている。以後もこの機体は戦場で幾度も交戦が確認されている。</p>
+  <p class="lore-p">この戦闘で明らかになった事実は共和国軍部を震撼させた。帝国がすでに、共和国の試作特殊戦闘機<a href="../weapons/chastiefol.html">シャスティフォル</a>と同系の機構を持つ遠隔操作端末を実用化しており、なおかつその操縦技術を養成する育成ノウハウまで蓄積している──ということを、この機体の存在そのものが示していたためである。</p>
+  <p class="lore-p"><span class="redacted">情報部の解析によれば、白い機体は帝国が建国前の水面下活動期におよそ7年をかけて独自に蓄積した遠隔操作研究の実証機であり、セクターτの旧兵器研究所の系譜に連なるとみられる。この研究が最終的に行き着いた結論がシャスティフォルと同じ原理であり、その原理の真相を確認するために組まれたのが、フォルトナ調査任務の真の目的だったと分析されている。任務が持ち帰った成果──『スピリット』の存在を確定させる事実、スペルストーンの事例と一致する現象の実験データ、聖域のエネルギー増幅装置とオベリスクの関係性を示唆する証拠──により、長年試作段階に留まっていた帝国の遠隔操作兵器は、本格的に共和国へ追いつき始めている。近年確認される搭乗員練度の向上と育成体系の整備こそ、その成果が形になり始めた兆候である</span>。共和国が抱く焦りの正体は、ここにある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">試作機サルデス-ZZは、いまも<a href="../planets/eladard.html">エラダード</a>の惑星首都の広場に据えられている。量産の発注は二度と来なかったが、その凛々しい佇まいに童心を奪われた工員たちが、通商連合の撤去提案を毎回猛烈な反対で立ち消えにしているためである。敵国の主力兵器の原型が中立地帯の広場で子供たちの記念撮影に納まっているという光景は、この戦争の奇妙さをよく表している。</p>
+  <p class="lore-p">「サルデス」の名の由来は、帝国の公文書にも残っていない。旧い言葉で「王の都」を意味する古代都市の名だとする説が有力視されており、事実であれば、皇帝がこの系列に何を託しているのかを図らずも示していることになる。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

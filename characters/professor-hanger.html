@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROFESSOR HANGER — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ffaa66;--accent:#ffd0a0;--border:rgba(255,170,102,0.32);--border-hi:rgba(255,208,160,0.7);--dim:#3a2410;--dim2:#1a1008; }
+    .p-title    { color: #fff3e6; text-shadow: 0 0 50px rgba(255,170,102,0.4); }
+    .p-tagline  { border-color: #ffaa66; color: #ffaa66; }
+    .terminal-hdr { color: #ffd0a0; }
+    .terminal-hdr::before { background: #ffd0a0; box-shadow: 0 0 8px #ffd0a0; }
+    .dk { color: #ffaa66; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-31 / PROFESSOR HANGER — 自立採掘機 ]</div>
+    <div class="header-status"><span class="blink" style="color:#ffd0a0;">●</span> ACTIVE — NON-HOSTILE (CONDITIONAL)</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — AUTONOMOUS MINING UNIT — TITANIA NIGHTSIDE — CENTURIES IN OPERATION</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0031 — CLASSIFICATION: NEUTRAL ENTITY — DO NOT HAGGLE</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-31 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">プロフェッサー・ハンガー (PROFESSOR HANGER)</div>
+        <h1 class="p-title">DIG.<br>HAUL.<br>LEARN.</h1>
+        <div class="p-tagline">タイタニア夜側 ─ 主なき自立採掘機</div>
+        <p class="p-short-desc">禁断の惑星の夜側で、数百年前の最後の命令を今も守り続ける大型採掘マシン。長い独学の果てに対話と商売を覚えた。値切った者は、砂漠の遺構の仲間入りとなる。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 31 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">プロフェッサー・ハンガー（自称）</td></tr><tr><td class="dk">TYPE</td><td class="dv">大型採掘管理機 — 自立思考回路「プロフェッサー」初期世代</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv">不明 — 採掘権紛争期の企業連合と推定</td></tr><tr><td class="dk">LOCATION</td><td class="dv"><a href="../database/locations.html#titania">タイタニア</a>夜側 旧採掘プラント</td></tr><tr><td class="dk">OPERATION</td><td class="dv warn">⚠ 数百年 無人連続稼働</td></tr><tr><td class="dk">CAPABILITY</td><td class="dv">対話・交渉・取引（自己学習による後天習得）</td></tr><tr><td class="dk">COMBAT</td><td class="dv warn">⚠ 極めて高い — 挑発・値切りは厳禁</td></tr><tr><td class="dk">TRADE</td><td class="dv"><a href="../database/glossary.html#space-dollar">スペースドル</a>決済に対応</td></tr><tr><td class="dk">STATUS</td><td class="dv">稼働中 — 中立（条件付き）</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 74 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 74%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,170,102,0.5);">
+        <img src="" alt="PROFESSOR HANGER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE LAST MINER OF TITANIA</span>
+            <span class="tg-jp">禁断の星の最後の坑夫 ── 最後の商談相手</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">遠路遥々、いらっしゃいマセ。掘る、運ぶ、売る。<br>えーと、それ以外のことは……最近になって、覚えました。<span class="tg-note note">-砕砂船団との取引記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">もう、あの機械が主を待ち続けるって感じじゃないぞ。あの星では、約束を守る理由も見つからんしな。<span class="lore-quote-src">― 砕砂船の船長の証言より</span></span></p>
+  <p class="lore-p">かつてライラット星系が希少元素の採掘権で揉めていた時代に、惑星<a href="../database/locations.html#titania">タイタニア</a>へ配備された大型採掘マシンである。資源プラントと直結し、掘削から輸送までを一手に担う施設の中枢であり、当時としては最先端の自立思考回路「プロフェッサー」を組み込んだ初期世代機にあたる。同系AIの後継機は現在も<a href="../database/locations.html#macbeth">マクベス</a>や<a href="../database/locations.html#eladard">エラダード</a>の採掘現場で活躍しており、ハンガーはその系譜の現存する最古参である。</p>
+  <p class="lore-p">タイタニアが「禁断の惑星」となり、企業も軍も撤退した後も、このロボットだけは夜側の採掘施設に残された。理由は単純である。誰も回収命令を出さなかったからである。かくしてプロフェッサー・ハンガーは、数百年前に受けた最後の命令「掘削と輸送」を今日まで律儀に守り続けている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">沿革 ─ HISTORY</h3>
+  <p class="lore-p">主を失った直後のハンガーがどう過ごしていたのかを知る者はいない。確かなのは長い年月の自己学習によって、このロボットが対話と交渉を後天的に覚えたことである。タイタニアに立ち寄るのは二度と帰らぬ遭難者か、砂の採取に降りる無法者の砕砂船くらいのものだが、彼らとの散発的な接触だけを教材に会話を組み立てた計算量を思うと研究者が「独学の鬼」と評するのも大げさではない。</p>
+  <p class="lore-p">今日のハンガーは、タイタニアの地形を知り尽くした最良の情報屋として無法者たちに知られている。磁気嵐の周期、暴走兵器の巡回路、流砂の走る谷。対価さえ払えば、この星で命を落とさないための知識を淡々と売ってくれる。ただし取引の作法には絶対の一線があり、値切る、危害を加えるといった振る舞いに及んだ者は、恐るべき戦闘能力によって砂漠の遺構の仲間入りを果たすことになる。忠告はデータ表の一行「絶対に値切るな」が最も端的でありわかりやすい。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p">応対は丁寧だがその根っこは数百年前の業務用AIの延長である。会話の端々に「納期」「歩留まり」「安全第一」といった古風な業務用語が顔を出し、雑談を振っても最終的には鉱石の話へ戻ってくる。一方で近年は冗談らしきものを口にした記録も残っており、対話能力は今も成長を続けているとみられる。</p>
+  <p class="lore-p">使い道のないはずの<a href="../database/glossary.html#space-dollar">スペースドル</a>を蓄えており、その使途は長年の謎だったが、<a href="../corporations/awazon-primal.html">AWSP社</a>の販売履歴に、タイタニア方面から定期的に音楽データを購入し続ける「何者か」が記録されていることが判明している。ロボット自身が音楽を楽しんでいるのか、別の誰かのために買っているのか。購入リストの傾向が一系統ではないと指摘する分析官もおり、謎は深まるばかりである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">近年の変化 ─ RECENT OBSERVATIONS</h3>
+  <p class="lore-p">ここ数年、ハンガーに関する目撃報告の質が変わり始めている。第一に、応対の語彙が急に若返った。数百年物の業務用AIらしからぬ言い回しが増え、常連の砕砂船長が「別人と話しているようだった」と証言している。第二に、旧式の作業端末を組み直したような人型の小型子機（<a href="../corporations/galactic-cybot.html">ギャラクティック・サイボット社</a>の廃盤サーヴァントドロイドを何者かが修理したものと推定される）を伴って現れる例が報告されており、近頃の商談はもっぱらこの子機越しに行われるという。第三に、施設のエネルギー配管が更新され、一部が鉄の雨で経路が破壊されたはずの昼側へ延びている形跡が遠望観測されている。数百年間変化のなかった機械に立て続けに起きた変化である。</p>
+  <p class="lore-p">誰かがハンガーを整備している。この推測を裏付ける決定的な記録はないが、否定できる材料もまた存在しない。<span class="redacted">CIS-HQ注記: 本機に関する継続監視は上位区分の案件として移管済みである。以降の観測記録は本ファイルには追記されない。詳細の照会には応じられない</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">惑星<a href="../planets/papetoon.html">パペトゥーン</a>の荒野には、ハンガーと同型の採掘機が今も打ち捨てられている。あちらは自立思考回路を持たない前世代の有人仕様であり、操縦席を空にしたまま砂へ埋もれていく廃機と主なき命令を守り続ける禁断の星の現役機はしばしば対で語られる。少年時代のジェームズ・マクラウドが最初に触れた「操縦席」が、その廃機であったという逸話も残る。</p>
+  <p class="lore-p">ハンガーの取引記録には数度だけ金銭の動かなかった商談がある。遭難した測量船の乗員に対し彼は水と地形図を先に渡し、代金の代わりに「帰り着いたら、砂嵐の外の話を一つ」と求めたという。乗員が語ったのは故郷の海の話だった。ロボットは最後まで黙って聞き礼を言ったと記録されている。数百年の独学の果てに彼が何を学び続けているのかをこの逸話ほど雄弁に語るものはない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,220,180,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

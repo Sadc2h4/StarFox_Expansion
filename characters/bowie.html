@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOWIE STRAY — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#6cc4f0;--accent:#c0e8fc;--border:rgba(108,196,240,0.32);--border-hi:rgba(192,232,252,0.7);--dim:#123044;--dim2:#081824; }
+    .p-title    { color: #ecf8ff; text-shadow: 0 0 50px rgba(108,196,240,0.45); }
+    .p-tagline  { border-color: #6cc4f0; color: #6cc4f0; }
+    .terminal-hdr { color: #c0e8fc; }
+    .terminal-hdr::before { background: #c0e8fc; box-shadow: 0 0 8px #c0e8fc; }
+    .dk { color: #6cc4f0; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-37 / BOWIE STRAY — ボウイ・ストレイ ]</div>
+    <div class="header-status">● ACTIVE — IRREGULAR UNIT</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — BOWIE STRAY — WILD BLUE STRIKER LEADER — THE SHEPHERD OF THE LOW SKY</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0037 — CLASSIFICATION: IRREGULAR COMBAT PILOT — CONTRACT: CORNERIAN REPUBLIC</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-37 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ボウイ・ストレイ (BOWIE STRAY)</div>
+        <h1 class="p-title">WILD<br>BLUE<br>SKIES</h1>
+        <div class="p-tagline">遊撃隊ワイルド・ブルー・ストライカー ─ リーダー「ブルー1」</div>
+        <p class="p-short-desc">波頭を蹴って飛ぶ遊撃隊の若きリーダー。管制の用意した航路をまず飛ばず、それでいて誰よりも早く戦場へ着く。青い機体の色は、故郷ゾネスの海の色である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 37 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">BOWIE STRAY / ボウイ・ストレイ</td></tr><tr><td class="dk">RACE</td><td class="dv">シェパード系<a href="../database/races.html#anubisoid">アヌビソイド</a></td></tr><tr><td class="dk">BIRTH</td><td class="dv"><a href="../planets/zoness.html">ゾネス</a> — 旧観光遊覧パイロット</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">遊撃隊<a href="../database/glossary.html#wild-blue-striker">「ワイルド・ブルー・ストライカー」</a>リーダー</td></tr><tr><td class="dk">CALLSIGN</td><td class="dv">「ブルー1」— 中核4機「ブルーボンバーズ」</td></tr><tr><td class="dk">SPECIALTY</td><td class="dv">超低空侵入・地形追随飛行・航路外航法</td></tr><tr><td class="dk">FIRST ACTION</td><td class="dv"><a href="../database/glossary.html#dark-goddess">コーネリア本土防衛戦</a>（3995頃）</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 共和国軍と長期契約</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 88 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 88%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(108,196,240,0.5);">
+        <img src="" alt="BOWIE STRAY" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ROADS AS MANY AS SKIES</span>
+            <span class="tg-jp">道は空の数だけある ── 管制航路はそのひとつにすぎない</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">よそ見してると置いてくぜ！　海面高度まで下げろ、ついてこい！<span class="tg-note note">-コーネリア本土防衛戦 隊内通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">航路？　ああ、あれは「飛べ」って場所じゃなくて「飛ぶな」って場所の目印だろ？<span class="lore-quote-src">― ペルディタ管制記録に残る本人の応答より</span></span></p>
+  <p class="lore-p">ボウイ・ストレイは、共和国軍への協力で名を馳せる遊撃隊「ワイルド・ブルー・ストライカー」を率いる青年パイロットである。<a href="wenli.html">ニャン・ウェンリー</a>が軍の外に探し求めた次世代の遊撃隊の一つとして<a href="../database/glossary.html#dark-goddess">コーネリア本土防衛戦</a>で実戦配備され、以後は正規軍の手が回らない戦域を専門に請け負ってきた。大海原の波頭や砂漠の尾根、洞窟の奥といった地形の際を縫う超低空飛行を十八番とし、管制の用意した航路をまず飛ばないことで管制官泣かせとしても知られる。</p>
+  <p class="lore-p">姓のストレイは「野良」を意味する。だがその飛び方は群れを守る牧羊犬そのものであると僚機は口を揃え、窮地の民間船を見捨てた記録は一度もない。損耗率の高い遊撃稼業にあって、彼の隊は結成以来一人の欠員も出していない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ ORIGIN</h3>
+  <p class="lore-p">生まれは海洋惑星<a href="../planets/zoness.html">ゾネス</a>。戦前の同地で営業していた小さな観光飛行会社「ワイルド・ブルー・ツアーズ」の遊覧パイロットが、彼の最初の職業である。エメラルドの海面すれすれを飛び、環礁の間を縫い、夕暮れの群島に客を運ぶ。後年の戦場で星系屈指と評される地形追随飛行の腕は、軍の教練ではなくこの遊覧航路で磨かれた。低く飛ぶほど客がよろこぶ仕事だったからである。</p>
+  <p class="lore-p">会社は大手観光資本との競争に敗れて廃業し、職を失った操縦士たちは腕一本で宇宙へ出た。ボウイと僚機たちが遊撃稼業の届け出に記した隊名は、潰れた会社の名そのままである。屋号を看板から降ろさないこと。それが彼らなりの、故郷との契約だった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">遊撃隊 ─ THE STRIKERS</h3>
+  <p class="lore-p">転機は<a href="../database/glossary.html#dark-goddess">コーネリア本土防衛戦</a>である。軍部内で完結する軍事の弱点を知り、軍の外に強力な遊撃隊を探していたウェンリーは、辺境の護衛任務で「決められた航路を飛ばないくせに納期だけは絶対に守る」と噂される小さな隊に目を留めた。正規軍の教範運用を餌とする防衛計画の裏で、ワイルド・ブルー・ストライカーは防空網の隙間を縫って機械の攻撃隊を叩き続けた。弾切れに陥りながら敵残骸から武装を剥ぎ取って戦闘を続けた逸話の主も、ボウイ本人とされる。</p>
+  <p class="lore-p">隊の中核は「ブルーボンバーズ」と呼ばれる4機である。いずれも遊覧会社時代からの同僚であり、固い絆で結ばれたこの4機編隊の連携は「会話より速い」と評される。各員については僚機の項に詳しい。</p>
+  <p class="lore-p">そして宇宙歴3997年、開戦劈頭の侵攻で故郷ゾネスが帝国の手に落ちる。以来この隊が共和国との契約を一度も切らしていない理由を、本人は多く語らない。ただ僚機の一人は簡潔に述べている。「あの海の上をもう一度、客を乗せて飛ぶまでは辞められないんですよ」。</p>
+</div>
+<div class="lore-section" id="blue-bombers">
+  <h3 class="lore-h">僚機 ─ THE BLUE BOMBERS</h3>
+  <p class="lore-p">ブルーボンバーズの残る3名を以下に記す。契約書の肩書はいずれも「操縦士」だが、実際の役割分担には遊覧会社時代の職掌がそのまま持ち込まれている。</p>
+  <div class="sub-entry" id="thorn">
+    <div class="sub-entry-h"><span class="num">①</span>ソーン <span class="en">THORN — 射撃担当</span></div>
+    <p class="lore-p">ヤマアラシ系<a href="../database/races.html#kyusoid">キューソイド</a>の女性。遊覧会社時代は望遠カメラで鯨の群れを撮る写真係であり、動く的を遠くから射抜く腕はこの頃に出来上がっていた。お調子者のムードメーカーであり交信記録の大半は彼女からの通信である。<a href="../database/glossary.html#romeo-defense">シレーヌ海の決戦</a>では要塞の懐へ最も深く踏み込んで被弾し負傷したが本人は「客を乗せてなくてよかった」とだけ述べたという。人懐っこい性格でよく抱き着いてくるが、彼女の背中の棘は宇宙服を貫通するほど鋭いためメンバー達も扱いには戦々恐々である。</p>
+  </div>
+  <div class="sub-entry" id="chuck">
+    <div class="sub-entry-h"><span class="num">②</span>チャック <span class="en">CHUCK — 整備兼任</span></div>
+    <p class="lore-p">ゾウ系<a href="../database/races.html#ganesiosoid">ガネシオソイド</a>の男性。整備を兼ねる陽気な巨漢であり隊のまとめ役である。遊覧会社では整備主任を務め廃業の日に「この機体も俺の客だからな」と言い張って4機を借金ごと引き取った張本人でもある。戦場でも整備場でも声が大きく、エンジンの診断より先に彼の機嫌が分かると評される。全機の青塗装を守る番人であり塗り替えの稟議は彼の手元で握り潰されるのが通例である。</p>
+  </div>
+  <div class="sub-entry" id="law">
+    <div class="sub-entry-h"><span class="num">③</span>ロー <span class="en">LAW — 航法士</span></div>
+    <p class="lore-p">フクロウ系<a href="../database/races.html#holsoid">ホルソイド</a>の男性。正規航路の脇に埋もれた「裏の道」を見つけ出す隊の眼である。遊覧会社では遊覧コースの設計士を務め、夕日が最も美しく見える高度と時刻を計算で当てる男として常連客に知られていた。趣味は紙の星図の収集で口癖は「地図は答え合わせに使うものさ」。ボウイの無茶な航路要求に応え続けた結果<a href="../database/military.html#cdf">CDF</a>の航法士たちの間で密かな崇拝の対象になりつつある。</p>
+  </div>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">飛行流儀 ─ DOCTRINE</h3>
+  <p class="lore-p">ボウイの飛行は徹底して低い。センサーの死角と地形の影を渡り歩き、正規航路の脇に必ず存在する「裏の道」を通って、誰よりも早く戦場へ着く。本人いわく「道は空の数だけある」。管制側の評価は「危険極まりないが、彼が墜ちた記録はない」という苦い一文に集約されている。</p>
+  <p class="lore-p">この航路外航法は単なる曲芸ではない。哨戒網の隙間・磁気の乱れ・生物の回遊まで織り込んで最短の抜け道を組み立てる技術であり、CDFの遊撃戦術研究は同隊の飛行記録を「教範の外側の教科書」として収集している。もっとも本人たちに教範を書く気はまるでない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">隊の全機は例外なく鮮やかな青に塗られている。整備上は視認性の面で不利のはずだが、塗り替えの提案はチャックが黙って握り潰すのが通例である。あの青が何の色かを、隊の外の人間が訊くことは暗黙の禁忌とされている。</p>
+  <p class="lore-p">酒場では「<a href="../database/military.html#starfox">スターフォックス</a>と飛ばせたらどちらが上か」という定番の与太話がある。本人は決まってこう返すという。「向こうは宇宙一、こっちは空一番。喧嘩にならないだろ？」──なお同席した僚機によれば、その夜の彼はいつもより一杯多い。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HORAIN ZONE CORPORATION — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#ff7fb8;--accent:#ffc0da;--border:rgba(255,127,184,0.32);--border-hi:rgba(255,192,218,0.7);--dim:#3a1626;--dim2:#1d0a12; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/corporations.html" class="nav-back">◄ CORPORATE DB</a>
+    <div class="header-tag">[ CIS-HQ / CORPORATION — HORAIN ZONE ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ / CORPORATE FILE 22 ]</div>
+      <h1 class="codex-title">HORAIN ZONE CORPORATION</h1>
+      <p class="codex-p">ホライン・ゾーン・コーポレーション ── 星系で最も愛される犬たちと、星系で最も分厚い法務部を同時に抱える会社。その始まりを知る者は社内にしかいない。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#overview">概要</a>
+      <a href="#founding">創業</a>
+      <a href="#meteoland">メテオランド</a>
+      <a href="#copyright">著作権の城</a>
+      <a href="#doggers">ドッガーズ</a>
+      <a href="#archives">記録余話</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="../database/corporations.html">企業DB</a> / <a href="../database/locations.html#meteo-base">メテオベース</a> / <a href="kenami.html">KENAMI</a></span>
+    </nav>
+
+    <article class="codex-entry" id="overview">
+      <h2 class="codex-h">概要 <span class="en">OVERVIEW</span></h2>
+      <p class="codex-p">ホライン・ゾーン・コーポレーション（HZC）は、<a href="../database/locations.html#corneria">コーネリア</a>に本社を置くキャラクター事業会社である。主力は自社キャラクター「ワンダフル・ドッガーズ」を核とした映画・アニメーションの制作とアトラクション開発であり、新作は今日までコンスタントに公開が続いている。キャラクター商品の売上は娯楽産業の中でも常に最上位圏にあり、星系の子供部屋のどこかには必ずドッガーズの何かがある、と言われるほどである。</p>
+      <p class="codex-p">一方でこの会社は、作品の質と世界観を守るためなら手段を選ばない社風でも知られる。その徹底ぶりは市場の敬意と各方面の非難を同時に集め続けており、この会社を巡る評価は昔から綺麗に二つへ割れる。詳細は本項の後段に記録する。</p>
+    </article>
+
+    <article class="codex-entry" id="founding">
+      <h2 class="codex-h">創業 <span class="en">FOUNDING</span></h2>
+      <p class="codex-p">HZCの創業は第1次ライラットウォーズ終結後の混乱期に遡る。記録によれば、ある日コーネリアに来歴不明の100人余りの一団が現れ、そのままこの会社を開業したという。全員が人間味のある顔立ちの、<a href="../database/races.html#alphoid">アルフォイド</a>と思しき人種であった。現在であれば厳正な身元調査が行われるところだが、当時は戦後の混乱で行政記録そのものが欠け落ちており、一団の出自は有耶無耶のまま登記だけが受理された。どの登記簿にも前史を持たない大企業という異例の存在はこうして生まれたのである。</p>
+      <p class="codex-p">社史が創業の起点として掲げるのは、一冊の絵本である。犬たちが空を越えて新しい世界へ旅立つ物語で、ワンダフル・ドッガーズの原作にあたる。社史は「全てはこの一冊から始まった」と記すのみで、その初版がいつ、どこで刷られたのかには触れていない。</p>
+    </article>
+
+    <article class="codex-entry" id="meteoland">
+      <h2 class="codex-h">メテオランド <span class="en">METEOLAND ERA</span></h2>
+      <p class="codex-p">HZCの名を星系に知らしめたのが、大人気テーマパーク「ワンダフル・メテオランド」（現在の<a href="../database/locations.html#meteo-base">メテオベース</a>）へのキャラクター貸出である。同社は貸出に留まらず園の世界観監修までを握り、従業員は全員が「物語の住人」として振る舞うこと、園内のどこからも外の宇宙が素の姿で見えてはならないことなど、徹底した没入の設計を敷いた。連日10万人を集めた成功の少なくない部分は、この偏執的な作り込みにあったと評されている。</p>
+      <p class="codex-p">しかし世界観を最優先するHZCと、収益と回転率を求める開発元オリエンタルプラネット社の経営方針は、成功の絶頂で決裂する。HZCはキャラクターを引き揚げ、パークは人気のただ中で閉園した。小惑星がその後に辿った数奇な運命は、メテオベースの項に詳しい。</p>
+    </article>
+
+    <article class="codex-entry" id="copyright">
+      <h2 class="codex-h">著作権の城 <span class="en">THE COPYRIGHT CASTLE</span></h2>
+      <p class="codex-p">HZCのキャラクター保護は「城」と形容される。意匠・名称・配色・仕草に至るまで何重もの著作権と商標が掛けられており、権利の壁の全容は専門家でも把握できない。標準時間で70年で消滅するはずの著作権を、同社は議会への働きかけで法律そのものを変えさせてまで存続させた。俗に「ドッガーズ保護法」と呼ばれるこの改正には「文化を人質に取った」と様々な場所から非難が巻き起こり、その是非は今も法学の講義の定番議題である。</p>
+      <p class="codex-p">常軌を逸した判断の記録は他にもある。とある学校が校舎の壁に子供たちの手でドッガーズの絵を描いたところ、同社は著作権侵害としてこれを訴え、絵は消された。社内に目を向ければ、作品の質を支える長時間労働が「夢に関わる誇り」という動機付けだけで維持されている実態も繰り返し報じられている。それでも作品そのものの質を疑う声はほとんど無い。評価が二つに割れると先に記した理由はここにある。</p>
+    </article>
+
+    <article class="codex-entry" id="doggers">
+      <h2 class="codex-h">ドッガーズ <span class="en">THE WONDERFUL DOGGERS</span></h2>
+      <p class="codex-p">ワンダフル・ドッガーズは、しゃべらない四足の犬の一団である。ライラットに犬の姿の人種は多いが、ドッガーズはそのどれとも似ていない。二足で歩かず、言葉を持たず、それでいて表情だけで全てが伝わる。この「誰も見たことのない生き物」の造形こそが人気の核心であり、模倣を試みた他社は一様に失敗してきた。デザインの源流を問われた社長は「昔飼っていた」とだけ答えたと伝えられる。</p>
+      <p class="codex-p">映画の新作は今も定期的に公開され、旧作の再上映は世代を跨いだ満席が続く。ドッガーズが空を越えて新しい世界へ旅立つ結末は初版絵本から一度も変わっておらず、観終えた子供が決まって「いつか宇宙に行きたい」と言い出すことは、ライラットの親たちの共通体験になっている。</p>
+    </article>
+
+    <article class="codex-entry" id="archives">
+      <h2 class="codex-h">記録余話 <span class="en">ARCHIVES</span></h2>
+      <p class="codex-p">社長について公式に分かっていることは少ない。人間味のある顔立ちから「変わった種族の<a href="../database/races.html#alphoid">アルフォイド</a>」とみられてきたが、種族の欄が埋められた公文書は一枚も見つかっていない。旧社名を尋ねられた際の「大体同じ。少しだけ変えた」という返答は、この会社に関する最も有名な記録である。</p>
+      <p class="codex-p">謎はもう一つある。社章に描かれた星空である。天文ファンの投稿によれば、この星の並びはライラットのどの空とも一致しない。オカルト雑誌<a href="../database/glossary.html#nu-magazine">「ヌー」</a>は創業の謎と併せて特集を組んだが、厳正な裏取りを身上とする同誌には珍しく、続報は出ていない。取材の経緯を問われた編集部は「オチが付けられない話は載せられない」とだけ答えている。</p>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../sector-tips.js"></script>
+</body></html>

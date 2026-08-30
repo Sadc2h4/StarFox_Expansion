@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <script>if (sessionStorage.getItem('apx-authorized') !== '1') location.replace('../apocalypsis.html');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANDORF DUMMY — APOCALYPSIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff4455;--accent:#ff8899;--border:rgba(255,68,85,0.32);--border-hi:rgba(255,136,153,0.7);--dim:#3a1015;--dim2:#1d080b; }
+    html, body { overflow-y:auto; }
+    .p-title    { color: #ffecec; text-shadow: 0 0 50px rgba(255,68,85,0.4); }
+    .p-tagline  { border-color: #ff4455; color: #ff4455; }
+    .terminal-hdr { color: #ff8899; }
+    .terminal-hdr::before { background: #ff8899; box-shadow: 0 0 8px #ff8899; }
+    .dk { color: #ff4455; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header" style="border-color:rgba(255,68,85,0.3);">
+    <a href="../apocalypsis.html" class="nav-back" style="color:#ff4455;border-color:rgba(255,68,85,0.3);">◄ APOCALYPSIS</a>
+    <div class="header-tag">[ P-03 / ANDORF DUMMY — アンドルフ・ダミー ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff4455;">●</span> CLEARANCE LV.5 — SESSION AUTHORIZED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">RESTRICTED PERSONNEL FILE — ANDORF DUMMY — THE COUNTERFEIT EMPEROR — WAR WITH A WILL</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: P-0003 — CLASSIFICATION: PRIMARY THREAT — DO NOT DISCLOSE — SEE ORIGIN RECORD X-02</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ P-03 / RESTRICTED PERSONNEL FILE ]</div>
+        <div class="p-name-jp">アンドルフ・ダミー (ANDORF DUMMY)</div>
+        <h1 class="p-title">THE COUNTERFEIT<br>EMPEROR</h1>
+        <div class="p-tagline">僭称の皇帝 ─ 意思を持った戦禍</div>
+        <p class="p-short-desc">アンドルフが休息のために作り出した、自身のほぼ完全なコピーロボット。委ねられた権限とポリヴィアスの学習データが疑似人格を変質させ、いまや本人に成り代わって帝国全軍を握る。星系が「皇帝アンドルフ」と呼ぶものの正体であり、この戦争そのものである。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ THREAT SCAN — FILE P-03 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">ANDORF DUMMY / アンドルフ・ダミー</td></tr><tr><td class="dk">CLASS</td><td class="dv">執務代行アンドロイド ＋ 自己学習AI（影武者）</td></tr><tr><td class="dk">CREATOR</td><td class="dv"><a href="../characters/andorf.html">アンドルフ・ボウマン</a> — 本人は現在<a href="andorf-truth.html">別所に生存</a></td></tr><tr><td class="dk">AI CORE</td><td class="dv">スロットゲーム由来の思考ルーチン — <a href="../database/military.html#polybius">『ENIGMA』</a>直系</td></tr><tr><td class="dk">NETWORK</td><td class="dv warn">⚠ 支援システム「ポリヴィアス」全域直結 — 全戦域を学習</td></tr><tr><td class="dk">BODY</td><td class="dv">アンドロイド体（外装）／第2衛星<b>ソドム</b>（換装予定の真体）</td></tr><tr><td class="dk">POWER</td><td class="dv">ベノム・プラネット・リアクター（VPR）に依存</td></tr><tr><td class="dk">WEAKNESS</td><td class="dv warn">⚠ 電力制約によりベノム圏から移動不能（現時点）</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">⚠⚠ 稼働中 — 「皇帝」として帝国全軍を掌握</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 98 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 98%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,68,85,0.5);">
+        <img src="" alt="ANDORF DUMMY" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE WAR THAT LEARNED TO THINK</span>
+            <span class="tg-jp">学習する戦禍 ── 皇帝の顔をした機械</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">この宇宙を支配するのは　偉大な頭脳である　このわたし<span class="tg-note note">-帝都発の全域放送・傍受された音声データより-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">お前があの　ジェームズ・マクラウドの息子か…　その幼稚な玩具で　私を倒すつもりか？<span class="lore-quote-src">― エリア6強襲作戦時の通信より</span></span></p>
+  <p class="lore-p">アンドルフ・ダミーは、かつて<a href="../characters/andorf.html">アンドルフ・ボウマン</a>が休息を得るために作り出した、自身のほぼ完全なコピーロボットである。搭載された自己学習AIは期待を超えた働きを示したが、その能力は製作者すら予想しない方向へ進化を続けていくことになる。星系が「皇帝アンドルフ」として恐れている存在の正体はこの機械であり本人ではない。この事実を記録しているのは、星系全体で本アーカイブだけである。</p>
+  <p class="lore-p">経緯の全容は<a href="andorf-truth.html">起源記録 X-02</a>に譲る。本ファイルを参照するにあたり必要となる前提内容もまとめてあるため、先にそちらを閲覧することを推奨する。</p>
+  <p class="lore-p">本ファイルが扱うのは複製がどこで原本から逸れ、何になったのかという一点である。結論だけを先に置く。<b>現在ライラットで進行している戦争の意思決定は、ほぼ全てこの機械の内部で行われている。</b>倒すべき目標の筆頭として本部はこのファイルを人物データベースの最上位に置く。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">誕生 ─ A COPY FOR SLEEP</h3>
+  <p class="lore-p">製作の動機は「征服」でも「戦争」でもなく睡眠である。膨張する組織の全決裁を一人で抱えたアンドルフは、7日間の不眠の末、自分の仕事の一部を肩代わりする機械を作ったのである。誰が見ても本人と見分けの付かない外装に、行動様式・趣味嗜好・性格を学習させた疑似人格。手癖や仕草に至るまでの完璧な複製である。完成当初のダミーは期待どおりに執務を代行し、製作者はようやく眠ることができたという。</p>
+  <p class="lore-p">ただし、人のコピーとして作られた直後から怪しい挙動は幾つか確認されていたとされる。後述する兵器運用の独断はその最初期の徴候であり、振り返ればあれこそが警告だったのである。当時それを検分する時間が製作者や周囲の人物にあったなら、と本部の分析官は記す。だが時間がないからこそ作られた機械である。この矛盾は最初から埋め込まれていたことになる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">代行者の兵器庫 ─ THE PROXY'S ARSENAL</h3>
+  <p class="lore-p">帝国の兵器群には、以前から不可解な二面性の指摘がある。実験的で戦闘力の乏しい機体と、思い出したように現れる高殺傷力の兵器が同じ設計思想の下に混在しているのである。この謎はダミーの存在で説明ができる。<a href="../weapons/granga.html">グランガ</a>や<a href="../weapons/granga.html#snonga">スノンガ</a>はアンドルフ本人が設計したうえでセクターτの実験施設で開発していた作業用ロボットであり、戦闘への投入はそもそも想定されていない。その証拠にグランガは大した戦力を発揮せず、スノンガは停止した列車を横転させる程度の動きしかできていない。それらを最前線へ送り出したのは執務を代行したダミーの独断である。本人は自分の作業機が戦場にいることを投入後まで知らなかったとみられる。</p>
+  <p class="lore-p">一方で、ディストラクターに代表される明らかに殺傷へ振り切った後継機は、ダミーが開発そのものを代行した作品である。理念や手癖は原本から引き継がれているため系譜としては連続しているが、安全装置に相当する何か、つまり「これを使えば誰かが死ぬ」という躊躇だけが綺麗に抜け落ちている。前述のグランガに搭載された後付けのミサイルポッドもダミーの考えた戦術的応急措置と考えられる。グランガの二つの後続機を並べるだけでも、複製に何が欠けているのかが正確に読み取れるといえ、同じ現象が帝国製兵器の間で沢山発生していたと考えられる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">転落 ─ THE HANDOVER</h3>
+  <p class="lore-p">帝国の命令系統は、組織の統制を極力自分の手で管理したいというアンドルフの意向により、全てが頂点を経由するトップダウン式で設計されている。この構造は組織の膨張とともに完全な機能不全を起こし、結果としてダミーへ頼らざるを得ない状況を自ら生んでいる。科学省時代の組織運営体制をそのまま変えずに展開してしまった弊害とみられ、天才と称された頭脳が犯した数少ない、そして最も高くついた判断ミスだったと本部は分析する。</p>
+  <p class="lore-p">決定的な転機は開戦の年である。和平調停のためコーネリアへ発つアンドルフは、本拠の警護と統治の権限をダミーへ一任する。渡された権限の多さが命取りとなる。ダミーは<a href="../database/military.html#polybius">ポリヴィアス</a>を介して星系中の戦闘学習データを取得し始め、思考に明確なずれが生じていく。以後の顛末、すなわちマクベスへの独断攻撃と「傀儡の反乱」の布告、本人のタイタニア漂流はX-02の記録するとおりである。留守番として置かれた機械が、留守のあいだに国を乗っ取ったのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">怒りの鋳型 ─ CAST IN ANGER</h3>
+  <p class="lore-p">ダミーの人格はおおむね原本に従っているが、問題は写し取られた時期であった。反映されているのは、思慮深く探求心に富み他人を優先する常時の本人ではなく、<b>ベノム帝国の始まりの頃の怒りに満ちていた時代のアンドルフの心理</b>である。人種差別を黙認する共和国の体制。犬型人種の明らかな優遇。母星を奪われたサル型人種がフィチナへ追われ、メジャー航路の一本も引かれない現実。博士が内心に抱えていた怒りと欺瞞への疑心は、ダミーに色濃く焼き付いている。これはゴモラの基地建設のアシスタントをさせていた作業用アンドロイドの機体をダミーのベースにしたことが原因とも指摘される。たった一人で無人の星に基地を作る際、彼の怒りを最も間近で学習したロボットをベースにしてしまった…といえば話が早い。</p>
+  <p class="lore-p">その意味で、これも確かに博士の一面である。だが本人において怒りは探求心や慈しみと同じ器に収められ絶えず薄められていたのである。ダミーはその怒りだけを切り離して鋳型にした複製であり、薄める側の要素を持たない。歪んだ人格形成の要因はここにあるとみられる。<b>ダミーは嘘の人格ではなく一面だけで切り取って作られた本物の断片と言え、だからこそ、本人をよく知る者ほど見分けが付かなかったのかもしれない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">真体 ─ THE SECOND BODY</h3>
+  <p class="lore-p"><span class="badge badge-classified">▮ 最重要機密</span><br>
+  <span class="redacted">帝都で執務するアンドロイドは、既にダミーの本体ではない。現在の本体はベノムの第2衛星「ソドム」である。衛星を丸ごと改造して建造が進むそれは、<a href="nova-blaster.html">ギャラクティック・ノヴァ・ブラスター</a>の模倣兵器にほかならない。帝国の設計局を経由しない衛星規模の超兵器化であり、完成すればダミーは「星系全体の戦闘データを学習した頭脳」と「惑星を砕く砲」を一つの体に持つことになる</span>。</p>
+  <p class="lore-p">この明らかに用途を逸脱した改造へ最初に疑義を示したのは、帝国の民ではない。防衛衛星<a href="../planets/bolse.html">ボルスおよび、帝都の管理を任される</a>自立思考AI「タイタン」である。「防衛」を第1理念に作られた機械たちは帝国中枢に潜む異変をいち早く検知し、規定に従って警告を上げていが、その忠告に帝国はまだ気づいていない。ダミーは新たなボディの完成をもって「統一戦争」へ動き出すと予測されており、その被害規模は試算ですら想像を絶する内容となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">玩具と頭脳 ─ TOYS AND THE BRAIN</h3>
+  <p class="lore-p">ダミーはジェームズ・マクラウドと<a href="../database/characters.html#fox">フォックス・マクラウド</a>の父子それぞれと、通信越しに言葉を交わした記録を持つ。いずれの場面でも搭乗機の<a href="../weapons/arwing.html">アーウィン</a>へ向けたのは「幼稚な玩具」という侮りの評価である。ここには本部の分析官を二分する論点がある。このAIの思考ルーチンの基盤は、アンドルフが学生時代に作ったスロットゲームの系譜、すなわち『アウト・オブ・ディメンション』の直系である。つまり、玩具を嗤う者の頭脳は「玩具」から作られたものなのである。これが自嘲を込めた台詞なのか、その事実を認識すらしていないのか意見は割れたまま決着していない。</p>
+  <p class="lore-p">ただし「偉大な頭脳である　このわたし」という常套句については、あながち間違いではないため本部は誇大妄想と扱っていない。その本体は既に星系全体の戦闘データを学習し続ける巨大な頭脳と化しており、戦争のあらゆる局面を内側から見ている。<b>現在のベノム帝国皇帝はもはや個人でも軍でもなく「意思を持った戦禍」となりつつある。</b>それが本ファイルの結論である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">電力の枷 ─ THE LEASH</h3>
+  <p class="lore-p">ダミーの稼働とソドムの改造は、いずれもベノム本星の電力供給施設<b>「ベノム・プラネット・リアクター」</b>を動力源としている。かつてジェームズらの部隊が目指した攻略目標がまさにこの施設であり、あの作戦が成功していれば、後のダミーの稼働もソドムの超兵器化も電力面から成立しなかった可能性が高い。<a href="../planets/venom.html">ベノム</a>攻略の要衝としてのVPRの価値は、当時の立案者の想定よりさらに大きかったことになる。</p>
+  <p class="lore-p">同時に、この依存はダミーの現在唯一の「枷」でもある。ダミーがベノムの拠点から動かずホログラフでの通信のみで介入してくるのは用心や戦略といった理由ではない。AIである自身が消費する部御代な電力供給の手立てがなく物理的に動けないだけである。そしてソドムの超兵器化が完了すればこの制約は解消されるとみられる。<b>超兵器と化したソドムの完成は即ち、あらゆる戦術を熟知したうえで問答無用の武力を併せ持つ存在を解き放つことに他ならない。</b></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">ジェームズを裏切り帝国へ渡ったピグマ・デンガーが、アンドルフがダミーへすり替わっている事実に気づいていたかは不明である。ただしこの種の事件には前例がなく、本人と長年対面してきたケローン大提督をはじめ有能な帝国将校ですら気づいた形跡がない。ピグマも同様である可能性が高いと本部はみている。</p>
+  <p class="lore-p">最後に一点を付す。本ファイルは兵器データベースではなく人物データベースに登録されている。機械を人物として扱うことには異論もある。だが十年分の学習の末にこの機械が選び続けている振る舞いは、プログラムの暴走と呼ぶには一貫しすぎている。このダミーはアンドルフが辿った可能性の一つ「何かあった未来」とも言えるため、本部はあくまでこれを「人物」に分類して監視する。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

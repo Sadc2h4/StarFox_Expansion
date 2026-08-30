@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMERALDAS INTERSTELLAR BANK — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#b9a24e;--accent:#e6d489;--border:rgba(185,162,78,0.32);--border-hi:rgba(230,212,137,0.7);--dim:#2e2712;--dim2:#161207; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/corporations.html" class="nav-back">◄ CORPORATE DB</a>
+    <div class="header-tag">[ CIS-HQ / CORPORATION — エメラルダス・星系銀行 ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ / CORPORATE FILE 21 ]</div>
+      <h1 class="codex-title">EMERALDAS INTERSTELLAR BANK</h1>
+      <p class="codex-p">エメラルダス・星系銀行 ── 惑星キューに本拠を置く、ライラット星系最大級の資本。ハクティバ圏の金融を一手に取り仕切る表の顔と、帝国へ通じているとされる裏の顔を持つ。星系の金は、どの旗の下を巡っていても、どこかで必ずこの銀行を通る。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#overview">概要</a>
+      <a href="#history">沿革</a>
+      <a href="#works">主要事業</a>
+      <a href="#people">組織と人物</a>
+      <a href="#archives">記録余話</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="../database/corporations.html">企業DB</a> / <a href="../planets/kew.html">キュー</a> / <a href="../database/factions.html#hactiva-union">通商連合</a> / <a href="../database/glossary.html">用語</a></span>
+    </nav>
+
+    <article class="codex-entry" id="overview">
+      <h2 class="codex-h">概要 <span class="en">OVERVIEW</span></h2>
+      <p class="codex-p">エメラルダス・星系銀行は、惑星<a href="../planets/kew.html">キュー</a>に本拠地を置く銀行であり、ライラット星系で最大の資本の一つに数えられる。代々<a href="../database/factions.html#hactiva-union">ハクティバ通商連合</a>の圏内で金融を取り仕切ってきた一族企業であり、組織の規模はそのまま通商連合の影響範囲と言っても過言ではない。</p>
+      <p class="codex-p">キューに籍を置く企業のほぼ全てと、エラダードの<a href="../database/glossary.html#fortinbras">フォーティンブラス商工会</a>の全権を、同行は融資と持ち株を通じて実質的に握っている。通商連合の意思決定が「連合の総意」として発表されるとき、その背後で誰が算盤を弾いているのかは、業界では公然の秘密である。</p>
+      <p class="codex-p">共和国にとっても、貿易の決済を組む以上この銀行を避けて通ることはできない。取引は現に続いているが、警戒が緩められたことは一度もない。<a href="../database/military.html#cdf">CDF</a>の経済監視部門が最も多くの人員を割いている対象は、帝国の軍需産業ではなくこの銀行であるという。</p>
+    </article>
+
+    <article class="codex-entry" id="history">
+      <h2 class="codex-h">沿革 <span class="en">HISTORY</span></h2>
+      <p class="codex-p">創業の年代は諸説あり、同行自身も正確な設立年を公表していない。確かなのは、キューが通商連合の中枢として台頭していく過程と、エメラルダス家の伸長が完全に重なっているという一点である。港が増えれば決済が増え、決済が増えれば銀行が太る。星系の辺境で最も分の良い商売を、この一族は誰よりも早く見つけていた。</p>
+      <p class="codex-p">同行が星系規模の存在へ跳ね上がった転機は、オズリック・フォーティンブラス工業航路の整備であったとされる。マクベスとエラダードを結ぶこの大動脈に流れる資金の決済を一手に引き受けたことで、同行の帳簿はライラットの工業そのものと連結した。以来「OF航路の血液はエメラルダス製である」と言われている。</p>
+    </article>
+
+    <article class="codex-entry" id="works">
+      <h2 class="codex-h">主要事業 <span class="en">MAJOR WORKS</span></h2>
+      <p class="codex-p">本業は預金・融資・貿易決済の三本柱である。特に星系をまたぐ大口決済の分野では他の追随を許さず、<a href="../database/glossary.html#space-dollar">スペースドル</a>と各地の現地通貨を結ぶ両替網は、そのまま星系の商流の地図となっている。辺境の商人が数十smの航海を経て運んだ荷の代金も、最後は同行の端末の中で数字として決着する。</p>
+      <p class="codex-p">問題視されているのは、その決済網が帝国側にも伸びているとみられる点である。<a href="../database/glossary.html#cur-galleon">ガリオン</a>とスペースドルを結ぶ非公式な交換に同行の関与を指摘する声は絶えないが、証拠が帳簿の表に出たことは一度もない。<span class="redacted">共和国財務当局が押収を試みた取引記録は、いずれも第三者名義の中継口座で途切れている</span>。</p>
+    </article>
+
+    <article class="codex-entry" id="people">
+      <h2 class="codex-h">組織と人物 <span class="en">ORGANIZATION</span></h2>
+      <p class="codex-p">経営はエメラルダス家の同族が握り続けている。現当主の長男が次期頭取と目されており、堅実な手腕で行内の信望も厚い。銀行としての表の顔は、この長男が体現しているといってよい。</p>
+      <p class="codex-p">問題は次男の<a href="../other/imperial-guard.html#red-12">アルジー・V・エメラルダス</a>である。ドラ息子として星系中に名の知れた人物であり、家業の資金を持ち出しては<a href="../database/military.html#imperial-guard">帝国軍親衛隊</a>に入り込み、近年は帝国の内政にまで干渉し始めているとの噂が流れている。銀行の裏の顔を、家の中で最も隠す気のない者が担っているという構図である。</p>
+    </article>
+
+    <article class="codex-entry" id="archives">
+      <h2 class="codex-h">記録余話 <span class="en">ARCHIVES</span></h2>
+      <p class="codex-p">キューの本店には、旗も紋章も一切掲げられていない。「うちの看板を出したら、どの国の銀行かで揉めるでしょう」──先代当主が残したとされるこの言葉は、同行の立ち位置を最も的確に説明している。</p>
+      <p class="codex-p">共和国の経済誌が同行を特集する際、見出しに使われる決まり文句がある。「戦争が終わって困る者を数えるなら、まずこの一行から始めよ」。同行は毎回、抗議も訂正も申し入れていない。</p>
+    </article>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FACMAP EDITOR</title>
+  <style>
+    :root{color-scheme:dark;--bg:#05090c;--panel:#0b1318;--line:#284552;--cyan:#9de8f2;--pink:#ff8ca8;--muted:#8aa0a8;--warn:#ffb36b}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 25% 0,#10232b 0,#05090c 42%);color:#d8e9e8;font:13px/1.5 Consolas,"Noto Sans Mono",monospace}
+    header{position:sticky;z-index:5;top:0;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(5,9,12,.96);box-shadow:0 3px 20px #000}
+    h1{margin:0 0 9px;color:var(--cyan);font-size:19px;letter-spacing:.13em}h2{margin:0 0 12px;color:var(--pink);font-size:15px}h3{margin:16px 0 8px;color:var(--cyan);font-size:13px}
+    .toolbar,.row,.moves,.tabs{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.toolbar{margin-bottom:8px}.spacer{flex:1}.status{min-height:21px;color:var(--muted)}.status.ok{color:#8ee7b0}.status.error{color:#ff8791}.status.warn{color:var(--warn)}
+    button,.file-label{border:1px solid #3d6573;border-radius:3px;background:#101d23;color:#d8eeee;padding:6px 10px;font:inherit;cursor:pointer}button:hover,.file-label:hover{border-color:var(--cyan);color:#fff}button.danger{border-color:#703947;color:#ffc0ca}button:disabled{opacity:.4;cursor:not-allowed}
+    input,select{width:100%;border:1px solid #294551;border-radius:2px;background:#071015;color:#e6f4f3;padding:6px;font:inherit}input[type=color]{height:32px;padding:2px}input[type=checkbox]{width:auto;accent-color:#66d5e3}
+    input[type=file]{position:absolute;width:1px;height:1px;opacity:0}.backup{white-space:nowrap;color:#aec0c2}
+    main{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:12px;padding:12px;min-height:calc(100vh - 105px)}
+    .viewport,.side{border:1px solid var(--line);background:rgba(7,14,18,.92);box-shadow:inset 0 0 35px rgba(46,132,151,.05)}
+    .viewport{position:sticky;top:112px;align-self:start;overflow:auto;padding:8px;max-height:calc(100vh - 126px)}#preview{min-width:760px}#preview svg{display:block;width:100%;height:auto;overflow:visible;background:#05090c}
+    #preview svg text,#preview svg circle,#preview svg image{pointer-events:none}#preview .editor-selected{stroke:#fff!important;stroke-width:4!important;filter:drop-shadow(0 0 5px #fff)}#preview .editor-ghost{cursor:copy;fill:rgba(125,220,235,.025);stroke:rgba(125,220,235,.18);stroke-width:1}#preview .editor-ghost:hover{fill:rgba(255,140,168,.18);stroke:#ff8ca8;stroke-width:2}
+    .side{padding:12px;overflow:auto}.tabs{margin-bottom:14px;border-bottom:1px solid var(--line)}.tab{border:0;border-bottom:2px solid transparent;background:transparent}.tab.active{border-bottom-color:var(--pink);color:#fff}.pane[hidden]{display:none}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.field{display:flex;flex-direction:column;gap:3px}.field.wide{grid-column:1/-1}.field>span{color:#9db3b7;font-size:11px}.check{display:flex;gap:7px;align-items:center;padding-top:23px}
+    .moves{margin:12px 0}.moves button{min-width:42px}.note{padding:8px;border-left:2px solid var(--line);color:var(--muted);font-size:11px}
+    table{width:100%;border-collapse:collapse;font-size:11px}th,td{border-bottom:1px solid #1d333d;padding:4px;text-align:left;vertical-align:middle}th{color:#91b7bf}td input,td select{padding:4px;min-width:56px}.faction-card{margin-bottom:12px;padding:9px;border:1px solid #213c47;background:#091218}.faction-card header{position:static;padding:0 0 7px;border:0;background:none;box-shadow:none;color:var(--cyan)}
+    details{margin-top:14px;border:1px solid #28434e;padding:9px}summary{cursor:pointer;color:var(--pink)}.mini{padding:3px 6px}.empty{color:var(--muted);padding:20px;text-align:center}
+    @media(max-width:1000px){main{grid-template-columns:1fr}.viewport{position:static;max-height:none}.side{max-height:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>▌ FACMAP EDITOR // 勢力分布ヘックスマップ</h1>
+    <div class="toolbar">
+      <button id="openBtn">factions.html を開く</button>
+      <label class="file-label" for="htmlFallback">ファイル選択（互換）</label><input id="htmlFallback" type="file" accept=".html,text/html">
+      <button id="saveBtn" disabled>factions.html へ保存</button>
+      <label class="backup"><input id="backup" type="checkbox" checked> 保存前に元ファイルをダウンロード</label>
+      <span class="spacer"></span>
+      <button id="undoBtn" disabled>元に戻す</button><button id="redoBtn" disabled>やり直す</button>
+    </div>
+    <div class="toolbar">
+      <button id="copySvg">SVG をクリップボードへコピー</button>
+      <button id="exportJson">JSON を書き出し</button>
+      <label class="file-label" for="importJson">JSON を読み込み</label><input id="importJson" type="file" accept=".json,application/json">
+    </div>
+    <div id="status" class="status" role="status">factions.html を選択してください。プレビューは内蔵データです。</div>
+  </header>
+
+  <main>
+    <section class="viewport" aria-label="マッププレビュー"><div id="preview"></div></section>
+    <aside class="side">
+      <div class="tabs"><button class="tab active" data-pane="hexPane">ヘックス</button><button class="tab" data-pane="factionPane">勢力</button></div>
+      <section id="hexPane" class="pane">
+        <h2>選択ヘックス</h2>
+        <div id="hexEmpty" class="empty">ヘックスまたはゴースト枠をクリック</div>
+        <form id="hexForm" hidden>
+          <div class="grid">
+            <label class="field wide"><span>ID（重複不可）</span><input id="hId" required></label>
+            <label class="field"><span>col</span><input id="hCol" type="number" step="1"></label>
+            <label class="field"><span>row</span><input id="hRow" type="number" step="0.5"></label>
+            <label class="field wide"><span>勢力</span><select id="hFaction"></select></label>
+            <label class="field"><span>表示文字</span><input id="hLetter"></label>
+            <label class="field"><span>地名</span><input id="hName"></label>
+            <label class="field wide"><span>ストライプ</span><select id="hStripe"></select></label>
+            <label class="field"><span>ownerLabel（空なら勢力名）</span><input id="hOwner"></label>
+            <label class="check"><input id="hCapital" type="checkbox"> 紋章表示</label>
+            <label class="check"><input id="hSargasso" type="checkbox"> オレンジ枠明滅</label>
+          </div>
+          <div class="moves"><button type="button" data-move="-1,0">←</button><button type="button" data-move="1,0">→</button><button type="button" data-move="0,-0.5">↑</button><button type="button" data-move="0,0.5">↓</button></div>
+          <div class="row"><button type="button" id="duplicateHex">複製</button><button type="button" id="deleteHex" class="danger">削除</button></div>
+        </form>
+        <p class="note">薄い六角形は空セルです。クリックすると新規ヘックスを追加します。変更はプレビューへ即時反映されます。</p>
+      </section>
+      <section id="factionPane" class="pane" hidden>
+        <h2>勢力</h2>
+        <div id="factionsTable"></div>
+        <div class="row"><input id="newFactionKey" placeholder="新しいキー（例: pirates）"><button id="addFaction">勢力を追加</button></div>
+        <details>
+          <summary>上級者向け: stripes / patterns</summary>
+          <h3>STRIPES</h3><div id="stripesTable"></div><button id="addStripe" class="mini">行を追加</button>
+          <h3>PATTERNS</h3><div id="patternsTable"></div><button id="addPattern" class="mini">行を追加</button>
+        </details>
+      </section>
+    </aside>
+  </main>
+  <script src="facmap_gen.js"></script>
+  <script>
+  (function () {
+    "use strict";
+    var BEGIN = "<!-- FACMAP:BEGIN (image_tools/gen_faction_hexmap.py で自動生成) -->";
+    var END = "<!-- FACMAP:END -->";
+    var DATA_RE = /<!-- FACMAP:DATA (.*?) -->/;
+    var data = deepClone(window.FACMAP_DEFAULT_DATA), selectedId = null;
+    var fileHandle = null, sourceHtml = null, sourceName = "factions.html", dirty = false;
+    var undoStack = [], redoStack = [], MAX_UNDO = 20;
+    var $ = function (id) { return document.getElementById(id); };
+
+    function deepClone(v) { return JSON.parse(JSON.stringify(v)); }
+    function status(message, kind) { $("status").textContent = message; $("status").className = "status " + (kind || ""); }
+    function timestamp() {
+      var d = new Date(), pad = function (n) { return String(n).padStart(2, "0"); };
+      return d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + "_" + pad(d.getHours()) + pad(d.getMinutes()) + pad(d.getSeconds());
+    }
+    function download(text, name, type) {
+      var url = URL.createObjectURL(new Blob([text], {type: type || "text/plain;charset=utf-8"}));
+      var a = document.createElement("a"); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+    }
+    function setDirty(value) { dirty = value; document.title = (dirty ? "* " : "") + "FACMAP EDITOR"; }
+    function pushUndo() {
+      undoStack.push(JSON.stringify(data)); if (undoStack.length > MAX_UNDO) undoStack.shift(); redoStack.length = 0; updateHistoryButtons();
+    }
+    function updateHistoryButtons() { $("undoBtn").disabled = !undoStack.length; $("redoBtn").disabled = !redoStack.length; }
+    function restore(serialized) { data = JSON.parse(serialized); if (!findHex(selectedId)) selectedId = null; setDirty(true); renderAll(); }
+    function mutate(fn) { pushUndo(); fn(); setDirty(true); renderAll(); }
+    function mutatePreview(fn) { pushUndo(); fn(); setDirty(true); renderPreview(); updateHistoryButtons(); }
+    function findHex(id) { return data.hexes.find(function (h) { return h.id === id; }); }
+    function uniqueId(base) { var i = 1, id = base || "sector"; while (findHex(id)) id = (base || "sector") + i++; return id; }
+    function center(col, row) { var l=data.layout; return [l.MX+l.R+1.5*l.R*(col-l.COL_MIN),l.MY+l.R+Math.sqrt(3)*l.R*(row-l.ROW_MIN)]; }
+    function points(cx, cy, r) { var a=[]; for(var i=0;i<6;i++){var n=60*i*Math.PI/180;a.push((cx+r*Math.cos(n)).toFixed(1)+","+(cy+r*Math.sin(n)).toFixed(1));}return a.join(" "); }
+
+    function renderPreview() {
+      var preview = $("preview");
+      try { preview.innerHTML = window.generateFacmapSvg(data); }
+      catch (err) { preview.textContent = "生成エラー: " + err.message; status("SVG を生成できません: " + err.message, "error"); return; }
+      var svg = preview.querySelector("svg"); if (!svg) return;
+      svg.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function (e) { e.preventDefault(); }); });
+      var ordered = [];
+      data.order.forEach(function (fac) { data.hexes.forEach(function (h) { if (h.faction === fac) ordered.push(h); }); });
+      var polys = svg.querySelectorAll(".fac-group > polygon:not([style])");
+      polys.forEach(function (poly, index) {
+        var h = ordered[index]; if (!h) return; poly.dataset.hexId = h.id;
+        if (h.id === selectedId) poly.classList.add("editor-selected");
+      });
+      var ns = "http://www.w3.org/2000/svg", overlay = document.createElementNS(ns, "g"); overlay.setAttribute("class", "editor-overlay");
+      var occupied = {}; data.hexes.forEach(function (h) { occupied[h.col + ":" + h.row] = true; });
+      for (var col=-3; col<=13; col+=1) for (var row=-2.5; row<=3.5001; row+=0.5) {
+        row = Math.round(row*2)/2; if (occupied[col+":"+row]) continue;
+        var cp=center(col,row), ghost=document.createElementNS(ns,"polygon"), title=document.createElementNS(ns,"title");
+        ghost.setAttribute("points",points(cp[0],cp[1],data.layout.R-4)); ghost.setAttribute("class","editor-ghost"); ghost.dataset.col=col; ghost.dataset.row=row;
+        title.textContent="空セル: col " + col + " / row " + row + " — クリックで追加"; ghost.appendChild(title); overlay.appendChild(ghost);
+      }
+      svg.appendChild(overlay);
+    }
+
+    function renderHexForm() {
+      var h=findHex(selectedId); $("hexEmpty").hidden=!!h; $("hexForm").hidden=!h; if(!h)return;
+      var factions=Object.keys(data.factions), fs=$("hFaction"), ss=$("hStripe");
+      fs.innerHTML=factions.map(function(k){return '<option value="'+k+'">'+k+' — '+data.factions[k].name+'</option>';}).join("");
+      ss.innerHTML='<option value="">なし</option>'+factions.map(function(k){return '<option value="'+k+'">'+k+'</option>';}).join("")+'<option value="both">both</option>';
+      $("hId").value=h.id; $("hCol").value=h.col; $("hRow").value=h.row; fs.value=h.faction; $("hLetter").value=h.letter; $("hName").value=h.name;
+      ss.value=h.stripe || ""; $("hCapital").checked=!!h.capital; $("hOwner").value=data.ownerLabel[h.id] || ""; $("hSargasso").checked=data.sargasso.indexOf(h.id)>=0;
+    }
+
+    function inputCell(value, field, type, extra) { return '<input '+(type?'type="'+type+'" ':'')+'value="'+String(value == null ? "" : value).replace(/&/g,"&amp;").replace(/"/g,"&quot;")+'" data-field="'+field+'" '+(extra||"")+'>'; }
+    function renderFactions() {
+      var host=$("factionsTable"); host.innerHTML="";
+      Object.keys(data.factions).forEach(function(key){
+        var f=data.factions[key], tag=data.facTags[key] || ["",""]; var card=document.createElement("div"); card.className="faction-card"; card.dataset.key=key;
+        card.innerHTML='<header>'+key+' <button class="mini danger" data-delete-faction="'+key+'">削除</button></header><div class="grid">'+
+          '<label class="field wide"><span>name</span>'+inputCell(f.name,"name")+'</label><label class="field"><span>fill</span>'+inputCell(f.fill,"fill","color")+'</label><label class="field"><span>hi</span>'+inputCell(f.hi,"hi","color")+'</label>'+
+          '<label class="field"><span>anchor（空で null）</span>'+inputCell(f.anchor,"anchor")+'</label><label class="field"><span>emblem（空で null）</span>'+inputCell(f.emblem,"emblem")+'</label><label class="field"><span>facTag col</span>'+inputCell(tag[0],"tagCol","number","step=\"0.5\"")+'</label><label class="field"><span>facTag row</span>'+inputCell(tag[1],"tagRow","number","step=\"0.05\"")+'</label></div>';
+        host.appendChild(card);
+      });
+    }
+    function renderAdvanced() {
+      $("stripesTable").innerHTML='<table><thead><tr><th>勢力</th><th>stripe</th><th>pattern</th><th></th></tr></thead><tbody>'+data.stripes.map(function(r,i){return '<tr data-index="'+i+'"><td>'+inputCell(r[0],"0")+'</td><td>'+inputCell(r[1],"1")+'</td><td>'+inputCell(r[2],"2")+'</td><td><button class="mini danger" data-delete-row="stripe">×</button></td></tr>';}).join("")+'</tbody></table>';
+      $("patternsTable").innerHTML='<table><thead><tr><th>ID</th><th>base</th><th>line</th><th></th></tr></thead><tbody>'+data.patterns.map(function(r,i){return '<tr data-index="'+i+'"><td>'+inputCell(r[0],"0")+'</td><td>'+inputCell(r[1],"1","color")+'</td><td>'+inputCell(r[2],"2","color")+'</td><td><button class="mini danger" data-delete-row="pattern">×</button></td></tr>';}).join("")+'</tbody></table>';
+    }
+    function renderAll() { renderPreview(); renderHexForm(); renderFactions(); renderAdvanced(); updateHistoryButtons(); }
+
+    function loadHtml(text, name, handle) {
+      sourceHtml=text; sourceName=name || "factions.html"; fileHandle=handle || null; var match=text.match(DATA_RE);
+      if(match){try{data=JSON.parse(match[1]);status(sourceName+" を読み込みました（"+data.hexes.length+" ヘックス）。","ok");}catch(err){status("FACMAP:DATA の JSON が壊れています: "+err.message,"error");return;}}
+      else{data=deepClone(window.FACMAP_DEFAULT_DATA);status("FACMAP:DATA がないため内蔵デフォルトを読み込みました。保存時にコメントを追加します。","warn");}
+      selectedId=null;undoStack=[];redoStack=[];setDirty(false);$("saveBtn").disabled=false;renderAll();
+    }
+    function replacementHtml() {
+      if(sourceHtml==null) throw new Error("先に factions.html を開いてください。"); var i=sourceHtml.indexOf(BEGIN), j=sourceHtml.indexOf(END);
+      if(i<0 || j<0 || j<i) throw new Error("FACMAP:BEGIN / FACMAP:END マーカーが見つかりません。");
+      var eol=sourceHtml.indexOf("\r\n")>=0 ? "\r\n" : "\n"; var block=eol+"<!-- FACMAP:DATA "+window.serializeFacmapData(data)+" -->"+eol+window.generateFacmapSvg(data)+eol;
+      return sourceHtml.slice(0,i+BEGIN.length)+block+sourceHtml.slice(j);
+    }
+    async function saveHtml() {
+      try{
+        var updated=replacementHtml(); if($("backup").checked) download(sourceHtml,"factions_backup_"+timestamp()+".html","text/html;charset=utf-8");
+        if(fileHandle && fileHandle.createWritable){var writable=await fileHandle.createWritable();await writable.write(updated);await writable.close();status(sourceName+" へ保存しました。","ok");}
+        else{download(updated,sourceName || "factions.html","text/html;charset=utf-8");status("直接書き込み非対応のため、更新済み HTML をダウンロードしました。元ファイルと置き換えてください。","warn");}
+        sourceHtml=updated;setDirty(false);
+      }catch(err){status("保存できません: "+err.message,"error");}
+    }
+
+    $("openBtn").addEventListener("click",async function(){
+      if(!window.showOpenFilePicker){$("htmlFallback").click();return;}
+      try{var handles=await window.showOpenFilePicker({multiple:false,types:[{description:"HTML",accept:{"text/html":[".html"]}}]});var file=await handles[0].getFile();loadHtml(await file.text(),file.name,handles[0]);}
+      catch(err){if(err.name!=="AbortError")status("ファイルを開けません: "+err.message,"error");}
+    });
+    $("htmlFallback").addEventListener("change",async function(){var f=this.files[0];if(f)loadHtml(await f.text(),f.name,null);this.value="";});
+    $("saveBtn").addEventListener("click",saveHtml);
+    $("exportJson").addEventListener("click",function(){download(window.serializeFacmapData(data),"facmap_"+timestamp()+".json","application/json;charset=utf-8");});
+    $("importJson").addEventListener("change",async function(){var f=this.files[0];if(!f)return;try{var next=JSON.parse(await f.text());if(!next.factions||!Array.isArray(next.hexes)||!next.layout)throw new Error("必要な factions / hexes / layout がありません");pushUndo();data=next;selectedId=null;setDirty(true);renderAll();status(f.name+" を読み込みました。","ok");}catch(err){status("JSON を読み込めません: "+err.message,"error");}this.value="";});
+    $("copySvg").addEventListener("click",async function(){var text=window.generateFacmapSvg(data);try{if(navigator.clipboard&&navigator.clipboard.writeText)await navigator.clipboard.writeText(text);else throw new Error("Clipboard API unavailable");status("SVG をクリップボードへコピーしました。","ok");}catch(err){var ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();var ok=document.execCommand("copy");ta.remove();status(ok?"SVG をクリップボードへコピーしました。":"コピーできませんでした。JSON/SVG は別途保存してください。",ok?"ok":"error");}});
+
+    $("preview").addEventListener("click",function(e){var poly=e.target.closest("polygon");if(!poly)return;if(poly.dataset.hexId){selectedId=poly.dataset.hexId;renderAll();}else if(poly.classList.contains("editor-ghost")){var col=Number(poly.dataset.col),row=Number(poly.dataset.row);mutate(function(){var id=uniqueId("sector");data.hexes.push({id:id,col:col,row:row,faction:data.factions.neutral?"neutral":Object.keys(data.factions)[0],letter:"?",name:"新規宙域",stripe:null,capital:false});selectedId=id;});}});
+    function editHex(e){var h=findHex(selectedId);if(!h)return;var id=e.target.id;if(id==="hId"){if(e.type==="input")return;var next=e.target.value.trim();if(!next||findHex(next)&&next!==h.id){status("ID は空にできず、重複もできません。","error");renderHexForm();return;}mutate(function(){var old=h.id;h.id=next;if(Object.prototype.hasOwnProperty.call(data.ownerLabel,old)){data.ownerLabel[next]=data.ownerLabel[old];delete data.ownerLabel[old];}data.sargasso=data.sargasso.map(function(x){return x===old?next:x;});selectedId=next;});return;}
+      var mapping={hCol:"col",hRow:"row",hFaction:"faction",hLetter:"letter",hName:"name",hStripe:"stripe",hCapital:"capital"};if(mapping[id])mutatePreview(function(){var value=(id==="hCol"||id==="hRow")?Number(e.target.value):(id==="hCapital"?e.target.checked:e.target.value);h[mapping[id]]=id==="hStripe"?(value||null):value;});
+      else if(id==="hOwner")mutatePreview(function(){if(e.target.value)data.ownerLabel[h.id]=e.target.value;else delete data.ownerLabel[h.id];});
+      else if(id==="hSargasso")mutatePreview(function(){data.sargasso=data.sargasso.filter(function(x){return x!==h.id;});if(e.target.checked)data.sargasso.push(h.id);});
+    }
+    $("hexForm").addEventListener("input",editHex); $("hId").addEventListener("change",editHex);
+    document.querySelectorAll("[data-move]").forEach(function(b){b.addEventListener("click",function(){var h=findHex(selectedId),v=this.dataset.move.split(",").map(Number);if(h)mutate(function(){h.col+=v[0];h.row=Math.round((h.row+v[1])*2)/2;});});});
+    $("deleteHex").addEventListener("click",function(){var h=findHex(selectedId);if(!h)return;mutate(function(){data.hexes=data.hexes.filter(function(x){return x!==h;});data.sargasso=data.sargasso.filter(function(x){return x!==h.id;});delete data.ownerLabel[h.id];selectedId=null;});});
+    $("duplicateHex").addEventListener("click",function(){var h=findHex(selectedId);if(!h)return;mutate(function(){var copy=deepClone(h);copy.id=uniqueId(h.id+"_copy");copy.col+=1;data.hexes.push(copy);if(data.ownerLabel[h.id])data.ownerLabel[copy.id]=data.ownerLabel[h.id];if(data.sargasso.indexOf(h.id)>=0)data.sargasso.push(copy.id);selectedId=copy.id;});});
+
+    $("factionsTable").addEventListener("input",function(e){var card=e.target.closest(".faction-card");if(!card||!e.target.dataset.field)return;var key=card.dataset.key,field=e.target.dataset.field;mutatePreview(function(){if(field==="tagCol"||field==="tagRow"){var tag=data.facTags[key]||[0,0],idx=field==="tagCol"?0:1;if(e.target.value===""){delete data.facTags[key];}else{tag[idx]=Number(e.target.value);data.facTags[key]=tag;}}else data.factions[key][field]=((field==="anchor"||field==="emblem")&&!e.target.value)?null:e.target.value;});});
+    $("factionsTable").addEventListener("click",function(e){var key=e.target.dataset.deleteFaction;if(!key)return;mutate(function(){var keys=Object.keys(data.factions).filter(function(k){return k!==key;}),fallback=keys.indexOf("neutral")>=0?"neutral":keys[0];if(!fallback)throw new Error("最後の勢力は削除できません");data.hexes.forEach(function(h){if(h.faction===key)h.faction=fallback;if(h.stripe===key)h.stripe=null;});delete data.factions[key];delete data.facTags[key];data.order=data.order.filter(function(k){return k!==key;});data.stripes=data.stripes.filter(function(r){return r[0]!==key&&r[1]!==key;});});});
+    $("addFaction").addEventListener("click",function(){var key=$("newFactionKey").value.trim();if(!/^[A-Za-z0-9_-]+$/.test(key)||data.factions[key]){status("勢力キーは半角英数字・_・-で、未使用の値を指定してください。","error");return;}mutate(function(){data.factions[key]={fill:"#334455",hi:"#99ddee",name:key,anchor:null,emblem:null};data.order.push(key);});$("newFactionKey").value="";});
+    function advancedChange(e,kind){var tr=e.target.closest("tr");if(!tr||e.target.dataset.field==null)return;var list=kind==="stripe"?data.stripes:data.patterns;mutatePreview(function(){list[Number(tr.dataset.index)][Number(e.target.dataset.field)]=e.target.value;});}
+    $("stripesTable").addEventListener("input",function(e){advancedChange(e,"stripe");});$("patternsTable").addEventListener("input",function(e){advancedChange(e,"pattern");});
+    function advancedDelete(e,kind){if(e.target.dataset.deleteRow!==kind)return;var tr=e.target.closest("tr"),list=kind==="stripe"?data.stripes:data.patterns;mutate(function(){list.splice(Number(tr.dataset.index),1);});}
+    $("stripesTable").addEventListener("click",function(e){advancedDelete(e,"stripe");});$("patternsTable").addEventListener("click",function(e){advancedDelete(e,"pattern");});
+    $("addStripe").addEventListener("click",function(){mutate(function(){var k=Object.keys(data.factions)[0]||"neutral";data.stripes.push([k,"both",data.patterns[0]?data.patterns[0][0]:""]);});});
+    $("addPattern").addEventListener("click",function(){mutate(function(){var n=1,id="pattern";while(data.patterns.some(function(p){return p[0]===id+n;}))n++;data.patterns.push([id+n,"#334455","#99ddee"]);});});
+    $("undoBtn").addEventListener("click",function(){if(!undoStack.length)return;redoStack.push(JSON.stringify(data));restore(undoStack.pop());});
+    $("redoBtn").addEventListener("click",function(){if(!redoStack.length)return;undoStack.push(JSON.stringify(data));restore(redoStack.pop());});
+    document.querySelectorAll(".tab").forEach(function(tab){tab.addEventListener("click",function(){document.querySelectorAll(".tab").forEach(function(t){t.classList.toggle("active",t===tab);});document.querySelectorAll(".pane").forEach(function(p){p.hidden=p.id!==tab.dataset.pane;});});});
+    window.addEventListener("beforeunload",function(e){if(!dirty)return;e.preventDefault();e.returnValue="";});
+    renderAll();
+  }());
+  </script>
+</body>
+</html>

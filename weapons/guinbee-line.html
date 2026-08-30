@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GUINBEE LINE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#c86a5a;--accent:#f0a898;--border:rgba(200,106,90,0.32);--border-hi:rgba(240,168,152,0.7);--dim:#3a1e1a;--dim2:#1a0e0c; }
+    .p-title    { color: #fbeeea; text-shadow: 0 0 50px rgba(200,106,90,0.4); }
+    .p-tagline  { border-color: #c86a5a; color: #c86a5a; }
+    .terminal-hdr { color: #f0a898; }
+    .terminal-hdr::before { background: #f0a898; box-shadow: 0 0 8px #f0a898; }
+    .dk { color: #c86a5a; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-40 / GUINBEE LINE — グインビー戦艦系列 ]</div>
+    <div class="header-status"><span class="blink" style="color:#f0a898;">●</span> HOSTILE — ALL DIVISIONS</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — GUINBEE LINE — IMPERIAL SHIP GRADES — SURVEY RECORD</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0040 — CLASSIFICATION: HOSTILE SURVEY — FOUNDRY: ELADARD / MACBETH</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-40 / ARMORY FILE ]</div>
+        <div class="p-name-jp">グインビー戦艦系列 (GUINBEE LINE)</div>
+        <h1 class="p-title">THE HIVE<br>OF THE<br>EMPIRE</h1>
+        <div class="p-tagline">帝国艦船等級 ─ 巡洋艦グインビーを起点とする戦艦の系統</div>
+        <p class="p-short-desc">帝国軍の艦船を測る物差しにして帝国二十四師団の全艦隊を構成する戦艦の系統。使い捨ての巡洋艦グインビーから最強の巨大戦艦グランビーまで、傍受通信に飛び交う「○○ビー級」の正体である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ HOSTILE SCAN — FILE 40 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">GUINBEE LINE / グインビー戦艦系列</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">帝国艦船等級（系統総覧）</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../database/factions.html#venom-empire">ベノム帝国</a> 全24師団</td></tr><tr><td class="dk">① GUINBEE</td><td class="dv"><a href="#guinbee">巡洋艦グインビー</a> — 物量の主役・現在は無人化</td></tr><tr><td class="dk">② DORISBEE</td><td class="dv"><a href="#dorisbee">戦艦ドリスビー</a> — <a href="../database/glossary.html#baculum">バキュラム鋼</a>製・皇帝の顔</td></tr><tr><td class="dk">③ CORBEE</td><td class="dv"><a href="#corbee">戦艦コルビー</a> — 両舷ビーム砲・艦隊戦の主力</td></tr><tr><td class="dk">④ GRANBEE</td><td class="dv"><a href="#granbee">巨大戦艦グランビー</a> — 対光学兵器バリア・最強クラス</td></tr><tr><td class="dk">FOUNDRY</td><td class="dv"><a href="../database/locations.html#eladard">エラダード</a>（グインビー）／ <a href="../database/locations.html#macbeth">マクベス</a>ほか</td></tr><tr><td class="dk">REPUBLIC EQUIV.</td><td class="dv"><a href="../database/glossary.html#ship-grades">艦船の等級</a>（水棲哺乳類の六階級）</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">⚠ 全戦線で交戦中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">FLEET SHARE -- 80 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 80%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(200,106,90,0.5);">
+        <img src="" alt="GUINBEE LINE" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">IMPERIAL SHIP GRADES</span>
+            <span class="tg-jp">帝国艦船等級 ── 「○○ビー級」の物差し</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">グインビーなら数える前に撃て。グランビーなら数えろ、逃げる方向を決めるためにな。<span class="tg-note note">-CDF艦隊識別課 新任教育の常套句-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">敵の艦は全部「○○ビー」で終わる。問題は頭に何が付くかだ。<span class="lore-quote-src">― スターブレード艦隊 砲術長の教育記録より</span></span></p>
+  <p class="lore-p">グインビー戦艦系列（Guinbee Line）は特定の艦船を指す言葉ではなく、<a href="../database/factions.html#venom-empire">ベノム帝国</a>軍が使用する巡洋艦グインビーを起点とした戦艦の系統を指す言葉である。共和国が用いる<a href="../database/glossary.html#ship-grades">艦船の等級</a>と同じく、このグインビー系列が帝国側の艦船の大きさを測る指標とされており、帝国の艦船情報を傍受すると「○○ビー級」という単語が頻出する。共和国の物差しが海の哺乳類の名で艦を測るのに対し、帝国の物差しは自軍の艦そのものの名で測る。系列の名が示すとおり帝国の艦隊は一つの巣から生まれた蜂の群れであり、<a href="../database/military.html#cdf">CDF</a>の識別課はこの系列を頭に入れることを艦隊勤務の最初の課題としている。</p>
+  <p class="lore-p">系列は下から巡洋艦グインビー、戦艦ドリスビー、戦艦コルビー、巨大戦艦グランビーの四段で構成される。<a href="../database/glossary.html#imperial-divisions">帝国二十四師団</a>の全艦隊がこの四種を基幹として編成されており、<a href="salvadora.html">サルバドーラ</a>のような規格外の艦を除けば帝国艦隊の艦影は事実上この四つの組み合わせで説明できる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h" id="guinbee">① 巡洋艦グインビー ─ GUINBEE</h3>
+  <p class="lore-p">巡洋艦グインビーを筆頭とする、帝国が手先として使用する艦船の代表格である。帝国二十四師団の全ての艦隊に編成されており、共和国側が最も多く撃墜した艦もこのグインビーである。特殊な装備を持たない代わりに大量の物量で攻めてくることで知られ、生産は<a href="../database/locations.html#eladard">エラダード</a>で行われていることが指摘されている。中立を掲げる工業惑星が帝国の消耗艦を量産している事実は公然の秘密であり、共和国が抗議のたびに返される答えは「納期は守っている」の一言である。</p>
+  <p class="lore-p">艦の装甲は大したものではなくどこを狙っても撃墜可能である。初期は有人艦だったが最近は完全な無人艦に変化したとみられ、共和国の撃墜記録に残る乗員の脱出艇の数は開戦以来減り続けている。艦隊識別課が「数えるな、撃て」と教えるのはこの艦のことであり、無人艦と判明した現在は躊躇なく破壊が許することが最優先に回されたことを指している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h" id="dorisbee">② 戦艦ドリスビー ─ DORISBEE</h3>
+  <p class="lore-p">既知の金属で最も硬い<a href="../database/glossary.html#baculum">バキュラム鋼</a>で作られた中型の戦艦である。機首には皇帝<a href="../characters/andorf.html">アンドルフ</a>の顔が彫られており、威圧や牽制の目的で取り付けられていると想定される。この皇帝の顔はただの飾りではなく目や口から砲弾を放つことが可能であり、立ちすくんで見ていると集中砲火を食らうと注意喚起がされている。加工不能のバキュラム鋼が一枚板のまま貼り合わされた艦体は角張った多面体の外壁を持ち、唯一なめらかに整形されている皇帝の顔の製造方法は未だ帝国の秘蔵となっている（<a href="../database/glossary.html#baculum">バキュラム鋼</a>の項に補足がある）。</p>
+  <p class="lore-p">バキュラム鋼が高価なためか出撃報告例が多い割には艦数は少ないと見積もられている。この艦の真の強さは威圧ではなく破壊不可能な防御力にあり、共和国の作戦立案では<a href="../planets/bolse.html">ボルス</a>と同じく実質的に地形と同じカテゴリーで取り扱われる。撃沈は想定されず進路上から排除する方法だけが検討対象となる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h" id="corbee">③ 戦艦コルビー ─ CORBEE</h3>
+  <p class="lore-p">帝国の主力艦隊を構成する有人艦である。艦隊戦になれば必ず見る艦であり、配備数はグインビーと同等かそれ以上が想定される。艦の両舷にビーム砲台を装備しており、放たれるレーザーは小型艦ならば一撃で轟沈させるほどの威力を誇る。強力な攻撃力と等価交換で防御力は低く、<a href="arwing.html">アーウィン</a>の集中砲火で容易に破壊できる。</p>
+  <p class="lore-p">艦隊戦で最も被害を出しているのはこのコルビー級の砲撃であり、コルビーを封じるための有人攻撃機部隊の組織が検討されるほど被害は深刻である。撃沈は容易だが撃沈するまでに撃たれるというのがこの艦種の強みである。「先に近づいた方が勝つ艦」がこの艦の評であり両舷の砲台が同時に向けられない正面と真後ろが唯一の接近経路とされる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h" id="granbee">④ 巨大戦艦グランビー ─ GRANBEE</h3>
+  <p class="lore-p">現帝国保有艦船で最強クラスと称される巨大戦艦である。対光学兵器バリアを内蔵しており光学兵器を得意とする共和国軍にとって正面からの戦闘に勝ち目はない。<a href="../database/glossary.html#imperial-divisions">帝国第1師団</a>はこのグランビーを10隻も有しており、第2師団<a href="../database/military.html#space-armada">スペースアマダ</a>は2隻、第3師団は6隻を配備している。帝国防衛の本隊三個師団だけで18隻が確認されているこの事実は、艦隊戦での強行突破が事実上不可能であることにほかならない。</p>
+  <p class="lore-p">この艦を正面から爆砕できる高出力の特殊兵器の開発、または内部からの破壊ができる遊撃隊の導入が必須であると作戦会議で繰り返し提起される要因がグランビーである。共和国憲章第1条が超兵器を禁じている以上、残る答えは後者しかない。<a href="../database/military.html#starfox">スターフォックス</a>への依存が戦況の悪化とともに深まる理由の一つはこの18隻の存在に集約される。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">分析 ─ ASSESSMENT</h3>
+  <p class="lore-p">系列の構造は帝国の用兵思想をそのまま映している。数で押すグインビー、動かぬ壁のドリスビー、撃ち合いを制するコルビー、そして突破を許さぬグランビー。四種が役割を分担する陣形は、単一の艦種にあらゆる任務を負わせる共和国の統合艦隊とは対照的である。CDFの分析官はこれを「共和国の艦は一隻で五つの仕事をし、帝国の艦は一つの仕事しかしない。だから帝国の艦は四種類で足りる」と要約している。</p>
+  <p class="lore-p">なお等級としての「○○ビー級」は艦の大きさを示す指標であって艦種そのものではなく、傍受通信ではアタック・キャリアーが「グインビー級」、サルバドーラが「グランビー級を超える」と呼ばれる例がある。帝国側の等級と共和国の等級の対応表はCDF識別課が作成しているが、ドリスビーの防御力とコルビーの火力のように大きさと脅威度が一致しない艦が多く、対応表は「大きさの目安であって危険度の目安ではない」という注意書きを冒頭に掲げている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">「ビー」の語尾の由来は帝国の公式資料に記載がない。蜂の群れになぞらえた命名であるとする説が最も広く信じられているが、皇帝が初期の巡洋艦を設計した際の設計番号の末尾記号が読み違えられて定着したとする説もあり、共和国の分析官は「本人に聞く以外に確かめようがない」と匙を投げている。</p>
+  <p class="lore-p">ドリスビーの機首に彫られた皇帝の顔は艦ごとに微妙に表情が異なるとされ、共和国のパイロットの間では「笑っている顔の艦に当たると縁起が悪い」という迷信がある。撃沈できない艦に当たった時点で縁起は既に悪いという指摘には誰も反論していない。また、このドリスビーについては皇帝が全力で出撃を止めようとした形跡も明らかになっている。恐らくは部下が勝手に開発したうえで出撃してしまい止める間もなく進軍に加わってしまったとみられる。止めた理由はやはり自身の顔面を星系中に晒すのが耐えられなかったからだろうか…？</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

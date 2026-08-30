@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PEPPY HARE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ddbb77;--accent:#f0ddaa;--border:rgba(221,187,119,0.32);--border-hi:rgba(221,187,119,0.7);--dim:#3a3010;--dim2:#1d1808; }
+    .p-title    { color: #fff8e8; text-shadow: 0 0 50px rgba(221,187,119,0.35); }
+    .p-tagline  { border-color: #ddbb77; color: #ddbb77; }
+    .terminal-hdr { color: #f0ddaa; }
+    .terminal-hdr::before { background: #f0ddaa; box-shadow: 0 0 8px #f0ddaa; }
+    .dk { color: #ddbb77; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-03 / PEPPY HARE — ペッピー・ヘア ]</div>
+    <div class="header-status">● ACTIVE — ADVISOR</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — PEPPY HARE — STAR FOX TEAM — VETERAN ADVISOR</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0003 — CLEARANCE: OPEN — SOLE SURVIVOR OF VENOM RECON</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-03 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ペッピー・ヘア (PEPPY HARE)</div>
+        <h1 class="p-title">PEPPY HARE</h1>
+        <div class="p-tagline">THE LAST WITNESS ── スターフォックス 参謀</div>
+        <p class="p-short-desc">初代スターフォックスの生き残りにして、ジェームズの無二の親友。裏切りの真実を持ち帰り、その息子を育て上げた老練の参謀。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 03 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">PEPPY HARE / ペッピー・ヘア</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#selenoid">セレノイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">44歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#corneria">コーネリア</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#starfox">スターフォックス</a></td></tr><tr><td class="dk">ROLE</td><td class="dv">参謀 / 教育係</td></tr><tr><td class="dk">FORMER</td><td class="dv"><a href="../database/military.html#cdf">CDF</a>士官 / 初代スターフォックス</td></tr><tr><td class="dk">FAMILY</td><td class="dv">妻: ヴィヴィアン（故人）／ 娘: ルーシー</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 一線任務は限定的</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">TACTICAL RATING -- 90 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 90%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(221,187,119,0.55);">
+        <img src="../resource/Character_image/character_peppy.png" alt="PEPPY HARE" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR FOX — VETERAN ADVISOR</span>
+            <span class="tg-jp">スターフォックス 参謀</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">宙返りをつかえ！　フォックス。…さすがだ　おまえの親父さんの飛び方を　みているようだわい。<span class="tg-note note">-訓練記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">わしが生き残ったのは腕がいいからじゃない。あいつが…わしを逃したからだ<span class="lore-quote-src">― 本人の述懐より</span></span></p>
+  <p class="lore-p">ペッピー・ヘアは深い洞察力と冷静な戦況分析で隊を支える<a href="../database/military.html#starfox">スターフォックス</a> の頭脳にして創設期から隊を知る最古参メンバーであり、若い隊員たちにとっては口うるさくも慕われる教育係である。CDFの内部評はこの老兵をただ一行で言い当てている。「彼はスターフォックスの頭脳であり良心である」。</p>
+  <p class="lore-p">彼の生家はセレノイドの戦闘民族の末裔の可能性があり、彼本人が持ち合わせる戦闘力に興味を示すものも多い。本人は「なにわけのわからんことを…わしはただの心配性のうさぎだよ」と受け流している。ただし白兵模擬戦で彼に勝った若手隊員はいまだ確認されていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">前半生 ─ EARLY LIFE</h3>
+  <p class="lore-p">ペッピー・ヘアは軍閥関係者が多く住むコーネリアシティ中央街の旧家に生まれた。代々<a href="../database/races.html#selenoid">セレノイド</a>の間でも特に高い戦闘力を持つ氏族「月兎」の流れを汲む家系であり、家長を務める祖母を含め家族は一人残らず軍人だった。家訓は「飛ぶ前に3度耳を立てろ、動く影が見える頃には相手の首に手をあてろ」。後年の彼の代名詞となる慎重さも何かにつけて口癖になる数々の格言もこの家で叩き込まれたものである。</p>
+  <p class="lore-p">士官学校では白兵から作戦立案まで総じて高い数値を叩き出し、卒業席次は次席だった。首席にしなかった理由を教官は「慎重すぎて時間切れ」と記録している。</p>
+  <p class="lore-p">転機は18歳の士官候補生の年である。傍聴していた<a href="../database/glossary.html#decoy-ship">軍法会議</a>で異例の発言を許され、面識もない夜盗の青年<a href="../database/characters.html#james">ジェームズ・マクラウド</a>の情状酌量を訴えた。「彼の射撃記録には、一度も『人』が含まれていません」。この一言が部隊長Z・Z・ペパーの目に留まり、判決と二人の人生を変えることになる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">任官後に彼が希望した最初の配属は花形の戦闘機隊ではなく輸送船団の護衛任務だった。<a href="../database/factions.html#iga">独立星系連合</a>の残党掃討が続いた時期には<a href="../planets/setebos.html">セティボス</a>圏へ向かう補給船団を守り、経由地の<a href="../database/locations.html#papetoon">パペトゥーン</a>へ幾度も降り立っている。護衛した船団を一隻も欠けさせなかった記録は今も部隊に残り、「撃墜数で語れない名手」という後年の評はこの頃に定まった。</p>
+  <p class="lore-p"><a href="../database/locations.html#papetoon">パペトゥーン</a> に新設された士官学校へは自ら志願して赴任した（辺境行きを「体のいい左遷」と見る向きもあったが本人が譲らなかった）。模範士官として生徒指導にあたり、成人学生として入学してきたジェームズと再会する。年齢の近い指導相手との「微妙な空気」はやがて唯一無二の友情へ変わった。この赴任地で出会った軍医ヴィヴィアンとは<a href="../database/characters.html#vixy">ヴィクシー</a> の酒場で式を挙げている。立会人はジェームズだった。</p>
+  <p class="lore-p">ジェームズの遊撃隊構想には当初猛反対したが、熱意に押し負ける形で軍を退き<a href="../database/military.html#starfox">スターフォックス</a> 創設に参加した。以来初代の全作戦を共に飛んだ。作戦の合間には病を得た妻の看病を続けていたが、ヴィヴィアンは<a href="../database/locations.html#venom">ベノム</a> 偵察作戦の前年に世を去っている。彼が後にフォックスの養育へ人生を注いだことについて多くを語ったことはない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">初代の翼 ─ FIRST TEAM</h3>
+  <p class="lore-p">初代スターフォックスにおける彼の席は2番機、そして事実上の参謀である。感覚で飛ぶ天才ジェームズの機動を手順と数字に翻訳し、部隊の全員が使える形で配り直す。初代の連携の正体はこの翻訳作業だったと評される。初代の全作戦を共に飛んだ男は同時に初代の全作戦を書き残した男でもある。彼の几帳面な戦闘詳報は現在もCDFの遊撃戦術研究における一級資料であり続けている。</p>
+  <p class="lore-p">雇われ遊撃隊としての代表的な戦歴が教団<a href="../database/glossary.html#mu-cult">「ムー」</a>の巨大移動要塞ムーラシアの征討作戦である。<a href="wenli.html">ウェンリー准将</a>が立案したこの作戦で彼は<a href="../database/characters.html#pigma">ピグマ</a>と共に白兵戦へ加わり、要塞壊滅の決定打への貢献で表彰された。「諭す男」が生涯で最も苛烈に戦った日と言われ、月兎の血が伝える瞬発力が実戦で記録された数少ない例でもある。</p>
+  <p class="lore-p">そして<a href="../database/glossary.html#venom-recon">ベノム偵察作戦</a>が全てを終わらせた。編隊は僚機<a href="../database/characters.html#pigma">ピグマ・デンガー</a> の裏切りによって帝国の罠に落ち、ジェームズは自らを囮に彼を離脱させた。ここまでは広く知られた記録である。知られていないのはその後である。彼は追撃と通信封鎖の網を単機で潜り抜け、帝国の勢力圏を数週間かけて横断してコーネリアへ帰り着いている。着艦した機体の被弾痕を数え始めた整備班は途中で数えるのをやめたと伝わる。本人が帰路について語った言葉はほとんどない。ただ持ち帰った証言が英雄の名簿からピグマの名を消し、反逆者リストの筆頭へ書き換えた。この証言がなければ共和国はピグマの内通を開戦後も見抜けなかったとされる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">養育と再建 ─ GUARDIAN</h3>
+  <p class="lore-p">残されたのは14歳の少年フォックスだった。軍属住宅の時代から父の留守を預かってきた家の子である。士官学校を自主退学し父の隊と母艦と借金ごと名を継ぐと言い出した少年に対し、ペッピーは止める言葉を何十と用意し結局その一つも使わなかったという。以後は後見人として操縦と戦術、そして「引き際」を叩き込んだ。教えの軸は明快である。「速く飛ぶことは教えん。生きて帰ることなら教えられる」。</p>
+  <p class="lore-p">ただ一つ…<a href="../weapons/greatfox.html">グレートフォックス</a>の建造ローンの話だけはどうしても遺児に切り出せなかった。フォックスは届き続ける督促記録から自ずと全てを理解したと伝わる。完済予定は数十年後である。彼は折に触れてこう言うという。「完済の日まで、この隊は絶対に潰れられんのだ」。</p>
+  <p class="lore-p">若い隊員への説教は番号付きの「おやじの格言」として飛び出すことで有名である。原型はジェームズの口癖と生家の家訓、そして士官学校の教範の混合とみられるが全集の実在を確認した者はいない。ファルコは「番号はその場で付けている」と主張し、スリッピーによる照合の試みは矛盾の指摘とともに頓挫した。それでも<a href="../other/corneria-defense.html">コーネリア防衛戦</a>の最中に管制塔の周波数へ放送された「格言その17」が避難シェルターの応答を蘇らせた事実は公式記録に残っている。</p>
+  <p class="lore-p">再結成後の隊では参謀として全作戦の立案に関わる。コーネリア防衛戦では無人機に「操縦者の癖がない」ことへ着目し、機動の規則性を読み切る迎撃順序を各機へ配分して大群を捌いた。かつて感覚の天才を翻訳した参謀は今や理屈で飛ぶ機械を翻訳している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">毎年ある日の朝だけ、彼は誰にも行き先を告げず単機で飛びに出る。行き先はグレートフォックスの航法記録にすら残されていない。フォックスは何も聞かず、その日の訓練を必ず休みにする。</p>
+  <p class="lore-p">「宙返りしろ」は彼の代名詞となった助言だが、原型はジェームズの口癖である。本人いわく「あいつの声で言った方が、あの子には届くんでな」。</p>
+  <p class="lore-p">コーネリアの実家には一人娘のルーシーが暮らしている。長期休暇のたびに彼が娘を連れて行く先は決まってパペトゥーンであり、「この星に来ると昔話ばっかり」と煙たがられるのが常である。父娘は天体観測クラブ<a href="../database/glossary.html#sky-watcher">「スカイウォッチャー」</a>に連名で在籍しており、彼が遊撃隊時代の任務の合間に撮り溜めた星雲や彗星の写真は界隈で今も高く評価されている。煙たがられてなお昔話を続ける理由を彼は短く説明している。「次の時代を生きる者へ、伝えておきたいことがあるんでな」。</p>
+  <p class="lore-p">星系で確認されているセレノイドはごく少数であり、軍籍にある同族は共和国軍<a href="../database/military.html#vorpal">ヴォーパル隊</a>を率いるアンバー・シルフェイド少佐ぐらいである。二人が言葉を交わした記録は今のところ残っていない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

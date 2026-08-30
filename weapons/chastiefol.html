@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHASTIEFOL — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#c8d8ea;--accent:#eef6ff;--border:rgba(200,216,234,0.32);--border-hi:rgba(200,216,234,0.7);--dim:#242e3a;--dim2:#11171e; }
+    .p-title    { color: #ffffff; text-shadow: 0 0 50px rgba(200,216,234,0.45); }
+    .p-tagline  { border-color: #c8d8ea; color: #c8d8ea; }
+    .terminal-hdr { color: #eef6ff; }
+    .terminal-hdr::before { background: #eef6ff; box-shadow: 0 0 8px #eef6ff; }
+    .dk { color: #c8d8ea; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-13 / CHASTIEFOL — シャスティフォル ]</div>
+    <div class="header-status"><span class="blink" style="color:#eef6ff;">●</span> RESTRICTED — PROTOTYPE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — CHASTIEFOL — NEURAL-LINKED PROTOTYPE FIGHTER — PILOT: MAJ. AMBER SYLPHADE</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0013 — CLEARANCE: RESTRICTED — CDF SPECIAL WEAPONS PROGRAM</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-13 / ARMORY FILE ]</div>
+        <div class="p-name-jp">シャスティフォル (CHASTIEFOL)</div>
+        <h1 class="p-title">CHASTIEFOL</h1>
+        <div class="p-tagline">THE WHITE BLADE ── アンバー・シルフェイド専用機</div>
+        <p class="p-short-desc">純白で無装飾。高速で星雲を切りながら飛ぶその姿はまさに「剣」。単騎で1個小隊に匹敵する火力と公にできない操縦系を併せ持つ試作戦闘機。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 13 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">CHASTIEFOL / シャスティフォル</td></tr><tr><td class="dk">CLASS</td><td class="dv">試作特殊戦闘機（ワンオフ）</td></tr><tr><td class="dk">DEVELOPER</td><td class="dv"><a href="../database/military.html#cdf">CDF</a> 特殊兵器局</td></tr><tr><td class="dk">OWNER</td><td class="dv"><a href="../database/characters.html#amber">アンバー・シルフェイド</a>少佐（<a href="../other/vorpal.html">ヴォーパル隊</a>）</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">ツインレーザー / 遠隔操作ドローン ×20（機内格納）</td></tr><tr><td class="dk">CONTROL</td><td class="dv warn">神経直結操縦系 — 詳細機密</td></tr><tr><td class="dk">COCKPIT</td><td class="dv">密閉液浸区画（操縦桿・窓なし）</td></tr><tr><td class="dk">LIMIT</td><td class="dv bad">1出撃あたり稼働5分（医療勧告）</td></tr><tr><td class="dk">PREDECESSOR</td><td class="dv"><span class="redacted">スピリット試作機「アイグロス」（機密）</span></td></tr><tr><td class="dk">MAINTENANCE</td><td class="dv">ヴォーパル隊「白の2」専任</td></tr><tr><td class="dk">STATUS</td><td class="dv warn">現役 — カタリナ展開中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PERFORMANCE RATING -- 96 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(200,216,234,0.55);">
+        <img src="" alt="CHASTIEFOL" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">NEURAL-LINKED PROTOTYPE</span>
+            <span class="tg-jp">純白の試作特殊戦闘機 ── 白い刃</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">あれを「戦闘機」と呼ぶのはもうやめたほうがいい。<br>あれは抜かれた剣を振るう一人の騎士だ。<span class="tg-note note">-模擬戦に参加した教導隊パイロットの所見-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">シャスティフォルは振るう者を選ぶ。　力と引き換えに　差し出すものがある者だけが扱えるのだ<span class="lore-quote-src">― CDF特殊兵器局 開発コード名選定メモより</span></span></p>
+  <p class="lore-p">シャスティフォル（Chastiefol）は<a href="../other/vorpal.html">ヴォーパル隊</a> 隊長<a href="../database/characters.html#amber">アンバー・シルフェイド</a> 少佐の専用機として運用される試作特殊戦闘機である。純白の機体には部隊章も装飾も一切なく、高速で星雲を切りながら飛ぶその姿は目撃したパイロットから一様に「剣」と形容される。「コーネリアの白い刃」と呼ばれる部隊の名はこの機体の姿からそのまま付いたものである。</p>
+  <p class="lore-p">その正体は<span class="redacted">コーネリア軍が秘密裏に研究を進める、<a href="../database/locations.html#fortuna">フォルトナ</a> に眠る神秘の力『<a href="../database/glossary.html#ws-spirit">スピリット</a>』を活用した兵器計画の実証機である。計画の全容は本データベースの閲覧権限では開示されない</span>。</p>
+  <p class="lore-p">単騎で1個小隊に匹敵する戦闘力と公にできない操縦系。この二つを併せ持つ機体は星系にこれ一機しか存在せず、量産の計画も存在しない。乗り手が一人しかいない兵器を量産する意味がないからである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">兵装 ─ ARMAMENT</h3>
+  <p class="lore-p">兵装は機首のツインレーザー（<a href="../database/glossary.html#ws-laser">レーザー/光学系統</a>）に加え、機体内部に収納された20基の遠隔操作ドローンがメインとなる。このドローンを空間内に大量展開し連携攻撃を行うことで、単騎にもかかわらず1個小隊並みの戦闘力を発揮することが可能である。</p>
+  <p class="lore-p">ドローン群の機動は既存のあらゆる無人機制御理論から逸脱しており、現時点で確認されている対抗策は「展開される前に撃つ」のみである。教導隊との模擬戦では1個小隊がドローン展開後37秒で全機「撃墜」判定を受けた記録が残っている。ドローンは一機ずつが独立して判断しているようにも、全機が一つの意志で動いているようにも見えると証言されておりどちらが正しいのかを解析班は答えられずにいる。</p>
+  <p class="lore-p">ドローンの一機一機は<a href="lw2-drones.html">両軍の量産無人機</a>より小さく火力も低い。それでも小隊が37秒で消えるのは、20基が互いの死角を埋め合いながら獲物の死角だけを撃つからである。教導隊の所見は簡潔である。「相手をしているのは20機ではない。20本の指を持つ一人だ」。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">操縦系 ─ NEURAL LINK</h3>
+  <p class="lore-p">コックピットに操縦桿も窓も存在しない。搭乗者は専用スーツを着た状態で、衝撃や過負荷から身体を守る特殊溶液に満たされた区画へ搭乗する。操縦は操縦者の後頭部および脊椎に設けられたコネクトプラグで機体と直接接続され、神経を通して行われる。</p>
+  <p class="lore-p">これにより通常の戦闘機を遥かに超えた速度と機動を可能にしているが、操縦者の脳には膨大な負荷がかかることが明らかになっており、担当軍医は「1回の出撃につき5分以上の運用は自殺行為」と明言している。ヴォーパル隊の作戦立案は常にこの「5分」からの逆算で組まれる。</p>
+  <p class="lore-p">この機体は搭乗者を選ぶ。<span class="redacted">接続には後頭部から脊椎に沿った12基の神経接続プラグの埋め込みと、計画側が「適合」と呼ぶ資質が要る。適合被検体として登録されている人物は現在アンバー・シルフェイド一名のみであり、彼女以外がこの機体を飛ばした記録は存在しない</span>。開発コード名の選定メモに残る「シャスティフォルは振るう者を選ぶ」の一文は比喩ではなく仕様の記述である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">開発史 ─ ORIGIN</h3>
+  <p class="lore-p">開発は<a href="../database/military.html#cdf">CDF</a> 特殊兵器局が担当し、設計者・製造拠点・開発年のいずれも公開記録には残っていない。機体の存在自体が公になったのはヴォーパル隊の出撃が目撃されるようになってからであり、「白い機体が星雲を切っていた」という前線の噂が先に広まり軍が後から名称だけを認めた形である。</p>
+  <p class="lore-p"><span class="redacted">前身機はスピリット試作機「アイグロス」である。3993年後半のデモンシード・クライシス事件で共和国特殊任務部隊の隊長機として投入され、生体要塞化したベノム・セルへの対処で実戦データを取得した。シャスティフォルはこの機体の知見を基に操縦系を全面再設計した二代目にあたり、ドローン運用と稼働限界「5分」の設定はアイグロスの運用記録から導かれている</span>。開発計画の詳細は本データベースの閲覧権限では開示されない。</p>
+  <p class="lore-p">帝国側も同種の技術に到達しつつあることが情報部の分析で示されており、遠隔操作兵器を巡る両陣営の競争はこの機体を境に一段階進んだとみられる。共和国が量産を諦めた機体を帝国が量産しようとしている可能性を、情報部は最悪の想定の一つに数えている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">運用 ─ SERVICE</h3>
+  <p class="lore-p">出撃は常に「最後」である。正規部隊で対処できる戦場にこの機体が抜かれることはなく、逆に投入された時点でその戦場は正規の手段を尽くした後だと知れる。5分で終わらない仕事は最初から引き受けないのがヴォーパル隊の流儀であり、隊の作戦が常に5分で終わるのは5分で終わる形になるまで「白の2」が戦場を設計し直すからにほかならない。</p>
+  <p class="lore-p">現在はセクターτ会戦の鹵獲データ照合で発覚した帝国軍のカタリナ奇襲に備え、<a href="../database/locations.html#katina">カタリナ</a> へ緊急展開中である。<a href="../database/characters.html#bill">ビル・グレイ</a> 中尉の駐留軍と合同で巨大戦艦<a href="great-dish.html">グレートディッシュ</a> と奇襲降下部隊への対策が練られており、5分の刃をどこへ突き立てるかがこの作戦会議の核心となっている。</p>
+  <p class="lore-p">スターウルフの<a href="../database/characters.html#leon">レオン・ポワルスキー</a> とは搭乗者の秘密警察時代からの因縁があり、彼が本気の機体<a href="rainbow-delta.html">レインボー・Δ</a> を持ち出す相手はこの機体である。光学擬態で消える機体と見えない敵をドローンの網で探す機体。互いの手の内を最もよく知る両者が同じ空域に立つ事態を情報部は「最悪の想定」の一つとして扱っている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">コックピット内に満たされている特殊溶液は操縦者の希望でメロンソーダ味になっているらしい。その必要性について、機体のメンテナンスを一手に担う「白の2」はノーコメントを貫いている。</p>
+  <p class="lore-p">「シャスティフォル」という名の由来は公式記録に残っていない。古い異国の物語に登場する、主にしか従わぬ「聖なる槍」の名だとする説が隊内ではまことしやかに語られている。剣と形容される機体に槍の名が付いている点を指摘した者に対し、アンバーは「どっちも手に持って振るえば同じことだ」と答えたという。</p>
+  <p class="lore-p">整備記録には毎回、稼働時間が秒単位で記されており最長記録は4分58秒である。その日の整備欄には「白の2」の筆跡で一行だけ「問題まみれ、次はなんとかする」と書かれており、以後この記録は更新されていない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

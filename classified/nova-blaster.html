@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <script>if (sessionStorage.getItem('apx-authorized') !== '1') location.replace('../apocalypsis.html');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SW-01 GALACTIC NOVA BLASTER — APOCALYPSIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff4455;--accent:#ff8899;--border:rgba(255,68,85,0.32);--border-hi:rgba(255,136,153,0.7);--dim:#3a1015;--dim2:#1d080b; }
+    .p-title    { color: #ffeaea; text-shadow: 0 0 50px rgba(255,68,85,0.4); }
+    .p-tagline  { border-color: #ff4455; color: #ff4455; }
+    .terminal-hdr { color: #ff8899; }
+    .terminal-hdr::before { background: #ff8899; box-shadow: 0 0 8px #ff8899; }
+    .dk { color: #ff4455; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../apocalypsis.html" class="nav-back">◄ APOCALYPSIS</a>
+    <div class="header-tag">[ SW-01 / GALACTIC NOVA BLASTER — ギャラクティック・ノヴァ・ブラスター ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff4455;">●</span> CLEARANCE LV.5 — SESSION AUTHORIZED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">APOCALYPSIS FILE — GALACTIC NOVA BLASTER — PLANET-KILLER — DESTROYED — WRECK SEALED</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: SW-0001 — CLASSIFICATION: APOCALYPSIS — SECTOR PI SEALED</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ SW-01 / APOCALYPSIS FILE ]</div>
+        <div class="p-name-jp">ギャラクティック・ノヴァ・ブラスター (GALACTIC NOVA BLASTER)</div>
+        <h1 class="p-title">GALACTIC NOVA BLASTER</h1>
+        <div class="p-tagline">THE WISH THAT BROKE A PLANET ── 惑星破壊級超兵器 ─ 討伐済・残骸封印</div>
+        <p class="p-short-desc">第1次ライラットウォーズ末期、グランベル国が星系外の遺構をリストアして生み出した惑星破壊級の超兵器。第6惑星ステファノーを消滅させ、共和国憲章第1条を生んだ「全ての原点」。分析官の全員が「この世のものではない」と評価を放棄した星系史上唯一の存在であり、ライラットの全ての民が結集して初めて痛打の一つが届いた。公開データベースの全記録は本アーカイブへ移管済み。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE SW-01 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">GALACTIC NOVA BLASTER</td></tr><tr><td class="dk">CLASS</td><td class="dv">惑星破壊級超兵器（起源不明遺構）</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv">グランベル国軍事司令部（リストア）</td></tr><tr><td class="dk">ORIGIN</td><td class="dv warn">星系外より飛来した巨大建造物</td></tr><tr><td class="dk">CORE</td><td class="dv">心臓状コア＋12基リアクター</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">主砲「プラネット・バスター」 / 眼部副砲 / 全周誘導レーザー群 / 無人兵器 パタ・ダクーガ・ボルム（生産ラインを内包）</td></tr><tr><td class="dk">DEFENSE</td><td class="dv warn">⚠ 局所物理法則の書き換え — 被弾の事後無効化（原理解析不能）</td></tr><tr><td class="dk">OUTPUT</td><td class="dv warn">計測不能 — 既知の単位系で記載不可</td></tr><tr><td class="dk">KILL RECORD</td><td class="dv bad">第6惑星ステファノー / 両軍艦隊多数</td></tr><tr><td class="dk">DESTROYED</td><td class="dv">スター・ドリーム作戦（セクターπ）</td></tr><tr><td class="dk">WRECKAGE</td><td class="dv bad">接触は全星の法で禁止</td></tr><tr><td class="dk">STATUS</td><td class="dv warn">討伐済 — 残骸封印中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING -- 100+ / 100 ※評価尺度側が破綻</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 100%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,68,85,0.55);">
+        <img src="" alt="GALACTIC NOVA BLASTER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">PLANET-KILLER — DESTROYED</span>
+            <span class="tg-jp">惑星破壊級超兵器 ── 討伐済</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">私は…私はただ　全ての人々が　平等に住める楽園を作りたかっただけなのだ　それがなぜ　こうなってしまったのだ…。<span class="tg-note note">-オルトス総帥の元側近の証言より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">我々は星に願いを叶えてもらう物語を子供に聞かせるが、あれは、結末を知らない者たちの幻想である<span class="lore-quote-src">― キュレーター遺文『第六の空白』序文より</span></span></p>
+  <p class="lore-p">ギャラクティック・ノヴァ・ブラスターは、<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>末期にグランベル国が開発・使用した惑星破壊級の超兵器である。<a href="../database/glossary.html#stephano">ステファノーの戦い</a>で第6惑星を消滅させ、星系史上最悪の惨禍をもたらした。</p>
+  <p class="lore-p">本記録を読む前に理解すべきことは一つだけである。これは「強力な兵器」の記録ではない。当時の分析官たちは皆一様に「でたらめな強さ。この世のものではない…」とだけ書き残して評価を放棄しており、この結論は解析技術が桁違いに進歩した現在も一言一句変わっていない。むしろ解析が進むほど分からなくなったのは敵の強さではなく、我々が勝てた理由の方である。既知の物理と戦術の全てが通用しない相手を仮に定義するなら、それは兵器ではなく災厄と呼ぶべきであろう。</p>
+  <p class="lore-p">本記録の名称・出自・構造を含む全情報は機密レベル《アポカリュプシス》の管理下にあり、一般記事では「グランベルの超兵器」の呼称のみが許可されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ ORIGIN</h3>
+  <p class="lore-p">この兵器は、過激な思想を持つグランベル国軍事司令部が政府の意向を無視して強行に作り上げたものであり、その正体は、星系外から齎されたとされる巨大建造物を軍事目的にリストアしたものとみられる。ベースとなった建造物は中央に心臓を模したコア部分と、外部とのアクセスに使用されたと思われる「顔」のような天盤を持ち、機械とも生物ともつかない、無機質でありながらどこか有機的な印象を与える構造をしていた。星系内のどの文明にも属さない、明らかに異質な存在だったと記録されている。</p>
+  <p class="lore-p">稼働記念式典では、参列した全ての民衆に兵器そのものが『叶えてほしい願い』を語りかけてきたという。当時のグランベル政権・軍事の頂点にいたオルトス総帥はこれを受け、コーネリアに古くから伝わる『どんな願いも叶える大彗星』のおとぎ話から引用し、この兵器を「ギャラクティック・ノヴァ・ブラスター」と命名した。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">船体 ─ THE COMET</h3>
+  <p class="lore-p"><span class="lore-quote">あれは兵器を積んだ星という生易しいものではない。星の形をした侵略兵器である<span class="lore-quote-src">― 統合艦隊観測班 第1次報告より</span></span></p>
+  <p class="lore-p">本機の船体区分は存在しない。あえて等級を与えるとすれば当時は存在していなかった「ミズガルド級」に相当すると思われるが、全長は準惑星に匹敵し最早艦船と呼べる代物ではない。白色に輝く外殻の尾を引いて航行する姿は初期観測で新彗星として届け出られている。星がそのまま一隻の艦として機能しているのであり、艦隊決戦の常識である「艦を並べて撃ち合う」段階が最初から成立しない。この超兵器に護衛艦隊などは存在せず必要ともしていなかったのである。</p>
+  <p class="lore-p">残された偵察記録によれば、内部は三層に分かたれた都市規模の機関区画が心臓状のコアを幾重にも囲む構造をしており、コアの周囲を12基のリアクターが環状に取り巻いていた。区画の大半を占めるのは無人兵器の生産ラインであり稼働に人間を一切必要としない。撃ち込まれた砲火で欠けた外殻が次の瞬間には元に戻っていたという複数の観測報告があり、船体そのものが生き物のように自らを補い続けていたと解析されている。乗るものなき星の体内で生産と修復だけが永遠に続いていたのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">兵装 ─ ARMAMENT</h3>
+  <p class="lore-p"><span class="lore-quote">竜巻の中で綱渡りをしながら雷を避けろと言われた方が、まだ現実味がある<span class="lore-quote-src">― 生還パイロットの証言記録より</span></span></p>
+  <p class="lore-p"><b>無人兵器「パタ」「ダクーガ」「ボルム」</b> ── 体内の生産ラインから吐き出され続ける3種の無人兵器群である。個々の性能は当時の戦闘機で対処可能な水準に収まるが問題は性能ではなく数である。撃墜数が補充数を上回った記録は一度もなく、統合艦隊の戦闘詳報は迎撃空域の密度を「竜巻の中」と形容した。撃っても撃っても減らない敵を前に、迎撃という概念そのものが意味を失ったのである。</p>
+  <p class="lore-p"><b>全周誘導レーザー</b> ── 外殻の全方位から放たれる無数の光条である。一射あたりの威力は高くながこの光は意思を持つように軌道を曲げ、回避機動の先へ回り込み必ず対象に被弾する。無人機の奔流にこの必中の光条が重なった空間が強襲部隊の飛行経路であり、後年の操縦シミュレーターがこの空域を再現した際、最新のAIによる操作補助を加えてもクリア者が出るまでに3年を要している。</p>
+  <p class="lore-p"><b>眼部副砲</b> ── 天盤の「眼」から放たれる収束ビームである。現代換算でナガス級大戦艦を防御バリアごと一撃で消し飛ばす威力が確認されており、これは第2次ライラットウォーズの決戦兵器級の火力に相当する。特筆すべきはこの砲の位置付けである。本機の兵装体系においてこれは主砲ではく副砲である。しかも、破壊しても即時に再生または換装される。分析官がこの区分を「冒涜的な冗談」と書き残した通り、星系の軍艦が積む最大火力はこの兵器の「添え物」にすら届いていない。</p>
+  <p class="lore-p"><b>主砲「プラネット・バスター」</b> ── そして本機の代名詞である。チャージに約半日を要し、発射されると口部から虹のような極大のレーザーが射出され対象の星を丸ごと破壊する。発射の際は周囲の空間そのものが歪み、うねるように虹色へ輝く様子が観測されており、その光景は「星系で最も美しく、最も見てはならないもの」と伝えられる。名称はプラネットと冠するが実際の上限は不明であり、解析上は<a href="../database/locations.html#solar">ソーラ</a>程度の恒星であれば一撃で破壊できる。威力は既知の全ての兵器を遥かに凌駕し発射に伴い空間と時間が切り裂かれ、発射地点の時間の流れが2分ほど遅れる現象が記録されており物理学は今もこの現象を説明できていない。そして本砲の最も恐ろしい点は「威力」ではない。この凶悪無比な一撃を半日に一度、しかもノーリスクで撃てるという事実である。すなわち本機を放置した場合、星系の惑星は半日に一つずつ消えることを意味する。<a href="../database/glossary.html#star-dream">スター・ドリーム作戦</a>の時点で2発目のチャージは既に進行していた。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">存在保全 ─ THE WISH ENGINE</h3>
+  <p class="lore-p"><span class="lore-quote">アレは　主の願いを叶えるために、自分自身が「動くための願い」を叶えている。手段と目的が既に逆転している！<span class="lore-quote-src">― 統合解析班 最終報告 結語より</span></span></p>
+  <p class="lore-p">本機の防御はそれ単体で惑星の地表に匹敵する重装甲だが、それはあくまでも素材と構造の強さであり「防御」ではない。本機の使用する「防御」を指す兵装はなんと「指定した空間の物理法則の書き換え」である。侵入した砲弾は理由なく逸れ信管は沈黙し、エネルギー兵器は霧のように散った。既存兵器の無効化という表現も正確ではない。兵器が機能する前提となる法則の側が書き換えられていたのである。</p>
+  <p class="lore-p">さらに、この防御を突破して命中した攻撃すら結果に結び付かなかった。複数の砲撃記録映像に直撃の閃光の後、傷一つない外殻だけが残る様子が収められている。着弾の観測データは残っているのに被弾の痕跡だけが存在しない。すなわち本機は被弾箇所を「当たらなかったこと」にするという常識を超えた防御を行使していたことになる。命中という事実そのものが遡って取り消されるのであり分析官はこの機能を「現実改変」と呼ぶほかなかった。</p>
+  <p class="lore-p">統合解析班が到達した唯一の説明が冒頭の一文である。願いを叶えるために作られたこの機械は、願いを叶え続けるためにまず自らが在り続けなければならない。ゆえに「自分が損なわれないこと」を最優先の願いとして自分自身に叶え続けていたのである。そこに悪意も憎悪も無い。ただ子供の空想のような無法な強さが、理屈ごと現実に持ち込まれていただけである。悪意であれば挫くことも語り合うこともできたであろうが「願い」にはどちらも通用しなかった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴と狂気 ─ HISTORY</h3>
+  <p class="lore-p">稼働当初、その力は星系の既知のあらゆる戦力を遥かに凌駕し、瞬く間にグランベルの戦況を塗り替えた。その圧倒的な力は国民には希望の星であった一方で、対立国には悪夢以外のなにものでもなかったという。その異常なほどの力に軍部内でさえ、勝利の喜びは次第に畏怖と恐怖へ変わっていった。オルトス総帥はこの兵器を「機械仕掛けの神」と賞賛し、その心酔はやがて狂気と呼ぶべき域に達する。側近たちは我に返り総帥に忠言しようとしたが、『神』に等しい武力を得た個人にもはや誰も逆らうことはできなかった。</p>
+  <p class="lore-p">警鐘を鳴らしたのは、惑星<a href="../database/glossary.html#stephano">ステファノー</a>のアルフォイドが誇る星系最高の英知集団『キュレーター』だった。彼らは『大彗星』のおとぎ話が二部構成であること、そして<a href="../database/locations.html#corneria">コーネリア</a>に伝わるのは前半のみであり、後半が<a href="../database/locations.html#venom">ベノム</a>に残されていることを知っていた。程なくしてステファノー全国家による遺跡大発掘プロジェクトが指揮され、数年の後、超兵器の正体と決定的弱点の解明に迫る。だが惑星規模の探査はグランベル諜報部に筒抜けだった。</p>
+  <p class="lore-p">無力化を恐れたオルトス総帥は耳を疑う決断を下す。ベノムでの遺跡調査を「軍事行動」と断罪し、ステファノーの全人類へ一方的に宣戦布告したのである。当時の星間戦争法でも許されない暴挙だったが総帥の凶行を止められる者はもういなかった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">第6惑星の消滅と討伐 ─ DOWNFALL</h3>
+  <p class="lore-p">超兵器率いるグランベル軍艦隊とステファノーの全国家連合艦隊の激戦は3か月に及んだ。超兵器の兵装が大戦艦を対象としたものであることを見抜いた連合艦隊側は、少数精鋭の奇襲部隊を多数展開する消耗戦で次第に戦況を傾けることに成功する。降伏を促す通達が幾度も届けられたが、それを受け入れられなかった総帥は、ついに最も犯してはならない『最後の願い』を超兵器に伝えてしまう。</p>
+  <p class="lore-p">その瞬間は、あまりにも一瞬だった。虹色のエネルギーの帯が惑星を貫き、数秒後、戦場だった宙域はおびただしい瓦礫と、両軍の艦隊だった鉄片の散乱する空間に変わった。願いを伝えた張本人もそこにいた。超兵器の放ったプラネット・バスターにより、セクターδにあった全ての艦隊、惑星、生物が一掃されたとみられている。制御者を失った超兵器は自立稼働を開始し、コーネリアを除く星系全ての星を『流れ星』に変えるべく、矛先を惑星アリエル（現<a href="../database/locations.html#aquas">アクアス</a>）へ向ける。</p>
+  <p class="lore-p">この光景を目の当たりにした各国は即時に停戦を決定した。もはや勢力や人種など関係なく、これがライラット星系史上最大の危機と理解できたからである。全惑星の総戦力を結集したライラット星系統合艦隊が編成され、最終作戦『<a href="../database/glossary.html#star-dream">スター・ドリーム作戦</a>』が発動し、セクターπで大激戦が繰り広げられることとなる。無人兵器の生産ラインを内包する超兵器は無尽蔵とも言える兵力を発揮し戦線は膠着したが、ここで奇跡が重なった。崩壊する第6惑星宙域から流れ着いた一機の残骸、それはステファノー全軍を束ねたヤマタケル国の艦隊長にして全軍総司令官の専用機であり、解析により「リストア時に補完で作成された廃熱モジュールから直接、心臓部を囲む12基のリアクターに攻撃が可能」であることが突き止められたのである。</p>
+  <p class="lore-p">最終攻撃は超兵器に悟られぬよう、たった2機で行われた。当時のコーディリア王国最強と謳われた部隊<a href="../database/glossary.html#unit-jade-knight">ジェイド・ナイト</a>のエースパイロット、ジェームズ・バートン。超兵器の追撃から命辛々逃げ延びた総司令官の息子であり、解析データへのアクセス権限を唯一継承していた機械技師の、アーノルド・トモウキ。2名の強襲は急所に決定的な一撃を与え、ライラット星系最大の危機を退けることに成功したのだった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">最後の記録 ─ THE LAST RECORD</h3>
+  <p class="lore-p"><span class="lore-quote">すべてが終わって　無線越しでなく直接バートンと向き合って　初めて「終わったんだ」って思えたんだ<span class="lore-quote-src">― A・トモウキ 戦後聴取記録より</span></span></p>
+  <p class="lore-p">以下は生還した2名の証言から再構成した討伐の最終局面の記録である。長く封印されてきたがこの作戦の結末を語らずに本記録を閉じることはできない。</p>
+  <p class="lore-p">風穴から体内へ侵入した2機は三層の機関区画を突破し心臓部を囲む12基のリアクターへ到達した。だがリアクターは単なる動力源ではなかった。心臓部と連動して自ら弾幕を張り侵入者へ直接戦闘を仕掛けてきたのである。ジェームズ・バートンは体内という逃げ場のない弾幕の只中で10基までを撃ち抜いたが、そこで力尽きて被弾し機体は辛うじて宙に留まるだけの状態となった。残るリアクターは2基。作戦はここで潰えるはずであった。</p>
+  <p class="lore-p">この時、アーノルドが父から渡されていた「星形の石」が光を放った。石は機外へ飛び出すと見る間に姿を変え、一機の乗り物と言うべき形をとった。後に「星船」とだけ記録されるこの存在は導くように動き出し、アーノルドの機体に随伴してギャラクティック・ノヴァ・ブラスターとの最後の戦いに臨んだ。残る2基のリアクターは外周を逃げ回るように動いていた。無限の願いを叶える機械が初めて自身の敗北を悟った瞬間であるように見えた…と、トモウキは後の聴取で語っている。</p>
+  <p class="lore-p">最後のリアクターが砕けると超兵器は全ての機能を停止した。アーノルドは作戦の成功を震える手で感じたというが、まだ終わってはいなかった。チャージ途中であった主砲プラネット・バスターのエネルギーが制御を失い、行き場のないまま超兵器の内部で膨れ上がり始めていたのである。</p>
+  <p class="lore-p">星船の導きのままに2機は体外へ脱出しアーノルドは直ちに全軍へ別宙域への退避を求める緊急信号を発した。だが脱出用ワープドライブへ向け機首を切り替えようとしたその刹那、虹色のレーザーがアーノルドの真横を掠め星船を貫いた。振り向いた先の超兵器は崩壊により「顔」の装飾に大穴が空き、その奥に真っ赤にエネルギーが渦巻く…まるで「血走った単眼だけが覗く」と例えられる、それまでの神々しさを覆す禍々しい姿に変わり果てていた。そして最後の悪あがきと言わんばかりに空いた穴は2機を吸い込み始める。船体を貫かれた星船はこのとき自ら超兵器の中枢部めがけて突撃して弾幕を放ちで吸い込みを封じた。これが最後の機会だと直感した二人は一気に最大加速で離脱する。振り返った空は宇宙であるにも拘らず昼間のような閃光に照らされ視界の全てを虹色の爆発が覆った。</p>
+  <p class="lore-p">ドックへぎりぎりで帰り着いた二人は歓声に迎えられた。だが二人は互いの顔を見合わせたまま床に崩れ落ち遥か彼方に広がる爆発の残光を見て、そこで初めて「生きて帰った」ことを実感したという。星系の歴史が変わった瞬間を当の二人はただ座り込んで眺めていたのである。</p>
+  <p class="lore-p">星船の正体は今も不明である。誰が何の目的で作ったのか、なぜステファノーの総司令官がそれを息子に託したのか、砕けて超兵器と共に消えたのか、いずれの問いにも答えは出ていない。確かなのはこの無名の一機がいなければ、討伐も脱出も成立していなかったという一点だけである。</p>
+  <p class="lore-p">そしてもう一つ小さな遺物の記録を残しておく。アーノルドが父から受け継いでいた一挺の懐中時計は、あの最後の反撃と脱出の衝撃で破損し二度と動くことはなかった。止まった針が指していたのは超兵器が撃破されたまさにその時刻である。<span class="redacted">この時計がおよそ180年の時を経てベノムのある修理屋へ持ち込まれた経緯については、機密人事記録P-02および人物ファイル『アンドルフ・ボウマン』の当該注記を参照のこと</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">奇跡の勘定 ─ COUNTING THE MIRACLES</h3>
+  <p class="lore-p">後世の戦史研究がこの勝利を「奇跡」と呼ぶのは修辞ではなく勘定の結果である。作戦の成立に不可欠だった幸運を大きなものだけに絞っても、以下の全てが同時に揃う必要があった。</p>
+  <p class="lore-p">① ヤマタケル国艦隊長機の漂着 ── 超兵器の弱点解析データが破損なく残された唯一の記録媒体が、崩壊宙域から統合艦隊の勢力圏へ流れ着いたこと。<br>
+  ② アーノルド・トモウキの生存 ── そのデータにアクセスする権限を持つ総司令官の息子が、追撃を生き延びていたこと。<br>
+  ③ エースの存在 ── ライラット史上最も難しいと問われた強襲飛行を実行できる運転技術を持つジェームズ・バートンがいたこと。<br>
+  ④ 随伴の技量 ── アーノルド自身がそのエースに随伴して飛べるだけの技術を持っていたこと。<br>
+  ⑤ 直線ワープドライブ ── <a href="../database/glossary.html#state-rosalind">ローザリンド公国</a>の直線ワープドライブ技術が、作戦の直前に使用へ耐える状態で完成したこと。<br>
+  ⑥ グランベルの決断 ── 超兵器を生んだ張本人である<a href="../database/glossary.html#state-granbel">グランベル</a>の残存艦隊が即時停戦を飲み込み、プライドを捨てて全軍に弾薬を共有し、ワープドライブを作戦地点まで守り抜いたこと。<br>
+  ⑦ ファイナル・コングの風穴 ── <a href="../database/glossary.html#state-fichina">サルジーナヤ連邦</a>の決戦ミサイル「ファイナル・コング」の自動迎撃機能が、飛来する膨大な無人兵器を倒しながら本体へ被弾し体内へ続く風穴を開けたこと。<br>
+  ⑧ ウイルスの置き土産 ── そのミサイル群に潜んでいた<a href="../database/glossary.html#unchi-kong">コンピュータウイルス</a>が制御システムに取り付き、被弾を「なかったことにする」現実改変の機能を20分間だけ封じたこと。<br>
+  ⑨ 星船 ── そして正体不明の「星船」が、最後の2基の破壊と二人の脱出を成立させたこと（前項を参照）。</p>
+  <p class="lore-p">このうちどれか一つが欠けても作戦は成立していない。そして実際には、ここに数え切れないほどの小さな幸運が積み重なっている。統合艦隊のある作戦参謀は戦後の手記にこう残した。「我々が勝ったのではない。星系のあらゆる幸運が、あの日あの場所に集まってくれただけである」。幸運は同じ形で二度は訪れない。本記録が封印されてなお更新され続けている理由は、この一点に尽きる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">遺されたもの ─ LEGACY</h3>
+  <p class="lore-p">この兵器の存在こそが、共和国憲章第1条「質量破壊兵器の研究・保有の永久禁止」の直接の理由である。そして<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a>の追放、ひいては<a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>の遠因ともなった。</p>
+  <p class="lore-p">情報戦略本部は数年ごとに「現有戦力による対抗試算」を更新している。共和国と帝国の全戦力を仮に合算し、第2次ライラットウォーズに投入された全ての決戦兵器を並べた場合の想定であるが、最新の試算報告の結論は歴代と同じ一行で終わっている。「勝敗以前に、戦闘が成立しない」。ステファノーの民が数年を費やしてようやく弱点の解明に迫った事実と、その全てが揃った上でなお勝敗を分けたのが幸運であった事実を、試算はそのまま引き写しているに過ぎない。</p>
+  <p class="lore-p">討伐が行われたセクターπには今も超兵器の残骸が散らばるが、残骸への接触はライラット星系のあらゆる星の法律で禁止されている。セクターπ自体もワープドライブ航路が全て削除・迂回され、座標を秘匿された結果、実質的な<a href="../database/glossary.html#out-of-sector">アウト・オブ・セクター</a>に近い扱いとなっている。この事件については『セクターπの星図の空白はこの惨禍を忘れないためにあえて空けてある』として、徹底して教育されるようにプログラムが組まれている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">継続監視 ─ ARCHIVES</h3>
+  <p class="lore-p">『大彗星』のおとぎ話の後半、ベノムに残されたとされるその内容を、公式記録は今も収録していない。キュレーターの遺文には断片だけが残る。「願いの叶え方を、彗星は選ばない」。</p>
+  <p class="lore-p"><span class="badge badge-classified">▮ LV.5</span><br>
+  情報戦略本部 注記: <a href="../database/glossary.html#contact-signal">ドグマ宙域のコンタクト信号</a>と、稼働式典で観測された『語りかけ』の音声記録には、周波数構造に統計的類似が認められる。本件はファイルFCH-311および監視区分アポカリュプシスと関連付けて継続監視中である。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

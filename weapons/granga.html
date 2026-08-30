@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRANGA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#c9a26a;--accent:#e6c896;--border:rgba(201,162,106,0.32);--border-hi:rgba(230,200,150,0.7);--dim:#3a2f1c;--dim2:#1a140c; }
+    .p-title    { color: #faf2e0; text-shadow: 0 0 50px rgba(201,162,106,0.4); }
+    .p-tagline  { border-color: #c9a26a; color: #c9a26a; }
+    .terminal-hdr { color: #e6c896; }
+    .terminal-hdr::before { background: #e6c896; box-shadow: 0 0 8px #e6c896; }
+    .dk { color: #c9a26a; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-19 / GRANGA — グランガ ]</div>
+    <div class="header-status"><span class="blink" style="color:#e6c896;">●</span> HOSTILE — LOW PRIORITY</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — GRANGA — IMPERIAL GROUND ASSAULT WALKER — THREAT ANALYSIS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0019 — CLASSIFICATION: HOSTILE WEAPON — DESIGNER: CLASSIFIED</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-19 / ARMORY FILE ]</div>
+        <div class="p-name-jp">グランガ (GRANGA)</div>
+        <h1 class="p-title">LAUGH<br>WHILE<br>YOU CAN</h1>
+        <div class="p-tagline">帝国対地・都市制圧兵器 ─ 有人二足歩行</div>
+        <p class="p-short-desc">ベノム帝国の対地・都市制圧用の有人二足歩行兵器。よたよたと歩く姿から両軍に笑われ続けているが、その足の運びは次の世代の兵器へ確かに受け継がれている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ THREAT SCAN — FILE 19 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">GRANGA / グランガ</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">対地・都市制圧兵器（有人二足歩行）</td></tr><tr><td class="dk">DESIGN</td><td class="dv">皇帝アンドルフ本人と推定</td></tr><tr><td class="dk">ORIGIN</td><td class="dv">除雪作業ロボット「コロバザール」の拡大機</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">誘導ミサイルポッド／脚部による蹂躙</td></tr><tr><td class="dk">WEAK POINT</td><td class="dv warn">⚠ 脚部 — 転倒後は自力で起立不能</td></tr><tr><td class="dk">VARIANTS</td><td class="dv warn">スノンガ／ディストラクター（後継機）</td></tr><tr><td class="dk">CDF NICKNAME</td><td class="dv">「ガーガー・グース」</td></tr><tr><td class="dk">STATUS</td><td class="dv">現役 — 戦略的脅威 未認定</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 38 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 38%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(201,162,106,0.5);">
+        <img src="" alt="GRANGA" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE MARCHING GOOSE</span>
+            <span class="tg-jp">ガーガー・グース ── 笑われ続ける挑戦の原型</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">おいおい嘘だろ、歩いてくるぞ。……いや待て、笑い事じゃない。あれの進路、住宅区だ。<span class="tg-note note">-コーネリア防衛線 交戦記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">キャタピラ式戦車でよくないか、という質問への回答は差し控える<span class="lore-quote-src">― 帝国軍捕虜将校 尋問記録より</span></span></p>
+  <p class="lore-p">グランガ（Granga）は、<a href="../database/factions.html#venom-empire">ベノム帝国</a>の対地および都市制圧用の有人二足歩行兵器である。よたよたとした二足歩行と緩慢な動きから、誰が見ても「明らかに弱そう」という印象を持たれており、共和国軍での愛称は「ガーガー・グース」（おまぬけガチョウ君）で定着している。</p>
+  <p class="lore-p">ただし設計者は大真面目にこれを製作している。積載された誘導ミサイルポッドと、巨体の踏みつけによる物理的な蹂躙は、非武装地帯に対しては十分な被害をもたらしうるポテンシャルを秘めている。「これはキャタピラ式戦車でよいのではないか」という疑問を両軍のほぼ全員が抱いているが、設計者は皇帝<a href="../database/glossary.html#andorf">アンドルフ</a>本人と推定されており、帝国の将校で文句を言えた者はいない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">起源 ─ ORIGIN</h3>
+  <p class="lore-p">グランガの開発の原点は、降雪エリアの作業ロボットのスケールアップにあるとされる。その証拠に、惑星<a href="../database/locations.html#fichina">フィチナ</a>の都市部に配備されている除雪作業ロボット「コロバザール」と外見が瓜二つである。</p>
+  <p class="lore-p">明確な違いはサイズにある。グランガは拠点制圧のためにコロバザールの約5倍の巨体となっており、脚部への加圧が高くなりすぎる問題から、腕の装備を諦めたと解析されている。これを補うために装備された誘導ミサイルポッドの方が性能的には優秀であり、「ミサイルが本体」とまで言われる哀しい評価の要因となっている。</p>
+  <p class="lore-p">何よりこの機体が間抜け扱いされる最大の要因は、一度転んだら腕がないため立ち上がれないところにある。共和国軍ではグランガへの対処法として「まず足を狙う」ことが共有されており、現状ほぼすべての部隊にこの弱点が行き渡っているため、グランガが戦略的な脅威とみなされることはない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">試作機説 ─ ASSESSMENT</h3>
+  <p class="lore-p">もっとも共和国軍参謀部の意見を聞くと、少し見方が変わる。この重量二足歩行兵器はあくまで「試作品」であり、実戦データを取る目的で戦地に投入されているに過ぎないとする説である。実際、誰もが笑いの種にしてきたあのよたよた歩きの二足歩行制御は、後発の有人人型戦闘機<a href="sardes.html">サルデス</a>シリーズに活用されている可能性が高いと解析されている。</p>
+  <p class="lore-p">まだ誰も実装していないコンセプトの発明を笑うことは、誰にでもできる。だが本当の意味での勝者になるのは、いつの時代も失敗を恐れず挑戦を続けた者である。その点で、かつてコーネリア科学省長官を務めたあの天才は、官僚やお堅い軍人とは見えている景色が違うのかもしれない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">後継機 ─ VARIANTS</h3>
+  <p class="lore-p" id="snonga"><strong>スノンガ</strong>──<a href="../database/locations.html#corneria">コーネリア</a>の地方州<a href="../database/glossary.html#state-tigerleaves">タイガーリーブス</a>の都市へ、積雪下に投入された後継機。原点である「コロバザール」の要素を復刻した機体であり、雪上での機動力を大きく向上させたほか、重量の問題を克服して追加された遠隔式の分離アームを主力とする。雪上を走り回り、州の幹線を走る列車を片っ端から張り手で横転させたことから、ついたあだ名は「ヨコヅナロボ」。降雪による視界の悪化に加え、失敗の雪辱を晴らさんとする元グランガ搭乗員たちの必死の抵抗も相まって、共和国側はそれなりの苦戦を強いられたという。</p>
+  <p class="lore-p" id="destructor"><strong>ディストラクター</strong>──かの「キャタピラ式戦車でよいのではないか」という積年の疑問を、帝国自身が解消したとされる陸上戦車。スノンガと同じく分離・合体の機構が組み込まれており、3機編成の移動砲台が分離と合体を繰り返しながら攻撃と自己修復を交互に行う難敵である。共和国軍のどの部隊からも「こっちの方が10倍くらい強い」と評されており、その言葉が示すとおり、グランガ系列で最も大きな被害を出しているのはこの機種である。</p>
+  <p class="lore-p">なお、撃破されたディストラクターの機体から性能をコピー・改良して作られたのが、共和国軍の移動砲台<a href="lw2-drones.html#pitbull">「ピットブル」</a>である。前線基地部隊にとって馴染み深いあの「戦友」の出自は、意外にも敵側にある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">共和国軍に「わが軍でも有人二足歩行ロボットを作らないのか」と質問した際の返答は毎回同じであり、「善処します」の一言だけが返ってくる。この回答が変わった記録は、本データベースの更新時点で存在しない。</p>
+  <p class="lore-p">またグランガを語る上で欠かせない、ひとりの名物搭乗員がいる。毎月月初、手を変え品を変えた有人機でコーネリア防衛線に現れては撃墜されていく彼の記録は、<a href="../characters/granga-pilot.html">人物ファイル側</a>に別途整理されている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

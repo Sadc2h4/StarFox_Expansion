@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KEW — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ee66cc;--accent:#ff99e0;--border:rgba(238,102,204,0.32);--border-hi:rgba(255,153,224,0.7);--dim:#3a1030;--dim2:#1d0818; }
+    .p-title    { color: #ffecfa; text-shadow: 0 0 50px rgba(238,102,204,0.35); }
+    .p-tagline  { border-color: #ee66cc; color: #ee66cc; }
+    .terminal-hdr { color: #ff99e0; }
+    .terminal-hdr::before { background: #ff99e0; box-shadow: 0 0 8px #ff99e0; }
+    .dk { color: #ee66cc; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/locations.html" class="nav-back">◄ LOCATIONS</a>
+    <div class="header-tag">[ 18 / KEW — キュー ]</div>
+    <div class="header-status">● SECTOR-Ϛ — NEON CITY</div>
+  </header>
+
+  <div class="side-l"><div class="vt">LYLAT SYSTEM — KEW — ECUMENOPOLIS ALPINIA — SECTOR-STIGMA — FORMER PARANID CAPITAL</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: KEW-0018 — CLASSIFICATION: HACTIVA TERRITORY — CRIME ADVISORY</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ 18 / LYLAT SYSTEM — SECTOR-Ϛ ]</div>
+        <div class="p-name-jp">キュー (KEW)</div>
+        <h1 class="p-title">NEON OVER<br>THE HOLY<br>RUINS</h1>
+        <div class="p-tagline">都市惑星 ─ 大歓楽都市アルピニア</div>
+        <p class="p-short-desc">古代パラニド神聖帝国の首都惑星の上に築かれた、星系最大の歓楽都市。ハクティバ通商連合の「表の顔」にして、マフィア『アルペジオ』の帝国。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PLANETARY SCAN — SECTOR-Ϛ ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">KEW / キュー</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">アウター・リム（ハクティバ圏）</td></tr><tr><td class="dk">LOCATION</td><td class="dv">LYLAT 9th — SectorϚ</td></tr><tr><td class="dk">PLANET TYPE</td><td class="dv">E1型 都市惑星（エキュメノポリス）</td></tr><tr><td class="dk">MOONS</td><td class="dv">1</td></tr><tr><td class="dk">PRIMARY STAR</td><td class="dv"><a href="../database/locations.html#hactiva">ハクティバ</a> / <a href="../database/locations.html#paranid">パラニド</a></td></tr><tr><td class="dk">AVG TEMP</td><td class="dv">+10°C ～ +35°C</td></tr><tr><td class="dk">DAY / YEAR</td><td class="dv">19.9H / 99D</td></tr><tr><td class="dk">FACTION</td><td class="dv warn">ハクティバ通商連合 / アルペジオ</td></tr><tr><td class="dk">CAPITAL</td><td class="dv">通商連合首都 <a href="../database/glossary.html#city-alpinia">アルピニア</a></td></tr><tr><td class="dk">RESIDENT RACES</td><td class="dv">キューソイド（約70%）/ パラノディアン ほか</td></tr><tr><td class="dk">GROUND LEVEL</td><td class="dv">9929F（都市基準面 / 本来の地表は最下層）</td></tr><tr><td class="dk">ENTRY POLICY</td><td class="dv warn">⚠ バステトイド入星禁止</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">ENVIRONMENT INDEX -- 55 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 55%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(238,102,204,0.6);">
+        <img src="../resource/LA_image/LS_P_9.png" alt="Kew" class="planet-img-detail planet-img-large" style="animation: 8s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">Outer Rim — ECUMENOPOLIS</span>
+            <span class="tg-jp">大歓楽都市アルピニア ── 眠らない星</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">ククク… ボウヤ達は初めてだったかな？<br>この星で買えないものは二つだけ　静寂と　過去さ<span class="tg-note note">-繁華街潜入調査時 レオン・ポワルスキーとの会話記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「神々の都の上にカジノを建てる。それがライラットという星系だ」<span class="lore-quote-src">― 星系文化人類学会 年次講演より</span></span></p>
+  <p class="lore-p">キュー（Kew）は、<a href="../database/sectors.html#stigma">セクターϚ</a>に位置するライラット星系第9惑星。元は<a href="../database/glossary.html#paranid-empire">パラニド神聖帝国</a>の首都惑星であり、神聖帝国崩壊後は長らく放置されていたが、ビッグ・ボス率いるマフィア<a href="../database/glossary.html#arpeggio">アルペジオ</a>によって「再開発」され、巨大なエキュメノポリスを有する都市惑星へと変貌した。</p>
+  <p class="lore-p">キューの属するハクティバ圏は、ライラットの五つの恒星のうち最も外れに置かれた双子星の領域である。中央の<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>圏や<a href="../database/locations.html#solar">ソーラ</a>圏とは距離ばかりでなく、文化も法も商いの作法も大きく隔たっている。両軍の戦略地図にこの圏の惑星が描き込まれることはまれであり、代わりにキュー・<a href="../database/locations.html#eladard">エラダード</a>・<a href="../database/locations.html#papetoon">パペトゥーン</a>・<a href="../database/locations.html#setebos">セティボス</a>の名が並ぶのは、決まって武器の買い付け先と資材の取引先を記した欄である。</p>
+  <p class="lore-p">首都<a href="../database/glossary.html#city-alpinia">アルピニア</a>は<a href="../database/factions.html#hactiva-union">ハクティバ通商連合</a>の首都でもあり、星系外縁にありながら星系の全ての経済・商業とつながる大歓楽都市である。カジノ、闘技場、市場、そして裏取引。この星では全てが商品であり、全てに値札が付いている。昼のキューは星系経済の中枢として商人と実務家が絶え間なく行き交う星であり、夜のキューは欲望と陰謀の渦巻くマフィアの街となる。十時間に満たない周期で同じ通りが主を替えるこの二重性こそ、キューという惑星の本質である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 形成史</h3>
+  <p class="lore-p">キューはライラット星系第9惑星として登録されているものの、その出自は星系本流の惑星たちと大きく異なる。この星が回るのは主星<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>ではなく、外縁で寄り添う双子星<a href="../database/locations.html#hactiva">ハクティバ</a>と<a href="../database/locations.html#paranid">パラニド</a>の共通重心である。惑星番号が軌道の順ではなく入植と登録の順に与えられる制度の産物であり、地質学的にキューを「ライラットの惑星」と呼ぶことには無理があるとする指摘は古くから存在する。事実この星の岩石はインナーリムのどの惑星とも組成の系統を異にしており、双子星を包む固有の降着円盤に由来すると解析されている。</p>
+  <p class="lore-p">連星系における惑星形成は、単独の星を巡る場合と大きく異なる経過をたどる。互いを回る二つの星の重力は円盤の内側を絶えず掻き乱し、内縁の物質を外へ掃き出してしまう。掃き出しの縁にあたる領域へ物質が積み上がって生まれたのがキューであると考えられており、円盤内縁に形成される惑星の典型例として星系外の天文学からも注目を集めてきた。双子星を99日で一周する近接軌道にありながら軌道の安定が保たれているのは、片方の星ではなく連星の共通重心を大きく回る周連星軌道を占めているためである。</p>
+  <p class="lore-p">形成期のキューは、二つの星から交互に潮汐を受ける激しい星であったと復元されている。潮汐は内部を絶え間なく捏ね、若い惑星の熱を短期間のうちに汲み出した。地質活動が他の居住惑星よりはるかに早く終息したのはこのためとされ、大陸を隆起させる造山運動をほとんど経験しないまま、キューの地表はなだらかな平原と浅い海へ落ち着いている。惑星全体を覆う都市がこの星でのみ実現し得た最大の条件は、この構造的な平坦さと、地震をほぼ起こさない静かな地殻に求められる。神聖帝国が首都をこの星に定めた理由についても、宗教的な意味づけとは別に、堅固で動かない地盤という即物的な条件を挙げる研究者は多い。</p>
+  <p class="lore-p">その平坦な星に唯一そびえるのが、惑星最大の高峰タンガタ・マヌ山脈である。プレートの動かない惑星では地下からの熱の噴出口が一点に留まり続けるため、噴出物は幾度の活動を重ねても同じ場所へ積み上がるほかない。数千万年をかけて成長したこの巨大な楯状火山群は、造山運動を持たない星が唯一つくり得た高峰であり、地質活動の終息とともに久しく活動を止めている。皮肉なことに、現在のキューでこの山脈が果たしている役割は、惑星本来の地表を人々に見せる唯一の窓口という一点に尽きる。</p>
+  <p class="lore-p">現在のキューの気候を自然の産物と呼べるかについては、見解が分かれている。二つの星の配置に従って日射は周期的な強弱を繰り返し、本来であれば地表は居住に適さない高温へ傾くと計算されている。これを押し留めているのが惑星全体を覆う都市そのものである。白色系の構造材がもたらす高い反射率と、軌道上へ展開された遮光網、そして下層から汲み上げられる排熱の管理が均衡した結果として、地表の気温は摂氏10度から35度の帯に収まっている。地質学者がキューを「自分で自分の気候を選んだ星」と呼ぶ所以であり、同時にこの言葉は、都市機能の停止がそのまま気候の崩壊を意味するという警告でもある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">キューの地表を語ることは、この星ではそのまま建築の話になる。惑星本来の岩盤は都市の重層構造のはるか下に沈んでおり、自然地形と呼べるものは事実上残されていない。高層建築という言葉が生ぬるくなるほどの物量で積み上げられたビル群は、もはや個々の建物ではなく一枚の地層に近く、「ペン立てに詰め込んだ鉛筆」と形容される。惑星全体がひとつながりの巨大建築であるため、都市のどこからでも昇降機による垂直移動が可能である。</p>
+  <p class="lore-p">現在の生活面、すなわち住民が「地上」と呼ぶ高さは9929階にあたる。この数字は都市計画の産物ではなく、増築に増築を重ねた結果として現在の値に落ち着いたものである。<a href="../database/factions.html#hactiva-union">通商連合</a>本部ビルの最上階が9999階となるよう逆算して設計されたことは公然の事実であり、連合が地上から数えて70層ぶんの高みに座り続けている構図は、この星の権力の在処をそのまま示している。上層はネオンと広告投影の瞬く歓楽街、中層は市場と居住区、そして下層は、立ち入る者が自己責任で語られる領域である。<a href="../database/locations.html#hactiva">ハクティバ</a>と<a href="../database/locations.html#paranid">パラニド</a>、双子の太陽の光は上層のガラス街に二重の影を落とし、この星特有の陰影をつくる。</p>
+  <p class="lore-p">キューで惑星本来の地表を望める場所は、ただ一箇所しか存在しない。惑星最大の高峰タンガタ・マヌ山脈の頂であり、都市の基盤が山肌を完全に呑み込んでいるため、地上から眺めるその姿は公園の中央に据えられた小高い丘にすぎない。数十キロの標高を誇る山脈が丘に見えるという事実こそ、この星の都市が積み上げた高さの証左である。現在は<a href="../database/factions.html#hactiva-union">通商連合</a>の管理する「タンガタ自然公園」として整備され、昼休みの勤め人が弁当を広げる憩いの場となっている。惑星でただ一つ露出した本物の岩と土を前に、彼らの大半は端末から目を上げないという。</p>
+  <p class="lore-p">自転周期は19.9標準時間、公転周期は99日。一日はコーネリアより5時間近く短く、昼と夜はそれぞれ10時間に満たない。一年もわずか99日で巡るため、この星の暦は星系のどの惑星の暦とも噛み合わない。もっともアルピニアの商いは初めから<a href="../database/glossary.html#standard-time">標準時</a>で回っており、中央市場の立ち会い時刻に合わせて動く商人にとって、窓の外が昼であるか夜であるかはほとんど意味を持たない。現地の朝と標準時の朝がほぼ重なるのはおよそ5日に一度であり、この日を「重なりの日」と呼んで大口の商談や契約の期日に充てる慣習が古くから根付いている。眠らない街という異名は歓楽都市の看板であると同時に、太陽を捨てた星の実情を指す言葉でもある。</p>
+  <p class="lore-p">都市の最深部には神聖帝国時代の遺構がそのまま埋まっている。二つの太陽を祀った大神殿の尖塔は今もアルピニアの基礎杭として街を支えており、「神殿の上で踊る街」という詩的な表現は、比喩ではなく構造の説明である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">遥か昔、この星には二つの太陽を崇める爬虫類人種の<a href="../database/glossary.html#paranid-empire">パラニド神聖帝国</a>が存在し、ライラット星系の繁栄の中枢を握っていた。星系の他のどの土地もまだ石と火の段階にあった時代に、キューの民は惑星を統べる法と、星々を渡る術を既に手にしていたとされる。しかし帝国は跡形もなく消滅した。その原因は戦争とも疫病とも、あるいはもっと別の何かとも言われるが、記録は残されていない。生き残りは各地へ散り、現在では<a href="../database/locations.html#fortuna">フォルトナ</a>の部族を除き、神聖帝国を知る者はいない。</p>
+  <p class="lore-p">廃都となったキューに目を付けたのが、犯罪組織<a href="../database/glossary.html#arpeggio">アルペジオ</a>である。彼らは無主の廃墟に賭場と市場を築き、やがて<a href="../database/factions.html#hactiva-union">通商連合</a>の資本と結びついて都市惑星を作り上げた。「裏社会が建てた首都」という出自は、この星の法と無法の曖昧な境界にそのまま引き継がれている。</p>
+  <p class="lore-p">以後300年あまり、この星の歴史は星系の戦争の歴史と正確に重なっている。<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>の各国乱立、<a href="../database/factions.html#iga">独立星系連合</a>との長い討伐戦、そして現行の<a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>。中央が兵を損なうたびにハクティバ圏は潤い、停戦の兆しが見えるたびにこの星の景気は目に見えて冷え込んだ。戦火から最も遠い場所にありながら、戦争を最も必要としてきた星がキューである。</p>
+  <p class="lore-p">古代の聖地の上に築かれた歓楽都市を、星系の記者はしばしば「偽りの楽園」と呼ぶ。神を戴いた民の都が、神を持たない商人の都へ置き換わるまでに要した歳月は、帝国が栄えた時間に比べればあまりに短い。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ANCIENT ─ 超文明の痕跡</h3>
+  <p class="lore-p">ライラットの古代文明を巡る研究には、長らく二つの系統が並び立ってきた。<a href="../database/locations.html#venom">ベノム</a>の遺跡が示す<a href="../database/glossary.html#overlord">オーバーロード</a>の系統と、キューの地下が示すパラニド神聖帝国の系統である。両者の遺物は技術の系譜も設計思想も噛み合わず、単一の文明の東西の顔として説明することはできないと結論づけられている。ハクティバ圏がコアワールドと文化を異にする根の深さは、この二系統の断絶にまで遡るとする見方が近年の主流である。</p>
+  <p class="lore-p">神聖帝国の頂点に立っていたのは、鳥型人種<a href="../database/races.html#holsoid">ホルソイド</a>と目される存在である。その正体については諸説が対立したままであるものの、遺構の壁画に描かれた翼と嘴の意匠は一貫しており、現在のホルソイドとの関連を疑う学者はほとんどいない。彼らの下で労働に従事し、あるいは彼らを神として崇めていたのが、この星本来の主である爬虫類系の民であった。現在の<a href="../database/races.html#paranodian">パラノディアン</a>と<a href="../database/races.html#heketoid">ヘケトイド</a>はいずれもこの民を共通の祖に持つと考えられており、星系の各地に散った両人種が今も互いに深い信頼を保つ背景を、ここに求める説もある。</p>
+  <p class="lore-p">帝国が二つの太陽へ与えた名は、単なる神名ではなかったとみられている。<a href="../database/locations.html#hactiva">ハクティバ</a>に与えられたのは「民を従える戒律」、<a href="../database/locations.html#paranid">パラニド</a>に与えられたのは「自然を凌駕する知識」であり、下層の旧神殿区画から発見された壁画は、この二つを太陽から「得た」ものとして描いている。壁画の中でこの二つの名はそれぞれ一字の記号「ओ」「मू」で刻まれており、碑文学にはこれを双子の太陽の真名とする説がある。本来の読みは失われて久しい。信仰の比喩として読むには、壁画の描写はあまりに具体的である。星系最古の統治機構と、当時の技術水準を数千年ぶん飛び越えた工学。この二つが同時に、しかも外部からもたらされたとする解釈は、荒唐無稽と退けるにはあまりに多くの遺物と符合している。</p>
+  <p class="lore-p">これほどの科学力と統治力を備えた文明が突如として絶えた理由については、いまだ有力な説が存在しない。近年注目を集めているのが、二つの太陽の中間に存在する異常磁場を滅亡の直接原因とみる立場である。この領域では観測機器が一様に不安定となり、ワームホールの入口が開いているとする主張も繰り返し提出されてきた。帝国が力を「得た」場所と、帝国が消えた原因とが同一の座標を指しているとすれば、二つの太陽は与える側であると同時に、取り立てる側でもあったことになる。慎重な学者ほどこの推論を口にしたがらないという事実そのものが、この説の重さを物語っている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">住民の中核は<a href="../database/races.html#kyusoid">キューソイド</a>であり、その比率は都市人口のおよそ7割に達する。星系の他の土地で被差別人種として不当な扱いを受けてきた彼らにとって、キューは自分たちが多数派でいられる唯一の惑星である。裏社会を牛耳るマフィアも武器商人もほとんどがキューソイドであり、その卓越した計算力と商才がこの都市の経済を回している。星系の各地で迫害を受けてきた<a href="../database/races.html#paranodian">パラノディアン</a>がこれに次ぐ。彼らの多くは中央に居場所を失って流れ着いた者であり、自らを神聖帝国の末裔と考える者はほとんどいない。下層の旧神殿区画では今も細々と二つの太陽への祈りが捧げられているものの、祈る者たち自身、その作法がどこから来たものかを知らないまま受け継いでいる。コアワールドでは滅多に見ることのない爬虫類系の民が通りを埋め、歓楽街の喧騒と古代の祈祷が同じ街に同居する光景は、キューでしか見られないものである。</p>
+  <p class="lore-p">この星では、星系の常識である差別と被差別の順序がそのまま裏返っている。中央で最大派閥を成す<a href="../database/races.html#anubisoid">アヌビソイド</a>はここでは少数派であり、体格に合わない住居と交通に難儀しながら、文字どおり肩身を狭くして暮らすことになる。中央から赴任した外交官や記者が最初に書き送る感想は、決まって「この星では自分が背の高い田舎者である」という一文である。</p>
+  <p class="lore-p">とりわけ<a href="../database/races.html#bastetoid">バステトイド</a>に対する拒絶は激しく、キューは星系で唯一、この人種の入星を明文で禁じている惑星である。通商連合はこれを治安上の措置と説明するが、住民にとっては理屈以前の本能的な忌避であり、撤廃を求める中央の勧告はこれまでことごとく黙殺されてきた。「ライラットではネコジャラシと猫はどこにでもいる」という星系の諺には、キューを除く、という但し書きが密かに添えられている。</p>
+  <p class="lore-p">住民の大半が小柄な人種であることは、この星の建築と制度に独自の発達をもたらした。裏社会に君臨する<a href="../database/glossary.html#arpeggio">アルペジオ</a>のリーダー、<a href="../characters/arpeggio.html">ビッグ・ボス</a>が星系最小クラスの体格を持つチビトガリネズミであることもあり、アルピニアには最小種族の寸法を基準に設計された区画や施設が数多く存在する。複線ドアや車格別ゾーンといった<a href="../database/glossary.html#mixed-city">サイズ混成都市の設計</a>の常道はこの星でも当然のように用いられているものの、キューが他の都市と決定的に異なるのは、大型種への配慮ではなく小型種の便宜そのものが設計の起点に据えられている点である。同じ建物の中で体格差が数十倍に及ぶ客を等しく扱う設備の水準は星系随一であり、この分野の規格を審議する場では、犯罪都市であるはずのキューの事例が模範として引かれるという皮肉な現象が起きている。</p>
+  <p class="lore-p">首都アルピニアは、通商連合が莫大な軍事需要から生み出した利益によって作り上げた星系最大の歓楽都市である。その盛況ぶりは「アルピニアで手に入らないものは、沈黙と過去だけだ」と言わしめるほどである。昼の通りを埋めるのは分刻みで動く商人とサービス業の勤め人であり、日が落ちれば同じ通りは欲望と陰謀の舞台へ姿を変える。この星で暮らすとは、二つの街に同時に住むことにほかならない。</p>
+  <p class="lore-p">そのアルピニアでの商談には、一つだけ鉄則がある。数え方を先に確認することである。この星ではスペースドルと並び、<a href="../database/glossary.html#paranid-empire">神聖帝国</a>由来の通貨<a href="../database/glossary.html#cur-segul">セグル</a>が現役で流通しているが、その計数は帝国の記数法を受け継いだ9進法であり、「1,000セグル」は十進で数えれば729にしかならない。桁の読み替えで差額を抜く手口<a href="../database/glossary.html#currency-exchange">「桁抜き」</a>は通商連合の商法では詐欺に当たらず、「数え方を確認しなかった側の落ち度」で片付けられる。キューソイドの卓越した計算力は二つの記数法を頭の中で瞬時に行き来し、外来の商人が指を折って数え直している間に、商談は次の議題へ進んでいる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">キューに正規軍は存在しない。治安維持は通商連合の警備部門と<a href="../database/glossary.html#arpeggio">アルペジオ</a>の「自警団」が分担しており、後者の方が明らかに練度が高いというのが訪問者の一致した感想である。両大国の諜報員が最も密集する惑星でもあり、アルピニアの酒場は「星系の情報が一番安く買える場所」と呼ばれる。</p>
+  <p class="lore-p"><a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>においてキューは公式には中立であるものの、武器も情報も人材も、戦争に必要なあらゆるものがこの星を経由して流れている。共和国も帝国も、この星を敵に回す余裕はない。両軍の将官がこの星の名を口にするのは作戦会議ではなく調達会議の場であり、ハクティバ圏の惑星が戦略地図ではなく取引先の一覧に並ぶという星系の常識は、300年を費やしてこの星が築き上げた立ち位置そのものである。</p>
+  <p class="lore-p">通商連合の商法は一貫している。双方に売り、双方に貸し、どちらにも勝たせない。停戦の機運が高まるたびにアルピニアの相場が崩れる事実は繰り返し指摘されてきたが、告発は決まって証拠不十分で終わる。「この星は戦争を売っているのではない。戦争が終わらないという見通しを売っている」という<a href="../database/glossary.html#cis-hq">共和国軍情報部</a>の分析は、報告書の中で最も引用される一文となっている。</p>
+  <p class="lore-p">中でも共和国軍情報部が注視しているのが、キューと<a href="../database/locations.html#venom">ベノム</a>を結ぶ<a href="../database/glossary.html#warp-route">通商連合の私設ワープ航路</a>である。<a href="../database/locations.html#setebos">セティボス</a>産の<a href="../database/glossary.html#ember-gas">エンバーガス</a>がこの航路を通じて帝国へ送られ、対戦艦ミサイル<a href="../database/military.html#man-drill">『マン・ドリル』</a>の燃料になっているとみられているためだ。連合は例によって「単なる民間取引」との声明を繰り返している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">アルピニア最大のカジノ「ツインサン・パレス」の最奥には、勝者だけが入れる伝説の部屋があるという。そこに置かれているのは金でも宝石でもなく、神聖帝国時代の無傷の石板が一枚。ビッグ・ボスは「読める客が来たら店ごとくれてやる」と公言しているが、石板の文字を解読できた者はまだいない。</p>
+  <p class="lore-p">石板と同種の文字は、下層の壁画にも断片的に残されている。解読班が唯一意味を取れたとされる一節は「与えられしものは、返さねばならぬ」と訳出された。訳の正確さを巡る論争は続いているものの、この一文が二つの太陽と帝国の滅亡を結ぶ最有力の手掛かりとして扱われている点に、異論は少ない。</p>
+  <p class="lore-p">タンガタ自然公園の頂には、来訪者の背丈ほどの古い石柱が一本立っている。神聖帝国以前の様式とみられる翼の意匠が刻まれており、公園を管理する通商連合はこれを「装飾的遺構」として登録した。惑星で唯一都市に呑まれなかった土地に、惑星で最も古い翼の像が立っているという事実を、考古学者たちは偶然と呼ぶことをためらっている。</p>
+  <p class="lore-p">中層の一角には、星系のどの案内図にも載らない区画が存在する。通称「殺し屋横丁」。<a href="../database/factions.html#iga">独立星系連合</a>が健在であった時代に連合との取引を仲介した業者が軒を連ねていた一帯であり、連合の解体後もその筋の需要だけが残った。壁という壁には消したい人物の名と、その首に付けられた値段が貼り出されている。到達するには特定の店の奥にある非正規の昇降機で中継の階層へ降りるほかなく、都市の公式な階層図にこの区画への経路は一切記載されていない。星系最強のヒットマンと称される<a href="../characters/kid-cobra.html">キッド・コブラ</a>が今も根城とするのはこの横丁であり、貼り出された名前のいくつが実際に消えたのかを数えた者はいない。</p>
+  <p class="lore-p">現在<a href="../database/characters.html#leon">スターウルフ</a>に籍を置くレオン・ポワルスキーが帝国へ加わる以前、仕事場としていたのもこの横丁である。<a href="../database/characters.html#pigma">ピグマ・デンガー</a>とはパペトゥーン時代からの旧知であり、記録の上では長年の優良顧客にあたる。そのピグマが横丁を訪ねて持ちかけた話は三つ。星系一の頭脳が<a href="../database/locations.html#venom">ベノム</a>で皇帝を名乗り新たな秩序を築こうとしていること、その皇帝が最高の遊撃機のテストパイロットを募っていること、そして採用された暁には一等国民の地位が約束されること。レオンが傭兵集団への合流を検討し始めたのはこの夜であり、スターウルフ結成の前日譚として星系の裏面史に記録されている。</p>
+  <p class="lore-p">もっとも、彼が最終的に首を縦に振った理由は三つのいずれでもなかったという。レオンが興味を示したのは、伝説の傭兵<a href="../database/characters.html#james">J・マクラウド</a>を育て、そして売った男からの誘いであるという一点のみであった。その答えを耳元で囁かれたピグマは交渉の決裂を疑い、思わず右手をブラスターへ伸ばしかけたと伝えられている。</p>
+  <p class="lore-p">下層の旧神殿区画では、年に一度だけ全ての電飾が消灯される夜がある。「二つの太陽の夜」と呼ばれるこの日、上層の歓楽街すら明かりを落とし双子の太陽の光だけが廃都の尖塔を照らす。誰が始めた習慣かは最早誰も知らぬものだが不思議と破る者もいない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body></html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE WARP DJINN — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#77cc88;--accent:#aaeebb;--border:rgba(119,204,136,0.32);--border-hi:rgba(170,238,187,0.7);--dim:#123420;--dim2:#081a10; }
+    .p-title    { color: #eefff2; text-shadow: 0 0 50px rgba(119,204,136,0.4); }
+    .p-tagline  { border-color: #77cc88; color: #77cc88; }
+    .terminal-hdr { color: #aaeebb; }
+    .terminal-hdr::before { background: #aaeebb; box-shadow: 0 0 8px #aaeebb; }
+    .dk { color: #77cc88; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-32 / THE WARP DJINN — ワープ魔人 ]</div>
+    <div class="header-status"><span class="blink" style="color:#aaeebb;">●</span> SLEEPING — DO NOT DISTURB</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — UNKNOWN ENTITY — SONTAIL BASIN FORTUNA — MATTER TRANSLOCATION CONFIRMED</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0032 — CLASSIFICATION: NEUTRAL ENTITY — TOLL: MAJIN CANDY ONLY</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-32 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ワープ魔人 (THE WARP DJINN)</div>
+        <h1 class="p-title">ASLEEP<br>FOR<br>AEONS</h1>
+        <div class="p-tagline">フォルトナ ソンテイル盆地 ─ 岩の魔人</div>
+        <p class="p-short-desc">フォルトナの盆地で眠り続ける巨大な岩の魔人。魔人飴を通行料に、星系のあらゆる場所へ物質転移させてくれる。ただし人見知りで寝起きは最悪、口も悪い。それでも、決めるところでは決めてくる。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 32 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">不明 — 通称「ワープ魔人」</td></tr><tr><td class="dk">RACE / TYPE</td><td class="dv">不明 — 岩石質の巨人</td></tr><tr><td class="dk">AGE</td><td class="dv warn">⚠ 不明 — 億年単位の可能性</td></tr><tr><td class="dk">LOCATION</td><td class="dv"><a href="../database/locations.html#fortuna">フォルトナ</a> ソンテイル盆地</td></tr><tr><td class="dk">ABILITY</td><td class="dv">物質転移「ワープ」— 原理不明</td></tr><tr><td class="dk">LANGUAGE</td><td class="dv">ライラット共通語（習得経路不明）</td></tr><tr><td class="dk">TOLL</td><td class="dv"><a href="../database/glossary.html#majin-ame">魔人飴</a>（必須・ただし成功は気分次第）</td></tr><tr><td class="dk">SLEEP CYCLE</td><td class="dv warn">⚠ 昼寝1回 = 百年〜千年単位</td></tr><tr><td class="dk">STATUS</td><td class="dv">睡眠中（通常運転）</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 評価不能 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 100%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(119,204,136,0.5);">
+        <img src="" alt="THE WARP DJINN" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE ONE-GIANT SHORTCUT NETWORK</span>
+            <span class="tg-jp">星系最古の交通機関 ── ただし窓口は不機嫌</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">一見さんお断りだよ。<br>俺様は昼寝で忙しいんだからな<span class="tg-note note">-フォルトナ調査記録1より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">ワープ中は雑念を取り払え。黙々と昆虫の列を数えるとき、そんな心の静寂が必要だ！<span class="lore-quote-src">― 本人の「講義」より（フォルトナ調査記録1）</span></span></p>
+  <p class="lore-p">惑星<a href="../database/locations.html#fortuna">フォルトナ</a>のソンテイル盆地に住む、巨大な岩の魔人である。いきなりファンタジーに片足を突っ込んだ表現となるが、本当にそういう姿なのだから仕方がない。硬い岩石質の身体でありながら人間のように頬杖をついて眠り、物理法則を無視して鼻提灯まで出す。普段は眠りこけており、その巨体を起こすことは容易ではないが、<a href="../database/glossary.html#majin-ame">魔人飴</a>を通行料として渡せば、彼の持つ神秘の力「ワープ」によって星系のあらゆる場所へ物質転移させてくれる。</p>
+  <p class="lore-p">ただし、その交渉は難航することで有名である。彼はかなりの人見知りである上に、寝起きの機嫌がすこぶる悪い。能力を悪用しようとする輩が後を絶たないため、初対面への応対は基本的に塩である。都市伝説と実在の間を漂い続けてきたこの巨人が公式記録に登場した例は数えるほどしかなく、その大半は追い返された者の恨み節でできている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">能力 ─ ABILITY</h3>
+  <p class="lore-p">名前の由来である「ワープ」について、その原理は本人すら理解していない。というよりも、我々の物理より一つ上の階層の事象であるらしく、こちらが理解できるように解説する術を知らない、と言う方が実態に近いのかもしれない。転移は魔人の気分と集中に大きく左右され、失敗すれば虚無に取り残されるリスクがつきまとう。転移中に雑念を抱いた利用者の装備だけが遅れて届いた事例も報告されており、利用の際は魔人の「講義」を真面目に聞くことが強く推奨される。</p>
+  <p class="lore-p">神秘の力はワープだけではない。彼は「惑星の意思」や「自然との会話」と本人が呼ぶ疎通の力を持ち、本気になった彼の助言は、まさに天啓のような的確さを示す。フォルトナの生態系の異変、危険地帯の変化、迫る災いの気配。魔人が寝ぼけ眼で漏らす一言が、後から振り返れば全ての答えだったという証言は一つや二つではない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p">基本的に口が悪い。アニマリアがほぼ住まないフォルトナの地でどうやって言語を覚えたのかは不明だが、ライラット共通語を流暢に話すことが確認されている。超自然的な力の持ち主でありながら性格は驚くほど俗っぽく、煽てにめっぽう弱い。綺麗な女性の頼みにも弱い。話し込むほどに「場末のスナックにいるおじさん」感が拭えなくなってくる、というのが接触者たちの一致した証言である。</p>
+  <p class="lore-p">それでも、決めるところではしっかり決めてくる。転移の途中で恐怖に呑まれかけた利用者を一喝で正気に戻し、危険が迫れば軽口を止めて最短の道を示す。現在フォルトナを統治する部族とは種族単位で旧知の仲であるらしく、彼らが窮地に陥った際は、損得抜きで手を貸すことが多いと伝えられている。</p>
+  <p class="lore-p">また、若き日に<a href="../database/glossary.html#snow-mountain">スノーマウンテン</a>へ漂着した<a href="kellone.html">ミズローヌ・ケローン</a>とも面識があり、彼について問われると珍しく饒舌になる。「これまで出会ったアニマリアの中で一番面白いやつだった」。魔人が特定の個人を名指しで評した記録は、これのほかに存在しない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">正体 ─ ORIGIN</h3>
+  <p class="lore-p">正体については諸説あるが、肝心の本人が「寝すぎて忘れた」と言っているため、結論は出ていない。昼寝の単位が百年から千年であることを踏まえると、億年単位でフォルトナに居座っている可能性が高い。他の惑星に仲間が住んでいるとも語るが、その場所は<a href="../database/locations.html#titania">タイタニア</a>の砂の中、海底12,000メートルの海の底、超高エネルギーのただ中などであり、とても立ち入れる環境ではない。実質、会うことができるのは彼だけである。もっとも本人いわく、仲間をたたき起こすことさえできれば、自らワープして地上へ帰還させることも可能らしい。もちろん、その場所へ魔人飴を届けられればの話ではあるが。</p>
+  <p class="lore-p"><a href="../database/sectors.html#lambda">セクターλ</a>に点在するスペースオベリスクとの共通点を指摘されることも多いが、この点について本人は、きっぱりと断りを入れている。<b>「あんな気味悪いもんと一緒にすんな！　俺様のほうがハンサムだろ？」</b></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">魔人いわく、ワープに使う「扉」と同じものはタイタニアにも存在するという。ただしその場所は遥か地底の砂の中であり、転移先に選べば地獄行きが確約される。この地底の「扉」は<a href="../database/races.html#paranodian">ティターニアン</a>の移動手段との関連が指摘されており、フォルトナとタイタニア、二つの隔絶した惑星のつながりを示す数少ない手がかりとなっている。</p>
+  <p class="lore-p">近年の特筆事項として、単独遭難した<a href="../database/characters.html#fox">フォックス・マクラウド</a>の現地調査に協力し、スノーマウンテンへの転移を快諾した記録が残っている（<a href="../other/fortuna-survey-1.html#djinn">フォルトナ調査記録1</a>参照）。この時の転移で利用者の着衣一式が遅れて届いた件について、魔人は「余計なことを考えたやつが悪い」との公式見解を残している。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(180,255,200,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

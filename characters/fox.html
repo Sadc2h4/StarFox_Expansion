@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOX McCLOUD — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff8c40;--accent:#ffc499;--border:rgba(255,140,64,0.32);--border-hi:rgba(255,140,64,0.7);--dim:#402008;--dim2:#201004; }
+    .p-title    { color: #fff2e6; text-shadow: 0 0 50px rgba(255,140,64,0.35); }
+    .p-tagline  { border-color: #ff8c40; color: #ff8c40; }
+    .terminal-hdr { color: #ffc499; }
+    .terminal-hdr::before { background: #ffc499; box-shadow: 0 0 8px #ffc499; }
+    .dk { color: #ff8c40; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-01 / FOX McCLOUD — フォックス・マクラウド ]</div>
+    <div class="header-status">● ACTIVE — MERCENARY</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — FOX McCLOUD — STAR FOX TEAM LEADER — MERCENARY CONTRACT ACTIVE</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0001 — CLEARANCE: OPEN — EVALUATION: ACE</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-01 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">フォックス・マクラウド (FOX McCLOUD)</div>
+        <h1 class="p-title">FOX McCLOUD</h1>
+        <div class="p-tagline">THE SON OF THE LEGEND ── スターフォックス 2代目リーダー</div>
+        <p class="p-short-desc">消息を絶った英雄の息子にして、雇われ遊撃隊スターフォックスの現リーダー。父の背中を追い、やがてそれを超えようとしている若きエース。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 01 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">FOX McCLOUD / フォックス・マクラウド</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#anubisoid">アヌビソイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">18歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#papetoon">パペトゥーン</a> 生まれ</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#starfox">スターフォックス</a>（リーダー）</td></tr><tr><td class="dk">ROLE</td><td class="dv">隊長 / アーウィン4号機</td></tr><tr><td class="dk">FATHER</td><td class="dv"><a href="../database/characters.html#james">ジェームズ・マクラウド</a></td></tr><tr><td class="dk">MOTHER</td><td class="dv"><a href="../database/characters.html#vixy">ヴィクシー・マクラウド</a>（故人）</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 共和国契約傭兵</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 96 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,140,64,0.55);">
+        <img src="../resource/Character_image/character_fox.png" alt="FOX McCLOUD" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR FOX — TEAM LEADER</span>
+            <span class="tg-jp">スターフォックス 2代目リーダー</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">親父の真似じゃない。俺のやり方で、この空を守る。<span class="tg-note note">-カタリナ防衛戦 帰投後の記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">あいつの飛び方を見ろ。ジェームズがそこにいる。だが着地の仕方は、あいつ自身のものだ<span class="lore-quote-src">― ペッピー・ヘア、訓練記録の所見より</span></span></p>
+  <p class="lore-p">フォックス・マクラウドは伝説の傭兵<a href="../database/characters.html#james">ジェームズ・マクラウド</a> の一人息子にして、雇われ遊撃隊<a href="../database/military.html#starfox">スターフォックス</a> の2代目リーダーである。幼少期を<a href="../database/locations.html#papetoon">パペトゥーン</a> の牧場で過ごし、母<a href="../database/characters.html#vixy">ヴィクシー</a> の死後はコーネリアに移り住んだ。冷静な判断力と天性の操縦感覚を併せ持ち、その技量は既に「父を超えた」と評する教官もいる。</p>
+  <p class="lore-p">性格は実直で情に厚いが、父の話題になると今も声が硬くなる。僚機からの信頼は絶対的であり、<a href="../database/military.html#cdf">CDF</a> の司令部も彼を「最も高くつくが、最も確実な保険」と呼ぶ。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">生い立ち ─ EARLY LIFE</h3>
+  <p class="lore-p"><a href="../database/locations.html#papetoon">パペトゥーン</a> の丘の上の牧場で生まれた。生家はかつて父<a href="../database/characters.html#james">ジェームズ</a> が「二度目の人生」として耕した農場であり、母<a href="../database/characters.html#vixy">ヴィクシー</a> の働く酒場と建ったばかりの士官学校の町を見下ろす場所にあった。3歳の年にその母を車両爆発で失う（公式記録は「事故」のままである）。以後はCDF勤務の父とともにコーネリアの軍属住宅へ移り、父が作戦で家を空ける間は父の親友<a href="../database/characters.html#peppy">ペッピー・ヘア</a> の家庭に預けられて育った。彼にとって最初の遊び場は公園ではなくCDFの格納庫だったことになる。</p>
+  <p class="lore-p">預け先のヘア家では軍人一家の規律と番号付きの説教に囲まれて育った。後年の隊で有名になる「おやじの格言」の最初の聞き手はこの頃の彼だったことになる。ペッピーの妻ヴィヴィアンは早くに母を亡くした少年へ分け隔てなく食卓を用意し、彼が「二軒目の実家」と呼ぶ家庭を作ったと伝えられる。</p>
+  <p class="lore-p">8歳の夏に里帰りしたパペトゥーンで農業用散布機を無断で単独離陸させ、町を半周して戻ってきた事件は牧場の語り草である。無線越しに誘導した父は着陸後、頭を下げて回る代わりに一言だけ告げたという──「いい腕前だな。次は許可を取れよ…！」。</p>
+  <p class="lore-p">母の顔をほとんど覚えていない彼にとって「マクラウド」の名は長らく父の背中と同義だった。その名を自分のものにするまでの過程こそが彼の少年期の全てである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">12歳でコーネリア防衛軍士官学校に最年少世代として入学した。学び舎は父ジェームズの母校でもある<a href="../planets/papetoon.html">パペトゥーン</a> の第6分校である。同期には後に<a href="../database/locations.html#katina">カタリナ</a> 駐留軍の飛行隊長となる<a href="../database/characters.html#bill">ビル・グレイ</a> がいる。入学初日に隣席で教練シミュレータの難度設定を勝手に書き換えて処分されかけた少年を「機体側の欠陥を証明しただけだ」と庇い、これが生涯の親友<a href="../database/characters.html#slippy">スリッピー・トード</a> との出会いになった（<a href="slippy.html">スリッピーの項</a>を参照）。操縦実技の評価は在学中一度も首位を譲らなかったと記録されている。</p>
+  <p class="lore-p">だが14歳の年に父ジェームズが<a href="../database/locations.html#venom">ベノム</a> 偵察作戦で消息を絶ったという報せが届く。彼は迷わず士官学校を自主退学し、父の部隊と母艦<a href="../weapons/greatfox.html">グレートフォックス</a>、そして借金ごとスターフォックスの名を継いだ。後見人となったペッピーが止める言葉を何十と用意し結局その一つも使わなかった経緯は<a href="peppy.html">ペッピーの項</a>に詳しい。</p>
+  <p class="lore-p">以後はペッピーの後見の下で操縦と戦術、そして「引き際」を叩き込まれ、隊の再建に少年期の全てを費やした。退学に迷わず付いてきたスリッピーが再結成の名簿に最初に名を連ね、開戦後にはCDFの賞金付き選抜模擬戦の決勝で下した<a href="../database/characters.html#falco">ファルコ・ランバルディ</a> が加わった（経緯は<a href="falco.html">ファルコの項</a>を参照）。参謀ペッピー、エースパイロットのファルコ、メカニックのスリッピーという現在の4名体制はこうして揃い、<a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a> 勃発後は共和国側の切り札として星系各地の戦域に投入されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p">軍記録上の初陣となった<a href="../database/locations.html#katina">カタリナ</a> 防衛戦では駐留軍と連携して帝国軍の超大型母艦を撃墜し、<a href="../database/glossary.html#katina-miracle">「カタリナの奇跡」</a>の立役者となった。この一戦は士官学校の旧友ビルとの再会の場でもあり、隊の名を星系中に知らしめた。なお隊の活動記録自体は<a href="../other/corneria-defense.html">コーネリア防衛戦</a> 以前まで遡るが、軍の公式記録が初陣と数えるのはこのカタリナである。</p>
+  <p class="lore-p">以後は<a href="../database/locations.html#fichina">フィチナ</a> 奪還作戦、<a href="../database/locations.html#zoness">ゾネス</a> の探照灯網強行突破、<a href="../database/locations.html#aquas">アクアス</a> 掃討など正規艦隊では不可能な任務を重ねている。<a href="../database/locations.html#titania">タイタニア</a> では生体兵器に乗機ごと捕獲されたスリッピーを救うため砂漠を単機で横断した（<a href="slippy.html">スリッピーの項</a>を参照）。損耗率がゼロに近いことがこの部隊の最大の異常値と評される。</p>
+  <p class="lore-p"><a href="../database/locations.html#fortuna">フォルトナ</a> では大部隊が駐屯する生体兵器化施設へ単独で潜入し、施設と敵旗艦に回復不能の打撃を与えて帰還した。神殿の最奥で水晶状の鉱石に閉じ込められた身元不明の女性…仮称<a href="../database/characters.html#krystal">「クリスタル」</a> が発見されたのもこの任務である。</p>
+  <p class="lore-p">傭兵部隊スターウルフの<a href="../database/characters.html#wolf">ウルフ・オドネル</a> は彼への執着を隠さず、<a href="../database/glossary.html#climate-recapture">フィチナ奪還作戦</a>での初交戦以来両部隊は複数の戦域で刃を交えている。撃墜数では常にフォックスが上回るが、決着はついていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">愛機<a href="../weapons/arwing.html">アーウィン</a> のコクピットには士官学校の卒業記章が下げられている。卒業していないはずの記章がなぜそこにあるのか──「ペパーのおっさんに聞いてくれ」と本人は笑うだけである。</p>
+  <p class="lore-p">報酬の受け取りサインは今も父と同じ書体で書かれる。経理担当者いわく「請求額はお父上より2割高い。仕事の精度は3割増しだから、安い買い物です」。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

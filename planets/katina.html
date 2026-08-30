@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KATINA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ffcc44;--accent:#ffdd88;--border:rgba(255,204,68,0.32);--border-hi:rgba(255,221,136,0.7);--dim:#3a2800;--dim2:#1a1200; }
+    .p-title { color:#fff8e0; text-shadow: 0 0 50px rgba(255,200,60,0.3); }
+    .p-tagline { border-color:#ffcc44; color:#ffcc44; }
+    body { background:#090804; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(30,22,0,0.6) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(25,15,0,0.4) 0%,transparent 55%),
+      #090804; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(255,204,68,0.32);">
+    <a href="../database/locations.html" class="nav-back" style="color:#ffcc44;border-color:rgba(255,204,68,0.3);">◄ LOCATIONS</a>
+    <div class="header-tag">[ 06 / KATINA — カタリナ ]</div>
+    <div class="header-status"><span class="blink" style="color:#ffcc44;">●</span> SECTOR-γ — GREAT WALL</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(255,204,68,0.3);"><div class="vt" style="color:#3a2800;">LYLAT SYSTEM — KATINA — CORNERIAN DEFENSE OUTPOST — SECTOR-GAMMA — GREAT WALL ANCHOR</div></div>
+  <div class="side-r" style="border-color:rgba(255,204,68,0.3);"><div class="vt" style="color:#3a2800;">DATABASE RECORD: KTN-0006 — CLASSIFICATION: MILITARY PRIORITY — DEFENSE LINE KEY POINT</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(255,204,68,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#ffcc44;">[ 06 / LYLAT SYSTEM — SECTOR-γ ]</div>
+        <div class="p-name-jp" style="color:#cc9922;">カタリナ (KATINA)</div>
+        <h1 class="p-title">GUARDIAN<br>OF THE<br>GREAT WALL</h1>
+        <div class="p-tagline">最終防衛ライン要石 ─ サバンナ型惑星</div>
+        <p class="p-short-desc" style="border-color:#3a2800;">グレートウォール防衛ラインの軍事的要となるサバンナ惑星。コーネリア連合軍の重要前線基地として多くの防衛施設が設置される。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(255,204,68,0.3);background:rgba(25,15,0,0.65);">
+        <div class="terminal-hdr" style="color:#ffcc44;background:rgba(255,204,68,0.1);border-color:rgba(255,204,68,0.3);">
+          <span style="background:#ffcc44;box-shadow:0 0 8px #ffcc44;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-γ ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#ffcc44;">DESIGNATION</td><td class="dv">KATINA / カタリナ</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">PLANET TYPE</td><td class="dv">E1型 / SAVANNA WORLD</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">MOONS</td><td class="dv">1</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">PRIMARY STAR</td><td class="dv"><a href="../database/locations.html#lylat-prime">ライラット・プライム</a></td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">AVG TEMP</td><td class="dv ok">+5°C ～ +40°C</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">DAY / YEAR</td><td class="dv">21.4H / 410D</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">LOCATION</td><td class="dv">LYLAT 7th — Sectorγ / GW第1宙域</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">FACTION</td><td class="dv ok">コーネリア連合共和国（<a href="../database/glossary.html#state-katina">カタリナ州</a>）</td></tr><tr><td class="dk" style="color:#ffcc44;">CAPITAL</td><td class="dv">首都 ノラ・アネモス（第1植民都市）</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">ROLE</td><td class="dv warn">⚠ 最前線基地</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(255,204,68,0.1);">
+          <div class="env-bar-label" style="color:#ffcc44;">ENVIRONMENT INDEX ── 72 / 100</div>
+          <div class="env-bar-track" style="background:#1a1200;"><div class="env-bar-fill" style="width:72%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,180,40,0.6);">
+        <img src="../resource/LA_image/LS_P_7.png" alt="Katina" class="planet-img-detail planet-img-small">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">SAVANNA WORLD — GREAT WALL ANCHOR</span>
+            <span class="tg-jp">最終防衛ライン要石 ── サバンナ惑星</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">フォックス!?　…おまえが来るとはな!<br>お前が　友達だということを　誇りに思うよ<span class="tg-note note">-ドーベル隊 カタリナ防衛戦線の通信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「よう、相棒！　こっちは任せろ。壁はまだ落ちちゃいない」<span class="lore-quote-src">― カタリナ駐留軍 ビル・グレイ隊長、防衛戦通信記録より</span></span></p>
+  <p class="lore-p">カタリナ（Katina）は、<a href="../database/sectors.html#gamma">セクターγ</a>に位置するライラット星系第7惑星宙域の小型地球型惑星。<a href="../database/locations.html#corneria">コーネリア</a>に次ぐ「第二のホームタウン」として開発が進む入植惑星であると同時に、最終防衛ライン<a href="../database/military.html#great-wall">グレートウォール</a>第1宙域の要を担う、共和国防衛戦略の最重要拠点である。</p>
+  <p class="lore-p">惑星圏には入植団の輸送船と軍の演習部隊が絶えず行き交い、辺境でありながら星系有数の活気を誇る。牧歌的な赤い大地の上空を、いつも戦闘機の編隊が横切っていく──それがカタリナの日常風景である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 形成史</h3>
+  <p class="lore-p">カタリナは、<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>の原始惑星円盤において、第6惑星<a href="../database/glossary.html#stephano">ステファノー</a>とほぼ同じ物質帯から生まれたと考えられている。両者は組成が極めて近い「兄弟星」であり、皮肉にもその近さが、砕けた兄弟の残骸を防壁として解析・利用する際の比較試料としてカタリナを最適の存在にした。事実、残骸の組成解析と防壁への転用設計は、カタリナ地質との比較研究を基礎として確立されている。</p>
+  <p class="lore-p">形成の末期、カタリナは惑星級の原始天体と正面から衝突している。飛散した破片が再集積して生まれたのが唯一の衛星であり、この衝突で揮発成分の多くを失ったことが、海が小さく陸の勝った現在の姿の遠因とされる。そして大きな月は自転軸のふらつきを抑える錨として働き、カタリナの季節を「極端だが狂わない」ものにした。雨季と乾季が暦として運用可能な規則性を保つのは、この衛星による自転軸の安定に負うところが大きい。</p>
+  <p class="lore-p">主要な陸塊はほぼ一枚に繋がった超大陸を成す。内陸部には海の湿りが届かず、年に一度、季節風が海洋の水を一斉に内陸へ運び込む。これが雨季と乾季を分かつ大季節風（メガモンスーン）の正体であり、涸れ川の氾濫原も干上がる塩湖も、超大陸の内陸盆地が背負う宿命である。</p>
+  <p class="lore-p">もう一つ、カタリナには惑星科学者が「軌道の静けさ」と呼ぶ美点がある。真円に近い公転軌道、軸を支える大きな月、大衝突で掃除された周辺宙域。漂流するステファノー残骸の係留地としてカタリナのラグランジュ点が選ばれた最大の理由は、この軌道環境の安定性にあったと建設記録は伝えている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">海よりも陸地の割合が大きく、地表のほとんどはサバンナとステップ気候に属する。季節による降水量の差が極端で、乾季には地平線まで褐色の草原が続くが、雨季に入ると一帯は豪雨に洗われ、サバンナは一夜にしてキノコとシダ植物の林へと変貌する。この劇的な「緑替わり」はカタリナ名物として入植者たちに親しまれている。</p>
+  <p class="lore-p">緑替わりが変えるのは景色だけではない。雨季には涸れ川が氾濫原に戻って平野を寸断し、乾季には湖が干上がって塩の平原が現れる。つまりこの星では、地図が季節ごとに描き直される。集落を結ぶ陸路も空路の目印も雨季用と乾季用の二枚が必要であり、両方を諳んじる者は入植地で一目置かれる存在となる。また雨季の湿地には蚊に似た吸血昆虫が大発生する。星系史に残る疫病<a href="../database/glossary.html#ngo-fever">ンゴ熱</a>の揺りかごとなったのがこの湿地であり、詳細は歴史の項に譲る。</p>
+  <p class="lore-p">自転周期は21.4標準時間、公転周期は410日。雨季と乾季の巡りは<a href="../database/glossary.html#standard-time">星系標準暦</a>と少しずつずれ続けるため、<a href="../database/glossary.html#pioneer-ministry">開拓庁</a>は標準暦に併記する形で独自の「カタリナ暦」を発行しており、緑替わりの日を年始として祝う習慣が入植地に根付いている。</p>
+  <p class="lore-p">決して暮らしやすい環境ではないが居住には十分適しており、<a href="../database/locations.html#prospero">プロスペロー</a>に次ぐホームタウン惑星として開拓庁主導の入植計画が進行中である。軌道上には通信用の巨大レーダー網が展開され、地上には複数のベースキャンプと訓練場が点在する。</p>
+  <p class="lore-p">そしてカタリナの夜空には、他のどの惑星でも見ることのできない光景がある。地平線から地平線まで天球を横切る、淡くきらめく光の帯──軌道上に連なる<a href="../database/military.html#great-wall">グレートウォール</a>の隕石防壁が星明かりを反射したものである。入植者たちはこれを「天の川」ならぬ<a href="../database/glossary.html#wall-river">「壁の川」</a>と呼び、あの輝きの下で眠れる安心感こそが移住の決め手だったと語る者も多い。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">カタリナの歴史は<a href="../database/military.html#great-wall">グレートウォール</a>の歴史と分かちがたく結びついている。<a href="../database/glossary.html#stephano">ステファノーの戦い</a>で砕けた第6惑星の残骸は、長らく航行の障害でしかなかったが、共和国はこれをカタリナ軌道上のラグランジュ点にキャプチャし、人工の隕石防壁として再生させた。廃墟から防壁を築くこの大事業には半世紀近くが費やされ、カタリナはその建設基地として発展した経緯を持つ。</p>
+  <p class="lore-p">壁の完成は入植の呼び水となった。建設労働者の飯場は都市に育ち、資材集積地は星間ターミナルへと姿を変え、最終段階として要塞<a href="area3.html">AREA3</a>が竣工した頃には、カタリナは辺境の草原惑星から「第二のホームタウン」候補へと変貌を遂げていた。壁を築いた星が、壁に守られる星になったのである。</p>
+  <p class="lore-p">だが発展史には暗い一章がある。カタリナの名を最悪の形で星系に知らしめた疫病<a href="../database/glossary.html#ngo-fever">ンゴ熱</a>である。雨季の湿地に発する潜伏期間5年の病は星間航路に乗って静かに広がり、星系全域で数十万の犠牲を出した。発生源とされたカタリナからの移住者は各地で「カタリナ病」の名で忌避され、入植計画そのものが凍結された時代すらある。若き日の<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a>の抗体で病が終息した後も風評は長く尾を引いた。現在のカタリナ入植地に根付く徹底した防疫文化と、出入港時の検疫を欠かさない習慣は、この時代が残した遺産である。</p>
+  <p class="lore-p">そしてこの遺産は、カタリナだけのものではない。ンゴ熱の記憶はコーネリアの保健機関を今日まで慎重にさせており、後年、沼と湿地の星<a href="../database/locations.html#prospero">プロスペロー</a>の開発が本格化した際に最も危惧されたのは、類似の疫病の蔓延であった。媒介生物の全数調査と星系一厳格と言われる防疫審査はこの警戒の産物であり、開発から今日まで「第二のンゴ熱」を出していないことは、あの流行が残した数少ない正の遺産と言える。</p>
+  <p class="lore-p"><a href="../database/factions.html#iga">独立星系連合</a>との戦役では、ハクティバ圏から内星系へ向かう反乱軍にとってカタリナは目障りな「壁の門番」であり、幾度も襲撃の的となった。だがこの星は一度も落ちていない。雨季と乾季で一変する地形を知り尽くした防衛戦は連合軍に「あの星だけは落ちない」と言わしめ、戦役末期にその防衛計画の多くを引いていたのは、首都の<a href="../database/glossary.html#academy-branches">士官学校第2分校</a>が輩出した学生上がりの若き参謀であった。後の「魔術師」<a href="../characters/wenli.html">ニャン・ウェンリー</a>である（住民・社会の項も参照）。</p>
+  <p class="lore-p"><a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>では、<a href="../database/factions.html#venom-empire">帝国軍</a>の超大型母艦がカタリナ上空へ直接侵攻する事態が発生。基地全滅寸前まで追い込まれたが、駐留軍と急行した<a href="../database/military.html#starfox">スターフォックス</a>の連携により母艦は撃墜された。この<a href="../database/glossary.html#katina-miracle">「カタリナの奇跡」</a>は開戦以来劣勢が続いていた共和国側の士気を大きく回復させた戦いとして記録されている。この防衛戦は<a href="../database/characters.html#fox">フォックス・マクラウド</a>率いる新生スターフォックスの初陣でもあり、地上の対空陣地には、後にsectorτ会戦で武功を立てる<a href="../database/characters.html#konya">コーニャ・マッカレル</a>が防衛隊員として配置についていた。一つの空に、三つの物語が交差した日であった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">人口は入植者と軍関係者がほぼ半々という特異な構成を持つ。移住計画を指揮する開拓庁には自由を好む<a href="../database/races.html#bastetoid">バステトイド</a>が多く、規律を重んじる駐留軍との間で文化摩擦が起きることもあるが、雨季の泥濘と乾季の砂嵐を分かち合ううちに、両者の間には独特の連帯感が育っている。</p>
+  <p class="lore-p">カタリナの入植地は大小を問わず、名に「ノラ」を冠する。開拓初期にテント村を指した符牒「ノラ（野営地）」の名残であり、首都ノラ・アネモスから草原の果ての小集落まで、この星の地名はすべて「野営地から始まった」記憶を引き継いでいる。入植地の中心には開拓時代の乾燥レンガ建築がそのまま残り、市場には星系各地の食文化が持ち込まれている。「カタリナ流」と呼ばれる香辛料の効いた保存食は前線兵士の間で人気が高く、軍の補給部が公式にレシピを採用したほどである。</p>
+  <p class="lore-p">集落が草原に散在するこの星では、長距離コンテナ船による物資配達が文字どおりの生命線となる。配達人は「ランナー」と呼ばれ、季節ごとに描き直される地図を読み切って荷を届けるその腕は、集落の暮らしそのものを左右する。ゆえにカタリナには「良いランナーの通った後には道ができる」という格言があり、子供たちが最初に覚える遊びは今も配達ルートの引き比べである。この配達文化が星系最高の軍師を育てたことは、記録余話に譲る。</p>
+  <p class="lore-p">乾季の名物である大規模な砂嵐は、時に辺境の集落を丸ごと孤立させる。このため駐留軍には開拓庁の要請を待たずに救難出動する伝統があり、これこそが入植者の軍への信頼が揺るがない最大の理由となっている。救援物資を満載して砂嵐へ突っ込んでいく輸送機の後ろ姿は「カタリナで二番目に頼もしい背中」と呼ばれる──一番は言うまでもなく、上空を守る戦闘機である。</p>
+  <p class="lore-p">惑星の玄関にあたるのが、入植者たちが集まって築いた第1植民都市にして首都のノラ・アネモスである。星間ターミナルの規模は<a href="../database/locations.html#corneria">コーネリア</a>国際ターミナルに次ぐ星系第2位を誇り、今日も多くの人々がこの街からカタリナの大地に降り立つ。市街に隣接する駐屯基地には<a href="../database/glossary.html#academy-branches">コーネリア士官学校 第2分校</a>が置かれており、長く「田舎の分校」と揶揄されてきたが、分校史上最高の戦術スコア保持者ニャン・ウェンリーの登場以降、その呼び名を口にする者はいない。</p>
+  <p class="lore-p" id="nora-khartoum">首都とは対照的な性格を持つのが第8植民都市ノラ・ハルトゥームである。<a href="../database/races.html#ganesiosoid">ガネシオソイド</a>を主な住民とする移民都市であり、建築も乗り物も食事も行政の窓口も全てが体高3mを超える種族に合わせて作られている。コーネリアシティで肩身の狭い思いをした象型人種が広大な平地を求めてこの星へ移り住み、自分たちの寸法で街を建てた結果がこの都市である。コーネリアの小型種街区リトル・キュータウンとは何もかもがサイズ感の逆転した大都市であり、中型種の観光客はここで初めて「他人の腰の高さで暮らす」という小型種の日常を体験することになる（<a href="../database/glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ECONOMY ─ 経済・産業</h3>
+  <p class="lore-p">カタリナ経済の骨格は、軍と開拓の二本柱である。駐留軍関連の基地整備・補給・演習支援はこの星最大の産業であり、開拓庁の入植事業がそれに並ぶ。ノラ・アネモスの星間ターミナルは星系第2位の規模で人と物資を捌き、前線基地へ向かう軍人の大半が<a href="../database/glossary.html#state-katina">カタリナ州</a>を経由していく。軍靴と開拓靴が同じ埠頭に並ぶ光景こそ、この星の経済の縮図である。</p>
+  <p class="lore-p">民間経済の主役は食と観光である。軍の補給部が正式採用した<a href="../database/glossary.html#cooking-methods">「カタリナ流」</a>の保存食（住民・社会の項を参照）は前線向けの特需産業へ育ち、乾季の乾燥気候を生かした保存加工が輸出品の品質を支えている。観光では<a href="../database/glossary.html#city-kinshasa">第3植民都市ノラ・キンシャサ</a>の躍進が目覚ましい。近郊に横たわる「鉄の丘」と、雨季の始まりに開かれる大市場「キンシャサ・マーケット」を目当てに、戦時下にもかかわらず観光客の流れが絶えない。「壁の川」の輝きの下という安心感が、旅程に織り込まれているためだという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">カタリナは<a href="../database/military.html#great-wall">グレートウォール</a>第1宙域の管制を担う「壁の門番」である。地上のフロンティア基地には<a href="../database/military.html#cdf">コーネリア防衛軍</a>の精鋭飛行隊が常駐し、<a href="../characters/bill.html">ビル・グレイ</a>隊長率いる第7飛行隊<a href="../database/military.html#bernard">「バーナード」「ドーベル」</a>の名は帝国軍にも知れ渡っている。</p>
+  <p class="lore-p">隣接する<a href="../database/sectors.html#zeta">セクターζ</a>の主力艦隊<a href="../database/locations.html#starblade">スターブレード</a>とは相互支援体制にあったが、艦隊が帝国軍の奇襲で壊滅の危機に瀕して以降、カタリナ防衛網への負荷は限界に近づきつつある。この星が抜かれれば、次は<a href="../database/locations.html#corneria">コーネリア</a>である。駐留軍の合言葉「壁はまだ落ちちゃいない」は、危機と誇りの両方を映している。帝国の大規模奇襲計画の発覚を受け、現在は特殊戦闘部隊<a href="../database/military.html#vorpal">ヴォーパル隊</a>もカタリナへ緊急展開している。<span class="redacted">なお最新の戦況分析は、5日後の超巨大兵器<a href="../weapons/great-dish.html">「グレートディッシュ」</a>によるカタリナ来襲を高確度で予測している。総司令部はこれを「壁の門番」創設以来最大の試練と位置づけ、駐留全部隊の臨戦態勢と住民待避計画を発動。あわせて第1宙域の軌道補正権限が<a href="area3.html">AREA3</a>管制司令へ臨時移管され、「壁の呼吸」が史上初めて実戦で使用される見込みである。詳細は臨時閲覧権限LV.2以上で開示される</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">撃墜された帝国軍母艦の残骸は現在も草原の真ん中に横たわっており、撤去には数十年かかると試算されている。入植者たちはこれを<a href="../database/glossary.html#city-kinshasa">「鉄の丘」</a>と呼び、雨季には残骸を覆うように植物が繁茂する。皮肉にも今では、カタリナで最も観光客を集める「名所」となっている。</p>
+  <p class="lore-p">フォックス・マクラウドとビル・グレイは士官学校の同期であり、カタリナ防衛戦で数年ぶりの再会を果たしたという。無線越しの「よう、相棒」という第一声は、防衛戦の緊張の中で唯一記録に残る、旧友の再会の言葉である。</p>
+  <p class="lore-p">駐留軍の砂嵐救難には、一人の軍人を生んだ逸話がある。かつて砂嵐で孤立した集落から救い出された少年は、砂の壁を割って現れた兵士たちの姿を生涯忘れず、長じて自らも軍門を叩いた──sectorτ会戦の殊勲者、<a href="../database/characters.html#konya">コーニャ・マッカレル</a>軍曹である。彼が今も乾季のたびに救難機へ志願し続けていることは、駐留軍では知らぬ者のいない話となっている。</p>
+  <p class="lore-p">そしてこの星が生んだ最も有名な人物が、ランナーの息子として配達地図の上で育った「魔術師」<a href="../characters/wenli.html">ニャン・ウェンリー</a>である。<a href="../database/glossary.html#wenli-last">国葬の日</a>、カタリナの全入植地は乾季にもかかわらず一斉に灯を落とし、ノラ・ラファイの旧居には今も星系中から花が届く。第2分校の戦術課程は毎年、最初の講義を彼の言葉「勝った方がルールになる」で始める。再来襲の予測に揺れる司令部で誰もが何を考えているかは──あえて記すまでもない。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 250; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.75).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(255,240,180,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body>
+</html>

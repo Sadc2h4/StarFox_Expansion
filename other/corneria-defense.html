@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BATTLE RECORD — THE DEFENSE OF CORNERIA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#66bbff;--accent:#a8d8ff;--border:rgba(102,187,255,0.32);--border-hi:rgba(168,216,255,0.7);--dim:#0a1a30;--dim2:#050d1a; }
+    body { background:#04070f; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ BATTLE RECORD 01 / コーネリア防衛戦 — ジェームズの再来 ]</div>
+    <div class="header-status">● RECORD ARCHIVED</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ BATTLE RECORD 01 / THE DEFENSE OF CORNERIA ]</div>
+      <h1 class="codex-title">THE DEFENSE OF CORNERIA</h1>
+      <p class="codex-p">コーネリア防衛戦 全記録 ── <a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>下、首都惑星<a href="../database/locations.html#corneria">コーネリア</a>が初めて受けた本土直接侵攻と、それを退けた一遊撃隊の記録である。本記録は<a href="../database/military.html#cdf">CDF</a>管制記録、スターブレード第7艦の交戦記録、帰還者の報告、および当日の目撃証言を突き合わせて再構成された。文中の会話は当事者と生存者の記憶によるため、正確性より臨場感が優先されている点に留意されたい。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#prologue">序</a>
+      <a href="#calendar">暦になった男</a>
+      <a href="#absence">来なかった襲撃</a>
+      <a href="#hole">空間の穴</a>
+      <a href="#troilus">カイザー・トロイラス</a>
+      <a href="#falling-sky">落ちる空</a>
+      <a href="#gamble">最後の一手</a>
+      <a href="#sortie">出撃</a>
+      <a href="#eye">目玉</a>
+      <a href="#seven-minutes">七分間</a>
+      <a href="#catapult">加速器</a>
+      <a href="#two-shadows">二つの機影</a>
+      <a href="#silence">沈黙</a>
+      <a href="#aftermath">戦いの後</a>
+      <a href="#legend">ジェームズの再来</a>
+      <a href="#epilogue">結</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="../database/glossary.html#corneria-defense">用語DB</a> / <a href="../database/military.html#starfox">スターフォックス</a> / <a href="../characters/pepper.html">ペパー総司令</a></span>
+    </nav>
+
+    <article class="codex-entry" id="prologue">
+      <h2 class="codex-h">序 ─ 開戦から11か月 <span class="en">ELEVEN MONTHS OF QUIET</span></h2>
+      <p class="codex-p">ライラット宇宙歴3997年の<a href="../database/factions.html#venom-empire">ベノム帝国</a>建国宣言以来、帝国の対コーネリア攻勢は不可解なほど静かであった。<a href="../weapons/granga.html">グランガ</a>など小規模な都市制圧兵器が月に一度地方を騒がせ、CDFがそれを撃退する。<a href="../database/locations.html#macbeth">マクベス</a>と<a href="../database/locations.html#zoness">ゾネス</a>で起きていた事態を思えば、首都圏の戦争は拍子抜けするほど行儀が良かったのである。<a href="../database/glossary.html#red-moon">赤い月ダリス</a>を起点とする本土防衛層が大部隊の投入を許さないため、というのが軍の公式見解であった。市民生活はほぼ平時のまま保たれ、コーネリアシティの夜景から灯が消えたことは一度もなかった。</p>
+      <p class="codex-p">この静けさが破られた日の記録である。</p>
+    </article>
+
+    <article class="codex-entry" id="calendar">
+      <h2 class="codex-h">第1章 暦になった男 ─ <span class="en">THE MAN WHO BECAME A CALENDAR</span></h2>
+      <p class="codex-p">首都圏の「月に一度の戦争」を体現していたのが、名物の<a href="../database/characters.html#granga-pilot">グランガパイロット</a>である。毎月月初、律儀に単機で現れては撃墜されていく帝国の搭乗員。実力は並以下でありながら何度爆散しても絆創膏一つで帰ってくるこの男を、前線は迎撃対象というより暦として扱うようになっていた。防空部隊の詰所では彼の到着時刻を賭けの対象にする者すらいたと記録されている。</p>
+      <p class="codex-p">欠席は11か月間で二度だけである。3回目の襲来予定日、彼は<a href="../database/glossary.html#state-tigerleaves">タイガーリーブス州</a>の降雪地帯へ出向いており首都圏に現れなかった。7回目は夏風邪をこじらせたのか出撃の途中で力尽き、その月のCDFの任務は郊外で横転したグランガの処理だけで終わっている。いずれの月も前線には「調子が狂う」という声が残った。守る側が攻め手の欠勤を案じるという奇妙な均衡が、この11か月の首都圏の戦争であった。</p>
+    </article>
+
+    <article class="codex-entry" id="absence">
+      <h2 class="codex-h">第2章 来なかった襲撃 ─ <span class="en">THE RAID THAT NEVER CAME</span></h2>
+      <p class="codex-p">11か月目の襲撃予想日は、静かな朝であった。定刻を過ぎてもレーダーに反応はない。昼を回っても警報は鳴らなかった。詰所の賭けは全員が外れ、当直の防空司令のもとには「異常なし」の報告だけが積み上がっていった。</p>
+      <p class="codex-p">この「異常なし」の羅列こそが異常である。当直司令はそう判断した。開戦以来一度として狂わなかった暦が狂ったのである。司令は<a href="../characters/pepper.html">ペパー将軍</a>へ伝令と戦況予測を送るとともに、念のためにと警戒網の探知区域の拡大を具申した。後にこの具申は「本戦で最も安く、最も多くの命を救った決裁」と評されることになる。探知区域が広げられて数時間後、<a href="../database/sectors.html#beta">セクターβ</a>深部の観測班が正体不明の重力異常を検出した。</p>
+    </article>
+
+    <article class="codex-entry" id="hole">
+      <h2 class="codex-h">第3章 空間の穴 ─ <span class="en">THE HOLE IN SPACE</span></h2>
+      <p class="codex-p">異常の正体は、宙域に開きつつある空間跳躍の穴であった。観測班は当初この報告を上げることを躊躇したと証言している。ライラットの空間跳躍は<a href="../database/glossary.html#warp-route">ビーコン航路</a>に沿ってのみ成立するのが現行理論であり、ビーコンの存在しない宙域に穴が「開く」ことは理論の外にあったからである。だが観測値は覆らなかった。穴は観測のたびに拡大を続けていた。</p>
+      <p class="codex-p">報告を受けたペパー将軍の脳裏には、一つの偵察報告がよぎっていたという。追放先の<a href="../database/locations.html#venom">ベノム</a>軌道で<a href="../database/characters.html#andorf">アンドルフ</a>が過剰というほかない規模の艦隊と、惑星をも破壊しうる超兵器を建造している。開戦前から幾度も上げられながら、規模が非現実的に過ぎるとして評価の定まらなかったあの報告である。将軍は後年この時の心境を短く語っている。「胸騒ぎというものを、わしはあの日初めて本気で信じた」。</p>
+    </article>
+
+    <article class="codex-entry" id="troilus">
+      <h2 class="codex-h">第4章 カイザー・トロイラス ─ <span class="en">KAISER TROILUS</span></h2>
+      <p class="codex-p">哨戒機で対処できる規模ではないと判断した将軍は、コーネリア軌道に停泊していた<a href="../database/military.html#starblade">スターブレード艦隊</a>第7艦「カイザー・トロイラス」を穴の正面へ派遣した。コーネリア最古の州<a href="../database/glossary.html#state-troilus">トロイラス</a>の名を冠する歴戦の艦である。乗員たちは「穴が開き切る前に蓋をする」つもりで展開位置についたと交信記録に残っている。</p>
+      <p class="codex-p">開ききった穴から現れたのは、蓋のできる相手ではなかった。無人戦闘機と自動操縦のドロイド艦隊が際限なく吐き出され、第7艦の迎撃網を正面から食い破ったのである。交戦記録の解析は全乗員の技量に問題がなかったことを示している。問題は敵の側にあった。出力、機動、装甲のいずれもが現行世代の水準を一枚も二枚も超えており、既知のどの帝国兵器の系譜にも一致しなかった。交戦記録に残る士官の一言が、この日の衝撃の全てを物語っている。<b>「帝国の軍事力が秘密裏にここまで進歩していたとは……」</b></p>
+      <p class="codex-p">カイザー・トロイラスは僚艦の到着を待たず沈黙した。轟沈ではなく各区画が順に沈黙していく最期であり、脱出艇の射出は確認されている。この艦が稼いだ時間が後の市民避難の完了に直結したことを、記録は明記しなければならない。</p>
+    </article>
+
+    <article class="codex-entry" id="falling-sky">
+      <h2 class="codex-h">第5章 落ちる空 ─ <span class="en">THE FALLING SKY</span></h2>
+      <p class="codex-p">無人艦隊はコーネリアシティへ直進した。ここで防衛計画の根幹が崩れていることが明らかになる。穴は<a href="../database/glossary.html#red-moon">ダリス</a>を起点とする本土防衛層の内側に開いており、コーネリアが建国以来頼みとしてきた最後の盾は素通しになっていたのである。帝国が11か月間グランガ程度しか送り込めなかった理由そのものが、この日は初めから存在しなかった。</p>
+      <p class="codex-p">CDFは総力で抗戦した。軌道の艦艇は単艦ごとに殿を務め、防空部隊は市街上空で無人機の群れを引き受け続けた。この決死の抵抗によって市民の避難は完了している。だが制空権は刻一刻と削られ、拠点は一つまた一つと制圧されていった。管制記録のこの時間帯には、応答のなくなった部隊のコールサインを呼び続ける管制官たちの声が延々と残されている。首都の陥落は時間の問題であった。</p>
+    </article>
+
+    <article class="codex-entry" id="gamble">
+      <h2 class="codex-h">第6章 最後の一手 ─ <span class="en">THE LAST CARD</span></h2>
+      <p class="codex-p">ここでペパー将軍は起死回生の一手に賭けた。かつてライラット星系を<a href="../database/factions.html#iga">独立星系連合</a>や分離主義勢力の脅威から幾度も救ってきた伝説の遊撃隊、その名を継ぐ4人である。先代の<a href="../database/military.html#starfox">スターフォックス</a>は<a href="../database/glossary.html#venom-recon">ベノム偵察作戦</a>の最中に<a href="../database/characters.html#pigma">ピグマ・デンガー</a>の離反によって壊滅し、隊長<a href="../database/characters.html#james">ジェームズ・マクラウド</a>は消息を絶っていた。その忘れ形見<a href="../database/characters.html#fox">フォックス・マクラウド</a>が参謀<a href="../database/characters.html#peppy">ペッピー・ヘア</a>、天才メカニック<a href="../database/characters.html#slippy">スリッピー・トード</a>、飛行族上がりの凄腕パイロット<a href="../database/characters.html#falco">ファルコ・ランバルディ</a>とともに再結成した新生スターフォックスである。どの組織にも属さず自らの信じる正義に従って依頼を受ける駆け出しの遊撃隊は、しかし帝国との緒戦で幾度も窮地の戦況を塗り替え、その実力は既に軍部の認めるところとなっていた。</p>
+      <p class="codex-p">それでも首都の防衛を一介の傭兵部隊に託すという決定に、司令部の異論は避けられなかった。記録に残るペパーの返答は簡潔である。「肩書が空を取り返してくれるなら、わしは今すぐ全ての勲章を溶かして弾にする」。かくして星系で最も有名な音声記録の一つが、この日の管制記録に刻まれることになった。</p>
+      <p class="codex-p"><b>「急いでくれ、スターフォックスの諸君！　アンドルフが宣戦布告をしてきた。もはや頼みは君たちだけだ。宇宙の平和を頼む！」</b></p>
+    </article>
+
+    <article class="codex-entry" id="sortie">
+      <h2 class="codex-h">第7章 出撃 ─ <span class="en">SORTIE</span></h2>
+      <p class="codex-p">4機の<a href="../database/military.html#arwing">アーウィン</a>は市街上空へ直行した。緒戦の空域で新生スターフォックスが示したのは、単純な機体性能の差ではない。無人機には操縦者の癖が存在しない。ペッピーはそこに着目し、機動の規則性を読み切る迎撃順序を各機に配分した。ファルコは群れの誘導役を撃ち抜いて編隊制御そのものを崩し、スリッピーは撃墜した機体の解析から敵のシールド特性をリアルタイムで割り出して全機へ共有した。そしてフォックスの4号機が、崩れた敵陣の綻びを正確に縫って中枢を潰していく。管制記録上、市街の制圧拠点は交戦開始からわずかな時間で次々と奪還されている。</p>
+      <p class="codex-p">応答の絶えていた周波数に部隊の報告が戻り始め、管制室の空気は明らかに変わった。誰もが確信しかけていた。首都の空は取り戻された、と考えた者を責めることはできない。地鳴りが響いたのはその時である。</p>
+    </article>
+
+    <article class="codex-entry" id="eye">
+      <h2 class="codex-h">第8章 目玉 ─ <span class="en">THE EYE</span></h2>
+      <p class="codex-p">セクターβの穴から、正体不明の巨大構造体がワープアウトした。月に匹敵する直径。周囲の無人艦隊を従える挙動。そして中央に据えられた、瞳孔としか言いようのない機構である。管制の解析は即座に結論を返した。かつて第6惑星ステファノーを消滅させた<a href="../database/glossary.html#stephano">超兵器</a>と同じ系統、すなわち惑星破壊級「プラネット・バスター」の再来である。</p>
+      <p class="codex-p">構造体は最後まで正式な識別名を与えられなかった。前線と管制がこの構造体を呼んだ名称は、後述するフォックス・マクラウドの通信に由来する「目玉」である。戦史記録としては異例の俗称がそのまま定着した事実に、この日の現場の切迫が表れている。</p>
+    </article>
+
+    <article class="codex-entry" id="seven-minutes">
+      <h2 class="codex-h">第9章 15分間 ─ <span class="en">15 MINUTES</span></h2>
+      <p class="codex-p">瞳孔が青白く輝き始め、エネルギーの急速充填が観測された。解析班が算定した照射までの猶予は15分。艦隊にも防空部隊にも、15分で月サイズの構造体をどうにかできる手段は存在しない。空を見上げて全てを理解したCDFの管制官たちは、持ち場を離れないまま家族や親類への通信を繋ぎ始めたと記録されている。ある若い管制官は自宅への回線を開いたまま、最後まで避難誘導の放送を読み上げ続けた。この日の管制室を語る証言で必ず触れられる光景である。</p>
+      <p class="codex-p">ペパー将軍は力の抜けた膝から崩れ落ちたと伝えられる。あの日アンドルフを、友を庇った自分の責任なのか。周囲の誰も掛ける言葉を持たなかった。その失意の管制室に、電光のような通信が割り込んだのである。</p>
+      <p class="codex-p"><b>「聞こえるか！　こちらフォックス・マクラウド。コーネリアから空を奪った、あの気味の悪い目玉を撃墜する！」</b><br>
+      <b>「あの星に突入するのにCDFのグラビトロン加速器を使う許可をもらいたい。難しいことはうちの天才メカニックが何とかしてくれるさ」</b><br>
+      <b>「ペッピー！　そこの管制官たちをお得意の『おやじの格言』ってやつで励ましてやりな」</b><br>
+      <b>「ファルコ！　CDFの管制塔に無人機の群れが集まってるみたいだ。もう、こっちの作戦に気づいてるかもしれない。俺が帰ってくるまでくたばるなよ！」</b></p>
+    </article>
+
+    <article class="codex-entry" id="catapult">
+      <h2 class="codex-h">第10章 加速器 ─ <span class="en">THE GRAVITRON CATAPULT</span></h2>
+      <p class="codex-p">CDF専用グラビトロン加速器は、艦隊の緊急展開のために建造された軌道上の質量加速器であり、その座標設定は幾重にも封じられた軍事機密である。スリッピー・トードはその封印を、管制側が許可の可否を検討している間に書き換え終えた。管制記録にはロックの解除警報と、当のスリッピーののんきな報告だけが残されている。<b>「座標書き換え完了！　射出方向、目玉のど真ん中！　あとは頼んだよ、フォックス！」</b></p>
+      <p class="codex-p">承認は事後になった。後の査問で本件は「緊急避難」として不問に付されている。査問記録の末尾には、審理を担当した士官の非公式な一言が残されている。「15分で軍の錠前を開ける天才が敵側にいなかったことを、我々は感謝すべきである」。</p>
+      <p class="codex-p">残された時間はまだ辛うじて10分あった。フォックス・マクラウドの4号機は加速器の射出軌道に乗り、単騎で超兵器へ向けて直進した。</p>
+    </article>
+
+    <article class="codex-entry" id="two-shadows">
+      <h2 class="codex-h">第11章 二つの機影 ─ <span class="en">TWO SHADOWS</span></h2>
+      <p class="codex-p">射出を見送った管制室で、複数の人間が同じものを見ている。突入するフォックス機の前方を先導する、もう一機のアーウィンの機影である。目撃者にはペパー将軍本人が含まれる。だがレーダーが捉えていたアーウィンは終始1機であり、僚機3機はいずれも市街上空にあった。将軍は後年の回想でこう語っている。<b>「もう一機、いたんだ。わしの目には確かに、もう一機映っとった」</b>。</p>
+      <p class="codex-p">同時刻、地上では作戦の露見が現実になっていた。無人機の群れが管制塔へ集結し始めたのである。加速器の管制を担う塔が落ちれば射出軌道の維持もフォックスの帰還誘導も失われる。迎え撃ったのはファルコとペッピーの2機であった。塔を背にした防空戦は熾烈を極めたが、ファルコは終始軽口を絶やさなかったと管制官たちは証言している。「へっ、管制塔の一つも守れねぇで、空の遊撃屋が名乗れるかよ」。ペッピーは乱戦の合間に管制の周波数へ割り込み、約束どおり格言を届けている。<b>「格言その17！　『下を向くな、計器が読めん』　──顔を上げい、諸君の仕事はまだ残っとる！」</b>。この放送を境に、避難シェルターの各所で管制放送への応答が戻り始めたという。</p>
+    </article>
+
+    <article class="codex-entry" id="silence">
+      <h2 class="codex-h">第12章 沈黙 ─ <span class="en">SILENCE</span></h2>
+      <p class="codex-p">フォックス機のテレメトリは、構造体の外殻の間隙へ進入した時点で途絶した。管制官が残り時間を読み上げる声だけが管制室に響いた。残り3分。残り2分。残り1分。読み上げが止まったのは、瞳孔の輝きが不意に翳ったからである。</p>
+      <p class="codex-p">超兵器は沈黙した。そして数刻の後、周囲の無人艦隊と空間跳躍の穴を巻き添えに、コーネリア軌道上で大爆発を起こして消滅した。内部で何が行われたのかを示す公式記録は存在しない。フォックス本人も詳細を語っていない。帰還後の報告で彼が残した言葉は一言である。<b>「──終わったぜ。空は返してもらった」</b>。</p>
+      <p class="codex-p">CDF管制塔の前に帰還したアーウィンを、その場の全員が歓声で迎えた。コーネリアシティには勝利を告げる鬨の声が鳴り響き、避難シェルターから戻る市民の列は、夜を徹して続いたと記録されている。</p>
+    </article>
+
+    <article class="codex-entry" id="aftermath">
+      <h2 class="codex-h">第13章 戦いの後 ─ <span class="en">AFTERMATH</span></h2>
+      <p class="codex-p">この一戦はスターフォックスの知名度を一夜にして押し上げ、一遊撃隊にすぎない彼らを軍が正式に戦術へ組み込む決定的な理由となった。のちの<a href="../database/glossary.html#fortuna-campaign">フォルトナ戦役</a>やカタリナ防空戦をはじめ、CDFの作戦立案に「遊撃隊による中枢打撃」という選択肢が常設されるのは本戦以降である。</p>
+      <p class="codex-p">防衛体制も根本から見直された。ビーコンなしの空間跳躍という理論外の侵入経路が実在した以上、防衛層の「内側」という概念は書き換えを迫られた。セクターβには跳躍反応の常時監視網が敷かれ、重力異常の早期探知は首都防空の最優先項目へ格上げされている。カイザー・トロイラスの乗員は艦と共に時間を稼いだ功績で顕彰され、その名は次級艦へ継承されることが決定した。</p>
+      <p class="codex-p">なお翌月の月初、グランガパイロットは何事もなかったかのように定例の襲来を再開している。撃退にあたった防空部隊の戦闘詳報には「平常運転。むしろ安堵」という一文が公文書らしからぬ率直さで残されている。</p>
+    </article>
+
+    <article class="codex-entry" id="legend">
+      <h2 class="codex-h">第14章 ジェームズの再来 ─ <span class="en">RETURN OF JAMES</span></h2>
+      <p class="codex-p">本戦は作戦研究上の未解決事項を複数残している。第一に、突入時の「二つ目の機影」である。該当時刻の管制記録は超兵器の爆発に伴う異常出力で大きく乱れており、機影の同定は今日まで成っていない。わずかに残る光学記録の解析では、機影の輪郭は現行のアーウィンと一致せず、むしろ旧世代の機体形状に近いと報告された。この一点が伝承に決定的な拍車を掛けている。</p>
+      <p class="codex-p">第二に、乱れた交信記録の断片に残る、登録外の周波数による短い音声である。<b>「決してあきらめるな　己の可能性を信じろ」</b>。声紋の照合は記録の損傷により不能であった。第三に、突入直前の十数秒間、フォックス機の航法時計が管制側と同期を失っている。帰還後の照合では機体側の時計が僅かに進んでおり、穴の重力場による相対論的効果と説明されたが、ずれの符号が理論予測と逆であったことは報告書の脚注に小さく残るのみである。</p>
+      <p class="codex-p">そして第四に、帝国の沈黙である。首都攻撃は政治宣伝の格好の材料であるにもかかわらず、帝国は本作戦を今日まで一度も公式声明で誇示していない。<span class="redacted">機密付記: 開戦以降に鹵獲された帝国軍の記録を精査しても、本侵攻を計画・指揮した部署は特定されていない。回収された無人機残骸の製造番号は帝国の現行系譜と一致する一方、照合可能な登録簿はいずれも該当番号に「未製造」を返した。本件の解析は現在も継続中である</span>。</p>
+      <p class="codex-p">市民の間では、あの機影を消息を絶った先代隊長の帰還と重ねて「ジェームズの再来」と呼ぶ伝承が定着している。真相を確かめる術は残されていない。それでもあの夜空を見上げていた市民の多くは、超兵器へ吸い込まれていく二つの機影が並んで飛ぶのを確かに見たと今も語り続けている。</p>
+    </article>
+
+    <article class="codex-entry" id="epilogue">
+      <h2 class="codex-h">結 ─ 記録の後に <span class="en">EPILOGUE</span></h2>
+      <p class="codex-p">本記録はコーネリア防衛戦の公式編纂記録である。数々の謎は謎のまま保管される。それが記録というものの務めであり、解かれる日が来るとすればそれは本記録の続きが書かれる日である。</p>
+      <p class="codex-p">確かなことは多くない。首都は守られた。空は取り返された。そして駆け出しの遊撃隊は、この夜を境に星系の誰もが知る名前になった。新生スターフォックスの伝説はここから始まったのである。</p>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(150,200,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

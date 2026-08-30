@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIOWEAPON — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#88cc33;--accent:#bbee66;--border:rgba(136,204,51,0.32);--border-hi:rgba(136,204,51,0.7);--dim:#2a3a10;--dim2:#151d08; }
+    .p-title    { color: #f2ffe0; text-shadow: 0 0 50px rgba(136,204,51,0.35); }
+    .p-tagline  { border-color: #88cc33; color: #88cc33; }
+    .terminal-hdr { color: #bbee66; }
+    .terminal-hdr::before { background: #bbee66; box-shadow: 0 0 8px #bbee66; }
+    .dk { color: #88cc33; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-08 / BIOWEAPON — バイオウェポン ]</div>
+    <div class="header-status"><span class="blink" style="color:#bbee66;">●</span> HOSTILE — MULTIPLE UNITS</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — BIOWEAPON — ORGANIC WEAPON SERIES — ANDORF DESIGN</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0008 — CLEARANCE: PARTIAL — SEE FILE VNM-GEO-04</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-08 / ARMORY FILE ]</div>
+        <div class="p-name-jp">バイオウェポン (BIOWEAPON)</div>
+        <h1 class="p-title">BIOWEAPON</h1>
+        <div class="p-tagline">THE FLESH THAT SERVES THE MACHINE ── 生体兵器群 ─ アンドルフ設計</div>
+        <p class="p-short-desc">生体に制御用機械を埋め込んだ、アンドルフ設計の兵器群の総称。汚染環境でも恒星表面でも稼働する柔軟性こそが、その戦略的価値であり脅威である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 08 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">BIOWEAPON / バイオウェポン</td></tr><tr><td class="dk">CLASS</td><td class="dv">機械制御型生体兵器（総称）</td></tr><tr><td class="dk">DESIGNER</td><td class="dv"><a href="../database/characters.html#andorf">アンドルフ・ボウマン</a></td></tr><tr><td class="dk">CONTROL</td><td class="dv">埋込式制御チップ＋神経接続機関</td></tr><tr><td class="dk">TRAIT</td><td class="dv">極限環境適応（汚染域・恒星表面など）</td></tr><tr><td class="dk">CONFIRMED</td><td class="dv bad">バクーン（アクアス・撃破）/ サンガー（ソーラ）/ ゾネス変異生物群 — <a href="goras.html">ゴラス</a>は再分類</td></tr><tr><td class="dk">SIDE EFFECT</td><td class="dv warn">汚染物質の散布（侵略的外来種化）</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../database/factions.html#venom-empire">ベノム帝国軍</a></td></tr><tr><td class="dk">ANALYSIS</td><td class="dv">フィチナ情報戦略本部で継続中</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 複数個体が活動中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING -- 91 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 91%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(136,204,51,0.55);">
+        <img src="" alt="BIOWEAPON" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ORGANIC WEAPON SERIES</span>
+            <span class="tg-jp">生体兵器群 バイオウェポン</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">あれは獣ではない。獣の形をした、命令だ。<span class="tg-note note">-アクアス戦 帰投報告より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">最も恐ろしいのは奴らの牙ではない。どんな地獄でも平然と生きていることだ<span class="lore-quote-src">― CDF生物兵器対策班 教育資料より</span></span></p>
+  <p class="lore-p">バイオウェポン（Bioweapon）は、<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a> が開発した「生体に制御用機械を埋め込んだ兵器」の総称である。全個体に共通するのは重度汚染環境や恒星表面といった極限環境でも稼働を継続できる異常な柔軟性であり、艦隊も歩兵も展開できない場所で戦力を維持できるという事実そのものが戦略的価値と脅威度に直結している。</p>
+  <p class="lore-p">現時点で確認されている主要な脅威とされる個体は、<a href="../database/locations.html#aquas">アクアス</a> の海に投入された海棲個体<a href="#bacoon">バクーン</a>、<a href="../database/locations.html#solar">ソーラ</a> の溶岩海で確認された恒星適応個体<a href="#sangar">サンガー</a>、そして占領下<a href="../database/locations.html#zoness">ゾネス</a> の海で増え続ける<a href="#zoness-mutants">変異生物群</a>である。<a href="../database/locations.html#venom">ベノム</a> の地表を覆う<a href="venom-cell.html">増殖細胞</a>も同系統とみられている。なお<a href="../database/locations.html#titania">タイタニア</a> の<a href="goras.html">ゴラス</a>も長らく本兵器群の一個体と分類されてきたが、近年の解析は本兵器群に先行する古代由来の別系統を示唆しており再分類の上で個別記録に移されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p">基幹となるのは生体の神経系に接続された制御チップである。個体の本能を残したまま行動目標だけを上書きするため、バイオウェポンは補給も命令通信も不要で「放し飼いにできる兵器」として運用できる。</p>
+  <p class="lore-p">多くの個体は体組織から汚染物質を分泌し展開先の生態系を作り変える「侵略的外来種」としての側面を併せ持つ。占領地の環境そのものを帝国仕様に変えていくという、兵器でありながらテラフォーミング装置でもあるという二面性がこの兵器群の設計思想の根幹にある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">個体記録: バクーン ─ BACOON</h3>
+  <p class="lore-p" id="bacoon"><strong>バクーン</strong>──<a href="../database/locations.html#aquas">アクアス</a> の深海に持ち込まれた超大型の海棲個体であり、星系が「バイオウェポン」の名を知るきっかけとなった海洋汚染事件の元凶である。外見は小山ほど大きさを誇る巨大な二枚貝と言える。自らは海底から動かない代わりに分泌する毒素と使役する群体生物で海を作り変えていく設計で保護区の海に異変が広がり始めた当時、原因が一個の生物であると信じた者はいなかった。</p>
+  <p class="lore-p">中枢を守る殻は艦砲すら弾く厚みを持ち、周囲には触手状の眷属と機雷のように浮遊する真珠塊が幾重にも展開されていた。決着をつけたのは特殊潜航艇<a href="bluemarine.html">ブルーマリン</a>である。単艇で深海へ潜航した同艇が照明魚雷で闇を裂き、開いた殻の内側を撃ち抜いた顛末は<a href="../planets/aquas.html">アクアスの項</a>に詳しい。撃破後の残骸が解析班に残した「置き土産」については解析の項で触れる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">個体記録: サンガー ─ SANGAR</h3>
+  <p class="lore-p" id="sangar"><strong>サンガー</strong>──<a href="../database/locations.html#solar">ソーラ</a> の恒星表面を遊泳する恒星適応個体である。開戦後、外周観測網が表面直下を高速で移動する巨大な「影」を捉えたことで存在が浮上し、<a href="../database/military.html#cdf">CDF</a>の依頼を受けた<a href="../database/military.html#starfox">スターフォックス</a>が<a href="../database/glossary.html#solar-survey">調査任務</a>にあたった。マグマに耐える外皮と鎌状の両腕を持ち腕の一振りでプロミネンスを呼び、螺旋状の火炎と岩塊を吐いたという交戦時の証言はもはや兵器というより天災の記述に近い。</p>
+  <p class="lore-p">恒星表面という通常の艦隊も歩兵も永遠に立ち入れない場所で稼働する本個体は、バイオウェポンの極限環境適応が行き着いた到達点と評される。任務の結末は公開されていないが<span class="redacted">交戦の末に鎮静化・現在は深部へ潜行したまま浮上していない。なおソーラには観測史とともに古い生命体目撃の記録があり、本個体と在来の「何か」との関係については結論が出ていない（ソーラの項を参照）</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">変異生物群 ─ ZONESS MUTANTS</h3>
+  <p class="lore-p" id="zoness-mutants"><strong>ゾネス変異生物群</strong>──上記の2個体と異なり、設計された兵器ではない。帝国が<a href="../planets/zoness.html">ゾネス</a> の海へ投棄する汚染物質には自然由来でない生体触媒が混ぜられており、これを浴びた在来生物が巨大化・凶暴化した変異体の総称である。かつて観光客に愛された羽根つき魚は今や翼長数smの群れとなって哨戒艇に体当たりし、環礁の主と呼ばれた大型種の目撃報告は年々その巨大さを増している。</p>
+  <p class="lore-p">研究班はこの海を「巨大な培養槽」と呼ぶ。完成品を造るのではなく海そのものに兵器候補を生ませ続ける生産方式であり、事実なら帝国は撃破されても補充の利く生体戦力を際限なく持つことになる。<a href="../database/glossary.html#zoness-recon">強行偵察</a>が持ち帰った生体触媒の試料はこの仮説の最初の物証となった。なお駐留部隊向けの<a href="../database/glossary.html#zoness-sea-base">海上基地</a>の売店には今も羽根つき魚のフライ弁当が並んでおり、魚の出所を深く考えないことが基地の作法とされている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">解析と異説 ─ ANALYSIS</h3>
+  <p class="lore-p">解析が進むにつれ奇妙な報告が増えている。<a href="../database/locations.html#aquas">アクアス</a> で撃破されたバクーンの残骸解析では制御チップを適切に動作させた場合、この個体はむしろ海の汚染を吸収し真珠として安全に固形化する機能を持つことが判明した。つまり現在ベノム帝国軍が使役している個体は、本来の使用用途ではないチューニングを意図的に施されているという見方が成り立つのである。</p>
+  <p class="lore-p"><span class="redacted">情報戦略本部 注記: この知見はファイルVNM-GEO-04（コスモクリーナー仮説）を強く補強する。バイオウェポンの原型が兵器ではなく環境浄化ユニットであるならば、『誰が』『いつ』それを兵器に転用したのかが本戦争の最重要の問いとなる。アンドルフ拘留時期と設計履歴の照合を継続中</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p"><a href="goras.html">ゴラス</a> の細胞サンプルと<a href="../database/locations.html#venom">ベノム</a> 遺跡の壁画に描かれた「オーバーロードの従える獣」の形態的類似を指摘する研究者がいる。学会は沈黙しているが、論文は撤回されていない──この星系では、それは「まだ生きている」という意味である。</p>
+  <p class="lore-p">対バイオウェポン戦の教範の最終頁には、対策でも戦訓でもなく、ただ一行こう書かれている。「撃つ前に思い出せ。あれは選んでそこにいるのではない」。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

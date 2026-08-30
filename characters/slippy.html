@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLIPPY TOAD — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#66dd66;--accent:#aaf0aa;--border:rgba(102,221,102,0.32);--border-hi:rgba(102,221,102,0.7);--dim:#103a10;--dim2:#081d08; }
+    .p-title    { color: #eeffee; text-shadow: 0 0 50px rgba(102,221,102,0.35); }
+    .p-tagline  { border-color: #66dd66; color: #66dd66; }
+    .terminal-hdr { color: #aaf0aa; }
+    .terminal-hdr::before { background: #aaf0aa; box-shadow: 0 0 8px #aaf0aa; }
+    .dk { color: #66dd66; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-04 / SLIPPY TOAD — スリッピー・トード ]</div>
+    <div class="header-status">● ACTIVE — ENGINEER</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — SLIPPY TOAD — STAR FOX TEAM — MECHANIC AND ANALYST</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0004 — CLEARANCE: OPEN — SHIELD ANALYSIS SPECIALIST</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-04 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">スリッピー・トード (SLIPPY TOAD)</div>
+        <h1 class="p-title">SLIPPY TOAD</h1>
+        <div class="p-tagline">THE GENIUS IN THE HANGAR ── スターフォックス メカニック</div>
+        <p class="p-short-desc">SD社主任設計技師の息子にして、シールド解析の天才。操縦の腕前だけは、隊の永遠の懸案事項。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 04 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">SLIPPY TOAD / スリッピー・トード</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#heketoid">ヘケトイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">18歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#corneria">コーネリア</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#starfox">スターフォックス</a></td></tr><tr><td class="dk">ROLE</td><td class="dv">メカニック / 兵器解析 / アーウィン5号機</td></tr><tr><td class="dk">FATHER</td><td class="dv">ベルツィーノ・トード（SD社主任技師）</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 個人事業も兼業</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">TECH RATING -- 98 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 98%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(102,221,102,0.55);">
+        <img src="../resource/Character_image/character_slippy.png" alt="SLIPPY TOAD" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR FOX — MECHANIC</span>
+            <span class="tg-jp">スターフォックス メカニック兼解析担当</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">敵のシールド解析、完了！　あとは頼んだよ、フォックス！<span class="tg-note note">-戦域通信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">撃つのはフォックス、罵るのはファルコ、諭すのはペッピー。勝たせているのはスリッピーだ<span class="lore-quote-src">― CDF技術部の内部評より</span></span></p>
+  <p class="lore-p">スリッピー・トードは<a href="../database/military.html#starfox">スターフォックス</a> のメカニックを務める天才技術者である。<a href="../database/locations.html#corneria">コーネリア</a> の名門トード家に生まれ、<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a> 主任設計技師ベルツィーノ・トードを父に<a href="../database/glossary.html#mining-guild">グリッピア・ワークス社</a> 会長<a href="../database/characters.html#grippy">グリッピー・トード</a> を叔父に持つ。何かに熱中すると止まらないトード家の血は彼の場合「機械いじり」に向いた。</p>
+  <p class="lore-p">敵兵器のシールドを戦闘中にリアルタイム解析する技術は星系でも彼にしかできない芸当であり、僚機のHUDに表示される「敵耐久ゲージ」は全て彼の置き土産である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">生い立ち ─ EARLY LIFE</h3>
+  <p class="lore-p">名門トード家の長男としてコーネリアに生まれた。一族の始祖はセティボスの重力航路問題を解いた天才数学者<a href="toad-family.html">イワッチー・トード</a> である。以来「トードの子は歯車を握って生まれる」と言われる技術者の家系であり、父は<a href="../corporations/space-dynamics.html">SD社</a> 主任設計技師ベルツィーノ、叔父は惑星を丸ごと買った実業家<a href="../database/characters.html#grippy">グリッピー</a> である。</p>
+  <p class="lore-p">幼少期はSD社の風洞試験場が保育室代わりだった。6歳で最初のロボットを組み、8歳で自宅の家事ロボットを無断で「防犯仕様」に改良して配達員を三人撃退し、11歳で父の設計した試作シールドの欠陥を夕食の席で指摘した。ベルツィーノは翌日それを修正し、社内報にただ一言「息子に感謝する」と記している。</p>
+  <p class="lore-p">周囲が押し付ける「イワッチーの再来」の称号を本人はひどく嫌った。向かうのは数式より工具、理論より現場である。家伝の才能が彼の中で行き着いた先は、誰かの乗る機体を絶対に落とさないという極めて実践的な執念だった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">12歳での士官学校入学は本人の発案ではない。才能を認めながらも10秒と目を離せない息子に途方に暮れた父が、上司<a href="../database/characters.html#yaru">ヤル・デ・ポン</a> への相談の末に辿り着いた答えである。もっとも名門トード家をもってしてもコーネリアシティの本校へねじ込むことはかなわず、道を開いたのは父の親友でもあった顧客ロバート・グレイ…すなわち<a href="../database/characters.html#bill">ビル・グレイ</a> の父の推薦状だった。かくして入学先は<a href="../planets/papetoon.html">パペトゥーン</a> の第6分校に決まる。人生で初めて一人旅立つ息子を見送る両親は宇宙港で20歩ごとに記念写真を撮り、周囲に今生の別れと誤解されたという。</p>
+  <p class="lore-p">入学初日に教練シミュレータの難度設定を勝手に書き換えて処分されかけたところを、隣の席の<a href="../database/characters.html#fox">フォックス・マクラウド</a> が「機体側の欠陥を証明しただけだ」と庇ったのが生涯の親友との出会いである。以来座学と工学は歴代最高評価、操縦実技は歴代最低評価という前代未聞の成績で教官陣を悩ませた。在校中はあらゆる種類の騒動を起こし、校内で彼の名を知らぬ者は一人もいなかったと伝えられる（<a href="../planets/papetoon.html">パペトゥーンの項</a>を参照）。</p>
+  <p class="lore-p">14歳の年にフォックスが父の隊を継ぐため退学すると、迷わずこれに付いていき<a href="../database/military.html#starfox">スターフォックス</a> 再結成の名簿へ最初に名を連ねた。知らせを受けた両親はショックのあまり気を失い、食事も御代わり2杯までしか喉を通らないほど憔悴したと伝えられる。後年報道で息子の活躍を目にした二人が「やっとあの子が、自分のままで活躍できる場所ができた」と漏らすまで心労は続くことになる。</p>
+  <p class="lore-p">現在は隊務の傍ら、個人事業主として叔父の<a href="../database/locations.html#grippia">グリッピア</a> の自動警備ロボット設計・保守を受注している。あくまで個人の契約でスターフォックスとは無関係──というのがトード家双方の公式見解である。この兼業が招いた<a href="../database/characters.html#pigma">ピグマ</a> との「グリッピア攻防戦」については<a href="../planets/grippia.html">グリッピアの項</a>に詳しい。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">開発 ─ ENGINEERING</h3>
+  <p class="lore-p">代表作は星系でほぼ唯一の小型戦闘潜航艇<a href="../weapons/bluemarine.html">ブルーマリン</a> である。軍隊が長らく戦術の空白地帯としてきた「海の中」をたった一隻で埋めるために設計され、<a href="../database/locations.html#aquas">アクアス</a> 掃討戦では単艇で深海へ潜航し群体の中枢たる巨大生体兵器を仕留めている（<a href="../weapons/bluemarine.html">ブルーマリンの項</a>を参照）。</p>
+  <p class="lore-p">隊の<a href="../weapons/arwing.html">アーウィン</a> は彼の大規模チューニングによって管制システムがもはや別物といえる性能に達しており、<a href="../database/military.html#cdf">CDF</a>は同等の改造を行えるメカニックを星系でスターウルフの<a href="../database/characters.html#pigma">ピグマ・デンガー</a> ただ一人と分析している。<a href="falco.html">ファルコ</a> の6号機はトード家の伝手を総動員して仕立てた渾身の特注機である。母艦<a href="../weapons/greatfox.html">グレートフォックス</a> にはピグマと彼…二代のメカニックの魔改造が積み重なり、時として最新型を超える性能を見せる。二人が互いの仕事を褒めた記録はないが、互いの改修箇所だけは決して剥がさないと整備班は証言する。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p"><a href="../other/corneria-defense.html">コーネリア防衛戦</a> では撃墜した無人機の解析から敵のシールド特性をリアルタイムで割り出し全機へ共有し、大群を捌く迎撃網の一角を担った。さらにCDF専用グラビトロン加速器の幾重にも封じられた座標設定を、管制側が許可の可否を検討している間に書き換え終えている。管制記録に残るのはロックの解除警報と本人ののんきな報告だけである。</p>
+  <p class="lore-p"><a href="../database/locations.html#titania">タイタニア</a> では生体兵器に乗機ごと捕獲され、砂漠を単機横断してきたフォックスに救出された。この「借り」を本人は今も気にしており、以後の整備品質がさらに上がったと整備班は証言する。</p>
+  <p class="lore-p">戦闘での撃墜数は隊内最少だが、彼の解析データが寄与した撃墜数を合算すると実質的な戦果は隊内最多になるという試算がある。<a href="../other/fortuna-survey-1.html">フォルトナ調査記録</a> では半日でアソーカ・ソンテイル・スノーホーンの3言語に対応する翻訳装置を組み上げ、フォックスの単独調査行を陰から支えた。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">父ベルツィーノとの親子喧嘩は「星系で最も高度な技術論争」として社内で観戦者が出るほどだが、翌日には必ず共同で新型パーツが生まれている。</p>
+  <p class="lore-p">彼の操縦を見かねた<a href="../database/characters.html#yaru">ヤル・デ・ポン</a> が特注の操縦補助システムを組んだことがあるが、スリッピーは「僕の飛び方が学習される前に」自分で解析して無効化した。天才の使いどころを間違えているというのが隊の総意である。</p>
+  <p class="lore-p">オカルト専門誌<a href="../database/glossary.html#nu-magazine">「ヌー」</a>の筋金入りのファンであり、毎回ハガキを書いてまで投稿を続けている。グレートフォックスの自室には本誌がピラミッドのように積み上がっており、最近は特集「グレートウォールの高エネルギーの正体を追え！」に首ったけだという。</p>
+  <p class="lore-p"><a href="../weapons/landmaster.html">ランドマスター</a> に組み込んだ自動航行AIはフォックスの操縦パターンを学習しすぎた結果、待機中に勝手にローリングの素振りをするようになり現在は封印されている。</p>
+  <p class="lore-p">隊で唯一グレートフォックスの経理データを覗いてしまった人物でもある。借金の総額について残る公式コメントは「全身の毛が抜け落ちるくらいの金額だよ」の一言だけである。両生類の彼に抜ける毛はない。それほどの金額である。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

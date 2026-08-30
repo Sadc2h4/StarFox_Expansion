@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRINCE TRICKY — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#55e030;--accent:#a0ff70;--border:rgba(85,224,48,0.32);--border-hi:rgba(160,255,112,0.7);--dim:#0d2200;--dim2:#061200; }
+    .p-title    { color: #f0ffe0; text-shadow: 0 0 50px rgba(85,224,48,0.35); }
+    .p-tagline  { border-color: #55e030; color: #55e030; }
+    .terminal-hdr { color: #a0ff70; }
+    .terminal-hdr::before { background: #a0ff70; box-shadow: 0 0 8px #a0ff70; }
+    .dk { color: #55e030; }
+    body { background:#050a04; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-28 / PRINCE TRICKY — トリッキー ]</div>
+    <div class="header-status"><span class="blink" style="color:#55e030;">●</span> ALLY — FORTUNA</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — PRINCE TRICKY — ASOKA ROYAL FAMILY — LOCAL ALLY OF THE REPUBLIC</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0028 — CLASSIFICATION: FOREIGN ROYALTY — CUSTODIAN OF THE BLUE STAFF</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-28 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">トリッキー (PRINCE TRICKY)</div>
+        <h1 class="p-title">THE LITTLE<br>PRINCE</h1>
+        <div class="p-tagline">アソーカ族の王子 ─ フォルトナ戦役の共闘者</div>
+        <p class="p-short-desc">フォックス・マクラウドがフォルトナで出会った、口の減らない小さな王子。戦火の年に唯一残された卵から生まれ、星の声を聞く稀有な資質を持つ。青い杖は、いま彼が預かっている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 28 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">PRINCE TRICKY / トリッキー</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#saurian">サウリアン</a>（<a href="../planets/fortuna.html#tribe-asoka">アソーカ族</a>）</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#fortuna">フォルトナ</a>（サウリア）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">アソーカ族王家 — 王位継承者</td></tr><tr><td class="dk">AGE</td><td class="dv">幼年 — アソーカ族基準</td></tr><tr><td class="dk">ABILITY</td><td class="dv warn">⚠ スピリット感応 — 族長級の稀有な兆候</td></tr><tr><td class="dk">CUSTODY</td><td class="dv">クリスタル・スタッフ（預かり）</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">健在 — フォルトナ在住 / 共和国友好協力者</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">ALLY RATING -- 94 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 94%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(85,224,48,0.5);">
+        <img src="" alt="PRINCE TRICKY" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">BORN FROM THE LAST EGG</span>
+            <span class="tg-jp">最後の卵から生まれた王子 ── 星の声を聞く者</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">べつに寂しくなんかないぞ！<br>おまえがまた来るって約束したからな！<span class="tg-note note">-フォルトナ調査記録1 別れ際の記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">あの減らず口はな、若い頃の女王にそっくりなのだ<span class="lore-quote-src">― アソーカ王がフォックスに語った言葉より</span></span></p>
+  <p class="lore-p">トリッキーは、<a href="../database/locations.html#fortuna">フォルトナ</a>を統治する2大部族の一つ<a href="../planets/fortuna.html#tribe-asoka">アソーカ族</a>の王子である。<a href="../database/characters.html#fox">フォックス・マクラウド</a>が<a href="../other/fortuna-survey-1.html">単独潜入調査</a>を実施した際に出会い、<a href="../database/glossary.html#fortuna-campaign">フォルトナ戦役</a>を最後まで共に戦い抜いた現地協力者として、共和国の記録に名を残している。恐竜族の王族が共和国人と肩を並べて戦った例は、記録上これが初である。</p>
+  <p class="lore-p">両親であるアソーカ王と女王はともに朗らかでありながら聡明な統治者であり、亡国の危機に瀕してなお国民とフォルトナの未来を優先する勇敢さを持つ。囚われの身となった王、亡命先から反攻を組み立てた女王の姿は<a href="../other/fortuna-survey-1.html">調査記録1</a>に詳しく、王子の気質がどこから来たのかを雄弁に物語っている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ 最後の卵 THE LAST EGG</h3>
+  <p class="lore-p">トリッキーが生まれた年は、図らずも凶暴さと凶悪さを兼ね備えた<a href="../planets/fortuna.html#tribe-redeye">レッドアイ族</a>との交戦のさなかにあった。王家の卵は戦火でことごとく失われ、彼は唯一生き残った卵から生まれている。アソーカ族が「最後の卵」と呼ぶこの逸話は、王子が民から向けられる情の深さの源でもある。</p>
+  <p class="lore-p">この戦争の結末は苛烈だった。父王はレッドアイ族の王「ガルドバロン」との一騎打ちの末に辛うじて勝利したが、それでもなお襲い掛かるレッドアイの民と王の力を抑え込むため、故郷であるウォールドシティを丸ごと使用した封印を敢行したのである。封印の正体は<a href="../database/glossary.html#spell-stone">スペルストーン</a>を意図的に座から外し、対応する大地を物理的に切り離すこと。共和国の観測記録に「陸塊分離事件」として残る現象の正体は、この封印だったとみられる。石の禁忌を自らの故郷に対して破るという決断の重さは、部族の外の人間にも想像に難くない。</p>
+  <p class="lore-p">トリッキー自身は封印後の平和な時代に生まれ育ったため、両親が戦う姿を見たことがなかった。彼が初めて「本気の父の背中」を見たのは、ごく最近の<a href="../planets/fortuna.html#tribe-sharpclaw">シャープクロウ族</a>との交戦においてである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PERSONALITY</h3>
+  <p class="lore-p">小さな外見のとおり、まだ子供である。成体のアソーカ族は巨体でありながら俊敏という恵まれた体格を持つが、王子の体躯は現時点でフォックスと大差ない。それでも鋼鉄より硬い皮膚と突進力は既に一人前であり、フォルトナ戦役では機銃掃射を額で弾きながら廊下を駆け抜けている。</p>
+  <p class="lore-p">アソーカ族では官職など重要な役職に就く者が角に装飾を施し、これを用いて遺跡の仕掛けを操作する独自の技術を受け継いでいる。王族であるトリッキーもいくつかの道具を使いこなす器用さを持ち、戦役では囚われた<a href="../planets/fortuna.html#tribe-hight">ハイト族</a>の枷の鍵を角と怪力で次々と破壊してみせた。</p>
+  <p class="lore-p">そして本人に全く自覚がないが、かなりの毒舌である。敵将すら閉口させるその減らず口が誰に似たのか、民は揃って首をかしげるが、父王曰く「昔の女王にそっくり」とのことである。女王はこの評について肯定も否定もしていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">フォルトナ戦役 ─ SERVICE</h3>
+  <p class="lore-p">シャープクロウ族の侵攻でアソーカ族が敗れた際、トリッキーは<a href="../database/glossary.html#snow-mountain">スノーマウンテン</a>の牢獄へ拉致された。移送中の逃走劇の末にクレバスの底でフォックスと出会い、以後の道程を共にすることになる。第一声が救援者への礼ではなく着地への駄目出しだったことは、<a href="../planets/fortuna.html">惑星記録</a>の閲覧者にはよく知られたとおりである。</p>
+  <p class="lore-p">戦役での働きは年齢を疑うものだった。スケール将軍との死闘では決死の突撃で将軍の体勢を崩し、弾かれたクリスタル・スタッフをフォックスへ投げ渡し、最後は自らの背中を踏み台に差し出して勝機を作った。決戦では「避難誘導」の任務の裏の意図を見抜いた上で、アソーカ・クラウド・スノーホーンの大軍勢を呼び集めて先陣ごと駆けつけている。あの土壇場で部族の壁を越えた援軍を束ねられたのは、彼が王子だったからでも、毒舌だったからでもない。道中で出会った全ての相手に、こまっしゃくれた口をききながらも決して嘘をつかなかったからである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">資質 ─ THE GIFT</h3>
+  <p class="lore-p">トリッキーはクリスタル・スタッフの「謎の声」や遺跡に宿るスピリットの気配に気づくことができる、極めて稀有な存在である。この感応は各部族の族長や王にすらごく稀にしか現れない兆候とされ、現時点で同じ能力が確認されているのはハイト族、レッドアイ族、そして<a href="../planets/fortuna.html#tribe-draconia">ドラコニア族</a>の族長のみである。幼年でこの兆候を示した例は部族の伝承にもほとんど見当たらない。</p>
+  <p class="lore-p">フォックスはコーネリアへの一時帰還に際し、クリスタル・スタッフをトリッキーに預けている。星の声を聞く者の手にあの杖があることの意味は、次の記録で明らかになるだろう。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">別れ際、王子は何か言い返そうと口を開き、結局何も言わずに胸を張って頷いた。以来、王子は毎日のようにヒューロニアン氷原の前哨基地へ現れては「あいつはまだ戻らんのか」と隊員に尋ねていくという。預かり物があれば必ずまた会える。フォックスの残したその理屈を、王子は誰より真面目に信じている。</p>
+  <p class="lore-p">フォックスの任務報告書の末尾には、公式文書らしからぬ一文が残されている。「あいつはいつか、うちのチームに欲しいくらいだ」。査閲官はこの一文の削除を求めたが、ペパー総司令の判断でそのまま保存された。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(180,255,150,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAIMAN — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#a8c84a;--accent:#dff09a;--border:rgba(168,200,74,0.32);--border-hi:rgba(223,240,154,0.7);--dim:#2c3612;--dim2:#141a08; }
+    .p-title    { color: #f6ffe0; text-shadow: 0 0 50px rgba(168,200,74,0.45); }
+    .p-tagline  { border-color: #a8c84a; color: #a8c84a; }
+    .terminal-hdr { color: #dff09a; }
+    .terminal-hdr::before { background: #dff09a; box-shadow: 0 0 8px #dff09a; }
+    .dk { color: #a8c84a; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-46 / "CAIMAN" — 本名不詳 ]</div>
+    <div class="header-status"><span class="blink" style="color:#f0b898;">●</span> HOSTILE — RECURRING / HIGH PRIORITY</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — CALLSIGN CAIMAN — SPACE ARMADA AREA6 PATROL — RECURRING CONTACT</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0046 — CLASSIFICATION: HOSTILE COMBATANT — DO NOT CONFUSE WITH PF-0024</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-46 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">カイマン (CALLSIGN: CAIMAN)</div>
+        <h1 class="p-title">ALL<br>CLEAR</h1>
+        <div class="p-tagline">帝国軍 スペースアマダ エリア6哨戒 ─ 「異常ないっすよ～」</div>
+        <p class="p-short-desc">本名不詳。帝国最強の艦隊スペースアマダの第6区画、通称エリア6の哨戒を務める新人帝国兵。AI任せの雑な哨戒で知られる一方、戦略兵器の操縦や空挺部隊の指揮でも前線に現れる。グランガパイロットと同じ「定期的に現れる襲撃者」の区分に置かれているが、練度は比較にならない。色違いと思って油断してはならない。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 46 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">不明 — コールサイン「カイマン」</td></tr><tr><td class="dk">RACE</td><td class="dv">ワニ系<a href="../database/races.html#paranodian">パラノディアン</a> — 隊内では<a href="../database/races.html#alphoid">アルフォイド</a>と誤認され「緑猿」と呼ばれる</td></tr><tr><td class="dk">AGE / ORIGIN</td><td class="dv">不明 — 若年・出自は本人が語らず</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">帝国軍 第2師団<a href="../database/military.html#space-armada">スペースアマダ</a> 第6区画<a href="../database/locations.html#area6">エリア6</a> 哨戒担当</td></tr><tr><td class="dk">ROLES</td><td class="dv">哨戒機パイロット／戦略兵器パイロット（<a href="../weapons/salresia.html">シーレシア</a>）／空挺部隊管理者</td></tr><tr><td class="dk">COMBAT RECORD</td><td class="dv warn">⚠ <a href="../database/glossary.html#romeo-defense">アクアス海上戦</a>（対<a href="../database/military.html#garrison-aquas">ラブラドール隊</a>）／<a href="../database/glossary.html#katina-miracle">ノラ・ラゴスの戦い</a>（前哨基地包囲網）</td></tr><tr><td class="dk">STYLE</td><td class="dv">AI自動運転とレーダー依存 — 操縦技術は並・適応力と手の速さは一線級</td></tr><tr><td class="dk">STATUS</td><td class="dv warn">現役 — 定期的に襲撃部隊として出現</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 58 / 100（単機）— 部隊指揮時は別枠評価</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 58%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(168,200,74,0.5);">
+        <img src="" alt="CAIMAN" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ALL CLEAR</span>
+            <span class="tg-jp">異常がないと言ったら異常が来るのが世の常である</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">こちらカイマン　異常ないっすよ～<br>敵襲！　防衛部隊、緊急配備につけ！<span class="tg-note note">-エリア6 哨戒通信の傍受記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">第1防衛ライン突破されました！　第2防衛ラインも突破されました！　…いいぞもっとやれ！<span class="lore-quote-src">― エリア6 防衛戦 傍受記録より（最後の一句は真偽不明）</span></span></p>
+  <p class="lore-p">本名不詳。帝国最強の艦隊<a href="../database/military.html#space-armada">スペースアマダ</a>の第6区画、通称<a href="../database/locations.html#area6">エリア6</a>の哨戒を務める新人帝国兵である。コールサインの「カイマン」が本名なのか隊内での通称なのかは判明していない。共和国軍にマークされている理由はこの男が哨戒機のパイロットとしてだけでなく戦略兵器の操縦席と空挺部隊の指揮所にも姿を現しそのどれもをそつなくこなしてしまうためである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p">証明写真の映りがヘルメットの形状の影響でサル系人種にしか見えず、隊の中では皆から「緑猿」というデリカシーのかけらもない渾名で呼ばれているが、実際はワニ系の<a href="../database/races.html#paranodian">パラノディアン</a>である。星系で長く迫害の対象となってきた爬虫類型人種にとって<a href="../database/races.html#alphoid">アルフォイド</a>に勘違いされていた方が好都合なことも多かったためか、本人が自分から進んで出自や人種について訂正することは少ない。帝国軍が人種を問わない建前を掲げていても現場のやはり空気は別物でありこの男はそれを承知のうえで渾名を受け流している。</p>
+  <p class="lore-p">見かけは軽薄な若者に見える。だが様々な仕事をそつなくこなす適応力の広さと行動に移す前の手の速さ、そして切り替えの早さはどれも一線級のものである。哨戒からいきなり戦略兵器の操縦席へ、そこから空挺部隊の指揮所へ。配置がこれほど目まぐるしく変わる兵士は帝国軍でも珍しく、この男をどこでも見かけるという事実はすなわち重用されていることを指すといって間違いではない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">哨戒 ─ ALL CLEAR</h3>
+  <p class="lore-p">エリア6での哨戒はAI制御による自動運転とレーダーに頼り切っており、その様子は「宇宙最強」の隊員としての自覚に欠けると評されることも多い。もっとも飛行テストでの異常発見数は多く管制ビーコンの故障や艦船の接近には正常に対応できている。哨戒機としての仕事は機械任せであっても機械の報告を読む仕事はきちんとしている…というのが訓練記録から読み取れる実像である。</p>
+  <p class="lore-p">有名な「異常ないっすよ～」の発言は共和国側でも半ば笑い話として語られている。しかし、冷静に考えてみれば<a href="../database/military.html#starfox">「空母一隻と小型戦闘機4機だけで星系史上最大の大艦隊に正面から挑みかかる」という正常な思考回路では予想できない暴挙を本当に実践する輩</a>が来るなど想定できる訳もなく、この点については擁護の声もないわけではない。レーダーが「異常なし」と告げたその時点で異常はまだ艦隊の射程の外にいたのである。哨戒の直後に防衛部隊へ緊急配備を命じた切り替えの速さについては寧ろ教範に載せるべきだとする帝国民からの声すらある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴 ─ SERVICE</h3>
+  <p class="lore-p">この男の活躍は哨戒機のパイロットとしてだけではない。戦略兵器のパイロットとしても活動しており直近では<a href="../planets/aquas.html">アクアス</a>で海上要塞<a href="../weapons/salresia.html">「シーレシア」</a>を駆使し最も潮汐波の激しい<a href="../database/glossary.html#keanos-tide">ケアノスの大潮</a>の日を選んで奇襲を仕掛けている。4つの月とソーラの重力が織りなす多重潮汐の頂点で海中に隠れながら高出力レーザーを放つ要塞を操り、駐屯海軍の<a href="../database/military.html#garrison-aquas">ラブラドール隊</a>と死闘を繰り広げた。潮の一番荒れる日を選ぶ判断は海の番犬にとって最も嫌な相手が誰であるかをよく心得たものである。</p>
+  <p class="lore-p"><a href="../database/glossary.html#katina-miracle">ノラ・ラゴスの戦い</a>では前哨基地に包囲網を敷く空挺部隊の管理者として<a href="../database/military.html#cdf">CDF</a>とも直接戦闘を行っている。もっとも本人の操縦技術は大したものではないが、無人機と連携した止まらない攻撃はCDFの猛攻を押し返すほどの物量であり<a href="../database/military.html#bernard">ドーベル隊とバーナード隊</a>が救援を呼ぶ要因となったのはこの包囲網である。基地に直撃した<a href="../weapons/salresia.html">サルレシア</a>ばかりが語られる戦いであるが、その周囲で共和国の増援を遮り続けた包囲の管理者がこの男であったことは戦闘詳報の片隅にしか記されていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">評価 ─ ASSESSMENT</h3>
+  <p class="lore-p"><a href="granga-pilot.html">グランガパイロット</a>と同じ戦線で戦ったのはノラ・ラゴスが初であるが、両者とも様々な場所で定期的に襲撃部隊として現れるためCDF内では彼らを同じカテゴリーに分類している。「定期的に来る帝国の名物」という括りである。</p>
+  <p class="lore-p">ただし決して間違えてはいけないのは、このカイマンの方が戦略、指揮、運転技術のどれを取ってもグランガパイロットとは比較にならないほどの練度であるという点である。片方は運だけで生き残っているだけでありコチラは帝国一般兵のくくりでは最も強力な部類に入る。緑の機体と緑の渾名を共有する「色違い」と思って油断すると甚大な被害は免れない。データ表の脅威度が単機と部隊指揮の二段構えになっているのはグランガパイロットの前例に倣ったものではなく別の理由による。あちらは大型機に乗ると強くなるが、こちらは何に乗せても一定以上の仕事をしてしまうためである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">エリア6の防衛戦の傍受記録には第1防衛ライン、第2防衛ラインと突破の報告が続くにつれてこの男の声がなぜか上ずっていく様子が残されている。恐怖なのか興奮なのかは判然としないがCDFの通信士の間では「防衛ラインが抜かれるたびにテンションが上がる男」として帝国防衛ラインのダメージ度合を測る基準として密かにマークされているという。</p>
+  <p class="lore-p">なお「異常ないっすよ～」の一言は共和国軍の哨戒教育でも引用されているが笑い話としてではない。「レーダーが異常なしを告げた瞬間こそ最も警戒すべき時である」という戒めの文脈である。帝国の新人兵の口癖が共和国の教範に載る日が来るとは本人も想像していないであろう。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

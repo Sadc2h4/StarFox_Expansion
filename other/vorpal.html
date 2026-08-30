@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VORPAL SQUADRON — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#b8cfe8;--accent:#e6f0fa;--border:rgba(184,207,232,0.32);--border-hi:rgba(230,240,250,0.7);--dim:#1c2836;--dim2:#0c1218; }
+    .p-title    { color: #f4f8fc; text-shadow: 0 0 50px rgba(184,207,232,0.45); }
+    .p-tagline  { border-color: #b8cfe8; color: #b8cfe8; }
+    .terminal-hdr { color: #e6f0fa; }
+    .terminal-hdr::before { background: #e6f0fa; box-shadow: 0 0 8px #e6f0fa; }
+    .dk { color: #b8cfe8; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ UNT-01 / VORPAL SQUADRON — ヴォーパル隊 ]</div>
+    <div class="header-status">● ACTIVE — DEPLOYED: KATINA</div>
+  </header>
+
+  <div class="side-l"><div class="vt">MILITARY FILE — VORPAL SQUADRON — CORNERIA'S WHITE BLADE — THE WHITE SEVEN</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: UNT-0001 — CLASSIFICATION: SPECIAL FORCES — DETAILS SEALED: LV.5</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ UNT-01 / MILITARY FILE ]</div>
+        <div class="p-name-jp">ヴォーパル隊 (VORPAL SQUADRON)</div>
+        <h1 class="p-title">THE WHITE<br>SEVEN</h1>
+        <div class="p-tagline">コーネリア共和国軍 特殊戦闘部隊 ─ 構成7名・公開3名</div>
+        <p class="p-short-desc">軍が緊急事態と判断した局面でのみ招集される「最終手段」。その異名を「コーネリアの白い刃」という。構成員7名のうち、素性が公開されているのは3名だけである。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ UNIT SCAN — FILE 01 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">VORPAL SQUADRON / ヴォーパル隊</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">特殊戦闘部隊 — 少数精鋭</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/factions.html#cornerian-republic">コーネリア共和国</a>軍 — 招集権限は上層部のみ</td></tr><tr><td class="dk">ORIGIN</td><td class="dv">特殊潜行工作部隊<a href="../database/glossary.html#unit-coalsack">「コールサック」</a>の系譜</td></tr><tr><td class="dk">STRENGTH</td><td class="dv">7名 — 公開3名（白の1・6・7）</td></tr><tr><td class="dk">CODENAME</td><td class="dv">「白の◯」— 軍内管理呼称</td></tr><tr><td class="dk">COMMANDER</td><td class="dv"><a href="../database/characters.html#amber">アンバー・シルフェイド</a>少佐</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — <a href="../database/locations.html#katina">カタリナ</a>へ緊急展開中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">UNIT CAPABILITY -- 96 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(184,207,232,0.5);">
+        <img src="" alt="VORPAL SQUADRON" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE BLADE DRAWN LAST</span>
+            <span class="tg-jp">白の7 ── 最後に抜かれる白い刃</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">白は返り血をごまかせない色だ。だからこそ我々の制服は白い。<span class="tg-note note">-アンバー・シルフェイド少佐 隊内訓示より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">彼らが来たことを知るのは、全てが終わった後である<span class="lore-quote-src">― 前線将兵の間で語られる言葉より</span></span></p>
+  <p class="lore-p">ヴォーパル隊は、<a href="../database/characters.html#amber">アンバー・シルフェイド</a>少佐自らが率いる少数精鋭の特殊戦闘部隊である。共和国軍が奇襲などで緊急事態と判断した際や、手段にこだわる余裕がない局面で招集される「最終手段」の一つとされ、その異名を「コーネリアの白い刃」という。最小の犠牲で敵に最大の痛手を与える冷徹な用兵は、友軍からすら畏怖の目で見られている。</p>
+  <p class="lore-p">部隊の淵源は旧コーディリア王国の特殊潜行工作部隊<a href="../database/glossary.html#unit-coalsack">「コールサック」</a>に遡る。存在そのものが秘匿されていたこの部隊の系譜は現在<a href="../database/glossary.html#cis-hq">CIS-HQ</a>とヴォーパル隊の二つに分かれており、両者は同じ根から生えた枝の間柄にあたる。軍部の最も暗い仕事を請け負う立ち位置も、先祖からそのまま受け継いだものである。</p>
+</div>
+<div class="lore-section" id="doctrine">
+  <h3 class="lore-h">運用 ─ DOCTRINE</h3>
+  <p class="lore-p">隊の出撃は常に「最後」である。正規部隊で対処できる戦場に白い刃が抜かれることはなく、逆に彼らが投入された時点で、その戦場は正規の手段を尽くした後だと知れる。隊長機<a href="../weapons/chastiefol.html">シャスティフォル</a>の運用限界「5分」からの逆算で作戦全体が組み上げられることはよく知られており、5分で終わらない仕事は最初から引き受けないのがこの部隊の流儀とされる。</p>
+  <p class="lore-p">現在は帝国軍のカタリナ奇襲計画の発覚を受け、<a href="../database/locations.html#katina">カタリナ</a>前線基地へ緊急展開中である。現地駐留軍・<a href="../database/military.html#bernard">バーナード隊</a>との合同作戦会議が続いている。</p>
+</div>
+<div class="lore-section" id="veil">
+  <h3 class="lore-h">秘匿 ─ THE VEIL</h3>
+  <p class="lore-p">構成員は7名。軍内では「白の7」と総称され、各員は「白の◯」のコードネームで管理されている。ただし素性まで公開されているのは3名のみであり、残る4名は生体情報だけが登録され、氏名は本データベースの権限では表示されない。全構成員の詳細記録は機密レベル《アポカリュプシス》へ移管された。<a class="apx-lock" href="../classified/vorpal-members.html">閲覧には専用アーカイブでの認証が必要である</a>。</p>
+  <p class="lore-p">敵対する<a href="imperial-guard.html">帝国軍親衛隊「赤の12」</a>の素性が交戦歴からよく割れているのとは対照的であり、共和国側が自軍の部隊にここまでの秘匿を敷く例は他にない。なお現有戦力が親衛隊と同じ7名で釣り合っている符合については、当該記事が既に触れている通りである。</p>
+</div>
+<div class="lore-section" id="roster">
+  <h3 class="lore-h">公開構成員 ─ ROSTER</h3>
+  <p class="lore-p">以下は軍が組織内に公開している3名である。隊長のほかの2名がいずれも対外折衝の多い役職である点に、この名簿の性格が表れている。</p>
+</div>
+<div class="lore-section" id="white-01">
+  <h3 class="lore-h">① 白の1『アンバー・シルフェイド』 ─ AMBER SYLPHADE</h3>
+  <p class="lore-p">希少種族<a href="../database/races.html#selenoid">セレノイド</a>の女性。隊長にして自ら最前線に立つ奇襲戦闘員である。異例の若さと速さで少佐まで昇進した天才指揮官であり、純白の乗機<a href="../weapons/chastiefol.html">シャスティフォル</a>で星雲を切りながら飛ぶ姿は目撃した者から一様に「剣」と形容される。人物の詳細は<a href="../characters/amber.html">個別ファイル</a>を参照されたい。</p>
+</div>
+<div class="lore-section" id="white-06">
+  <h3 class="lore-h">② 白の6『マイス・アルジャーノン』 ─ MAISE ALGERNON</h3>
+  <p class="lore-p">ハツカネズミ系<a href="../database/races.html#kyusoid">キューソイド</a>の男性。役職は尋問官兼戦闘員である。身長82cmは隊最小であり、普段は背丈の倍近いコートと触手状の専用補助腕で体を大きく見せている。小柄な体躯と長い白髪に隠れた目元、そして可愛らしい声のため対外メディアへの露出が多く、隊の名を聞いてまず彼を思い浮かべる市民は少なくない。</p>
+  <p class="lore-p"><span class="redacted">内部評価は公開像と大きく異なる。尋問官は本人が自ら買って出た役職であり、捕虜を必要以上に痛めつけ結果的に始末してしまう事例が繰り返し記録されている。命令には忠実である一方、その苛烈さは隊内からも嫌悪の対象となっている。隊長評は簡潔である。「戦争がなければ、真っ先にムィンシャンクル行きのガキだ」</span></p>
+</div>
+<div class="lore-section" id="white-07">
+  <h3 class="lore-h">③ 白の7『ヤペテ・ヤワントバル』 ─ JAPHETH YAWANTOBAL</h3>
+  <p class="lore-p">種族不明の<a href="../database/races.html#holsoid">ホルソイド</a>の男性。既知のあらゆるホルソイドと微妙に異なる形質を持ち、外見はアルビノのクジャク系人種と形容するのが最も分かりやすい。身長210cm。役職は交渉役であり、物腰柔らかな礼節の紳士としてどんな相手にも自身のペースを崩さない。各所の折衝に現れテレビのインタビューにも応じる隊の顔役であり、いつも持参の紅茶を笑顔で周囲に振る舞うことで知られる。</p>
+  <p class="lore-p"><span class="redacted">交渉役は肩書の半分でしかない。残りの半分は任務の「後始末」を完遂するプロのヒットマンであり、平時との落差ゆえ、一度遭遇した敵兵が再遭遇時に同一人物と気づけなかった例が報告されている。彼の淹れる紅茶を断った隊員は、記録上まだいない</span></p>
+</div>
+<div class="lore-section" id="undisclosed">
+  <h3 class="lore-h">非開示枠 ─ THE UNDISCLOSED FOUR</h3>
+  <p class="lore-p">白の2から白の5までの4名について、本データベースが表示できる情報は存在しない。わずかに知られるのは、シャスティフォルの整備を「白の2」が一手に担うという<a href="../weapons/chastiefol.html">整備記録上の言及</a>だけである。白の3に至っては、登録簿の上ですら「正体不明のメンバー」とだけ記されている。</p>
+  <p class="lore-p">なぜ自軍の部隊にここまでの秘匿が必要なのか。その問いへの答えもまた、LV.5権限区画の中にある。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../apx-lock.js"></script>
+</body></html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAHASH GILBUSTER — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#96c8a0;--accent:#c8ecd0;--border:rgba(150,200,160,0.32);--border-hi:rgba(200,236,208,0.7);--dim:#1c3626;--dim2:#0c1a12; }
+    .p-title    { color: #ecfaf0; text-shadow: 0 0 50px rgba(150,200,160,0.4); }
+    .p-tagline  { border-color: #96c8a0; color: #96c8a0; }
+    .terminal-hdr { color: #c8ecd0; }
+    .terminal-hdr::before { background: #c8ecd0; box-shadow: 0 0 8px #c8ecd0; }
+    .dk { color: #96c8a0; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-25 / NAHASH GILBUSTER — ナハシュ・ギルバスター ]</div>
+    <div class="header-status"><span style="color:#c8ecd0;">●</span> DECEASED — HISTORICAL RECORD</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — NAHASH GILBUSTER — IGA SUPREME GENERAL — HISTORICAL ARCHIVE</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0025 — CLASSIFICATION: WAR CRIMINAL / DECEASED — THE SIX-SWORD GENERAL</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-25 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ナハシュ・ギルバスター (NAHASH GILBUSTER)</div>
+        <h1 class="p-title">SIX<br>SWORDS,<br>NO HANDS</h1>
+        <div class="p-tagline">独立星系連合 最高位将官 ─ 「六刀流のギルバスター」</div>
+        <p class="p-short-desc">「腕なし」と蔑まれた蛇系の少年は、六本の鋼の腕を得て星系最恐の将軍になった。独立星系連合の代名詞にして、全盛期のZ・Z・ペパーと正面から渡り合った唯一の敵である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 25 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">NAHASH GILBUSTER / ナハシュ・ギルバスター</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#apophisoid">アポフィソイド</a>（蛇系） — 全身サイボーグ</td></tr><tr><td class="dk">BIRTH</td><td class="dv"><a href="../database/locations.html#fortuna">フォルトナ</a> 辺境ドラゴンロック</td></tr><tr><td class="dk">CHILDHOOD NAME</td><td class="dv">「アングイデ」（現地語で「腕なし」の蔑称）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/factions.html#iga">独立星系連合</a> — 最高位将官</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv warn">⚠ 義腕6基による六刀流／絞め技・毒牙</td></tr><tr><td class="dk">WANTED</td><td class="dv">「六刀流のギルバスター」として星系中で指名手配</td></tr><tr><td class="dk">RIVAL</td><td class="dv"><a href="pepper.html">Z・Z・ペパー</a> — 交戦記録8回・最終戦で拘束</td></tr><tr><td class="dk">STATUS</td><td class="dv">死亡 — 戦犯法廷にて自爆</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 96 / 100 (ARCHIVED)</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(150,200,160,0.5);">
+        <img src="" alt="NAHASH GILBUSTER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE SIX-SWORD GENERAL</span>
+            <span class="tg-jp">腕なしと呼ばれた少年 ── 六本の腕で歴史に爪を立てた男</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">また会ったな、子犬。少しは強くなったか？<span class="tg-note note">-ペパー精鋭部隊との第6次交戦・交信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">その台詞、今日で言い納めにしてやる…！<span class="lore-quote-src">― Z・Z・ペパー将軍の交信返答より</span></span></p>
+  <p class="lore-p">ナハシュ・ギルバスターは、<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>の終結以来つづいた長い平和の時代において、<a href="../database/factions.html#iga">独立星系連合（IGA）</a>の征討に至るまでの戦役期間、共和国と周辺諸国を最も恐怖に陥れた人物である。連合最強の野戦指揮官にして「六刀流のギルバスター」の異名を持ち、IGA戦役を語るとき共和国側の教本ですらこの名を避けて通ることはできない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ ORIGIN</h3>
+  <p class="lore-p">来歴や出生には不明な点も多いが、交戦履歴と連合のデータベースを照合する限り、彼の生まれは惑星<a href="../database/locations.html#fortuna">フォルトナ</a>の辺境ドラゴンロックであり、そこに住む<a href="../database/races.html#paranodian">パラノディアン</a>系少数民族の族長の家系が源流とみられる。ドラゴンロックはフォルトナでも有数の部族抗争が続く危険地帯であり、この少数民族もまた、当時最強の部族を率いた圧制者<a href="drakor.html">ドラコー</a>一派の影響と迫害を免れなかったとされる。</p>
+  <p class="lore-p">幼少の彼は、手足のない蛇系の種族<a href="../database/races.html#apophisoid">アポフィソイド</a>に生まれたことを心底嫌っていたらしい。幼少期のあだ名は「アングイデ」。現地の言葉で負傷者や腕なしを意味する蔑称である。他の子供たちは大なり小なり武器を手に取り、戦いに参加する戦士になれた。だが彼には武器を持つ手がなかった。集落では役立たずと糾弾され、家族からも蔑ろにされていたと伝えられる。</p>
+  <p class="lore-p">所属部族はトカゲ系の種族ばかりであり、彼だけが蛇系に生まれた理由には謎が残る。これが彼の出生が不明とされる第一の所以である。現在の技術による調査では、超人的な身体能力を加味して、先祖返りもしくは希少混血だった可能性が高いとされる。この部族には、打倒した相手部族の族長の娘と婚姻を結び、生まれた卵を父親が引き取って英才教育を施す慣習があった。数多くいた腹違いの兄弟の中に幼いアングイデも含まれていたと見るのが自然である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">覚醒 ─ AWAKENING</h3>
+  <p class="lore-p">アングイデは成長に伴い、必死の努力によって類まれな身体能力と狡猾さを身に着けていった。同族にすら侮られ、家族からも虐げられた日々が想像を絶するものだったことは容易に察せられる。敵対する者を長大な体で雁字搦めにし、毒でゆっくりと弱らせ、最大限の死の恐怖を与えてから、とどめを刺す。この惨い戦術は大成した後も変わらぬ彼の十八番であり続けた。後年、彼はこう答えている。「サウリアの森、自然が俺の魂に叩き込んだ」</p>
+  <p class="lore-p">彼が最初に頭角を現したのは、当時勢力拡大を狙っていた<a href="../database/glossary.html#sauria-animalia">シャープクロウ族</a>との交戦である。様々な武器を器用に扱い、外部からもたらされたアニマリアの兵器すら使いこなすシャープクロウ族を相手に、原始的な打撃一辺倒の部族は壊滅的な被害を受けた。戦いに駆り出されたアングイデは、そこで本領を発揮する。シャープクロウ族の重火器を奪い取り、その場で解析して撃ち返したのである。誰にも教わらぬまま敵の武器を我が物とするこの応戦は、彼の分析能力と応用力の賜物だった。</p>
+  <p class="lore-p">たった独りでシャープクロウの大群を相手に大立ち回りを演じた戦いの後、既に致命傷を負っていた父親は、彼に先駆者・預言者を意味する言葉「ナハシュ」の名を与えて息絶えた。この時初めて、彼は父に認められたのである。侵攻大隊の壊滅を知った当時のシャープクロウ族長ザボック（<a href="scales.html">現族長スケール</a>の先代）は、その原因となった青年ナハシュの首を持ち帰るよう同族と配下の種族に命じた。この戦いは数年に及び、ナハシュはその中でシャープクロウ族の持つアニマリアの技術と、サウリアの外に広がる「世界」の存在を知ることになる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">邂逅 ─ FIRST CONTACT</h3>
+  <p class="lore-p">やがて、外の世界を知った彼の前に、生まれて初めての外界からの接触が舞い降りる。見たこともない空飛ぶ鉄の塊と、かつて倒したシャープクロウ族と同じ武器を持つアニマリアたち。孤独にジャングルを生きていた彼が興味を持つのに、時間はかからなかった。来訪者は共和国の傲慢に反旗を翻す志を持った若者たち──後の独立星系連合の創設者たちである。もっともその実態は、座標指定で<a href="../database/locations.html#fichina">フィチナ</a>とフォルトナを取り違えて遭難しただけだった。</p>
+  <p class="lore-p">ナハシュは彼らと最初こそ交戦したものの、早い段階で利害の一致から和解している。遭難者たちは未開の大地の土地勘と食料調達の知識を、ナハシュはアニマリアの知識と外の世界の情報を求めたのである。数か月後、修復を終えた宇宙船がフィチナへ発つとき、ナハシュは彼らについていく決断をした。彼は既に、外の世界の知識と、戦いに飢えていた。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">六刀流 ─ THE SIX BLADES</h3>
+  <p class="lore-p">外の世界の戦争は、森の戦争とはまるで別物だった。火器と装甲と航空戦力が支配する戦場で、如何に超人的とはいえ生身の蛇の体には限界がある。転機は<a href="../database/glossary.html#trinculo-recapture">トリンキュロー回廊の奪還戦</a>であった。後に星系最高の軍人と謳われる若き部隊長、<a href="pepper.html">Z・Z・ペパー</a>率いる精鋭部隊の圧倒的制圧力の前に、ナハシュは初めての敗北と、胴の半ばを焼き落とされる重傷を負う。連合の軍医団は瀕死の彼をサイバネティクスで再構成した。心臓と肺と、そして森で鍛え上げた反射神経だけを残して。</p>
+  <p class="lore-p">目覚めた彼が最初に要求したのは、義腕であった。それも6本である。かつて「腕なし」と蔑まれた男は、誰よりも多い腕を自らに与えることを選んだ。6本の腕に握られる6振りの刀は、いずれも彼が一騎打ちで打ち破った6人の剣士から奪ったものであり、敵の得物を我が物とするあの日の流儀は、鋼の体になっても変わらなかった。回転しながら6本の刃が奔る戦闘様式は「観たものの証言が戦術資料にならない」と評される。生存者が少なすぎるためである。</p>
+  <p class="lore-p">全身サイボーグ化の代償として、彼の呼吸器は生涯軋み続けた。静かな戦場に響くその軋み音は、連合国将兵にとって死の予告そのものであり、「音が聞こえたら、もう囲まれている」という警句とともに恐れられた。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">将軍 ─ THE GENERAL</h3>
+  <p class="lore-p">連合における彼は、単なる白兵の怪物ではなかった。少数の兵力で敵の補給と退路を先に殺し、恐怖で敵の判断力を奪ってから本隊を叩く。幼少の狩りの流儀をそのまま艦隊規模へ拡大した用兵は、正規軍の教本のどこにも載っていない類のものであり、共和国は幾度となく数で勝る戦いを落とした。<a href="../database/races.html#apophisoid">アポフィソイド</a>への根深い差別と相まって、共和国のプロパガンダは彼を「怪物」として描き、「六刀流のギルバスター」の名は星系中の指名手配書に刻まれることになる。</p>
+  <p class="lore-p">もっとも「ギルバスター」は本名ではない。ペパーとの最初の交戦の際、通信越しに名乗った「ナハシュ」をペパーがうまく発音できなかったため、直前に読んでいた雑誌の登場人物の名を思い出して仮に答えたのが、この名である。まさかこちらの名の方が星系中に知れ渡ることになるとは、本人も予想していなかったようである。</p>
+  <p class="lore-p">因縁の相手であるペパーとは、記録に残るだけで8度交戦し、ついに決着がつかなかった。トリンキュローで自分を焼いた若き部隊長を、彼は「子犬」と呼び続けたが、その実、彼がペパーとの交戦だけは決して部下に譲らなかったことを、連合の従軍記録は示している。敗北を与えた唯一の敵は、同時に彼が唯一敬意を払った敵でもあった。</p>
+  <p class="lore-p">一方で、晩年の彼が連合そのものへ疑問を深めていたことも、複数の証言から明らかになっている。初代総統と初期メンバーの志を直接その耳で聞いた男にとって、粛清が横行し、ただのテロ組織に成り果てた連合の姿は別物に見えていたに違いない。とりわけ、異分子と見なした者を拘束して拷問にかける末期の所業は、蔑まれ虐げられた幼少期の記憶を呼び起こすものだったのか、彼が<a href="../database/sectors.html#dasitetas">ムィンシャンクル刑務所</a>へ足を向けたことは、ただの一度もなかった。「戦士の戦争が、政治屋の戦争になった」。それでも彼が降伏しなかった理由を、ある亡命将校は簡潔に述べている──彼には戦場の他に、帰る場所がなかったのだと。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">最後の戦い ─ THE LAST STAND</h3>
+  <p class="lore-p">IGA戦役の最終局面、<a href="../planets/setebos.html">セティボスⅣ</a>「シコラクス」の攻防戦。連合総統がシコラクスを放棄し、味方の全てを見捨てて逃亡する中、殿軍の指揮を執り続けたのはナハシュだった。窮地の彼が起動したのが、連合が秘密裏に開発していた<a class="apx-lock" href="../classified/gigarilla.html">超兵器</a>である。「究極にして最強の守護神」と彼が呼んだその兵器は連合国側を一時窮地に陥れたが、部隊長の咄嗟の采配によるハッキングで無力化された。</p>
+  <p class="lore-p">だが彼は、それでも退かなかった。ナハシュは兵器の操作系を自動制御から手動へ切り替え、自らのサイバネティクスと直接同期させて、因縁の男ペパーとの決闘を続行しようとしたのである。激闘の末、彼は機体から引き剥がされて拘束され、共和国軍に連行された。8度目にして、最後の交戦であった。「恐らくはそのまま、戦場で散ることを彼は望んでいたのかもしれない」とペパーは回想している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">最期 ─ THE END</h3>
+  <p class="lore-p">戦役後の戦犯法廷は、彼に星系司法史上初となる<a href="../weapons/coffin-suit.html">コフィンスーツ</a>装着刑──死を許されない身体での辺境追放を言い渡した。判決が読み上げられた瞬間の様子は、今も軍の内外で語り草になっている。彼は高らかに笑い、こう叫んだのである。「貴様らは何も判っちゃいない！　権力に屈した諦めを平和と呼ぶ限り、貴様らは首輪につながれた哀れな子犬なのだ！　わが魂をサウリアに還そう。さらばだ、子犬よ！」</p>
+  <p class="lore-p">次の瞬間、彼の身体に仕込まれていた小型爆弾が炸裂し、法廷は怪我人が続出する騒然とした状況となった。それでも本人以外に一人の死者も出なかったのは、幸運だけによるものではない。彼との交戦経験を持つ一人の士官候補生が、心配性からくる万が一の保険として、法廷に対爆風障壁を仕込んでいたためである。かくして、この量刑が実際に執行される日は訪れなかった。史上二人目の同判決が下るのは、それから間もなくのことである（<a href="../database/glossary.html#andorf">アンドルフ・ボウマン</a>の項を参照）。</p>
+  <p class="lore-p">最期の言葉の「子犬」を、誰もが共和国の体制そのものへの罵倒だと解釈した。だがただ一人、その言葉が誰よりも重くのしかかった者がいる。彼が戦場で「子犬」と呼び続けた相手が誰だったかを、思い出せばよい。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">6振りの刀のうち5振りは共和国が押収し、戦争博物館に収蔵されている。最後の1振りの行方は公式には不明とされるが、ペパー将軍の執務室には出所の記されない古い刀が一振り、今も飾られている。将軍はこの刀について、一度も語ったことがない。</p>
+  <p class="lore-p">故郷ドラゴンロックの部族には、いまも奇妙な伝承が残るという。曰く、腕のない子が生まれた家は、恥じるのではなく喜べ。その子はいつか、誰よりも多くの腕を持って帰ってくる──。彼が故郷の土を再び踏んだ記録は、存在しない。</p>
+  <p class="lore-p">余話がもう一つある。全身サイボーグとなったギルバスターだが、何の因果か、彼の人生最初の敵であった圧制者ドラコーもまた、同じ道を辿っている。ドラコー率いる一派もアニマリアの文明との接触でサイバネティクスを得ており、ドラコー自身も例外ではなかった。彼を改造したのは後の<a href="../database/factions.html#venom-empire">帝国軍</a>であり、フォルトナの<a href="../database/sectors.html#lambda">恐竜改造計画</a>の最初の試作試験に、ドラコーは協力したとみられている。帝国がフォルトナ侵攻に成功した暁には実効統治権を得る算段だったと想定されており、計画が頓挫した現在は、フォルトナのどこかで傷を癒しながら潜伏しているとみられる。共和国は今も、彼の動向への警戒を解いていない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+  <script src="../apx-lock.js"></script>
+</body></html>

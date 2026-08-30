@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRANGA PILOT — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#d98a6a;--accent:#f0b898;--border:rgba(217,138,106,0.32);--border-hi:rgba(240,184,152,0.7);--dim:#3a241a;--dim2:#1a100c; }
+    .p-title    { color: #fcf0e6; text-shadow: 0 0 50px rgba(217,138,106,0.4); }
+    .p-tagline  { border-color: #d98a6a; color: #d98a6a; }
+    .terminal-hdr { color: #f0b898; }
+    .terminal-hdr::before { background: #f0b898; box-shadow: 0 0 8px #f0b898; }
+    .dk { color: #d98a6a; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-24 / THE GRANGA PILOT — 本名不詳 ]</div>
+    <div class="header-status"><span class="blink" style="color:#f0b898;">●</span> HOSTILE — RECURRING</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — NAME UNKNOWN — IMPERIAL ASSAULT PILOT — RECURRING CONTACT</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0024 — CLASSIFICATION: HOSTILE COMBATANT — NEXT CONTACT: EARLY NEXT MONTH</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-24 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">グランガパイロット (NAME UNKNOWN)</div>
+        <h1 class="p-title">SEE YOU<br>NEXT<br>MONTH</h1>
+        <div class="p-tagline">帝国軍 コーネリア侵攻部隊 ─ 月初の風物詩</div>
+        <p class="p-short-desc">本名不詳。毎月月初、最前線に現れては撃墜されていく帝国の名物搭乗員。実力は並以下、しかし皇帝への忠誠は星系随一。何度爆散しても、絆創膏一つで帰ってくる。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 24 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">不明 — 呼称「グランガパイロット」</td></tr><tr><td class="dk">RACE</td><td class="dv">チンパンジー系<a href="../database/races.html#alphoid">アルフォイド</a></td></tr><tr><td class="dk">AGE / ORIGIN</td><td class="dv">不明 — 三等帝国民出身と推定</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">帝国軍 コーネリア侵攻部隊</td></tr><tr><td class="dk">COMBAT RECORD</td><td class="dv">交戦10回超 — 全て撃墜（当方戦果）</td></tr><tr><td class="dk">SURVIVAL</td><td class="dv warn">⚠ 毎回生還 — 数週間で前線復帰</td></tr><tr><td class="dk">AUGMENTATION</td><td class="dv">なし — 調査済み（単に運がいい）</td></tr><tr><td class="dk">EXCEPTION</td><td class="dv warn">⚠ サルレシア／ディストラクター等の大型機搭乗時は別枠評価</td></tr><tr><td class="dk">STATUS</td><td class="dv">現役 — 次回接触予測: 来月月初</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 15 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 15%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(217,138,106,0.5);">
+        <img src="" alt="GRANGA PILOT" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE MONTHLY VISITOR</span>
+            <span class="tg-jp">月初の風物詩 ── 星系一しぶとい忠義者</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">皇帝に逆らうものは 死ぬのだぁ！　……アンドルフ様ぁぁ！！　ごめんちゃい！！（爆発音）<span class="tg-note note">-月初定例交戦・約5分間の全記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">クローンではない。改造もされていない。彼はただ、異常に運がいい<span class="lore-quote-src">― CDF情報部 調査報告の結語より</span></span></p>
+  <p class="lore-p">本名不詳。<a href="../database/factions.html#venom-empire">帝国</a>三等国民の戦闘員と推定される、ならず者上がりのチンパンジー系<a href="../database/races.html#alphoid">アルフォイド</a>男性の兵士である。ただの一兵士でありながら共和国軍にマークされている理由は、この男の尋常ならざる皇帝への忠誠心と、不屈の抗戦意欲によるところが大きい。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴 ─ SERVICE</h3>
+  <p class="lore-p">コーネリア都市侵攻部隊をはじめ、惑星<a href="../database/locations.html#corneria">コーネリア</a>を直接攻撃する最も危険な最前線で、防御も撤退も考えずに有人機で突撃してくる。そのあまりに無防備かつ無策な行動に、共和国の将校たちは揃って帝国の陽動作戦を疑い、正面から挑もうとする者はいなかった。これがある意味、彼にとっての幸運であり武勲だったのかもしれない。</p>
+  <p class="lore-p">彼との交戦記録はすでに10回を超えており、毎回、手を変え品を変えた有人機で無謀な作戦を決行しては撃墜されている。明らかに搭乗機とともに爆死したように見えても、数週間後には絆創膏一つで最前線に復帰してくるため、一時は彼をクローン人間だと勘違いする者すらいた。調査の結果、改造人間でも特殊な措置が施されているわけでもないことが既に確認されている。彼は本当に、単純に「運がいい」。ただそれだけである。</p>
+  <p class="lore-p">月初の定例以外にもコーネリアの外へ顔を出すことがあり、<a href="../database/glossary.html#katina-miracle">カタリナの奇跡</a>では臨時に抜擢されて拠点制圧兵器<a href="../weapons/salresia.html">サルレシア</a>の操縦席に座っている。基地を全滅寸前まで追い込んだのちに脱出モードの操作反転を忘れてUターン墜落し、下着一枚で草原を走って包囲を抜けた顛末は<a href="../other/katina-miracle.html">戦闘記録</a>に詳しい。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p">その実態は、侵攻部隊隊長の意見を聞かずに独断で侵攻を開始する問題児である。頭に血が上りやすく、作戦会議では居眠りをする。どこを取っても、実力は一般人に毛が生えた程度であることは明白である。</p>
+  <p class="lore-p">ただし、皇帝への忠誠心と、帝国の掲げる正義を信じる心は本物である。ならず者の集まりである三等帝国民の上がりでありながら、<a href="../database/locations.html#zoness">ゾネス</a>の採掘部隊や辺境の開拓部隊ではなく最前線のコーネリア侵攻部隊に配属されているのは、その熱い意思を尊重しての人選と考えられている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">評価 ─ ASSESSMENT</h3>
+  <p class="lore-p">作戦を何度も失敗している彼が、現時点で降格や処罰を課せられた形跡はない。帝国側もまた、彼の不屈の精神と、臆せずに試験機を乗りこなして一定以上の運転記録を供給し続ける点を評価しているとみられる。<a href="../weapons/granga.html">グランガ</a>系列が「実戦データ収集用の試作機」だとする参謀部の説に立つなら、彼は帝国にとって最も安上がりで最も勇敢なテストパイロットである。</p>
+  <p class="lore-p">大型機の操縦席に座った時の彼は別人である。<a href="../database/glossary.html#katina-miracle">カタリナの奇跡</a>では拠点制圧兵器<a href="../weapons/salresia.html">サルレシア</a>の操縦を任され、前線基地ノラ・ラゴスを全滅寸前まで追い込んだ。撃退されたとはいえ有人機で一度も戦果を挙げたことのない男が基地一つを落としかけた事実は重く、参謀部はこの戦い以降「単機では脅威度15、大型機ではその限りではない」という二段構えの評価に改めている。データ表の「別枠評価」はこの経緯に基づく。</p>
+  <p class="lore-p">また、弱いと侮ると被害が出ることも分かっている。<a href="../planets/area3.html">グレートウォールAREA3</a>の訓練区画に紛れ込んだ侵攻部隊が居住区画へ攻め込んだ<a href="../database/glossary.html#rhodes-siege">ロードス包囲戦</a>では、彼が搭乗していた<a href="../weapons/granga.html#destructor">「ディストラクター」</a>がグランガの派生機とは思えない甚大な被害を共和国側に出している。外周では同時刻に親衛隊の<a href="../weapons/blade-barrier.html">ブレードバリア</a>が刃を振るっており、二つの侵攻のどちらが陽動であったのかは今も判然としない。長年の疑いが初めて当たった日として、この一件は共和国の将校たちの間で苦い記憶になっている。なお本人はこの時も生還しており、街の住民に紛れ込んで逃走を図った末に例のごとく月初には前線へ戻っていた。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">月に一度、手を変え品を変え有人機で突撃してくる彼は、いつしか月初めの風物詩と化している。彼の口上「皇帝に逆らうものは 死ぬのだぁ！」と、その約5分後の「アンドルフ様ぁぁ！！　ごめんちゃい！！（爆発音）」は、コーネリアの防衛軍なら誰もが何度も聞き覚えのある、馴染みの言葉になっている。</p>
+  <p class="lore-p">なお月初に彼の姿が確認できなかった月は、かえって「大規模作戦の前触れではないか」と参謀部がざわつくという。撃墜される男が来ないだけで警戒度が上がるのだから、これはこれで立派な戦果なのかもしれない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

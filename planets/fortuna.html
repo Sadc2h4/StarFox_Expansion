@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORTUNA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#44ff00;--accent:#88ff44;--border:rgba(68,255,0,0.32);--border-hi:rgba(136,255,68,0.7);--dim:#0d2200;--dim2:#061200; }
+    .p-title { color:#f0ffe0; text-shadow: 0 0 50px rgba(68,255,0,0.25); }
+    .p-tagline { border-color:#44ff00; color:#44ff00; }
+    body { background:#050a04; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(5,25,0,0.65) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(0,20,0,0.4) 0%,transparent 55%),
+      #050a04; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(68,255,0,0.32);">
+    <a href="../database/locations.html" class="nav-back" style="color:#44ff00;border-color:rgba(68,255,0,0.3);">◄ LOCATIONS</a>
+    <div class="header-tag">[ 05 / FORTUNA — フォルトナ ]</div>
+    <div class="header-status"><span class="blink" style="color:#44ff00;">●</span> SECTOR-λ — UNCHARTED</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(68,255,0,0.3);"><div class="vt" style="color:#0d2200;">LYLAT SYSTEM — FORTUNA — PRIMAL JUNGLE WORLD — SECTOR-LAMBDA — ANCIENT ECOSYSTEM</div></div>
+  <div class="side-r" style="border-color:rgba(68,255,0,0.3);"><div class="vt" style="color:#0d2200;">DATABASE RECORD: FTN-0005 — CLASSIFICATION: ANOMALY — TEMPORAL STASIS SUSPECTED</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(68,255,0,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#44ff00;">[ 05 / LYLAT SYSTEM — SECTOR-λ ]</div>
+        <div class="p-name-jp" style="color:#66cc33;">フォルトナ (FORTUNA)</div>
+        <h1 class="p-title">THE LIVING<br>PRIMAL<br>WORLD</h1>
+        <div class="p-tagline">原始密林惑星 ─ 数十億年の生態系</div>
+        <p class="p-short-desc" style="border-color:#0d2200;">太古の生態系が時を止めたまま存在し続ける神秘の惑星。巨大植物と恐竜型生物が支配する原始の密林が全土を覆う。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(68,255,0,0.3);background:rgba(5,20,0,0.65);">
+        <div class="terminal-hdr" style="color:#44ff00;background:rgba(68,255,0,0.1);border-color:rgba(68,255,0,0.3);">
+          <span style="background:#44ff00;box-shadow:0 0 8px #44ff00;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-λ ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#44ff00;">DESIGNATION</td><td class="dv">FORTUNA / フォルトナ（現地名: サウリア）</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">PLANET TYPE</td><td class="dv">密林型 / JUNGLE WORLD</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">MOONS</td><td class="dv">―</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">PRIMARY STAR</td><td class="dv">ライラット・プライム</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">AVG TEMP</td><td class="dv ok">+22°C ～ +48°C</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">DAY / YEAR</td><td class="dv">31.8H / 732D（約2年）</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">LOCATION</td><td class="dv">LYLAT 5th — Sectorλ</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">FACTION</td><td class="dv">中立 / NEUTRAL</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">CAPITAL</td><td class="dv">聖地 クアン・アタ・ラチュ（全部族共通）</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">ANOMALY</td><td class="dv warn">⚠ TEMPORAL STASIS</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(68,255,0,0.1);">
+          <div class="env-bar-label" style="color:#44ff00;">ENVIRONMENT INDEX ── 62 / 100</div>
+          <div class="env-bar-track" style="background:#061200;"><div class="env-bar-fill" style="width:62%;background:linear-gradient(to right,var(--warn),#aaff00,#44ff00);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(50,200,20,0.6);">
+        <img src="../resource/LA_image/LS_P_5.png" alt="Fortuna" class="planet-img-detail planet-img-medium-plus">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">JUNGLE WORLD — TEMPORAL STASIS</span>
+            <span class="tg-jp">原始密林惑星 ── 数十億年の生態系</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">ヘッタクソな着地だったな<br>パンツが破れたんじゃないか　ハッハッハー!<span class="tg-note note">-アソーカ族の王子 トリッキーとの会話記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「森が、こちらを見ている。調査は中止する。繰り返す、調査は中止する」<span class="lore-quote-src">― 第3次生態調査団 最終通信記録より</span></span></p>
+  <p class="lore-p">フォルトナ（Fortuna）は、<a href="../database/sectors.html#lambda">セクターλ</a>に位置するライラット星系第5惑星。誕生から数十億年を経た今なお原始の生態系が維持され続けている密林の惑星であり、地上は意思を持つかのような原始の森と恐竜が跋扈し、あらゆる文明の定着を拒み続けている。<br>
+星系の公式記録上の名は「フォルトナ」だが、この星に住む知性ある恐竜族たちは自らの星を<a href="../database/glossary.html#sauria-animalia">「サウリア」</a>と呼ぶ。ひとつの惑星、ふたつの名前──外から名付けた者と、そこに生きてきた者の呼び名である。</p>
+  <p class="lore-p">太古のライラット星系の生態系が時を止めたように残る理由は、現在も解明されていない。フォルトナ惑星圏に点在する謎の建造物「スペースオベリスク」が原因ではないかと言われているが、真偽は明らかになっていない。<br><span class="badge badge-warn" style="margin-top:6px;display:inline-block;">⚠ 生態系保護区域 — 着陸制限</span><span class="badge badge-classified" style="margin-top:6px;margin-left:6px;display:inline-block;">▮ 本記事は一部検閲済み</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 形成史</h3>
+  <p class="lore-p">フォルトナの地質には、奇妙な古さと若さが同居している。岩盤も表土も星系の他の惑星と変わらぬ数十億年前の形成と年代測定されながら、その上に広がる生態系だけが原始の相をとどめているのである。惑星科学はこの矛盾を「激変を免れた星」という一点から説明する。多くの惑星が形成期に経験する惑星級天体との大衝突を、フォルトナはただの一度も受けなかったと推定されている。最大の傍証が、衛星をひとつも持たないという事実である。飛散した破片から唯一の月を得た第7惑星<a href="../database/locations.html#katina">カタリナ</a>や、掠過衝突によって自転軸を横倒しにされた第2惑星<a href="../database/locations.html#titania">タイタニア</a>とは対照的に、この星は原始のなだらかな自転と衛星を持たない裸の空をそのまま今日まで保っている。研究者がフォルトナの成り立ちを「地質学的な凪」と通称する所以である。</p>
+  <p class="lore-p">凪の要因は惑星内部の穏やかさに由来する。フォルトナの岩石圏は厚く冷えた一枚の殻を成しており、大陸を裂き海盆を開閉するようなプレート運動はほとんど働いていないと解析されている。内部に残された熱も破局的な大噴火ではなく、各地へ分散した中小規模の火山を通じて緩やかに逃がされ続けてきた。地表の骨格を組み替える営力が働かないため、惑星の大半を覆う一枚の超大陸は数十億年ものあいだ位置をほとんど変えず、その上の森を支え続けてきたと考えられている。もっとも、地殻の静止を惑星内部の事情だけで説明することには異論も根強い。各地の聖域に据えられた石柱状の遺物<a href="../database/glossary.html#spell-stone">スペルストーン</a>の作用にこそ原因があるとする説は、現地の伝承と観測事実の双方に支えられた有力な対抗仮説とみなされている。</p>
+  <p class="lore-p">動かない大地の上で、生態系は独自の物質循環を完成させた。旺盛な光合成の生む酸素と、分厚い植生および湿地の閉じ込める炭素とが長い時間をかけて均衡し、大気は標準を上回る高酸素の状態で安定している。地表に降り積もる有機物は火山性の二酸化炭素と湿地の発するメタンとなって大気へ還り、この二種の温室効果ガスが惑星規模の温暖湿潤な気候を維持する。高酸素の大気が大型生物の旺盛な代謝を支え、温暖な気候が通年の成長を許すという条件の重なりこそ、他星では遠い過去に姿を消した巨大植物と大型動物がこの星でのみ繁栄を続けている理由と目されている。</p>
+  <p class="lore-p">フォルトナが「時を止めた星」と呼ばれる本質は、この激変の不在にある。多くの惑星では大衝突や全球規模の寒冷化、破局噴火といった環境の激変が生態系を幾度もリセットし、そのたびに進化はふりだしへ引き戻されてきた。フォルトナはそのリセットをただの一度も被らなかったと推定され、原始の生命が絶えることなく数十億年をかけて緩やかに高度化し続けた。地上の恐竜族が独自の言語と部族社会を築くに至った背景も、この途切れない時間に求める説が有力である。もっとも周回宙域に配された<a href="../database/sectors.html#lambda">スペースオベリスク</a>が生態系の停滞そのものに関与しているとする見方も根強く、地質学だけでこの星のすべてを説明しきれてはいない。ある古参の研究者は報告書の余白に「この星だけが、一度も朝をやり直していない」と書き残している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">地表の大部分は多層構造の大密林に覆われ、樹冠の高さは場所によって500メートルを超える。赤道帯には巨大な汽水湖群が広がり、極地方にすら耐寒性の樹林が根を張るという、惑星規模の「森の帝国」が形成されている。大気は酸素濃度が高く、標準的な防護装備なしでも呼吸可能だが、未知の胞子や病原体のリスクから生身での長期活動は推奨されていない。</p>
+  <p class="lore-p">自転周期は31.8標準時間、公転周期は732日（コーネリアの約2年）にあたる。活発な大気の循環に加え、湖畔や沼地から発生するメタンガス、火山性の二酸化炭素が強い温室効果を生んでおり、惑星の大部分は熱帯もしくは亜熱帯性の気候となっている。午後には決まって短いスコールが樹冠を叩き、夕刻には汽水湖群から立ちのぼる霧が森を沈める。火山の噴火をはじめ環境を攪乱する要因は数多いが、それを上回る森の再生力の強さにより、惑星の全土は厳しい生存競争を前提とした安定した気候を保ち続けている。例外は少数の高山地帯のみで、雪線を越えた先には樹木も恐竜も姿を消し、この惑星で唯一の静寂というべき氷雪の世界が広がっている。</p>
+  <p class="lore-p">この氷雪の世界を代表するものが、中緯度帯に横たわる大山脈<a href="../database/glossary.html#snow-mountain">「スノーマウンテン」</a>である。一帯は大渓谷に阻まれて陸路の到達が至難であり、隔絶された高地には低地の密林と系統を異にする特殊な動植物が生息する。寒さにより恐竜族が定住しないこの高地は、フォルトナで唯一の哺乳類系種族<a href="#tribe-snowhorn">スノーホーン族</a>の領地となっている。</p>
+  <p class="lore-p">フォルトナの森を語る上で欠かせないのが、その異常な再生力である。伐採された樹林は数週間で元の高さまで戻り、開拓団が焼き払った農地は一季を待たずに密林へ還った。無人探査の結果によれば森の地下では巨大な菌糸網と根のネットワークが大陸規模で連結しており、一部の学者はこれを根拠に、フォルトナの森全体を「単一の超個体」とみなす説を唱えている。冒頭に掲げた調査団の最終通信──「森が、こちらを見ている」──を単なる錯乱として処理してよいのか。報告書の結論は、今も保留のままである。</p>
+  <p class="lore-p">特筆すべきは<a href="../database/sectors.html#lambda">周回宙域</a>に点在するスペースオベリスクである。謎の生物の顔や上半身を模した巨大構造物が惑星を取り囲むように配置されており、建造者も目的も一切不明。オベリスクの放つ微弱なエネルギーに引き寄せられるように、宙域には宇宙生物が多数生息しており、航行の際は天体よりもまず「生き物」に注意が必要とされる。中でも巨大宇宙怪獣<a href="../database/glossary.html#migratory-fauna">『スペースドドラ』</a>はこの宙域にねぐらを構えていることが確認されており、惑星域を飛行する際は細心の注意が必要である。</p>
+  <p class="lore-p">またフォルトナ惑星圏は、<a href="../database/sectors.html#nyi">セクターⳡ</a>を通ってソーラ圏との間を往復する宇宙生物たちの回遊路の終着点でもある。年に二度、数千の群れがこの宙域に到着し、オベリスクの周囲だけを注意深く避けながらしばらく羽を休め、再び燐光の帯となって旅立っていく。先導個体「17代目ヴェルデ」が群れの先頭で惑星の緑を映す光景は、遠望観測を許された数少ない研究者の間で星系随一の壮観として語られている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">入植時代、フォルトナは「豊穣（Fortuna）」の名を与えられ、農業惑星としての開発が幾度も試みられた。しかし開拓団は例外なく撤退している。伐採した森は数週間で再生し、建設した拠点は恐竜の群れに踏み潰された。やがて人々はこの星を開発対象から外し、「星系最大の自然保護区」として扱うようになった。</p>
+  <p class="lore-p">二百年以上続いた<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>の時代すら、この星は戦火とほぼ無縁だった。地上に奪うべき資源はなく、築いた拠点は森に呑まれ、宙域には宇宙生物が群れをなす──侵攻の対象としても補給地としても、フォルトナはあらゆる軍略の外に置かれ続けたのである。当時の航路図には「寄る価値なし。寄る意味なし。寄るべからず」という素っ気ない三行の注記だけが残されている。</p>
+  <p class="lore-p"><a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>勃発直後、<a href="../database/factions.html#venom-empire">ベノム帝国軍</a>はこの星の恐竜を侵略用生体兵器に改造・調教するための施設を建設した。だが施設は程なくして通信を絶ち、増援部隊が発見したのは森に呑み込まれた廃墟だけだった。部隊は全滅と断定され、計画は頓挫した。なお施設の通信途絶と時を同じくして、フォルトナ惑星圏との通信そのものが完全に途絶しており、中継衛星が沈黙した原因は今も特定されていない。</p>
+  <p class="lore-p">以後、帝国がこの星に手を出すことはない──誰もがそう考えていた。だがごく最近になって、帝国は一度だけ再進出を敢行している。皇帝の甥<a href="../database/characters.html#andrew">アンドリュー・オイッコニー</a>が私設軍隊を率いて駐屯し、放棄された生体兵器化施設の再建を進めたのである。駐屯軍には皇帝がかつて自ら艦長を務めた旗艦<a href="../weapons/brain-crusher.html">「ブレイン・クラッシャーmk-Ⅳ」</a>まで随伴しており、帝国がこの任務を決して軽んじていなかったことがうかがえる。しかし施設は<a href="../database/characters.html#fox">フォックス・マクラウド</a>の<a href="../other/fortuna-survey-1.html">単独潜入</a>によって大打撃を受け、旗艦は失われ、駐屯軍は壊滅した。再建の裏にあった真の目的をめぐる分析は、機密記録の項に譲る。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">機械文明は存在しないが、この星は決して「無人の星」ではない。ただし地上に暮らすのは、星系に分布する既知の人種とは全く別系統の種族──独自の言語と部族社会を持つ<a href="../database/races.html#saurian">知性ある恐竜族</a>である。既知の人類でこの星に根を下ろすのは、後述するパラノディアン系のひとつの部族、ほんの一握りにすぎない。統治権を握るのは草食の<a href="#tribe-asoka">アソーカ族</a>と翼を持つ<a href="#tribe-cloud">クラウド族</a>の2部族だが、好戦的な<a href="#tribe-sharpclaw">シャープクロウ族</a>や<a href="#tribe-redeye">レッドアイ族</a>をはじめ部族間の対立はいまだ多く、実態としては各部族の集落が点在するのみである（各部族の詳細は<a href="#tribes">サウリアの部族たち</a>の項に詳しい）。彼らこそが「サウリア」の名の主であり、学者たちはこの部族社会を「時を止めることを選んだ文明」と呼ぶ。恐竜族の間には星の各地に眠る「精霊（スピリット）」への信仰が根付いており、聖地とされる古代遺跡群への立ち入りは部族の掟で固く禁じられている。とりわけ聖域に据えられた石柱状の遺物<a href="../database/glossary.html#spell-stone">スペルストーン</a>を座から動かす行為は掟の中でも最も重い禁忌とされ、争いを続ける部族の間でも例外なく守られてきた。</p>
+  <p class="lore-p">唯一の例外が、記録上この星の「代表地」として登録されている聖地クアン・アタ・ラチュである。対立を続ける各部族もこの聖地だけは例外なく共に崇めており、聖地を巡る争いだけは数千年の記録の中に一度も見当たらない。そもそもこの星で「都市」と呼べる集落を築いた部族は<a href="#tribe-asoka">アソーカ族</a>と<a href="#tribe-cloud">クラウド族</a>の二つしかない。前者の故郷ウォールドシティは既に放棄され（<a href="#tribe-redeye">部族の項</a>を参照）、後者の城下町クラウドシティは比較的近年に建てられたばかりである。複数の勢力が大地を分割統治するこの星では万人の認める代表地が定まらず、全部族が共通の代表として選べる場所は結局この聖地しかなかったのである。</p>
+  <p class="lore-p">また密林の奥地には<a href="../database/races.html#paranodian">パラノディアン</a>の派生民族とされる部族が原始的な生活を営んでおり、彼らは滅亡した<a href="../database/glossary.html#paranid-empire">パラニド神聖帝国</a>の数少ない生き残りの末裔と考えられている。ドラゴンロックを追われた<a href="#tribe-ostega">オステガ族</a>の生き残りが合流した先も、こうした部族であると伝えられる。恐竜族と彼らの間には緩やかな共存関係があるというが、いずれも外部との接触を拒み、この星は外界との通信すら難しいため、研究はほとんど進んでいない。一部の人類学者は、彼らが「あえて」文明を捨てた──神聖帝国を滅ぼした何かから逃れるために──という説を唱えているが、これを確かめた者はいない。</p>
+  <p class="lore-p">なお、この星では他星で流通する星系共通通貨<a href="../database/glossary.html#space-dollar">SD（スペースドル）</a>は一切通用せず、取引には<a href="../database/glossary.html#cur-scarab">「スカラベ」</a>と呼ばれる緑の光沢が美しい昆虫が、そのまま通貨として用いられる。加えてフォルトナには星間法も一切適用されないため、取引で詐欺に遭っても訴える手段は存在しない。交易を試みる者は、その全てを自己責任で行うことになる。</p>
+  <p class="lore-p">ちなみにこの星の市で最も高値が付く品は、外の世界と同じく琥珀色の菓子<a href="../database/glossary.html#majin-ame">「魔人飴」</a>である。<a href="../database/sectors.html#lambda">セクターλ</a>に眠る<a href="../characters/warp-djinn.html">ワープ魔人</a>を起こせる唯一の通行料でありながら、その製法はおろか、誰が市に持ち込んでいるのかさえ分かっていない。スカラベを山と積んで買い付けに来る危険な客層を、恐竜族の売り手は「森の外の変わり者」と呼んで面白がっているという。</p>
+</div>
+<div class="lore-section" id="tribes">
+  <h3 class="lore-h">TRIBES ─ サウリアの部族たち</h3>
+  <p class="lore-p">本項では、フォルトナに住む種族たちについて解説する。惑星フォルトナは恐竜が多数暮らす密林の惑星であるが、その大地には大小さまざまな恐竜系の種族が部族を形成して暮らしている。部外者（<a href="../database/glossary.html#sauria-animalia">アニマリア</a>）への対応や扱いは部族・派閥ごとに大きく異なるため、接触の際は事前の情報確認と下準備が必須である。</p>
+  <div class="sub-entry" id="tribe-asoka">
+    <div class="sub-entry-h"><span class="num">①</span>アソーカ族 <span class="en">TRICERATOPS</span></div>
+    <p class="lore-p">現在のフォルトナの多くの地域を治めるトリケラトプスの部族。現存する部族のなかで最大勢力の一つであり、主に陸地や森に暮らしている。勇敢で誇り高く心優しい気質で、他の多くの部族からも一目置かれる存在である。圧制者<a href="../characters/drakor.html">ドラコー</a>率いる<a href="#tribe-draconia">ドラコニア族</a>と、凶暴な侵略部族である<a href="#tribe-redeye">レッドアイ族</a>を打倒したことで、聖地クアン・アタ・ラチュを直接守護することを認められるようになったとされ、現時点で聖地の守護を許されている唯一の部族となっている。</p>
+  </div>
+  <div class="sub-entry" id="tribe-cloud">
+    <div class="sub-entry-h"><span class="num">②</span>クラウド族 <span class="en">PTERANODON</span></div>
+    <p class="lore-p">現在のフォルトナの多くの地域を治めるプテラノドンの部族。現存する部族のなかで最大勢力の一つであり、山間部や高地に暮らしている。気さくでお喋りな者が多く、身分の高い者は美しい装飾を施した城に住まうなど、長や王ではない明確な貴族階級を持つ部族としても知られる。</p>
+  </div>
+  <div class="sub-entry" id="tribe-sontail">
+    <div class="sub-entry-h"><span class="num">③</span>ソンテイル族 <span class="en">ANKYLOSAURUS</span></div>
+    <p class="lore-p">主に森林のオアシスや水辺に住むアンキロサウルスの部族。争いを好まない優しい性格の者が多く、現在は<a href="#tribe-asoka">アソーカ族</a>との和平統治のもとに暮らしている。フォルトナの部族同士の争いが活発だった時代には、部族の全員が城壁を破壊できるほどの重戦士で構成された戦闘部族だったと伝えられ、その尻尾には当時の面影が残る。植物や自然に詳しい者が多く、その知識を部外者にも分け隔てなく共有してくれる数少ない存在であり、フォルトナで遭難した際に彼らと遭遇できることは最大級の幸運の一つと言われる。</p>
+  </div>
+  <div class="sub-entry" id="tribe-snowhorn">
+    <div class="sub-entry-h"><span class="num">④</span>スノーホーン族 <span class="en">MAMMOTH</span></div>
+    <p class="lore-p">フォルトナで唯一の哺乳類系種族、マンモス系人種で構成された部族。ジャングルの植物の勢力が及ばない<a href="../database/glossary.html#snow-mountain">スノーマウンテン</a>に暮らしている。排他的な気性の者が多い一方、どの部族よりも仲間思いで義理堅い戦士の一族として知られる。体格は四足歩行と原始的な要素を多く残しており、その戦闘力は全盛期の<a href="#tribe-sontail">ソンテイル族</a>と互角とされた。現在は<a href="#tribe-sharpclaw">シャープクロウ族</a>の度重なる侵略に悩まされており、排他的な気質を緩めてまで外部へ助力を乞うなど、危機的な状況に陥っている。</p>
+    <p class="lore-p">領地であるスノーマウンテンの中腹「ヒューロニアン氷原」に<a href="../database/military.html#cdf">コーネリア防衛軍</a>の前哨基地が置かれていることについては、部族内でも意見が真っ二つに割れている。領地に勝手に基地を建てたことを許さない保守派と、これを対シャープクロウ族の戦力として利用したがっている推進派である。いずれの選択も部族の今後のスタンスと存続そのものに関わるため結論は出ておらず、基地は黙認という宙吊りの状態に置かれ続けている。なお現族長は保守派に属し、アニマリアで信用を置く相手は<a href="../characters/kellone.html">ミズローヌ・ケローン</a>ただ一人とされる。この孤高の族長がなぜ外来者の中でただ一人ケローンにだけ信を置くのか。若き日の大提督がこの高地へ漂着し、最後まで隣の氷雪惑星と思い込んでいたという記録との関連を指摘する分析があるが、部族は何も語らない。</p>
+  </div>
+  <div class="sub-entry" id="tribe-hight">
+    <div class="sub-entry-h"><span class="num">⑤</span>ハイト族 <span class="en">BRACHIOSAURUS</span></div>
+    <p class="lore-p">フォルトナの赤道面に位置するジュラの大森林に住むブラキオサウルスの部族。ライラットの知覚種族では最大級の体躯を誇り、50mを超える巨躯はフォルトナの巨樹すら小さく見える錯覚を起こさせる。<a href="#tribe-asoka">アソーカ族</a>がフォルトナの大部分を統治する以前は、聖地の守護はハイト族が任されていたが、現在は様々な要因が重なり絶滅の危機にある。</p>
+  </div>
+  <div class="sub-entry" id="tribe-lightfoot">
+    <div class="sub-entry-h"><span class="num">⑥</span>ライトフット族 <span class="en">IGUANODON</span></div>
+    <p class="lore-p">ジュラの大森林に隠れ住むイグアノドンの部族。非常に警戒心が強く閉鎖的な部族であり、アニマリアどころか同じサウリアの民ですら、めったにその姿を見ることはない。<a href="../database/characters.html#fox">フォックス・マクラウド</a>は単独任務の際にライトフット族に拘束され窮地に陥ったと報告しており、接触には細心の注意を払うよう勧告が出されている。</p>
+  </div>
+  <div class="sub-entry" id="tribe-sharpclaw">
+    <div class="sub-entry-h"><span class="num">⑦</span>シャープクロウ族 <span class="en">VELOCIRAPTOR</span></div>
+    <p class="lore-p">洞窟や、光の届かない大森林樹冠の最深部に暮らしていたヴェロキラプトルの部族。もとは臆病で非力な弱小部族だったが、ある時期を境に墜落した宇宙船などを再利用した武器で武装し、組織的な攻勢に出るなど、明らかに文明の介入とみられる侵攻を続けている。現族長の<a href="../characters/scales.html">スケール将軍</a>はその凶暴性と野心から危険視されており、侵略の魔の手は<a href="#tribe-snowhorn">スノーホーン族</a>、さらには<a href="#tribe-asoka">アソーカ族</a>にまで迫りつつある。なお<a href="../database/glossary.html#fortuna-campaign">フォルトナ戦役</a>時の<a href="../other/fortuna-survey-1.html">現地調査</a>により、この侵攻が当時すでにアソーカ族を打ち倒すまで進行していた実態が初めて明らかになっている。外部との通信が困難なこの星の情報が、いかに遅れて届くかを示す実例である。</p>
+  </div>
+  <div class="sub-entry" id="tribe-redeye">
+    <div class="sub-entry-h"><span class="num">⑧</span>レッドアイ族 <span class="en">TYRANNOSAURUS</span></div>
+    <p class="lore-p">深紅の瞳と、見上げるほどの巨躯を持つティラノサウルスの部族。「強者こそがフォルトナの王にふさわしい」という弱肉強食の理念を掲げ、他の部族とは一線を画す凶悪さと凶暴性を併せ持つ。かつて<a href="#tribe-asoka">アソーカ族</a>が故郷ウォールドシティを犠牲にしてまで封印を施したが、最近になり<a href="#tribe-sharpclaw">シャープクロウ族</a>によって封印を解かれ、各地で横暴の限りを尽くしている。他部族はもとより、同盟を組むシャープクロウ族、果ては同族すら捕食の対象とすることから、仲間同士ですら信用してはいけないとされる。</p>
+  </div>
+  <div class="sub-entry" id="tribe-draconia">
+    <div class="sub-entry-h"><span class="num">⑨</span>ドラコニア族 <span class="en">DRAGON</span></div>
+    <p class="lore-p">ドラゴンロックを統治していた竜の部族。聖地の遺跡を分析し理解する知恵、空を舞う巨大な翼、大地すら引き裂く爪、体内から放つ火炎など、フォルトナの他の部族どころかライラットの既知の人類からも逸脱した存在であり、ドラコニア族の多くは自分たちが「選ばれし統治者」であることを信じて疑わない。族長<a href="../characters/drakor.html">ドラコー</a>は圧制者としても知られ、アソーカ族・ソンテイル族・スノーホーン族・<a href="#tribe-ostega">オステガ族</a>など数多の部族を恐怖と力でまとめ上げて統治してきた。だが現在のアソーカ王にドラコーが敗れてからは伝染病の蔓延も重なり、一族はドラゴンロックを放棄。フォルトナのどこかに隠れ住み、復権の機会をうかがっているとされる。</p>
+    <p class="lore-p"><span class="badge badge-classified">▮ 軍事機密</span><br>
+    <span class="redacted">ドラコニア族の正体については、惑星<a href="../database/locations.html#kew">キュー</a>の<a href="../database/glossary.html#paranid-empire">神聖帝国</a>遺跡発掘調査の情報と照合した結果、かつてクラゾアと闘い、フォルトナまでそれを追ってきた竜の戦士「カメリアン」の末裔である可能性が高いとされる。その人間離れした能力も、外星系からの存在と仮定すれば整合が取れると考えられている</span>。</p>
+  </div>
+  <div class="sub-entry" id="tribe-ostega">
+    <div class="sub-entry-h"><span class="num">⑩</span>オステガ族 <span class="en">PARANODIAN</span></div>
+    <p class="lore-p">フォルトナのドラゴンロックに暮らしていた<a href="../database/races.html#paranodian">パラノディアン</a>系の少数民族。部族の構成員は例外なく戦士として教育され、武器を使った白兵戦では最強とまで称されていたが、武装した<a href="#tribe-sharpclaw">シャープクロウ族</a>の襲撃によって大多数が戦死。現在は生き残りが他のパラノディアン系部族に合流し、細々と暮らしているという。<a href="../database/factions.html#iga">独立星系連合</a>の猛将として知られたナハシュ・ギルバスターは、<a href="../characters/nahash.html">この部族の出身</a>であることが明らかになっている。</p>
+  </div>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">フォルトナそのものに恒久的な軍事拠点は存在しない。しかし<a href="../database/sectors.html#lambda">セクターλ</a>は星系中央部と外縁部を結ぶ航路の分岐点に近く、哨戒任務や補給の中継点として両軍の艦艇が通過することは多い。<a href="../database/military.html#cdf">コーネリア防衛軍</a>はかつて雪線の高地に前哨基地を維持しており、この基地を巡って<a href="../database/military.html#starfox">スターフォックス</a>と傭兵部隊<a href="../characters/wolf.html">スターウルフ</a>が交戦した記録が残っている。基地が置かれているのは<a href="../database/glossary.html#snow-mountain">スノーマウンテン</a>中腹の開けた雪原「ヒューロニアン氷原」である。森の干渉が及ばない雪線の上に建つため「フォルトナで唯一、建物が立ち続けていられる場所」と揶揄されながら、現在も少数の交代要員によって維持されている。なお氷原は<a href="#tribe-snowhorn">スノーホーン族</a>の領地の内側にあたるが、部族からの抗議も攻撃も公式には一度も記録されていない。この奇妙な静けさの背景については、部族の項に譲る。</p>
+  <p class="lore-p">帝国の生体兵器化計画が全滅に終わった事実は、両軍にこの星への「不干渉」を暗黙の了解として根付かせた。現在、フォルトナ地上への降下作戦はコーネリア軍規において「最終手段」に分類されている。近年のアンドリュー・オイッコニー駐屯軍の壊滅は、その評価を両軍へ改めて刻み付ける結果となった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">CLASSIFIED ─ 機密記録</h3>
+  <p class="lore-p"><span class="badge badge-classified">▮ 最重要軍事機密 — QAL文書</span><br>
+  以下の記録は、<a href="../database/characters.html#andrew">アンドリュー・オイッコニー</a>が私設軍隊をフォルトナに駐屯させるなどの不穏な動きを察知した<a href="../database/characters.html#fox">フォックス・マクラウド</a>が、<a href="../other/fortuna-survey-1.html">単独降下作戦</a>の際に持ち帰った情報の分析結果である。帝国軍に渡った場合『スピリット』の悪用を招く恐れがあるため、本記録は星系最高度の機密指定下に置かれている。臨時閲覧権限での開示範囲には制限がある。</p>
+  <p class="lore-p"><span class="redacted">聖地の名「クアン・アタ・ラチュ」とは、サウリアで信仰される平和の神『クラゾア』の真の名とみられる。長い年月による風化で本来の意味は失われ、現在は聖地の名にのみ残されている</span>。</p>
+  <p class="lore-p"><span class="redacted">クラゾアの実体は、ライラットに現在の文明が芽生えるはるか以前にフォルトナへ降り立ったエイリアン種族と推定される。フォルトナ宙域を取り囲むスペースオベリスクはこの種族が作り出した増幅装置の可能性が高く、増幅されるものは魔法としか形容しようのない、常識を超えた神秘の力『スピリット』である。クラゾアは星系の星々からスピリットを集め、今も全盛期の力を取り戻そうとしている可能性が高い。</span>。</p>
+  <p class="lore-p"><span class="redacted">そして、これを止めるためにフォルトナへ降り立ったのが竜の一族「カメリアン」とみられる。カメリアンは<a href="../database/glossary.html#paranid-empire">パラニド神聖帝国</a>で栄えた竜の一族の一派に名が残る存在であり、太古の昔、二つの太陽の間から出現したクラゾアと激戦を繰り広げた勢力にして、現在のサウリアに生きる全部族の始祖にあたると推察される。</span>。</p>
+  <p class="lore-p"><span class="redacted">各地の聖域に据えられた<a href="../database/glossary.html#spell-stone">スペルストーン</a>は、このオベリスクと対を成す機構と推定される。オベリスクが星々からスピリットを集める装置であるのに対し、スペルストーンは集められた力を土地へ縛りつけ、星の変化そのものを停止させる装置として働いているとみられる。この星の生態系が数十億年にわたり原始の姿をとどめてきた事実は、地質学の説明よりもむしろこの機構によって説明されるべきものである可能性が高い。石を欠いた土地に何が起きるかは、部族衝突の際の陸塊分離事件が一例を示すにとどまる</span>。</p>
+  <p class="lore-p">また同作戦では、<span class="redacted">神殿最奥の用途不明の制御装置に拘束された身元不明の女性が発見されている。装置の解除手段は確立できず、彼女が携えていた武器「万能杖」のみが回収された</span>。詳細は人物記録 <a href="../characters/krystal.html">PF-18（仮称「クリスタル」）</a>を参照のこと。</p>
+  <p class="lore-p">なお本記録は、オイッコニーの私設軍隊を壊滅させたフォックスが偶然たどり着いたクラゾア神殿で得た情報を、過去に<a href="../database/locations.html#venom">ベノム</a>・<a href="../database/locations.html#corneria">コーネリア</a>・<a href="../database/locations.html#aquas">アクアス</a>の古代遺跡で発見された遺物の解析結果、および現地アソーカ族の王族に伝わる言い伝えと突き合わせて導き出された「推論」であり裏付けはまだ存在しない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">スペースオベリスクの一体をコーネリア科学技術省が曳航・回収しようとした際、宙域全体の宇宙生物が一斉に作業艦隊へ殺到するという事件が起きた。艦隊が曳航を放棄した途端、生物たちは何事もなかったかのように散っていったという。以来、オベリスクには「触れてはならない」という但し書きが付いている。</p>
+  <p class="lore-p">古い船乗りたちはフォルトナを「星系で一番幸運な星」と呼ぶ。誰のものにもならず、どの戦争にも呑まれず、数十億年前と同じ朝を迎え続けているからである。その名が示す通り、幸運（Fortuna）はこの星自身のためにあったのかもしれない。</p>
+  <p class="lore-p">密林の部族には「大地の下に扉があり、扉は遠い砂の国へ通じている」という伝承が残る。<a href="../database/locations.html#titania">タイタニア</a>の地底に同じ「扉」が存在するという証言、そして両惑星に<a href="../database/races.html#paranodian">パラノディアン</a>の派生民族が住むという事実──フォルトナとタイタニア、二つの惑星の文明的つながりは、近年の人類学で最も熱い論点の一つとなっている。</p>
+  <p class="lore-p">名前が<a href="../database/locations.html#fichina">フィチナ（Fichina）</a>に似ていることは、この星を巡る事故の最大の原因である。フィチナ行きの船舶が航路端末で誤ってフォルトナを選択し、宇宙生物のひしめく危険宙域へ迷い込む事例は後を絶たない。純白の氷結惑星に着くはずが、目の前に広がるのは緑の密林と、ゆっくりと首をもたげるスペースドドラの影──コーネリア航行局はこの誤選択を防ぐため、両星の航路コードの再割り当てと出発前の二重確認を義務化している。</p>
+  <p class="lore-p"><a href="../database/characters.html#fox">フォックス・マクラウド</a>から土産にスカラベを一匹もらった<a href="../database/characters.html#slippy">スリッピー・トード</a>は、その緑の光沢に魅了されて飼育に熱中。母艦<a href="../database/military.html#greatfox">グレートフォックス</a>内に専用の育成スペースを作ろうとして<a href="../database/characters.html#falco">ファルコ</a>と大喧嘩になった、という顛末が同艦の航行日誌に記録されている。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 250; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.15 + Math.random()*0.65).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(180,255,150,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body>
+</html>

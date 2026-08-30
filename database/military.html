@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MILITARY DATABASE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <link rel="stylesheet" href="../gls-view.css">
+  <style>
+    :root { --primary:#ff8844;--accent:#ffaa77;--border:rgba(255,136,68,0.32);--border-hi:rgba(255,170,119,0.7);--dim:#301505;--dim2:#180a03; }
+    :root { --gv-pri-rgb: 255, 136, 68; --gv-acc-rgb: 255, 170, 119; }
+    /* ブロック表示の帯色 */
+    .blk-group.bt-craft    { --blk-c: #76c8ff; }
+    .blk-group.bt-vessel   { --blk-c: #ffe066; }
+    .blk-group.bt-weapon   { --blk-c: #ff6f91; }
+    .blk-group.bt-unit     { --blk-c: #7dffb0; }
+    .blk-group.bt-facility { --blk-c: #ff9a76; }
+    .blk-group.bt-tech     { --blk-c: #5ef2d6; }
+    .blk-group.bt-super    { --blk-c: #ff3434; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ CIS-HQ / MILITARY DATABASE — 軍事・兵器データベース ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="gls-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ 07 / MILITARY DATABASE ]</div>
+      <h1 class="codex-title">MILITARY &amp; ARMORY OF THE LYLAT SYSTEM</h1>
+      <p class="codex-p">ライラット星系の軍事組織・部隊・機体・兵器・軍事施設に関する記録の総覧。サムネイル付きの項目は、選択すると個別の詳細記録へ接続される。歴史・文化・組織などの一般用語は<a href="glossary.html">用語データベース</a>を参照。</p>
+    </div>
+
+    <div class="gls-ctrl">
+      <button class="gls-index-btn" id="glsFilterBtn">◈ Filter: ALL</button>
+      <button class="gls-index-btn" id="glsIndexBtn">◈ Index</button>
+      <div class="disp-toggle" role="group" aria-label="表示モード切替">
+        <button class="disp-btn d-card active" id="dispCard" title="カード表示"></button>
+        <button class="disp-btn d-block" id="dispBlock" title="ブロック表示"></button>
+        <button class="disp-btn d-list" id="dispList" title="リスト表示"></button>
+      </div>
+    </div>
+
+    <div class="loc-filter" id="locFilter">
+      <button class="active" data-type="all">ALL</button>
+      <button data-type="craft">戦闘機・車両</button>
+      <button data-type="vessel">艦船</button>
+      <button data-type="unit">部隊・艦隊</button>
+      <button data-type="weapon">兵器</button>
+      <button data-type="facility">施設</button>
+      <button data-type="tech">技術</button>
+      <button data-type="super">超兵器</button>
+    </div>
+
+    <div class="gls-stage" id="glsStage">
+      <div class="gls-track" id="glsTrack">
+
+
+    <article class="codex-entry loc" id="g-diffuser" data-type="tech">
+      <div class="loc-body">
+        <h2 class="codex-h">G・ディフューザーシステム <span class="en">G-DIFFUSER SYSTEM</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-tech">技術</span> 反重力発生・慣性制御機構 — 星系標準技術</div>
+        <p class="codex-p">機体にかかる重力と慣性を拡散する反重力機構。基礎理論は科学技術省長官時代の<a href="characters.html#andorf">アンドルフ</a>、実用化は<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>の前身デ・ポン航宙機工房による。<a href="#arwing">アーウィン</a>から旅客船まで、ライラットの空を飛ぶほぼ全ての機体の心臓部であり、星系共通の航法基準でもある。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/g-diffuser.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="smart-bomb" data-type="weapon">
+      <div class="loc-body">
+        <h2 class="codex-h">スマートボム <span class="en">SMART BOMB</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-weapon">兵器</span> 登録式 超小型爆弾 — 星系標準兵装</div>
+        <p class="codex-p">威力と範囲は極大ながら、敵味方識別IDの登録式で味方だけは巻き込まない「賢い」爆弾。連鎖反応防止のため9発以上は保持できない。旧式は「ノヴァボム」と呼ばれ、地方基地に在庫が残るのみである。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/smart-bomb.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="supply-ring" data-type="tech">
+      <div class="loc-body">
+        <h2 class="codex-h">スモールサプライ <span class="en">SMALL SUPPLY — サプライリング</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-tech">技術</span> エネルギー回収補助機構 — 新型機標準搭載</div>
+        <p class="codex-p"><a href="glossary.html#blagzalight">ブラグザライト</a>を回収する超小型モジュールの群れ。エネルギー反応にリング状で集合し、潜った機体のシールドと損傷保護へ即座にエネルギーを回す。金色のリングほど回復量が高い。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/supply-ring.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry" id="polybius" data-type="tech">
+      <h2 class="codex-h">ポリヴィアス <span class="en">POLYBIUS — 戦闘補助AI</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-tech">技術</span> 戦闘補助人工知能 — 星系標準技術</div>
+      <p class="codex-p"><a href="factions.html#iga">独立星系連合（IGA）</a>との戦役で劣勢を強いられていた共和国の戦況を変えた兵器の一つ。その原型は、<a href="characters.html#andorf">アンドルフ・ボウマン</a>博士が学生時代に理論を構築した人工知能プロトコル『ENIGMA』を核に持つ戦闘補助システムであり、機体に蓄積された過去の交戦データから最適な戦い方を導き出す、いわば万能の戦術AIである。導入後、操縦者は「死なない飛び方」に徹するだけで相応の戦果を挙げられるようになり、敵の撃墜数と兵士の生還率を劇的に底上げすることに成功した。</p>
+      <p class="codex-p">ただしこのシステムの特許は現在更新されておらず、様々なメーカーがこれを流用した補助AIをあらゆる機体に搭載している。その結果、AIの性能は敵味方で拮抗し、結局は操縦者の技術が問われる局面が増えているのが実情である。またAIの性能にかまけて戦闘訓練をおろそかにする隊員の存在は、共和国・帝国双方に共通する問題としてしばしば挙げられている。</p>
+      <p class="codex-p">その性質上、ポリヴィアス系のAIは星系のほぼ全ての戦闘機・艦船に搭載されており、ライラットの争いの歴史を最も多く「見てきた」存在ともいえる。なお、原型となった開発者の学生時代の自作ゲーム『<a href="glossary.html#out-of-dimension">アウト・オブ・ディメンション</a>』と同様、この名もまた当時流行していたオカルト譚からの引用とされる。</p>
+    </article>
+
+    <article class="codex-entry loc" id="arwing" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">アーウィン <span class="en">ARWING</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 超高性能全領域戦闘機 / <a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a></div>
+        <p class="codex-p"><a href="#g-diffuser">Gディフューザーシステム</a>を搭載した<a href="#starfox">スターフォックス</a>の主力戦闘機。全長28sm、最高速度M4.2。宇宙・大気圏・地表を問わず戦闘可能な全領域性能を持ち、「乗り手を選ぶ名機」としてライラットの空の代名詞となっている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/arwing.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/weapons/arwing_anatomy.jpg" alt="Arwing"></div>
+    </article>
+
+    <article class="codex-entry loc" id="cornerian-fighter" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">コーネリアファイター <span class="en">CORNERIAN FIGHTER</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 多目的量産戦闘機 / <a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a></div>
+        <p class="codex-p"><a href="#cdf">CDF</a>の空を支える主力量産戦闘機。<a href="#arwing">アーウィン</a>の設計からGディフューザーを外し量産向けに簡略化した「誰もが乗れる翼」であり、星系のあらゆる基地と艦隊に配備される。標準武装はシングルレーザー1門で部隊ごとにツインレーザーやスマートボムラックへ換装される。<a href="characters.html#bill">ビル・グレイ</a>の専用改修機「ソニック・ポインター」もこの機体がベースである。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/cornerian-fighter.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="walker" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">ウォーカー <span class="en">WALKER</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> アーウィン対地強襲用二足歩行形態</div>
+        <p class="codex-p"><a href="#arwing">アーウィン</a>の変形機構が展開する対地強襲用二足歩行形態。Gディフューザー出力を脚部へ転換し、対空砲火の網や施設内部・敵艦の艦内など「戦闘機が立ち入れない戦場」へ歩いて侵入する。火力は飛行形態と同等でホバリングも可能。全領域戦闘機の名を文字通り完成させた形態。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/walker.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="gyrowing" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">ジャイロウィング <span class="en">GYROWING — 低速偵察用回転翼機</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> SD社製 潜入支援機 — 係留式小型ロボ「ダイレクト-アイ」搭載</div>
+        <p class="codex-p">速さと火力を捨てる代わりに空中で静止し、係留ケーブルで小型ロボ「ダイレクト-アイ」を下ろして施設の管制系へ潜り込むスターフォックスの潜入支援機。<a href="glossary.html#zoness-recon">ゾネス海上基地潜入作戦</a>で誰にも気づかれずに物証を持ち帰り、「潜入は戦闘機の仕事ではない」を証明した。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/gyrowing.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="landmaster" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">ランドマスター <span class="en">LANDMASTER</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 強襲戦車 / <a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a></div>
+        <p class="codex-p">Gディフューザー技術を地上に持ち込んだ「超高性能回転式地対空戦車」。ローリング回避とホバー滑走をこなす機動性で「地を這う航空戦」と評され、重力の強い<a href="locations.html#macbeth">マクベス</a>のような戦域で翼の代わりを務める。駆動部を飛翔ユニットへ再構成する反重力飛翔形態「グラヴマスター」の換装計画が試験中とされる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/landmaster.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="bluemarine" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">ブルーマリン <span class="en">BLUE-MARINE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 小型戦闘潜航艇 / S・トード設計</div>
+        <p class="codex-p"><a href="characters.html#slippy">スリッピー・トード</a>が設計した星系唯一の本格戦闘潜航艇。照明魚雷を兼ねる自動装填ランチャーを備え、<a href="locations.html#aquas">アクアス</a>の海中掃討作戦で巨大生体兵器バクーンを撃破した。宇宙から水中まで三領域対応の後継機「ブルフロッグ」が設計者の手で開発中とされる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/bluemarine.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="bullfrog" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">ブルフロッグ <span class="en">BULLFROG</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 全領域対応戦闘機（開発中） — <a href="characters.html#slippy">S・トード</a>設計</div>
+        <p class="codex-p"><a href="characters.html#slippy">スリッピー・トード</a>がブルーマリンの後継として開発中の全領域対応戦闘機。大気圏・宇宙・水中を持ち替えなしで戦う「絶対に落ちない機体」を掲げ、照準補正を捨てたプラズマ砲と三重の耐圧隔壁を軸に設計が進む。完成予定は「あと5分」。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/bullfrog.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>MOCK-UP ONLY</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="greatfox" data-type="vessel">
+      <div class="loc-body">
+        <h2 class="codex-h">グレートフォックス <span class="en">GREAT FOX</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-vessel">艦船</span> 空母兼宇宙戦艦 / <a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a></div>
+        <p class="codex-p"><a href="#starfox">スターフォックス</a>の母艦を務める純白の空母兼宇宙戦艦。J・マクラウドが80標準年ローンで購入して以来、部隊の歴史と共に飛び続けている。艦の管理は艦載AIロボ「ナウス」が一手に担う。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/greatfox.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="wolfen" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">ウルフェン <span class="en">WOLFEN</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 敵性全領域戦闘機 — スターウルフ主力機</div>
+        <p class="codex-p">スターウルフが駆る敵性の全領域戦闘機。性能値だけなら<a href="#arwing">アーウィン</a>すら上回る星系最強の強襲戦闘機であり、その系譜には<a href="characters.html#pigma">ピグマ</a>の裏切りで持ち去られたアーウィン3号機の影があるとされる。現行のウルフェンⅡは<a href="#hunter">ハンター</a>形態へのシームレス変形機構を持ち、現存3機が確認されている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/wolfen.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="hunter" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">ハンター <span class="en">HUNTER</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 敵性重襲撃機 — 追跡特化型</div>
+        <p class="codex-p"><a href="#wolfen">ウルフェン</a>の先行試作フレームを再生した重襲撃機。長距離追跡センサーとジャミング装置を備え、一度ロックした獲物を数百キロ先まで追い続ける。主に<a href="characters.html#leon">レオン</a>と<a href="characters.html#pigma">ピグマ</a>が運用する。現行のウルフェンⅡでは本機の機能が変形形態として統合された。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/hunter.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="salmarine" data-type="vessel">
+      <div class="loc-body">
+        <h2 class="codex-h">サルマリン号 <span class="en">SARUMARINE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-vessel">艦船</span> 敵性武装潜水艦 — 改造漁船</div>
+        <p class="codex-p"><a href="locations.html#fichina">フィチナ</a>の氷下海漁船を改造した武装潜水艦。レーザーを無効化する遮蔽バリアと採掘ドリルを備え、<a href="locations.html#zoness">ゾネス</a>の毒の海を荒らし回ったが、<a href="#starfox">スターフォックス</a>との交戦で轟沈。現在は後継艦「イエロー・サルマリン」が活動中である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/salmarine.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="rainbow-delta" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">レインボー・Δ <span class="en">RAINBOW Δ</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 敵性特殊戦闘機 — <a href="characters.html#leon">レオン・ポワルスキー</a>専用機</div>
+        <p class="codex-p"><a href="characters.html#leon">レオン</a>が個人で維持するワンオフ機。全兵装が照準に入った獲物へ自動で放たれるワイドロック式の追尾チャージ弾で構成され、光学擬態装甲により宇宙空間では機体の90%が背景に同化する。シールドは厚くブーストは短い。この機体の目撃報告は「レオンが本気になった」という報告と同義とされる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/rainbow-delta.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="black-rose" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">ブラック・ローズ <span class="en">BLACK ROSE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 敵性高速戦闘機 — <a href="characters.html#panther">パンサー・カルロッソ</a>専用機</div>
+        <p class="codex-p">スターウルフ臨時構成員<a href="characters.html#panther">パンサー・カルロッソ</a>の乗機。補助兵装を全廃し、一発の威力と射程に全てを振ったプリズム式重ザッパー一挺で戦う質実剛健の機体。ウルフェンⅡに似た輪郭を持つ出所不明のワンオフで、なぜか複座。本人曰く「運命の出会いは、いつでも突然だから」。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/black-rose.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="cats-eye" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">キャッツ・アイ <span class="en">CAT'S EYE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 民間高速艇 — <a href="characters.html#cat">キャット・モンロー</a>愛艇</div>
+        <p class="codex-p">フリーの運び屋キャット・モンローの愛艇。環状線の興行レース艇を族のOBたちが「逃げ足」に全振りで改修したワンオフであり、武装は自衛用の軽ザッパー一挺のみ。<a href="#cdf">CDF</a>と帝国の双方に追跡記録があり、双方に成功例がない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/cats-eye.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="chastiefol" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">シャスティフォル <span class="en">CHASTIEFOL</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 試作特殊戦闘機 — <a href="characters.html#amber">アンバー・シルフェイド</a>専用機</div>
+        <p class="codex-p">純白・無装飾の機体が星雲を切り裂いて飛ぶ姿はまさに「剣」。ツインレーザーと20基の遠隔操作ドローンにより単騎で1個小隊に匹敵する戦闘力を発揮する<a href="characters.html#amber">ヴォーパル隊隊長</a>の乗機。神経直結の操縦系は1出撃5分が限界とされ、隊の作戦はすべてこの5分からの逆算で組まれる。その操縦系には公にできない技術が使われているという。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/chastiefol.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>RECORD RESTRICTED</div></div>
+    </article>
+
+    <article class="codex-entry" id="devil-joker" data-type="craft">
+      <h2 class="codex-h">デビル・ジョーカー <span class="en">DEVIL JOKER — 局地襲撃兵器</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> P・デンガー開発 — グリッピア襲撃事件で喪失</div>
+      <p class="codex-p"><a href="characters.html#pigma">ピグマ・デンガー</a>が開発した局地襲撃兵器。外見はただの無人哨戒機にしか見えず、丸いフォルムに惚けた表情のペイントは可愛らしささえ覚えさせるが、騙されてはいけない。「デビル」の名を冠するにふさわしい凶悪な戦闘力を備えた襲撃ロボであり、その実力は<a href="locations.html#grippia">グリッピア</a>の鉱床防衛戦で<a href="characters.html#slippy">スリッピー・トード</a>を降参寸前まで追い込んだほどである。</p>
+      <p class="codex-p">無害そうな外見は、むろんただのフェイクである。その外周にはあらゆる兵器が隠されており、遠距離狙撃用のツインレーザーに始まり、機材を麻痺させる冷凍モジュール、壁を焼き切る超高出力バーナー、岩盤を圧壊させる衝撃波ビーコン、水さえあればどこでも使えるウォーターカッター、高速回転で竜巻を生み出す気象コントロールファンなど、7種類の兵装が用意されている。しかも、これらはあくまで「おまけ」である。本命は本体上部に格納された「ウィザードモジュール」であり、その空間転送技術で呼び出される大量の子機の前に、大抵の設備はイナゴに食い尽くされる畑のごとく崩壊する。</p>
+      <p class="codex-p">だが、本当に恐ろしいのはそれでもない。ウィザードモジュールは本命であると同時に、この機体の安全装置を兼ねているのである。これが破壊されたとき、マシンは真の姿へと変形する。小惑星破壊兵器「デビル・ジョーカー」である。小惑星を丸ごと吹き飛ばす巨大レーザー砲「デビル・デスキャノン」は名前どおりの破壊力を持ち、恒星間プラズマを風のように受けて羽ばたき旋回する俊敏な機動もまた凶悪と評するほかない。<a href="#protecam">プロテカム</a>を子機で一基ずつ消耗させて隙を作り、見えない死角から小惑星破壊砲を放つ戦法の前に、防衛網は悪夢を見ることになる。</p>
+      <p class="codex-p">ピグマ本人はこれを自信作と豪語するが、実際には<a href="characters.html#andorf">アンドルフ</a>博士との共作とみられている。用意周到な兵装の品揃えに始まり、ド派手な変形機構、そして明らかにオーバースペックな小惑星破壊砲の実装。明言こそされていないものの「隠しきれない癖が出ている」とは<a href="characters.html#slippy">スリッピー</a>の評である。なお同機がグリッピアで自爆に終わった顛末と、その自爆ボタンにまつわる「悪戯」の真相は、<a href="../planets/grippia.html">グリッピア</a>の記録余話に詳しい。機体そのものは失われたが、設計図は後発機へ活かすため開発者の手元に残されているとみられ、共和国側は同系機の再来を警戒し続けている。</p>
+    </article>
+
+    <article class="codex-entry loc" id="lw2-drones" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">LW2主力無人機 <span class="en">LW2 COMBAT DRONES — 兵器総覧</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 両軍の無人機戦力 — 主製造地エラダード</div>
+        <p class="codex-p">第2次ライラットウォーズの空を数で埋める両軍の無人機の総覧。共和国の門番「チワワ」から帝国の主力「ドラゴン」系まで、その多くが<a href="locations.html#eladard">エラダード</a>の同じ工廠で生まれている。撃ち合う機体が部品単位では「兄弟」であるという皮肉は、この戦争の構造そのものである。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/lw2-drones.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="sardes" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">サルデス <span class="en">SARDES — 帝国有人人型戦闘機</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 系列総称 — 製造は<a href="locations.html#macbeth">マクベス</a>直営</div>
+        <p class="codex-p">帝国軍が艦隊戦で投入する有人人型戦闘機の総称。宇宙戦闘に不向きなはずの人型に宿る皇帝の拘りと、それを裏切らない性能で共和国将兵の悪夢となっている。赤・青・黒・白のエース専用機4種が確認されており、とりわけ遠隔操作ビットを駆る「白い機体」はセクターζでヴォーパル隊の隊長と互角に渡り合った。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/sardes.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>RECORD RESTRICTED</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="venom-cell" data-type="weapon">
+      <div class="loc-body">
+        <h2 class="codex-h">ベノム・セル <span class="en">VENOM CELL — 浸食鹵獲機体</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-weapon">兵器</span> 生体災害 — 発生源は<a href="locations.html#venom">ベノム</a></div>
+        <p class="codex-p">惑星ベノムのバイオウェポン生体組織に浸食・鹵獲された機体の総称。派閥を問わず無差別に取り込み、恒星級の高エネルギー以外では死滅しない。撃破後の始末の悪さと、有人機の『成れの果て』が見せる不可解な挙動で恐れられ、ベノムへの地上降下作戦を事実上不可能にしている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/venom-cell.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>RECORD RESTRICTED</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="granga" data-type="craft">
+      <div class="loc-body">
+        <h2 class="codex-h">グランガ <span class="en">GRANGA — 帝国対地・都市制圧兵器</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-craft">戦闘機・車両</span> 有人二足歩行 — 設計は皇帝本人と推定</div>
+        <p class="codex-p">よたよた歩きから両軍に「ガーガー・グース」と笑われる帝国の二足歩行制圧兵器。だが参謀部はこれを実戦データ収集用の試作機とみており、その歩行制御はサルデスへ受け継がれたと解析されている。後継機ディストラクターの被害は笑えない規模である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/granga.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="attack-carrier" data-type="vessel">
+      <div class="loc-body">
+        <h2 class="codex-h">アタック・キャリアー <span class="en">ATTACK CARRIER — 帝国小型戦略空母</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-vessel">艦船</span> 完全量産機 — 製造は<a href="locations.html#eladard">エラダード</a></div>
+        <p class="codex-p">総パーツ数わずか30の単純構造ながら、並の戦闘機を超える性能を持つ帝国の量産空母。左右の攻撃ユニットを戦局に合わせて7種から換装でき、無人機を満載したまま前線へ出る。弁当屋のカスタム注文から生まれたこの設計思想は、今も帝国の主戦力であり続けている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/attack-carrier.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="guinbee-line" data-type="vessel">
+      <div class="loc-body">
+        <h2 class="codex-h">グインビー戦艦系列 <span class="en">GUINBEE LINE — 帝国艦船等級</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-vessel">艦船</span> 系統総覧 — 帝国二十四師団の全艦隊を構成</div>
+        <p class="codex-p">巡洋艦グインビーを起点とする帝国戦艦の系統にして、傍受通信に飛び交う「○○ビー級」の物差し。物量の<a href="../weapons/guinbee-line.html#guinbee">グインビー</a>、バキュラム鋼の壁<a href="../weapons/guinbee-line.html#dorisbee">ドリスビー</a>、両舷ビーム砲の<a href="../weapons/guinbee-line.html#corbee">コルビー</a>、対光学バリアを備え本隊三個師団に18隻が並ぶ最強の<a href="../weapons/guinbee-line.html#granbee">グランビー</a>の四段で構成される。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/guinbee-line.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="meteo-crusher" data-type="vessel">
+      <div class="loc-body">
+        <h2 class="codex-h">メテオクラッシャー <span class="en">METEO CRUSHER — 隕石破砕船／工作船</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-vessel">艦船</span> 民間重機の鹵獲模造 — 系譜は<a href="../corporations/vector-prime.html">ベクター・プライム社</a></div>
+        <p class="codex-p">隕石破砕用の民間重機を鹵獲・模造した帝国の工作船。グレートウォール第2宙域で壁に「抜け穴」を掘ろうとしたところをAREA3の軌道監視に検知され、虚偽の降参宣言で抵抗した末にスターフォックスへ撃墜された。降参宣言の検証手順が交戦規定に加わるきっかけとなった機体である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/meteo-crusher.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="blade-barrier" data-type="vessel">
+      <div class="loc-body">
+        <h2 class="codex-h">ブレードバリア <span class="en">BLADE BARRIER — 万能破壊戦艦</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-vessel">艦船</span> <a href="#imperial-guard">帝国軍親衛隊</a> 赤の3 専用機 — 交戦回避勧告</div>
+        <p class="codex-p"><a href="#meteo-crusher">メテオクラッシャー</a>を攻撃的に改良した帝国の万能破壊戦艦。高速回転する<a href="glossary.html#baculum">バキュラム鋼</a>のブレードが近づく全てを敵味方の区別なく砕き、裏面のトラクタービームが戦域の機体を刃の正面へ縛り付ける。1号機はAREA3強襲で自爆し、2号機がセクターΣで稼働中。搭乗者は親衛隊随一の武闘派フリッツ・チンパンドルフである。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/blade-barrier.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="oh-and-mu" data-type="vessel">
+      <div class="loc-body">
+        <h2 class="codex-h">ओ&amp;मू / オー＆ムー <span class="en">OH &amp; MU — 古代戦略兵器（撃破済）</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-vessel">艦船</span> 教団<a href="glossary.html#mu-cult">「ムー」</a>旗艦 — 現存せず</div>
+        <p class="codex-p">巨大移動要塞ムーラシアの装飾に擬態していた正体不明の戦略兵器。<a href="locations.html#lambda">スペースオベリスク</a>の鹵獲・改造と推定され、二つの顔が組み合って戦艦となり、8基のビットと未知の兵装で交戦部隊を圧倒した。<a href="glossary.html#dark-messiah">ダークメシア事件</a>で先代<a href="#starfox">スターフォックス</a>に撃破され、動力の解析所見は現在も封印されている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/oh-and-mu.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="great-dish" data-type="vessel">
+      <div class="loc-body">
+        <h2 class="codex-h">グレートディッシュ <span class="en">GREAT DISH — 帝国超巨大強襲戦艦</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-vessel">艦船</span> 移動要塞 — 対地下要塞戦術兵器 / 通称「ソーサラー」</div>
+        <p class="codex-p">地下に潜った基地を超大型バンカーバスターで地殻ごと爆砕する、空前絶後の巨大さを誇る移動要塞兼戦艦。すでにフィチナとカタリナで基地三つを地図から消しており、<a href="glossary.html#katina-miracle">「カタリナの奇跡」</a>で落とされたのは同時投入されていた別系統機<a href="../weapons/salresia.html">サルレシア</a>（本艦の10分の1の規模）であり、本艦の建造は加速している。艦体が基地上空を覆えば地表は夜になる。<span class="redacted">5日後、カタリナへの再来襲が予測されている</span>。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/great-dish.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>RECORD RESTRICTED</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="brain-crusher" data-type="vessel">
+      <div class="loc-body">
+        <h2 class="codex-h">ブレイン・クラッシャーmk-Ⅳ <span class="en">BRAIN CRUSHER mk-Ⅳ — 帝国可変戦艦</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-vessel">艦船</span> 皇帝の旧旗艦 — 星系唯一の可変戦艦 / 大破</div>
+        <p class="codex-p">戦闘機mk-Ⅲを丸ごとスケールアップして戦艦化し、さらに頭部と両腕の3パーツ構成の「戦闘モード」へ変形する機構を持つ、ライラットで唯一の可変戦艦。かつて皇帝自身が艦長を務めたこの旗艦はオイッコニーの私設軍隊に貸与され、フォルトナの大地で「鉄の巨人」と化した末に大破した。私設軍隊は旗艦を偽装する小型量産艦「デスバブーン」を併用し、共和国側の旗艦特定を混乱させ続けた。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/brain-crusher.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="odd-weapons" data-type="weapon">
+      <div class="loc-body">
+        <h2 class="codex-h">ライラット珍兵器総覧 <span class="en">ODDBALL WEAPONS FILE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-weapon">兵器</span> 兵器史別録 — 全勢力・収録9件</div>
+        <p class="codex-p">時代が早すぎた発明と、どう見てもダメだった発明を勢力の別なく収蔵するアーカイブ。勝手に沈む流氷戦艦から、味方に突っ込む自走爆弾、メテオベースの上で踊り続ける作業ロボまで。設計者は全員、大真面目だった。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/odd-weapons.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>MERCIFULLY</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="bioweapon" data-type="weapon">
+      <div class="loc-body">
+        <h2 class="codex-h">バイオウェポン <span class="en">BIOWEAPON</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-weapon">兵器</span> 機械制御型生体兵器（総称） — <a href="characters.html#andorf">アンドルフ</a>設計</div>
+        <p class="codex-p">生体に制御用機械を埋め込んだ兵器群の総称。アクアスの海棲個体バクーン、ソーラの恒星適応個体サンガー、占領下ゾネスの変異生物群が確認されており、汚染環境や恒星表面ですら稼働する柔軟性が戦略的脅威となっている。だがバクーンの解析は、この兵器の「本来の姿」について奇妙な仮説を示し始めている──。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/bioweapon.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="goras" data-type="weapon">
+      <div class="loc-body">
+        <h2 class="codex-h">ゴラス <span class="en">GORAS — 古代兵器兼生物</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-weapon">兵器</span> <a href="locations.html#titania">タイタニア</a>地表 — 分類不能・活動中</div>
+        <p class="codex-p">「禁断の惑星」タイタニアを徘徊し、生命反応をどこまでも追い続けて捕食する古代の獣。長らく<a href="#bioweapon">バイオウェポン</a>の一個体と分類されてきたが、遺伝子構造は既知のどの生物とも一致せず、遺跡調査は文明以前からの生息を示唆している。スターフォックスとの交戦記録を持つ。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/goras.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="bolse" data-type="facility">
+      <div class="loc-body">
+        <h2 class="codex-h">防衛衛星ボルス <span class="en">BOLSE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-facility">施設</span> 球形要塞衛星 — <a href="locations.html#area6">AREA6</a>中核</div>
+        <p class="codex-p">ベノム最終防衛ラインAREA6の中核を成す、無人の自立戦闘宇宙ステーション。自立思考AI「タイタン」に制御され、6基連環の全周囲シールドと主砲<a href="glossary.html#purge-cannon">パージ・キャノン</a>を備え、単独で艦隊に匹敵する。共和国の作戦立案では兵器ではなく「地形」として扱われる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/bolse.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry" id="great-wall" data-type="facility">
+      <h2 class="codex-h">グレートウォール <span class="en">GREAT WALL — 最終防衛ライン</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-facility">施設</span></div>
+      <p class="codex-p">惑星<a href="locations.html#katina">カタリナ</a>軌道上の重力的ラグランジュ点に配置された人工の隕石群、およびそれを管理する施設の総称。隕石は遥か昔に消滅した<a href="glossary.html#stephano">第6惑星</a>の名残として浮遊していたものをキャプチャしたものである。小惑星自体に特殊な磁力により反発し合う性質があるため、小惑星同士が接触しても大衝突には至らない。</p>
+      <p class="codex-p">エリア1（<a href="sectors.html#gamma">セクターγ</a>）・エリア2（<a href="sectors.html#delta">セクターδ</a>）はアステロイドベルトそのもの、エリア3（<a href="sectors.html#epsilon">セクターε</a>）は環状宇宙ステーション<a href="locations.html#area3">AREA3</a>が管理を担い、<a href="locations.html#corneria">コーネリア</a>本星への侵攻を食い止める最大の防御壁となっている。</p>
+      <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/greatwall.html">▶ 詳細記事を開く</a></div>
+    </article>
+
+    <article class="codex-entry" id="cdf" data-type="unit">
+      <h2 class="codex-h">コーネリア防衛軍 <span class="en">CORNERIAN DEFENSE FORCE — CDF</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-org">部隊・艦隊</span></div>
+      <p class="codex-p"><a href="factions.html#cornerian-republic">コーネリア連合共和国</a>の正規軍。星系最高水準の技術力を擁し、総司令部は<a href="locations.html#corneria">コーネリア</a>に置かれている。現在は総司令官<a href="characters.html#pepper">Z・Z・ペパー</a>将軍の指揮の下で星系全域の防衛作戦を統括し、戦時特例として全州代表評議会から軍事権限の一部を総司令部へ委任する特別措置が敷かれている。共和国憲章第1条が質量破壊兵器の研究・保有を永久に禁じているため、CDFは建国以来ただの一度も超兵器を持ったことのない軍隊でもある。</p>
+      <p class="codex-p">起源は<a href="glossary.html#stephano">ステファノーの戦い</a>を契機に旧5国の艦隊を統合した星系統合艦隊にさかのぼり、国章の5つの星はこの艦隊に協力した5国を示す。艦隊は後の<a href="#starblade">宇宙艦隊スターブレード</a>となり、各国の陸海空軍は州軍として併合されて現在の多層構造を形作った。旧コーディリア王国の系譜を継ぐ精鋭部隊<a href="glossary.html#unit-sword">「ソード」</a>や旧大グランベル国の武の伝統など、旧国家ごとの軍閥の気風は統合から二百年を経た今も部隊の色として残っている。</p>
+      <p class="codex-p">編成は主力艦隊スターブレード、<a href="locations.html#katina">カタリナ</a>軌道の<a href="#great-wall">グレートウォール</a>防衛網、各州の駐留軍と宙域艦隊による多層防衛を基本とする。前線の空を支えるのは量産機<a href="#cornerian-fighter">コーネリアファイター</a>と犬種の名を冠する<a href="#lw2-drones">無人機</a>群であり、<a href="#bernard">バーナード隊</a>のような州駐留軍の飛行隊が防衛線の実働を担い、本土防衛は第1飛行隊<a href="#retriever">レトリーバー隊</a>が、地表の奪還は<a href="#cdf-ground">CDF地上軍</a>が受け持つ。正規の手段が尽きた局面には特殊戦闘部隊<a href="#vorpal">ヴォーパル隊</a>が招集される。士官は<a href="glossary.html#academy-branches">士官学校</a>の本校と各州分校で養成され、分校間に横たわっていた序列の解体はペパー自身が長年働きかけてきた課題である。</p>
+      <p class="codex-p"><a href="glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>の緒戦でCDFは開戦以来最大の敗北を喫した。<a href="glossary.html#zeta-tragedy">セクターζの惨劇</a>でスターブレード主力の過半を一夜で失い、<a href="locations.html#macbeth">マクベス</a>・<a href="locations.html#zoness">ゾネス</a>は占領され、<a href="locations.html#prospero">プロスペロー</a>が落ちた。共和国を去った<a href="characters.html#kellone">ミズローヌ・ケローン</a>が部隊編成の詳細まで持ち出していた以上、秘匿の網はもとより破れていたのである。<a href="glossary.html#corneria-defense">コーネリア防衛戦</a>以降は本土への度重なる侵攻を決死の防衛で凌ぎ、戦線は維持されているものの戦況の針は今も帝国側に振れている。</p>
+      <p class="codex-p">正規軍の限界を誰より理解するペパーは<a href="#starfox">スターフォックス</a>への依頼を「屈辱ではなく保険」と公言し、議会の傭兵反対派を黙らせた。以来CDFの作戦は正規艦隊が押さえ傭兵が切り込む二本立てで組まれており、傭兵部隊への依存度は戦況悪化とともに高まり続けている。なお軍内には帝国を今も「アンドルフ軍」と呼ぶ者が少なくないが、これは正式呼称「<a href="factions.html#venom-empire">ベノム帝国</a>」に対するCDF内の呼称の揺れである。</p>
+    </article>
+
+    <article class="codex-entry" id="starfox" data-type="unit">
+      <h2 class="codex-h">スターフォックス <span class="en">STAR FOX TEAM</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-org">部隊・艦隊</span></div>
+      <p class="codex-p"><a href="characters.html#fox">フォックス・マクラウド</a>率いる雇われ遊撃隊。戦闘機<a href="#arwing">アーウィン</a>を駆り、<a href="#cdf">CDF</a>の正規艦隊では突破不可能な戦域へ少数精鋭で切り込む戦法を得意とする。<a href="characters.html#pepper">ペパー将軍</a>が「屈辱ではなく保険」と公言して軍の戦術へ正式に組み込んだ共和国側の切り札であり、損耗率がゼロに近いことがこの部隊の最大の異常値と評される。</p>
+      <p class="codex-p">結成は先代<a href="characters.html#james">ジェームズ・マクラウド</a>による。CDFのエースだった彼は軍部の官僚主義に募る懸念から緊急時に迅速に動ける独立部隊を構想し、猛反対する<a href="characters.html#peppy">ペッピー・ヘア</a>を押し切って共に軍を退き、旧知の<a href="characters.html#pigma">ピグマ・デンガー</a>をメカニックに迎えて隊を旗揚げした。<a href="glossary.html#silent-nightmare">サイレント・ナイトメア事件</a>で正規軍に代わり移動要塞を撃破した実績が示すとおり初代の腕は軍の内外に知られていたが、宇宙歴3994年の<a href="glossary.html#venom-recon">ベノム偵察作戦</a>で編隊はピグマの裏切りにより帝国の罠に落ち、ジェームズは僚機を逃がして消息を絶った。</p>
+      <p class="codex-p">隊を継いだのは当時14歳の遺児フォックスである。士官学校を自主退学し、父の部隊と母艦、そして借金ごと名を受け継いだ。後見人ペッピーの下で再建に少年期の全てを費やし、退学に迷わず付いてきた<a href="characters.html#slippy">スリッピー・トード</a>が名簿の最初に名を連ね、開戦後にはCDFの賞金付き選抜模擬戦の決勝で下した<a href="characters.html#falco">ファルコ・ランバルディ</a>が加わった。現在の構成員は隊長フォックス・マクラウド、参謀ペッピー・ヘア、エースパイロットのファルコ・ランバルディ、メカニックのスリッピー・トードの4名である。</p>
+      <p class="codex-p">近年は運用を第1隊と第2隊に分け始めている。第1隊は上記4名の常勤隊員であり、第2隊は押しかけてきた者を断り切れず、かといって常勤で迎え入れるわけでもない者たちの受け皿である。現在は整備士<a href="characters.html#fay">フェイ・スパニエル</a>と迎撃パイロット<a href="characters.html#miyu">ミュウ・リンクス</a>の2名が名を連ね、第1隊に欠員が出た際の代役と随伴機を務めている。第2隊の条件は自前の機体を持ち込むことであり、隊の家計がアーウィンをこれ以上増やせない事情を反映した取り決めでもある。名簿の上では今も4名であり、CDFの傭兵管理課は第2隊を「同行者」として処理している。</p>
+      <p class="codex-p">現行のアーウィンは4機編成である。フォックスが駆る4号機、ペッピーの2号機、スリッピーの5号機、そしてファルコのために用意された特注の6号機がこれにあたる。欠番となっている機体にはそれぞれ理由がある。ジェームズの乗機であった1号機は本人とともに行方不明であり、離反したピグマの3号機はのちに<a href="#wolfen">ウルフェンⅠ</a>の素体として再構成されたとみられている。母艦は空母兼宇宙戦艦<a href="#greatfox">グレートフォックス</a>で、ジェームズが80標準年ローンで購入して以来隊の工房であり家であり続けており、艦の管理は艦載AIロボ「ナウス」が一手に担う。</p>
+      <p class="codex-p">新生スターフォックスの名を一夜で星系全土へ押し上げたのは<a href="glossary.html#corneria-defense">コーネリア防衛戦</a>である。軍の公式記録が初陣と数える<a href="glossary.html#katina-miracle">カタリナの奇跡</a>を皮切りに<a href="glossary.html#climate-recapture">フィチナ</a>・<a href="locations.html#zoness">ゾネス</a>・<a href="locations.html#aquas">アクアス</a>・<a href="locations.html#titania">タイタニア</a>・<a href="locations.html#fortuna">フォルトナ</a>と正規艦隊では不可能な任務を重ね反攻の先頭に立ち続けている。<a href="glossary.html#eclipse-op">日食作戦</a>のようにコーネリア防衛戦より前の「無名の時代」に属する戦歴も少なくない。</p>
+      <p class="codex-p">帝国側の同業者<a href="#starwolf">スターウルフ</a>とは<a href="glossary.html#climate-recapture">クライメート・コントロール奪還戦</a>での初交戦以来複数の戦域で刃を交えている。撃墜数では常にフォックスが上回るが決着はついておらず、リーダー<a href="characters.html#wolf">ウルフ・オドネル</a>のフォックスへの執着を心理士官は「決闘の申し込みである」と結論している。</p>
+      <p class="codex-p">3機編成として後世に伝わる初代スターフォックスが、実は4機編成を前提に組織されていたことはあまり知られていない。新生スターフォックスが動き出すまでの長い年月4号機は搭乗者を持たないままドックに置かれ続けていた。この空席が誰のために用意されていたのかは長く謎とされてきたが、サイレント・ナイトメア事件の管制記録に残る4機目の機影の解析以来一つの仮説が唱えられている。詳細は<a href="locations.html#sargasso">サルガッソー</a>宙域の記録を参照のこと。</p>
+    </article>
+
+    <article class="codex-entry" id="starwolf" data-type="unit">
+      <h2 class="codex-h">スターウルフ <span class="en">STAR WOLF TEAM</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-org">部隊・艦隊</span> 帝国が雇う精鋭傭兵部隊 — 敵性</div>
+      <p class="codex-p"><a href="characters.html#wolf">ウルフ・オドネル</a>率いる傭兵部隊。<a href="factions.html#venom-empire">ベノム帝国</a>との契約下で活動し、可変戦闘機<a href="#wolfen">ウルフェン</a>を駆って<a href="#starfox">スターフォックス</a>と同じ少数精鋭の切り込みを敵側から行う。部隊名がスターフォックスを強く意識したものであることは誰の目にも明らかであり、名付けの経緯を問われたウルフは「決まってんだろ。あいつらを狩る隊だからだ」と返答している。</p>
+      <p class="codex-p">構成員はリーダーの<a href="characters.html#wolf">ウルフ・オドネル</a>、二番機<a href="characters.html#leon">レオン・ポワルスキー</a>、初代スターフォックスを裏切った<a href="characters.html#pigma">ピグマ・デンガー</a>、皇帝の甥<a href="characters.html#andrew">アンドリュー・オイッコニー</a>の4名を定数とし、負傷離脱したアンドリューの代役として編入された<a href="characters.html#panther">パンサー・カルロッソ</a>が契約満了後も臨時構成員として居着いている。乗機は現存3機の<a href="#wolfen">ウルフェンⅡ</a>（ウルフ・レオン・ピグマ）と、パンサーの専用機<a href="#black-rose">ブラック・ローズ</a>である。</p>
+      <p class="codex-p">結成の旗揚げはウルフだが、発案と根回しを担った裏方はピグマである。何度も勧誘を蹴るウルフをレオンとの「やり取り」が本物の殺し合いに発展した末に頷かせ持ち去った<a href="#arwing">アーウィン</a>3号機を素体にウルフェンⅠを開発し、皇帝<a href="characters.html#andorf">アンドルフ</a>の依頼でアンドリューを入隊させて帝国からの計り知れないバックアップを確保した。新型機の開発予算から根城の補給線まで、隊の台所が甥の存在に支えられている部分は大きい。<a href="#cdf">CDF</a>の分析官はこの手際を「スターウルフとは、ピグマ・デンガーの生涯最大のディールである」と評している。</p>
+      <p class="codex-p">公式記録における初交戦は<a href="glossary.html#climate-recapture">クライメート・コントロール奪還戦</a>であり、以後<a href="locations.html#fortuna">フォルトナ</a>などの戦域でスターフォックスと交戦を重ねている。撃墜スコアでは常に一歩及ばないが、彼らの介入によって共和国側の作戦が遅延・変更を余儀なくされた例は多く、戦略的な脅威度は撃墜数以上と評価される。狙いが撃墜ではなく時間である局面を見極めて動く戦い方は、正規軍にはない傭兵の計算そのものである。</p>
+      <p class="codex-p">帝国司令部との関係は良好とは言い難い。命令を「契約範囲外」として突っぱねた記録が複数傍受されており、隊の忠誠は契約書とウルフの流儀にのみ向けられている。根城は<a href="locations.html#sargasso">サルガッソー</a>のどこかとされ、<a href="glossary.html#salvager">サルベージャー</a>たちは「墓場の掟」を最も律儀に守る客として詮索しない。ウルフの戦いぶりには奇妙な「作法」があることは有名である。民間人や捕虜への加害記録が隊全体で極めて少ないことと併せて、レオンやパンサーの個人の活動はさておき、スターウルフのチームを単なる殺し屋の集団と呼ぶことに異を唱える者はCDF内にも多い。</p>
+    </article>
+
+    <article class="codex-entry" id="retriever" data-type="unit">
+      <h2 class="codex-h">レトリーバー隊 <span class="en">RETRIEVER UNIT — CDF第1飛行隊</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-org">部隊・艦隊</span> 本土防衛を司る最強の空挺部隊 — 「コーネリア防衛隊」</div>
+      <p class="codex-p"><a href="#cdf">コーネリア防衛軍</a>の第1飛行隊にして、<a href="locations.html#corneria">コーネリア</a>と<a href="locations.html#prospero">プロスペロー</a>の本土防衛を司る空挺部隊。軍内では「コーネリア防衛隊」の通称で呼ばれ、番号が示すとおり共和国の飛行隊の筆頭に位置する。隊長は<a href="characters.html#george">ジョージ・バロン</a>大尉であり、旧コーディリア王国最強の空挺部隊<a href="glossary.html#unit-jade-knight">ジェイド・ナイト</a>の系譜を継ぐ部隊として、宇宙と地表の両方で戦う空挺の伝統を今も保っている。<a href="#bernard">バーナード隊</a>が<a href="locations.html#katina">カタリナ</a>で壁を守る部隊であるなら、レトリーバー隊は壁の内側で本土への侵攻そのものを食い止める部隊である。</p>
+      <p class="codex-p">編成は3個小隊を基幹とし、隊長機<a href="../weapons/cornerian-fighter.html#gold-crest">ゴールド・クレスト</a>の下でジョージが3個小隊を同時に指揮する。乗機は<a href="#cornerian-fighter">コーネリアファイター</a>であるが、本土防衛の筆頭として補給と整備の優先順位は全軍で最も高く、他隊が「新型」と呼ぶ後期型が最初に配備されるのは常にこの隊である。空挺部隊としての降下訓練を全隊員に課しており、軌道上の迎撃から地表の拠点奪還までを一つの隊で完結できることが第1飛行隊の存在理由とされる。あまり知られていないが、隊長機の僚機として黒一色の<a href="../weapons/cornerian-fighter.html#shadow-blade">シャドウ・ブレード</a>が随伴しており、これを目にした者は隊内でも少ない。</p>
+      <p class="codex-p">隊の名は猟犬のレトリーバーに由来する。獲物を回収して主の元へ持ち帰る犬の名を本土防衛の筆頭が名乗る。この命名の意図を隊内では「奪われたものを取り返す隊」と説明しており、<a href="locations.html#macbeth">マクベス</a>と<a href="locations.html#zoness">ゾネス</a>が占領下にある現在、その名は隊員たちにとって単なる犬種以上の意味を帯びている。バーナード隊やドーベル隊と同じ命名規則に連なるが、番号の上でも格の上でもレトリーバー隊が先であり、カタリナの二個中隊は「うちは番犬で、あっちは猟犬だ」と自嘲半分に語る。</p>
+      <p class="codex-p">最大の戦歴は<a href="locations.html#area3">グレートウォールAREA3</a>への<a href="#imperial-guard">帝国軍親衛隊</a>の強襲、<a href="glossary.html#rhodes-siege">ロードス包囲戦</a>である。親衛隊「赤の3」フリッツ・チンパンドルフの万能破壊戦艦<a href="#blade-barrier">ブレードバリア</a>1号機が環状ステーションに迫ったこの戦いで、レトリーバー隊は隊長機ゴールド・クレストを先頭に敵機を終始翻弄し、決死の防衛戦で戦況を拮抗へ持ち込んだ。戦略的不利を悟った搭乗者の自爆特攻により多数のコーネリアファイターが巻き添えとなったが、失敗兵器<a href="../weapons/odd-weapons.html">ジュラ・ムーン</a>が偶然爆風との間へ割り込む奇跡に救われ、隊はステーションと隊長機を守り抜いている。管制直属の<a href="#cdf-garrison">シバ隊</a>が隕石群の隙間で稼いだ時間がなければ到着は間に合わず、内周では地上軍ブルドッグ隊が居住区画へ攻め込んだ<a href="../weapons/granga.html">ディストラクター</a>を食い止めていた。壁の要であるAREA3が失われていれば本土は裸になっていた。この戦いがレトリーバー隊を「本土侵攻を食い止めた隊」として星系に知らしめた。</p>
+      <p class="codex-p"><a href="glossary.html#corneria-defense">コーネリア防衛戦</a>以降も繰り返される本土への侵攻を凌ぎ続けている盾の一枚がこの隊であり、その戦果は隊長個人の圧倒的な能力に支えられている。士官学校本校を首席で出て以来一度も負けたことのないジョージは「ペパーの再来」と呼ばれる次期CDF長官の最有力候補であるが、その中身が世間知らずのお坊ちゃまであることは隊内の公然の秘密である。隊員たちは「黙って指揮を執っている間は最強の隊長」と評しており、隊長がカタリナの<a href="characters.html#bill">ビル・グレイ</a>へSNSの通知を送り続けている間は誰も口を挟まない。</p>
+      <p class="codex-p">カタリナ前線基地で行われたバーナード隊との合同演習は隊の歴史で最も語られる一日である。隊長が危険飛行の末に渓谷へ墜落し、救難信号を押せずにいたところをビル・グレイに引き上げられたこの日を境に、両隊の隊長は共和国を守る剣と盾として互いを認め合う仲となった。以来レトリーバー隊とバーナード隊の間には「壁の外は任せろ」「壁の内は任せろ」という定型のやり取りが通信の締めに使われている。どちらが剣でどちらが盾なのかは両隊とも譲らない。</p>
+    </article>
+
+    <article class="codex-entry" id="bernard" data-type="unit">
+      <h2 class="codex-h">バーナード隊 <span class="en">BERNARD UNIT</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-org">部隊・艦隊</span> カタリナ駐留軍 第7飛行隊 — 壁の番犬</div>
+      <p class="codex-p"><a href="locations.html#katina">カタリナ</a>駐留軍第7飛行隊に属する主力飛行中隊。隊長は<a href="characters.html#bill">ビル・グレイ</a>中尉であり、姉妹中隊「ドーベル隊」とともに<a href="#great-wall">グレートウォール</a>第1宙域の実戦部隊として鍛え上げられている。乗機は全機が量産機<a href="#cornerian-fighter">コーネリアファイター</a>で、隊長機の<a href="../weapons/cornerian-fighter.html#sonic-pointer">ソニック・ポインター</a>を含めて特別な部品で飛ぶ機体は一機もない。「壁の門番」カタリナの空を実際に守っているのはこの二個中隊であり、共和国の防衛戦略で最も酷使され最も信頼されている前線部隊である。</p>
+      <p class="codex-p">中隊名は猟犬に由来する。隊長機ソニック・ポインターが獲物の位置を指し示し、バーナード隊が正面から食らいつき、ドーベル隊が側面へ回り込んで逃げ道を塞ぐ。ロックオン機構を持たない量産機の弱点を数と連携で埋めるこの戦い方をビルは「群れで狩るのがうちの流儀だ」と説明している。<a href="#arwing">アーウィン</a>一機の性能に頼らず量産機の枠内で戦い抜く教範は前線の基地から高い評価を受けており、<a href="#cdf">CDF</a>の機付整備班と若手パイロットにとって第7飛行隊は「量産機でどこまで戦えるか」を示す生きた見本となっている。</p>
+      <p class="codex-p">隊の名を星系に知らしめたのは<a href="glossary.html#katina-miracle">カタリナの奇跡</a>である。帝国の拠点制圧兵器<a href="#salresia">サルレシア</a>が前線基地ノラ・ラゴスに直撃し無人攻撃機リボーの群れが基地上空を埋めた防衛戦で、両中隊は基地全滅寸前の状況下で防空戦の中核を担った。敵味方が入り乱れる乱戦の中で駆けつけた<a href="#starfox">スターフォックス</a>と連携し、サルレシアの弱点であるエネルギー供給パイプの接続部を叩いて撃退している。この戦闘で第7飛行隊の隊員は一人も戦死しておらず、応援に入ったアーウィン編隊が味方機を一機も誤射しなかったことは隊の語り草である。ビルが<a href="characters.html#fox">フォックス・マクラウド</a>を「相棒」と呼ぶ無線がこの防衛戦で記録に残り、以来隊員たちはスターフォックスを「隊長の相棒の隊」と呼ぶ。</p>
+      <p class="codex-p">隣接するセクターζの主力艦隊<a href="#starblade">スターブレード</a>が壊滅の危機に瀕して以降、カタリナ防衛網への負荷は限界に近い。それでも第7飛行隊の即応体制は開戦以来一度も崩れておらず、この事実を基地の古参たちは補給畑を預かる隊長の父ロバート・グレイの功績に数えている。帝国側にも両中隊の名は知れ渡っており、傍受された通信ではカタリナ宙域そのものが「犬小屋」の符牒で呼ばれている。</p>
+      <p class="codex-p">現在は5日後に予測される超巨大兵器<a href="#great-dish">グレートディッシュ</a>の来襲に備え、コーネリアから緊急招集された<a href="#vorpal">ヴォーパル隊</a>との合同作戦準備の真っ只中にある。<a href="characters.html#amber">アンバー・シルフェイド</a>少佐を交えた作戦会議では正規の防空戦を第7飛行隊が受け持ち、ヴォーパル隊が「5分」の切り込みを担う分担が固まりつつある。基地防衛隊からは前線補給・護衛要員が同隊へ臨時配属されており、本データベースの閲覧記録の一部はその配属要員によるものである。</p>
+      <p class="codex-p">撃墜されたサルレシアの残骸「鉄の丘」には隊長が最初に書いたとされる落書き「二度目はもっと早く落とす」が残っており、隊に配属された新兵は着任初日にこれを見せられる。第7飛行隊の隊員は今も「壁はまだ落ちちゃいない」を合言葉として使い続けている。</p>
+    </article>
+
+    <article class="codex-entry" id="cdf-ground" data-type="unit">
+      <h2 class="codex-h">CDF地上軍 <span class="en">CDF GROUND FORCES</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-org">部隊・艦隊</span> 各州駐留軍の地上部隊 — 犬の名を持つ三個大隊</div>
+      <p class="codex-p"><a href="#cdf">コーネリア防衛軍</a>のうち惑星地表での戦闘・工兵・通信を担う地上部隊の総称。星系統合艦隊の発足時に旧5国の陸軍が各州の駐留軍として併合された系譜を引き継いでおり、艦隊や飛行隊のように単一の司令部を持たず各州の駐留軍司令の下に分散して配置されている。星の上で戦う軍隊である以上戦争の華になることはほとんどないが、艦隊が押さえ飛行隊が空を取った後に地表を実際に取り返すのはこの部隊である。無人の移動砲台<a href="../weapons/lw2-drones.html">ピットブル</a>と強襲戦車<a href="#landmaster">ランドマスター</a>が地上軍の主力装備であり、<a href="../weapons/walker.html">ウォーカー</a>の足音を「援軍の音」と呼ぶのも彼らである。</p>
+      <p class="codex-p">地上軍の実働は犬種の名を冠する三個大隊が担う。飛行隊や無人機と同じ命名規則であり、軍内では総称して「地上の三匹」と呼ばれる。以下は各州駐留軍に共通する編成の骨格であり、部隊の規模と装備は駐留する星によって異なる。</p>
+      <div class="sub-entry" id="unit-bulldog">
+        <div class="sub-entry-h"><span class="num">①</span>ブルドッグ隊 <span class="en">BULLDOG UNIT — 地上潜行・強襲</span></div>
+        <p class="codex-p">敵の警戒網に潜り込んで拠点を内側から食い破る地上軍の主力であり、旧コーディリア王国の特殊陸上部隊<a href="glossary.html#unit-sword">ソード</a>を頂点とする強襲戦の伝統を継ぐ。一度食らいついたら離さない戦い方が名の由来である。</p>
+      </div>
+      <div class="sub-entry" id="unit-dachshund">
+        <div class="sub-entry-h"><span class="num">②</span>ダックスフンド隊 <span class="en">DACHSHUND UNIT — 地雷撤去・工兵</span></div>
+        <p class="codex-p">地雷・不発弾処理および工兵部隊。地中の脅威を掘り出して穴を掘って進む部隊であり、帝国が撤退時に残す埋設兵器の処理と陣地構築を一手に引き受ける。戦死者の比率が地上軍で最も高い部隊でもある。</p>
+      </div>
+      <div class="sub-entry" id="unit-beagle">
+        <div class="sub-entry-h"><span class="num">③</span>ビーグル隊 <span class="en">BEAGLE UNIT — 通信・偵察・情報収集</span></div>
+        <p class="codex-p">前線の目と耳として敵の配置を嗅ぎ出し艦隊と飛行隊へ伝える。軍諜報部とは系統が異なる正規の野戦通信部隊であり、艦隊とスターフォックスの連携を地上から支えたのもこの部隊の中継である。</p>
+      </div>
+      <p class="codex-p">地上軍の存在感が急速に高まったのは<a href="glossary.html#donalbain-op">ドナルベイン攻略戦</a>の失敗以降である。艦隊と航空戦力が火山の噴煙に封じられ白兵戦も灼熱の地形に阻まれたこの敗戦を受けて、参謀部はマクベス攻略の要件に対地戦力の確保と少人数の隠密強襲を加えた。この方針転換がブルドッグ隊の潜行任務とダックスフンド隊の工兵能力の拡充を促し、現在の三個大隊体制の骨格を作っている。</p>
+      <p class="codex-p">第2次ライラットウォーズでは<a href="locations.html#macbeth">マクベス</a>と<a href="locations.html#zoness">ゾネス</a>の占領で二つの州の駐留軍が本隊ごと失われ、生き残った隊員は<a href="locations.html#corneria">コーネリア</a>と<a href="locations.html#katina">カタリナ</a>の駐留軍へ再編入された。占領地の奪還が課題となる現在の戦況では、艦隊の勝利の後に星を取り戻す地上軍の役割はむしろ重くなっている。帝国側の秘匿網が最高司令官<a href="characters.html#kellone">ミズローヌ・ケローン</a>の離反で破れて以来、ビーグル隊は暗号と符牒の総入れ替えに追われており、前線通信が二重三重に符牒化されて分かりにくくなったことは飛行隊側の不評を買っている。</p>
+      <p class="codex-p">地上軍には「地面を取るまで戦争は終わらない」という古い言い回しがある。航空戦力と艦隊が戦果の大半を持ち去る軍隊にあって、最後に旗を立てる部隊としての矜持を示す言葉である。<a href="characters.html#pepper">ペパー将軍</a>が前線に立っていた頃の所属先がソードであることは地上軍の隊員たちにとって小さくない誇りであり、総司令部が地上軍の予算要求に他の兵科より寛容だという噂は根強い。</p>
+    </article>
+
+    <article class="codex-entry" id="cdf-garrison" data-type="unit">
+      <h2 class="codex-h">CDF駐屯軍 <span class="en">CDF GARRISON FORCES</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-org">部隊・艦隊</span> 星ごとに置かれた駐留部隊の総称 — 犬の名を持つ飛行隊と海軍</div>
+      <p class="codex-p"><a href="#cdf">コーネリア防衛軍</a>のうち各州の惑星と軍事拠点に常駐する部隊の総称。主力艦隊<a href="#starblade">スターブレード</a>が星系中央を動き回る刃であるなら、駐屯軍は一つの星から離れない盾である。各州の駐留軍司令の下に置かれ、飛行隊・海軍・<a href="#cdf-ground">地上軍</a>を星の事情に合わせて組み合わせるため、同じ「駐屯軍」の名でも星ごとに姿はまるで異なる。飛行隊と海軍の隊名は無人機や地上軍と同じく犬種に由来し、軍内では各星の隊をまとめて「番犬たち」と呼ぶ。</p>
+      <p class="codex-p">駐屯軍の重みが増したのは<a href="glossary.html#iga-war">IGA戦役</a>の戦訓「艦隊は単独では戦えない」以降である。三位一体防衛構想は艦隊の機動力と<a href="locations.html#area3">AREA3</a>の管制能力に駐留軍の粘りを加えて初めて成立するものであり、<a href="glossary.html#zeta-tragedy">セクターζの惨劇</a>でスターブレードが主力の過半を失った現在は、その粘りだけが共和国の防衛線を支えている。以下は現在稼働中の主な駐屯軍である。</p>
+      <div class="sub-entry" id="garrison-area3">
+        <div class="sub-entry-h"><span class="num">①</span>AREA3駐屯軍 シバ隊 <span class="en">SHIBA UNIT — 管制直属・宙域戦闘</span></div>
+        <p class="codex-p"><a href="locations.html#area3">グレートウォールAREA3</a>の管制司令に直属する迎撃飛行隊。管制演算網「アトラス」の指示に即応して隕石群の隙間を飛ぶ宙域戦闘に特化した精鋭の集まりであり、壁の「口」が開閉する数分間に敵を叩く役目を負う。隊員は全員がAREA3の演習課程を上位で修了した者から選ばれ、「AREA3を出た部隊は一人前」と言われる訓練の総本山にあって出ていかない唯一の部隊である。<a href="glossary.html#rhodes-siege">ロードス包囲戦</a>では外周の管制と迎撃を一手に引き受け、本土から駆けつけた<a href="#retriever">レトリーバー隊</a>と共にステーションを守り抜いた。</p>
+      </div>
+      <div class="sub-entry" id="garrison-katina">
+        <div class="sub-entry-h"><span class="num">②</span>カタリナ駐留軍 バーナード隊／ドーベル隊 <span class="en">KATINA GARRISON — 壁の番犬</span></div>
+        <p class="codex-p"><a href="locations.html#katina">カタリナ</a>前線基地に常駐するグレートウォール第1宙域の実戦部隊。第7飛行隊の二個中隊<a href="#bernard">バーナード隊</a>とドーベル隊が量産機<a href="#cornerian-fighter">コーネリアファイター</a>で壁の空を守り、駐屯軍の中で最も酷使され最も信頼されている。詳細はバーナード隊の項を参照のこと。</p>
+      </div>
+      <div class="sub-entry" id="garrison-aquas">
+        <div class="sub-entry-h"><span class="num">③</span>アクアス駐屯海軍 ラブラドール隊／ファンドランド隊 <span class="en">AQUAS NAVAL GARRISON — 海の番犬</span></div>
+        <p class="codex-p"><a href="locations.html#aquas">アクアス</a>の基地に赴いている二個海軍部隊。<a href="locations.html#corneria">コーネリア</a>・アクアス・<a href="locations.html#zoness">ゾネス</a>の海上戦闘を専門とし、旧タッドー共和国の外洋艦隊運用術を継ぐ共和国で唯一の水上戦力である。保護区の制約で惑星圏への艦隊常駐が見送られているアクアスにあって、海に浮かぶ艦だけが置ける戦力として認められた部隊でもある。占領下のゾネスではファンドランド隊を中心に抵抗作戦が実施中であり、汚染された海を渡って帝国の海上補給線を叩き続けている。水を恐れない犬の名は伊達ではない。アクアスでは帝国の海上要塞シーレシアと<a href="glossary.html#romeo-defense">シレーヌ海の決戦</a>を戦い、州都ロミオへの侵攻を退けた。</p>
+      </div>
+      <div class="sub-entry" id="garrison-fichina">
+        <div class="sub-entry-h"><span class="num">④</span>フィチナ駐留軍 ハスキー隊／サモエド隊 <span class="en">FICHINA GARRISON — 雪の番犬</span></div>
+        <p class="codex-p"><a href="locations.html#fichina">フィチナ</a>の基地に駐留する二個部隊。任務は惑星気候制御装置<a href="glossary.html#climate-control">クライメート・コントロール</a>を守ることに尽きる。装置が止まればフィチナ全土の生存環境が数日で失われるため、ハスキー隊は装置直上の空を離れず、サモエド隊は現地のフィチナ州兵と共にミサイル基地の防衛にあたっている。メジャーワープ航路を持たない「援軍の来ない星」で緒戦の装置奪取を許した経験から、両隊は自力で守り切る前提の編成を組んでいる。雪原の下に潜伏する帝国軍残存部隊の掃討は州兵の管轄であるが、その掩護でサモエド隊が出動しない日はない。</p>
+      </div>
+      <p class="codex-p">駐屯軍の弱点は動けないことにある。<a href="locations.html#macbeth">マクベス</a>と<a href="locations.html#zoness">ゾネス</a>の占領で二つの州の駐屯軍は本隊ごと失われ、生き残りは他州の駐屯軍へ再編入された。星と運命を共にする部隊である以上、星を失えば部隊も失われる。それでも駐屯軍が艦隊への統合を拒み続けるのは、住民の顔を知る兵士が星を守るという建軍以来の原則があるからである。「番犬たち」の呼び名は軽んじた響きを持つが、番犬が吠えなくなった星から順に落ちてきたことは開戦以来の戦況が示している。</p>
+      <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="locations.html#area3">▶ ロケーションDBの項へ</a></div>
+    </article>
+
+    <article class="codex-entry" id="vorpal" data-type="unit">
+      <h2 class="codex-h">ヴォーパル隊 <span class="en">VORPAL SQUADRON — 白の7</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-org">部隊・艦隊</span> コーネリアの白い刃 — 詳細機密</div>
+      <p class="codex-p"><a href="characters.html#amber">アンバー・シルフェイド</a>少佐自らが率いる、少数精鋭の特殊戦闘部隊。<a href="factions.html#cornerian-republic">コーネリア共和国</a>軍が奇襲などで緊急事態と判断した際や、手段にこだわる余裕がない局面で招集される「最終手段」の一つとされ、その異名を「コーネリアの白い刃」という。</p>
+      <p class="codex-p">構成員は7名。軍部の最も暗い仕事を請け負う関係上、詳細はほぼ伏せられているが、軍内では構成メンバーを「白の7」と呼び、各員はコードネームで管理されている。軍部が組織内に公開しているメンバーは以下の3名のみである。<br>
+      ─ 白の1『アンバー・シルフェイド』── 隊長 兼 奇襲戦闘員（乗機<a href="#chastiefol">シャスティフォル</a>）<br>
+      ─ 白の6『マイス・アルジャーノン』── 尋問官 兼 戦闘員<br>
+      ─ 白の7『ヤペテ・ヤワントバル』── 交渉役 兼 戦闘員</p>
+      <p class="codex-p">現在は帝国軍のカタリナ奇襲計画の発覚を受け、<a href="locations.html#katina">カタリナ</a>前線基地へ緊急展開中。現地駐留軍・<a href="#bernard">バーナード隊</a>との合同作戦会議が続いている。</p>
+      <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../other/vorpal.html">▶ 詳細記事を開く</a></div>
+    </article>
+
+    <article class="codex-entry" id="imperial-guard" data-type="unit">
+      <h2 class="codex-h">帝国軍親衛隊 <span class="en">IMPERIAL GUARD — 赤の12</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-org">部隊・艦隊</span> 皇帝に捧げられた志願者たち</div>
+      <p class="codex-p">その名の通り皇帝の身辺警護と、最も危険な任務の遂行にあたるエリート中のエリートである。構成員は皇帝のためなら命を惜しまない覚悟と度胸を備えており、忠誠の一点においては帝国軍のいかなる部隊も及ばない。ただしこの部隊は皇帝が自ら設けたものではなく、皇帝に心酔した志願者が勝手に集まって結成された組織である。発足の起点となったのは、皇帝の甥<a href="characters.html#andrew">アンドリュー・オイッコニー</a>の活動であった。</p>
+      <p class="codex-p">共和国側では、性質の近い<a href="#vorpal">ヴォーパル隊</a>の「白の7」と対比して、各員に「赤の○」のコードネームを振って管理している。定数は12名。すでに3名が殉職し2名が再起不能となったため、現時点で脅威と目されるのは7名であり、奇しくも白の7と同数で向かい合う形となっている。<a href="characters.html#kellone">ケローン大提督</a>の指揮系統から完全に独立して動くため、作戦中に他部隊と衝突する事例が繰り返し報告されており、共和国軍はこの二重指揮を数少ない弱点と分析している。</p>
+      <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../other/imperial-guard.html">▶ 詳細記事を開く</a></div>
+    </article>
+
+    <article class="codex-entry" id="starblade" data-type="unit">
+      <h2 class="codex-h">宇宙艦隊スターブレード <span class="en">FLEET STARBLADE — CDF第1宇宙艦隊</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-org">部隊・艦隊</span> 「共和国の刃」 — 稼働率4割・再建中 / 駐屯宙域は<a href="locations.html#starblade">ロケーションDB</a>参照</div>
+      <p class="codex-p"><a href="#cdf">コーネリア防衛軍</a>の主力を担う第1宇宙艦隊。「共和国の刃」の名を持ち、旧5国家の艦隊を統合した共和国統合の象徴として建軍以来星系中央部の守りの要であり続けてきた。駐屯宙域は<a href="locations.html#zeta">セクターζ</a>であり、<a href="locations.html#area3">AREA3</a>・<a href="locations.html#katina">カタリナ</a>と三位一体でコーネリア圏の多層防衛を構成する。全盛期の定数は380隻で、艦列の主体は<a href="glossary.html#ship-grades">ザトウ級からマッコウ級</a>、その頂点に立つ旗艦〈コーディリア〉は共和国が保持する最大の艦にしてナガス級である。</p>
+      <p class="codex-p">起源は共和国よりも古い。宇宙歴3767年に<a href="glossary.html#concord-declaration">『協和宣言』</a>の下で二百年以上殺し合ってきた各国が初めて艦を並べた星系統合艦隊がそれであり、<a href="glossary.html#star-dream">スター・ドリーム作戦</a>で超兵器を討った後も「一度組めた隊列を崩せば二度と組めない」として自主的に隊列を保ち続け、共和国の成立とともに正式な建制を得た。「共和国より年上の艦隊」と呼ばれる所以である。統合は艦隊に五つの流派を遺した。旧コーディリアの騎士団文化と単機エース運用、旧タッドーの外洋艦隊運用術、旧グランベルの重砲教義、旧ローザリンドの艦体工学、そして旧サルジーナヤの長距離ミサイル戦術である。CDFの教本はこれを「五本の指が一つの拳になった」と表現する。</p>
+      <p class="codex-p">続く二世紀の平和は艦隊に「戦わない仕事」を与えた。<a href="#great-wall">グレートウォール</a>建設におけるステファノー残骸の曳航、巡礼「灯還り」の護衛、災害救助、海賊の取り締まりである。「艦隊の主砲より曳航ワイヤーの方が働いた」と揶揄された時代であるが、この実務が艦隊の練度と星系民の信頼を養った。<a href="glossary.html#iga-war">IGA戦役</a>ではゲリラ戦術に苦しみ「大きすぎる刃」の限界を露呈したが、戦闘補助AI<a href="#polybius">ポリヴィアス</a>の全艦隊配備で戦果を劇的に改善し、この戦役の戦訓「艦隊は単独では戦えない」が後の三位一体防衛構想の母体となっている。</p>
+      <p class="codex-p">第2次ライラットウォーズ緒戦の<a href="glossary.html#zeta-tragedy">セクターζの惨劇</a>で艦隊は一夜にして主力の過半を失った。マクベス方面への反攻作戦に向けた集結情報が<a href="characters.html#kellone">ミズローヌ・ケローン</a>によって帝国側へ渡っており、サルガッソーのデブリ帯に潜伏した帝国艦隊の奇襲は五流派の癖を知り尽くした包囲として組まれていた。損害が全滅ではなく過半で止まったのは、泊地に随伴していた<a href="../characters/wenli.html">ニャン・ウェンリー</a>准将の撤退指揮と、退避命令を拒んで旗艦の盾となった巡洋艦〈タッドー〉の犠牲によるものである。〈タッドー〉の名は次期新造戦艦に継承されることが決まっている。</p>
+      <p class="codex-p">現在の稼働戦力は約4割であり、艦隊は稼働艦の所在を秘匿して偽装泊地と欺瞞信号で「健在なる380隻」を演じ続ける「在りて脅かす艦隊」の戦略を採っている。公表される稼働率そのものが情報戦の一部であり、実数はより深い機密区分に置かれている。再建を阻む最大の敵は帝国ではなく資材であり、<a href="locations.html#macbeth">マクベス</a>喪失で艦体装甲の代名詞<a href="glossary.html#macbeth-steel">「マクベス鋼」</a>の供給が断たれた工廠は撃沈艦の残骸を新造艦へ回す再生プログラムで急場を凌いでいる。撃沈艦の生存者が新造艦へ乗り換える「艦魂の継承」の儀式は、失われたのが艦体だけではないことを艦隊自身が最もよく知っている証である。</p>
+      <p class="codex-p">主力艦隊を欠いた共和国は要所の防衛を<a href="#starfox">スターフォックス</a>のような少数精鋭部隊に頼らざるを得ず、この依存は現在も続いている。<a href="glossary.html#katina-miracle">カタリナの奇跡</a>の日に艦隊は再編の只中にあって一隻の増援も送れなかった。艦隊司令部の作戦室の壁には誰が貼ったともしれない一枚の紙が残されており、紙にはこう記されている「カタリナに借りがある」。情報部が5日後に予測する<a href="#great-dish">グレートディッシュ</a>のカタリナ来襲は、その借りを返す機会が再建の完了より早く訪れることを意味している。艦隊の歴史・泊地の構造・兵站の詳細は<a href="../planets/starblade.html">駐屯宙域の詳細記事</a>に譲る。</p>
+      <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="locations.html#starblade">▶ ロケーションDBの項へ</a></div>
+    </article>
+
+    <article class="codex-entry" id="space-armada" data-type="unit">
+      <h2 class="codex-h">スペースアマダ <span class="en">SPACE ARMADA — 帝国第2師団</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-org">部隊・艦隊</span> 「宇宙最強艦隊」 — AREA6駐屯・敵性 / 駐屯宙域は<a href="locations.html#area6">ロケーションDB</a>参照</div>
+      <p class="codex-p"><a href="factions.html#venom-empire">ベノム帝国</a>の誇る「宇宙最強艦隊」。<a href="glossary.html#imperial-divisions">帝国軍二十四師団</a>のうち帝国防衛の本隊にあたる第2師団であり、<a href="sectors.html#psi">セクターψ</a>の絶対防衛圏<a href="locations.html#area6">AREA6</a>に駐屯して防衛衛星<a href="#bolse">ボルス</a>とともにベノム惑星圏への全ての道を塞ぐ。推定戦力は艦艇600隻以上に無人兵器数万機であり、旗艦級戦艦を複数擁して正面からの突破は共和国全艦隊をもってしても不可能とされる。<a href="#starblade">スターブレード</a>が「共和国の刃」であるなら、スペースアマダは帝国の門そのものである。</p>
+      <p class="codex-p">艦隊の任務は攻めることではなく本星への奇襲の可能性を芽のうちに摘むことである。艦隊は<a href="#guinbee-line">グインビー戦艦系列</a>の四種を基幹とし、最強クラスの巨大戦艦グランビー2隻を中核に<a href="#attack-carrier">アタック・キャリアー</a>の空母群を重ねた多層陣で構成され、有人人型戦闘機<a href="#sardes">サルデス</a>を艦隊戦の切り札として組み込む。<a href="glossary.html#ship-grades">艦船の等級</a>で言えば旗艦級戦艦は単艦で共和国の一個戦隊を相手取れると評価され、ボルスの全周囲シールドと主砲パージ・キャノンが艦列の最深部でその背を固める。共和国の作戦立案がボルスを兵器ではなく「地形」として扱うように、スペースアマダもまた艦隊というより壁として扱われている。</p>
+      <p class="codex-p">この絶対防衛圏を設計し、管理主任として束ねているのは帝国軍最高司令官<a href="characters.html#kellone">ミズローヌ・ケローン</a>大提督である。皇帝<a href="characters.html#andorf">アンドルフ</a>は自らが流刑者として送り込まれた経験から「ベノムへの道」の重要性を誰よりも理解しており、帝国の拡大より先に本星の絶対防衛圏を完成させた。第4〜第16師団の攻勢艦隊がベノムの周回軌道上に輪番の陣を敷いてどの艦隊が発進しても防衛に隙が生じない構造を作っているのに対し、スペースアマダは輪番から外れた不動の中核である。この艦隊が動くのは帝国が門を開けて出てくる時だけであり、それは共和国にとって最悪の知らせを意味する。</p>
+      <p class="codex-p">開戦以来、共和国がこの艦隊に正面攻撃を仕掛けた記録は一度しかない。開戦初期の強行偵察作戦で投入された偵察戦隊は、防衛線の第2層にすら到達できずに壊滅した。以後<a href="#cdf">CDF</a>はAREA6の突破を「艦隊戦では不可能」と結論付け、少数精鋭による浸透突破へと戦術研究の軸足を移している。全ての防衛システムが艦隊規模の侵攻を想定して最適化されている以上、単機ないし数機による超高速の中央突破だけが理論上防衛網の反応速度を上回りうる。<a href="#starfox">スターフォックス</a>のような部隊であれば、というのがこの仮説の但し書きである。</p>
+      <p class="codex-p">艦隊の将兵は帝国軍の中でも選抜されたエリートであり、本星防衛の任は帝国軍人最高の名誉とされる。一方で最前線から最も遠い「後方の最精鋭」という立場は前線部隊との間に微妙な感情のねじれを生んでおり、傍受された通信には「我々は皇帝の門番か、それとも飾りか」という自嘲が混ざる。開戦以来一度も本格的な艦隊戦を経験していない最強艦隊の練度が実戦でどこまで通用するかは、共和国側の分析でも未知数として扱われている。</p>
+      <p class="codex-p">哨戒艦が防衛線の外周に近づく民間船へ発する退去勧告「ここから先はアンドルフ皇帝の聖域だ。引き返せ」は開戦以来一言一句変わっておらず、共和国のパイロットたちは「星系で最も親切な脅迫」と呼ぶ。戦争を終わらせるにはいつか誰かがこの艦隊を抜けなければならない。艦隊を構成する艦船の詳細は本データベースの各艦の項に、防衛圏の構造は<a href="../planets/area6.html">AREA6の詳細記事</a>に譲る。</p>
+      <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="locations.html#area6">▶ ロケーションDBの項へ</a></div>
+    </article>
+
+    <article class="codex-entry" id="protecam" data-type="weapon">
+      <h2 class="codex-h">プロテカム <span class="en">PROTECAM — 監視・迎撃用固定砲台</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-weapon">兵器</span> 「万能汎用監視カメラ」/ S・トード設計</div>
+      <p class="codex-p"><a href="characters.html#slippy">スリッピー・トード</a>が主導して開発した「万能汎用監視カメラ」。監視カメラという品目名はあくまで特許の説明欄に記された名目であり、その実態は監視・迎撃用の固定砲台、より正確には超高性能迎撃兵器（カメラ付き）である。単体の戦闘力は控えめだが、複数機を角度を変えて配置し互いの死角を守らせる運用で初めて真価を発揮する設計であり、その分だけ操作する側には高度な技術と注意力が要求される。地形を成すブロック、攻撃の基礎となる砲台、襲撃者を悩ませるギミックの三系統のパーツに分かれており、配置の組み替え次第でどんな環境にも配備・対応できることが最大の強みである。代表的な配備先には<a href="locations.html#grippia">グリッピア</a>の鉱床防衛が挙げられる。</p>
+      <p class="codex-p">スリッピーは本機のみならず類似の機構にまで幅広く特許を出願しており、これを非難する声もある。だがその狙いは、悪質な類似品の流通や技術の軍事転用を防ぐ「守りの出願」にあるとみられている。実際、他社が似たシステムを開発しても立件された例はなく、悪質な権利主張が起きた場合にのみ、共同特許出願者である<a href="characters.html#grippy">グリッピー・トード</a>から特許侵害の訴訟が飛んでくる。この構えが功を奏してか、プロテカムが軍事転用されたり、技術が大企業に独占されるような事態は現在まで一度も起きていない。</p>
+    </article>
+
+    <article class="codex-entry" id="atropolis" data-type="facility">
+      <h2 class="codex-h">アトロポリス <span class="en">ATROPOLIS</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-facility">施設</span></div>
+      <p class="codex-p"><a href="locations.html#venom">ベノム</a>第1衛星ゴモラにある<a href="factions.html#venom-empire">帝国</a>首都「ベノム・インペリアル・シティ」が併せ持つ、軍事要塞としての機能の名称。首都そのものが要塞として設計されており、居住区画・工廠・防衛機構が一体化した「住める兵器」というべき構造を持つ。なお、第2衛星ソドムは惑星破壊兵器へと改造が進められているとされ、ゴモラとソドム──二つの衛星の存在こそが、セクターΩが「目玉の宙域」と恐れられる所以である。</p>
+      <p class="codex-p">規模の上では<a href="glossary.html#ship-grades">艦船の等級</a>のミズガルド級に分類される。ただしその攻撃能力は等級の響きに見合わず乏しい。攻勢の役割はセクターψの<a href="locations.html#area6">AREA6</a>大艦隊と<a href="#bolse">ボルス</a>へ全て委ねられており、アトロポリス自身はほとんど攻撃を行えないのである。この要塞をミズガルド級たらしめているものは火力ではなく、「絶対に陥落しない最強の防御」にほかならない。</p>
+    </article>
+
+    <article class="codex-entry loc" id="vpr" data-type="facility">
+      <div class="loc-body">
+        <h2 class="codex-h">ベノム・プラネット・リアクター <span class="en">VPR — 帝国唯一の急所</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-facility">施設</span> 惑星規模発電基地 — <a href="locations.html#venom">ベノム</a>本星地表</div>
+        <p class="codex-p">ベノム本星の地表に置かれた帝国の電力供給リアクター基地。略称VPR基地。惑星を覆う<a href="../weapons/venom-cell.html">ベノム・セル</a>の生体電位がダイナモ効果で雷を呼ぶほどに増幅されたものを一点へ収束させ、帝都と艦隊・衛星網へ送り出す「惑星そのものを利用した発電施設」である。これを失えば帝国の総戦力の大半が機能不全に陥るとされ、共和国軍の最重要攻略目標に指定されている。目前まで迫った部隊は<a href="glossary.html#venom-recon">先代スターフォックス</a>ただ一つである。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/vpr.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="man-drill" data-type="weapon">
+      <div class="loc-body">
+        <h2 class="codex-h">マン・ドリル <span class="en">MAN DRILL — 帝国対戦艦ミサイル</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-weapon">兵器</span> 惑星間巡航ミサイル — 運用中</div>
+        <p class="codex-p">ドリル状の弾頭で装甲を穿ち、艦の内側で炸裂して母艦級を一撃で沈める帝国の対戦艦ミサイル。艦隊乗りの「聞きたくない警報の第1位」である。系譜は旧サルジーナヤの長距離星間ミサイル「ドレッド・コング」へ二百年以上遡り、旧式のエンバーガス燃料をあえて使う設計思想まで始祖と地続きである。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/man-drill.html">▶ 詳細記録を開く</a></div>
+      </div>
+    </article>
+
+    <article class="codex-entry loc" id="great-commander" data-type="vessel">
+      <div class="loc-body">
+        <h2 class="codex-h">グレート・コマンダー <span class="en">GREAT COMMANDER — 大提督の決戦旗艦</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-vessel">艦船</span> 三胴合体式可変戦艦 — 未実戦投入</div>
+        <p class="codex-p">独立した戦闘艦3隻が連結して一個の巨大戦艦となり、合体の順番で戦艦・人型・蛙の3形態へ変形すると解析されている帝国の決戦兵器。ケローン大提督の座乗だけが予定されている艦であり、開戦以来ただの一度も戦場に現れていない。その「未投入」こそが、共和国艦隊の作戦立案を今も縛り続けている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/great-commander.html">▶ 詳細記録を開く</a></div>
+      </div>
+    </article>
+
+    <article class="codex-entry loc" id="salresia" data-type="vessel">
+      <div class="loc-body">
+        <h2 class="codex-h">サルレシア <span class="en">SALRESIA — 花の形をした飛行要塞</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-vessel">艦船</span> 拠点制圧兵器 / 空母 — 派生機稼働中</div>
+        <p class="codex-p">移動時は球状、展開時は5方向へ開く「花」の姿をとる帝国の拠点制圧兵器。無人攻撃機リボーの群れで消耗戦を強い、地中のエネルギー供給パイプと接続すれば光学兵器を完封するバリアを張る。<a href="glossary.html#katina-miracle">カタリナの奇跡</a>で1機が落とされ、パージされた花弁は「鉄の丘」となった。海上型シーレシア（アクアス）・鏡面擬態の宇宙型デスレシア（ゾネス宙域）の派生機を持つ。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/salresia.html">▶ 詳細記録を開く</a></div>
+      </div>
+    </article>
+
+    <article class="codex-entry" id="cybernetics" data-type="tech">
+      <h2 class="codex-h">サイバネティック技術 <span class="en">CYBERNETICS — 義手・義足・補助腕</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-tech">技術</span> 身体補助技術体系 — 軍民両用</div>
+      <p class="codex-p">欠損した部位、あるいはそもそも存在しない部位の生活を補助する技術の総称。技術体系の始まりは<a href="glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>で負傷した軍人への戦後アフターケアとして開発されたものだが、当時の神経リンクは有線による物理接続であり、動きもぎこちない劣悪な使用感だったといわれている。</p>
+      <p class="codex-p">この技術が本格的に脚光を浴びたのは、<a href="races.html#apophisoid">アポフィソイド</a>がこれを独自に流用した別系統の義手を開発してからである。彼らの開発したものは身体に埋め込むものではなく「装備するもの」であり、施術の敷居を格段に下げることに成功した画期的な発明だった。サイボーグ技術も卓越しており、アポフィソイド専用のバトルスーツは装備者自身の体を脳と脊椎に見立てた構造で、まさに機械と一心同体で動ける代物である。この構造は後に別の技術と合流し、とある<a href="#chastiefol">試験機</a>の操縦系開発に活かされたとされる。</p>
+      <p class="codex-p"><a href="characters.html#james">ジェームズ・マクラウド</a>はこの技術革新の少し前に発展前の埋め込み式サイバネティクス義足を取り付けており、後から取り換えることはできなかったとされる。近年では装備式サイバネティクス技術は<a href="races.html#astarosoid">アスタロソイド</a>のマニピュレータ義手やコーネリア市民の<a href="glossary.html#citizen-gear">市民ギア</a>にも活用されており、文明の発展に大いに貢献しているといえる。</p>
+    </article>
+
+    <article class="codex-entry loc" id="coffin-suit" data-type="tech">
+      <div class="loc-body">
+        <h2 class="codex-h">コフィンスーツ <span class="en">COFFIN SUIT</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-tech">技術</span> 密閉型生命維持外骨格 — 延命拘束装具 <span class="badge badge-classified">▮ 閲覧制限 — CLEARANCE LV.3</span></div>
+        <p class="codex-p">装着者の「死」を機構的に禁じる全身密閉型の生命維持外骨格。原型は科学技術省生体工学部門の医療用外骨格だが、その完成度の高さゆえに「死刑では償いきれない罪」に対する特別量刑の執行装具へと司法転用された。執行例は史上ただ一件──宇宙歴3987年、<a href="characters.html#andorf">アンドルフ・ボウマン</a>。10年の流刑を「死なずに」耐え抜かせ、<a href="locations.html#venom">ベノム</a>に皇帝を誕生させた技術である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/coffin-suit.html">▶ 詳細記録を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>RECORD SEALED</div></div>
+    </article>
+
+    <article class="codex-entry" id="nova-blaster" data-type="super">
+      <h2 class="codex-h"><span class="redacted">████████████████</span> <span class="en">UNIDENTIFIED — SW-01</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-weapon">超兵器</span> <span class="badge badge-classified">▮ 機密指定 — APOCALYPSIS</span> 名称・全記録移管済み</div>
+      <p class="codex-p"><a href="glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>末期に確認された、正体不明の惑星破壊級の存在。<a href="glossary.html#stephano">第6惑星の消滅</a>に関与したとされるが、その名称・出自・構造・討伐の経緯を含む全記録は機密レベル《アポカリュプシス》へ移管された。本データベースに残されているのは、この項目が存在するという事実のみである。<a class="apx-lock" href="../classified/nova-blaster.html">閲覧には専用アーカイブでの認証が必要である</a>。</p>
+    </article>
+
+    <article class="codex-entry" id="gigarilla" data-type="super">
+      <h2 class="codex-h"><span class="redacted">██████████</span> <span class="en">UNIDENTIFIED — SW-02</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-weapon">超兵器</span> <span class="badge badge-classified">▮ 機密指定 — APOCALYPSIS</span> 名称・全記録移管済み</div>
+      <p class="codex-p">IGA掃討戦の最終局面で確認された、正体不明の超大型機動兵器。原型機は失われたとされるが、占領地で類似機体の観測報告が続いている。その名称・設計・顛末・現存機体に関する分析を含む全記録は機密レベル《アポカリュプシス》へ移管された。<a class="apx-lock" href="../classified/gigarilla.html">閲覧には専用アーカイブでの認証が必要である</a>。</p>
+    </article>
+
+      </div>
+
+      <button class="gls-nav prev" id="glsPrev" aria-label="前の記録"><span class="chev"></span></button>
+      <button class="gls-nav next" id="glsNext" aria-label="次の記録"><span class="chev"></span></button>
+
+      <div class="blk-view" id="blkView"></div>
+    </div>
+
+    <!-- INDEXオーバーレイは gls-main 直下に置く（リスト表示で stage がスクロールするため） -->
+    <div class="gls-index-overlay" id="glsIndexOverlay">
+      <div class="gls-index-panel">
+        <h3>◈ RECORD INDEX</h3>
+        <div class="gls-index-list" id="glsIndexList"></div>
+        <div class="gls-index-rel">関連: <a href="locations.html">ロケーション</a> / <a href="sectors.html">セクター</a> / <a href="races.html">人種</a> / <a href="factions.html">勢力</a> / <a href="characters.html">人物</a> / <a href="glossary.html">用語</a> / <a href="corporations.html">企業</a></div>
+      </div>
+    </div>
+
+    <!-- ブロック表示の記録オーバーレイ用 背景と閉じるボタン -->
+    <div class="blk-backdrop" id="blkBackdrop"></div>
+    <button class="blk-close" id="blkClose" aria-label="記録を閉じる">✕</button>
+
+    <div class="gls-scrub" id="glsScrub">
+      <div class="gls-scrub-track" id="glsScrubTrack">
+        <div class="gls-scrub-thumb" id="glsScrubThumb"></div>
+      </div>
+    </div>
+
+    <div class="gls-status">
+      <span class="rec-no" id="glsCounter">REC 001 / 000</span>
+      <span class="rec-name" id="glsName"></span>
+      <span class="keys">◄ ► KEYS / CLICK SIDE RECORD</span>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script>
+    window.GLS_VIEW = {
+      storageKey: 'milDispMode',
+      defaultMode: 'list',
+      cardLabel: 'RECORD // MILITARY',
+      bands: [
+        { type: 'craft',    label: 'CRAFT — 戦闘機・車両' },
+        { type: 'vessel',   label: 'VESSEL — 艦船' },
+        { type: 'unit',     label: 'UNIT — 部隊・艦隊' },
+        { type: 'weapon',   label: 'WEAPON — 兵器' },
+        { type: 'facility', label: 'FACILITY — 施設' },
+        { type: 'tech',     label: 'TECH — 技術' },
+        { type: 'super',    label: 'SUPERWEAPON — 超兵器' },
+      ]
+    };
+  </script>
+  <script src="../gls-view.js"></script>
+<script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../apx-lock.js"></script>
+</body></html>

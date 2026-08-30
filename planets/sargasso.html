@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SARGASSO — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#9922ff;--accent:#bb66ff;--border:rgba(153,34,255,0.35);--border-hi:rgba(187,102,255,0.7);--dim:#1a0a30;--dim2:#0d0518; }
+    .planet-visual::before { background: none; }
+    .p-title { color:#f0e8ff; text-shadow: 0 0 50px rgba(153,34,255,0.4); }
+    .p-tagline { border-color:#9922ff; color:#bb66ff; }
+    body { background:#060408; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(15,5,35,0.7) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(10,0,28,0.5) 0%,transparent 55%),
+      #060408; }
+    .col-r { padding-top:12px; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(153,34,255,0.35);">
+    <a href="../database/locations.html" class="nav-back" style="color:#bb66ff;border-color:rgba(153,34,255,0.3);">◄ LOCATIONS</a>
+    <div class="header-tag">[ Sectorυ–χ / SARGASSO REGION — サルガッソー宙域 ]</div>
+    <div class="header-status"><span class="blink" style="color:var(--danger);">●</span> NO-FLY ZONE — EXTREME DANGER</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(153,34,255,0.3);"><div class="vt" style="color:#1a0a30;">LYLAT SYSTEM — SARGASSO REGION — DEBRIS FIELD — SECTOR-UPSILON — SPACE GRAVEYARD — NO-FLY</div></div>
+  <div class="side-r" style="border-color:rgba(153,34,255,0.3);"><div class="vt" style="color:#1a0a30;">DATABASE RECORD: SGS-0009 — CLASSIFICATION: EXTREME DANGER — APPROACH FORBIDDEN</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(153,34,255,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#bb66ff;">[ SECTOR-υ / SARGASSO REGION ]</div>
+        <div class="p-name-jp" style="color:#7744aa;">サルガッソー宙域 (SARGASSO REGION)</div>
+        <h1 class="p-title">THE SPACE<br>GRAVEYARD</h1>
+        <div class="p-tagline">宇宙の墓場 ─ 特A級危険宙域</div>
+        <p class="p-short-desc" style="border-color:#1a0a30;">タイタニアの強磁場が引き寄せる無数の宇宙船残骸と隕鉄の密集宙域。戦時中でも両軍が恐れて近づかない星系最大の危険区域。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(153,34,255,0.3);background:rgba(12,5,25,0.7);">
+        <div class="terminal-hdr" style="color:#bb66ff;background:rgba(153,34,255,0.12);border-color:rgba(153,34,255,0.3);">
+          <span style="background:var(--danger);box-shadow:0 0 8px var(--danger);width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 0.8s infinite;"></span>
+          ▌ DEBRIS FIELD SCAN — SECTOR-υ ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#bb66ff;">DESIGNATION</td><td class="dv">SARGASSO / サルガッソー宙域</td></tr>
+          <tr><td class="dk" style="color:#bb66ff;">ZONE TYPE</td><td class="dv bad">DEBRIS FIELD / NO-FLY</td></tr>
+          <tr><td class="dk" style="color:#bb66ff;">ANCHOR PLANET</td><td class="dv"><a href="../database/locations.html#titania">タイタニア</a> (TITANIA)</td></tr>
+          <tr><td class="dk" style="color:#bb66ff;">PRIMARY STAR</td><td class="dv">タイタニア（中心天体）</td></tr>
+          <tr><td class="dk" style="color:#bb66ff;">HAZARD RATING</td><td class="dv bad">CLASS-A EXTREME ⚠⚠⚠</td></tr>
+          <tr><td class="dk" style="color:#bb66ff;">LOCATION</td><td class="dv">LYLAT 2nd — Sectorυ–χ</td></tr>
+          <tr><td class="dk" style="color:#bb66ff;">FACTION</td><td class="dv">無主（なし）</td></tr>
+          <tr><td class="dk" style="color:#bb66ff;">STATUS</td><td class="dv bad">⚠ APPROACH FORBIDDEN</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(153,34,255,0.1);">
+          <div class="env-bar-label" style="color:var(--danger);">DANGER LEVEL ── MAXIMUM</div>
+          <div class="env-bar-track" style="background:#0d0518;"><div class="env-bar-fill" style="width:100%;background:var(--danger);animation:glow-pulse 1s ease-in-out infinite;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <!-- Debris field — wide landscape scene -->
+      <div class="planet-visual scene-wide">
+        <img src="../resource/LA_image/Sargasso_info.png" alt="Sargasso Debris Field"
+          style="position:relative;z-index:2;width:100%;height:100%;object-fit:cover;filter:brightness(0.75) drop-shadow(0 0 20px rgba(153,34,255,0.5));animation:none;">
+        <div class="planet-hover-tagline tagline-tr" style="z-index:10;">
+          <div class="tg-inner" style="border-color:rgba(187,102,255,0.7);">
+            <span class="tg-en" style="color:#bb66ff;">DEBRIS FIELD — NO-FLY ZONE</span>
+            <span class="tg-jp" style="color:#e8d8ff;">宇宙の墓場 ── 特A級危険宙域</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl" style="z-index:10;">
+          <div class="tg-inner" style="border-color:rgba(187,102,255,0.7);">
+            <span class="tg-jp" style="color:#e8d8ff;">俺たちのねぐらまでついて来やがって<br>五体満足で帰れると思ってんのか？<span class="tg-note note">-サルガッソー宙域 スターウルフとの交戦通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore" style="margin-top:14px;">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「サルガッソーで船を止めるな。悪魔が手を伸ばす前に抜けろ」<span class="lore-quote-src">― 星系航行者の警句</span></span></p>
+  <p class="lore-p">サルガッソー宙域（Sargasso Region）は、惑星<a href="../database/locations.html#titania">タイタニア</a>の座標およびその軌道一帯に広がる、宇宙船の残骸と隕鉄の超過密領域である。<a href="../database/sectors.html#chi">セクターχ</a>を核に、<a href="../database/sectors.html#phi">セクターφ</a>、<a href="../database/sectors.html#upsilon">セクターυ</a>まで及ぶ広大な領域を占め、ライラット星系のインナーリムとアウターリムを分断する「巨大な壁」として星系のほぼ中央に横たわっている。</p>
+  <p class="lore-p">数多の航行事故を誘発してきた<a href="../database/glossary.html#out-of-sector">特A級危険区域</a>であり、戦時下ですら両軍が近づくことを恐れる。その別名は──「宇宙の墓場」。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 特A級危険宙域 — 航行非推奨</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 成因史</h3>
+  <p class="lore-p">サルガッソーの成因は、その中心に居座る<a href="../database/locations.html#titania">タイタニア</a>の異常な磁場に尽きる。ただしこの磁場は、惑星内部の流動によって生じる通常の磁場とは性質を異にする。タイタニアの自転は230標準日をかけて一周するほど緩慢であり、その回転から今日の磁場強度を説明することはできない。現在有力とされるのは、鉄に富む地殻そのものが巨大な永久磁石として磁化しているとする残留磁化説である。星系外から飛来した客星が原始惑星ミランダとの衝突で受けた衝撃と、それに続く急激な冷却が、地殻の帯磁をそのまま固定したと考えられている。</p>
+  <p class="lore-p">この地殻磁場は惑星の周囲へ不均一な磁気圏を広げており、鉄を含む物体が近づけばこれを減速させ、軌道から引き剥がして捕縛する。捕らえられるのは金属質の残骸に限らない。磁鉄鉱を含む岩塊も同様に捕まり、ひとたび速度を失った物体が再びこの領域を出ることはない。航行者が<a href="../database/glossary.html#devils-hand">悪魔の手</a>と呼ぶ現象は、この捕獲作用を船の側から見た姿にほかならない。</p>
+  <p class="lore-p">サルガッソーが今日の規模まで膨れ上がった決定的な要因は、捕獲された残骸同士の衝突である。密度の高まった領域では破片が互いに衝突し、そのたびに数を増やして密度をさらに押し上げる。増加が増加を呼ぶこの連鎖は、いったん始まれば外部からの供給が絶えたとしても止まらない。過去の空間洗浄作戦がことごとく失敗に終わった理由もここにある。大きな残骸を砕くという行為は、この宙域においては掃除ではなく、単に数を増やす作業にあたるのである。</p>
+  <p class="lore-p">捕獲された物質はタイタニアの公転に引きずられ、長い年月をかけて軌道に沿う帯状の構造へと伸ばされていった。<a href="../database/sectors.html#chi">セクターχ</a>を核として<a href="../database/sectors.html#upsilon">セクターυ</a>から<a href="../database/sectors.html#phi">セクターφ</a>までを覆う現在の分布は、この引き伸ばしの帰結である。インナーリムとアウターリムを隔てる壁が生まれたことに、星系の政治も戦略も関与してはいない。すべては一個の惑星が帯びた磁気の結果にすぎない。もっとも、その壁が今日の厚みに達するまでには240年に及ぶ戦乱が供給した膨大な鉄を要した。星系の戦史そのものが、この壁の建材である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">宙域の内部は決して一様ではない。デブリの密度には著しい濃淡があり、探照灯なしでは何も見えない密集帯と、数千キロにわたって船一隻ぶんの障害物も現れない空隙とが、不規則に入り混じっている。漂うものは戦闘機の破片から旗艦級の船体まで幅広く、星系の戦史がそのまま実物として浮かんでいる格好である。捕らえられた物体は速度を保ったまま漂い続けるため、静止して見える残骸群も実際には絶えず緩やかな相対運動を続けており、昨日の航路図が今日の安全を保証しない。</p>
+  <p class="lore-p">航行者を最も苦しめるのが、破片や隕鉄が船へ群がるように集まる現象である。<a href="../database/glossary.html#devils-hand">悪魔の手</a>と呼ばれるこの現象により、遭難船の多くは推進器や排熱部を塞がれて漂流に至る。宙域内では通信も著しく減衰するため、救難信号が外へ届く頃には手遅れであることが多い。加えて磁場は計器そのものを狂わせ、慣性航法に頼れない船は自分の位置すら見失う。この宙域を抜けた船乗りが口を揃えて語るのは、衝突の恐怖ではなく、どこにいるのか分からないまま進み続けることの恐ろしさである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">サルガッソーの形成は<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>期に加速した。240年に及ぶ戦乱で生まれた膨大な残骸がタイタニア磁場に引き寄せられ、現在の規模へと成長したのである。過去には反物質爆弾による空間洗浄やデブリ回収作戦が幾度も実施されたが、あまりの物量と、戦争が新たな残骸を無尽蔵に供給し続けるという根本的な問題の前に、現在はほぼ放置状態となっている。</p>
+  <p class="lore-p">一方で、当局の目が届かないこの宙域は無法者たちの楽園でもあった。残骸を組み合わせた隠れ家基地が点在し、宇宙海賊や密輸業者のアジトとして利用されてきた。悪名高い傭兵部隊スターウルフがこの宙域のどこかに根城を構えているという情報もあるが、確認された者はいない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">公式にはサルガッソーに定住者は存在しない。しかし実際には、残骸から資源を回収して生きる<a href="../database/glossary.html#salvager">「サルベージャー」</a>と呼ばれる人々が独自の社会を築いている。彼らは互いの縄張りと引き揚げ品の権利に関する不文律「墓場の掟」を持ち、これを破った者は宙域から追放されるという。</p>
+  <p class="lore-p">サルベージャーの多くは<a href="../database/races.html#bastetoid">バステトイド</a>や<a href="../database/races.html#paranodian">パラノディアン</a>など、定住社会に馴染めなかった者たちである。彼らは危険な宙域の水先案内人としても知られ、報酬次第では軍の特殊任務に協力することもある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">サルガッソーは両陣営を阻む天然の巨大要害であり、この壁を「いかに上手く越えるか」が星系戦略の大きな要となっている。安全に通過できる数少ないポイントが<a href="../database/sectors.html#phi">セクターφ</a>を貫く<a href="../database/glossary.html#trinculo">トリンキュロー回廊</a>であり、回廊の支配権を巡って両軍は緊張状態を続けている。</p>
+  <p class="lore-p">最近になり、<a href="../database/factions.html#venom-empire">帝国</a>が回廊付近で廃宇宙艦隊を組み上げた巨大要塞を建造しているという噂が流れている。事実であれば、共和国のアウターリム航路は喉元に刃を突き付けられることになる。<a href="../database/military.html#cdf">共和国軍</a><a href="../database/glossary.html#cis-hq">情報部</a>は偵察を再三試みているが、デブリと磁場に阻まれ、要塞の実在すら確認できていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">サルガッソーには「幽霊艦隊」の伝説がある。濃霧のようなデブリの奥から、とうに退役したはずの旧式艦隊が航行灯を点けて現れ、すれ違いざまに消えるという。サルベージャーたちは笑い飛ばしながらも、その宙域だけは決して漁らない。</p>
+  <p class="lore-p">スターウルフがこの宙域を根城としながら一度も所在を特定されていない理由について、サルベージャーの間では公然の答えが語られている。まだ彼らが帝国と関わりを持つ以前、共和国の掃討部隊が宙域の集落を「海賊の巣」と断じて一掃しようとした時期があった。撤退の猶予も与えず船を焼かれかけたサルベージャーたちの前に割って入ったのが、当時ただの一匹狼にすぎなかった<a href="../database/characters.html#wolf">ウルフ・オドネル</a>の隊である。部隊は数日で宙域から追い出された。ウルフが残したとされる一言は今も墓場の掟と並べて語られる。墓場を漁って食っている奴を撃つのは、戦争とは言わない。</p>
+  <p class="lore-p">以来サルベージャーはスターウルフに宙域の目と耳を提供し続けている。共和国軍の偵察がことごとく空振りに終わるのは、デブリと磁場のためばかりではない。この宙域では、誰がどの空隙を通ったかを知る者が全員、口を閉ざす側に立っているのである。</p>
+  <p class="lore-p">同じウルフをめぐって、近年もう一つの仮説が浮上している。<a href="../database/glossary.html#silent-nightmare">サイレント・ナイトメア事件</a>の管制記録に残された4機目の機影、すなわちアーウィンではなくウルフェンを駆ってプロトボルス討伐に加わっていた彼の存在と、初代<a href="../database/military.html#starfox">スターフォックス</a>が長らく空席のまま抱えていたアーウィン4号機とを結び付ける見方である。ジェームズ・マクラウドが4人目として誰を推していたのか。その答えがサルガッソーの一匹狼であったとすれば、ウルフが息子へ向ける常軌を逸した執着にも、また別の説明がつくことになる。</p>
+  <p class="lore-p">回収品の中には時折、<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>以前の、どの国の記録にも該当しない構造の船体パーツが混ざることがある。学者たちはこれを「ロストシップ」と呼び、ライラット入植以前の航行者の存在を示す証拠ではないかと議論を続けている。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 350; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.1 + Math.random()*0.6).toFixed(2);
+        const col = Math.random() > 0.7 ? `180,120,255` : `255,255,255`;
+        s.push(`${x}px ${y}px 0px 1px rgba(${col},${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FACTION DATABASE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#ff8888;--accent:#ffbbaa;--border:rgba(255,136,136,0.32);--border-hi:rgba(255,187,170,0.7);--dim:#401818;--dim2:#200c0c; }
+    .facmap-wrap { position: relative; margin: 6px 0 14px; border: 1px solid var(--border); background: rgba(10,14,18,0.55); padding: 12px 14px 8px; }
+    .facmap-wrap::before, .facmap-wrap::after { content: ""; position: absolute; width: 15px; height: 15px; pointer-events: none; }
+    .facmap-wrap::before { top: -1px; left: -1px; border-top: 2px solid var(--primary); border-left: 2px solid var(--primary); }
+    .facmap-wrap::after { bottom: -1px; right: -1px; border-bottom: 2px solid var(--primary); border-right: 2px solid var(--primary); }
+    .facmap-title { display: flex; align-items: baseline; gap: 12px; font-family: 'Orbitron','NitalagoRuika','Share Tech Mono',monospace; font-size: 12px; letter-spacing: 0.18em; color: var(--primary); margin: 2px 2px 10px; }
+    .facmap-title .src { margin-left: auto; font-family: 'Share Tech Mono',monospace; font-size: 9.5px; letter-spacing: 0.22em; color: var(--accent); opacity: 0.55; }
+    .facmap { width: 100%; height: auto; display: block; }
+    .facmap text { font-family: 'NitalagoRuika','Share Tech Mono','Meiryo',monospace; paint-order: stroke; stroke: rgba(8,14,12,0.8); stroke-width: 2.4px; stroke-linejoin: round; }
+    .fac-emblem { filter: drop-shadow(0 0 5px rgba(4,8,10,0.95)); }
+    .hex-sargasso { animation: sargPulse 3.6s ease-in-out infinite; }
+    @keyframes sargPulse {
+      0%, 100% { filter: brightness(0.8); stroke-opacity: 0.55; }
+      50% { filter: brightness(1.45); stroke-opacity: 1; }
+    }
+    .fac-link { outline: none; }
+    .fac-link .fac-group { transition: filter .15s ease; cursor: pointer; }
+    .fac-link:hover .fac-group, .fac-link:focus .fac-group { filter: brightness(1.4) saturate(1.15); }
+    .facmap-legend { display: flex; flex-wrap: wrap; gap: 5px 16px; margin: 8px 2px 2px; font-family: 'NitalagoRuika','Share Tech Mono','Meiryo',monospace; font-size: 11.5px; color: var(--accent); opacity: .92; align-items: center; }
+    .facmap-legend .chip { display: inline-block; width: 14px; height: 13px; margin-right: 5px; vertical-align: -2px; border: 1px solid rgba(255,255,255,0.25); clip-path: polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%); }
+    .facmap-note { font-family: 'NitalagoRuika','Share Tech Mono','Meiryo',monospace; font-size: 10.5px; color: var(--accent); opacity: .6; margin: 6px 2px 4px; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ CIS-HQ / FACTION DATABASE — 勢力データベース ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ 04 / FACTION DATABASE ]</div>
+      <h1 class="codex-title">FACTIONS OF THE LYLAT SYSTEM</h1>
+      <p class="codex-p">第2次ライラットウォーズ下のライラット星系は、コーネリア連合共和国とベノム帝国の二大勢力の衝突を軸に、その狭間で利を得るハクティバ通商連合が暗躍する三つ巴の構図となっている。星系の辺境にはこの構図の外に立つ勢力も存在し、それぞれ独自の立場を保っている。各勢力の成り立ちと現状をここに記録する。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#cornerian-republic">コーネリア連合共和国</a>
+      <a href="#venom-empire">ベノム帝国</a>
+      <a href="#hactiva-union">ハクティバ通商連合</a>
+      <a href="#saurian-alliance">サウリアン同盟</a>
+      <a href="#garou-federation">ガロウ連邦</a>
+      <a href="#iga">独立星系連合（解体）</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="locations.html">ロケーション</a> / <a href="sectors.html">セクター</a> / <a href="races.html">人種</a> / <a href="characters.html">人物</a> / <a href="glossary.html">用語</a> / <a href="military.html">軍事</a> / <a href="corporations.html">企業</a></span>
+    </nav>
+
+    <section class="facmap-wrap">
+      <div class="facmap-title">▌ TERRITORY OVERVIEW ── 勢力分布 早見表 ▐<span class="src">SOURCE: CIS-HQ TACTICAL ARCHIVE ── SCHEMATIC OVERLAY</span></div>
+<!-- FACMAP:BEGIN (image_tools/gen_faction_hexmap.py で自動生成) -->
+<!-- FACMAP:DATA {"factions":{"republic":{"fill":"#265f8f","hi":"#7fc0ee","name":"コーネリア連合共和国","anchor":"#cornerian-republic","emblem":"Corneria_emblem.png"},"empire":{"fill":"#8f2f38","hi":"#f0a0a8","name":"ベノム帝国","anchor":"#venom-empire","emblem":"Venom_emblem.png"},"hactiva":{"fill":"#5d3f8f","hi":"#c9a6f2","name":"ハクティバ通商連合","anchor":"#hactiva-union","emblem":"Haktiva_emblem.png"},"saurian":{"fill":"#2f6f42","hi":"#8fe0a8","name":"サウリアン同盟","anchor":"#saurian-alliance","emblem":"Saurian_emblem.png"},"garou":{"fill":"#8f7716","hi":"#f0d878","name":"ガロウ連邦","anchor":"#garou-federation","emblem":"Garou_emblem.png"},"iga":{"fill":"#8f4716","hi":"#f0a060","name":"独立星系連合（残党）","anchor":"#iga","emblem":"IGA_emblem.png"},"neutral":{"fill":"#2c3838","hi":"#8fa8a2","name":"中立・無所属","anchor":null,"emblem":null}},"order":["neutral","republic","empire","hactiva","saurian","garou","iga"],"hexes":[{"id":"beta","col":-1,"row":0.5,"faction":"republic","letter":"β","name":"コーネリア","stripe":null,"capital":true},{"id":"zeta","col":0,"row":2,"faction":"republic","letter":"ζ","name":"スターブレード","stripe":null,"capital":false},{"id":"theta","col":-1,"row":-0.5,"faction":"republic","letter":"θ","name":"プロスペロー","stripe":"empire","capital":false},{"id":"epsilon","col":0,"row":0,"faction":"republic","letter":"ε","name":"AREA3","stripe":null,"capital":false},{"id":"gamma","col":-1,"row":1.5,"faction":"republic","letter":"γ","name":"カタリナ","stripe":"empire","capital":false},{"id":"alpha2","col":-2,"row":0,"faction":"republic","letter":"α-2","name":"ブラグザ基地","stripe":null,"capital":false},{"id":"iota","col":-1,"row":-1.5,"faction":"republic","letter":"ι","name":"オベロンⅡ","stripe":null,"capital":false},{"id":"rho","col":3,"row":-0.5,"faction":"neutral","letter":"ρ","name":"フォアランナ跡地","stripe":null,"capital":false},{"id":"pi","col":-3,"row":-1.5,"faction":"neutral","letter":"π","name":"封印宙域","stripe":null,"capital":false},{"id":"fei","col":3,"row":3.5,"faction":"republic","letter":"ⲋ","name":"南凪","stripe":null,"capital":false},{"id":"delta1","col":0,"row":-2,"faction":"republic","letter":"δ-1","name":"グレートウォール","stripe":null,"capital":false},{"id":"delta2","col":0,"row":-1,"faction":"republic","letter":"δ-2","name":"グレートウォール","stripe":null,"capital":false},{"id":"delta3","col":0,"row":1,"faction":"republic","letter":"δ-3","name":"グレートウォール","stripe":null,"capital":false},{"id":"kappa","col":1,"row":-0.5,"faction":"republic","letter":"κ","name":"ペルディタ","stripe":null,"capital":false},{"id":"alpha1","col":-3,"row":0.5,"faction":"neutral","letter":"α-1","name":"ライラット","stripe":null,"capital":false},{"id":"sampi","col":1,"row":0.5,"faction":"republic","letter":"Ϡ","name":"グリーン・ビット","stripe":"saurian","capital":false},{"id":"lambda","col":1,"row":1.5,"faction":"saurian","letter":"λ","name":"フォルトナ","stripe":null,"capital":true},{"id":"nyi","col":2,"row":2,"faction":"saurian","letter":"ⳡ","name":"回遊宙域","stripe":null,"capital":false},{"id":"upsilon2","col":2,"row":-2,"faction":"neutral","letter":"υ-2","name":"サルガッソー","stripe":null,"capital":false},{"id":"upsilon1","col":2,"row":-1,"faction":"neutral","letter":"υ-1","name":"サルガッソー","stripe":null,"capital":false},{"id":"phi","col":2,"row":0,"faction":"republic","letter":"φ","name":"トリンキュロー","stripe":"empire","capital":false},{"id":"chi","col":2,"row":1,"faction":"neutral","letter":"χ","name":"タイタニア","stripe":null,"capital":false},{"id":"upsilon3","col":2,"row":3,"faction":"neutral","letter":"υ-3","name":"サルガッソー","stripe":null,"capital":false},{"id":"tau","col":4,"row":0,"faction":"empire","letter":"τ","name":"廃墟宙域","stripe":"both","capital":false},{"id":"sigma1","col":3,"row":0.5,"faction":"empire","letter":"ς-1","name":"マクベス","stripe":null,"capital":false},{"id":"nu","col":4,"row":1,"faction":"empire","letter":"ν","name":"ゾネス","stripe":null,"capital":false},{"id":"mu","col":3,"row":2.5,"faction":"republic","letter":"μ","name":"アクアス","stripe":null,"capital":false},{"id":"hori","col":8,"row":-2,"faction":"neutral","letter":"ϩ","name":"彗星回廊","stripe":null,"capital":false},{"id":"psi6","col":4,"row":-1,"faction":"empire","letter":"ψ-6","name":"AREA6","stripe":null,"capital":false},{"id":"omega","col":5,"row":-1.5,"faction":"empire","letter":"Ω","name":"ベノム","stripe":null,"capital":true},{"id":"omicron","col":4,"row":2,"faction":"republic","letter":"ο","name":"ソーラ戦線","stripe":"empire","capital":false},{"id":"xi","col":4,"row":3,"faction":"republic","letter":"ξ","name":"フィチナ","stripe":null,"capital":false},{"id":"khei","col":7,"row":-1.5,"faction":"republic","letter":"ϧ","name":"入航の道","stripe":"empire","capital":false},{"id":"chima","col":5,"row":1.5,"faction":"republic","letter":"ϭ","name":"東凪","stripe":"hactiva","capital":false},{"id":"ya","col":6,"row":0,"faction":"empire","letter":"ϊ","name":"静電の海","stripe":"hactiva","capital":false},{"id":"heta","col":8,"row":1,"faction":"hactiva","letter":"Ͱ","name":"パペトゥーン","stripe":"republic","capital":false},{"id":"digamma","col":7,"row":0.5,"faction":"hactiva","letter":"ϝ","name":"エラダード","stripe":null,"capital":false},{"id":"stigma","col":6,"row":1,"faction":"hactiva","letter":"Ϛ","name":"キュー","stripe":null,"capital":true},{"id":"san","col":7,"row":1.5,"faction":"hactiva","letter":"ϻ","name":"双子星宙域","stripe":null,"capital":false},{"id":"dasia","col":7,"row":2.5,"faction":"hactiva","letter":"’","name":"ピリオド","stripe":null,"capital":false},{"id":"shei","col":6,"row":3,"faction":"neutral","letter":"ϣ","name":"西凪","stripe":null,"capital":false},{"id":"janja2","col":8,"row":2,"faction":"hactiva","letter":"ϫ-2","name":"セティボスⅡ","stripe":"empire","capital":false},{"id":"janja1","col":9,"row":2.5,"faction":"hactiva","letter":"ϫ-1","name":"セティボス","stripe":null,"capital":false},{"id":"lunate1","col":10,"row":3,"faction":"garou","letter":"Ͼ-1","name":"セティボスⅢ","stripe":null,"capital":true},{"id":"lunate2","col":9,"row":3.5,"faction":"garou","letter":"Ͼ-2","name":"セティボスⅣ","stripe":null,"capital":false},{"id":"lunate3","col":8,"row":3,"faction":"garou","letter":"Ͼ-3","name":"セティボスⅥ","stripe":null,"capital":false},{"id":"dasitetas","col":10,"row":2,"faction":"republic","letter":"ꟶ","name":"ムィンシャンクル","stripe":"hactiva","capital":false},{"id":"ngii","col":9,"row":-0.5,"faction":"iga","letter":"ⳟ","name":"北凪","stripe":null,"capital":true},{"id":"vau2","col":10,"row":0,"faction":"hactiva","letter":"ⳣ-2","name":"氷晶帯","stripe":null,"capital":false},{"id":"koppa","col":11,"row":0.5,"faction":"republic","letter":"Ϟ","name":"グリッピア","stripe":null,"capital":false},{"id":"gain","col":12,"row":0,"faction":"neutral","letter":"Ƣ","name":"オービタル・ゲート","stripe":null,"capital":false},{"id":"sho","col":12,"row":-2,"faction":"neutral","letter":"ϸ","name":"ドグマ","stripe":null,"capital":false},{"id":"yot","col":13,"row":-2.5,"faction":"neutral","letter":"j","name":"未踏宙域","stripe":null,"capital":false},{"id":"sigma2","col":3,"row":1.5,"faction":"empire","letter":"ς-2","name":"クロウディアス","stripe":null,"capital":false},{"id":"vau1","col":9,"row":0.5,"faction":"republic","letter":"ⳣ-1","name":"メテオベース","stripe":"hactiva","capital":false},{"id":"psi1","col":5,"row":-0.5,"faction":"empire","letter":"ψ-1","name":"ボルス","stripe":null,"capital":false},{"id":"psi4","col":5,"row":-2.5,"faction":"empire","letter":"ψ-4","name":"スペースアマダ","stripe":null,"capital":false},{"id":"psi3","col":6,"row":-2,"faction":"empire","letter":"ψ-3","name":"スペースアマダ","stripe":null,"capital":false},{"id":"psi2","col":6,"row":-1,"faction":"empire","letter":"ψ-2","name":"キュートス関門","stripe":null,"capital":false},{"id":"psi5","col":4,"row":-2,"faction":"empire","letter":"ψ-5","name":"サルバドーラ","stripe":null,"capital":false}],"sargasso":["upsilon1","upsilon2","upsilon3","chi","rho"],"ownerLabel":{"sampi":"共和国・サウリアン同盟 共同統治","chima":"共和国・通商連合 共同管理","ya":"帝国・通商連合 共同統治","heta":"通商連合圏・共和国実効統治","gamma":"共和国 — 前線","theta":"係争 — 市街地占領下","omicron":"共和国 — 新戦線","phi":"係争 — 両軍最前線","khei":"共和国 — 先端は帝国防衛線下","tau":"無主 — 帝国が作戦利用","koppa":"共和国領 — 企業私有","dasitetas":"共和国・通商連合 共同管理 — 司法は共和国専管","janja2":"通商連合管轄 — 帝国軍駐屯・実質共同管理"},"facTags":{"republic":[-2,1.15],"empire":[5,-0.9],"hactiva":[6,1.9],"saurian":[1,2.15],"garou":[11,2.75],"iga":[9,-1.15]},"stripes":[["republic","empire","stEmpireOnRep"],["neutral","empire","stBoth"],["hactiva","republic","stRepOnHac"],["republic","hactiva","stHacOnRep"],["empire","hactiva","stHacOnEmp"],["hactiva","empire","stEmpOnHac"],["republic","saurian","stSauOnRep"],["empire","both","stBoth"]],"patterns":[["stEmpireOnRep","#265f8f","#8f2f38"],["stBoth","#2c3838","#8f2f38"],["stRepOnHac","#5d3f8f","#265f8f"],["stHacOnRep","#265f8f","#7a55c0"],["stHacOnEmp","#8f2f38","#7a55c0"],["stEmpOnHac","#5d3f8f","#8f2f38"],["stSauOnRep","#265f8f","#3f9f5c"]],"layout":{"R":44,"MX":66,"MY":60,"COL_MIN":-3,"ROW_MIN":-2},"footerLeft":"GRID: SCHEMATIC / NOT TO SCALE — ALL 45 SECTORS","footerRight":"CIS-HQ 04 // FACTION DB"} -->
+<svg class="facmap" viewBox="0 0 1256 591" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="勢力分布早見表">
+  <defs>
+    <pattern id="stEmpireOnRep" width="12" height="12" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#265f8f"/>
+      <rect width="5" height="12" fill="#8f2f38" opacity="0.75"/>
+    </pattern>
+    <pattern id="stBoth" width="12" height="12" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#2c3838"/>
+      <rect width="5" height="12" fill="#8f2f38" opacity="0.75"/>
+    </pattern>
+    <pattern id="stRepOnHac" width="12" height="12" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#5d3f8f"/>
+      <rect width="5" height="12" fill="#265f8f" opacity="0.75"/>
+    </pattern>
+    <pattern id="stHacOnRep" width="12" height="12" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#265f8f"/>
+      <rect width="5" height="12" fill="#7a55c0" opacity="0.75"/>
+    </pattern>
+    <pattern id="stHacOnEmp" width="12" height="12" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#8f2f38"/>
+      <rect width="5" height="12" fill="#7a55c0" opacity="0.75"/>
+    </pattern>
+    <pattern id="stEmpOnHac" width="12" height="12" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#5d3f8f"/>
+      <rect width="5" height="12" fill="#8f2f38" opacity="0.75"/>
+    </pattern>
+    <pattern id="stSauOnRep" width="12" height="12" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#265f8f"/>
+      <rect width="5" height="12" fill="#3f9f5c" opacity="0.75"/>
+    </pattern>
+    <pattern id="mapDots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.2" cy="1.2" r="1.1" fill="rgba(143,168,162,0.16)"/>
+    </pattern>
+    <pattern id="hexScan" width="6" height="3" patternUnits="userSpaceOnUse">
+      <rect width="6" height="1.1" fill="rgba(0,0,0,0.30)"/>
+    </pattern>
+  </defs>
+  <rect x="6" y="6" width="1244" height="579" fill="url(#mapDots)"/>
+  <rect x="6" y="6" width="1244" height="579" fill="none" stroke="rgba(255,136,136,0.16)" stroke-width="1"/>
+  <path d="M86 6v7M86 585v-7M166 6v7M166 585v-7M246 6v7M246 585v-7M326 6v7M326 585v-7M406 6v7M406 585v-7M486 6v7M486 585v-7M566 6v7M566 585v-7M646 6v7M646 585v-7M726 6v7M726 585v-7M806 6v7M806 585v-7M886 6v7M886 585v-7M966 6v7M966 585v-7M1046 6v7M1046 585v-7M1126 6v7M1126 585v-7M1206 6v7M1206 585v-7M6 66h7M1250 66h-7M6 126h7M1250 126h-7M6 186h7M1250 186h-7M6 246h7M1250 246h-7M6 306h7M1250 306h-7M6 366h7M1250 366h-7M6 426h7M1250 426h-7M6 486h7M1250 486h-7M6 546h7M1250 546h-7" stroke="rgba(255,187,170,0.28)" stroke-width="1"/>
+  <path d="M6 30V6h24M1226 6h24v24M1250 561v24h-24M30 585H6v-24" fill="none" stroke="#ff8888" stroke-opacity="0.5" stroke-width="2"/>
+  <text x="16" y="576" font-size="8" fill="rgba(255,187,170,0.4)" letter-spacing="2">GRID: SCHEMATIC / NOT TO SCALE — ALL 45 SECTORS</text>
+  <text x="1240" y="576" text-anchor="end" font-size="8" fill="rgba(255,187,170,0.4)" letter-spacing="2">CIS-HQ 04 // FACTION DB</text>
+  <g class="fac-group fac-neutral">
+    <polygon class="hex-sargasso" points="547.5,218.3 526.8,254.3 485.2,254.3 464.5,218.3 485.2,182.4 526.8,182.4" fill="#2c3838" stroke="#ffa04a" stroke-width="1.8" stroke-opacity="0.9"><title>セクターρ — フォアランナ跡地（中立・無所属）</title></polygon>
+    <polygon points="547.5,218.3 526.8,254.3 485.2,254.3 464.5,218.3 485.2,182.4 526.8,182.4" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="506.0" y="216.3" text-anchor="middle" font-size="16" fill="#8fa8a2" opacity="0.9">ρ</text>
+    <text x="506.0" y="231.3" text-anchor="middle" font-size="8" fill="#cfe0da">フォアランナ跡地</text>
+    <polygon points="151.5,142.1 130.8,178.0 89.3,178.0 68.5,142.1 89.2,106.2 130.8,106.2" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターπ — 封印宙域（中立・無所属）</title></polygon>
+    <polygon points="151.5,142.1 130.8,178.0 89.3,178.0 68.5,142.1 89.2,106.2 130.8,106.2" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="110.0" y="140.1" text-anchor="middle" font-size="16" fill="#8fa8a2" opacity="0.9">π</text>
+    <text x="110.0" y="155.1" text-anchor="middle" font-size="8" fill="#cfe0da">封印宙域</text>
+    <polygon points="151.5,294.5 130.8,330.5 89.3,330.5 68.5,294.5 89.2,258.6 130.8,258.6" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターα-1 — ライラット（中立・無所属）</title></polygon>
+    <polygon points="151.5,294.5 130.8,330.5 89.3,330.5 68.5,294.5 89.2,258.6 130.8,258.6" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="110.0" y="292.5" text-anchor="middle" font-size="13" fill="#8fa8a2" opacity="0.9">α-1</text>
+    <text x="110.0" y="307.5" text-anchor="middle" font-size="8" fill="#cfe0da">ライラット</text>
+    <polygon class="hex-sargasso" points="481.5,104.0 460.8,139.9 419.2,139.9 398.5,104.0 419.2,68.1 460.8,68.1" fill="#2c3838" stroke="#ffa04a" stroke-width="1.8" stroke-opacity="0.9"><title>セクターυ-2 — サルガッソー（中立・無所属）</title></polygon>
+    <polygon points="481.5,104.0 460.8,139.9 419.2,139.9 398.5,104.0 419.2,68.1 460.8,68.1" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="440.0" y="102.0" text-anchor="middle" font-size="13" fill="#8fa8a2" opacity="0.9">υ-2</text>
+    <text x="440.0" y="117.0" text-anchor="middle" font-size="8" fill="#cfe0da">サルガッソー</text>
+    <polygon class="hex-sargasso" points="481.5,180.2 460.8,216.2 419.2,216.2 398.5,180.2 419.2,144.3 460.8,144.3" fill="#2c3838" stroke="#ffa04a" stroke-width="1.8" stroke-opacity="0.9"><title>セクターυ-1 — サルガッソー（中立・無所属）</title></polygon>
+    <polygon points="481.5,180.2 460.8,216.2 419.2,216.2 398.5,180.2 419.2,144.3 460.8,144.3" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="440.0" y="178.2" text-anchor="middle" font-size="13" fill="#8fa8a2" opacity="0.9">υ-1</text>
+    <text x="440.0" y="193.2" text-anchor="middle" font-size="8" fill="#cfe0da">サルガッソー</text>
+    <polygon class="hex-sargasso" points="481.5,332.6 460.8,368.6 419.2,368.6 398.5,332.6 419.2,296.7 460.8,296.7" fill="#2c3838" stroke="#ffa04a" stroke-width="1.8" stroke-opacity="0.9"><title>セクターχ — タイタニア（中立・無所属）</title></polygon>
+    <polygon points="481.5,332.6 460.8,368.6 419.2,368.6 398.5,332.6 419.2,296.7 460.8,296.7" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="440.0" y="330.6" text-anchor="middle" font-size="16" fill="#8fa8a2" opacity="0.9">χ</text>
+    <text x="440.0" y="345.6" text-anchor="middle" font-size="8" fill="#cfe0da">タイタニア</text>
+    <polygon class="hex-sargasso" points="481.5,485.1 460.8,521.0 419.2,521.0 398.5,485.1 419.2,449.1 460.8,449.1" fill="#2c3838" stroke="#ffa04a" stroke-width="1.8" stroke-opacity="0.9"><title>セクターυ-3 — サルガッソー（中立・無所属）</title></polygon>
+    <polygon points="481.5,485.1 460.8,521.0 419.2,521.0 398.5,485.1 419.2,449.1 460.8,449.1" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="440.0" y="483.1" text-anchor="middle" font-size="13" fill="#8fa8a2" opacity="0.9">υ-3</text>
+    <text x="440.0" y="498.1" text-anchor="middle" font-size="8" fill="#cfe0da">サルガッソー</text>
+    <polygon points="877.5,104.0 856.8,139.9 815.2,139.9 794.5,104.0 815.2,68.1 856.8,68.1" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϩ — 彗星回廊（中立・無所属）</title></polygon>
+    <polygon points="877.5,104.0 856.8,139.9 815.2,139.9 794.5,104.0 815.2,68.1 856.8,68.1" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="836.0" y="102.0" text-anchor="middle" font-size="16" fill="#8fa8a2" opacity="0.9">ϩ</text>
+    <text x="836.0" y="117.0" text-anchor="middle" font-size="8" fill="#cfe0da">彗星回廊</text>
+    <polygon points="745.5,485.1 724.8,521.0 683.2,521.0 662.5,485.1 683.2,449.1 724.8,449.1" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϣ — 西凪（中立・無所属）</title></polygon>
+    <polygon points="745.5,485.1 724.8,521.0 683.2,521.0 662.5,485.1 683.2,449.1 724.8,449.1" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="704.0" y="483.1" text-anchor="middle" font-size="16" fill="#8fa8a2" opacity="0.9">ϣ</text>
+    <text x="704.0" y="498.1" text-anchor="middle" font-size="8" fill="#cfe0da">西凪</text>
+    <polygon points="1141.5,256.4 1120.8,292.4 1079.2,292.4 1058.5,256.4 1079.2,220.5 1120.8,220.5" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターƢ — オービタル・ゲート（中立・無所属）</title></polygon>
+    <polygon points="1141.5,256.4 1120.8,292.4 1079.2,292.4 1058.5,256.4 1079.2,220.5 1120.8,220.5" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="1100.0" y="254.4" text-anchor="middle" font-size="16" fill="#8fa8a2" opacity="0.9">Ƣ</text>
+    <text x="1100.0" y="269.4" text-anchor="middle" font-size="8" fill="#cfe0da">オービタル・ゲート</text>
+    <polygon points="1141.5,104.0 1120.8,139.9 1079.2,139.9 1058.5,104.0 1079.2,68.1 1120.8,68.1" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϸ — ドグマ（中立・無所属）</title></polygon>
+    <polygon points="1141.5,104.0 1120.8,139.9 1079.2,139.9 1058.5,104.0 1079.2,68.1 1120.8,68.1" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="1100.0" y="102.0" text-anchor="middle" font-size="16" fill="#8fa8a2" opacity="0.9">ϸ</text>
+    <text x="1100.0" y="117.0" text-anchor="middle" font-size="8" fill="#cfe0da">ドグマ</text>
+    <polygon points="1207.5,65.9 1186.8,101.8 1145.2,101.8 1124.5,65.9 1145.2,30.0 1186.8,30.0" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターj — 未踏宙域（中立・無所属）</title></polygon>
+    <polygon points="1207.5,65.9 1186.8,101.8 1145.2,101.8 1124.5,65.9 1145.2,30.0 1186.8,30.0" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="1166.0" y="63.9" text-anchor="middle" font-size="16" fill="#8fa8a2" opacity="0.9">j</text>
+    <text x="1166.0" y="78.9" text-anchor="middle" font-size="8" fill="#cfe0da">未踏宙域</text>
+  </g>
+  <a href="#cornerian-republic" class="fac-link" aria-label="コーネリア連合共和国">
+  <g class="fac-group">
+    <polygon points="283.5,294.5 262.8,330.5 221.2,330.5 200.5,294.5 221.2,258.6 262.8,258.6" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターβ — コーネリア（コーネリア連合共和国）</title></polygon>
+    <polygon points="283.5,294.5 262.8,330.5 221.2,330.5 200.5,294.5 221.2,258.6 262.8,258.6" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <circle cx="242.0" cy="290.5" r="27" fill="rgba(5,9,12,0.82)" stroke="#7fc0ee" stroke-width="1.2" stroke-opacity="0.6"/>
+    <image class="fac-emblem" href="../resource/emblem/Corneria_emblem.png" x="220.0" y="268.5" width="44" height="44"/>
+    <text x="242.0" y="262.5" text-anchor="middle" font-size="10" fill="#7fc0ee" opacity="0.9">β</text>
+    <text x="242.0" y="325.5" text-anchor="middle" font-size="8" fill="#e8f2ee">コーネリア</text>
+    <polygon points="349.5,408.8 328.8,444.8 287.2,444.8 266.5,408.8 287.2,372.9 328.8,372.9" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターζ — スターブレード（コーネリア連合共和国）</title></polygon>
+    <polygon points="349.5,408.8 328.8,444.8 287.2,444.8 266.5,408.8 287.2,372.9 328.8,372.9" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="308.0" y="406.8" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">ζ</text>
+    <text x="308.0" y="421.8" text-anchor="middle" font-size="8" fill="#cfe0da">スターブレード</text>
+    <polygon points="283.5,218.3 262.8,254.3 221.2,254.3 200.5,218.3 221.2,182.4 262.8,182.4" fill="url(#stEmpireOnRep)" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターθ — プロスペロー（係争 — 市街地占領下）</title></polygon>
+    <polygon points="283.5,218.3 262.8,254.3 221.2,254.3 200.5,218.3 221.2,182.4 262.8,182.4" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="242.0" y="216.3" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">θ</text>
+    <text x="242.0" y="231.3" text-anchor="middle" font-size="8" fill="#cfe0da">プロスペロー</text>
+    <polygon points="349.5,256.4 328.8,292.4 287.2,292.4 266.5,256.4 287.2,220.5 328.8,220.5" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターε — AREA3（コーネリア連合共和国）</title></polygon>
+    <polygon points="349.5,256.4 328.8,292.4 287.2,292.4 266.5,256.4 287.2,220.5 328.8,220.5" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="308.0" y="254.4" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">ε</text>
+    <text x="308.0" y="269.4" text-anchor="middle" font-size="8" fill="#cfe0da">AREA3</text>
+    <polygon points="283.5,370.7 262.8,406.7 221.2,406.7 200.5,370.7 221.2,334.8 262.8,334.8" fill="url(#stEmpireOnRep)" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターγ — カタリナ（共和国 — 前線）</title></polygon>
+    <polygon points="283.5,370.7 262.8,406.7 221.2,406.7 200.5,370.7 221.2,334.8 262.8,334.8" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="242.0" y="368.7" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">γ</text>
+    <text x="242.0" y="383.7" text-anchor="middle" font-size="8" fill="#cfe0da">カタリナ</text>
+    <polygon points="217.5,256.4 196.8,292.4 155.2,292.4 134.5,256.4 155.2,220.5 196.8,220.5" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターα-2 — ブラグザ基地（コーネリア連合共和国）</title></polygon>
+    <polygon points="217.5,256.4 196.8,292.4 155.2,292.4 134.5,256.4 155.2,220.5 196.8,220.5" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="176.0" y="254.4" text-anchor="middle" font-size="13" fill="#7fc0ee" opacity="0.9">α-2</text>
+    <text x="176.0" y="269.4" text-anchor="middle" font-size="8" fill="#cfe0da">ブラグザ基地</text>
+    <polygon points="283.5,142.1 262.8,178.0 221.2,178.0 200.5,142.1 221.2,106.2 262.8,106.2" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターι — オベロンⅡ（コーネリア連合共和国）</title></polygon>
+    <polygon points="283.5,142.1 262.8,178.0 221.2,178.0 200.5,142.1 221.2,106.2 262.8,106.2" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="242.0" y="140.1" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">ι</text>
+    <text x="242.0" y="155.1" text-anchor="middle" font-size="8" fill="#cfe0da">オベロンⅡ</text>
+    <polygon points="547.5,523.2 526.8,559.1 485.2,559.1 464.5,523.2 485.2,487.2 526.8,487.2" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターⲋ — 南凪（コーネリア連合共和国）</title></polygon>
+    <polygon points="547.5,523.2 526.8,559.1 485.2,559.1 464.5,523.2 485.2,487.2 526.8,487.2" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="506.0" y="521.2" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">ⲋ</text>
+    <text x="506.0" y="536.2" text-anchor="middle" font-size="8" fill="#cfe0da">南凪</text>
+    <polygon points="349.5,104.0 328.8,139.9 287.2,139.9 266.5,104.0 287.2,68.1 328.8,68.1" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターδ-1 — グレートウォール（コーネリア連合共和国）</title></polygon>
+    <polygon points="349.5,104.0 328.8,139.9 287.2,139.9 266.5,104.0 287.2,68.1 328.8,68.1" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="308.0" y="102.0" text-anchor="middle" font-size="13" fill="#7fc0ee" opacity="0.9">δ-1</text>
+    <text x="308.0" y="117.0" text-anchor="middle" font-size="8" fill="#cfe0da">グレートウォール</text>
+    <polygon points="349.5,180.2 328.8,216.2 287.2,216.2 266.5,180.2 287.2,144.3 328.8,144.3" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターδ-2 — グレートウォール（コーネリア連合共和国）</title></polygon>
+    <polygon points="349.5,180.2 328.8,216.2 287.2,216.2 266.5,180.2 287.2,144.3 328.8,144.3" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="308.0" y="178.2" text-anchor="middle" font-size="13" fill="#7fc0ee" opacity="0.9">δ-2</text>
+    <text x="308.0" y="193.2" text-anchor="middle" font-size="8" fill="#cfe0da">グレートウォール</text>
+    <polygon points="349.5,332.6 328.8,368.6 287.2,368.6 266.5,332.6 287.2,296.7 328.8,296.7" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターδ-3 — グレートウォール（コーネリア連合共和国）</title></polygon>
+    <polygon points="349.5,332.6 328.8,368.6 287.2,368.6 266.5,332.6 287.2,296.7 328.8,296.7" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="308.0" y="330.6" text-anchor="middle" font-size="13" fill="#7fc0ee" opacity="0.9">δ-3</text>
+    <text x="308.0" y="345.6" text-anchor="middle" font-size="8" fill="#cfe0da">グレートウォール</text>
+    <polygon points="415.5,218.3 394.8,254.3 353.2,254.3 332.5,218.3 353.2,182.4 394.8,182.4" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターκ — ペルディタ（コーネリア連合共和国）</title></polygon>
+    <polygon points="415.5,218.3 394.8,254.3 353.2,254.3 332.5,218.3 353.2,182.4 394.8,182.4" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="374.0" y="216.3" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">κ</text>
+    <text x="374.0" y="231.3" text-anchor="middle" font-size="8" fill="#cfe0da">ペルディタ</text>
+    <polygon points="415.5,294.5 394.8,330.5 353.2,330.5 332.5,294.5 353.2,258.6 394.8,258.6" fill="url(#stSauOnRep)" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϠ — グリーン・ビット（共和国・サウリアン同盟 共同統治）</title></polygon>
+    <polygon points="415.5,294.5 394.8,330.5 353.2,330.5 332.5,294.5 353.2,258.6 394.8,258.6" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="374.0" y="292.5" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">Ϡ</text>
+    <text x="374.0" y="307.5" text-anchor="middle" font-size="8" fill="#cfe0da">グリーン・ビット</text>
+    <polygon points="481.5,256.4 460.8,292.4 419.2,292.4 398.5,256.4 419.2,220.5 460.8,220.5" fill="url(#stEmpireOnRep)" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターφ — トリンキュロー（係争 — 両軍最前線）</title></polygon>
+    <polygon points="481.5,256.4 460.8,292.4 419.2,292.4 398.5,256.4 419.2,220.5 460.8,220.5" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="440.0" y="254.4" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">φ</text>
+    <text x="440.0" y="269.4" text-anchor="middle" font-size="8" fill="#cfe0da">トリンキュロー</text>
+    <polygon points="547.5,446.9 526.8,482.9 485.2,482.9 464.5,446.9 485.2,411.0 526.8,411.0" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターμ — アクアス（コーネリア連合共和国）</title></polygon>
+    <polygon points="547.5,446.9 526.8,482.9 485.2,482.9 464.5,446.9 485.2,411.0 526.8,411.0" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="506.0" y="444.9" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">μ</text>
+    <text x="506.0" y="459.9" text-anchor="middle" font-size="8" fill="#cfe0da">アクアス</text>
+    <polygon points="613.5,408.8 592.8,444.8 551.2,444.8 530.5,408.8 551.2,372.9 592.8,372.9" fill="url(#stEmpireOnRep)" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターο — ソーラ戦線（共和国 — 新戦線）</title></polygon>
+    <polygon points="613.5,408.8 592.8,444.8 551.2,444.8 530.5,408.8 551.2,372.9 592.8,372.9" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="572.0" y="406.8" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">ο</text>
+    <text x="572.0" y="421.8" text-anchor="middle" font-size="8" fill="#cfe0da">ソーラ戦線</text>
+    <polygon points="613.5,485.1 592.8,521.0 551.2,521.0 530.5,485.1 551.2,449.1 592.8,449.1" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターξ — フィチナ（コーネリア連合共和国）</title></polygon>
+    <polygon points="613.5,485.1 592.8,521.0 551.2,521.0 530.5,485.1 551.2,449.1 592.8,449.1" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="572.0" y="483.1" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">ξ</text>
+    <text x="572.0" y="498.1" text-anchor="middle" font-size="8" fill="#cfe0da">フィチナ</text>
+    <polygon points="811.5,142.1 790.8,178.0 749.2,178.0 728.5,142.1 749.2,106.2 790.8,106.2" fill="url(#stEmpireOnRep)" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϧ — 入航の道（共和国 — 先端は帝国防衛線下）</title></polygon>
+    <polygon points="811.5,142.1 790.8,178.0 749.2,178.0 728.5,142.1 749.2,106.2 790.8,106.2" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="770.0" y="140.1" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">ϧ</text>
+    <text x="770.0" y="155.1" text-anchor="middle" font-size="8" fill="#cfe0da">入航の道</text>
+    <polygon points="679.5,370.7 658.8,406.7 617.2,406.7 596.5,370.7 617.2,334.8 658.8,334.8" fill="url(#stHacOnRep)" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϭ — 東凪（共和国・通商連合 共同管理）</title></polygon>
+    <polygon points="679.5,370.7 658.8,406.7 617.2,406.7 596.5,370.7 617.2,334.8 658.8,334.8" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="638.0" y="368.7" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">ϭ</text>
+    <text x="638.0" y="383.7" text-anchor="middle" font-size="8" fill="#cfe0da">東凪</text>
+    <polygon points="1009.5,408.8 988.8,444.8 947.2,444.8 926.5,408.8 947.2,372.9 988.8,372.9" fill="url(#stHacOnRep)" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターꟶ — ムィンシャンクル（共和国・通商連合 共同管理 — 司法は共和国専管）</title></polygon>
+    <polygon points="1009.5,408.8 988.8,444.8 947.2,444.8 926.5,408.8 947.2,372.9 988.8,372.9" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="968.0" y="406.8" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">ꟶ</text>
+    <text x="968.0" y="421.8" text-anchor="middle" font-size="8" fill="#cfe0da">ムィンシャンクル</text>
+    <polygon points="1075.5,294.5 1054.8,330.5 1013.2,330.5 992.5,294.5 1013.2,258.6 1054.8,258.6" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϞ — グリッピア（共和国領 — 企業私有）</title></polygon>
+    <polygon points="1075.5,294.5 1054.8,330.5 1013.2,330.5 992.5,294.5 1013.2,258.6 1054.8,258.6" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="1034.0" y="292.5" text-anchor="middle" font-size="16" fill="#7fc0ee" opacity="0.9">Ϟ</text>
+    <text x="1034.0" y="307.5" text-anchor="middle" font-size="8" fill="#cfe0da">グリッピア</text>
+    <polygon points="943.5,294.5 922.8,330.5 881.2,330.5 860.5,294.5 881.2,258.6 922.8,258.6" fill="url(#stHacOnRep)" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"><title>セクターⳣ-1 — メテオベース（コーネリア連合共和国）</title></polygon>
+    <polygon points="943.5,294.5 922.8,330.5 881.2,330.5 860.5,294.5 881.2,258.6 922.8,258.6" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="902.0" y="292.5" text-anchor="middle" font-size="13" fill="#7fc0ee" opacity="0.9">ⳣ-1</text>
+    <text x="902.0" y="307.5" text-anchor="middle" font-size="8" fill="#cfe0da">メテオベース</text>
+    <rect x="115.5" y="335.1" width="121.0" height="17" rx="2" fill="rgba(5,9,12,0.85)" stroke="#7fc0ee" stroke-width="0.8" stroke-opacity="0.6"/>
+    <text x="176.0" y="347.6" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#7fc0ee" class="fac-name">コーネリア連合共和国</text>
+  </g>
+  </a>
+  <a href="#venom-empire" class="fac-link" aria-label="ベノム帝国">
+  <g class="fac-group">
+    <polygon points="613.5,256.4 592.8,292.4 551.2,292.4 530.5,256.4 551.2,220.5 592.8,220.5" fill="url(#stBoth)" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターτ — 廃墟宙域（無主 — 帝国が作戦利用）</title></polygon>
+    <polygon points="613.5,256.4 592.8,292.4 551.2,292.4 530.5,256.4 551.2,220.5 592.8,220.5" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="572.0" y="254.4" text-anchor="middle" font-size="16" fill="#f0a0a8" opacity="0.9">τ</text>
+    <text x="572.0" y="269.4" text-anchor="middle" font-size="8" fill="#cfe0da">廃墟宙域</text>
+    <polygon points="547.5,294.5 526.8,330.5 485.2,330.5 464.5,294.5 485.2,258.6 526.8,258.6" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターς-1 — マクベス（ベノム帝国）</title></polygon>
+    <polygon points="547.5,294.5 526.8,330.5 485.2,330.5 464.5,294.5 485.2,258.6 526.8,258.6" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="506.0" y="292.5" text-anchor="middle" font-size="13" fill="#f0a0a8" opacity="0.9">ς-1</text>
+    <text x="506.0" y="307.5" text-anchor="middle" font-size="8" fill="#cfe0da">マクベス</text>
+    <polygon points="613.5,332.6 592.8,368.6 551.2,368.6 530.5,332.6 551.2,296.7 592.8,296.7" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターν — ゾネス（ベノム帝国）</title></polygon>
+    <polygon points="613.5,332.6 592.8,368.6 551.2,368.6 530.5,332.6 551.2,296.7 592.8,296.7" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="572.0" y="330.6" text-anchor="middle" font-size="16" fill="#f0a0a8" opacity="0.9">ν</text>
+    <text x="572.0" y="345.6" text-anchor="middle" font-size="8" fill="#cfe0da">ゾネス</text>
+    <polygon points="613.5,180.2 592.8,216.2 551.2,216.2 530.5,180.2 551.2,144.3 592.8,144.3" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターψ-6 — AREA6（ベノム帝国）</title></polygon>
+    <polygon points="613.5,180.2 592.8,216.2 551.2,216.2 530.5,180.2 551.2,144.3 592.8,144.3" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="572.0" y="178.2" text-anchor="middle" font-size="13" fill="#f0a0a8" opacity="0.9">ψ-6</text>
+    <text x="572.0" y="193.2" text-anchor="middle" font-size="8" fill="#cfe0da">AREA6</text>
+    <polygon points="679.5,142.1 658.8,178.0 617.2,178.0 596.5,142.1 617.2,106.2 658.8,106.2" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターΩ — ベノム（ベノム帝国）</title></polygon>
+    <polygon points="679.5,142.1 658.8,178.0 617.2,178.0 596.5,142.1 617.2,106.2 658.8,106.2" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <circle cx="638.0" cy="138.1" r="27" fill="rgba(5,9,12,0.82)" stroke="#f0a0a8" stroke-width="1.2" stroke-opacity="0.6"/>
+    <image class="fac-emblem" href="../resource/emblem/Venom_emblem.png" x="616.0" y="116.1" width="44" height="44"/>
+    <text x="638.0" y="110.1" text-anchor="middle" font-size="10" fill="#f0a0a8" opacity="0.9">Ω</text>
+    <text x="638.0" y="173.1" text-anchor="middle" font-size="8" fill="#e8f2ee">ベノム</text>
+    <polygon points="745.5,256.4 724.8,292.4 683.2,292.4 662.5,256.4 683.2,220.5 724.8,220.5" fill="url(#stHacOnEmp)" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϊ — 静電の海（帝国・通商連合 共同統治）</title></polygon>
+    <polygon points="745.5,256.4 724.8,292.4 683.2,292.4 662.5,256.4 683.2,220.5 724.8,220.5" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="704.0" y="254.4" text-anchor="middle" font-size="16" fill="#f0a0a8" opacity="0.9">ϊ</text>
+    <text x="704.0" y="269.4" text-anchor="middle" font-size="8" fill="#cfe0da">静電の海</text>
+    <polygon points="547.5,370.7 526.8,406.7 485.2,406.7 464.5,370.7 485.2,334.8 526.8,334.8" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターς-2 — クロウディアス（ベノム帝国）</title></polygon>
+    <polygon points="547.5,370.7 526.8,406.7 485.2,406.7 464.5,370.7 485.2,334.8 526.8,334.8" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="506.0" y="368.7" text-anchor="middle" font-size="13" fill="#f0a0a8" opacity="0.9">ς-2</text>
+    <text x="506.0" y="383.7" text-anchor="middle" font-size="8" fill="#cfe0da">クロウディアス</text>
+    <polygon points="679.5,218.3 658.8,254.3 617.2,254.3 596.5,218.3 617.2,182.4 658.8,182.4" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターψ-1 — ボルス（ベノム帝国）</title></polygon>
+    <polygon points="679.5,218.3 658.8,254.3 617.2,254.3 596.5,218.3 617.2,182.4 658.8,182.4" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="638.0" y="216.3" text-anchor="middle" font-size="13" fill="#f0a0a8" opacity="0.9">ψ-1</text>
+    <text x="638.0" y="231.3" text-anchor="middle" font-size="8" fill="#cfe0da">ボルス</text>
+    <polygon points="679.5,65.9 658.8,101.8 617.2,101.8 596.5,65.9 617.2,30.0 658.8,30.0" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターψ-4 — スペースアマダ（ベノム帝国）</title></polygon>
+    <polygon points="679.5,65.9 658.8,101.8 617.2,101.8 596.5,65.9 617.2,30.0 658.8,30.0" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="638.0" y="63.9" text-anchor="middle" font-size="13" fill="#f0a0a8" opacity="0.9">ψ-4</text>
+    <text x="638.0" y="78.9" text-anchor="middle" font-size="8" fill="#cfe0da">スペースアマダ</text>
+    <polygon points="745.5,104.0 724.8,139.9 683.2,139.9 662.5,104.0 683.2,68.1 724.8,68.1" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターψ-3 — スペースアマダ（ベノム帝国）</title></polygon>
+    <polygon points="745.5,104.0 724.8,139.9 683.2,139.9 662.5,104.0 683.2,68.1 724.8,68.1" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="704.0" y="102.0" text-anchor="middle" font-size="13" fill="#f0a0a8" opacity="0.9">ψ-3</text>
+    <text x="704.0" y="117.0" text-anchor="middle" font-size="8" fill="#cfe0da">スペースアマダ</text>
+    <polygon points="745.5,180.2 724.8,216.2 683.2,216.2 662.5,180.2 683.2,144.3 724.8,144.3" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターψ-2 — キュートス関門（ベノム帝国）</title></polygon>
+    <polygon points="745.5,180.2 724.8,216.2 683.2,216.2 662.5,180.2 683.2,144.3 724.8,144.3" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="704.0" y="178.2" text-anchor="middle" font-size="13" fill="#f0a0a8" opacity="0.9">ψ-2</text>
+    <text x="704.0" y="193.2" text-anchor="middle" font-size="8" fill="#cfe0da">キュートス関門</text>
+    <polygon points="613.5,104.0 592.8,139.9 551.2,139.9 530.5,104.0 551.2,68.1 592.8,68.1" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターψ-5 — サルバドーラ（ベノム帝国）</title></polygon>
+    <polygon points="613.5,104.0 592.8,139.9 551.2,139.9 530.5,104.0 551.2,68.1 592.8,68.1" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="572.0" y="102.0" text-anchor="middle" font-size="13" fill="#f0a0a8" opacity="0.9">ψ-5</text>
+    <text x="572.0" y="117.0" text-anchor="middle" font-size="8" fill="#cfe0da">サルバドーラ</text>
+    <rect x="603.8" y="178.8" width="68.5" height="17" rx="2" fill="rgba(5,9,12,0.85)" stroke="#f0a0a8" stroke-width="0.8" stroke-opacity="0.6"/>
+    <text x="638.0" y="191.3" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#f0a0a8" class="fac-name">ベノム帝国</text>
+  </g>
+  </a>
+  <a href="#hactiva-union" class="fac-link" aria-label="ハクティバ通商連合">
+  <g class="fac-group">
+    <polygon points="877.5,332.6 856.8,368.6 815.2,368.6 794.5,332.6 815.2,296.7 856.8,296.7" fill="url(#stRepOnHac)" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターͰ — パペトゥーン（通商連合圏・共和国実効統治）</title></polygon>
+    <polygon points="877.5,332.6 856.8,368.6 815.2,368.6 794.5,332.6 815.2,296.7 856.8,296.7" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="836.0" y="330.6" text-anchor="middle" font-size="16" fill="#c9a6f2" opacity="0.9">Ͱ</text>
+    <text x="836.0" y="345.6" text-anchor="middle" font-size="8" fill="#cfe0da">パペトゥーン</text>
+    <polygon points="811.5,294.5 790.8,330.5 749.2,330.5 728.5,294.5 749.2,258.6 790.8,258.6" fill="#5d3f8f" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϝ — エラダード（ハクティバ通商連合）</title></polygon>
+    <polygon points="811.5,294.5 790.8,330.5 749.2,330.5 728.5,294.5 749.2,258.6 790.8,258.6" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="770.0" y="292.5" text-anchor="middle" font-size="16" fill="#c9a6f2" opacity="0.9">ϝ</text>
+    <text x="770.0" y="307.5" text-anchor="middle" font-size="8" fill="#cfe0da">エラダード</text>
+    <polygon points="745.5,332.6 724.8,368.6 683.2,368.6 662.5,332.6 683.2,296.7 724.8,296.7" fill="#5d3f8f" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϚ — キュー（ハクティバ通商連合）</title></polygon>
+    <polygon points="745.5,332.6 724.8,368.6 683.2,368.6 662.5,332.6 683.2,296.7 724.8,296.7" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <circle cx="704.0" cy="328.6" r="27" fill="rgba(5,9,12,0.82)" stroke="#c9a6f2" stroke-width="1.2" stroke-opacity="0.6"/>
+    <image class="fac-emblem" href="../resource/emblem/Haktiva_emblem.png" x="682.0" y="306.6" width="44" height="44"/>
+    <text x="704.0" y="300.6" text-anchor="middle" font-size="10" fill="#c9a6f2" opacity="0.9">Ϛ</text>
+    <text x="704.0" y="363.6" text-anchor="middle" font-size="8" fill="#e8f2ee">キュー</text>
+    <polygon points="811.5,370.7 790.8,406.7 749.2,406.7 728.5,370.7 749.2,334.8 790.8,334.8" fill="#5d3f8f" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϻ — 双子星宙域（ハクティバ通商連合）</title></polygon>
+    <polygon points="811.5,370.7 790.8,406.7 749.2,406.7 728.5,370.7 749.2,334.8 790.8,334.8" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="770.0" y="368.7" text-anchor="middle" font-size="16" fill="#c9a6f2" opacity="0.9">ϻ</text>
+    <text x="770.0" y="383.7" text-anchor="middle" font-size="8" fill="#cfe0da">双子星宙域</text>
+    <polygon points="811.5,446.9 790.8,482.9 749.2,482.9 728.5,446.9 749.2,411.0 790.8,411.0" fill="#5d3f8f" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"><title>セクター’ — ピリオド（ハクティバ通商連合）</title></polygon>
+    <polygon points="811.5,446.9 790.8,482.9 749.2,482.9 728.5,446.9 749.2,411.0 790.8,411.0" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="770.0" y="444.9" text-anchor="middle" font-size="16" fill="#c9a6f2" opacity="0.9">’</text>
+    <text x="770.0" y="459.9" text-anchor="middle" font-size="8" fill="#cfe0da">ピリオド</text>
+    <polygon points="877.5,408.8 856.8,444.8 815.2,444.8 794.5,408.8 815.2,372.9 856.8,372.9" fill="url(#stEmpOnHac)" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϫ-2 — セティボスⅡ（通商連合管轄 — 帝国軍駐屯・実質共同管理）</title></polygon>
+    <polygon points="877.5,408.8 856.8,444.8 815.2,444.8 794.5,408.8 815.2,372.9 856.8,372.9" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="836.0" y="406.8" text-anchor="middle" font-size="13" fill="#c9a6f2" opacity="0.9">ϫ-2</text>
+    <text x="836.0" y="421.8" text-anchor="middle" font-size="8" fill="#cfe0da">セティボスⅡ</text>
+    <polygon points="943.5,446.9 922.8,482.9 881.2,482.9 860.5,446.9 881.2,411.0 922.8,411.0" fill="#5d3f8f" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϫ-1 — セティボス（ハクティバ通商連合）</title></polygon>
+    <polygon points="943.5,446.9 922.8,482.9 881.2,482.9 860.5,446.9 881.2,411.0 922.8,411.0" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="902.0" y="444.9" text-anchor="middle" font-size="13" fill="#c9a6f2" opacity="0.9">ϫ-1</text>
+    <text x="902.0" y="459.9" text-anchor="middle" font-size="8" fill="#cfe0da">セティボス</text>
+    <polygon points="1009.5,256.4 988.8,292.4 947.2,292.4 926.5,256.4 947.2,220.5 988.8,220.5" fill="#5d3f8f" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"><title>セクターⳣ-2 — 氷晶帯（ハクティバ通商連合）</title></polygon>
+    <polygon points="1009.5,256.4 988.8,292.4 947.2,292.4 926.5,256.4 947.2,220.5 988.8,220.5" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="968.0" y="254.4" text-anchor="middle" font-size="13" fill="#c9a6f2" opacity="0.9">ⳣ-2</text>
+    <text x="968.0" y="269.4" text-anchor="middle" font-size="8" fill="#cfe0da">氷晶帯</text>
+    <rect x="648.8" y="392.2" width="110.5" height="17" rx="2" fill="rgba(5,9,12,0.85)" stroke="#c9a6f2" stroke-width="0.8" stroke-opacity="0.6"/>
+    <text x="704.0" y="404.7" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#c9a6f2" class="fac-name">ハクティバ通商連合</text>
+  </g>
+  </a>
+  <a href="#saurian-alliance" class="fac-link" aria-label="サウリアン同盟">
+  <g class="fac-group">
+    <polygon points="415.5,370.7 394.8,406.7 353.2,406.7 332.5,370.7 353.2,334.8 394.8,334.8" fill="#2f6f42" stroke="#8fe0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターλ — フォルトナ（サウリアン同盟）</title></polygon>
+    <polygon points="415.5,370.7 394.8,406.7 353.2,406.7 332.5,370.7 353.2,334.8 394.8,334.8" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <circle cx="374.0" cy="366.7" r="27" fill="rgba(5,9,12,0.82)" stroke="#8fe0a8" stroke-width="1.2" stroke-opacity="0.6"/>
+    <image class="fac-emblem" href="../resource/emblem/Saurian_emblem.png" x="352.0" y="344.7" width="44" height="44"/>
+    <text x="374.0" y="338.7" text-anchor="middle" font-size="10" fill="#8fe0a8" opacity="0.9">λ</text>
+    <text x="374.0" y="401.7" text-anchor="middle" font-size="8" fill="#e8f2ee">フォルトナ</text>
+    <polygon points="481.5,408.8 460.8,444.8 419.2,444.8 398.5,408.8 419.2,372.9 460.8,372.9" fill="#2f6f42" stroke="#8fe0a8" stroke-width="1.4" stroke-opacity="0.55"><title>セクターⳡ — 回遊宙域（サウリアン同盟）</title></polygon>
+    <polygon points="481.5,408.8 460.8,444.8 419.2,444.8 398.5,408.8 419.2,372.9 460.8,372.9" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="440.0" y="406.8" text-anchor="middle" font-size="16" fill="#8fe0a8" opacity="0.9">ⳡ</text>
+    <text x="440.0" y="421.8" text-anchor="middle" font-size="8" fill="#cfe0da">回遊宙域</text>
+    <rect x="329.2" y="411.3" width="89.5" height="17" rx="2" fill="rgba(5,9,12,0.85)" stroke="#8fe0a8" stroke-width="0.8" stroke-opacity="0.6"/>
+    <text x="374.0" y="423.8" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#8fe0a8" class="fac-name">サウリアン同盟</text>
+  </g>
+  </a>
+  <a href="#garou-federation" class="fac-link" aria-label="ガロウ連邦">
+  <g class="fac-group">
+    <polygon points="1009.5,485.1 988.8,521.0 947.2,521.0 926.5,485.1 947.2,449.1 988.8,449.1" fill="#8f7716" stroke="#f0d878" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϾ-1 — セティボスⅢ（ガロウ連邦）</title></polygon>
+    <polygon points="1009.5,485.1 988.8,521.0 947.2,521.0 926.5,485.1 947.2,449.1 988.8,449.1" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <circle cx="968.0" cy="481.1" r="27" fill="rgba(5,9,12,0.82)" stroke="#f0d878" stroke-width="1.2" stroke-opacity="0.6"/>
+    <image class="fac-emblem" href="../resource/emblem/Garou_emblem.png" x="946.0" y="459.1" width="44" height="44"/>
+    <text x="968.0" y="453.1" text-anchor="middle" font-size="10" fill="#f0d878" opacity="0.9">Ͼ-1</text>
+    <text x="968.0" y="516.1" text-anchor="middle" font-size="8" fill="#e8f2ee">セティボスⅢ</text>
+    <polygon points="943.5,523.2 922.8,559.1 881.2,559.1 860.5,523.2 881.2,487.2 922.8,487.2" fill="#8f7716" stroke="#f0d878" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϾ-2 — セティボスⅣ（ガロウ連邦）</title></polygon>
+    <polygon points="943.5,523.2 922.8,559.1 881.2,559.1 860.5,523.2 881.2,487.2 922.8,487.2" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="902.0" y="521.2" text-anchor="middle" font-size="13" fill="#f0d878" opacity="0.9">Ͼ-2</text>
+    <text x="902.0" y="536.2" text-anchor="middle" font-size="8" fill="#cfe0da">セティボスⅣ</text>
+    <polygon points="877.5,485.1 856.8,521.0 815.2,521.0 794.5,485.1 815.2,449.1 856.8,449.1" fill="#8f7716" stroke="#f0d878" stroke-width="1.4" stroke-opacity="0.55"><title>セクターϾ-3 — セティボスⅥ（ガロウ連邦）</title></polygon>
+    <polygon points="877.5,485.1 856.8,521.0 815.2,521.0 794.5,485.1 815.2,449.1 856.8,449.1" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <text x="836.0" y="483.1" text-anchor="middle" font-size="13" fill="#f0d878" opacity="0.9">Ͼ-3</text>
+    <text x="836.0" y="498.1" text-anchor="middle" font-size="8" fill="#cfe0da">セティボスⅥ</text>
+    <rect x="999.8" y="457.0" width="68.5" height="17" rx="2" fill="rgba(5,9,12,0.85)" stroke="#f0d878" stroke-width="0.8" stroke-opacity="0.6"/>
+    <text x="1034.0" y="469.5" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#f0d878" class="fac-name">ガロウ連邦</text>
+  </g>
+  </a>
+  <a href="#iga" class="fac-link" aria-label="独立星系連合（残党）">
+  <g class="fac-group">
+    <polygon points="943.5,218.3 922.8,254.3 881.2,254.3 860.5,218.3 881.2,182.4 922.8,182.4" fill="#8f4716" stroke="#f0a060" stroke-width="1.4" stroke-opacity="0.55"><title>セクターⳟ — 北凪（独立星系連合（残党））</title></polygon>
+    <polygon points="943.5,218.3 922.8,254.3 881.2,254.3 860.5,218.3 881.2,182.4 922.8,182.4" fill="url(#hexScan)" style="pointer-events:none;"/>
+    <circle cx="902.0" cy="214.3" r="27" fill="rgba(5,9,12,0.82)" stroke="#f0a060" stroke-width="1.2" stroke-opacity="0.6"/>
+    <image class="fac-emblem" href="../resource/emblem/IGA_emblem.png" x="880.0" y="192.3" width="44" height="44"/>
+    <text x="902.0" y="186.3" text-anchor="middle" font-size="10" fill="#f0a060" opacity="0.9">ⳟ</text>
+    <text x="902.0" y="249.3" text-anchor="middle" font-size="8" fill="#e8f2ee">北凪</text>
+    <rect x="841.5" y="159.8" width="121.0" height="17" rx="2" fill="rgba(5,9,12,0.85)" stroke="#f0a060" stroke-width="0.8" stroke-opacity="0.6"/>
+    <text x="902.0" y="172.3" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#f0a060" class="fac-name">独立星系連合（残党）</text>
+  </g>
+  </a>
+</svg>
+<!-- FACMAP:END -->
+      <div class="facmap-legend">
+        <span><span class="chip" style="background:#265f8f;"></span>コーネリア連合共和国</span>
+        <span><span class="chip" style="background:#8f2f38;"></span>ベノム帝国</span>
+        <span><span class="chip" style="background:#5d3f8f;"></span>ハクティバ通商連合</span>
+        <span><span class="chip" style="background:#2f6f42;"></span>サウリアン同盟</span>
+        <span><span class="chip" style="background:#8f7716;"></span>ガロウ連邦</span>
+        <span><span class="chip" style="background:#8f4716;"></span>独立星系連合（残党）</span>
+        <span><span class="chip" style="background:#2c3838;"></span>中立・無所属</span>
+        <span><span class="chip" style="background:repeating-linear-gradient(45deg,#265f8f 0 4px,#8f2f38 4px 7px);"></span>係争・前線</span>
+        <span><span class="chip" style="background:repeating-linear-gradient(45deg,#265f8f 0 4px,#7a55c0 4px 7px);"></span>共同統治・統治の重複</span>
+      </div>
+      <div class="facmap-note">※ 本図は勢力の分布と規模を示す模式図であり、セクター間の実際の接続・距離を正確には示さない。各領域を選択すると該当勢力の記録へ移動する。</div>
+    </section>
+
+    <article class="codex-entry loc" id="cornerian-republic">
+      <div class="loc-body">
+        <h2 class="codex-h">コーネリア連合共和国 <span class="en">CORNERIAN UNITED REPUBLIC</span></h2>
+        <div class="codex-sub">首都: <a href="locations.html#corneria">コーネリア</a>「<a href="glossary.html#city-corneria">コーネリア・ギャラクティック・シティ</a>」 / 政体: <a href="glossary.html#republic-council">全州代表評議会</a>による合議制</div>
+        <p class="codex-p">およそ230年前に成立した星系最大の国家。<a href="locations.html#corneria">コーネリア</a>に拠点を構えた「旧・コーディリア王国」を中心に、コーネリア内の軍事国家「旧・大グランベル国」と技術国家「旧・ローザリンド公国」、<a href="locations.html#aquas">アクアス</a>・<a href="locations.html#zoness">ゾネス</a>の「旧・タッドー共和国」、<a href="locations.html#fichina">フィチナ</a>の「旧・サルジーナヤ連邦」の5大国家を骨格とする。実際の併合には240年の戦乱を生き延びた小国家・自治領・部族・企業連合など百十余りの勢力が合流しており、州の数は全121を数える。国章に刻まれた5つの星は<a href="glossary.html#star-dream">星系統合艦隊</a>の結成に協力した5つの国を示す意匠である。</p>
+        <p class="codex-p">元は<a href="glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>で互いに勢力圏を奪い合う関係だった。転機は惑星ステファノーを消滅させた<a href="glossary.html#stephano">ステファノーの戦い</a>であり、超兵器の照準が次にアリエル（現・アクアス）へ向けられたことで各国は一斉に停戦へ動いた。タッドー共和国最高議長トーマスが全交戦国へ発した<a href="glossary.html#concord-declaration">「協和宣言」</a>がその引き金であり、このとき旧5国の艦隊を統合した星系統合艦隊は後の宇宙艦隊<a href="locations.html#starblade">スターブレード</a>の起源となった。</p>
+        <p class="codex-p">連合共和国となった後も各国の政治基盤は州として保持され、各地域の自治が認められている。国の起源となった主要5州は「5大州」と呼ばれる。併合に際して惑星名も一部変更されており、「アリエル」は「アクアス」に、「ウンブリエル」は「ゾネス」に改名された。これはタッドー語の発音が<a href="races.html#anubisoid">アヌビソイド</a>人種には難しかったという経緯による（<a href="glossary.html#basic-language">ベーシック語</a>の項に詳しい）。</p>
+        <p class="codex-p">政治は各州から1名ずつ選出される代議員で構成される最高議決機関<a href="glossary.html#republic-council">「全州代表評議会」</a>の合議で決定され、評議会の上位には建国以来の最高諮問機関として<a href="characters.html#five-elders">五大元老院</a>が置かれている。一つの法案可決に10年近くかかることも多々ある。軍事面は<a href="military.html#cdf">コーネリア防衛軍（CDF）</a>が担い、現在は戦時特例として軍事権限の一部を総司令部へ委任する特別措置が敷かれている。共和国憲章第1条には<a href="glossary.html#stephano">質量破壊兵器</a>の研究・保有を永久に禁じる条項が明記されており、根幹条項の改正に全会一致を要する憲章は建国以来ただの一度も改正されていない。</p>
+      </div>
+      <div class="loc-thumb"><img src="../resource/emblem/Corneria_emblem.png" alt="コーネリア連合共和国 国章"></div>
+    </article>
+
+    <article class="codex-entry loc" id="venom-empire">
+      <div class="loc-body">
+        <h2 class="codex-h">ベノム帝国 <span class="en">VENOM EMPIRE</span></h2>
+        <div class="codex-sub">首都: <a href="locations.html#venom">ベノム</a>第1衛星ゴモラ「ベノム・インペリアル・シティ」 / 政体: 独裁制</div>
+        <p class="codex-p">ライラット宇宙歴3987年、コーネリア科学技術省の主任研究者兼科学省長官だった<a href="glossary.html#andorf">アンドルフ・ボウマン</a>博士は、法令禁止兵器の開発と爆発事故の首謀者として死刑を言い渡された。しかし当時コーネリア軍事防衛長官に就任したばかりの<a href="characters.html#pepper">Z・Z・ペパー</a>の助命により死刑は回避される。だが下された判決は強化手術と<a href="../weapons/coffin-suit.html">コフィンスーツ</a>装着の上での惑星<a href="locations.html#venom">ベノム</a>への追放という、死刑をはるかに超えたとも評される量刑であった。その事件からちょうど10年の後、ベノムの異変とともに瞬く間に結成・勃興した侵略軍の掲げる自称「帝国」がこの勢力である。もっとも共和国情報部の分析は、この「瞬く間」が見かけに過ぎなかったことを示している。帝国の中核は追放後の10年をかけてベノムの地下で秘密裏に編成されており、宇宙歴3997年の建国宣言はその存在を公表したものに過ぎない──開戦以前の一部の交戦記録に既に「帝国」の名が現れるのはこのためである。</p>
+        <p class="codex-p">「帝国」は彼らの自称に始まる名だが、コーネリア連合共和国はこれを正式呼称「ベノム帝国」として定めている。<a href="military.html#cdf">共和国軍</a>内には今も「アンドルフ軍」と呼ぶ者が少なくないものの、これはCDF内に残る呼称の揺れである。建国宣言は産業惑星<a href="locations.html#macbeth">マクベス</a>への急襲と同時に行われ、宣戦布告文には「帝国が憲章に従う義理はない」の一節が刻まれていた。開戦劈頭からの電撃侵攻でマクベスと<a href="locations.html#zoness">ゾネス</a>を占領したほか、<a href="locations.html#prospero">プロスペロー</a>では星系間協定を一方的に破棄して無防備な市街地へ部隊を進駐させ、膨大な民間人口そのものを盾とする占領政策を敷いている。共和国の反攻により<a href="locations.html#fichina">フィチナ</a>は奪還されたものの、主要占領地を巡る戦線は今も膠着が続く。</p>
+        <p class="codex-p">帝国軍および人口の構成は、コーネリア併合に抵抗した旧・サルジーナヤ連邦の融和反対派の末裔、各地で差別されてきた<a href="races.html#paranodian">パラノディアン</a>をはじめとする爬虫類系人種、現体制への分離主義勢力、犯罪カルテルなどが合流した混沌としたものとなっている。すべての帝国民には管理タグの着用が義務付けられ、軍部直下の「一等帝国民」から最も監視の強い「三等帝国民」までの等級で管理される。首都はベノムの第1衛星ゴモラにある「ベノム・インペリアル・シティ」で、首都そのものがミズガルド級の軍事要塞<a href="military.html#atropolis">アトロポリス</a>としての機能も持つ。政治は<a href="glossary.html#andorf">アンドルフ</a>による完全な独裁で行われ、軍権は最高司令官<a href="characters.html#kellone">ケローン大提督</a>の下に一元化されている。命令系統が直列であることは弱点であると同時に、作戦を察知されても即座に対応と応酬が可能な身軽さでもある。唯一の例外が、皇帝に心酔した志願者が勝手に作り上げた<a href="../other/imperial-guard.html">帝国軍親衛隊</a>である。皇帝はこの部隊を麾下へ組み込むことも解散させることもせず、放置したまま自由に活動させている。</p>
+      </div>
+      <div class="loc-thumb"><img src="../resource/emblem/Venom_emblem.png" alt="ベノム帝国 国章"></div>
+    </article>
+
+    <article class="codex-entry loc" id="hactiva-union">
+      <div class="loc-body">
+        <h2 class="codex-h">ハクティバ通商連合 <span class="en">HACTIVA TRADE UNION</span></h2>
+        <div class="codex-sub">本拠地: <a href="locations.html#eladard">エラダード</a> / 首都: <a href="glossary.html#city-alpinia">アルピニア</a>（<a href="locations.html#kew">キュー</a>全域） / 政体: 理事会制の企業連合</div>
+        <p class="codex-p">ライラット星系の外縁で双子星<a href="locations.html#hactiva">ハクティバ・パラニド</a>圏に勢力圏を築く企業連合。星系最大の武器工場である<a href="locations.html#eladard">エラダード</a>に本拠を置き、政治の実権は通商連合の理事会が握る。エラダードが「工場」でありキューが「店先」と評される役割分担のもと、<a href="glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>の裏で莫大な武器供与とそれによる利益を得ており、共和国・帝国の双方がこの通商連合からの武器供与に依存している。</p>
+        <p class="codex-p">双方に協力すると見せかけて互いの戦意を煽り競わせることで利益を生み続ける構造を作り上げており、両軍から嫌悪と不快感を示されることも多い。それでも両軍にとってハクティバ圏は「手を出せない後背地」であり続けている。共和国情報部がキューを評した「この星は戦争を売っているのではない。戦争が終わらないという見通しを売っている」の一句は、通商連合そのものの肖像として広く引かれている。</p>
+        <p class="codex-p">首都<a href="glossary.html#city-alpinia">アルピニア</a>の名は惑星<a href="locations.html#kew">キュー</a>の地表全体を指す言葉であり、その実体は惑星が丸ごと一つの巨大都市に包まれたエキュメノポリスである（「首都」の呼び名は慣用にすぎない）。そしてこの商業網の裏側を握るのが、キューを再開発したマフィア<a href="../characters/arpeggio.html">「アルペジオ」</a>である。表の顔が通商連合ならば裏の顔はアルペジオの帝国と評され、首都の治安維持すら連合の警備部門とアルペジオの「自警団」が分担している。</p>
+        <p class="codex-p">中核企業にはエラダードの工廠群を実運営する<a href="glossary.html#fortinbras">フォーティンブラス商工会</a>、連合圏の金融を取り仕切る<a href="../corporations/emeraldas-bank.html">エメラルダス・星系銀行</a>、アルピニアの白亜の摩天楼を手掛ける<a href="corporations.html#diamond-cities">ダイヤモンドシティズ.inc</a>などが名を連ね、固有の大艦隊を持たない代わりに<a href="glossary.html#corporate-fleet">企業警備艦隊</a>が防衛を担う。キューとベノムを結ぶ私設ワープ航路による帝国への<a href="glossary.html#ember-gas">エンバーガス</a>供給は、共和国情報部が最も注視する取引の一つである。</p>
+        <p class="codex-p">勢力圏は双子星圏の3惑星にとどまらない。エンバーガス採掘の要である<a href="locations.html#setebos">セティボス</a>圏では旧<a href="glossary.html#bolz-duchy">ボルツ公国</a>の破綻に伴いメガロドームを含む資産一式を管理下へ収め、共和国の矯正当局から請け負う形で<a href="glossary.html#muinshankle">ムィンシャンクル刑務所</a>の周辺警備も加盟企業の持ち回りで担っている。フロンティア圏でも<a href="locations.html#meteo-base">メテオベース</a>を軸とする物流網と深く結びつき、辺境の秩序を実質的に支える立場にある。商いの作法も内星系とは大きく異なる。連合商法では取引の齟齬は「数え方を確認しなかった側の落ち度」で片付けられ、9進法の<a href="glossary.html#cur-segul">セグル</a>通貨を利用した<a href="glossary.html#currency-exchange">「桁抜き」</a>も詐欺には当たらない。なおアルピニアの一角に<a href="glossary.html#hitmens-alley">殺し屋横丁</a>が存在するとの風説について、連合の公式見解は「当該階層は空調設備の保守区画である」というものである。</p>
+      </div>
+      <div class="loc-thumb"><img src="../resource/emblem/Haktiva_emblem.png" alt="ハクティバ通商連合 紋章"></div>
+    </article>
+
+    <article class="codex-entry loc" id="saurian-alliance">
+      <div class="loc-body">
+        <h2 class="codex-h">サウリアン同盟 <span class="en">SAURIAN ALLIANCE</span></h2>
+        <div class="codex-sub">本拠地: <a href="locations.html#fortuna">フォルトナ</a>「クラウドシティ」 / 政体: 部族同盟 — 暫定代表勢力（時限）</div>
+        <p class="codex-p">惑星<a href="locations.html#fortuna">フォルトナ</a>（現地名: サウリア）の歴史上初となる、部族の枠を超えた同盟である。サウリアに暮らす民はこれまで部族ごとに言語も文化も異なる小規模な社会を営むのみだった。転機は<a href="characters.html#fox">フォックス・マクラウド</a>の単独調査に続く<a href="glossary.html#fortuna-campaign">フォルトナ戦役</a>である。諸部族が肩を並べて<a href="#venom-empire">ベノム帝国</a>の侵攻を退けたことを契機に、現在のサウリアで最大勢力となる2大部族<a href="../planets/fortuna.html#tribe-asoka">アソーカ族</a>・<a href="../planets/fortuna.html#tribe-cloud">クラウド族</a>に<a href="../planets/fortuna.html#tribe-snowhorn">スノーホーン族</a>・<a href="../planets/fortuna.html#tribe-sontail">ソンテイル族</a>・<a href="../planets/fortuna.html#tribe-hight">ハイト族</a>を加えた5部族が同盟を結んだ。「一時的」という制約付きながら、フォルトナの暫定代表勢力として成立したものがこのサウリアン同盟である。</p>
+        <p class="codex-p">あくまで最大勢力の二つを軸とする同盟であり、<a href="../planets/fortuna.html#tribe-lightfoot">ライトフット族</a>・<a href="../planets/fortuna.html#tribe-sharpclaw">シャープクロウ族</a>・<a href="../planets/fortuna.html#tribe-redeye">レッドアイ族</a>といった排他的または敵性の部族は依然として存在する。この同盟がどこまで盤石であるかには不確定な要素が残る。</p>
+        <p class="codex-p">本拠地には建築技術を持つクラウド族の居城とその城下町「クラウドシティ」が選ばれている。当初はアソーカ族の本拠「ウォールドシティ」が選ばれる予定だった。だがこの都市は<a href="../planets/fortuna.html#tribe-redeye">レッドアイ族</a>との抗争により事実上陥落しており、都市を丸ごと用いた封印でアクセスそのものが不可能なためこの措置となった。なお惑星の「代表地」は今も聖地クアン・アタ・ラチュのままである。複数勢力が大地を分割統治するこの星では万人の認める代表地が定まらず、全部族が共通の代表として選べる場所は結局この聖地しかなかったのである。</p>
+        <p class="codex-p">共和国との関係は友好的である。ただし同盟側にも各勢力の覇権拡大・敵性部族からの保護・物資の供与といった思惑がうかがえる節があり、現地文明を保護する観点からも対応は慎重に行うべきという認識は変わっていない。とりわけ<a href="../planets/fortuna.html#tribe-snowhorn">スノーホーン族</a>は共和国ではなく「フォックス・マクラウド個人との同盟」であるという姿勢を崩しておらず、交渉は慎重に行わざるを得ない。</p>
+        <p class="codex-p">この同盟との友好関係により、現在は両陣営の共同で<a href="locations.html#green-bit">グリーン・ビット</a>の規模拡充が進められている。現地の生物に関する彼らの豊富な知識は解析の現場で大いに役立っており、医療や食糧自給の面でもたらす利益は計り知れないと評価されている。</p>
+      </div>
+      <div class="loc-thumb"><img src="../resource/emblem/Saurian_emblem.png" alt="サウリアン同盟 紋章"></div>
+    </article>
+
+    <article class="codex-entry loc" id="garou-federation">
+      <div class="loc-body">
+        <h2 class="codex-h">ガロウ連邦 <span class="en">GAROU FEDERATION</span></h2>
+        <div class="codex-sub">本拠地: <a href="locations.html#setebos">セティボスⅢ</a>「首都シンラ」 / 政体: 自治領連邦 — <span style="color:var(--warn);">鎖国中 — 内情ほぼ不明</span></div>
+        <p class="codex-p">星系唯一の巨大ガス惑星<a href="locations.html#setebos">セティボス</a>の第2衛星セティボスⅢに本拠を置く独立国家。これまで星系のあらゆる戦争に参加も協力もせず沈黙を貫いてきた鎖国国家であり、<a href="glossary.html#bolz-duchy">ボルツ公国</a>がセティボスへ本拠を移す以前はこのガロウ連邦がセティボス圏の実効支配圏を敷いていたことになる。</p>
+        <p class="codex-p">鎖国は約500標準年前から完全な形で続いている。そもそもセティボス圏で<a href="glossary.html#warp-route">ワープ航法</a>が使用できるようになったのはここ50年以内のことである。圏内に勢力を張る<a href="#hactiva-union">ハクティバ通商連合</a>ですら固く閉ざされた国の内情を知ることはできず、この国が今どうなっているのかを知る者はほとんどいない。唯一国交があったのは惑星ステファノーを治めていた「ヤマタケル国」だが、<a href="glossary.html#stephano">惑星とともに消滅</a>した今は外界との接点が完全に途切れた状態といえる。<a href="military.html#cdf">CDF</a>が<a href="locations.html#fichina">フィチナ</a>の古老から集めた証言と残された資料の解析により、その片鱗だけが明らかになっている。</p>
+        <p class="codex-p">連邦の名が示す通り実体はいくつかの自治領の集合体であり、古風な統治形態がそのまま現在まで続いているとみられる。およそ300標準年前のコーネリアの勢力図と同じような状態が維持されていると推定すれば分かりやすい。主な人種はトラ系の<a href="races.html#bastetoid">バステトイド</a>が中心であり、強健な中央政権が実質的に王族と同じ役割を果たすことで、衛星上のドーム都市を一括で統治していると解析されている。</p>
+        <p class="codex-p"><a href="glossary.html#iga-war">IGA戦役</a>の際も連邦は一切の友好も敵対も起こさず、どこにも与しない姿勢を貫いた。<a href="#iga">独立星系連合</a>の本拠セティボスⅣと目と鼻の先の立地でありながら彼らからの侵攻が少なかったのは、偏にこの連邦の恐るべき戦闘力によるものと推察されている。ガロウ連邦は国民のすべてが屈強な兵士と言われるほどの軍事体系を持ち、衛星軌道上に配備された艦隊は小型ながら<a href="#venom-empire">ベノム帝国</a>の主力にも引けを取らないとまで評される。誰もこの眠れる虎を起こさない理由はこの武力に尽きる。</p>
+        <p class="codex-p">シコラクスの基地が消滅して以降のセティボスⅣには統治者が存在しなかった。特殊な環境が通常の艦船の接近を妨げ、宇宙服なしでは呼吸すらできない大気が誰をも寄せ付けなかったのである。白羽の矢が立ったのはIGA戦役の完了から3年後のことである。終始無言と不干渉を貫いてきたガロウ連邦がこの衛星の管理を自ら申し出て、現在も無人のまま封鎖を続けている。この積極的な対応には諸説あるが、爆発したシコラクスの瓦礫の中に<a class="apx-lock" href="../classified/gigarilla.html">超兵器</a>の情報が残されていることを知った連邦の戦略的な狙いがあるとCDFは推測している。独立星系連合は超兵器や核弾頭ミサイルなど既知で最も危険度の高い兵器を扱う準備を進めていた。その情報を欲するということは、ガロウ連邦が帝国に次ぐ星系の脅威となる可能性を引き上げることを意味する。この点は帝国・通商連合・共和国の三大勢力が揃って危惧するところであり、連邦の動向を巡っては奇妙な停戦と情報連携が今も続いている。</p>
+        <p class="codex-p">現在、この連邦を巡り気になる動きが観測されている。<a href="glossary.html#arpeggio">アルペジオ</a>総帥の長男<a href="../characters/arpeggio.html#gerim">ゲリム</a>による取材動画の配信により、一級禁制品<a href="glossary.html#arannara">アランナラ</a>がこの国で栽培されている事実が明るみに出たのである。過去に30を超える国を内側から滅ぼしてきたこの薬物の排除には、星系が勢力の別なく取り組んできた。この事実を末期の独立星系連合を蝕んだ「狂戦士」の量産と結びつける憶測も流れているが、決定打となる確証はいまだ得られていない。</p>
+      </div>
+      <div class="loc-thumb"><img src="../resource/emblem/Garou_emblem.png" alt="ガロウ連邦 紋章"></div>
+    </article>
+
+    <article class="codex-entry loc" id="iga">
+      <div class="loc-body">
+        <h2 class="codex-h">独立星系連合 <span class="en">INDEPENDENT GALACTIC ALLIANCE (IGA) — 解体済み</span></h2>
+        <div class="codex-sub">旧本拠地: <a href="locations.html#setebos">セティボスⅣ</a>「シコラクス」 / 政体: 政治結社→総統独裁（末期） — <span style="color:var(--danger);">解体・残党監視中</span></div>
+        <p class="codex-p">結成は<a href="glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>の終結から二世紀近くを経た宇宙歴3950年代後半に遡る。旧グランベル系の州高官の失言を引き金に、長い平和の下でくすぶり続けていた人種差別への怒りが爆発したことで組織された勢力であり、大戦の記憶が「歴史の一片」となりつつあった<a href="#cornerian-republic">コーネリア連合共和国</a>に再び火種と薪をくべる存在となった。鎮圧までの戦い（宇宙歴3960〜3975）は<a href="glossary.html#iga-war">IGA戦役</a>と総称される。結成当初こそコーネリアの差別意識を非難し自らは同じ轍を踏まぬよう戒められた組織だったが、初代リーダーが不自然な死を遂げて以降は失踪によるリーダー交代が相次ぎ、ほどなくして<a href="races.html#anubisoid">アヌビソイド</a>系人種を迫害する極端な選民思想に染まった危険組織へと変貌していった。</p>
+        <p class="codex-p">本拠地には星系唯一の巨大ガス惑星<a href="locations.html#setebos">セティボス</a>の第3衛星セティボスⅣ（軍事要塞都市「シコラクス」）が選ばれた。惑星との潮汐力で地殻が熱せられ周辺天体より温暖であること、低重力と異常に高い浮力により既存の戦闘機がまともに運用できないこと、そして周回軌道上の岩石環がゲリラ戦に適していたことが決め手とされる。さらに当時のワープドライブはセティボスの重力に航路を捻じ曲げられるため艦隊を直接向かわせることができず、共和国は<a href="locations.html#macbeth">マクベス</a>・<a href="locations.html#eladard">エラダード</a>を経由する中継航路を組まざるを得なかった──この航路の開通と技術者の流入こそが、後の二つの工業惑星の発展の始まりである。惑星軌道上の戦闘はゲリラ戦に持ち込まれ、完全な平定までに十数年を要した。近傍の<a href="locations.html#papetoon">パペトゥーン</a>も勢力圏に呑まれて共和国の統治外に置かれ、<a href="characters.html#james">ジェームズ・マクラウド</a>が幼少期に最も嫌悪した「略奪」と「支配」はこの連合の統治がもたらしたものである。</p>
+        <p class="codex-p">セティボスⅣでの白兵戦となった最終局面では、秘密裏に開発されていた<a class="apx-lock" href="../classified/gigarilla.html">超兵器</a>が起動され連合国側は窮地に立たされたが、新人部隊長（氏名は現在も検閲下にある）の咄嗟の見事な采配によりハッキングに成功、これを無力化した。IGA総統は基地の自爆装置を起動して味方全員を見捨てて逃走。しかし隣のパペトゥーンで商船に擬態して潜伏中、野盗集団に拘束された上で緊急通信を起動させられてしまう。本来ならセティボスⅢおよびⅡの迎撃部隊が救援に駆け付けるはずの信号だったが、基地はすでに自爆しており、信号は追跡中の共和国軍による位置探知に使われる結果となった。なお連合がボルツ公国から武力で奪った環状管制基地に行楽地メテオランドから持ち去った資材を継ぎ足して築いた砲台は、後の<a href="locations.html#bolse">環状防衛衛星ボルス</a>の原型となっている。解体後、残党の一部は各地でならず者と化し、あるいは分離主義勢力として後の<a href="#venom-empire">ベノム帝国</a>に合流したとみられている。</p>
+      </div>
+      <div class="loc-thumb"><img src="../resource/emblem/IGA_emblem.png" alt="独立星系連合 紋章"></div>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../apx-lock.js"></script>
+</body></html>

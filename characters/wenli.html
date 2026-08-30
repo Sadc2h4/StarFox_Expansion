@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COMMODORE NYAN WEN-LI — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ccaa44;--accent:#eedd88;--border:rgba(204,170,68,0.32);--border-hi:rgba(204,170,68,0.7);--dim:#332708;--dim2:#1a1304; }
+    .p-title    { color: #fff8e6; text-shadow: 0 0 50px rgba(204,170,68,0.35); }
+    .p-tagline  { border-color: #ccaa44; color: #ccaa44; }
+    .terminal-hdr { color: #eedd88; }
+    .terminal-hdr::before { background: #eedd88; box-shadow: 0 0 8px #eedd88; }
+    .dk { color: #ccaa44; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-22 / COMMODORE N. WEN-LI — ニャン・ウェンリー准将 ]</div>
+    <div class="header-status">● DECEASED — STATE FUNERAL</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — COMMODORE NYAN WEN-LI — CDF GENERAL STAFF — THE MAGICIAN</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0022 — CLEARANCE: PARTIAL — SEE ALSO FILE BLS-0009</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-22 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ニャン・ウェンリー (COMMODORE NYAN WEN-LI)</div>
+        <h1 class="p-title">NYAN WEN-LI</h1>
+        <div class="p-tagline">THE RELUCTANT MAGICIAN ── コーネリア共和国軍 准将 ─ 故人</div>
+        <p class="p-short-desc">ケローン大提督の唯一の弟子にして、その計画をただ一人読み切った天才軍師。大艦隊も勲章も断り続けた「魔術師」の死は、敵味方を問わず星系全体を喪に服させた。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 22 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">NYAN WEN-LI / ニャン・ウェンリー</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#bastetoid">バステトイド</a>（チーター系）</td></tr><tr><td class="dk">AGE</td><td class="dv">没年44歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../planets/katina.html">カタリナ</a>（ノラ・ラファイ）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#cdf">コーネリア防衛軍</a> 参謀部</td></tr><tr><td class="dk">RANK</td><td class="dv">准将（提督への推挙を辞退）</td></tr><tr><td class="dk">EDUCATION</td><td class="dv"><a href="../database/glossary.html#academy-branches">士官学校 第2分校</a> 首席</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">故人 — 国葬</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">STRATEGY RATING -- 98 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 98%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(204,170,68,0.55);">
+        <img src="" alt="COMMODORE NYAN WEN-LI" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">CDF — THE MAGICIAN OF KATINA</span>
+            <span class="tg-jp">コーネリア共和国軍 准将 ──「魔術師」</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">紅茶を一杯くれないか。作戦は、それから考えるとしよう。<span class="tg-note note">-トリンキュロー回廊奪還戦 旗艦発令記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">戦いは模擬戦ではない。勝った方がルールになる<span class="lore-quote-src">― 第1分校との合同演習後、抗議への回答とされる言葉</span></span></p>
+  <p class="lore-p">ニャン・ウェンリーは<a href="../database/military.html#cdf">コーネリア防衛軍</a>参謀部に籍を置いた軍師であり、敵味方の双方から「魔術師」の異名で呼ばれた戦術の天才である。<a href="../database/races.html#bastetoid">バステトイド</a>のなかでもチーター系の出自で、瞬発的な思考の速さと、それに不釣り合いなほどの物腰の柔らかさで知られた。</p>
+  <p class="lore-p">歴史書を手放さず、出世に興味を示さず、艦橋ではまず紅茶を淹れさせる。チーター系の常で作戦の合間には泥のように眠り、幕僚が起こしに行くと次の指示が枕元に書き置かれていたという逸話は、参謀部で今も語り草になっている。数々の武功にもかかわらず階級は生涯准将のままであり、それは軍が彼を評価しなかったからではない。本人が昇進をことごとく断り続けたためである。</p>
+  <p class="lore-p">その死は戦場ではなく、<a href="../database/glossary.html#wenli-last">街頭の凶刃</a>によってもたらされた。国葬には敵味方を問わず星系中から弔意が寄せられ、彼を失った共和国軍は「頭脳の半分を失った」と評されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p"><a href="../planets/katina.html">カタリナ</a>の入植民の田舎町ノラ・ラファイに生まれる。母は彼が幼い頃、星系を襲った疫病<a href="../database/glossary.html#ngo-fever">ンゴ熱</a>で世を去り、以後は物資配達を営む父の長距離コンテナ船で育った。幼いニャンは地図から最も効率のよい配達ルートを見極め、カタリナの雨季と乾季で変わる地形を諳んじて父を驚かせている。のちに星系最高の軍師となる才能は、爆撃図でも艦隊表でもなく一枚の配達地図の上で目を覚ましたのである。</p>
+  <p class="lore-p">父は息子の才能に気づける人間ではなかった。視野の狭い男で、息子を一人前の配達員にすることだけを考え、運送の知識のイロハを叩き込んだ。それでも仕事を終えるとコンテナの隙間に段ボールの「基地」を組み、幼い息子に物語を読み聞かせるのが常であった。ウェンリーは後年この記憶を、窮屈な人生の象徴であると同時に、数少ない暖かな家族の思い出であったと語っている。</p>
+  <p class="lore-p">16歳になったニャンは不定期な移動を繰り返す暮らしをやめ、カタリナ駐屯基地に置かれた<a href="../database/glossary.html#academy-branches">コーネリア士官学校 第2分校</a>への進学を父に進言する。父は猛反対の末に息子の説得へ折れ、貯金をはたいて彼を送り出した。入学したニャンは戦術課程でカタリナ分校史上最高のスコアを叩き出し、名門<a href="../database/glossary.html#academy-branches">第1分校</a>との合同演習では相手を完膚なきまでに叩きのめしている。グランベル貴族の子息たちが生まれて初めての屈辱を「田舎の新入生」に味わわされた一件であり、当時は親へ訴え出る者もルール違反を言い立てる者も多かった。だが年月が流れ彼らがコーネリア軍の指揮側に立つ頃には、その全員が口を揃えている。「ニャンが甘ちゃんだった俺たちに戦場のルールを教えたのさ。戦いは模擬戦なんかじゃない、勝ったほうがルールになるんだとな」</p>
+  <p class="lore-p">卒業から数年、父が交通事故で世を去る。父が商売の傍ら集めていた美術品を頼ろうとしたが、査定の結果はことごとく贋作であり、若き士官は実質無一文となった。その売り立ての席で、山積みの贋作からただ一枚の「本物」を掘り当てた男が買い取りを申し出る。男は値札の30倍を出すと宣言した。独立星系連合、共和国、帝国と勢力を渡り歩き、後に最強の司令官の称号「大提督」を冠することになる<a href="kellone.html">ミズローヌ・ケローン</a>である。この出会いからウェンリーはケローンの副官として育てられ、一時期は同じ屋根の下に暮らした。二人が「上司と部下を超えた家族」と称される所以である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴 ─ SERVICE</h3>
+  <p class="lore-p"><a href="../database/factions.html#iga">独立星系連合</a>との戦役では、生まれ故郷<a href="../planets/katina.html">カタリナ</a>の基地と街を幾度も守り抜いた。その名が初めて星系へ知られたのは、置き去りにされた住民30万人を救い出した<a href="../database/glossary.html#nora-facil">ノラ・ファシルの戦い</a>である。雨季と乾季で変わる地形を知り尽くした防衛戦は連合軍に「あの星だけは落ちない」と言わしめ、共和国側へ転じた師ケローンと組んでからは数々の窮地を覆している。白眉は<a href="../database/glossary.html#trinculo-recapture">トリンキュロー回廊の奪還戦</a>である。ライラット史上最も困難な奪還作戦と呼ばれたこの戦いは、ウェンリーの奇策、相手の10手先を読むケローンの指揮、そして<a href="../database/characters.html#pepper">ペパー</a>率いる特殊部隊の圧倒的制圧力によって成功に導かれた。</p>
+  <p class="lore-p">戦後は参謀部の中枢で師と机を並べた。ケローンが共和国の体制に多くの疑問を抱いていることを、ウェンリーは誰よりも近くで聞いている。<span class="redacted">同じ屋根の下に暮らしていた時期、ケローンはすでに帝国と内通していたと分析されている。諸説あるが、この頃ケローンは「元老院に直々に呼び出された」とウェンリーに言い残しており、共和国と決別する意思はこのとき固まったと推察される</span>。</p>
+  <p class="lore-p">参謀本部での師との日々が最後の年を迎えた頃、コーネリアシティの鉄道毒ガステロを計画した教団<a href="../database/glossary.html#mu-cult">宇宙統一平和協会「ムー」</a>の本拠、巨大移動要塞ムーラシアの征討作戦を立案する。白兵戦に参加した遊撃部隊の<a href="../database/characters.html#peppy">ペッピー・ヘア</a>と<a href="../database/characters.html#pigma">ピグマ・デンガー</a>が壊滅の決定打への貢献で表彰されたのもこの作戦である。<span class="redacted">その数か月後、廃棄されたムーラシアを母体として<a href="../database/sectors.html#rho">セクターρ</a>に発生した<a href="../database/glossary.html#demonseed-crisis">デモンシード・クライシス事件</a>では、対処作戦に加わった師の動きに不可解な点が残った。この頃からウェンリーの胸中に拭えない疑念が育っていたと分析されている</span>。</p>
+  <p class="lore-p"><span class="redacted">別れの日、ケローンは「セクターτで味方艦隊が行方不明になったらしい。救助作戦に行く」と告げた。ウェンリーはすぐにその嘘に気づいたという。去り際に師が残したのは、いつもの口癖であった。「力なき正義が無力であるのと同じく、正義なき力もまた無力なのだよ」</span></p>
+  <p class="lore-p"><span class="redacted"><a href="../database/sectors.html#tau">sectorτ</a>のプロトボルス攻防戦（<a href="../database/glossary.html#silent-nightmare">サイレント・ナイトメア事件</a>）でウェンリーが勝てたのは、正規軍ではなく遊撃隊との連携に重点を置いた強襲作戦を選んだためである。共和国を去ったケローンは兵器・武装・部隊編成の詳細情報を大量に持ち出しており、友軍の動きは筒抜けに近かった。師の教えのとおり力に力で応じず、師の知らない駒を盤の外から呼んだこの一手は、教えた本人への最も忠実な回答であった</span>。作戦の成功によりウェンリーは一躍英雄となり、大艦隊の提督にまで推挙されたが、これを断っている。</p>
+  <p class="lore-p">以後、帝国の建国宣言までの数年間、水面下では帝国軍・共和国軍・連合残党の三つどもえの戦いが続いたが、ウェンリーは遊撃隊と共にそのすべてで成果を上げ続けた。その白眉が、プロスペローの空を守り抜いた<a href="../database/glossary.html#dark-goddess">闇の女神事件</a>である。</p>
+  <p class="lore-p">開戦後は師弟の対決が現実の戦場へ持ち込まれた。艦隊戦で、降下作戦で、二人は幾度も相まみえ、互いに決定打を許していない。その掉尾を飾る正面対決が、「最後の授業」と呼ばれる<a href="../database/glossary.html#chrono-ares">刻の軍神作戦</a>である。共和国軍にとってウェンリーは、帝国最強の頭脳を読める唯一の男であった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">最期 ─ THE LAST DAY</h3>
+  <p class="lore-p">快進撃がいつまでも続くと、誰もが疑わなかった。だがウェンリーは戦場ではなく街頭で、解体された教団<a href="../database/glossary.html#mu-cult">「ムー」</a>の信徒二世の凶刃に倒れた。星系最高の頭脳の一つは、艦隊でも要塞でもなく、一本の刃に沈んだのである。</p>
+  <p class="lore-p">葬儀は国葬として営まれ、コーネリアの枠を超えて<a href="../planets/katina.html">カタリナ</a>、<a href="../database/locations.html#fichina">フィチナ</a>、<a href="../database/locations.html#aquas">アクアス</a>から、さらには<a href="../database/locations.html#eladard">エラダード</a>や<a href="../database/locations.html#kew">キュー</a>の<a href="../database/factions.html#hactiva-union">通商連合</a>の重鎮までが参列した。元首でも王族でもない一個人の葬儀としては、ライラット星系史上例のない規模であったという。</p>
+  <p class="lore-p">訃報を聞いたケローン大提督の様子を伝える記録は存在しない。ただ、この葬儀の後、大提督は数か月以上にわたり帝都からも<a href="../database/locations.html#area6">AREA6</a>からも姿を消した。行き先を知る者はなく、彼の来歴を知る帝国軍部はあえて追及せず、好機とされた侵攻作戦は大提督が戻るまで現状維持のまま保留された。共和国が息を吹き返す時間は、こうして敵将の沈黙によって贖われたと分析する戦史家もいる。</p>
+  <p class="lore-p">凶刃の背景となった教団を生んだ土壌、すなわち不安と差別と救いの不在は、いまも解決されていない。ニャン・ウェンリーの死は、ライラットに根深く残る問題の影を改めて克明に映し出したのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">紅茶の習慣は師の影響である。ケローンの画廊で振る舞われた一杯を「人生で一番落ち着かない味だった」と評しながら、生涯同じ銘柄を飲み続けた。落ち着かない理由は味ではない。師は皮膚から星系屈指の猛毒を作り出すコバルト・ヤドクガエル系のヘケトイドであり、白い手袋越しに差し出されるカップを前に、弟子は毎回わずかに逡巡したのだという（<a href="../database/glossary.html#venom-etiquette">毒のエチケット</a>参照）。</p>
+  <p class="lore-p">遺品はごくわずかで、階級章より大切に保管されていたのは古びた物語の本が数冊である。表紙の裏には配達伝票の裏紙に描かれた幼い字の「基地の見取り図」が挟まれていた。参謀部の後輩たちは今も込み入った作戦室のことを、敬意を込めて「段ボールの基地」と呼ぶ。</p>
+  <p class="lore-p">彼の戦術記録は全分校の教材に採用され、「勝った方がルールになる」の一節は戦術課程の最初の講義で必ず引かれる。そして現在、5日後の<a href="../weapons/great-dish.html">グレートディッシュ</a>来襲予測に揺れるカタリナの司令部では、誰もが同じことを考えていると言われる。あの魔術師が生きていたなら、と。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

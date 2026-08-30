@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAY SPANIEL — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#f07a8a;--accent:#ffc2cc;--border:rgba(240,122,138,0.32);--border-hi:rgba(255,194,204,0.7);--dim:#2c1218;--dim2:#160809; }
+    .p-title    { color: #fff0f2; text-shadow: 0 0 50px rgba(240,122,138,0.35); }
+    .p-tagline  { border-color: #f07a8a; color: #f07a8a; }
+    .terminal-hdr { color: #ffc2cc; }
+    .terminal-hdr::before { background: #ffc2cc; box-shadow: 0 0 8px #ffc2cc; }
+    .dk { color: #f07a8a; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-41 / FAY SPANIEL — フェイ・スパニエル ]</div>
+    <div class="header-status">● ACTIVE — CIVILIAN ATTACHED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — FAY SPANIEL — CIVILIAN MECHANIC — ATTACHED TO STAR FOX (UNREGISTERED)</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0041 — CLEARANCE: OPEN — BACKGROUND CHECK: PENDING</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-41 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">フェイ・スパニエル (FAY SPANIEL)</div>
+        <h1 class="p-title">FAY SPANIEL</h1>
+        <div class="p-tagline">THE RED RIBBON ── 押しかけ整備士 / 改造機「ゼラニューム」</div>
+        <p class="p-short-desc">民間の航空自警団に所属する整備士にしてパイロット。量産型アーウィンを極限まで速くした改造機「ゼラニューム」を駆り、スターフォックスに半ば押し入る形で合流した。頭の大きな赤いリボンが目印で、身元照会は今も「保留」のままである。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 41 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">FAY SPANIEL / フェイ・スパニエル（自称）</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#anubisoid">アヌビソイド</a>（スパニエル系 — 本人申告）</td></tr><tr><td class="dk">AGE</td><td class="dv">20代前半（推定）</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#corneria">コーネリア</a>（申告・未確認）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#starfox">スターフォックス</a> 第2隊（名簿外）/ 前職: <a href="../database/locations.html#prospero">プロスペロー</a>航空自警団 整備士</td></tr><tr><td class="dk">CRAFT</td><td class="dv">改造アーウィン「ゼラニューム」（<a href="../weapons/arwing.html">量産型アーウィン</a>の高速化改修機）</td></tr><tr><td class="dk">SKILL</td><td class="dv">機体整備・高速機動戦・記録上の戦績なし</td></tr><tr><td class="dk">IDENTITY</td><td class="dv warn">⚠ 身元照会 保留 — 申告内容の裏付け取れず</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">同行中 — グレートフォックス艦内</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 88 / 100（暫定）</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 88%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(240,122,138,0.55);">
+        <img src="" alt="FAY SPANIEL" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">CIVILIAN MECHANIC — ATTACHED TO STAR FOX</span>
+            <span class="tg-jp">押しかけ整備士 ── 赤いリボンのパイロット</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">母なる星を守るために来ました。整備は無償、出撃は有償で結構です。<br>…あら、ローンのお話は結構ですわ。<span class="tg-note note">-グレートフォックス 初回接触時の艦内記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">う～む…整備の腕は本物、操縦の腕も本物。ただ…なんだろうな、あまりに都合がよすぎるような…<span class="lore-quote-src">― ペッピー・ヘアの所見（艦内記録より）</span></span></p>
+  <p class="lore-p">フェイ・スパニエルは<a href="../database/locations.html#prospero">プロスペロー</a>の民間航空自警団に籍を置く整備士にしてパイロットである。頭に結んだ大きな赤いリボンが目印で、<a href="../database/military.html#starfox">スターフォックス</a>の隊員としては<a href="falco.html">ファルコ・ランバルディ</a>に次いで背が高い。<a href="../database/races.html#anubisoid">アヌビソイド</a>のスパニエル系と自称しているが、種族の細目は本人の申告以外に裏付けがない。年齢も出身も同様である。</p>
+  <p class="lore-p">立ち居振る舞いはどこか育ちの良さを感じさせる。食事の作法は正確で言葉遣いは丁寧を通り越して古風であり、艦内では「元お嬢様」の渾名で呼ばれている。本人は「自警団の先輩が厳しかっただけです」と笑って否定するが、工具を持つ手つきと紅茶を淹れる手つきが同じ精度であることを整備班のスリッピーは見逃していない。</p>
+  <p class="lore-p">性格は明るく行動的で思い立ったらまず動く。慎重派のペッピーとは対照的であり、二人が同じ整備台で作業をしている光景は艦内で最も口数の多い時間帯になっている。ただし自身の過去に話が及ぶと決まって話題を変える癖がありこれは艦の全員が知っている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">申告によればコーネリア生まれで、開戦後にプロスペローの航空自警団へ整備士として加わったとされる。環状コロニーの農場地帯を守る自警団は正規軍の手が回らない低軌道の哨戒を民間の志願者で担う組織であり、フェイはそこで機体整備の腕を買われて瞬く間に信頼される立場になった。ロックオン機構を持たない量産機の癖を知り尽くし、老朽機の再生では正規の整備班から相談が来るほどだったという。</p>
+  <p class="lore-p">スターフォックスとの接触は<a href="../database/glossary.html#corneria-defense">コーネリア防衛戦</a>の後である。プロスペローへ補給に降りた<a href="../weapons/greatfox.html">グレートフォックス</a>の整備を自警団が手伝った際、彼女は誰に頼まれるでもなく<a href="../weapons/arwing.html">アーウィン</a>4機の整備記録を一晩で洗い直し、翌朝には整備班のスリッピーが三日悩んでいた出力の不安定の原因を突き止めていた。そして艦が離陸する前に自機を格納庫へ滑り込ませ、「母なる星を守るために来ました」の一言で艦内に居座ったのである。これが「押し入り」と呼ばれる合流の経緯であり、追い出す理由を誰も思いつけなかったというのが艦内の公式見解である。</p>
+  <p class="lore-p">隊の正式な名簿には載っていない。<a href="fox.html">フォックス・マクラウド</a>は雇用契約を結んでおらず彼女もまた報酬を求めていない。整備は無償で引き受け出撃だけは「成功報酬で」と申し出ており、この奇妙な取り決めは隊の会計を預かるペッピーの手帳に「未定」の欄として残されている。<a href="../database/military.html#cdf">CDF</a>の傭兵管理課は彼女を同行者として扱い、身元照会は申告内容の裏付けが取れないまま「保留」に置かれ続けている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">乗機 ─ GERANIUM</h3>
+  <p class="lore-p">愛機は改造アーウィン「ゼラニューム」である。<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>の量産型アーウィンを素体に、装甲と火器を極限まで削って速度だけを追い求めた軽装機であり、赤一色の機体色と相まって編隊の中でひときわ目立つ。「花の名前を付けたのは可愛いからで、赤いのは目立つからです」と本人は説明するが、目立つ機体で隠密任務ができるはずもなく、この機体が誰かの目を引くために飛んでいるのではないかと勘繰る者もいる。</p>
+  <p class="lore-p">性能はワンオフ機であるスターフォックスのアーウィンに迫る。加速と旋回はむしろ上回り、その代償として被弾一発で致命傷になり得る装甲の薄さを抱えている。フォックスは「当たらなければいい機体」と評し、ファルコは「俺の6号機の次に速い」と認めた上で「次に」を三度繰り返した。整備は全て自身の手で行い他人に触らせないことでも知られる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p">公式の戦績は存在しない。名簿外の同行者である以上CDFの記録に彼女の撃墜数は載らず、スターフォックスの戦闘記録でも彼女の機影は「随伴機」として処理されている。ただし艦内記録には幾つかの戦闘でゼラニュームが編隊の前へ出て敵の注意を引き、その隙にアーウィンが本命を叩いた場面が残されている。囮の役を自ら買って出る飛び方は速さに絶対の自信がなければできないものであり、ペッピーは「あれは訓練された飛び方だ」と評している。</p>
+  <p class="lore-p">整備士としての貢献は戦績よりも明確である。彼女の合流以降アーウィン4機の稼働率は目に見えて上がり、スリッピーは設計と兵器解析に専念できる時間を得た。<a href="naus.html">ナウス</a>との相性も良く、艦の整備記録に二人の共同作業の項目が増え続けている。ナウスは彼女を「テイビシ サン」と呼び、それ以上の分類を保留している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">大掃除 ─ THE GREAT CLEANUP</h3>
+  <p class="lore-p"><span class="lore-quote">結成以来の大仕事だった。敵はアンドルフではなく、うちの床だがな。<span class="lore-quote-src">― ペッピー・ヘアの談（艦内記録より）</span></span></p>
+  <p class="lore-p">フェイの合流は<a href="../weapons/greatfox.html">グレートフォックス</a>に一つの問題を持ち込んだ。男所帯であった艦に突如女性が加わったことで、隊員たちは色々と悩むことになったのである。<a href="peppy.html">ペッピー・ヘア</a>が口煩く指摘していたため最低限の掃除はされていたものの、ペッピー以外は皆基本的にだらしがなく、食べた食器は机に置いたまま、食器洗いはもちろんごみ捨てすら数か月に一度ステーションでまとめて行う始末であった。明らかに「お嬢様の女性」が入ってこられる環境ではなかった。</p>
+  <p class="lore-p">慌てて片付けようとしても事態は進まなかった。<a href="slippy.html">スリッピー・トード</a>は物を手に取るたびに思い出話に花を咲かせ、<a href="falco.html">ファルコ・ランバルディ</a>は5分に一度さぼり、<a href="fox.html">フォックス・マクラウド</a>はネットニュースに目が泳ぐ。掃除はどのミッションよりも難航を重ね、スターフォックス結成以来の大仕事になったとペッピーは皮肉交じりに語っている。</p>
+  <p class="lore-p">ところがフェイの反応は予想外であった。汚い船内の掃除をてきぱきと効率よくこなし、全員分のデスクまで綺麗にすることに成功したのである。何より「フォルトナの密林」と形容されるスリッピーの部屋の掃除を成功させたのは彼女の助力なしでは不可能であり、隊のメンバーはこれを機にフェイを認めるようになったという。部屋から発掘された部品の幾つかはスリッピー自身が紛失届を出していたものであり、<a href="naus.html">ナウス</a>は艦の在庫台帳を三年ぶりに更新した。</p>
+  <p class="lore-p">性格は清潔感のある令嬢のようでありつつ、<a href="../database/military.html#retriever">レトリーバー隊</a>の<a href="george.html">ジョージ・バロン</a>や<a href="../database/military.html#starwolf">スターウルフ</a>の<a href="andrew.html">アンドリュー・オイッコニー</a>のような幼稚さや傲慢さを感じさせない気品あるものである。これはスターフォックスのメンバー、とりわけ貴族に偏見のあるファルコの意識に影響を与えたという。「お嬢様ってのは全員ジョージみたいなもんだと思ってた」というファルコの発言が艦内記録に残っており、フェイはこれを最大級の賛辞として受け取っている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">照会 ─ BACKGROUND CHECK</h3>
+  <p class="lore-p">傭兵管理課の照会記録は短い。プロスペロー航空自警団に同名の整備士が在籍した記録はある。コーネリアの出生記録に該当者は複数いるが、いずれも本人と結びつかない。スパニエル姓の名家はコーネリアに存在しない。ゼラニュームの素体となった量産機の出所は民間の中古市場で途切れている。そして士官学校本校の卒業生名簿に、彼女と同じ飛び方をする卒業生の記録がある。照会は保留のまま更新されていない。</p>
+  <p class="lore-p"><span class="redacted">本項の照▯は共▯▯▯▯▯▯▯に▯り意▯▯に凍▯▯▯▯いる。彼女の本名は▯▯▯・▯▯▯▯▯。▯▯▯▯▯▯系アヌビソイドの貴族の出で、士▯学校▯▯を首席で卒業した特殊戦闘部隊▯▯▯▯▯隊の▯の▯、▯▯・▯▯担当で▯る。▯▯による▯▯▯▯への潜伏とスターフォックスへの接触は▯▯▯▯▯の下▯備であり、その真意は▯の管▯官▯▯▯告さ▯▯▯ない。ゼラニュームは彼女が隊で愛用する改造機そのものである。詳▯は▯▯▯▯▯▯▯▯▯の全▯成▯▯録を参▯▯▯▯。</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">赤いリボンは複数本を持っており、日によって結び方が違う。スリッピーがこれを日記代わりに記録し始めたところ、三週間で結び方が一度も重ならなかったという。本人は「気分です」としか答えていない。</p>
+  <p class="lore-p">ファルコの迷言集に新しい項目を加えた人物でもある。ゼラニュームの初飛行を見たファルコが「あれは花じゃねぇ、唐辛子だ」と評し、以来艦内では赤い機体を「唐辛子」と呼ぶ者が増えた。本人はこの渾名を気に入っていないが、ファルコの命名に抗議した者が過去に一人もいないことを知って諦めたらしい。</p>
+  <p class="lore-p">プロスペローの自警団で同じ格納庫を使っていた<a href="miyu.html">ミュウ・リンクス</a>とは、彼女が後を追うように押しかけて第2隊に加わった今も同じ格納庫で過ごしている。「防衛より攻撃」を公言するミュウと囮役を好むフェイは飛び方が正反対であり、自警団時代の模擬戦は二人が交互に勝ち星を取り合う名物だったという。ミュウは彼女を今でも「リボン」と呼び、フェイはその呼び方に一度も文句を言ったことがない。押しかけ以前に艦へ届いていた私信の中で差出人が判明している唯一の相手がミュウであったことは、傭兵管理課の照会記録にも「友人関係あり」の一行として残されている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

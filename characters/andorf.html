@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DR. ANDORF BOWMAN — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#dd4455;--accent:#ff8899;--border:rgba(221,68,85,0.32);--border-hi:rgba(221,68,85,0.7);--dim:#3a0c14;--dim2:#1d060a; }
+    .p-title    { color: #ffe8ec; text-shadow: 0 0 50px rgba(221,68,85,0.35); }
+    .p-tagline  { border-color: #dd4455; color: #dd4455; }
+    .terminal-hdr { color: #ff8899; }
+    .terminal-hdr::before { background: #ff8899; box-shadow: 0 0 8px #ff8899; }
+    .dk { color: #dd4455; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-09 / DR. ANDORF BOWMAN — アンドルフ・ボウマン ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff8899;">●</span> HOSTILE — EMPEROR</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — ANDORF BOWMAN — VENOM EMPIRE EMPEROR — PRIMARY TARGET</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0009 — CLEARANCE: PARTIAL — SEE ALSO FILE FCH-119</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-09 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">アンドルフ・ボウマン (DR. ANDORF BOWMAN)</div>
+        <h1 class="p-title">DR. ANDORF BOWMAN</h1>
+        <div class="p-tagline">THE GENIUS WE EXILED ── ベノム帝国 皇帝 ─ 最重要敵性人物</div>
+        <p class="p-short-desc">星系随一の天才科学者にして、科学省長官から流刑囚へ、そして帝国の皇帝へ。この戦争の全ては、一件の爆発事故と一つの判決から始まった。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 09 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">ANDORF BOWMAN / アンドルフ・ボウマン</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#alphoid">アルフォイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">67歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#corneria">コーネリア</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/factions.html#venom-empire">ベノム帝国</a>（皇帝）</td></tr><tr><td class="dk">FORMER</td><td class="dv">コーネリア科学省長官 / 主任研究者</td></tr><tr><td class="dk">CONVICTION</td><td class="dv">宇宙歴3987年 禁止兵器研究 — 死刑→追放</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 最重要目標</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING -- 99 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 99%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(221,68,85,0.55);">
+        <img src="" alt="DR. ANDORF BOWMAN" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">VENOM EMPIRE — EMPEROR</span>
+            <span class="tg-jp">帝国皇帝 ── 星系最高の頭脳</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">私を追放したこの星が、いずれ諸君らの墓標となる。<span class="tg-note note">-開戦宣言と目される傍受通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">彼を怪物と呼ぶのは簡単だ。だが我々は、怪物に星系の未来を任せていたのだ。彼が長官だった頃、コーネリアの科学は最も輝いていた<span class="lore-quote-src">― 科学技術省 元次官の回想録より</span></span></p>
+  <p class="lore-p">アンドルフ・ボウマンは、<a href="../database/factions.html#venom-empire">ベノム帝国</a> を率いる独裁者にして、依然として星系最高と評される頭脳の持ち主である。<a href="../database/locations.html#corneria">コーネリア</a> に生まれ、かつてはコーネリア科学技術省の主任研究者兼科学省長官として、医療・環境・航行技術に数々の功績を残した。</p>
+  <p class="lore-p">およそ230年前の<a href="../database/glossary.html#stephano">ステファノーの戦い</a> で母星を失った<a href="../database/races.html#alphoid">アルフォイド</a> 難民の家系に生まれ、幼少期から「失われたものを取り戻す」ことへの執着を見せたという。その執着は科学の推進力であり、やがて破滅の引き金となった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">前半生 ─ EARLY LIFE</h3>
+  <p class="lore-p">コーネリアシティの中心街に生まれた。父ヒットリン・ボウマンは光学技術の権威として政府の工業・兵器開発部門を支えた主任研究員であり、才知に富んだ母、幼い弟オトットニーとの4人暮らし。日常の不可思議を尋ねれば母が何でも答えてくれた──後年の本人がわずかに語った、数少ない幸福な記憶である。</p>
+  <p class="lore-p">歯車が狂い始めたのは、評議会が教科書から<a href="../database/glossary.html#moskma-three-days">「モスクマの三日間」</a>の記述を抹消し、「<a href="../database/glossary.html#stephano">ステファノーの戦い</a>」の記述を縮小する法案を可決した時である。一族の惨禍を曾祖父の代から語り継いできたボウマン家にとって、それは到底受け入れられるものではなかった。父は抗議活動の末に一家もろとも拘束され、政府の主任研究員の職を追われる。かくして「モスクマの三日間」は「大規模雪害」として書き直され、「ステファノーの戦い」の頁は軍事基地<a href="../database/locations.html#area3">エリア3</a> の建設事業の話に置き換えられ、中心街に居場所を失ったボウマン家は、<a href="../database/races.html#alphoid">アルフォイド</a> 移民の肩を寄せ合う都市外れの街区──通称「ステファノー街」ことニッコータウンへ移り住むほかなかった。なお、この法案が後年、彼の親友となる男の派閥の働きかけによって廃止されることを（<a href="../database/glossary.html#stephano">用語集参照</a>）、この時のボウマン家はまだ知らない。</p>
+  <p class="lore-p">一家は小さな補修工房を営んだが、生活は明日の食べ物にも事欠くほど困窮した。幼いアンドルフはゴミ捨て場のくず鉄と廃棄アンドロイドの部品を拾い集め、工房の機材を独力で組み直している──記録に残る、彼の「最初の発明」である。16歳の誕生日、自己破産した父に代わり、自らの名義で工務店を開いた（コーネリア法で個人事業主の認可が下りる最少年齢である）。仕事は住民が持ち込む「直らないもの」を直すこと。後年の彼を知る者には信じ難いが、街の古老たちは口を揃える──「あの子に直せない機械はなかった。あれは天才だ」。</p>
+  <p class="lore-p">工房の片隅にはこの時代に組み上げられたもう一つの発明が残っている。ゴミ捨て場から拾ってきた廃棄済みのFIL-サーヴァントドロイドを少年が組み直した豚型の<a href="../database/glossary.html#droids">アンドロイド</a>「フィルバート」である。出荷時は第3級の家庭用機であったが高速チップ配列の改造により中身は第1級ドロイドに達していたと伝えられ、店の帳簿付けから修理の下請けまでをこなして一家の稼業を支えた。フィルバートは現在も<a href="../planets/kew.html">キュー</a>へ移り住んだ父ヒットリンと弟オトットニーの一家と共に家族として暮らしており、アンドルフ・ボウマンの少年時代を知る数少ない存在である。<span class="redacted">なおフィルバートは帝国建国後の「皇帝」の挙動が自分の知る主人のものではないことに家族の誰よりも早く気づいていたとされ、キューの一家がそれを口にしないのは老いた機械の思い違いと扱っているためである。真相はFCH-119関連文書を参照。</span></p>
+  <p class="lore-p">工務店の評判はニッコータウンを越えて広まり、やがて身分を隠した一人の客が訪れる。五大<a href="../database/characters.html#five-elders">元老院</a> のシキ老である。老人が持ち込んだのは、およそ180年ものあいだ時を刻むことをやめていた一挺の懐中時計──<span class="redacted"><a href="../database/glossary.html#star-dream">スター・ドリーム作戦</a>の最終局面、超兵器の苦し紛れの反撃を受けたその瞬間に、持ち主の腕の上で止まった時計</span>だった。もはや直せる者など存在しないことを承知の上での、いわば試験である。アンドルフはこれを、3日で完全に修理してみせた。<span class="redacted">この時シキ老が「あの戦争から、ようやく時を進められる者が現れた」と確信したことが、後の全ての始まりだったとFCH-119関連文書は示唆している</span></p>
+  <p class="lore-p">修理から1か月後、店の前に政府職員の一団が現れ、あたりは騒然となった。両親は残された借金の督促と思い込み、必死に帳面を探したという。だが届けられたのは、元老院直々の──星系最大の学府コーネリア中央大学への入学許可状だった。ニッコータウンを離れる16歳の息子に、父ヒットリンが贈った言葉が残っている。「失われたものは必ず取り戻せる。その志に曲がらぬ信念があれば」。この言葉は生涯を通じて彼の指標となり、口癖となった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">学生時代 ─ ACADEMY DAYS</h3>
+  <p class="lore-p">弱冠16歳、しかも当時は少数人種だったアルフォイドの入学に、中央大学は騒然となったと伝えられる。学内には根深い差別意識が残っており、学生生活は苦労の連続だった。その中で彼は、人生を変える一人の少年に出会う。奇しくも同じ年、冷静さを失わない作戦立案能力と規格外の身体能力を見込まれ、飛び級で入学していた<a href="../database/characters.html#pepper">Z・Z・ペパー</a> である。星系に瀰漫する曖昧な差別の空気を心底嫌っていたペパーは、アンドルフを取り囲んだ上級生数人をものの数分で「鎮圧」し、そのまま二人は同じ寮の同室となった。互いを「アンディ」「ジジ」と呼び合ったこの友情は、双方にとって生涯唯一無二のものだったようである。</p>
+  <p class="lore-p">学業の面では19歳で環境浄化触媒『ボウマン触媒』を発明。工業排水に沈んでいたコーネリア南部の河川群を十年で釣りのできる水に戻したこの発明は、現在も星系中の浄水場で稼働している。</p>
+  <p class="lore-p">だが苦難は続いた。大学院への進学を控えたころ、婿養子としてオイッコニー家に入っていた弟オトットニーが、兄を真似て始めた修理業に失敗し、多額の負債を負う。融資元にはマフィア<a href="../database/glossary.html#arpeggio">アルペジオ</a> と繋がる闇金融が含まれており、オイッコニー家に支払い能力なしと見た業者の取り立ては、ボウマン家に及んだ。利子で数億にまで膨れた負債を前に、父ヒットリンは自ら開発した光学兵器『プリズム式ザッパー』『ツインレーザー』をはじめとする特許の一切を売り払い、店の機材まで処分して弟一家を救った。アンドルフ自身も、学生時代に開発したゲームの版権を大手ゲーム会社へ売却して資金の足しにしている。今日、星系のあらゆる戦闘機に「ツインレーザー」の名が残るのは、この時手放された特許が後に標準技術化したためである。どんな苦難が待ち受けようと、父の言葉と親友の支えを胸に、彼は真っ直ぐ進み続けた。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">大学院を修了すると科学技術省の役員に抜擢され、ほどなく共和国軍の軍事研究に関わるよう命が下る。折しも星系は<a href="../database/factions.html#iga">独立星系連合（IGA）</a> との戦役の只中にあり、彼が学生時代に組み上げた思考プロトコル『ENIGMA』を核とする戦闘補助AI<a href="../database/military.html#polybius">『ポリヴィアス』</a> は、劣勢だった共和国の戦況を塗り替えることになる。だがこの時期、軍事兵器開発の方針を巡って軍務に就いていたペパーと激しく衝突し、二人は袂を分かった。もっとも心の底では互いを信頼し続けていたようで、直筆の手紙のやり取りは事件の直前まで途切れなかったという。</p>
+  <p class="lore-p">私生活では研究所の同僚と早くに結婚し一児を授かるが、辺境調査に同行させた妻子を、現地の流行病で立て続けに失う。彼自身が設計していた広域ワクチンの完成は、それに三週間だけ間に合わなかった。長い休職の間、<a href="../database/locations.html#papetoon">パペトゥーン</a> の酒場に隠棲していたのはこの時期である（<a href="../database/characters.html#vixy">ヴィクシー</a> との逸話は独立記事を参照）。復職後の彼が繰り返すようになった言葉が、部下たちの証言に残っている──「失われたものは、取り戻せる。科学が十分に速ければ」。</p>
+  <p class="lore-p">隠棲から復帰した後は、以前にも増して研究に没頭し、ついに科学省の頂点に立った。環境・医療から航行理論まで、現在の共和国標準技術の少なくない部分が、彼の署名した特許の上に載っている。省内では「決裁の早さ」と「失敗した部下を決して切らないこと」で知られ、長官室の扉は肩書きに関係なく開かれていたという。</p>
+  <p class="lore-p">宇宙歴3987年、憲章第1条に抵触する禁止兵器研究と、多数の犠牲を出した爆発事故の首謀者として死刑判決を受ける。当時軍事防衛長官に就任したばかりの<a href="../database/characters.html#pepper">Z・Z・ペパー</a> の助命嘆願により、判決は<a href="../database/locations.html#venom">ベノム</a> への追放へ減刑された。<span class="redacted">なお、FCH-119再調査報告は事故の被害記録に改竄の痕跡を認めており、「研究の内容」と「事故の真相」については現在も封印されたままである。彼が本当に何を作ろうとしていたのかを、公式記録は語らない</span></p>
+  <p class="lore-p">【軍事機密】<span class="redacted">FCH-119の再調査はさらに、当該研究が彼の単独主導ではなく、ジェラルド・ファットマン博士との共同主任体制で行われ、承認欄に元老院ケルベス老の署名が存在したことを示している（<a href="../database/glossary.html#hybrid-marriage">用語集「異種婚姻と希少混血」</a>の封印項目を参照）。だが裁かれ、星を追われたのは一人だけだった。ファットマン博士のその後の記録は抹消されており、ケルベス老は一度も査問を受けていない。</span></p>
+  <p class="lore-p"><span class="redacted">当時、独立星系連合戦役の武功により軍事防衛長官に任命されたばかりのペパーは、この事件の報を最後まで信じなかった。爆発事故とされた現場の検証には誰より早く駆け付け、いくつもの状況証拠を集めて提出したが、最高裁はその全てを却下している。警察組織と政府内部の異様な動きから、一人で判決を覆すことは不可能と悟った彼は、最終的に自らの職を解くことと引き換えに、死刑を惑星セティボスのムィンシャンクル刑務所への流刑へ減じる助命嘆願を提出した。だが下された判決は──「ベノムへの追放。ならびにペパーの軍事防衛長官留任」。判決の後のペパーについて、側近の一人がこう記録している。「あの人が牙を剥き出しにするほどの激しい怒りを持ち合わせていると、初めて知った」</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">帝国建国と現在 ─ SERVICE</h3>
+  <p class="lore-p">追放から10年余りの後、<a href="../database/locations.html#venom">ベノム</a> の異変とともに侵略軍を瞬く間に組織し、自ら皇帝を名乗った。星系秩序から弾かれた者たちを「国民」として束ねる求心力は、恐怖だけでは説明できない。<a href="../database/factions.html#cornerian-republic">共和国</a> との闘いは既に星系の半分を巻き込み、彼の直列の命令系統は、弱点であると同時に恐るべき即応性を発揮し続けている。</p>
+  <p class="lore-p"><span class="redacted">ベノム地表を覆うバイオウェポンが、彼の設計した惑星除染装置『コスモクリーナー』の暴走体である可能性については、ファイルVNM-GEO-04を参照のこと。もしこの推察が正しいなら、彼は破壊のために星を覆ったのではない──直したかったのに、直せなくなったのだ</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">追放を決定した評議会の議事録は現在も封印されている。開示請求は過去14回行われ、14回とも却下された。却下理由は毎回同じ──「星系の安定に資さないため」。</p>
+  <p class="lore-p">彼の甥<a href="../database/characters.html#andrew">アンドリュー・オイッコニー</a> は「伯父は昔、壊れた玩具を全部直してくれた」と語ったことがある。プロパガンダと一蹴するのは簡単だが、科学省時代の彼の部下たちは、なぜかこの逸話を否定しない。</p>
+  <p class="lore-p">学生時代の彼は無類のゲーム好きとしても知られた。コーネリア中のゲームを遊び尽くした末、さらなる刺激を求めて自作した『アウト・オブ・ディメンション』は、当時世間を騒がせていた<a href="../database/glossary.html#out-of-dimension">同名の怪奇現象</a> から名を取った、シューティングとスロットの奇跡的な融合作である。中毒者が続出し、瞬く間に大学中でシェアされたという。このゲームのルール決定プロトコルこそが『ENIGMA』──後の戦闘補助AI<a href="../database/military.html#polybius">『ポリヴィアス』</a> の原型である。</p>
+  <p class="lore-p"><span class="redacted">ベノム帝国の建国が宣言された時、元老院シキ老は1か月のあいだ一切の言葉を発せず、食事も摂らなかったと記録されている。見込みを違えたことへの自責か、道を踏み外した男を救えなかった悔恨かは、明かされていない。ただ、その後初めて軍部に告げた言葉だけが残されている──「あれは別人だ。あの瞳にかつての信念はない。あるのは純粋な執念のみ……今度は、間違えてはならぬ」。この言葉の真意については、今も解釈が分かれている。</span></p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

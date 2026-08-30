@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GERALD FATMAN — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#a9d9ac;--accent:#d6f2d8;--border:rgba(169,217,172,0.32);--border-hi:rgba(214,242,216,0.7);--dim:#1d3320;--dim2:#0e1a10; }
+    .p-title    { color: #eefbef; text-shadow: 0 0 50px rgba(169,217,172,0.35); }
+    .p-tagline  { border-color: #a9d9ac; color: #a9d9ac; }
+    .terminal-hdr { color: #d6f2d8; }
+    .terminal-hdr::before { background: #d6f2d8; box-shadow: 0 0 8px #d6f2d8; }
+    .dk { color: #a9d9ac; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-23 / GERALD FATMAN — ジェラルド・ファットマン ]</div>
+    <div class="header-status"><span class="blink" style="color:#d6f2d8;">●</span> DECEASED (OFFICIAL) — RECORD SEALED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — GERALD FATMAN — BIOLOGIST — OFFICIALLY DECEASED</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0023 — CLEARANCE: LV.4 — SEE ALSO FILE OBR-0015</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-23 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ジェラルド・ファットマン (GERALD FATMAN)</div>
+        <h1 class="p-title">GERALD<br>FATMAN</h1>
+        <div class="p-tagline">FATHER OF AGRONOMY ── 生物学者 ─ 公式記録・死亡</div>
+        <p class="p-short-desc">「植物学・作物学の父」と称された、コーネリア科学省の生物学者。オベロン計画の基礎に名を残す高名な博士でありながら、その前歴は不自然なほど綺麗に塗りつぶされている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 23 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">GERALD FATMAN / ジェラルド・ファットマン</td></tr><tr><td class="dk">REAL NAME</td><td class="dv"><span class="redacted">ジェラルド・C・ヘルクォーツ — 通称「ケイン」</span></td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#anubisoid">アヌビソイド</a>（公称）<span class="redacted"> — 実際は<a href="../database/glossary.html#hybrid-marriage">レアハイブリッド</a>（父: アヌビソイド / 母: <a href="../database/races.html#sacrifoid">サクリフォイド</a>）</span></td></tr><tr><td class="dk">AGE</td><td class="dv">不詳（記録抹消）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">元コーネリア科学省（生物学・植物学）</td></tr><tr><td class="dk">KNOWN FOR</td><td class="dv">オベロンシステム基礎設計 / <a href="../planets/oberon.html">オベロンⅡ</a>設計主任 / <a href="../database/locations.html#prospero">プロスペロー</a>農業革命</td></tr><tr><td class="dk">FAMILY</td><td class="dv"><span class="redacted">双子の弟 ジェラルド・A・ヘルクォーツ「アベル」— 故人</span></td></tr><tr><td class="dk">STATUS</td><td class="dv bad">死亡（公式記録）<span class="redacted"> — 生存・「カトレア」として活動中</span></td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT LEVEL (CLASSIFIED) -- 96 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(169,217,172,0.55);">
+        <img src="" alt="GERALD FATMAN" class="planet-img-detail planet-img-medium" style="animation: 10s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">FATHER OF AGRONOMY — DECEASED</span>
+            <span class="tg-jp">作物学の父 ── 経歴、空白</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">植物は嘘をつきませんよ。人と違ってね<span class="tg-note note">-科学省時代の口癖と伝わる-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">彼ほど生命を愛した研究者はいなかった<span class="lore-quote-src">― コーネリア科学省 追悼文より</span></span></p>
+  <p class="lore-p">ジェラルド・ファットマンは、コーネリア科学省に籍を置いたとされる生物学者である。表向きには植物学・作物学の父として<a href="../database/locations.html#prospero">プロスペロー</a>の農業革命に名を残す高名な博士であり、宇宙空間の閉鎖環境栽培から惑星規模の環境支援までを一貫して理論化した「オベロンシステム」の基礎を築いた人物とされる。</p>
+  <p class="lore-p">だが、その実態は謎に包まれている。彼の前歴や過去は不気味なほど丁寧に政府の手で塗りつぶされており、その周到さは、ただの学者ではないと誰もが直感するほどである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴（公式記録） ─ OFFICIAL RECORD</h3>
+  <p class="lore-p">記録上の彼は、科学省の植物研究部門を長く率いた第一人者である。<a href="../planets/oberon.html">オベロン計画</a>の基礎設計に携わり、プロスペローのテラフォーミング事業では「農業革命」と呼ばれる成果を挙げた。この事業の除染研究に参画した若き日の<a href="andorf.html">アンドルフ・ボウマン</a>とは、同じ釜の飯を食った同僚の間柄である。</p>
+  <p class="lore-p">後年は<a href="../planets/oberon.html">オベロンⅡ</a>の設計主任を務め、植物研究区画と除染試験区画の存置に強い拘りを見せた。公式記録の上で彼の人生は、オベロンⅡの廃棄と共に幕を閉じたことになっている。ただし科学省に現れる以前の経歴は、どの公文書を辿っても綺麗に空白である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">真実 ─ CLASSIFIED</h3>
+  <p class="lore-p"><span class="redacted">以下は、Z・Z・<a href="../database/characters.html#pepper">ペパー</a>率いる特捜隊と<a href="../database/locations.html#fichina">フィチナ</a>州特殊警察の合同調査により判明した内容である。閲覧には権限LV.4以上を要する</span>。</p>
+  <p class="lore-p"><span class="redacted">本名、ジェラルド・C・ヘルクォーツ。通称ケイン。グランベル州の名門にして、貴族には珍しい穏健派として知られたヘルクォーツ家の双子の長男である。<a href="../database/races.html#anubisoid">アヌビソイド</a>の父と<a href="../database/races.html#sacrifoid">サクリフォイド</a>の母の間に生まれた<a href="../database/glossary.html#hybrid-marriage">レアハイブリッド</a>であり、当時この体質への知見はほぼ存在しなかった。兄は父の要素へ、弟は母の要素へやや傾いて生まれたとされる。双子はいずれも「ジェラルド」の名を与えられ、ミドルネームの頭文字と通称、ケインとアベルで呼び分けられていた</span>。</p>
+  <p class="lore-p"><span class="redacted">ケインはレアハイブリッドの身体能力と頭脳で頭角を現し、「有角の狼」の異名のもと、学業・運動・社交の全分野で首位を総なめにした。だがその肉体は、致命的なものを隠し持っていた。ライラットの人間が長い歳月をかけて消し去ってきた「血肉を欲する獣」の因子を、混血の体質が呼び起こしていたと推定されるのである。彼の進んだ高校と大学では在学期間と重なる失踪事件が繰り返し記録され、卒業後の就職先でも同じことが起きた。犯人は一度も挙がっていない。天才的かつ鮮やかな手際で、証拠は常に残されなかったからである。やがて彼は政治家を経て、コーネリアの知識の中枢たる科学省へ研究員として迎えられる。後の供述によれば、議会の椅子より研究所のほうが楽しかったからだという</span>。</p>
+  <p class="lore-p"><span class="redacted">衝動は年月と共に強まり、本人にも制御できなくなり始めていたとみられる。破綻は科学省で訪れた。前々から目を付けていた隣の課の女性へ手をかけようとしたその相手は、双子の弟アベルの恋人だったのである。学生時代から兄の常軌を逸した奇行に疑念を抱き続けていた弟は、長い時間をかけて証拠を集め、ついに犯行の決定的瞬間を押さえることに成功していた。人生で初めて出し抜かれた屈辱か、積年の犯行の露呈か、要因は複数と推定される。窮地に立ったケインは白兵戦の末に弟を殺害し、そして「食べて」しまった。事件はあまりに惨たらしく、また肉食系人種への偏見の拡大が懸念されたため、表向きは事故として処理されている（<a href="../database/glossary.html#lylat-taboo">ライラットの禁忌</a>の項を参照）</span>。</p>
+  <p class="lore-p"><span class="redacted">調査の結果ケインに帰せられた食殺は、約40名。死刑は確実とみられた。だがここで、元老院の<a href="../database/characters.html#five-elders">ケルベス老</a>から一つの提案が入る。彼の頭脳を星系に役立て、奪った命より多くの命を救えるか試す、というものである。かくしてケインは表向き死刑に処されたことになり、旧時代の拘束具<a href="../database/glossary.html#collar-cage">「首輪の檻」</a>を装着した上で、名を変えて科学省に残された。双子がともにジェラルドを名乗り通称でしか呼ばれていなかったこと、そしてジェラルドがグランベル州ではありふれた名であったことは、この偽装に好都合だったとみられる</span>。</p>
+  <p class="lore-p"><span class="redacted">以後の成果は公式記録の項のとおりである。少なくとも数字の上で、ケルベス老の提案は成就したことになる。もっとも、テラフォーミング事業への抜擢後も異常な行動はたびたび記録されており、同僚たちが無警戒だったわけではない。身の危険を感じていたらしい<a href="andorf.html">アンドルフ</a>は、ケインの首輪の檻の識別IDが一定距離まで近づくと携帯端末に通知が届くアプリを自作し、同僚全員へ配布していたという</span>。</p>
+  <p class="lore-p"><span class="redacted">そして公式には、彼はオベロンⅡの廃棄と共にこの世を去った。だが近年の調査隊の報告は、想像を超えた現状を伝えている。映像記録に残るその姿は、植物と融合した怪物と評するほかない（詳細は <a href="../planets/oberon.html">OBR-0015 オベロンⅡ</a>の封印区画を参照）。報告の内容を伝え聞いたアベルの恋人だった女性は、静かにこう語ったと記録されている。「彼は昔からすでにこうでした。身体がようやく、心と同じ姿になっただけです」</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">プロスペローの農業関係者の間では、今も「ファットマン式」の畝の切り方が教本に残っている。検索しても経歴の出てこない偉人を不思議がる若い農夫に、年配者はこう答えるのが常だという。「偉い人ってのは、そういうもんさ」</p>
+  <p class="lore-p">科学省には「ファットマン式野菜カレー」の逸話も残っている。野菜しか使っていないはずなのに、どの種族の舌をも唸らせる究極のカレーとして省内で密かに話題を呼び、その評判は省を飛び越えて軍部や官僚にまで届いたという。レシピを真似ようとした同僚が尋ねると、博士は決まってしたり顔でこう答えた。「秘密の隠し味があるんでね」。なお博士は同僚のアンドルフに何度もしつこく試食を勧めたが、アンドルフはついぞ最後まで手を付けなかったと伝わる。</p>
+  <p class="lore-p"><span class="redacted">アンドルフの自作した近接通知アプリはオベロンⅡ廃棄後に共和国警察へ引き継がれ、首輪の檻の残存事案を追う監視ツールの原型として現在も稼働している。開発者の名は、当然ながら公式記録には残っていない</span>。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

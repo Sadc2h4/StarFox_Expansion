@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAINBOW Δ — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#66cc88;--accent:#aaeecc;--border:rgba(102,204,136,0.32);--border-hi:rgba(102,204,136,0.7);--dim:#103a20;--dim2:#081d10; }
+    .p-title    { color: #eefff4; text-shadow: 0 0 50px rgba(102,204,136,0.35); }
+    .p-tagline  { border-color: #66cc88; color: #66cc88; }
+    .terminal-hdr { color: #aaeecc; }
+    .terminal-hdr::before { background: #aaeecc; box-shadow: 0 0 8px #aaeecc; }
+    .dk { color: #66cc88; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-11 / RAINBOW Δ — レインボー・Δ ]</div>
+    <div class="header-status"><span class="blink" style="color:#66cc88;">●</span> HOSTILE — SIGHTINGS ONLY</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — RAINBOW DELTA — CUSTOM STEALTH FIGHTER — PILOT: LEON POWALSKI</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0011 — CLEARANCE: PARTIAL — SEE ALSO FILE PF-11</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-11 / ARMORY FILE ]</div>
+        <div class="p-name-jp">レインボー・Δ (RAINBOW Δ)</div>
+        <h1 class="p-title">RAINBOW Δ</h1>
+        <div class="p-tagline">THE SKY THAT DISAPPEARS ── レオン・ポワルスキー専用機</div>
+        <p class="p-short-desc">スターウルフ構成員レオン・ポワルスキーの専用機。全兵装が追尾チャージ弾で装甲は背景に溶ける光学擬態。搭乗者の内面をそのまま鋼にしたような不可思議で癖の強いワンオフ機。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 11 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">RAINBOW Δ / レインボー・Δ</td></tr><tr><td class="dk">CLASS</td><td class="dv">特殊改造戦闘機（ワンオフ・後退翼型）</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv">不明（旧式フレームの個人改修機）</td></tr><tr><td class="dk">OWNER</td><td class="dv"><a href="../database/characters.html#leon">レオン・ポワルスキー</a>（スターウルフ）</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">ワイドロック式追尾チャージ砲（全光学兵装） — 通常レーザー非搭載 / <a href="smart-bomb.html">スマートボム</a> ×2（携行定数）</td></tr><tr><td class="dk">DEFENSE</td><td class="dv">光学擬態装甲 — 背景同化率90% / 高出力シールド</td></tr><tr><td class="dk">PERFORMANCE</td><td class="dv">シールド 厚 / ブースト持続 短</td></tr><tr><td class="dk">CONTROL</td><td class="dv warn"><a href="g-diffuser.html">Gディフューザー</a>安全装置 解除済</td></tr><tr><td class="dk">INTERIOR</td><td class="dv">最高級シートヒーター / コーヒーサーバー 他</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 交戦注意</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT LEVEL -- 91 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 91%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(102,204,136,0.55);">
+        <img src="" alt="RAINBOW DELTA" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">CUSTOM STEALTH FIGHTER — STAR WOLF</span>
+            <span class="tg-jp">光学擬態のワンオフ機</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">ここは静かでいい。とても静かでいい。<br>ククク…　ボウヤもすぐに静かにしてあげよう。<span class="tg-note note">-交戦時の傍受通信（L・ポワルスキー）より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">レーダーには何も映らなかった。ただ、視界の星が一つずつ消えていった<span class="lore-quote-src">― 交戦したCDFパイロットの証言記録より</span></span></p>
+  <p class="lore-p">レインボー・Δ（Rainbow Delta）はスターウルフ構成員<a href="../database/characters.html#leon">レオン・ポワルスキー</a> の専用機である。同隊の主力機<a href="wolfen.html">ウルフェン</a> とは別に彼が個人で維持している機体であり、スターウルフに勧誘される以前に単独で活動していた時期の出撃機として複数の目撃例が残っている。本人はこれを「旧式」と呼ぶが、その旧式に落とされた機体の数は現行機のそれを上回る。</p>
+  <p class="lore-p">現在でもウルフェンが破損した際や、本人が「本気で負けられない」と判断した相手との交戦時にはこの機体が持ち出される。つまりこの機体の目撃報告とはレオン・ポワルスキーが本気になったという報告と同義である。</p>
+  <p class="lore-p">現行の<a href="wolfen.html#wolfen2">ウルフェンⅡ</a> が<a href="hunter.html">ハンター</a> 形態への変形を得てからも、この機体が引き出される頻度は減っていない。追跡と重武装をⅡが引き受けた今、レインボー・Δに残された役目は「相手に何も見せないまま終わらせる」ことだけである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">兵装 ─ ARMAMENT</h3>
+  <p class="lore-p">兵装は搭乗者の心理状態を映したかのように不可思議かつ癖の強いもので統一されており、どれも一筋縄ではいかない曲者揃いである。通常のレーザー兵器は一切搭載されておらず、全ての光学兵装（<a href="../database/glossary.html#ws-laser">レーザー/光学系統</a>）は相手を追尾するチャージ弾で構成される。撃ち合いにはならないが「逃げても追ってくる」ことがコンセプトと言えよう。</p>
+  <p class="lore-p">追尾チャージ砲はワイドロック式で、照準環に獲物が入った瞬間に自動で撃ち出される。パイロットが引き金を引く必要はなく、機体を獲物へ向け続けることだけが求められる。一発の威力は標準的なレーザーに及ばず大型ミサイルの迎撃には向かないが、放たれた弾は全て当たる。「軽い弾が外れずに来続ける」という体験が何を意味するかは、被弾した側の証言記録が雄弁に語っている。</p>
+  <p class="lore-p">携行するスマートボムは2発。ウルフェンやブラック・ローズより多く、対艦火力の不足をこれで補う設計とみられる。もっとも本人がボムを使った交戦記録はほとんど存在しない。艦を落とすのはこの機体の仕事ではないからである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">擬態 ─ CAMOUFLAGE</h3>
+  <p class="lore-p">何より強力な「兵装」は攻撃兵器ではなく光学擬態装甲である。機体表面で光を偏光させることで機体の90%が背景と同化する。地形や構造物のある地上戦では輪郭の目視が可能だが、背景の乏しい宇宙空間では無類のステルス性を発揮し、冒頭の証言のような交戦記録をいくつも生んでいる。</p>
+  <p class="lore-p">最も擬態は完全ではない。同化しきれない残り10%が星の光を遮る瞬間があり熟練のパイロットはそこから機影を読む。だがそれを読めた者の多くは読めた直後に撃たれている。「星が消えたら撃て」がこの機体に対する<a href="../database/military.html#cdf">CDF</a>の唯一の教訓であり実行できた者はごく少数である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機体特性 ─ CHARACTERISTICS</h3>
+  <p class="lore-p">この機体では<a href="g-diffuser.html">G・ディフューザーシステム</a> の安全装置が意図的に取り外されている。星系座標と連動して「重力がある惑星の空」を再現する自動制御を捨てた機体は上下という概念そのものを持たず、全く予想のできない挙動で飛行することが可能である。追尾する側のパイロットが先に平衡感覚を失うという報告すらある。</p>
+  <p class="lore-p">通常のパイロットであれば数分で操縦不能に陥る環境だが、本人はこの操縦感覚を「静かでいい」とだけ評している。</p>
+  <p class="lore-p">機体そのものは後退翼の細身な高速機で、シールド出力は隊の全機体中で最も高く、代わりにブーストの持続は短い。直線で追う機体ではなく敵陣の奥へ深く食い込んで生きて戻る機体であり、追う役目は追尾弾に任せて本体は獲物の懐で待つ。設計の割り切りは<a href="black-rose.html">ブラック・ローズ</a> と正反対であり、二機を並べて見た解析官は「一方は一撃で去り、もう一方は最後まで居座る」と記している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">コックピット ─ COCKPIT</h3>
+  <p class="lore-p"><a href="../database/races.html#paranodian">パラノディアン</a> である彼は種族的に体温調整が苦手であり、そのためかシートヒーターは星系最高級品で統一されている。コックピット内であるにも関わらず専用のコーヒーサーバーまで設えられているという。</p>
+  <p class="lore-p">一方で機内には彼の趣味と思われる錆びついたペンチや剝がされた爪を加工したと思しき装飾が並び、惑星<a href="../database/locations.html#kew">キュー</a> のダウンタウンで購入されたと見られる不気味な香りの香が焚かれているようだ。快適さと悪夢が同居した空間である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴 ─ SERVICE</h3>
+  <p class="lore-p">スターウルフ加入前の記録は請負人時代の「消え方」と同じく綺麗に残っていない。ただし<a href="../database/military.html#vorpal">ヴォーパル隊</a> 隊長<a href="../characters/amber.html">アンバー・シルフェイド</a> が秘密警察時代から幾度も交えてきた相手はこの機体であり、CDFに現存するレインボー・Δの交戦データの大半は彼女の機体が持ち帰ったものである。彼女との交戦時にレオンが最大戦力で現れるという傾向は、この機体の出撃記録にそのまま表れている。</p>
+  <p class="lore-p">加入後は<a href="../database/characters.html#falco">ファルコ・ランバルディ</a> との交戦で持ち出される例が最も多い。戦域全体が終わった後も二人だけ続く追いかけっこの相手が、途中からウルフェンではなくなっている事例が複数報告されており、ファルコ本人は「途中で相手が消える」とだけ述べている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">スターウルフと帝国軍の合同模擬演習の際、当機に搭乗したレオンを呼びに向かった<a href="../database/characters.html#andrew">アンドリュー・オイッコニー</a> はそのコックピットを覗き込んで思わず「深淵を覗いた」とのコメントを残した。この体験は今でも彼のトラウマになっているらしい。</p>
+  <p class="lore-p">帝国工廠の整備班は本機の整備を引き受けない。理由は技術的なものではなく、前回引き受けた整備士がコックピットの清掃中に何かを見つけ、以後この機体の話をしなくなったためだという。現在、整備は本人が行っているが之については平常運転であり問題はないようである。</p>
+  <p class="lore-p">機体名の由来を知る者は本人しかいない。撃墜された者は機体そのものを見ていないのだから、虹どころかΔの形すら確かめた者はいないのである。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

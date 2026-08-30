@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIS-HQ DATABASE — CONSOLE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="planet.css">
+  <style>
+    body { overflow: hidden; }
+    .console-wrap {
+      position: fixed; inset: 44px 22px 32px;
+      display: flex; flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+      z-index: 10;
+      padding: clamp(10px, 3vh, 34px) 16px;
+    }
+    .console-inner { width: min(980px, 96%); }
+
+    /* コーネリア共和国 国章（レターヘッド＋画面奥の透かし） */
+    .db-watermark {
+      position: fixed; inset: 0; z-index: 2; pointer-events: none;
+      background: url('Corneria_emblem_entrance.png') center 55% / min(60vh, 520px) no-repeat;
+      opacity: 0.05;
+    }
+    .db-head {
+      display: flex; align-items: center; gap: 22px;
+      margin-bottom: 4px;
+    }
+    .db-emblem {
+      width: 78px; height: 78px; flex: 0 0 auto;
+      filter: drop-shadow(0 0 14px rgba(0,212,180,0.45));
+    }
+    .db-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(19px, 2.6vw, 30px);
+      font-weight: 900; color: #ffffff;
+      letter-spacing: 0.06em;
+      text-shadow: 0 0 30px rgba(0,212,180,0.45);
+    }
+    .db-sub {
+      margin-top: 6px;
+      font-size: 12px; letter-spacing: 0.3em; color: var(--primary);
+    }
+    .db-flavor {
+      margin: 14px 0 22px;
+      line-height: 1.6;
+      min-height: 3.2em;
+      font-family: 'NitalagoRuika', 'Share Tech Mono', 'Meiryo', monospace;
+      font-size: 13.5px; color: var(--accent);
+      border-left: 3px solid var(--primary);
+      padding-left: 12px;
+      letter-spacing: 0.04em;
+      opacity: 0.95;
+    }
+
+    .db-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; }
+    .db-grid .wide { grid-column: 1 / -1; }
+
+    .db-foot {
+      margin-top: 22px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 9.5px; letter-spacing: 0.2em; color: var(--dim);
+    }
+    .db-foot a { color: var(--primary); text-decoration: none; letter-spacing: 0.2em; }
+    .db-foot a:hover { color: var(--accent); }
+
+    @media (max-width: 760px) { .db-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="access.html" class="nav-back">◄ LOG OUT</a>
+    <div class="header-tag">[ CIS-HQ DATABASE — メインコンソール ]</div>
+    <div class="header-status">● CLEARANCE LV.2 — TEMPORARY</div>
+  </header>
+
+  <div class="db-watermark"></div>
+
+  <div class="console-wrap">
+    <div class="console-inner">
+      <div class="db-head">
+        <img class="db-emblem" src="Corneria_emblem_entrance.png" alt="コーネリア共和国 国章">
+        <div>
+          <div class="db-title">CORNERIA INFORMATION STRATEGY<br>HEADQUARTERS DATABASE</div>
+          <div class="db-sub">コーネリア情報戦略本部 統合データベース ── 臨時閲覧端末</div>
+        </div>
+      </div>
+      <div class="db-flavor" id="flavor">閲覧するデータベースを選択してください。</div>
+
+      <div class="db-grid">
+        <a class="sf-card hero wide" href="index.html" data-flavor="星系全域の戦況図を表示。各戦術対象の天体を選択すると詳細記録へ接続される。">
+          <span class="sf-inner">
+            <span class="sf-thumb" style="background-image:url('resource/Layout/Layrat_system.png');"></span>
+            <span class="sf-label">
+              <span class="sf-catch">星系全域の戦況を俯瞰</span>
+              <span class="sf-title">戦略地図</span>
+              <span class="sf-rule"></span>
+              <span class="sf-en">Strategic Star Map — Lylat System</span>
+            </span>
+            <span class="sf-arrow"></span>
+          </span>
+        </a>
+
+        <a class="sf-card" href="database/factions.html" data-flavor="星系内の勢力構造と各国の成り立ちを記録。鹵獲・捕虜の対象者への適切な対応のために参照を推奨。">
+          <span class="sf-inner">
+            <span class="sf-thumb" style="background-image:url('resource/Layout/Political_Landscape.png');"></span>
+            <span class="sf-label">
+              <span class="sf-catch">星系のパワーバランス</span>
+              <span class="sf-title">勢力データベース</span>
+              <span class="sf-en">Faction Database</span>
+            </span>
+            <span class="sf-arrow"></span>
+          </span>
+        </a>
+
+        <a class="sf-card" href="database/characters.html" data-flavor="作戦指揮にあたり関連する可能性のある人物プロファイル情報の参照を許可します。">
+          <span class="sf-inner">
+            <span class="sf-thumb" style="background-image:url('resource/Layout/Personal_Database.png');"></span>
+            <span class="sf-label">
+              <span class="sf-catch">関係者プロファイル</span>
+              <span class="sf-title">人物・関係者情報</span>
+              <span class="sf-en">Personnel Database</span>
+            </span>
+            <span class="sf-arrow"></span>
+          </span>
+        </a>
+
+        <a class="sf-card" href="database/locations.html" data-flavor="惑星・恒星・軍事拠点・セクター宙域 ── 統合された全観測記録。軌道ビューから各天体・宙域の記録へ接続できる。">
+          <span class="sf-inner">
+            <span class="sf-thumb" style="background-image:url('resource/Layout/Location_archive.png');"></span>
+            <span class="sf-label">
+              <span class="sf-catch">天体・宙域の統合観測記録</span>
+              <span class="sf-title">ロケーション</span>
+              <span class="sf-en">Location &amp; Sector Database</span>
+            </span>
+            <span class="sf-arrow"></span>
+          </span>
+        </a>
+
+        <a class="sf-card" href="database/military.html" data-flavor="本作戦に関わる可能性のある友軍・敵性の機体と兵器の技術記録の閲覧を許可します。">
+          <span class="sf-inner">
+            <span class="sf-thumb" style="background-image:url('resource/Layout/weapon_archive.png');"></span>
+            <span class="sf-label">
+              <span class="sf-catch">機体・兵器技術記録</span>
+              <span class="sf-title">兵器データベース</span>
+              <span class="sf-en">Armory Database</span>
+            </span>
+            <span class="sf-arrow"></span>
+          </span>
+        </a>
+
+        <a class="sf-card" href="database/races.html" data-flavor="星系に暮らす320超の人種のうち、主要9人種＋αの記録情報。本隊は現地の傭兵部隊との戦略連携が想定される。軍規に影響を及ぼす言動を未然に抑制するためにも閲覧を推奨。">
+          <span class="sf-inner">
+            <span class="sf-thumb" style="background-image:url('resource/Layout/Species branch.png');"></span>
+            <span class="sf-label">
+              <span class="sf-catch">星系で確認される人種リスト</span>
+              <span class="sf-title">人種データベース</span>
+              <span class="sf-en">Race Database</span>
+            </span>
+            <span class="sf-arrow"></span>
+          </span>
+        </a>
+
+        <a class="sf-card" href="database/corporations.html" data-flavor="星系経済を動かす主要企業の記録。補給・調達・民間協力の交渉にあたり閲覧を推奨。一部の取引記録には検閲が含まれる。">
+          <span class="sf-inner">
+            <span class="sf-thumb" style="background-image:url('resource/Layout/Company_Database.png');"></span>
+            <span class="sf-label">
+              <span class="sf-catch">関連する企業情報</span>
+              <span class="sf-title">企業データベース</span>
+              <span class="sf-en">Company Database</span>
+            </span>
+            <span class="sf-arrow"></span>
+          </span>
+        </a>
+
+        <a class="sf-card slim wide" href="database/glossary.html" data-flavor="歴史・文化・組織・現象 ── 各記録から参照される用語集と、その他の情報のうち、閲覧権限レベル2までを開放。作戦遂行に必要な情報があれば確認されたし">
+          <span class="sf-inner">
+            <span class="sf-label">
+              <span class="sf-title">その他・情報</span>
+            </span>
+            <span class="sf-arrow"></span>
+          </span>
+        </a>
+
+      </div>
+
+      <div class="db-foot">
+        <span>NODE: KAT-FRONT-07 — SESSION LOGGED</span>
+        <span><a href="access.html">RE-AUTHENTICATE</a></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 200; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+
+    (function() {
+      const flavor = document.getElementById('flavor');
+      const defaultText = '閲覧するデータベースを選択してください。';
+      document.querySelectorAll('.sf-card').forEach((btn) => {
+        btn.addEventListener('mouseenter', () => { flavor.textContent = btn.dataset.flavor || defaultText; });
+        btn.addEventListener('mouseleave', () => { flavor.textContent = defaultText; });
+      });
+    })();
+  </script>
+</body></html>

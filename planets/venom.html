@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VENOM — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary: #44ff00; --accent: #88ff44; --border: rgba(68,255,0,0.3); --border-hi: rgba(136,255,68,0.7); --dim: #1a3300; --dim2: #0a1a00; }
+    .planet-img { --glow: rgba(68,255,0,0.6); }
+    .p-title { color: #f0ffe0; text-shadow: 0 0 50px rgba(68,255,0,0.3); }
+    .p-tagline { border-color: #44ff00; color: #44ff00; }
+    body { background: #040a04; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 50%, rgba(0,30,0,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(0,25,0,0.4) 0%, transparent 55%),
+      #040a04; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header" style="border-color:rgba(68,255,0,0.3);">
+    <a href="../database/locations.html" class="nav-back" style="color:#44ff00;border-color:rgba(68,255,0,0.3);">◄ LOCATIONS</a>
+    <div class="header-tag">[ 09 / VENOM — ベノム ]</div>
+    <div class="header-status"><span class="blink" style="color:var(--danger);">●</span> SECTOR-Ω — EXTREME DANGER</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(68,255,0,0.3);"><div class="vt" style="color:#1a3300;">LYLAT SYSTEM — VENOM — VENOM EMPIRE FORTRESS WORLD — SECTOR-OMEGA — RESTRICTED</div></div>
+  <div class="side-r" style="border-color:rgba(68,255,0,0.3);"><div class="vt" style="color:#1a3300;">DATABASE RECORD: VNM-0001 — CLASSIFICATION: TOP SECRET — WARNING: LETHAL ENVIRONMENT</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(68,255,0,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#44ff00;">[ 09 / LYLAT SYSTEM — SECTOR-Ω ]</div>
+        <div class="p-name-jp" style="color:#7ecf7e;">ベノム (VENOM)</div>
+        <h1 class="p-title">THE EMPIRE'S<br>DEAD<br>HEART</h1>
+        <div class="p-tagline">ベノム帝国 首都要塞惑星</div>
+        <p class="p-short-desc" style="border-color:#1a3300;">ライラット文明発祥の『始まり』の星にして、致命的環境に包まれた帝国の総本拠。アンドルフが支配する難攻不落の要塞惑星。全ミッションの最終目的地。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(68,255,0,0.3);background:rgba(0,30,0,0.6);">
+        <div class="terminal-hdr" style="color:#44ff00;background:rgba(68,255,0,0.1);border-color:rgba(68,255,0,0.3);">
+          <span style="background:#44ff00;box-shadow:0 0 8px #44ff00;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-Ω ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#44ff00;">DESIGNATION</td><td class="dv">VENOM / ベノム</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">PLANET TYPE</td><td class="dv">E2型 / HOSTILE TERRESTRIAL</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">MOONS</td><td class="dv">2 ─ 第1衛星ゴモラ／第2衛星ソドム</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">PRIMARY STAR</td><td class="dv">ライラット・プライム</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">AVG TEMP</td><td class="dv bad">+220°C ～ +450°C</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">DAY / YEAR</td><td class="dv">22.5H / 4,392D（約12年）</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">LOCATION</td><td class="dv">LYLAT 1st — SectorΩ</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">FACTION</td><td class="dv bad">ベノム帝国軍</td></tr><tr><td class="dk" style="color:#44ff00;">CAPITAL</td><td class="dv">帝都 ベノム・インペリアル・シティ（第1衛星ゴモラ）</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">STATUS</td><td class="dv bad">⚠⚠ FORTRESS WORLD</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(68,255,0,0.1);">
+          <div class="env-bar-label" style="color:#44ff00;">ENVIRONMENT INDEX ── 0 / 100</div>
+          <div class="env-bar-track" style="background:#0a1a00;"><div class="env-bar-fill" style="width:3%;background:var(--danger);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(50,220,0,0.7);">
+        <img src="../resource/LA_image/LS_P_1.png" alt="Venom" class="planet-img-detail planet-img-large">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">EMPIRE FORTRESS — E2 HOSTILE WORLD</span>
+            <span class="tg-jp">ベノム帝国 首都要塞惑星</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">被告アンドルフ・ボウマンを無期懲役<br>惑星ベノムへの追放処分とする　異論はないな？<span class="tg-note note">-禁止兵器取り扱いの疑いによる裁判より抜粋-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「私を追放したこの星が、いずれ諸君らの墓標となる」<span class="lore-quote-src">― アンドルフ・ボウマン、開戦宣言と目される傍受通信より</span></span></p>
+  <p class="lore-p">ベノム（Venom）は、<a href="../database/sectors.html#omega">セクターΩ</a>に位置するライラット星系第1惑星。遥か昔、別の惑星系からライラットへ移り住んだ<a href="../database/glossary.html#bremen">開拓団</a>が初めてたどり着いたとされる、辺境にして『始まり』の惑星である。入植直後は豊かな自然環境と安定した気候に恵まれ、開拓団の持ち込んだ疑似生態系との相性の良さも相まって「文明再起の象徴」と讃えられた。だが度重なる環境汚染とそれに伴う天変地異が居住を蝕み、最後には、戦争によって持ち込まれたとされる生体兵器がすべてを終わらせた。現在のベノムは、一切の生命を寄せ付けない『死の星』である。</p>
+  <p class="lore-p">現在は<a href="../database/factions.html#venom-empire">ベノム帝国</a>の本星。だがその地表で何が起きているのか、正確に知る者は共和国側に一人もいない。ベノムは観測という行為そのものを拒む「閉ざされた星」である。<a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>の最終目的地はこの星である。この星に潜む<a href="../database/glossary.html#andorf">アンドルフ</a>を撃破することこそが、戦争を終わらせる唯一の道となる。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 敵性本星 — 接近＝交戦</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 形成史</h3>
+  <p class="lore-p">ベノムの地質は、この星の出自を明確に指し示している。地質構造には<a href="../database/locations.html#corneria">コーネリア</a>と類似する箇所が多数確認されており、<a href="../database/locations.html#katina">カタリナ</a>や<a href="../database/locations.html#fortuna">フォルトナ</a>を含む<a href="../database/locations.html#inner-rim">インナーリム</a>の惑星群と同じ特徴を共有している。星系の最遠級を巡る星でありながら、その骨格は明らかに内星系の物質帯で作られたものであり、ベノムは形成当初、インナーリムに属する惑星だったと推測されている。</p>
+  <p class="lore-p">ではなぜ、内星系の生まれが<a href="../database/sectors.html#omega">セクターΩ</a>まで流されたのか。有力視されている説は二つある。一つは原始円盤の時代、巨大惑星の軌道移動に弾かれて外縁へ散乱されたとする説。もう一つは、星系の地図を描き替えた客星<a href="../database/locations.html#titania">タイタニア</a>の飛来が、重力的な相互作用でベノムの座標まで動かしたとする説である。後者はソーラ圏の大混乱（<a href="fichina.html">フィチナ</a>・<a href="titania.html">タイタニア</a>の項参照）と同じ一つの事件で説明がつく利点を持つが、いずれも決定打を欠き、結論は出ていない。ただしいずれの説を採る場合も、この星が形成位置から大きく移動した「あるべき場所にいない惑星」である点では一致している。</p>
+  <p class="lore-p">注目されるのは、最遠級の軌道にありながら入植時代のベノムが温暖な気候と豊かな植生を保っていたという観測事実である（歴史の項参照）。要因は、内星系由来の豊富な揮発成分が作った厚い大気にあると考えられている。濃密な大気の温室効果は外縁軌道の低日射を補って余りある保温をもたらし、研究者が「場違いな楽園」と通称する温暖環境を成立させていた。環境崩壊後は汚染物質の流入によりこの温室効果が暴走状態へ移行し、同一の機構が地表を400℃超の高温環境に転じさせている。入植期の温暖と現在の灼熱は、同じ大気機構の二つの動作状態と整理できる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">地表は岩石質で、複雑に刻まれた谷が延々と続く。星系最遠級の軌道を巡りながら地質は明確にインナーリム系のものであり、その出自を巡る議論は形成史の項に譲る。</p>
+  <p class="lore-p">地表には数々の遺構が眠っており、その中には始祖の開拓団の宇宙船や『始まりの街』も含まれる。過去には惑星規模の大発掘調査がたびたび行われ、貴重な遺産、星系のルーツに関わる遺物、そしてオーバーテクノロジーが出土した。それらのいくつかは、現在の星系の暮らしにも直接の恩恵をもたらしている。遺構群にはタイタニアや<a href="../database/locations.html#aquas">アクアス</a>の遺跡との類似が見られ、関連性が指摘されている。<span class="redacted">なお約230年前、ステファノーの調査機関『キュレーター』がこの星で行った発掘調査では、<a href="../database/glossary.html#stephano">グランベルの超兵器</a>の弱点を記した情報が出土しており、あの戦争の戦況を変える直接的な要因となった</span>。このように、ベノムはライラットの夜明けを知る最大の手がかりというべき重要な地である。だが現在、そこへ手を伸ばすことは、以下の要因により事実上不可能となっている。</p>
+  <p class="lore-p">環境指数はゼロ──恒星など完全な居住不可能環境を持つ天体を除けば、星系でこの数値を示すのはベノムだけという驚異の値である。地表は度重なる環境汚染の化学物質と放射性廃棄物により再生不能なレベルまで荒廃し、膨大な温室効果ガスの影響で、外縁天体でありながら地表温度は優に400℃を超える。大気圏には宇宙空間から幾つもの渦として視認できるほど複雑な嵐が巻き起こり、大型艦船の移動を阻む。大気の主成分は硫酸と硝酸、そして地表を構成する特殊鉱物の粒子であり、それらが成層圏まで巻き上げられて吹き荒れている。この鉱物は星系の機器を狂わせる性質を持ち、最大出力でバリアを展開した艦船ですら1時間と経たずにシステム故障が発生し、融解が始まる。</p>
+  <p class="lore-p">観測をさらに困難にしているのが、この星の地質そのものである。ベノム地表はデータ通信やセンサー計器類を狂わせる特殊鉱物が主成分となっているため、地下の様子はおろか、地表の観測すらも阻まれている。</p>
+  <p class="lore-p">そして何より、この星の環境を致命的なものへと至らしめているのが<a href="../weapons/bioweapon.html">バイオウェポン</a>の存在である。用途不明のまま廃棄されたバイオウェポン細胞が無軌道かつ無秩序に増殖を繰り返して生体組織を形成し、地形の大部分は、生物の体内や進行する病巣を連想させる悍ましい景観へと変貌しているという。この生体組織は<a href="../database/glossary.html#andorf">アンドルフ・ボウマン</a>博士の開発したバイオウェポンと同系統のものと推測され、猛烈な高温にも毒性にもまるで動じない強靭さを発揮している。</p>
+  <p class="lore-p">生体組織は高い攻撃性を持ち、接触した機械や生物を見境なく取り込む。それを裏付けるように、ベノム大気圏では有機体に半ば取り込まれた共和国製の偵察機や帝国軍の哨戒機が今も起動を続け、近づくものを無差別に攻撃している。うち数機は、過去のベノム潜入作戦に投入された有人機の『成れの果て』であることが確認された。これら取り込まれた兵器群は『<a href="../weapons/venom-cell.html">ベノム・セル</a>』と呼ばれ、まれに別宙域へ迷い込んだ個体は、その凶暴性のみならず、感染力の強さゆえの後始末の悪さで恐れられている。</p>
+  <p class="lore-p">バイオウェポンとベノム・セルは帝国勃興の数年前から観測されている現象だが、自らの本拠地をわざわざ劣悪な環境へ変える理由をはじめ、不可解な点も多い。状況から実行者はアンドルフ本人と断定されているものの、その詳細な目的は判明していない。コーネリア諜報部隊の報告によれば、これらの細胞は脳波に似た微弱な電流を発して相互に交信しており、報告情報を加味した考証の結果、惑星そのものが一つの「巨大な頭脳」として機能しているとする仮説が提出されている。この交信電流は大気圏の嵐と反応して強烈な雷を誘発しており、帝国はこの莫大な電力を首都ベノム・インペリアル・シティのエネルギー源としているとみられている。</p>
+  <p class="lore-p"><span class="badge badge-classified">▮ 軍事機密 — CLEARANCE LV.4</span><br>
+  <span class="redacted">この惑星を覆いつくすバイオウェポンの細胞は、アンドルフが開発した惑星除染装置『コスモクリーナー』の生体ユニットである可能性が高いと推察されている。</span><span class="redacted">本来のコスモクリーナーは、有機細胞によってベノムの汚染成分を長期間かけて分解する画期的な装置であり、正常に起動すれば100年前後で不毛の惑星ベノムを汚染前の美しい姿に戻せる可能性がある。</span><span class="redacted">この装置はアンドルフが仕上げとなる制御キーを設定する前に拘留されたことで、除染フェイズに進めないまま暴走していると考えられる。制御キーを使用することで、正しい制御を取り戻せる可能性はまだ残されている。</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">始祖の開拓団は、主星<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>の青白く強い輝きを『青き灯台』として目印にし、この星へたどり着いたと伝えられる。開拓団母船の遺構解析によれば、発見当初のベノムは無数にある候補地の一つに過ぎず、識別名も「PNF-404-b」という無機質なものだった。開拓団の母体となった文明が、宇宙のあちこちで一か八かの賭けを繰り返していたことを、この記録は静かに物語っている。</p>
+  <p class="lore-p">ライラットのすべての文明はこの星に始まったとされ、環境が崩れる以前の生活様式もいくつか判明している。入植直後のベノムは現在のコーネリアよりもさらに環境が整っていたとみられ、水源地を中心に黄緑色の植物群落が広がるなど、極冠地域を除く大部分が温暖かつ適度な湿度を保っていた。残存していた生態系は穏やかながらも強い競争力を持ち、開拓団の持ち込んだ別系統の生態系を拒絶することなく受け入れた──この適応力の広さこそが、この星の豊かさの根底にあったと推察される。</p>
+  <p class="lore-p">伝承によれば、この星は本来「Be not me」──滅んだ母星の轍を踏まず、全てをやり直すという誓いを込めた名で呼ばれていた。しかし長い歴史の中で名は風化し、環境崩壊後の惨状から、いつしか「ベノム（毒）」と呼ばれるようになったという。</p>
+  <p class="lore-p">ライラット惑星歴の編纂後も幾度となく調査団が送られたが、この惑星はすべての民が「かつての理想郷、されど住むことは不可能」と理解する不毛の地であり続けた。ライラット宇宙歴3987年、禁止兵器研究の罪に問われた<a href="../database/glossary.html#andorf">アンドルフ・ボウマン</a>博士の追放先に選ばれたのが、この星である。強化手術と<a href="../weapons/coffin-suit.html">コフィンスーツ</a>の装着を前提としたこの判決は、「死刑をはるかに超えた重い量刑」として星系中の倫理団体を騒がせた。死ぬことを許されない身体にされた上で、汚染された辺境の無人の地に、独りで生き続けることを強制する内容だったからである。類似の判決を受けたのは歴史上二人目──一人目は<a href="../database/factions.html#iga">独立星系連合</a>の猛将<a href="../characters/nahash.html">ナハシュ・ギルバスター将軍</a>だが、将軍は法廷内で自爆を決行して果てたため、実際に執行されたのはアンドルフが最初となった。</p>
+  <p class="lore-p">それからちょうど10年──ベノムの異変とともに侵略軍が瞬く間に勃興し、<a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>の火蓋が切られた。流刑地は星系全土を脅かす帝国の玉座へと変貌したのである。もっとも「瞬く間」とは、あくまで共和国側から見た速度に過ぎない。傍受記録と亡命者の証言を突き合わせた情報部の分析を総合すると、追放後から数年で衛星軌道上で不穏な兆候はあり、差出人不明の呼び掛けとみられる通信が確認されていたという。そして、10年の歳月をかけて体制反対派による軍が着実に編成されていたことを示唆している──建国宣言は帝国の誕生ではなく「完成」の報せだったのである。皮肉にも、コフィンスーツによる延命措置こそが、ベノムに「皇帝」を誕生させる最大の要因となったといえる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">本星がこの惨状にあるため、帝国の人口は人工的に建造された第1衛星ゴモラの首都「ベノム・インペリアル・シティ」に集中している。その構成は、コーネリア併合に反発した<a href="../database/locations.html#fichina">フィチナ</a>の旧サルジーナヤ連邦「融和反対派」、各地で差別されてきた<a href="../database/races.html#paranodian">パラノディアン</a>をはじめとする爬虫類系人種、現体制への分離主義勢力、犯罪カルテル等が合流した混沌としたものである。</p>
+  <p class="lore-p">共通するのは現在の星系秩序から弾かれた者たちであるという一点である。彼らにとって帝国は圧政者ではなく、初めて自分たちを「国民」と呼んだ国家であり共和国がこの戦争を単純な善悪で語れない理由がここにある。そして皇帝のお膝元たるこの首都の中でだけは全ての住人が互いの領分を測り対等に暮らしている。皇帝の名に泥を塗る行為は、今度こそこの星系のどこにも居場所がなくなることを意味するからである。政治は<a href="../database/glossary.html#andorf">アンドルフ</a>による完全な独裁で行われ、直列の命令系統は弱点であると同時に、即応性という武器にもなっている。唯一の例外が、皇帝に心酔した志願者が勝手に作り上げた<a href="../other/imperial-guard.html">親衛隊</a>である。皇帝はこの部隊を麾下へ組み込むことも解散させることもせず、放置したまま自由に活動させている。</p>
+  <p class="lore-p">ゴモラの居住区画には帝国軍人や傭兵のための生活設備が完備されており、本星の劣悪な環境が嘘のように思える快適な生活が保障されている。一方ですべての帝国民には専用の管理タグの着用が義務付けられ、軍部直下の「一等帝国民」、サルジーナヤ系および被差別地区からの亡命民である「二等帝国民」、フロンティア領域から流入した犯罪組織やならず者──最も監視の目が強い「三等帝国民」に登録区分された上で、それぞれ軍事・資源生産・開拓へと役割を振り分けられる。この管理体制は他勢力から非難の的とされているが、共和国側もまた<a href="../corporations/awazon-primal.html">AWSP社</a>の管理デバイスの普及によって情報を統制しており、「実行方法が異なるだけで、やっていることは同じだ」という指摘も根強い。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">ベノム帝国軍は、圧倒的な技術力と軍事力で知られる。汎用都市制圧兵器「<a href="../weapons/granga.html">グランガ</a>」に始まり、対地・対空を単独で掌握する小型空母「<a href="../weapons/attack-carrier.html">アタック・キャリアー</a>」、作戦の死角を補う無人戦闘機「<a href="../weapons/lw2-drones.html#dragon">ドラゴン</a>」「ドラゴンⅡ」の群れ、障壁破壊工作を担う「<a href="../weapons/meteo-crusher.html">メテオクラッシャー</a>」、そして対戦艦用ミサイル<a href="../database/military.html#man-drill">「マン・ドリル」</a>まで──あらゆる局面に専用の兵器が揃い踏みする。加えて、環境を選ばない順応力で生態系の基盤ごと破壊する戦略<a href="../weapons/bioweapon.html">バイオウェポン</a>の数々、身分を問わない実力本位の傭兵雇用、略奪侵攻部隊へのならず者の登用、さらには<a href="../weapons/g-diffuser.html">Gディフューザー</a>の燃料たるブラグザ結晶体に頼らない石油・<a href="../database/glossary.html#ember-gas">エンバーガス</a>の採掘と効率運用など、既存の枠にとらわれない兵力拡充を重ねており、その総戦力と戦略性はライラット星系史上最高と評される。</p>
+  <p class="lore-p">惑星圏の手前、<a href="../database/sectors.html#psi">セクターψ</a>には最強艦隊<a href="../database/military.html#space-armada">スペースアマダ</a>が駐屯する軍事拠点<a href="../database/locations.html#area6">AREA6</a>と防衛衛星<a href="../database/military.html#bolse">ボルス</a>が控え、ベノムへの奇襲の芽を徹底的に摘んでいる。首都ゴモラそのものも星系最強クラスの移動軍事要塞<a href="../database/military.html#atropolis">「アトロポリス」</a>としての機能を有しており、その防衛力はボルスをも上回る。明確な弱点を持つボルスと異なり、アトロポリスには帝国国民を守るための星系最高峰の防御機構が組み込まれており、既知の共和国の兵器で正面から武力制圧、陥落させることは実質不可能と判断されている。</p>
+  <p class="lore-p">また帝国軍には<a href="../weapons/venom-cell.html">ベノム・セル</a>を鎮める特殊な信号が共有されているため、惑星圏においても襲われることがない──むしろセルの側から保護の対象として扱われている節すらある。帝国国民として迎えられた者に与えられる国章のバッジには、この信号の発信機構が刻まれている。一方でベノム本星そのものは、ほとんど警護の対象とされていない。防衛戦力のほぼすべてはAREA6と首都に向けられているが理由は単純である──本星へ直接侵入して生還した部隊が敵味方を問わず皆無だからである。</p>
+  <p class="lore-p">さらにベノム宙域にはセクターψに配備された多数のジャミング装置に加え、ベノム地質の特殊鉱物の影響と相まって、電波・可視光での観測は困難を極める。<a href="../database/military.html#cdf">共和国軍</a>が持つ唯一の手掛かりは、拿捕した敵艦の航行データに残された座標のみである。第2衛星ソドムは惑星破壊兵器へと改造が進んでおり、ゴモラとソドム──二つの衛星が目玉のように浮かぶこの宙域は、星系で最も不気味な光景と恐れられている。</p>
+  <p class="lore-p"><span class="badge badge-classified">▮ 軍事機密 — CLEARANCE LV.4</span><br>
+  <span class="redacted">共和国の戦略白書は、帝国の首都機能を完全に停止させ陥落へ導く方法をただ一つだけ挙げている。AREA6の包囲網を掻い潜り、ベノム・セルの跋扈する本星の猛攻と環境圧を退け、首都へのエネルギー供給デバイスである<a href="../weapons/vpr.html">VPR基地（ベノム・プラネット・リアクター）</a>を破壊すること──「奇跡を何度も続けて起こす必要がある」と評されたこの作戦は、長く白書の上の空論に過ぎなかった。だが開戦に先立つ宇宙歴3994年、これを実行に移した部隊がただ一つ存在する。公式記録に<a href="../database/glossary.html#venom-recon">「ベノム偵察作戦」</a>とのみ残る任務──伝説の傭兵ジェームズ・マクラウド率いるスターフォックスである。編隊はVPR基地の目前まで迫りながら、僚機ピグマ・デンガーの裏切りによって作戦は失敗。生還したのはペッピー・ヘアただ一人だった。後にも先にも、帝国の首根っこに刃を当てたのは、この一隊のみである。</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">ベノムの遺跡からは、古代の滅びた種族<a href="../database/glossary.html#overlord">オーバーロード</a>を<a href="../database/races.html#anubisoid">アヌビソイド</a>が引き連れて歩む壁画が発掘されている。ライラット文明の起源に関わるこの遺跡群は、皮肉にも現在、バイオウェポンの組織の下に封じられており調査の再開は目途が立っていない。</p>
+  <p class="lore-p">ベノム宙域では、稀に惑星圏からはぐれたベノム・セルに遭遇することがある。帝国民は通常、国章バッジの特殊信号によってセルを退け、取り込まれるという最悪の事態を回避する。だが一度だけ、ベノム惑星圏での軍事演習中に、このバッジがシステムエラーで一斉に沈黙するという事故が起きている。演習に参加していたのは、当時まだ見習いだった<a href="../database/characters.html#andrew">アンドリュー・オイッコニー</a>とその僚機たち──知らせを受けた軍部は騒然となり、救助隊が現場へ急行したものの、到着した時には部隊の大半がセルの浸食を受け、救助はほぼ絶望視される状態にあった。</p>
+  <p class="lore-p">そこで救助隊は、驚くべき光景を目にする。大量のベノム・セルの群体が、アンドリューの搭乗機からだけは距離を取り、まるで首を垂れるように静止していたのである。その姿は「王に頭を下げる臣下や民」にも見えたと、複数の隊員が証言している。本人は終始気を失っており、この間の記憶は一切ないと語った。軍部への報告は「偶然バッジが機能を取り戻しただけ」と片付けられたが、あの光景を直接目にした救助隊員たちは、その日から一様に、彼には「計り知れない何かがある」と確信するようになる。軍部のお荷物に過ぎなかった青年の親衛隊──後の私設軍隊──への入隊を、彼らがこぞって志願したのは、この事故の後のことである。</p>
+  <p class="lore-p">先代スターフォックスのリーダー、<a href="../database/characters.html#james">ジェームズ・マクラウド</a>が消息を絶ったのは、このベノムの偵察作戦だったと伝えられる。同行した<a href="../database/characters.html#pigma">ピグマ・デンガー</a>の裏切りによるものとされるが、遺体も乗機も発見されていない──そして現在に至るまで、『成れの果て』として発見された記録もない。息子<a href="../database/characters.html#fox">フォックス</a>がこの星を最終目的地と定めるのは、星系の命運のためだけではないのかもしれない。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.15 + Math.random()*0.6).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(200,255,180,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body>
+</html>

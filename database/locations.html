@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOCATION DATABASE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#ffcc66;--accent:#ffe6a8;--border:rgba(255,204,102,0.32);--border-hi:rgba(255,230,168,0.7);--dim:#403010;--dim2:#201806; --bg:#000000; --bg2:#060606; }
+    /* 背景: 星空写真 space_gb.jpg を全面に敷く（星雲グラデーション廃止） */
+    .bg-nebula {
+      background: url('../resource/space_gb.jpg') center / cover no-repeat #000;
+    }
+    /* 減光オーバーレイ: 星空写真の賑やかさを抑え本文の可読性を保つ（数値で濃さを調整） */
+    .bg-nebula::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+    /* 手続き生成の星は写真に置換したため停止 */
+    #stars { display: none; }
+
+    /* ═══ LOCATION ORBITAL VIEW (preview) ═══ */
+
+    .gls-main {
+      position: fixed;
+      top: 44px; bottom: 0; left: 22px; right: 22px;
+      z-index: 5;
+      display: flex; flex-direction: column;
+      padding: 18px clamp(16px, 4vw, 60px) 12px;
+      overflow: hidden;
+    }
+    .gls-main .codex-hero { margin-bottom: 10px; }
+
+    .gls-main .loc-filter { display: none; margin-bottom: 10px; }
+    .gls-main .loc-filter.open { display: flex; }
+
+    @media (max-height: 880px) {
+      .gls-main { padding-top: 12px; }
+      .gls-main .codex-hero { margin-bottom: 6px; }
+      .gls-main .codex-hero .codex-p { display: none; }
+      .gls-main .codex-title { font-size: 24px; margin: 2px 0 4px; }
+    }
+    @media (max-height: 740px) {
+      .gls-main .codex-hero .p-index { display: none; }
+      .gls-main .codex-title { font-size: 20px; margin: 0 0 4px; }
+      .gls-ctrl { margin-bottom: 6px; }
+      .gls-scrub { padding-top: 8px; }
+      .gls-status { padding-top: 6px; }
+    }
+
+    .gls-ctrl {
+      flex: 0 0 auto;
+      display: flex; align-items: center; gap: 10px;
+      padding: 0 6px;
+      margin-bottom: 6px;
+    }
+
+    /* ── orbital stage ──
+       overflow は開放し、リング等のはみ出しを許容する。
+       文字系レイヤー（ヒーロー・パネル等）は z-index で惑星より上に置く */
+    .orb-stage {
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 120px;
+    }
+    .gls-main .codex-hero,
+    .gls-ctrl, .gls-main .loc-filter,
+    .loc-panel, .gls-scrub, .gls-status {
+      position: relative;
+      z-index: 55;
+    }
+    .orb {
+      position: absolute;
+      left: 50%; top: 48%;
+      width: clamp(170px, 36vh, 360px);
+      height: clamp(170px, 36vh, 360px);
+      margin: 0;
+      transition: transform 0.55s cubic-bezier(0.22, 0.9, 0.3, 1),
+                  opacity 0.45s, filter 0.45s;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .orb.is-active { cursor: default; }
+    .orb[hidden] { display: none; }
+    /* 琥珀色ハロー・オフ・トライアル: 惑星画像の背後の発光を消した状態 */
+    .orb img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+
+    /* 未スキャン天体プレースホルダー（画像が用意されるまでの仮表示） */
+    .orb-noimg {
+      position: relative;
+      width: 72%; height: 72%;
+      border-radius: 50%;
+      border: 1px dashed rgba(255,204,102,0.55);
+      background:
+        radial-gradient(circle at 38% 32%, rgba(255,230,168,0.10) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(255,204,102,0.05) 40%, rgba(6,10,8,0.4) 100%);
+      box-shadow: 0 0 24px rgba(255,204,102,0.12), inset 0 0 30px rgba(255,204,102,0.08);
+    }
+    /* 経線・緯線（ワイヤーフレーム球） */
+    .orb-noimg::before, .orb-noimg::after {
+      content: '';
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(255,204,102,0.28);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .orb-noimg::before { width: 46%; height: 100%; }
+    .orb-noimg::after  { width: 100%; height: 38%; }
+    .orb-noimg .lat {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 78%; height: 78%;
+      border: 1px solid rgba(255,204,102,0.16);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    /* 周回する走査リング */
+    .orb-noimg .ring {
+      position: absolute; left: 50%; top: 50%;
+      width: 116%; height: 116%;
+      transform: translate(-50%, -50%);
+      border: 1px dashed rgba(255,230,168,0.4);
+      border-radius: 50%;
+      animation: orb-scan 14s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes orb-scan { to { transform: translate(-50%, -50%) rotate(360deg); } }
+    .orb-noimg .cap {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 9px; letter-spacing: 0.3em; line-height: 2;
+      color: rgba(255,230,168,0.75);
+      text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(255,204,102,0.5);
+    }
+    /* 照準レティクル（四隅） */
+    .orb-noimg .rt {
+      position: absolute; width: 14px; height: 14px;
+      border-color: rgba(255,230,168,0.6); border-style: solid;
+      pointer-events: none;
+    }
+    .orb-noimg .rt.tl { top: 4%;  left: 4%;  border-width: 1px 0 0 1px; }
+    .orb-noimg .rt.tr { top: 4%;  right: 4%; border-width: 1px 1px 0 0; }
+    .orb-noimg .rt.bl { bottom: 4%; left: 4%;  border-width: 0 0 1px 1px; }
+    .orb-noimg .rt.br { bottom: 4%; right: 4%; border-width: 0 1px 1px 0; }
+
+    /* ── 選択天体のネームプレート（ターゲットマーカー風・引き出し線付き） ── */
+    .orb-plate {
+      position: absolute;
+      left: max(16px, calc(50% - 600px));
+      top: 10%;
+      z-index: 50;
+      pointer-events: none;
+    }
+    .orb-plate-box {
+      position: relative;
+      min-width: 230px;
+      padding: 12px 30px 12px 24px;
+      border: 2px solid var(--border-hi);
+      background: rgba(20, 15, 4, 0.78);
+      clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
+      text-align: center;
+      box-shadow: 0 0 18px rgba(255, 204, 102, 0.18);
+    }
+    .orb-plate-box::before, .orb-plate-box::after {
+      content: '';
+      position: absolute;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(255, 230, 168, 0.6);
+    }
+    .orb-plate-box::before { top: -2px; right: 10%; width: 26%; height: 4px; }
+    .orb-plate-box::after  { bottom: -2px; left: 12%; width: 16%; height: 4px; }
+    .orb-plate-name {
+      font-family: 'Orbitron', 'Arial Black', sans-serif;
+      font-weight: 900;
+      font-size: clamp(17px, 1.8vw, 26px);
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      text-shadow: 0 0 16px rgba(255, 204, 102, 0.55);
+      white-space: nowrap;
+    }
+    .orb-plate-line {
+      position: absolute;
+      left: 100%; top: 50%;
+      width: 250px; height: 2px;
+      background: linear-gradient(to right, var(--accent), rgba(255, 230, 168, 0.35));
+      transform-origin: left center;
+      transform: rotate(23deg);
+    }
+    .orb-plate.flash .orb-plate-box { animation: plate-in 0.32s ease-out; }
+    .orb-plate.flash .orb-plate-line { animation: line-in 0.3s 0.1s ease-out backwards; }
+    @keyframes plate-in { from { opacity: 0; transform: translateX(-16px); } }
+    @keyframes line-in { from { transform: rotate(23deg) scaleX(0); } to { transform: rotate(23deg) scaleX(1); } }
+    @media (max-width: 1150px) { .orb-plate { display: none; } }
+
+    /* ── prev / next chevrons ── */
+    .gls-nav {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 54px;
+      z-index: 60;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .gls-nav .chev {
+      width: 30px; height: 30px;
+      background: var(--accent);
+      clip-path: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 42% 50%);
+      filter: drop-shadow(0 0 10px rgba(255,230,168,0.55));
+      transition: transform 0.18s ease;
+    }
+    .gls-nav.prev .chev { transform: scaleX(-1); }
+    .gls-nav:hover { opacity: 1; }
+    .gls-nav.next:hover .chev { transform: translateX(3px); }
+    .gls-nav.prev:hover .chev { transform: scaleX(-1) translateX(3px); }
+    .gls-nav:disabled { opacity: 0.12; cursor: default; }
+    .gls-nav:disabled .chev { transform: none; filter: none; background: var(--dim); }
+    .gls-nav.prev:disabled .chev { transform: scaleX(-1); }
+    .gls-nav.prev { left: 4px; }
+    .gls-nav.next { right: 4px; }
+
+    /* ── info panel: 八角形レコードパネル（低め） ── */
+    .loc-panel {
+      position: relative;
+      flex: 0 0 clamp(190px, 31vh, 290px);
+      margin-top: 4px;
+    }
+    .gcard-frame,
+    .gcard-inner {
+      --cut: 30px;
+      clip-path: polygon(
+        var(--cut) 0, calc(100% - var(--cut)) 0,
+        100% var(--cut), 100% calc(100% - var(--cut)),
+        calc(100% - var(--cut)) 100%, var(--cut) 100%,
+        0 calc(100% - var(--cut)), 0 var(--cut)
+      );
+    }
+    .gcard-frame {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(160deg, rgba(255,230,168,0.85), rgba(160,120,50,0.55) 40%, rgba(255,230,168,0.75));
+      box-shadow: 0 0 30px rgba(255,204,102,0.22);
+    }
+    .gcard-inner {
+      position: absolute; inset: 2px;
+      --cut: 29px;
+      background:
+        repeating-linear-gradient(-55deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 5px),
+        radial-gradient(ellipse 120% 90% at 50% 0%, rgba(60,44,10,0.55) 0%, rgba(16,12,4,0.96) 70%),
+        #0c0904;
+    }
+    .loc-panel .seg {
+      position: absolute;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(255,230,168,0.8), 0 0 34px rgba(255,230,168,0.35);
+      pointer-events: none;
+    }
+    .loc-panel .seg.h { height: 4px; }
+    .loc-panel .seg.v { width: 4px; }
+    .seg.s1 { top: -1px; left: 9%;  width: 13%; }
+    .seg.s2 { top: -1px; right: 12%; width: 16%; }
+    .seg.s3 { bottom: -1px; left: 24%; width: 10%; }
+    .seg.s4 { bottom: -1px; right: 8%;  width: 10%; }
+    .seg.s5 { left: -1px; top: 30%; height: 26%; }
+    .seg.s6 { right: -1px; top: 44%; height: 18%; }
+    .gcard-label {
+      position: absolute;
+      top: 9px; left: 44px;
+      font-size: 9px; letter-spacing: 0.3em;
+      color: rgba(255,230,168,0.75);
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .gcard-body {
+      position: absolute;
+      inset: 24px 26px 22px 32px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 8px 20px 16px 10px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--dim) transparent;
+    }
+    .gcard-body::-webkit-scrollbar { width: 4px; }
+    .gcard-body::-webkit-scrollbar-thumb { background: var(--dim); }
+
+    /* 記事は素の codex-entry のまま（枠はパネルが提供） */
+    .gcard-body .codex-entry {
+      border: none; background: none;
+      padding: 0; margin: 0;
+      display: none;
+    }
+    /* 旧リスト表示用の :target ハイライト（シアン発光枠）はパネル内では無効化 */
+    .gcard-body .codex-entry:target {
+      border: none;
+      box-shadow: none;
+    }
+    .gcard-body .codex-entry.is-active { display: block; }
+    .gcard-body .codex-h { font-size: 16px; margin-bottom: 4px; }
+    .gcard-body .codex-sub { margin-bottom: 10px; }
+
+    /* ── scrub bar ── */
+    .gls-scrub {
+      flex: 0 0 auto;
+      padding: 10px 6px 0;
+      cursor: pointer;
+      touch-action: none;
+    }
+    .gls-scrub-track { position: relative; height: 14px; display: flex; align-items: center; }
+    .gls-scrub-track::before {
+      content: '';
+      position: absolute; left: 0; right: 0; top: 50%;
+      height: 2px; transform: translateY(-50%);
+      background: var(--dim);
+    }
+    .gls-scrub .tick {
+      position: absolute; top: 50%;
+      width: 2px; height: 7px;
+      transform: translate(-50%, -50%);
+      background: rgba(255,204,102,0.4);
+      transition: background 0.2s, height 0.2s;
+    }
+    .gls-scrub .tick.current {
+      height: 13px;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(255,230,168,0.7);
+    }
+    .gls-scrub-thumb {
+      position: absolute; top: 50%;
+      width: 46px; height: 12px;
+      transform: translate(0, -50%);
+      background: rgba(40,30,8,0.9);
+      border: 1px solid var(--border-hi);
+      box-shadow: 0 0 10px rgba(255,230,168,0.35);
+      cursor: grab;
+      transition: left 0.35s cubic-bezier(0.22, 0.9, 0.3, 1);
+    }
+    .gls-scrub-thumb::after {
+      content: '///';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 8px; letter-spacing: 2px; color: var(--accent);
+      opacity: 0.8;
+    }
+    .gls-scrub.dragging .gls-scrub-thumb {
+      transition: none; cursor: grabbing;
+      border-color: var(--accent);
+      box-shadow: 0 0 16px rgba(255,230,168,0.6);
+    }
+    .gls-scrub:hover .gls-scrub-thumb { border-color: var(--accent); }
+
+    /* ── status bar ── */
+    .gls-status {
+      flex: 0 0 auto;
+      display: flex; align-items: center; gap: 16px;
+      padding: 8px 6px 0;
+      font-size: 10.5px; letter-spacing: 0.2em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+    .gls-status .rec-no { color: var(--accent); }
+    .gls-status .rec-name {
+      color: var(--text-bright);
+      letter-spacing: 0.12em;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      flex: 1 1 auto; min-width: 0;
+    }
+    .gls-status .keys { opacity: 0.55; font-size: 9px; }
+    .gls-index-btn {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.25em;
+      color: var(--text); text-transform: uppercase;
+      border: 1px solid var(--border);
+      background: rgba(20,15,4,0.5);
+      padding: 4px 14px; cursor: pointer;
+      transition: all 0.18s;
+    }
+    .gls-index-btn:hover { color: var(--accent); border-color: var(--border-hi); }
+
+    /* ── index overlay ── */
+    .gls-index-overlay {
+      position: absolute; inset: 0;
+      z-index: 80;
+      display: none;
+      align-items: center; justify-content: center;
+      background: rgba(8,6,2,0.88);
+      backdrop-filter: blur(2px);
+    }
+    .gls-index-overlay.open { display: flex; }
+    .gls-index-panel {
+      max-width: 760px; max-height: 80%;
+      overflow-y: auto;
+      border: 1px solid var(--border-hi);
+      background: rgba(18,14,4,0.97);
+      box-shadow: 0 0 40px rgba(255,230,168,0.15);
+      padding: 22px 28px;
+    }
+    .gls-index-panel h3 {
+      font-size: 11px; letter-spacing: 0.3em; color: var(--accent);
+      margin-bottom: 14px; text-transform: uppercase;
+    }
+    .gls-index-list { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+    .gls-index-list a {
+      color: var(--accent); text-decoration: none;
+      font-size: 11px; letter-spacing: 0.1em;
+      border-bottom: 1px dotted rgba(255,230,168,0.4);
+    }
+    .gls-index-list a:hover { color: #fff; border-bottom-style: solid; }
+    .gls-index-list a.current { color: #fff; border-bottom: 1px solid var(--accent); }
+    .gls-index-rel {
+      margin-top: 16px; padding-top: 10px;
+      border-top: 1px dashed var(--border);
+      font-size: 10px; letter-spacing: 0.1em;
+      color: var(--primary);
+    }
+    .gls-index-rel a {
+      color: var(--accent); text-decoration: none;
+      border-bottom: 1px dotted rgba(255,230,168,0.4);
+    }
+    .gls-index-rel a:hover { color: #fff; border-bottom-style: solid; }
+
+    /* ═══ 表示モード切替（カード＝軌道カルーセル / ブロック＝一覧グリッド） ═══ */
+
+    /* 切替ボタン: 灰色PNGは mask として使い、塗り色はCSS側で与える。
+       別ページへ展開する際は background の色（--primary / --accent）を
+       そのページのアクセント色に差し替えるだけで着色が変わる */
+    .disp-toggle { margin-left: auto; display: flex; gap: 10px; }
+    .disp-btn {
+      width: 32px; height: 32px;
+      padding: 0; border: none; background: none;
+      position: relative;
+      cursor: pointer;
+      opacity: 0.4;
+      transition: opacity 0.18s;
+    }
+    .disp-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--primary);
+      -webkit-mask: var(--icon) center / contain no-repeat;
+      mask: var(--icon) center / contain no-repeat;
+      transition: background 0.18s;
+    }
+    /* アイコンPNGは data URI で埋め込む。mask-image は CORS 必須の読み込みになるため
+       file:// で開くと外部ファイル参照のマスクは失敗し、ボタンが透明になる */
+    .disp-btn.d-card  { --icon: url('data:image/png;base64,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'); }
+    .disp-btn.d-block { --icon: url('data:image/png;base64,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'); }
+    .disp-btn.d-list  { --icon: url('data:image/png;base64,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'); }
+    .disp-btn:hover { opacity: 0.75; }
+    .disp-btn.active { opacity: 1; }
+    .disp-btn.active::before {
+      background: var(--accent);
+      filter: drop-shadow(0 0 8px rgba(255, 230, 168, 0.6));
+    }
+
+    /* ── ブロック表示: カード系UIを畳み、グリッドを開く ── */
+    .mode-block .orb,
+    .mode-block .gls-nav,
+    .mode-block .orb-plate,
+    .mode-block .gls-scrub,
+    .mode-block .loc-panel { display: none; }
+
+    .blk-view {
+      position: absolute; inset: 0;
+      z-index: 45;
+      display: none;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 4px 12px 26px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--dim) transparent;
+    }
+    .blk-view::-webkit-scrollbar { width: 4px; }
+    .blk-view::-webkit-scrollbar-thumb { background: var(--dim); }
+    .mode-block .blk-view { display: block; }
+
+    /* 帯の区切り: レイアウト案の角ドット点線。
+       フィルターで前の帯が畳まれたときは可視の帯同士だけを数える */
+    .blk-group:not([hidden]) ~ .blk-group:not([hidden]) { margin-top: 12px; }
+    .blk-group:not([hidden]) ~ .blk-group:not([hidden])::before {
+      content: '';
+      display: block;
+      height: 3px;
+      margin: 0 4px 12px;
+      background: repeating-linear-gradient(90deg,
+        rgba(255, 204, 102, 0.55) 0 7px, transparent 7px 15px);
+    }
+    .blk-label {
+      font-size: 9px; letter-spacing: 0.32em;
+      color: var(--primary);
+      text-transform: uppercase;
+      padding: 2px 6px 8px;
+    }
+    .blk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+      gap: 2px 8px;
+    }
+    .blk-tile {
+      position: relative;
+      padding: 0; border: none; background: none;
+      cursor: pointer;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .blk-tile[hidden] { display: none; }
+    .blk-fig {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      transition: filter 0.18s;
+    }
+    .blk-fig img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+    .blk-tile:hover .blk-fig,
+    .blk-tile:focus-visible .blk-fig {
+      filter: brightness(1.2) drop-shadow(0 0 12px rgba(255, 230, 168, 0.4));
+    }
+    /* 画像未登録の記録は未スキャン球の簡易版 */
+    .blk-noimg {
+      display: block;
+      width: 60%; height: 60%;
+      margin: 20% auto 0;
+      border-radius: 50%;
+      border: 1px dashed rgba(255, 204, 102, 0.5);
+      background: radial-gradient(circle at 38% 32%,
+        rgba(255, 230, 168, 0.1) 0%, transparent 45%);
+      box-shadow: inset 0 0 18px rgba(255, 204, 102, 0.1);
+    }
+    /* 天体名: ホバー時のみ画像の下に浮かぶ */
+    .blk-name {
+      height: 16px;
+      font-size: 9.5px; letter-spacing: 0.12em;
+      color: var(--accent);
+      white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis;
+      max-width: 100%;
+      opacity: 0;
+      transition: opacity 0.15s;
+      pointer-events: none;
+      text-shadow: 0 0 8px rgba(255, 204, 102, 0.5);
+    }
+    .blk-tile:hover .blk-name,
+    .blk-tile:focus-visible .blk-name { opacity: 1; }
+
+    /* ── ブロック表示の記録パネル: 既存の八角形パネルを中央オーバーレイに転用 ── */
+    .blk-backdrop {
+      display: none;
+      position: fixed; inset: 0;
+      z-index: 85;
+      background: rgba(4, 3, 0, 0.72);
+      backdrop-filter: blur(2px);
+    }
+    .mode-block.blk-open .blk-backdrop { display: block; }
+    .mode-block.blk-open .loc-panel {
+      display: block;
+      position: fixed;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(960px, 92vw);
+      height: min(560px, 72vh);
+      margin: 0;
+      z-index: 90;
+    }
+    .blk-close {
+      display: none;
+      position: absolute;
+      top: 10px; right: 42px;
+      z-index: 5;
+      width: 26px; height: 26px;
+      align-items: center; justify-content: center;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      background: rgba(20, 15, 4, 0.6);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .blk-close:hover { color: #fff; border-color: var(--border-hi); }
+    .mode-block.blk-open .blk-close { display: flex; }
+
+    /* ═══ リスト表示: 初期レイアウトの縦積みリストを復元 ═══
+       記事は panelBody 内に置いたまま、パネルの八角形装飾を外して
+       全記事を planet.css の素のリストカード様式（枠＋右サムネ）で積む */
+
+    /* サムネ枠は記事内に常在させ、カード／ブロック表示では隠す */
+    .gcard-body .loc-thumb { display: none; }
+
+    .mode-list .orb-stage,
+    .mode-list .gls-scrub { display: none; }
+
+    .mode-list .loc-panel {
+      flex: 1 1 auto;
+      min-height: 0;
+      margin-top: 0;
+    }
+    .mode-list .gcard-frame,
+    .mode-list .gcard-inner,
+    .mode-list .loc-panel .seg,
+    .mode-list .gcard-label { display: none; }
+    .mode-list .gcard-body {
+      inset: 0;
+      padding: 6px 10px 30px;
+    }
+    /* planet.css 既定のリストカード様式を復元（gcard-body 用の打ち消しを戻す） */
+    .mode-list .gcard-body .codex-entry {
+      display: flex;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 14px 18px 16px;
+      margin: 0 auto 18px;
+      max-width: 1100px;
+    }
+    .mode-list .gcard-body .loc-thumb { display: flex; }
+    .mode-list .gcard-body .codex-entry:target {
+      border-color: var(--border-hi);
+      box-shadow: 0 0 18px rgba(255, 230, 168, 0.18);
+    }
+    /* フィルターで除外された記事はリストからも畳む */
+    .mode-list .gcard-body .codex-entry.flt-out { display: none; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ CIS-HQ / LOCATION DATABASE — ロケーションデータベース ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="gls-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ 01 / LOCATION DATABASE ]</div>
+      <h1 class="codex-title">LOCATIONS OF THE LYLAT SYSTEM</h1>
+      <p class="codex-p">ライラット星系に存在する惑星・恒星・宙域・軍事拠点に関する観測記録の総覧。星系を五つに大別する「領域」の解説は<a href="glossary.html#deep-core">用語データベース</a>に収録されている。惑星はライラット星系第1惑星から昇順に収録している。第6惑星ステファノーは<a href="glossary.html#stephano">ステファノーの戦い</a>で消滅したため欠番であり、その残骸から成るアステロイド帯を「第6惑星跡」として例外的に収録する。各記録の詳細は「▶ 詳細記事」から閲覧できる。</p>
+    </div>
+
+    <div class="gls-ctrl">
+      <button class="gls-index-btn" id="glsFilterBtn">◈ Filter: ALL</button>
+      <button class="gls-index-btn" id="glsIndexBtn">◈ Index</button>
+      <div class="disp-toggle" role="group" aria-label="表示モード切替">
+        <button class="disp-btn d-card active" id="dispCard" title="カード表示"></button>
+        <button class="disp-btn d-block" id="dispBlock" title="ブロック表示"></button>
+        <button class="disp-btn d-list" id="dispList" title="リスト表示"></button>
+      </div>
+    </div>
+
+    <div class="loc-filter" id="locFilter">
+      <button class="active" data-type="all">ALL</button>
+      <button data-type="planet">惑星</button>
+      <button data-type="star">恒星</button>
+      <button data-type="sector">セクター</button>
+      <button data-type="misc">その他</button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         軌道カルーセル表示
+         新規記録の追加方法: 下の <div id="panelBody"> の中に、従来どおり
+         <article class="codex-entry loc" id="..." data-type="..."> を置くだけでよい。
+         ・loc-thumb の <img> が軌道上のビジュアルとして自動で持ち上がる
+         ・画像が無い記録（<div class="noimg">）は未スキャン球のプレースホルダー表示
+         ・縦長画像などは article に data-orb-scale="1.6" で軌道専用の縮尺を指定できる
+         ・並び順＝DOM順。data-type: planet / star / sector / region / misc
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="orb-stage" id="orbStage">
+      <button class="gls-nav prev" id="glsPrev" aria-label="前の記録"><span class="chev"></span></button>
+      <button class="gls-nav next" id="glsNext" aria-label="次の記録"><span class="chev"></span></button>
+
+      <div class="orb-plate" id="orbPlate">
+        <div class="orb-plate-box">
+          <span class="orb-plate-name" id="orbPlateName">CORNERIA</span>
+        </div>
+        <span class="orb-plate-line"></span>
+      </div>
+
+      <div class="blk-view" id="blkView"></div>
+    </div>
+
+    <!-- インデックスはモードを問わず使うため orb-stage の外（gls-main 直下）に置く -->
+    <div class="gls-index-overlay" id="glsIndexOverlay">
+      <div class="gls-index-panel">
+        <h3>◈ RECORD INDEX</h3>
+        <div class="gls-index-list" id="glsIndexList"></div>
+        <div class="gls-index-rel">関連: <a href="races.html">人種</a> / <a href="factions.html">勢力</a> / <a href="characters.html">人物</a> / <a href="glossary.html">用語</a> / <a href="military.html">軍事</a> / <a href="corporations.html">企業</a></div>
+      </div>
+    </div>
+
+    <div class="blk-backdrop" id="blkBackdrop"></div>
+    <div class="loc-panel">
+      <div class="gcard-frame"></div>
+      <div class="gcard-inner"></div>
+      <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i><i class="seg h s4"></i>
+      <i class="seg v s5"></i><i class="seg v s6"></i>
+      <div class="gcard-label">RECORD // LOCATION</div>
+      <button class="blk-close" id="blkClose" aria-label="記録を閉じる">✕</button>
+      <div class="gcard-body" id="panelBody">
+
+    <!-- ═══ 惑星（昇順） ═══ -->
+
+    <article class="codex-entry loc" id="venom" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">ベノム <span class="en">VENOM — 第1惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#omega">セクターΩ</a> / <a href="factions.html#venom-empire">ベノム帝国</a> 本星</div>
+        <p class="codex-p">ベノム（Venom）は、<a href="#omega">セクターΩ</a>に位置するライラット星系第1惑星。遥か昔、別の惑星系からライラットへ移り住んだ<a href="glossary.html#bremen">開拓団</a>が初めてたどり着いたとされる、辺境にして『始まり』の惑星である。入植直後は豊かな自然環境と安定した気候に恵まれ、開拓団の持ち込んだ疑似生態系との相性の良さも相まって「文明再起の象徴」と讃えられた。だが度重なる環境汚染とそれに伴う天変地異が居住を蝕み、最後には戦争によって持ち込まれたとされる生体兵器がすべてを終わらせた。現在のベノムは一切の生命を寄せ付けない『死の星』である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/venom.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_1.png" alt="Venom"></div>
+    </article>
+
+    <article class="codex-entry loc" id="titania" data-type="planet" data-orb-scale="1.6">
+      <div class="loc-body">
+        <h2 class="codex-h">タイタニア <span class="en">TITANIA — 第2惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#chi">セクターχ</a> / 無所属 — 立入厳禁</div>
+        <p class="codex-p">タイタニア（Titania）は、<a href="#chi">セクターχ</a>に位置するライラット星系第2惑星。移民たちがこの星を発見する以前から既に発達した文明が存在したとされるが、現在はその痕跡をとどめるのみである。希少元素<a href="glossary.html#nividium">ニヴィディウム</a>をはじめとする豊富な地下資源を巡り幾度も領有権争いが起きたものの、異常に強力な磁場が機械を狂わせ、暴走した古代兵器と砂嵐が絶えず襲い来る極限環境の前に、いつしか「禁断の惑星」と呼ばれる無人の星となった。</p>
+        <p class="codex-p">現在のタイタニアには文明と呼べるものは存在しないが、ティターニアンと呼ばれる爬虫類系の少数部族が暮らしており、それがこの星に住む唯一の知的生命体と考えられている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/titania.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_2.png" alt="Titania" style="transform:scale(1.8);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="macbeth" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">マクベス <span class="en">MACBETH — 第3惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#sigma">セクターς</a> / <span style="color:var(--danger);">帝国軍占領下</span></div>
+        <p class="codex-p">マクベス（Macbeth）は、<a href="#sigma">セクターς</a>に位置するライラット星系第3惑星。発見当初より豊富なレアメタル資源を有することが判明し、鉱山惑星として栄えた星系工業の中心地である。周囲の鉱山準惑星群を含むセクター一帯には多数の中小企業が宇宙ステーション型の社屋を構え、「ライラットの鍛冶場」の異名を持つ。</p>
+        <p class="codex-p">この惑星にある兵器工場施設やミサイル施設を停止させれば帝国には決定的なダメージを与えられるが、特殊な公転周期と立地、ほかの惑星よりも高い重力、隕鉄や準惑星が飛び交う宙域、惑星の地表で止まらない火山活動など、あらゆる面で攻略が難しい難攻不落の星である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/macbeth.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_3.png" alt="Macbeth" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="corneria" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">コーネリア <span class="en">CORNERIA — 第4惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#beta">セクターβ</a> / <a href="factions.html#cornerian-republic">共和国</a> 首都惑星</div>
+        <p class="codex-p">コーネリア（Corneria）は、<a href="#beta">セクターβ</a>に位置するライラット星系第4惑星のE1型地球型惑星。コーネリア連合共和国の首都として星系の政治・軍事・経済の中枢を担い、その重要性から第10惑星<a href="#prospero">プロスペロー</a>とならび「ライラット系の至宝」と称されている。星系最高水準の技術力を擁する<a href="military.html#cdf">コーネリア防衛軍（CDF）</a>の総司令部が置かれ、長年にわたり星系の平和維持を支えてきた戦略拠点でもある。</p>
+        <p class="codex-p"><a href="factions.html#venom-empire">ベノム帝国</a>の侵攻により<a href="glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>が勃発した現在は、総力防衛の中枢として星系全土の作戦と補給をこの星が統括している。首都が今も変わらぬ朝を迎え続けていること自体が、戦時下の星系にとって最大の希望であると言ってよい。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/corneria.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_4.png" alt="Corneria" style="transform:scale(0.89);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="fortuna" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">フォルトナ <span class="en">FORTUNA — 第5惑星（現地名: サウリア）</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#lambda">セクターλ</a> / 中立 — 生態系保護区域</div>
+        <p class="codex-p">フォルトナ（Fortuna）は、<a href="#lambda">セクターλ</a>に位置するライラット星系第5惑星。誕生から数十億年を経た今なお原始の生態系が維持され続けている密林の惑星であり、地上は意思を持つかのような原始の森と恐竜が跋扈し、あらゆる文明の定着を拒み続けている。<br>
+        <p class="codex-p">星系の公式記録上の名は「フォルトナ」だが、この星に住む知性ある恐竜族たちは自らの星を<a href="glossary.html#sauria-animalia">「サウリア」</a>と呼ぶ。ひとつの惑星、ふたつの名前──外から名付けた者と、そこに生きてきた者の呼び名である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/fortuna.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_5.png" alt="Fortuna" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="asteroid" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">アステロイド <span class="en">ASTEROID BELT — 第6惑星跡</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="#gamma">セクターγ</a>〜<a href="#delta">δ</a> / <a href="military.html#great-wall">グレートウォール</a>構成体</div>
+        <p class="codex-p">かつてここに、ライラット星系第6惑星ステファノーがあった。<a href="glossary.html#stephano">グランベルの超兵器</a>によって砕かれた星の残骸は、今は共和国の手で最終防衛ライン「グレートウォール」として再生され、コーネリアの空を守り続けている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="glossary.html#stephano">▶ ステファノーの戦い</a>　<a class="rec-btn" href="../planets/greatwall.html">▶ グレートウォール</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_1_3.png" alt="Asteroid Belt"></div>
+    </article>
+
+    <article class="codex-entry loc" id="katina" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">カタリナ <span class="en">KATINA — 第7惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#gamma">セクターγ</a> / 共和国 — グレートウォール第1宙域</div>
+        <p class="codex-p">カタリナ（Katina）は、<a href="#gamma">セクターγ</a>に位置するライラット星系第7惑星宙域の小型地球型惑星。<a href="#corneria">コーネリア</a>に次ぐ「第二のホームタウン」として開発が進む入植惑星であると同時に、最終防衛ライン<a href="military.html#great-wall">グレートウォール</a>第1宙域の要を担う、共和国防衛戦略の最重要拠点である。</p>
+        <p class="codex-p">惑星圏には入植団の輸送船と軍の演習部隊が絶えず行き交い、辺境でありながら星系有数の活気を誇る。牧歌的な赤い大地の上空を、いつも戦闘機の編隊が横切っていく──それがカタリナの日常風景である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/katina.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_7.png" alt="Katina" style="transform:scale(0.88);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="fichina" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">フィチナ <span class="en">FICHINA — 第8惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#xi">セクターξ</a> / 共和国フィチナ州 — <span style="color:var(--danger);">検閲多数</span></div>
+        <p class="codex-p">フィチナ（Fichina）は、<a href="#xi">セクターξ</a>に位置するライラット星系第8惑星。恒星<a href="#solar">ソーラ</a>圏の最外縁を巡る極寒の氷結惑星である。同じソーラ圏の<a href="#aquas">アクアス</a>や<a href="#zoness">ゾネス</a>が水資源と温暖な気候に恵まれる一方、姉妹たちから倍近く離れた軌道を巡るこの星だけは、厚い氷雪のアルベドも相まって、地表は年間を通して氷点下の世界が広がっている。<br>
+かつては<a href="factions.html#cornerian-republic">コーネリア連合共和国</a>を構成する5国家の一つ「旧・サルジーナヤ連邦」の母星であり、現在は共和国フィチナ州としてその政治基盤を引き継いでいる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/fichina.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_6.png" alt="Fichina" style="transform:scale(0.88);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="kew" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">キュー <span class="en">KEW — 第9惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#stigma">セクターϚ</a> / <a href="factions.html#hactiva-union">ハクティバ通商連合</a>・<a href="glossary.html#arpeggio">アルペジオ</a></div>
+        <p class="codex-p">キュー（Kew）は、<a href="#stigma">セクターϚ</a>に位置するライラット星系第9惑星。元は<a href="glossary.html#paranid-empire">パラニド神聖帝国</a>の首都惑星であり、神聖帝国崩壊後は長らく放置されていたが、ビッグ・ボス率いるマフィア<a href="glossary.html#arpeggio">アルペジオ</a>によって「再開発」され、巨大なエキュメノポリスを有する都市惑星へと変貌した。</p>
+        <p class="codex-p">キューの属するハクティバ圏は、ライラットの五つの恒星のうち最も外れに置かれた双子星の領域である。中央の<a href="#lylat-prime">ライラット・プライム</a>圏や<a href="#solar">ソーラ</a>圏とは距離ばかりでなく、文化も法も商いの作法も大きく隔たっている。両軍の戦略地図にこの圏の惑星が描き込まれることはまれであり、代わりにキュー・<a href="#eladard">エラダード</a>・<a href="#papetoon">パペトゥーン</a>・<a href="#setebos">セティボス</a>の名が並ぶのは、決まって武器の買い付け先と資材の取引先を記した欄である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/kew.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_9.png" alt="Kew" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="prospero" data-type="planet" data-orb-scale="1.9">
+      <div class="loc-body">
+        <h2 class="codex-h">プロスペロー <span class="en">PROSPERO — 第10惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#theta">セクターθ</a> / 共和国 — <span style="color:var(--danger);">市街地係争中</span></div>
+        <p class="codex-p">プロスペロー（Prospero）は、<a href="#theta">セクターθ</a>に位置するライラット星系第10惑星。穏やかな気候を保ち続ける環境の良さから<a href="#corneria">コーネリア</a>に次ぐ文明の拠点となった重要な惑星であり、首都惑星への物資供給と星系住民の居住区の役割を担う。その重要性から、コーネリアと並び「ライラット系の至宝」と称される。</p>
+        <p class="codex-p">セクターθと<a href="#beta">セクターβ</a>には星系総人口の半数が集中しているといわれ、惑星圏は星系最大の人口密度を誇る。本来この星は非戦闘地域であり、いかなる武力行為も禁じられていたはずだった。だが<a href="factions.html#venom-empire">帝国軍</a>はそれを反故にし、住民の多くを人質に取っている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/prospero.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_10.png" alt="Prospero"></div>
+    </article>
+
+    <article class="codex-entry loc" id="eladard" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">エラダード <span class="en">ELADARD — 第11惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#digamma">セクターϝ</a> / <a href="factions.html#hactiva-union">ハクティバ通商連合</a> 本拠地 — 中立地帯</div>
+        <p class="codex-p">エラダード（Eladard）は、<a href="#digamma">セクターϝ</a>に位置するライラット星系第11惑星。双子星<a href="#hactiva">ハクティバ</a>と<a href="#paranid">パラニド</a>の共通重心を公転する工業惑星であり、<a href="factions.html#hactiva-union">ハクティバ通商連合</a>の本拠地である。<a href="factions.html#cornerian-republic">コーネリア連合共和国</a>・<a href="factions.html#venom-empire">ベノム帝国</a>双方と武器取引が行われているため、両軍から中立地として指定されている。</p>
+        <p class="codex-p">「中立」とは名ばかりで、その実態は星系最大の武器工場である。<a href="glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>の両陣営はいずれもこの星からの武器供与に依存しており、エラダードの工廠が止まれば戦争そのものが止まるとまで言われる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/eladard.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_11.png" alt="Eladard" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="aquas" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">アクアス <span class="en">AQUAS — 第12惑星（旧名: アリエル）</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#mu">セクターμ</a> / 共和国アクアス州 — 先住種族保護区</div>
+        <p class="codex-p">アクアス（Aquas）は、<a href="#mu">セクターμ</a>に位置するライラット星系第12惑星。恒星<a href="#solar">ソーラ</a>を公転する全海洋惑星であり、<a href="#zoness">ゾネス</a>と並んで「水の姉妹星」と讃えられる美しい海の星である。かつて<a href="factions.html#cornerian-republic">コーネリア連合共和国</a>を構成した「旧・タッドー共和国」の故地でもある。旧名は「アリエル」。共和国への併合に際し、タッドー語の発音が<a href="races.html#anubisoid">アヌビソイド</a>には難しかったため、現在の名に改められた。</p>
+        <p class="codex-p">惑星圏のみならず<a href="#mu">セクターμ</a>全体が先住水棲種族<a href="races.html#native-aquan">ネイティブ・アクアン</a>の保護区域に指定されており、他セクターからの来訪者には審査と通行料が課される。星系でも珍しい「入るのに許可がいる惑星」である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/aquas.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_12.png" alt="Aquas" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="zoness" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">ゾネス <span class="en">ZONESS — 第13惑星（旧名: ウンブリエル）</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#nu">セクターν</a> / <span style="color:var(--danger);">帝国軍占領下 — 汚染警報</span></div>
+        <p class="codex-p">ゾネス（Zoness）は、<a href="#nu">セクターν</a>に位置するライラット星系第13惑星。<a href="#aquas">アクアス</a>と同じく恒星<a href="#solar">ソーラ</a>を公転する海洋惑星で、旧名を「ウンブリエル」という。かつては星系一の海洋リゾートとして知られたが、現在は<a href="factions.html#venom-empire">ベノム帝国</a>の占領下にあり、違法採掘業者の巣窟と化している。</p>
+        <p class="codex-p">帝国の廃棄物投棄によって海洋汚染は惑星規模に達し、環境指数は開戦前の80台から18まで急落した。星系史上最悪の環境破壊の現場であり、共和国はこの星の奪還を「領土の回復」ではなく「海の救助」と位置付けている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/zoness.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_13.png" alt="Zoness" style="transform:scale(0.88);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="papetoon" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">パペトゥーン <span class="en">PAPETOON — 第14惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#heta">セクターͰ</a> / 共和国（実効統治）</div>
+        <p class="codex-p">パペトゥーン（Papetoon）は、<a href="#heta">セクターͰ</a>に位置するライラット星系第14惑星。恒星<a href="#hactiva">ハクティバ</a>圏に属する乾燥惑星であり、「ライラット系で最も田舎の地域」と称される辺境である。現在も略奪や賊が跋扈する無法の気風が残るが、20年近く前に<a href="factions.html#cornerian-republic">コーネリア共和国</a>の<a href="glossary.html#academy-branches">士官学校分校</a>が置かれてからは、実質的な共和国領となっている。</p>
+        <p class="codex-p">そして何より、この星は<a href="military.html#starfox">スターフォックス</a>の礎を築いた伝説の傭兵<a href="../characters/james.html">ジェームズ・マクラウド</a>の故郷として、星系中にその名を知られている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/papetoon.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_14.png" alt="Papetoon" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="setebos" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">セティボス <span class="en">SETEBOS — 第15惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#janja">セクターϫ</a> / <a href="factions.html#hactiva-union">通商連合</a>採掘圏 — 旧<a href="factions.html#iga">独立星系連合</a>本拠地</div>
+        <p class="codex-p">セティボス（Setebos）は、<a href="#janja">セクターϫ</a>に位置するライラット星系第15惑星にして、星系唯一の巨大ガス惑星である。直径11万8000キロメートルの巨体はハクティバ・パラニド星系の最外縁を周回し、二つの恒星と複雑な重力相互作用で影響し合っている。<a href="#hactiva">ハクティバ</a>の太陽風の影響で極域に六角形のオーロラが出現するなど、この星の気象は星系のどこにも似ていない。大気はアンモニア・窒素・水素を主成分とする分厚い有毒の層で陸地は存在しない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/setebos.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_15.png" alt="Setebos" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="grippia" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">グリッピア <span class="en">GRIPPIA — 第16惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="#koppa">セクターϞ</a> / <a href="corporations.html#grippia-works">グリッピア・ワークス社</a> 私有</div>
+        <p class="codex-p">グリッピア（Grippia）は、<a href="#koppa">セクターϞ</a>に位置するライラット星系第16惑星。星系最外縁の「真の辺境」に属する極寒の岩石惑星である。この星の特異性はその所有形態にある。惑星は<a href="races.html#heketoid">ヘケトイド</a>の実業家<a href="characters.html#grippy">グリッピー・トード</a>が創業した<a href="../corporations/grippia-works.html">グリッピア・ワークス社</a>の私有地であり、星の名も彼にちなむ。そして採掘・精錬・宙域管理の実務は、同社の採掘部門子会社<a href="glossary.html#mining-guild">コーネリア特殊金属株式会社（CGM社）</a>が一手に担っているのである。</p>
+        <p class="codex-p">「一企業が一惑星と一宙域を私有する」という前例のない形態は<a href="factions.html#cornerian-republic">共和国</a>議会でもたびたび議題に上っているが、CGM社製特殊合金と希少元素<a href="glossary.html#nividium">ニヴィディウム</a>の供給網への依存を背景に現状は黙認が続いている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/grippia.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_16.png" alt="Grippia" style="transform:scale(0.88);"></div>
+    </article>
+
+    <!-- ═══ 恒星 ═══ -->
+
+    <article class="codex-entry loc" id="lylat-prime" data-type="star">
+      <div class="loc-body">
+        <h2 class="codex-h">ライラット・プライム <span class="en">LYLAT PRIME — ライラットα星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">恒星</span> B2型 青色大型恒星 / <a href="#alpha">セクターα</a></div>
+        <p class="codex-p">ライラット・プライム（Lylat Prime）は、<a href="#alpha">セクターα</a>の中心に位置するライラットα星。B2型に属する青く巨大な恒星であり、ライラット星系の全天体と星雲は、直接あるいは間接にこの星の重力に従って回っている。星系の名はこの星に由来し、この星の存在がライラット文明の全ての前提である。</p>
+        <p class="codex-p">そして同時に、この星は星系最大の謎でもある。スペクトル観測によれば極大質量のB2型恒星の寿命は長くて数千万年。だがライラット・プライムは40億年以上輝き続け、今なお完全な安定を保っている。この「あり得ない長寿」に説明を与えられた者は、まだいない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/lylat_prime.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_S_1.png" alt="Lylat Prime" style="transform:scale(0.89);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="solar" data-type="star">
+      <div class="loc-body">
+        <h2 class="codex-h">ソーラ <span class="en">SOLAR — ライラットβ星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">恒星</span> M3型 橙色小型恒星（特異組成） / <a href="#omicron">セクターο</a></div>
+        <p class="codex-p">ソーラ（Solar）は、<a href="#omicron">セクターο</a>の中心に位置するライラットβ星。M3型に属するオレンジ色の小型恒星であり、主星<a href="#lylat-prime">ライラット・プライム</a>の伴星として、惑星が密集するエリアを公転している。<a href="#aquas">アクアス</a>、<a href="#zoness">ゾネス</a>、<a href="#fichina">フィチナ</a>はこの星を公転しており、<a href="#macbeth">マクベス</a>は近日点通過時にソーラと接近するタイミングがある。</p>
+        <p class="codex-p">「恒星の周りを回る恒星」というその存在は、ライラットの空に二つの太陽を昇らせる。星系の暦、神話、航海術──ライラット文明の根幹には、常にこの第二の太陽の姿があった。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 恒星圏 — 接近制限</span></p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/solar.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_S_2.png" alt="Solar" style="transform:scale(0.89);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="hactiva" data-type="star">
+      <div class="loc-body">
+        <h2 class="codex-h"><span id="paranid"></span>ハクティバ ／ パラニド <span class="en">HACTIVA &amp; PARANID — ライラットγ星／δ星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">恒星</span> F1型／F2型 白色中型恒星 — 双子の太陽 / <a href="#san">セクターϻ</a></div>
+        <p class="codex-p">ハクティバ（Hactiva／ライラットγ星）とパラニド（Paranid／ライラットδ星）は、<a href="#san">セクターϻ</a>に位置する二つの白色中型恒星である。F1型とF2型、ほぼ同格の二星は互いに狭い距離で周回軌道を持ち、「双子の太陽」と呼ぶべき関係にある。</p>
+        <p class="codex-p">星系外縁を回りながら独立した星系を保持しており、その重力圏には<a href="#eladard">エラダード</a>、<a href="#kew">キュー</a>、<a href="#papetoon">パペトゥーン</a>の3惑星と、捕捉された巨大ガス惑星<a href="#setebos">セティボス</a>が属する。この「ハクティバ圏」は内惑星群とは全く異なる文化と経済の圏域であり、<a href="factions.html#hactiva-union">ハクティバ通商連合</a>の名は当然、この星に由来する。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/hactiva.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_S_3.png" alt="Hactiva and Paranid"></div>
+    </article>
+
+    <article class="codex-entry loc" id="dogma-central" data-type="star">
+      <div class="loc-body">
+        <h2 class="codex-h">ドグマ・セントラル <span class="en">DOGMA CENTRAL — ライラットε星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">恒星</span> Mx7型 深紅小型恒星 / <a href="#sho">セクターϸ</a>・<a href="#yot">j</a> — <span style="color:var(--danger);">観測不能</span></div>
+        <p class="codex-p">ドグマ・セントラル（Dogma Central）は、<a href="#sho">セクターϸ</a>の中心に位置するライラットε星。Mx7型に属する深紅の小型恒星であり、ライラット星系の最外縁、「真の辺境」というべき位置にある。周囲を暗黒星雲が覆い隠すように周回しているため、その姿が観測されること自体が稀である。</p>
+        <p class="codex-p">数年前からこのドグマ近辺──<a href="#yot">セクターj</a>──で謎の<a href="glossary.html#contact-signal">コンタクト信号</a>が発信されているとの報告が挙がっているが、<a href="glossary.html#lylat-wars-2">戦時下</a>の状況もあり、実質的に放置されているのが現状である。<br><span class="badge badge-warn" style="margin-top:6px;display:inline-block;">⚠ 未踏宙域 — 信号発信源未特定</span></p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/dogma.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/Dogma_info.jpg" alt="Dogma Central" style="width:100%;height:100%;object-fit:cover;"></div>
+    </article>
+
+    <!-- ═══ セクター宙域 ═══ -->
+
+    <!-- ═══ セクター宙域（旧 宙域データベースより統合） ═══
+         セクター区分の総説は glossary.html#sector-system へ移設（2026-08-05） -->
+
+    <article class="codex-entry loc" id="alpha" data-type="sector">
+      <h2 class="codex-h">セクターα <span class="en">SECTOR ALPHA — ライラット・プライム恒星宙域</span></h2>
+      <p class="codex-p">ライラット星系の中央に位置する、星系で最も広いセクター。恒星<a href="#lylat-prime">ライラット・プライム</a>の影響を強く受けるため惑星・星雲は存在せず、戦略的価値も低い。灼熱の恒星圏を避けるため、全ての<a href="glossary.html#warp-route">ワープドライブ航路</a>はこのセクターを迂回するよう敷設されている。少数の実験施設や観測所が置かれているのみであり、数少ない恒久施設として、恒星至近軌道でエネルギー資源を精製する<a href="../planets/lylat_prime.html">「ブラグザ・ソーラークリスタル充填基地」</a>が知られる。</p>
+      <p class="codex-p">戦略的価値が低いとされる一方、「星系の中心を誰も横断できない」という事実そのものが、ライラットのあらゆる戦略の前提となっている。艦隊は必ず恒星圏を大きく迂回せねばならず、両軍の参謀候補生が最初に叩き込まれるのは「αを挟んだ増援は間に合わない」という原則である。なお至近軌道の観測所勤務は「星系で最も日焼けする配属」と揶揄されるが、充填基地の職員手当は全公務員中最高額とされ、志願者は絶えないという。</p>
+      <p class="codex-p">外縁から望むセクターαは、桃赤の殻に包まれた巨大な泡として観測される。<a href="#lylat-prime">ライラット・プライム</a>の強烈な恒星風が原始円盤の残りを外へ押しやり、境界に掃き寄せられた水素が同星の紫外線に灼かれて発光しているものと解析されている。この殻はαに残る唯一の星間物質であり、セクターの境界線そのものを形づくっている。内側は風に晴れ渡っており、青紫の散乱光を透かして遠方の星々まで見通せる。構造が桁外れに大きいため、プライムを挟んで反対側へ回り込まない限り、セクターのほぼ全域からその輝きを望むことができる。天文局の分類は恒星風泡だが、船乗りたちは古くからこれを「プライムの繭」と呼び、殻の縁を迂回航路の目印としてきた。惑星も星雲も存在しないという記述は、正確にはこの殻の内側を指している。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_01_alpha.png" alt="Sector Alpha"></div>
+    </article>
+    <article class="codex-entry loc" id="beta" data-type="sector">
+      <h2 class="codex-h">セクターβ <span class="en">SECTOR BETA — ライラット星系第4惑星宙域</span></h2>
+      <p class="codex-p"><a href="#corneria">コーネリア</a>惑星圏および公転軌道に位置するセクター。共和国首都惑星のためインフラが行き届いており、星系内に9本存在する<a href="glossary.html#warp-route">ワープドライブ航路</a>が全て交差する星系交通の心臓部である。</p>
+      <p class="codex-p">全航路が一点で交わる構造は利便の象徴であると同時に、防衛計画上の急所でもある。βの航路管制が沈黙すれば星系の物流は数日で麻痺する──開戦以来、<a href="military.html#cdf">CDF</a>は管制系統の予備を三重に増設し、民間船の入域審査を大幅に強化した。それでも過密する出入港の列は絶えることがなく、βの管制官は「星系で最も早口な職業」と呼ばれている。</p>
+      <p class="codex-p">セクターβを満たすのは、青白い光を放つ星間ガスの環状星雲である。コーネリアの夜空を一年中飾る光であり、首都圏の市民には「都の環」の名で親しまれている。中央に開いた二つの空洞は自然の産物ではない。濃密なガス帯をワープドライブで通過すると重力波<a href="glossary.html#warp-route">「グラビティ・シャドウ」</a>が反射して増幅されるため、共和国は航路の通り道からガスを電磁的に排除し、真空の筒を穿った。上りと下りで穴が二つに分けられているのは、対向する航跡どうしの干渉を避けるためである。星雲は自らの重力で穴を埋め戻そうとするため、筒の内壁では掃気設備が絶えずガスを掻き出し続けている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_02_beta.png" alt="Sector Beta"></div>
+    </article>
+    <article class="codex-entry loc" id="gamma" data-type="sector">
+      <h2 class="codex-h">セクターγ <span class="en">SECTOR GAMMA — 第7惑星宙域 / グレートウォール第1宙域</span></h2>
+      <p class="codex-p"><a href="#katina">カタリナ</a>惑星圏および<a href="military.html#great-wall">グレートウォール</a>第1宙域を構成するセクター。コーネリアからの入植団や軍事演習により多くの人口が行き交う活発なセクターであり、アステロイドの安全な抜け道でもある。</p>
+      <p class="codex-p"><a href="glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>では帝国軍超大型母艦の直接侵攻を受け、基地全滅寸前からの逆転劇「カタリナの奇跡」の舞台となった。以来このセクターは共和国側の士気の象徴となっており、ビル・グレイ隊長率いる第7飛行隊が守る空は、新兵の配属希望が最も集中する宙域だという。「壁の要石」を自任する駐留軍と民間入植地が同居する、前線と暮らしの距離が最も近い場所でもある。</p>
+      <p class="codex-p">セクターγを覆うのは、黄緑の柔らかな光を湛えた大星雲である。一端が鋭く尖った独特の形をしており、その尖端が指す延長線上を<a href="#katina">カタリナ</a>の公転軌道が横切っている。メジャー<a href="glossary.html#warp-route">ワープドライブ航路</a>の整備以前、この宙域の航海はもっぱらこの尖端を頼りに行われていた。尖った先を追い続ければいつかカタリナに至る──入植期の航海術はその一点に集約されていたのであり、尖端はいつしか「カタリナの鏃」と呼ばれるようになった。航路網が完成した現在も呼び名と慣習は失われておらず、カタリナ生まれの操縦士は計器より先に窓の外を見るといわれる。星雲を斜めに横切る岩塊の列は<a href="military.html#great-wall">グレートウォール</a>第1宙域の外縁であり、黄緑の光を鈍く照り返しながら壁の奥へと流れていく。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_03_gamma.png" alt="Sector Gamma"></div>
+    </article>
+    <article class="codex-entry loc" id="delta" data-type="sector">
+      <h2 class="codex-h">セクターδ <span class="en">SECTOR DELTA — グレートウォール第2宙域</span></h2>
+      <p class="codex-p">コーネリアを守るために配備された隕石群<a href="military.html#great-wall">グレートウォール</a>を構成するセクター。大量の隕石が磁力に共鳴して飛び交っており、交通は推奨されていない。深部では未解明のエネルギーが観測されている。</p>
+      <p class="codex-p">隕石の一つ一つには互いに反発する特殊な磁性が付与されており、接触しても大衝突には至らず、壁としての密度を保ったまま安定を維持する。内側には迎撃機雷網とセンサーアレイが張り巡らされ、隕石の陰には即応飛行隊の秘匿ハンガーが点在する──「壁は石ではなく、目と牙でできている」とは士官学校の防衛講義の常套句である。なお深部エネルギーの学術調査は、戦時を理由に凍結されたままとなっている。</p>
+      <p class="codex-p">セクターδの星雲は、星系の歴史からすればごく最近生まれた新しい構造である。隣接する<a href="#area3">AREA3</a>が隕石の軌道を制御するために展開する誘導磁場が、<a href="#beta">セクターβ</a>の星間物質と微小な隕石を長年にわたって掃き寄せ、青白いガスの帯として形をとったものと解析されている。天然の星雲ではなく壁の運用が生んだ副産物であり、その輪郭は磁場の及ぶ範囲とほぼ重なる。この淡い青が視界に入っていれば、その船はすでにグレートウォールの管轄下にある。星雲の中心では磁力に捕らえられた隕石群が環をなして回り続けており、囲まれた空洞では近年、未解明のエネルギーの渦が観測された。ワームホール形成の前触れではないかとの指摘もあるが、深部の調査が凍結されている以上、検証の目処は立っていない。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_04_delta.png" alt="Sector Delta"></div>
+    </article>
+    <article class="codex-entry loc" id="epsilon" data-type="sector">
+      <h2 class="codex-h">セクターε <span class="en">SECTOR EPSILON — グレートウォール第3宙域</span></h2>
+      <p class="codex-p">コーネリアの軍事拠点<a href="#area3">AREA3</a>が配備されたセクター。巨大環状宇宙ステーションであるAREA3では、都市戦や艦隊戦の模擬演習が頻繁に行われている。</p>
+      <p class="codex-p">AREA3は全隕石の軌道を管理する「壁の頭脳」であり、壁を通過できる唯一の公式検問航路を運用している。隕石の軌道を意図的に「開閉」して侵攻艦隊を誘い込む運用構想は「壁の呼吸」と呼ばれ、その詳細は共和国軍の最高機密の一つである。また<a href="glossary.html#pioneer-ministry">開拓庁</a>の出張所が置かれ、<a href="#gamma">カタリナ</a>入植団はここで宇宙生活への適応訓練を受けてから降下する。「AREA3を出た部隊は一人前」──共和国軍人の共通認識である。</p>
+      <p class="codex-p">セクターεの星雲も<a href="#delta">δ</a>と同じく、隕石誘導の副産物として近年になり形づくられた構造である。掃き寄せられた大量の星間物質が幾重もの層をなし、<a href="#lylat-prime">ライラット・プライム</a>の光を受けてプラズマ反応を起こすことで琥珀色に発光する。密度の高い雲塊は光を通さず影となって浮かび上がるため、黄金の雲海に黒い塊が沈んだ独特の景観を生む。同じ成り立ちでありながらδのような青白い色にならない理由は、いまだ説明が付いていない。AREA3の展望区画から望むこの光景は星系有数の絶景に数えられ、演習に訪れた新兵が最初に息を呑む場所とされる。同時にこの発光層は可視光による観測と通信を物理的に遮る幕でもあり、ステーションの動静を外から窺わせない。「壁の呼吸」が今日まで機密であり続けているのは、星雲そのものが最良の遮蔽となっているためである。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_05_epsilon.png" alt="Sector Epsilon"></div>
+    </article>
+    <article class="codex-entry loc" id="zeta" data-type="sector">
+      <h2 class="codex-h">セクターζ <span class="en">SECTOR ZETA — 宇宙艦隊スターブレード駐屯宙域</span></h2>
+      <p class="codex-p">コーネリア共和国の主力艦隊<a href="#starblade">スターブレード</a>が配備されたセクター。セクターγと隣接しカタリナの軍事基地と相互に守りを固めていたが、帝国軍の奇襲作戦により壊滅の危機に瀕している。</p>
+      <p class="codex-p">開戦劈頭、<a href="#upsilon">サルガッソー</a>に潜伏していた帝国艦隊の奇襲により主力の過半を喪失した<a href="glossary.html#zeta-tragedy">「セクターζの惨劇」</a>は、共和国軍史上最悪の損害として記録されている。旧5国艦隊を統合した「共和国の刃」は現在、稼働率4割からの再建の途上にあるが、失われたのは艦体だけではない──「艦は作れても、練度と絆は作れない」とは、再建を指揮する提督の言葉である。惨劇の戦訓は全艦隊の哨戒教範を書き換えさせた。</p>
+      <p class="codex-p">セクターζで目を引くのは星間物質よりも、艦隊の隙間を縫って走る宇宙規模の雷である。<a href="#lylat-prime">ライラット・プライム</a>の磁力線が宙域の希薄なガスを励起し、数十sm規模の放電が枝を広げては消える現象が絶え間なく続いている。プラズマの流れは物質を避けて進む性質を持つため、雷光の直下に艦を並べても被雷はほとんど起こらず、見かけの荒々しさに比べて危険度は低い。そしてこの放電こそが、大艦隊をこの地に留め置く最大の理由である。艦は集電索を展開するだけで雷のエネルギーを直接取り込むことができ、補給線に頼らず全艦の電力を賄える。コーネリア連合共和国が成立するはるか以前、旧5国がそれぞれの旗を掲げていた時代から、混成大艦隊はこの雷の下に集っていたのである。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_06_zeta.png" alt="Sector Zeta"></div>
+    </article>
+    <article class="codex-entry loc" id="theta" data-type="sector">
+      <h2 class="codex-h">セクターθ <span class="en">SECTOR THETA — ライラット星系第10惑星宙域</span></h2>
+      <p class="codex-p"><a href="#prospero">プロスペロー</a>惑星圏に位置するセクター。ライラット星系の総人口の半数はこのセクターθとセクターβに集中しているといわれるほどの人口密集地であり、商業船の航路が多数敷かれている。</p>
+      <p class="codex-p">だが「戦後復興の象徴」と呼ばれた繁栄の中枢は、開戦とともに星系最大の人質となった。帝国軍はプロスペローを占領し、市街地に部隊と兵器を潜ませる人口盾政策を敷いているため、共和国は火力による奪還を封じられている。「θを撃てない」という一点が共和国の作戦全体を縛り続けており、市民を巻き込まない奪還計画の立案は、参謀本部で最も報われない仕事と囁かれている。</p>
+      <p class="codex-p">セクターθに浮かぶのは、青紫の淡い光を湛えた輪状の星雲である。この宙域にはかつて巨大な星間光球「ブラグザライト」が存在していたが、メジャーワープドライブ航路<a href="glossary.html#nine-routes">プロスペロー・ライン</a>の開通工事によって破壊され、吹き散らされた外層が惑星状星雲に似た環となって残った。中心を横切る一条の帯は、航路が光球を貫いて掘り抜いた跡と考えられている。輪の光は淡く、数百の衛星都市が織りなす地上の光の下では、プロスペローの空からほとんど見ることができない。だが視線を足元へ移せば光景は一変する。都市光の届かない自然保護区では、沼の黒い水面がこの環の光だけを静かに映し取り、天と地に二つの輪が向かい合う。保護区を訪れる者はこれを「沈んだ光球」と呼び、失われた光の名残として静かに眺めている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_07_theta.png" alt="Sector Theta"></div>
+    </article>
+    <article class="codex-entry loc" id="iota" data-type="sector">
+      <h2 class="codex-h">セクターι <span class="en">SECTOR IOTA — 実験スペースコロニー廃棄宙域</span></h2>
+      <p class="codex-p">かつて理想の居住環境を作り出す実験として建造されたスペースコロニー<a href="#oberon">オベロンⅡ</a>の廃棄宙域。近年は調査船や演習中の戦闘機が多数行方不明になるなど、不穏な噂が絶えない。</p>
+      <p class="codex-p">「理想の居住環境」を追求したはずのコロニーがなぜ廃棄されたのか、その経緯を記した公文書は大半が非公開のままである。サルベージ許可は一切下りず、それでも忍び込んだ回収屋が戻らない事例が続いたため、現在は接近禁止ブイが二重に敷設されている。夜間、無人のはずのコロニーの窓に灯りが点って見えるという通報は年に数件寄せられており、公式には「太陽光の反射」と説明されている。</p>
+      <p class="codex-p">セクターιの中央には、黄金と緑の光を帯びた巨大なガスの柱が屹立している。どのような過程で形成されたのかは今も分かっていないが、その姿は遠く離れた宙域からでも識別できるほど際立っている。<a href="#oberon">オベロンⅡ</a>がこの位置に建造されたのは、<a href="#gamma">セクターγ</a>のように遠方からでも分かる道標となる星雲のそばに置きたいという、計画側の要望によるものであった。ステーションは柱の先端へ据えられ、道標としての目的は十二分に達せられている。だが放棄されて以降、この柱が果たす役目は正反対のものへ変わった。無人であるはずのオベロンⅡからはごくまれに正体不明の信号と光が発せられ、それを受けた柱の先端が淡く輝くことがある。天文局はガスによる反射光の一種と説明しているが、輝きが信号の受信と同時に観測された例も報告されており、通りかかる者の好奇心と恐怖を等しく煽る現象として広く知られている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_08_iota.png" alt="Sector Iota"></div>
+    </article>
+    <article class="codex-entry loc" id="kappa" data-type="sector">
+      <h2 class="codex-h">セクターκ <span class="en">SECTOR KAPPA — ペルディタ宇宙センター管理宙域</span></h2>
+      <p class="codex-p"><a href="glossary.html#trinculo">トリンキュロー回廊</a>の入り口と<a href="glossary.html#route-core-ring">コア・ワールド環状線</a>が交わる位置に広がる、星系交通の結節宙域。中心には6つの航路が重複する<a href="#perdita">「ペルディタ宇宙センター」</a>が位置し、コアワールドとアウターリムを行き来する膨大な交通を、混線しないよう振り分け続けている。交通の要所がそのまま巨大宇宙センターへ成長したものであり、ライラット系最大の宇宙港、および惑星に置かれていない港としては単体で最大の規模を誇る（<a href="glossary.html#nine-routes">9大ワープ航路</a>の項を参照）。</p>
+      <p class="codex-p">何層にも重なる航路とループ状の分岐が立体的に交差する景観は「星系最大の結び目」と形容され、管制の明かりが消えることはない。乗り継ぎのためだけにこの宙域へ立ち寄る旅客と貨物は年間で惑星の総人口に匹敵するとされ、港湾区画には星系中の言葉と食が流れ込む。星に降りない暮らしを選んだ住人も多く、「ペルディタ生まれ」は出身惑星の欄に宙域名を書く数少ない民である。</p>
+      <p class="codex-p">セクターκの星間物質は、<a href="#phi">セクターφ</a>の<a href="glossary.html#trinculo">トリンキュロー回廊</a>を出入りする流れが運び込んだものであり、この宙域はその集積点にあたる。航路が一本も敷かれていなかった時代から、集まったガスは左右へ大きく広がる形をとっており、「翅を広げた蝶」あるいは「翼を広げた鳥」と称えられてきた。星系でも指折りの目立つ星雲があるという事実は、交通の要所を開発するうえでこれ以上ない道しるべとなった。現在のペルディタ宇宙センターは、この蝶の形に沿って区画を広げるように建造されている。遠方から宙域を望むと、幾重にも交差するワープドライブ航路の筋が星雲の光の中に浮かび上がる。他のどのセクターにも見られないこの光景は、星系の旅人に長く親しまれてきた。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_09_kappa.png" alt="Sector Kappa"></div>
+    </article>
+    <article class="codex-entry loc" id="lambda" data-type="sector">
+      <h2 class="codex-h">セクターλ <span class="en">SECTOR LAMBDA — ライラット星系第5惑星宙域</span></h2>
+      <p class="codex-p"><a href="#fortuna">フォルトナ</a>惑星圏に位置するセクター。宙域の至る所に謎の生物の顔や上半身を模した「スペースオベリスク」が点在しているほか、エネルギーに引き寄せられる宇宙生物が多数生息している。</p>
+      <p class="codex-p">開戦後、帝国軍がフォルトナ地表に恐竜改造施設を建設した直後から、惑星との通信は途絶している。スペースオベリスクが「何を向いて立っているのか」は今も解明されておらず、宙域の宇宙生物たちはなぜかオベリスクの周囲だけを避けて泳ぐ。<a href="military.html#cdf">CDF</a>情報部はこのセクターの定期偵察を欠かさないが、報告書の結語は毎回同じである──「異常なし。ただし、正常の定義は不明」。</p>
+      <p class="codex-p">セクターλを覆うのは、深い新緑の光を湛えた星雲である。宇宙空間にありながら森の只中へ立っているかのような錯覚を起こさせ、その感覚がかえってこの宙域の不気味さを際立たせている。<a href="glossary.html#warp-route">ワープドライブ航路</a>は通じているものの、実際に足を踏み入れるのは相当な物好きか、正式な許可を得た研究機関に限られる。緑の光が視界に入ったら迷わず針路を変えること──フォルトナの惑星圏を行く者の間では、明文化されないままこの一点が守られてきた。警戒は個人の心得にとどまらない。メジャーワープドライブ航路<a href="glossary.html#route-core-ring">コア・ワールド環状線</a>は、その名の通り整った同心円を描くはずの航路でありながら、この宙域を避けるためだけに円弧を大きく歪めて敷設されている。星系の交通網そのものが、フォルトナには近寄りたくないと表明しているに等しい。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_10_lambda.png" alt="Sector Lambda"></div>
+    </article>
+    <article class="codex-entry loc" id="mu" data-type="sector">
+      <h2 class="codex-h">セクターμ <span class="en">SECTOR MU — ライラット星系第12惑星宙域</span></h2>
+      <p class="codex-p"><a href="#aquas">アクアス</a>惑星圏に位置するセクター。先住種族<a href="races.html#native-aquan">ネイティブ・アクアン</a>の保護区域でもあり、他セクターからの来訪者には審査と通行料が課される。惑星本体よりも周回軌道上の衛星の方が人口が多い。</p>
+      <p class="codex-p">併合時に「アリエル」から改名された旧タッドー共和国の故地であり、審査と通行料の制度は先住種族との保護協定に基づいている。<a href="glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>では帝国のバイオウェポンが海中へ持ち込まれ、<a href="military.html#starfox">スターフォックス</a>の潜航艇<a href="military.html#bluemarine">ブルーマリン</a>による掃討作戦の舞台となった。それでも保護区の規制は戦時下でも一切緩められておらず、「アクアスの海だけは戦前のままだ」という言葉が、疲れた兵士たちの休暇先としての人気を支えている。</p>
+      <p class="codex-p">セクターμを満たすのは、優しい赤の光を湛えた星雲である。深い青のアクアスをその赤が背後から包み、惑星の色をいっそう鮮やかに際立たせる。隣接する<a href="#nu">セクターν</a>のマゼンタの星雲と姉妹星<a href="#zoness">ゾネス</a>が接近する時期にはなおのこと華やぎ、色とりどりの天体が並ぶ光景となる。コーネリアの民にとって、この宙域へ大金をはたいて旅することは長く地位の証であり続けてきた。並ぶ天体を客船の窓から望む周遊ツアーは開戦とともに全便が止まっているが、ゾネスの海が濁った現在も宙域の輝きそのものは損なわれておらず、再開を望む声は絶える気配がない。なおセクター名の読みは、かつてコーネリアシティを騒がせた新興宗教<a href="glossary.html#mu-cult">「ムー」</a>と響きが近い。両者を結びつける憶測が今も湧いて出るため、アクアス州当局は「事実無根、完全なる偶然であり一切の関連性はありません」との声明を定期的に発表している。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_11_mu.png" alt="Sector Mu"></div>
+    </article>
+    <article class="codex-entry loc" id="nu" data-type="sector">
+      <h2 class="codex-h">セクターν <span class="en">SECTOR NU — ライラット星系第13惑星宙域</span></h2>
+      <p class="codex-p"><a href="#zoness">ゾネス</a>惑星圏に位置するセクター。セクターμとは航路を介さず直接隣接しており、そのまま乗り入れが可能。元は観光が主産業だったが、<a href="factions.html#venom-empire">ベノム帝国</a>に占拠されてからは違法な採掘業者の巣窟と化している。</p>
+      <p class="codex-p">「ウンブリエル」の名で呼ばれた旧タッドー領時代は星系随一の海洋リゾートであり、エメラルドの海は「ライラットの宝石」と讃えられた。占領後は帝国の廃棄物投棄により環境指数が80から18へ暴落し、海は毒の色に変わり果てている。夜の海上を舐め回す探照灯網は占領統治の象徴だが、これを強行突破したスターフォックスの作戦は、奪還の日を待つ元住民たちの間で密かな語り草となっている。</p>
+      <p class="codex-p">セクターνを彩るのは、ピンクとシアンが鮮烈に混ざり合う星雲である。かつては<a href="#mu">セクターμ</a>と並んで星系随一の景観に数えられ、その眺め自体は今も少しも損なわれていない。変わり果てたのは星のほうであった。濁りきったゾネスの海と、頭上で変わらず輝き続ける星雲の対比は、環境汚染というものの悲哀を最も端的に伝える光景として語られている。宙域には帝国が投棄した産業廃棄物が漂い、資源の採掘を目当てとする無法者の船が屯し、そこへ占領軍の警戒網が重なる。さらに厄介なのは、ゾネスの地表で際限なく繁殖した<a href="../weapons/bioweapon.html">バイオウェポン</a>が、生息域を宇宙空間にまで広げていることである。アクアスとゾネスを巡る星間ツアーが完全に停止したままなのは、戦況以上にこの一点が理由となっている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_12_nu.png" alt="Sector Nu"></div>
+    </article>
+    <article class="codex-entry loc" id="xi" data-type="sector">
+      <h2 class="codex-h">セクターξ <span class="en">SECTOR XI — ライラット星系第8惑星宙域</span></h2>
+      <p class="codex-p"><a href="#fichina">フィチナ</a>惑星圏に位置するセクター。<a href="glossary.html#warp-route">メジャーワープドライブ航路</a>が一つも接続されておらず、フィチナ州（旧サルジーナヤ連邦）が独自に管理する州営ワープ航路だけが外部との接続手段となっている。その規模はメジャー航路に比肩するものの、性能は<a href="../corporations/vector-prime.html">ベクター・プライム社</a>製とは比較にならないほど粗末であり、州経済の大部分は<a href="#mu">アクアス州</a>の輸送経路に依存する──州内が今なおチケットによる配給制である要因の一つとされる。</p>
+      <p class="codex-p">貧相な州営航路に加えてエンジンオイルすら凍り付く劣悪な気候も相まって、フィチナの田舎町へ物資を運ぶ運送業は星系最高難度と称される。その一部始終を追ったドキュメンタリー番組は星系中で大人気を博しており、帝国軍人も隠れて視聴するほどである。</p>
+      <p class="codex-p">セクターξにも、かつては姉妹星の宙域と変わらぬ美しい星雲が広がっていた。現在の無残な姿を作ったのは旧サルジーナヤ連邦である。長距離星間ミサイル<a href="../weapons/man-drill.html#dread-kong">「ドレッド・コング」</a>の系譜を成す弾体が繰り返し撃ち込まれた結果、星雲には貫通した大穴が幾つも開き、光の帯は三段に断ち切られた。穴の向こうには遠方の星々がそのまま透けて見える。普段の星雲は白系の目立たない色をしているが、<a href="#solar">ソーラ</a>の活動が活発になるとオレンジや青の複雑な色合いへ染まる。この色づきは<a href="#fichina">フィチナ</a>の季節を測る指標として古くから用いられ、暦の役目を果たしてきた。ブリザードの吹かない時期のほうが短いこの星では、地表から星雲を仰げる日は限られる。それでも住民の記憶と文化にこの色は深く結びついており、雲の切れ間に星雲が覗いた日を報せ合う習わしは今も残っている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_13_xi.png" alt="Sector Xi"></div>
+    </article>
+    <article class="codex-entry loc" id="omicron" data-type="sector">
+      <h2 class="codex-h">セクターο <span class="en">SECTOR OMICRON — ソーラ恒星宙域</span></h2>
+      <p class="codex-p">恒星<a href="#solar">ソーラ</a>とその周囲に広がる広大なセクター。セクターμからセクターξまでの全宙域を包み込むような形状になっているのは、ソーラの太陽風の影響下にある宙域全てがセクターοと定義されているためである。</p>
+      <p class="codex-p">恒星と惑星の中間というべき特異な天体であるソーラの太陽風は、周期的に通信とセンサーを乱す。航路各社は「ソーラ荒れ」の予報を毎日配信しており、これを読み違えた船長は航海士組合で末代まで笑い者にされるという。また<a href="#sigma">マクベス</a>が近日点を通過する時期にはセクターςと最接近するため、工業航路の護衛任務と海賊の狩り場が同時に生まれる「書き入れ時」となる。</p>
+      <p class="codex-p">セクターοは、ソーラの影響が及ぶ範囲そのものを指す宙域である。恒星圏という点で<a href="#alpha">セクターα</a>としばしば対比されるが、あちらが灼熱ゆえに近づけない範囲だけを切り取った区分であるのに対し、こちらはソーラの勢力圏を丸ごと囲った区分であり、似ているようでその意味合いは異なる。この宙域に星雲は存在しないという誤解も根強いが、実際には星系最大級の星雲が広がっている。あまりに巨大であるため、内部を通過する者が自らその只中にいると気づけないだけである。ソーラの太陽風と<a href="#lylat-prime">ライラット・プライム</a>の太陽風が正面からぶつかり合う境界にはオレンジのプラズマの殻が生じており、ソーラ圏はその内側へすっぽりと収まっている。この円い輪郭を一枚の像として捉えるには、<a href="#hactiva">ハクティバ</a>圏ほど遠く離れた位置から望遠観測を行うほかない。αを包む「プライムの繭」と同じく、二つの恒星の風がどこでせめぎ合うかが、そのままセクターの形を決めているのである。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_14_omicron.png" alt="Sector Omicron"></div>
+    </article>
+    <article class="codex-entry loc" id="pi" data-type="sector">
+      <h2 class="codex-h">セクターπ <span class="en">SECTOR PI — 封印宙域（旧称: 空白地帯）</span></h2>
+      <p class="codex-p">星図上で意図的に「空白」とされている宙域。第1次ライラットウォーズ末期、星系統合艦隊による最終作戦<a href="glossary.html#star-dream">『スター・ドリーム作戦』</a>で<a href="glossary.html#stephano">超兵器</a>が討伐された地であり、今もその残骸が散乱する。残骸への接触は全星の法で禁止され、ワープドライブ航路は全て削除・迂回、座標も秘匿されているため、実質的な<a href="glossary.html#out-of-sector">アウト・オブ・セクター</a>となっている。</p>
+      <p class="codex-p">宙域の縁では共和国の巡回艦が無言の監視を続けており、接近する船は所属を問わず退去勧告を受ける。『Sectorπの星図の空白は、この惨禍を忘れないためにあえて空けてある』──星系の全ての教育プログラムはそう教えるが、二百年を経た空白の中に今も何が眠っているのかを、進んで確かめようとする者はいない。空白を空白のまま守ること自体が、共和国の静かな任務の一つである。</p>
+      <p class="codex-p">セクターπには、星系で最も美しいと評される大星雲が広がっている。二色の光が混ざり合う雲の内部には無数の<a href="glossary.html#blagzalight">ブラグザライト</a>が浮かび、粒の一つ一つが雲の色を映して瞬く。息を呑むほかない眺めでありながら、この光景を目にした者はほとんどいない。宙域には観測を妨げる偏光シールドビーコンが幾重にも配備されており、外からの走査はことごとく遮られている。接続する航路は公式には一本も存在しないことになっており、実際に通じている機密の経路もただ一つだけである。その経路を知る者が口を開くことは決してない。「夢の跡地」と形容されるこの星雲は、誰にも見られないまま今日も輝き続けている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_15_pi.png" alt="Sector Pi"></div>
+    </article>
+    <article class="codex-entry loc" id="rho" data-type="sector">
+      <h2 class="codex-h">セクターρ <span class="en">SECTOR RHO — サルガッソー第4宙域</span></h2>
+      <p class="codex-p">星図から抹消された封印宙域<a href="#pi">セクターπ</a>と隣接し、その縁を守る共和国巡回艦の哨戒起点として、実質的な接続が維持されている唯一の宙域。別名「サルガッソー第4宙域」と呼ばれ、数百年前の大戦で<a href="glossary.html#stephano">超兵器</a>との交戦により大破した艦隊の残骸が、今も路肩に放置されたまま漂っている。もっともこの別名は通称に過ぎず、正確にはタイタニアの磁力の影響を受けていない無関係の場所であり、<a href="#sargasso">サルガッソー</a>本体の「悪魔の手」に類する危険現象も観測されていない。残骸群の区画整理はある程度進んでおり、航路ビーコンの外へ出る航行をしない限り危険はないとされている。</p>
+      <p class="codex-p">星系の惑星配置によっては<a href="glossary.html#trinculo">トリンキュロー回廊</a>を擁する<a href="#phi">セクターφ</a>の出口と接続する時期があり、8年のうち1年間は横断交通の通過点として利用される。それ以外の時期は、彩りに乏しい星雲と路肩の廃墟が続くばかりの地味な宙域であり、旅人はみな足早に通り過ぎてしまう。だが軍部にとっての重要度は高い。この宙域では過去に二度の大事件が起きている。一度目は教団<a href="glossary.html#mu-cult">宇宙統一平和協会「ムー」</a>が本拠地である巨大移動要塞ムーラシアを潜ませていた事実であり、二度目は征討後に廃棄されたその残骸を<a href="../weapons/venom-cell.html">ベノムの生体兵器</a>が乗っ取り、生体要塞「フォアランナ」へ変じさせた<a href="glossary.html#demonseed-crisis">デモンシード・クライシス事件</a>である。誰もが足早に通り過ぎる路肩で、星系の歴史は二度書き換えられかけたのである。</p>
+      <p class="codex-p">宙域を漂うのは、白から銀灰へと沈む彩りに乏しい星雲である。中央で渦を巻いた雲がそのまま長い尾を引いて流れ落ち、フォアランナ除染の絨毯爆撃で吹き払われた一角には、口を開けて叫ぶ顔のような穴が残されている。幽霊が佇んでいる、あるいは誰かが悲鳴を上げている。そう形容される姿は、この宙域に染みついた印象をそのまま写し取ったかのようである。ρが「曰く付き」の筆頭に挙げられる理由もそこにある。一般に知られているのは凶悪なカルト教団の軍事要塞があった場所という一点であり、機密の側でも暴走した生体兵器が星系を侵食しかけた場所という記述に変わるだけである。<a href="#iota">セクターι</a>の廃棄コロニーのように科学の歩みの跡という側面すら持たないため、気味の悪い噂だけが拭えないまま残り続けている。ほとんどの通行者が足を止めずに駆け抜けていくのは、路肩の廃墟のせいばかりではない。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_16_rho.png" alt="Sector Rho"></div>
+    </article>
+    <article class="codex-entry loc" id="sigma" data-type="sector">
+      <h2 class="codex-h">セクターς <span class="en">SECTOR SIGMA — ライラット星系第3惑星宙域</span></h2>
+      <p class="codex-p"><a href="#macbeth">マクベス</a>惑星圏および周囲の鉱山を含む準惑星群一帯のセクター。ライラット系の工業の中心といえるエリアであり、多数の中小企業が宇宙ステーション型の社屋を構えるが、現在は帝国の占領下にある。</p>
+      <p class="codex-p">マクベスは<a href="#titania">タイタニア</a>と公転軌道が同期しており、コーネリア側から見て常に<a href="#sargasso">サルガッソー宙域</a>の背後に隠れる位置関係にある。これが同星奪還作戦の難易度を跳ね上げている最大の要因である。また<a href="#solar">ソーラ</a>の近日点通過時にはソーラ圏と最接近するため、マクベス工業航路の一部は<a href="#nu">セクターν（ゾネス）</a>の近傍を通過する──帝国によるゾネス侵攻は、この航路を足掛かりに行われたと分析されている。なおマクベスが工業中枢へと飛躍した起点は、<a href="glossary.html#iga-war">IGA討伐戦役</a>期に中継地として航路が敷かれ技術者が流入したことにあり、現在もセティボス産<a href="glossary.html#ember-gas">エンバーガス</a>の星系最大の卸先である。</p>
+      <p class="codex-p">セクターςでは無数の岩塊と準惑星が飛び交い、その背後に真紅の炎を思わせる星雲が広がっている。溶鉱炉の内壁のように赤熱した繊維状の雲と、火山活動を続けるマクベス本体、そして鉱物を抱えた準惑星群。これらが一つの視界へ収まる光景から、このセクターそのものを巨大な鉱山と評する者は少なくない。集まった天体と星雲はいずれも<a href="#titania">タイタニア</a>の磁力によって軌道を固定されたものであり、その意味でこの宙域は、最大級の<a href="glossary.html#devils-hand">「悪魔の手」</a>に囚われた星々の集まりということになる。飛び交う隕石の多くは鉱物を含んで重く、定められた安全航路を外れれば大事故は避けられない。マクベスが軍事的な要衝として別格の扱いを受ける理由は、星そのものの価値だけでなく、この近づきがたい宙域の構造にもある。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_17_sigma.png" alt="Sector Sigma"></div>
+    </article>
+    <article class="codex-entry loc" id="tau" data-type="sector">
+      <h2 class="codex-h">セクターτ <span class="en">SECTOR TAU — 廃墟宙域</span></h2>
+      <p class="codex-p"><a href="glossary.html#trinculo">トリンキュロー回廊</a>の出口からほど近い位置に広がる、廃墟のセクター。帝国が水面下で活動を始めた時期から、この宙域では様々な秘密兵器が開発された形跡が確認されており、帝国軍の兵器研究所が置かれていたと推測されている。ただしその施設群は、すでに何者かによって無残に破壊されている。かつて宙域を彩っていた星雲は現存せず、砕けた構造物の瓦礫だけが漂う。</p>
+      <p class="codex-p">宙域の空間は大規模爆発の余波によって現在も不安定であり、航行者から「正体不明の渦を見た」という報告証言が多数寄せられている。観測部はワープホールが形成されている可能性を示唆しており、指定航路外の単独航行は強く警告されている。<span class="redacted">空間異常の原因について機密記録は、公式に「独立星系連合の残党討伐」とされた作戦の実態、すなわち移動要塞プロトボルスの動力炉暴走にあると指摘する。詳細はサイレント・ナイトメア事件（防衛衛星ボルスの項）を参照のこと</span>。近年はsectorτ会戦の名で知られるとおり、帝国の大規模奇襲計画の集結地として利用された形跡が確認されており、廃墟の宙域は今も戦略上の火種であり続けている。</p>
+      <p class="codex-p">この宙域の来歴は帝国の研究所に始まるものではない。もとは<a href="factions.html#iga">独立星系連合</a>が非人道的な戦略兵器の数々を製造し実験していた場所であり、討伐後に残された施設群を帝国がそのまま再利用したと考えるのは、決して無理のある推測ではない。かつてこの宙域にはT字に大きく広がる星雲があり、<a href="glossary.html#trinculo">トリンキュロー回廊</a>へ向かう船の道しるべとして用いられていた。その形が失われたのは、兵器の爆発が放った衝撃波によるものである。現在まで残されているのは、爆心を囲む薄い泡の殻と、外へ押しやられた雲の断片だけとなっている。もっとも星雲そのものが絶えたわけではない。近年になって星間ガスの再集積が確認され、小型の雲が育ち始めているためである。ここが<a href="#kappa">セクターκ</a>と対をなす星間物質の中継地ではないかとする報告も上がっており、廃墟の宙域は静かに次の姿を作り始めている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_18_tau.png" alt="Sector Tau"></div>
+    </article>
+    <article class="codex-entry loc" id="upsilon" data-type="sector">
+      <h2 class="codex-h">セクターυ <span class="en">SECTOR UPSILON — サルガッソー第3宙域</span></h2>
+      <p class="codex-p">ライラット星系のインナーリムとアウターリムを分ける<a href="#sargasso">サルガッソー</a>が広がる広大なセクター。事故が多発しているほか遭難事件もたびたび報告されており、通商・軍事の双方から忌避されている。</p>
+      <p class="codex-p">漂う残骸の大半は<a href="glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>240年の戦乱が残したものであり、「ライラットの全ての戦争は、最後にここへ流れ着く」と言われる。開戦劈頭には帝国艦隊がこの墓場に潜伏し、<a href="#zeta">セクターζ</a>への奇襲の跳躍点とした──墓場を恐れなかった側が緒戦を制したという事実は、共和国軍の哨戒教範を根本から書き換えさせた。今も残骸を漁るサルベージ屋と、それを狩る海賊が、互いに灯りを消して行き交っている。</p>
+      <p class="codex-p">サルガッソーという名の方が、セクターυという呼称よりもはるかに広く知られている。一度内部へ踏み込んだ船が五体満足で出てこられる保証はない。遠景まで長く伸びる星雲はオレンジとも黄土ともつかない不気味な色を湛えており、宙域のどこにいても視界のどこかに必ず横たわっている。捕縛した艦船や残骸を巻き込んだ帯が、獲物を見せびらかすようにゆっくりと渦を巻く。この光景こそが、宙域が「悪魔」の名で語られる所以である。深部を貫く航路など自殺行為に等しく、無謀な作戦で知られる帝国軍の親衛隊ですら、ここだけは確実に迂回して通る。開戦劈頭に帝国艦隊が潜んだのも磁場の緩む外縁であり、深部へ艦隊を進めた例は今日まで一つとして無い。内部で賊であるはずの<a href="glossary.html#salvager">サルベージャー</a>と出くわすことがむしろ幸運と思える。この宙域の危険度は、決して伊達ではないのである。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_19_upsilon.png" alt="Sector Upsilon"></div>
+    </article>
+    <article class="codex-entry loc" id="phi" data-type="sector">
+      <h2 class="codex-h">セクターφ <span class="en">SECTOR PHI — トリンキュロー回廊 / サルガッソー第2宙域</span></h2>
+      <p class="codex-p">セクターυの内部を橋のように貫く構造のセクター。共和国・帝国が安全にサルガッソーを通過できる数少ないポイント<a href="glossary.html#trinculo">トリンキュロー回廊</a>があるが、最近になり帝国が廃宇宙艦隊を組み上げた巨大要塞を建造しているという噂がある。</p>
+      <p class="codex-p">回廊の支配権は物流の支配権に直結するため、ここは開戦以来一貫して両軍の睨み合いの最前線であり続けている。噂の巨大要塞が完成すれば、共和国はインナーリムとアウターリムを結ぶ動脈を失う──参謀本部が想定図上演習で「悪夢の第一位」に挙げる事態である。通行する民間船は両軍の検問を二重に受けるため、船乗りたちは皮肉を込めてこの回廊を「世界一治安のいい無法地帯」と呼んでいる。</p>
+      <p class="codex-p"><a href="#sargasso">サルガッソー</a>の名を冠する四つの宙域のうち、船を安全に通せるのはこのφだけである。宙域の中心には虹色に輝く巨大な星雲が横たわっており、緑や紅、青の光の層が幾重にも同心円を描く中を一筋の暗い裂け目が縦に貫いて左右を分かっている。船乗りがこの星雲を<a href="glossary.html#mosen">「モーゼンの宙割り」</a>と呼ぶのは、裂け目が真正面に開いて見える位置まで機首を合わせてそのまま直進すればサルガッソーの外へ抜けられるためであり、星雲の配置そのものが回廊の照準として機能している。計器の狂う磁場の只中で目視だけを頼りに進める指標はこれ以外に存在せず、トリンキュロー回廊が数少ない安全な航行ポイントであり続けているのも、この裂け目が誰の目にも同じ形で映るからにほかならない。<a href="glossary.html#nine-routes">9大ワープ航路</a>のうち5本がこの一点を通過しており、宙域の地勢的な価値は星系のどことも比較にならない。「脱出不可能」と語られるサルガッソーの内側にあって、<a href="#upsilon">セクターυ</a>の不気味な星雲越しに虹色の光を見つけることは、遭難した船に残されたほぼ唯一の生還手段でもある。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_20_phi.png" alt="Sector Phi"></div>
+    </article>
+    <article class="codex-entry loc" id="chi" data-type="sector">
+      <h2 class="codex-h">セクターχ <span class="en">SECTOR CHI — 第2惑星宙域 / サルガッソー第1宙域</span></h2>
+      <p class="codex-p"><a href="#titania">タイタニア</a>惑星圏およびその周囲のサルガッソー全域を内包するセクター。惑星タイタニアが<a href="#sargasso">サルガッソー</a>の核として機能しており、膨大な量の戦闘機や艦隊の残骸が浮遊するライラット星系屈指の危険区域。</p>
+      <p class="codex-p">核であるタイタニアには移民到達以前に滅びた先住文明の遺構が眠り、強烈な磁場が侵入者の計器を狂わせ、砂の下では暴走した古代兵器が今も動き続けている。<a href="glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>では、この禁断の地へ不時着した要人の救出作戦が<a href="military.html#starfox">スターフォックス</a>によって敢行された。「χで拾えるのは、鉄クズか、歴史か、死のどれかだ」──サルベージ屋の間の古い格言である。</p>
+      <p class="codex-p">第2惑星タイタニア宙域という呼称だけで、船乗りは即座にその危険を理解する。他のいずれのサルガッソー宙域よりも数倍は強い磁力が檻のように宙域を取り囲んでおり、捕縛された残骸や隕鉄が幾重もの輪となって惑星軌道上を漂っている。この檻へ一度取り込まれた船に残された道は二つしかなく、推進力を殺してタイタニアへ意図的に墜落するか、宙域を無限に漂い続けるかの選択を強いられる。空には異常磁場が生んだと見られる空間の裂け目のような構造体が走っており、その奥から琥珀色の光が漏れ出す星雲は神々しさと禍々しさを同時に湛えている。船乗りがこの星雲を「悪魔の罠」あるいは「タイタニアの口」と呼ぶのは、位置が<a href="#phi">セクターφ</a>と近い上に、遠目には途中まで<a href="glossary.html#mosen">モーゼンの宙割り</a>と同じ形に見えるためである。裂け目がもう一本と交差してχの字を描いていると気づく頃には船はすでに磁力の檻の内側にあり、星雲そのものが罠として働くこの一点が宙域の恐ろしさに拍車をかけている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_21_chi.png" alt="Sector Chi"></div>
+    </article>
+    <article class="codex-entry loc" id="psi" data-type="sector">
+      <h2 class="codex-h">セクターψ <span class="en">SECTOR PSI — ベノム帝国防衛艦隊駐屯宙域</span></h2>
+      <p class="codex-p">ベノム惑星圏の周囲を取り囲むように配備されたセクター。ベノムへの奇襲攻撃の芽を摘むために用意された帝国の最終防衛ラインであり、宇宙最強と謳われる艦隊<a href="military.html#space-armada">スペースアマダ</a>が<a href="#area6">AREA6</a>に駐屯し、防衛衛星<a href="military.html#bolse">ボルス</a>が睨みを利かせている。</p>
+      <p class="codex-p">AREA6の構築は帝国建国と同時に始まった。<a href="glossary.html#andorf">アンドルフ</a>は自身が流刑者として送り込まれた「ベノムへの道」の重要性を誰よりも理解しており、帝国の拡大より先に、まず本星の絶対防衛圏を完成させたのである。開戦初期に共和国が実施した強行偵察では偵察戦隊が壊滅しており、以後「ψを正面から抜く」という作戦案は、参謀本部で口にすることすら憚られている。</p>
+      <p class="codex-p">この宙域の広がりは、そのまま防衛衛星<a href="military.html#bolse">ボルス</a>の対艦レーザー<a href="glossary.html#purge-cannon">「パージ・キャノン」</a>の射程距離である。淡い緑の星雲が宙域を満たしており、過去に放たれたパージ・キャノンの軌跡がガスと反応して赤く輝いている。幾筋もの軌跡のうち三本が偶然にも三又の鉾の形に並んでおり、帝国はこれを「帝国の鉾」と呼んで意図的に消さずに残している。艦隊そのものは星系の内側へ向けて配備されているが、パージ・キャノンは空間跳躍兵器であり、ボルスの警戒網が捉えた対象の真横へ即座に撃ち込まれる。死角を突いて艦船を潜り込ませる類の奇襲がこの宙域で意味をなさないのはこのためであり、星系史上最強の軍師と評される<a href="characters.html#kellone">ミズローヌ・ケローン</a>の指揮と合わせた二本の柱が、<a href="#area6">AREA6</a>の突破を絶望的なものにしている。帝国の鉾は首都<a href="../planets/venom.html">ベノム・インペリアル・シティ</a>の空からも間近に望むことができ、その美しさもあって、今では帝国民の誇りを象徴する光景として親しまれている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_22_psi.png" alt="Sector Psi"></div>
+    </article>
+    <article class="codex-entry loc" id="omega" data-type="sector">
+      <h2 class="codex-h">セクターΩ <span class="en">SECTOR OMEGA — ライラット星系第1惑星宙域</span></h2>
+      <p class="codex-p"><a href="#venom">ベノム</a>惑星圏に位置するセクター。帝国の軍事拠点・居住区画である第1衛星ゴモラ、惑星破壊兵器へ改造中の第2衛星ソドムが、まるで目玉のように浮かぶ不気味な宙域。第2次ライラットウォーズの最終目的地はここである。</p>
+      <p class="codex-p">ライラット惑星歴の編纂後は難攻不落の流刑刑務所が置かれ、宇宙歴3987年にはアンドルフ・ボウマンがこの星へ追放された。それから10年、流刑地は星系全土を脅かす帝国の玉座へと変貌している。皮肉にも、星系暦元年に入植船団が最初に降り立った星もまた、このベノムである──全ての物語が始まった星でこの戦争も終わるのだろうと、誰もが口には出さずに考えている。</p>
+      <p class="codex-p">帝国首都ベノム・インペリアル・シティを抱く第1衛星ゴモラは、それ自体が移動軍事要塞<a href="military.html#atropolis">アトロポリス</a>であり、惑星破壊兵器へ改造中の第2衛星ソドムとともに本星の頭上を巡っている。本星の周回軌道には無人の自動迎撃衛星が巡らされており、共和国が発令する対帝国作戦は例外なくこの宙域を最終到達点として描かれる。その軌道上には、起源も正体も判明していない小型のワームホールが「門」として口を開いている。門はハクティバ圏の惑星キューから静電の海<a href="#ya">セクターϊ</a>を経て至る<a href="#stigma">セクターϚ</a>のワームホールと接続しており、帝国は警戒網を一切緩めることなく帝都の交易を維持している。通商連合との秘密裏の取引もこの門を経由するものと見られており、宙域は戦略上の要所としての性格をもう一つ抱えている。裏を返せば門はベノムへ到達しうる数少ない奇襲経路でもあるが、経由する静電の海は特殊な航行技術を持たない艦船には通過すら難しく、作戦として成立するかは疑問が残る。門は<a href="#khei">入航の道</a>への近道としても機能しており、星系の始まりと今を一息に繋ぐ存在として語られている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_23_omega.png" alt="Sector Omega"></div>
+    </article>
+    <article class="codex-entry loc" id="digamma" data-type="sector">
+      <h2 class="codex-h">セクターϝ <span class="en">SECTOR DIGAMMA — ライラット星系第11惑星宙域</span></h2>
+      <p class="codex-p"><a href="#eladard">エラダード</a>惑星圏に位置するセクター。工業惑星エラダードは<a href="factions.html#hactiva-union">ハクティバ通商連合</a>の本拠地であり、共和国・帝国双方と武器取引が行われているため、両軍から中立地として指定されている。</p>
+      <p class="codex-p">「中立」の名の武器庫と揶揄されるが、この星の生産力なくして戦争を継続できないのは両軍とも同じであり、中立指定とは事実上「攻撃できない」ことの言い換えである。エラダードの工廠の納期は星系で最も正確とされ、「戦況は変わっても納品日は変わらない」が通商連合の誇りだという。なお軍需の陰で、小型種向け家具ブランド<a href="glossary.html#q-brand">「Q印良品」</a>の生産地としても知られ、「戦争と家具で二度儲ける星」とは商人たちの弁である。</p>
+      <p class="codex-p">星系最大の工業動脈である<a href="glossary.html#route-of">オズリック・フォーティンブラス工業航路</a>はこの宙域を終着点としており、ハクティバ圏の工場と店先を結ぶ私設航路が幾本も重なるため、交通量は<a href="#theta">セクターθ</a>のプロスペロー惑星圏と<a href="#kappa">ペルディタ宇宙センター</a>に並ぶ星系最大級に達する。幹線から分岐した道はエラダードの地表まで途切れずに続いており、その沿線にはドライブスルーの店舗が数え切れないほど軒を連ねている。住民の移動が大半を占めるセクターθと異なり、ここを流れるのは長距離運送の貨物船である。休息と補給を求める船員を奪い合って、幹線沿いでは熾烈な経営争いが繰り広げられている。道路に併設されたこの商店街は<a href="glossary.html#luminous-arcade">「ルミナスアーケード」</a>の名で呼ばれ、エラダード観光の名物にもなっている。橙の塵が幾重もの峰をなし、その内側に青白い光の空洞を抱く星雲が頭上に広がっており、アーケードの照明にも一歩も引かない明るさで宙域を照らしている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_24_digamma.png" alt="Sector Digamma"></div>
+    </article>
+    <article class="codex-entry loc" id="stigma" data-type="sector">
+      <h2 class="codex-h">セクターϚ <span class="en">SECTOR STIGMA — ライラット星系第9惑星宙域</span></h2>
+      <p class="codex-p"><a href="#kew">キュー</a>惑星圏に位置するセクター。元は<a href="glossary.html#paranid-empire">パラニド神聖帝国</a>の首都惑星で、神聖帝国崩壊後は放置されていたが、ビッグ・ボス率いるマフィア<a href="glossary.html#arpeggio">アルペジオ</a>によって巨大なエキュメノポリスを有する都市惑星となっている。共和国軍情報部は、このセクターと<a href="#omega">セクターΩ（ベノム）</a>を結ぶ<a href="glossary.html#warp-route">通商連合の私設航路</a>を経由して、帝国軍ミサイル<a href="military.html#man-drill">『マン・ドリル』</a>の燃料となる<a href="glossary.html#ember-gas">エンバーガス</a>が送られているとみている。</p>
+      <p class="codex-p">首都アルピニアは星系外縁にありながら全ての経済とつながる大歓楽都市であり、両軍の軍人が制服を脱いで同じカジノに座る「戦争の休憩室」でもある。ここで交わされる情報の価値は時に艦隊一つに勝るとされ、各国の情報部員とアルペジオの耳が同じ酒場に相席しているのは公然の秘密である。そのアルペジオのビッグ・ボスですら、二つの太陽が重なる「合」の日だけは取り立てを休むという──キューの無法にも、キューなりの作法がある。</p>
+      <p class="codex-p">宙域を覆っていた紅紫の星雲は今や巨大な球を抉り取られたような姿をしており、残った雲が三日月の形に細く連なる一方で、抉られた側は光を返さない暗い窪みとなっている。欠けた中心にあるのは人工的に穿たれたワームホールであり、<a href="#ya">セクターϊ</a>を介して<a href="#omega">セクターΩ</a>のワームホールと直結している。帝国と<a href="factions.html#hactiva-union">ハクティバ通商連合</a>が直接取引を行うために敷かれた航路であり、私設航路とされながらその規模と経済影響力はすでに<a href="glossary.html#nine-routes">9大ワープ航路</a>に並ぶ。非公式に「第10のメジャー航路」とまで呼ばれるほどであり、建設の裏には<a href="../corporations/emeraldas-bank.html">エメラルダス・星系銀行</a>の影が見え隠れしている。共和国の経済制裁が帝国へほとんど響いていない理由も、この宙域を通る航路にあると分析されている。近年は帝国の弱点であった食料生産までこの宙域の工場へ移されつつあり、帝国が<a href="../planets/prospero.html">プロスペロー</a>への大規模攻勢に踏み切った背景もそこにあると考えられている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_25_stigma.png" alt="Sector Stigma"></div>
+    </article>
+    <article class="codex-entry loc" id="heta" data-type="sector">
+      <h2 class="codex-h">セクターͰ <span class="en">SECTOR HETA — ライラット星系第14惑星宙域</span></h2>
+      <p class="codex-p"><a href="#papetoon">パペトゥーン</a>惑星圏に位置するセクター。ライラット系で最も田舎の地域と称され、現在でも略奪や賊が跋扈するが、20年近く前にコーネリアの士官学校が置かれてからは実質的な共和国領となっている。<a href="military.html#starfox">スターフォックス</a>のリーダー、フォックス・マクラウドの父ジェームズの故郷でもある。かつてこの星を荒らした略奪者の多くは、隣接する<a href="#janja">セクターϫ</a>に本拠を置いた<a href="factions.html#iga">独立星系連合（IGA）</a>に与する末端の暴徒であり、逃亡したIGA総統がこの星で野盗集団に拘束されるという皮肉な結末の舞台にもなった。</p>
+      <p class="codex-p">大飢饉の時代に若きジェームズが身を投じた夜盗団『スライフォックス』の伝説も、ニジョー盆地の士官学校も、全てこの荒野から生まれている。水と飼料を巡る開拓民の諍いは今も絶えないが、「困った時に馬を貸さない家はない」というのがこの星の不文律である。「英雄は温室では育たない」──士官学校の入校式で必ず引かれるこの言葉は、辺境と呼ばれ続けた星の、ささやかな誇りとなっている。</p>
+      <p class="codex-p">この宙域は長らく、惑星そのものよりも空を彩る星雲のほうで名を知られてきた。<a href="#iota">セクターι</a>と同じ柱状の分子雲が<a href="glossary.html#blagzalight">ブラグザライト</a>と恒星の光を浴びて白く輝いており、そびえ立つその姿が剣を掲げる巨大な騎士に見えることから、<a href="glossary.html#knight-nebula">騎士星雲</a>を撮影しようと星系中の<a href="glossary.html#sky-watcher">スカイウォッチャー</a>が辺境まで足を運んでいた。砂漠ばかりのパペトゥーンそのものに見向きをする者はなく、訪れるのは景色だけを目当てにする者に限られていた。人も人工衛星も乏しい環境はかえって観測の条件として理想的であり、それが隠れた名所としての人気を支えていた。潮目が変わったのは、伝説の傭兵<a href="characters.html#james">ジェームズ・マクラウド</a>の名が星系に流れるようになってからである。生まれ故郷を一目見ようという観光客が少しずつ増え、<a href="glossary.html#academy-branches">士官学校第6分校</a>の誘致が決まったことで惑星を訪れる人口は10倍に跳ね上がった。もっとも元の数は1標準年で3桁に届かず、増えた分の大半は士官学校の生徒である。人の出入りに合わせて宙域の飛行にも制限が敷かれ、スカイウォッチャーの聖地は新たな空の英雄を送り出す聖地へと役割を変えていった。今もパペトゥーンの空には、巨大な騎士が皆を守るように輝いている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_26_heta.png" alt="Sector Heta"></div>
+    </article>
+    <article class="codex-entry loc" id="san" data-type="sector">
+      <h2 class="codex-h">セクターϻ <span class="en">SECTOR SAN — ハクティバ・パラニド恒星宙域</span></h2>
+      <p class="codex-p"><a href="#hactiva">ハクティバ</a>と<a href="#paranid">パラニド</a>の二つの恒星と、その間の区間を包括する広大なセクター。二恒星の間に異常な力場が存在しており、ワームホール形成の可能性を含めて研究の対象となっている。星系の最外縁には、二星と複雑な重力相互作用で結ばれた巨大ガス惑星<a href="#setebos">セティボス</a>のセクター（<a href="#janja">セクターϫ</a>）が隣接する。</p>
+      <p class="codex-p">外縁の民は古来、二星の位置関係で「時刻」を読み、二星が重なって見える「合」の日に交わした契約は破られないと信じてきた。力場の中心点は研究専用の<a href="#dasia">セクター’</a>として切り出され、常時観測が続けられている。二大勢力の戦争を「傍観」するこの独立星系圏は、どちらが勝つにせよ戦後の星系秩序を左右する「第三の椅子」と目されており、両軍の外交官が足繁く通う静かな主戦場でもある。</p>
+      <p class="codex-p">二つの恒星の圏内をまとめて抱えるためか、この宙域は<a href="#solar">ソーラ</a>と同じく広大でありながら、規模はわずかに小さい。星雲もまた宙域の全体を覆うほどには育たず、二星の磁力線が拮抗する影響か、それぞれの恒星を巡る二つの輪となって広がっている。白い光と橙の光を別々に囲むその姿はちょうど眼鏡のようであり、遠目には「∞」の記号にも見える。ただしこの星雲は可視光では捉えられず紫外線を反射する性質を持つため、一部の<a href="races.html#holsoid">ホルソイド</a>や<a href="races.html#paranodian">パラノディアン</a>系の人種を除いて視認できないとされる。見える者にだけ見える星雲はハクティバ圏の惑星の文化形成へ大きく作用しており、二重の輪は部外者を見破る指標としても用いられてきた。もっとも二星が重なる「合」の日だけは例外である。恒星に続いて二つの輪までも重なり合うと、星雲の放つ光は波長を広げて可視の領域へ届き、本来の輝きと極大の規模を伴って姿を現す。ハクティバ圏の惑星の空はこの一瞬だけ余さず白金色に染め上げられ、普段は星雲を見ることのない者たちの目にも同じ光景が焼き付く。合の日に交わした契約は破られないという信仰も、この記憶に根を張っている。その文化も今では<a href="#kew">キュー</a>と<a href="#eladard">エラダード</a>の大都市に呑まれて過去のものとなりつつあるが、風習だけは細々と受け継がれ、<a href="glossary.html#paranid-empire">神聖帝国</a>の歴史を今へ伝えている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_27_san.png" alt="Sector San"></div>
+    </article>
+    <article class="codex-entry loc" id="janja" data-type="sector">
+      <h2 class="codex-h">セクターϫ <span class="en">SECTOR JANJA — ライラット星系第15惑星宙域 / ハクティバ・パラニド星系最外縁</span></h2>
+      <p class="codex-p"><a href="#setebos">セティボス</a>惑星圏に位置するセクター。ハクティバ・パラニド星系の最外縁を周回する星系唯一の巨大ガス惑星セティボスと、その16の衛星、周回軌道上の希薄な岩石環を包括する。大気高層の「ハビタブルベルト」には<a href="glossary.html#ember-gas">エンバーガス</a>採掘の空中都市群（代表都市: メガロドーム）が稼働している。なお第2衛星セティボスⅢとⅣ・Ⅵの周辺空域は<a href="factions.html#garou-federation">ガロウ連邦</a>の管轄する<a href="#lunate">セクターϾ</a>として区分が分かれている。</p>
+      <p class="codex-p">かつては<a href="factions.html#iga">独立星系連合（IGA）</a>が第3衛星セティボスⅣの軍事要塞都市「シコラクス」に本拠を置き、十数年に及ぶ掃討戦の舞台となった。また、当時のワープドライブはセティボスの重力に航路を捻じ曲げられて異なる宙域へ飛ばされるため、ハクティバ・パラニド星系へ向かう船を大いに恐れさせた宙域でもある。この問題は後年、天才数学者兼技術者<a href="corporations.html#grippia-works">イワッチー・トード</a>によって解決されている。</p>
+      <p class="codex-p">この宙域の主役は星雲ではなく、セティボスを巡る衛星たちである。名の付いた衛星は16を数え、大気を持つものが5つも存在するため、宙域全体が小規模な星系のようにも見える。「セティボス圏」の呼称が生まれたのもそのためであり、とりわけ巨大なセティボスⅡとセティボスⅣは<a href="#aquas">アクアス</a>や<a href="#zoness">ゾネス</a>を上回る大きさを持つ。宙域に唯一存在する星雲は三角形の赤い帯として横たわっており、見た目は地味である。もっともこれはセティボスの巨大な重力に光が曲げられた姿であり、近づくにつれてレンズの作用が解け、赤く輝く大型の<a href="glossary.html#blagzalight">ブラグザライト</a>の群れであることが判明する。重力が景観そのものを歪めて見せるこの星雲は、重力の物理を語る際の格好の題材として今もよく引き合いに出される。そしてこの重力は、星系の歴史そのものにも変化をもたらした。セティボス惑星圏へワープドライブを直接敷けなかったことが<a href="glossary.html#route-of">オズリック・フォーティンブラス工業航路</a>を迂回路として生み、<a href="#macbeth">マクベス</a>と<a href="#eladard">エラダード</a>の開発と発展を招いたためである。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_28_janja.png" alt="Sector Janja"></div>
+    </article>
+    <article class="codex-entry loc" id="lunate" data-type="sector">
+      <h2 class="codex-h">セクターϾ <span class="en">SECTOR LUNATE — ガロウ連邦管理宙域</span></h2>
+      <p class="codex-p"><a href="#janja">セクターϫ</a>の内側で<a href="factions.html#garou-federation">ガロウ連邦</a>の本星セティボスⅢを包括する宙域。連邦が管理する第3衛星セティボスⅣと第5衛星セティボスⅥの周辺空域もこのセクターに属するため、ϫの内側で三つの区画に分かれた「飛び地のセクター」として地図に描かれる（枝番はⅢがϾ-1・ⅣがϾ-2・ⅥがϾ-3）。管制は<a href="glossary.html#garou-capitol">総督府</a>が一括して行い、共和国・通商連合のいずれの航行局も管制権を持たない。航行許可が下りた記録はなく、区画の境界に近づいた船は例外なく連邦の武装ドローンに追い返される。</p>
+      <p class="codex-p">かつてこの空域はϫの一部として扱われ、鎖国中の連邦の周囲は「近づかないのが暗黙の了解」というだけの場所にすぎなかった。近年になりガロウ連邦が長年の沈黙を破り、<a href="glossary.html#sycorax-ruins">独立星系連合の要塞跡地</a>の残るセティボスⅣと、旧<a href="glossary.html#bolz-duchy">ボルツ公国</a>の管理基地の残骸が残るセティボスⅥの管理を自ら買って出たことで、既存セクターの割譲を伴う行政区の書き換えとしては約50年ぶりとなる区分の改定が行われた（<a href="glossary.html#sector-system">セクター区分</a>の項を参照）。文字にΣの派生字であるルナート・シグマが選ばれたのは航行局の皮肉である。マクベスの<a href="../planets/macbeth.html#spinning-core">ドナルベイン火山</a>を擁する<a href="#sigma">セクターς</a>と、同じ火口に要塞を沈めた総督府を擁するこの宙域を「似た者同士」と見立てた命名であり、二つの鎖された火口が地図の上で同じ系統の文字を掲げることになった。通商連合が管理の移譲に応じたのは無人衛星の警備負担を手放せるという実利のためと説明されているが、<a href="military.html#cdf">CDF</a>は連邦が独立星系連合の遺産をこの宙域へ集めつつあるとみて監視を続けている。</p>
+      <p class="codex-p">この宙域に星雲は<a href="#dasitetas">セクターꟶ</a>と同様に存在しない。代わりにセティボスⅢの周囲には微細な星間塵が濃く漂っており、この塵が視界をぼやかすことで、宙域から眺めた他の衛星はまるで幻影のように二重に重なって見えるという。塵の粒が光を前方へ散乱させ、天体の像の周囲に一回り大きな淡い輪郭を生む現象と解析されているが、船乗りたちはこれを単に「二重月」と呼ぶ。とりわけ豊かな海を持つセティボスⅢを外側から望んだ姿は、青みを帯びた小さな三日月がもう一つの大きな三日月に包まれているように見え、ハクティバの光が斜めに差す時刻にはその二つの弧の間だけが薄く輝く。ぼやけた衛星の輪郭は、現在の動機も勢力の輪郭もはっきり掴めないガロウ連邦そのもののようだと皆は口を揃える。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_29_lunate.png" alt="Sector Lunate"></div>
+    </article>
+    <article class="codex-entry loc" id="dasitetas" data-type="sector">
+      <h2 class="codex-h">セクターꟶ <span class="en">SECTOR DASITETAS — ムィンシャンクル管理宙域</span></h2>
+      <p class="codex-p"><a href="#janja">セクターϫ</a>の内側、セティボス第4衛星「セティボスⅤ」の周回軌道だけを切り出した、星系で2番目に小さいセクター。重犯罪者収容施設<a href="../planets/setebos.html">ムィンシャンクル刑務所</a>の専用管理区域であり、衛星を巡る岩石環には、氷塊や岩塊に擬態した警備ロボットと監視センサーが無数に紛れ込んでいる。航行許可は矯正当局の護送船にのみ与えられ、無許可でこのセクターへ進入した船は、環そのものに「捕食」される──と船乗りたちは語る。</p>
+      <p class="codex-p">かつては<a href="factions.html#iga">独立星系連合（IGA）</a>の「恐怖の象徴」として、生きて出た者のない監獄の空だった。接収・改修を経て処遇は大きく改善された現在も、護送船の乗員はこのセクターに入ると口数が減るという。<span class="redacted">現監獄長の任命記録は封印されている。防衛軍時代のペパー総司令官と同じ部隊の出身であることまでは、確認されている（PF-06関連）</span></p>
+      <p class="codex-p">この宙域に星雲は存在しない。脱出を阻むために<a href="#setebos">セティボス</a>の環から岩塊と氷が幾重にも掻き集められており、その隙間には哨戒機と機雷が数え切れないほど紛れて漂っている。わざわざ一区画を切り出してセクターとした理由も、この厳戒態勢が生む危険にある。無人機と岩塊がひしめく空域へ航行中の船が誤って迷い込まないよう、地図の上で最初から近寄らせない措置が取られたのである。星雲の代わりにこの宙域を彩るのは、無人監視衛星と環の構成物質が光を反射して連なる、細い光の粒の列である。それなりに美しい景観ではあるが、刑務所を知る者たちは二度と見たくないと口を揃える。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_30_dasitetas.png" alt="Sector Dasitetas"></div>
+    </article>
+    <article class="codex-entry loc" id="chima" data-type="sector">
+      <h2 class="codex-h">セクターϭ <span class="en">SECTOR CHIMA — 東凪宙域</span></h2>
+      <p class="codex-p">アウター・リムとフロンティアを隔てる0.4天文単位の「凪」のうち、星系東側を占めるセクター。巨大ガス惑星<a href="#setebos">セティボス</a>の形成期に星間物質が掃き集められた名残とされ、天体も塵もほぼ存在しない完全な静穏宙域である。メジャーワープドライブ航路<a href="glossary.html#warp-route">「フロンティア・ライン」</a>が四つの凪で唯一このセクターを貫いており、フロンティアへの公式な玄関口として、管理当番勢力の検問艦と航路ビーコン網が維持されている。凪領域の管理持ち回り制度は、このセクターの検問権益を巡る勢力間の衝突を避けるために生まれたものである。</p>
+      <p class="codex-p">検問で足止めされる商船の列は時に数十smにも及び、待機する船員を目当てに屋台船が集まって<a href="glossary.html#calm-mirage">「凪の市」</a>と呼ばれる即席の市場が立つ。フロンティアの新聞と噂話が星系で最初に「値段の付く」場所であり、情報屋にとっては検問の列こそが商店街だという。</p>
+      <p class="codex-p"><a href="glossary.html#calm-space">カーム・スペース</a>を構成する四つの凪のうち、最も人の集まる宙域がこのチーマである。星雲を持たないこの宙域で光を放つのは、通行者が捨てていったゴミである。塵ひとつ漂わない静穏の只中では捨てられた破片だけが取り残され、恒星の光を受けて波紋状の不思議な模様を描く。フロンティア・ラインのワープドライブは今も拡張工事の途上にあり、開通済みの区間は<a href="#papetoon">パペトゥーン</a>からメテオベースを抜けて<a href="#grippia">グリッピア</a>へ至る一本だけである。通行を待つ船には整理券が配られ、その列を目当てに店舗や施設船が寄り集まって、一種の街のような有様を作り上げている。凪の中で唯一、文明の明かりが灯る地区である。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_31_chima.png" alt="Sector Chima"></div>
+    </article>
+    <article class="codex-entry loc" id="shei" data-type="sector">
+      <h2 class="codex-h">セクターϣ <span class="en">SECTOR SHEI — 西凪宙域</span></h2>
+      <p class="codex-p">星系西側の凪を占めるセクター。フロンティア・ラインから最も遠く、管理当番の巡回も年に数えるほどしか行われない。近年は航路ビーコンの破壊・盗難が相次いでおり、検問を嫌う密輸業者やアウトローが無灯火で凪を横断する「裏航路」の存在は公然の秘密となっている。当番勢力の間では取り締まり費用の押し付け合いが続いており、治安改善の見通しは立っていない。</p>
+      <p class="codex-p">密輸業者の間では「西凪で沈んだ船は名前ごと消える」と囁かれ、無灯火航行同士の衝突事故は後を絶たない。それでも裏航路の利用者が減らないのは、検問一回分の時間と関税が、フロンティアの商売では死活を分けるからである──取り締まる側も、それを一番よく知っている。</p>
+      <p class="codex-p">この宙域に星雲と呼べるものはほとんど存在せず、青く輝く6つの分子雲だけが暗闇に浮かんでいる。丸い頭から尾へ光の流れる姿はマナティやジュゴンの群れを思わせ、<a href="glossary.html#sky-watcher">スカイウォッチャー</a>の間では「シェイの六つ子のジュゴンちゃん」の愛称で親しまれている。6頭がフォークのような配置に重なって見える座標では、分子雲の荷電粒子が電波を反射する中継器の代わりを果たすと解析されている。セクターϣで唯一通信の通じるこのエリアは、遭難者に残された最後の道しるべでもある。そしてこの道しるべを誰より頼りにしているのが、宙域を「トンネル」と呼んで往来する密輸業者である。<a href="glossary.html#route-frontier">フロンティア・ライン</a>の開発が辺境を賑わせて以来、<a href="#setebos">セティボス</a>圏産の<a href="glossary.html#bad-herb">違法ハーブ</a>を「特別な商品」の隠語で<a href="#janja">セクターϫ</a>から<a href="#stigma">セクターϚ</a>の惑星<a href="#kew">キュー</a>まで運ぶ裏航路がこの静寂を貫くようになり、担い手はマフィア<a href="glossary.html#arpeggio">アルペジオ</a>の系列組織と目されている。管制の利かない凪で<a href="glossary.html#warp-route">ワープドライブ</a>を強行するため、装置には盗難された正規品のビーコンへ違法なデチューンを施したものが使われており、誤作動で宙へ放り出される船が後を絶たない。無法の航行であるから事故を起こしても正規の救助隊が来る望みは薄く、操縦士の多くは<a href="#corneria">コーネリア</a>やキュー、<a href="#papetoon">パペトゥーン</a>で騙されて片棒を担がされた債務者と見られている。彼らを犯罪者として裁くか被害者として救うかの線引きはどの勢力の法でも定まっておらず、この板挟みが当番勢力の責任のなすりつけ合いに拍車をかけている。沈んだ船は名前ごと消えると囁かれる西凪にあって、ジュゴンたちの淡い光の下だけが名前を取り戻せる場所として残されている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_32_shei.png" alt="Sector Shei"></div>
+    </article>
+    <article class="codex-entry loc" id="fei" data-type="sector">
+      <h2 class="codex-h">セクターⲋ <span class="en">SECTOR FEI — 南凪宙域</span></h2>
+      <p class="codex-p">星系南側の凪を占めるセクター。星間物質が皆無に近く観測条件が星系随一に良好なため、ルビコン・スペース方面へ向けた長距離観測アレイと中継アンテナ網が設置されている。<a href="#dogma-central">ドグマ・セントラル</a>の観測データの大半はこのセクターを経由して内側へ届けられており、正体不明の<a href="glossary.html#contact-signal">コンタクト信号</a>の一次受信点としても、にわかに注目を集めている。</p>
+      <p class="codex-p">一次受信点となって以来、観測アレイの周辺には情報部の艦が常駐するようになり、天文局員たちは「星系で最も静かな宙域が、星系で最も注意深く聞き耳を立てられている」と苦笑する。アレイの保守要員は数か月交代の完全な孤独勤務だが、「宇宙の音を最初に聴ける仕事」として、志願者には事欠かないという。</p>
+      <p class="codex-p">この宙域は<a href="glossary.html#blagzalight">ブラグザライト</a>の数が星系で最も少なく、視界は良好を通り越して「何もない」と称されるレベルに達している。あまりの空白ぶりから、<a href="glossary.html#rubicon">ルビコン・スペース</a>まで行かずに悟りの境地を開きたいならⲋへ行け、というジョークまで存在する。そんな宙域で唯一見える星雲は、実はこの宙域に存在しない。正体は、<a href="#yot">セクターj</a>の方角はるか彼方に横たわる暗黒星雲である。偶然この宙域から観測しやすい位置にあるだけなのだが、何もなさすぎる環境が距離感を狂わせ、目の前に浮かんでいるかのように錯覚させるのである。星の無い空は観測乾板の上で白く抜け、この星雲だけが赤黒く滲んで写る。その姿が<a href="../corporations/hanamuko.html">ハナムコ</a>の人気ゲーム「パックンマン」の主人公にどことなく似ていることから、「パックン星雲」のあだ名で親しまれている。もっとも実際に観測するとポップな輪郭に不釣り合いなほど気味の悪い見た目をしており、「あれは人を喰ってる方のパックンマンだな」と評されることも多い。なお観測アレイの見張りに派遣される仕事は、厳正な審査の上で前職に観測員の経験を持つ者だけを採用しており、志願者の多さに反して狭き門となっている。その狭き門をくぐった数名が孤独の中で毎日見つめるものこそ、コンタクト信号の出どころを包み隠すこの赤黒い雲である。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_33_fei.png" alt="Sector Fei"></div>
+    </article>
+    <article class="codex-entry loc" id="ngii" data-type="sector">
+      <h2 class="codex-h">セクターⳟ <span class="en">SECTOR NGII — 北凪宙域</span></h2>
+      <p class="codex-p">星系北側の凪を占めるセクター。<a href="glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>期、戦火を逃れた移民船団が凪の只中で燃料切れを起こし漂流した悲劇から、「静寂の墓標」の伝承が残る。現在は<a href="factions.html#venom-empire">帝国軍</a>がフロンティア・ラインを迂回する侵攻経路として利用する懸念が持たれており、管理当番の巡回とは別に<a href="military.html#cdf">CDF</a>の無人監視網が敷かれている。</p>
+      <p class="codex-p">「静寂の墓標」の漂流船団は後年回収されたが、慰霊の無人ブイが今も凪の中心で信号を発し続けており、CDFの監視網はこのブイを基準点として構築されている。悲劇の記憶が、今は星系の「目」として働いているのである。北凪を通る船は、ブイの周波数に合わせて一度だけ無線を鳴らすのが船乗りの作法とされる。</p>
+      <p class="codex-p">この宙域は<a href="#fei">セクターⲋ</a>と並ぶ何もない空白地帯のはずなのだが、まったく別の意味で名を知られている。「静寂の墓標」の伝承のとおり、難破した船がここへ取り残される事件は過去に何件も発生している。原因は解析済みであり、<a href="#setebos">セティボス</a>の重力でワープドライブに失敗した宇宙船が、この宙域へ投げ捨てられ続けてきたのである。そうした話が積み重なったせいか、アクセスの難しい場所にもかかわらずこの宙域はオカルトの話題に事欠かない。星間ネットには数多の幽霊船話が投稿されており、本物の悲劇と判別できる話題はもはや「静寂の墓標」を含め数件しか残っていない。なお近年はこの艦船の墓場に<a href="factions.html#iga">独立星系連合</a>の一党が集結しているという噂が流れているが、帝国との戦いに構う暇のない共和国軍はこれを確かめられないまま放置している。宙域に見える星雲は、赤い薄明かりの帯を漆黒の雲が横切る見た目から「逆天の川」と通称されてきた。これを見かねた<a href="glossary.html#sky-watcher">スカイウォッチャー</a>の一人が、人気ゲーム<a href="glossary.html#true-star-walker">「ドラコニア・ブレイダー」</a>に登場する竜になぞらえて「ダークドラゴン星雲」と名前を付け直したことで有名である。翼を広げて薄明かりを渡る竜の姿は名前一つで印象を大きく変え、現在はオカルト雑誌<a href="glossary.html#nu-magazine">「ヌー」</a>の看板画像として、その手の界隈でポピュラーな存在になりつつある。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_34_ngii.png" alt="Sector Ngii"></div>
+    </article>
+    <article class="codex-entry loc" id="koppa" data-type="sector">
+      <h2 class="codex-h">セクターϞ <span class="en">SECTOR KOPPA — ライラット星系第16惑星宙域</span></h2>
+      <p class="codex-p"><a href="#grippia">グリッピア</a>惑星圏に位置するセクター。他の全ての天体よりはるか遠く、ライラット星系最外縁に位置する真の辺境区域の一つ。惑星グリッピアは実業家グリッピー・トードの<a href="corporations.html#grippia-works">グリッピア・ワークス社</a>が保有しており、この宙域の管理は同社の採掘部門子会社であるCGM社（コーネリア特殊金属株式会社）が実質的に行っている。経済との接続はメジャーワープドライブ航路「フロンティア・ライン」のみに依存しており、<a href="#heta">パペトゥーン</a>との中間に置かれた中継基地「メテオベース」が、この孤立した宙域の生命線となっている。</p>
+      <p class="codex-p">住民のほぼ全てがCGM社の社員とその家族であり、行政・警備・物流の一切を企業が担う「社宅惑星」である。戦火から最も遠い宙域とされる一方、希少金属の戦略的価値から両軍の調達官が足繁く通っており、グリッピー・トードは「どちらにも売るが、どちらにも肩入れしない」の一点を頑として貫いている。フロンティア・ラインが一日止まれば食卓が変わる──この宙域の暮らしは、その緊張の上に静かに成り立っている。</p>
+      <p class="codex-p"><a href="glossary.html#frontier">フロンティア</a>と<a href="glossary.html#rubicon">ルビコン・スペース</a>の中間に位置しながら、この宙域の星雲は非常に美しく輝くことで知られている。これより外側の星雲はほとんどが暗黒星雲に分類される黒く不気味なものばかりであり、内星系の宙域と遜色ない美しさを持つϞの星雲はなおさら際立って見える。青緑色の雲の芯には、稲妻に似たプラズマの光脈が走っている。この輝きは<a href="#lylat-prime">ライラット・プライム</a>の磁場と太陽風の影響が届く境界線がちょうどこの位置にあるためと解析されており、星雲の光は母なる太陽が星系の最外縁へ届ける最後の影響力と言い換えても過言ではない。これらの要素からこの星雲は「ライラットの贐（はなむけ）」の別名を持ち、ここを越えることが本格的なルビコン・スペースへ足を踏み入れた印とされてきた。惑星グリッピアの大気は希薄なため、昼夜を問わず空は暗い宇宙空間をそのまま映している。その空では、この青緑の星雲が太陽の代わりに地表を照らし続けている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_35_koppa.png" alt="Sector Koppa"></div>
+    </article>
+    <article class="codex-entry loc" id="sho" data-type="sector">
+      <h2 class="codex-h">セクターϸ <span class="en">SECTOR SHO — ドグマ恒星宙域</span></h2>
+      <p class="codex-p">恒星<a href="#dogma-central">ドグマ・セントラル</a>とその周囲を構成するセクター。ドグマの赤く鈍い光に照らされて不気味に輝く星雲に覆われており、訪れる者は全くいない。数年前からドグマ周辺で正体不明の<a href="glossary.html#contact-signal">コンタクト信号</a>を受信したとの報告が挙がっている。</p>
+      <p class="codex-p">深紅の光は暗黒星雲に遮られて外からはほとんど観測できず、「深淵で開いた目」の異名を持つ。コンタクト信号の受信以降、<a href="military.html#cdf">CDF</a>情報部は最上位監視区分「アポカリュプシス」を適用し、民間船の接近を全面的に禁止した。何かがこちらを見ている──根拠のないその感覚を、この宙域に立ち入った者は皆、判で押したように口にするという。</p>
+      <p class="codex-p">恒星を抱く宙域でありながら、ϸの空間は可視光での観測がほとんど成立しない。膨大な量の星間塵がドグマの光を遮る幕の役割を果たしているためである。派遣された観測衛星のデータによれば、届く可視光も赤系の色がほとんどを占める。仮に足を踏み入れたとしても、赤黒い光と黒いモヤだけがどこまでも続く不毛の宙域が見えると想定されている。<a href="#sargasso">サルガッソー</a>のような物理的な危険があるわけでも、<a href="#lambda">セクターλ</a>や<a href="#ya">セクターϊ</a>のような危険な要因が潜むわけでもない。ただ赤と黒のコントラストだけが広がる光景が続いている。それだけのはずなのだが、この宙域の写真を長時間見た者が体調不良を訴える話は後を絶たない。一説には<a href="glossary.html#giegue-illusion">「ギーグ錯視」</a>と呼ばれる生理的嫌悪感を引き起こしているとされるが、原因は定かではない。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_36_sho.png" alt="Sector Sho"></div>
+    </article>
+    <article class="codex-entry loc" id="yot" data-type="sector">
+      <h2 class="codex-h">セクターj <span class="en">SECTOR YOT — コンタクト信号発信源</span></h2>
+      <p class="codex-p">正体不明の<a href="glossary.html#contact-signal">コンタクト信号</a>が発信されているとされる、ライラット星系の最辺境。<a href="#dogma-central">ドグマ</a>の纏う暗黒星雲によって、可視光での観測は不可能になっている宙域。<a href="#dogma-central">詳細記事 ►</a></p>
+      <p class="codex-p">信号の解析は暗号班・言語班・天文局の合同チームが続けているが、内容はおろか「そもそも言語であるのか」すら結論が出ていない。確かなことは三つだけである──信号は規則正しく、止まず、そして少しずつ強くなっている。本セクターに関する全ての報告は、監視区分「アポカリュプシス」の下で封印される。</p>
+      <p class="codex-p">この宙域はコンタクト信号の発信源として星系の話題を集め続けているが、正直に言えば本当にそれだけの場所である。<a href="#sho">セクターϸ</a>と異なり、こちらの星雲は白系の光を放つ。ライラット星系で最も外縁に漂う<a href="glossary.html#blagzalight">ブラグザライト</a>の群れが、雲をわずかに白く光らせているためである。ただしその光はあまりに微弱であり、本記録に添付された観測写真も輝度を20倍に増幅する特殊加工でようやく見えるようにしたものとなっている。つまり実際にこの宙域へ来たとしても、恐らくは暗すぎて何も見えない。<a href="#dogma-central">ドグマ</a>の光すら届かない中心付近に至っては、文字通り暗中模索の完全な闇が支配する空間と推測されている。<a href="glossary.html#sky-watcher">スカイウォッチャー</a>が「ライラット星系で一番行きたくない場所ランキング」を開催すると、ほぼ毎回<a href="#venom">ベノム</a>とセクターϸに並んでこのjが選ばれるのがいつものお約束である。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_37_yot.png" alt="Sector Yot"></div>
+    </article>
+    <article class="codex-entry loc" id="hori" data-type="sector">
+      <h2 class="codex-h">セクターϩ <span class="en">SECTOR HORI — 彗星回廊</span></h2>
+      <p class="codex-p">星系北側の外縁を横切る、細長い弧状のセクター。数十年から数百年の周期で<a href="#lylat-prime">ライラット・プライム</a>へ回帰する周期彗星群の「通り道」であり、天文局は彗星軌道の保全のため、このセクター内での恒久施設の建設と航路の敷設を禁じている。コーネリアに古くから伝わる<a href="glossary.html#wish-upon-galaxy">『どんな願いも叶える大彗星』のおとぎ話</a>は、この回廊を渡る大彗星「ホーリーの箒星」の観測記録が原型と考えられており──<a href="glossary.html#stephano">グランベルの超兵器</a>の命名時に引用されたのも、皮肉にもこの伝承である。</p>
+      <p class="codex-p">76年周期とされる「ホーリーの箒星」の次の回帰は、まもなくと予測されている。戦時下にもかかわらず、天文局には回帰日時の問い合わせが後を絶たない。「共和国でも帝国でも、兵士は同じ空に同じ願いを掛けるのでしょう」──担当官の談話である。</p>
+      <p class="codex-p">回廊の名物「ホーリーの箒星」は、実は襲名制である。一つの彗星が永くあり続けるのではなく、色も成分も異なる大彗星が現れるたびに名を継いでおり、現在の箒星は7代目に当たる。彗星の尾の色は核の成分で決まり、ナトリウムの黄やシアン系分子の緑、電離ガスの青がそれぞれ別の代の置き土産である。歴代の箒星が軌跡に取り残していった尾が幾筋も重なった結果、この宙域の星雲は比喩表現を抜きにして7色に光り輝いている。恒久施設の建設が禁じられた回廊には雲を乱すものが何もなく、七代分の色のリボンは敷かれた時のまま保たれている。箒星そのものの美しさも相まって、この宙域はライラット星系で最も美しい場所の一つに数えられる。おとぎ話に描かれた七色の雲と彗星は、遥か昔からほとんど同じ姿で見えていたと想定される。そして今も、ホーリーの大彗星はライラットの願いを聞き続けているのかもしれない。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_38_hori.png" alt="Sector Hori"></div>
+    </article>
+    <article class="codex-entry loc" id="khei" data-type="sector">
+      <h2 class="codex-h">セクターϧ <span class="en">SECTOR KHEI — 入航の道</span></h2>
+      <p class="codex-p">星系縁辺からベノム惑星圏の方向へ伸びる、細長い回廊状のセクター。星系暦元年、母星を失った入植船団が初めて「青い灯台」<a href="#lylat-prime">ライラット・プライム</a>の光を視認したとされる地点を含み、「入航の道」の名で星系史跡に指定されている。回廊沿いには記念ブイ「元年灯」が点々と灯り、5年に一度、入植船団の航跡を逆にたどる巡礼航海<a href="glossary.html#lantern-return">「灯還り」</a>が行われてきた。</p>
+      <p class="codex-p">だが皮肉なことに、入植船団の最初の到達地は<a href="#venom">ベノム</a>である。第2次ライラットウォーズの勃発によって回廊の先端は<a href="#psi">セクターψ</a>の防衛線に飲み込まれ、「灯還り」は星系暦史上初めて中止された。消灯したままの元年灯が再び点る日を、星系の歴史家たちは待ち続けている。</p>
+      <p class="codex-p">この宙域の星雲は、ライラット星系で唯一の「地上の雲と同じ光り方をする星雲」である。原因は解明されていないが、確かにここで確認できる星雲は昼間の空にかかる雲のような外見をしており、周囲を照らす<a href="glossary.html#blagzalight">ブラグザライト</a>もまるで春先の陽光のような優しい光を放っている。青空に白い雲が浮かぶ景色の中の道をたどると、回廊の先端で古いワームホールに行き着き、これを抜けた船は<a href="#omega">セクターΩ</a>のベノム惑星圏へ到着する。つまり「青い灯台」を目指して星系へ近づいた開拓団は、この雲の星雲に迎えられ、導かれるままにベノムへたどり着いたと考えるのが自然である。<a href="#chi">セクターχ</a>の星雲のような罠の機能も持たず、ただ迷う旅人を導く存在に見えるのがこの星雲なのである。ここまでは情緒的に説明したが、平たく言えば「代り映えのしない昼間の雲みたいな星雲」である。撮影した写真を投稿した<a href="glossary.html#sky-watcher">スカイウォッチャー</a>が、ただの雲を撮ったと勘違いされて困った逸話が残るほど、見栄えはただの雲である。この当たり前の光景が宇宙のただ中に浮かんでいることのほうが余程異常なのだが、普通に暮らしているとそれに気づけないのは因果なものである。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_39_khei.png" alt="Sector Khei"></div>
+    </article>
+    <article class="codex-entry loc" id="nyi" data-type="sector">
+      <h2 class="codex-h">セクターⳡ <span class="en">SECTOR NYI — 宇宙生物回遊宙域</span></h2>
+      <p class="codex-p"><a href="#lambda">セクターλ（フォルトナ）</a>と<a href="#omicron">セクターο（ソーラ圏）</a>を結ぶ、緩やかに湾曲した帯状のセクター。エネルギーに引き寄せられる<a href="glossary.html#migratory-fauna">宇宙生物たち</a>が、ソーラの活動周期に合わせて年に二度、群れをなして往復する回遊路である。回遊期には数百sm級の個体が数千の列をなし、その燐光の帯は「星系で最も美しい渋滞」と呼ばれる。通航は種の保護と衝突事故防止の両面から厳しく制限され、観測航海の許可は抽選制となっている。</p>
+      <p class="codex-p">回遊の先頭を行く最長老の個体に歴代の観測員が名前を贈る伝統があり、現在の先導個体「17代目ヴェルデ」は、開戦後も変わらず回遊を続けている。「戦火の絶えないこの星系で、彼らだけが二百年前と同じ道を、同じ速さで泳いでいる」──観測日誌の一文である。</p>
+      <p class="codex-p">回遊路の美しさで知られる一方、この宙域は<a href="#sargasso">サルガッソー</a>を安全に迂回できる数少ない経由ルートの一つでもある。帝国に占領された<a href="#macbeth">マクベス</a>の奪還を賭けた<a href="glossary.html#donalbain-op">ドナルベイン攻略戦</a>では発光宇宙生物の群れに艦隊を紛れさせてこの宙域を渡る作戦が採られ、共和国史上初の大規模奇襲は完璧に成功したかに見えた。しかし<a href="../other/imperial-guard.html">帝国軍親衛隊</a>の巧みな情報操作によって撃破目標の所在は撹乱されており、優先順位を誤った攻勢は大失敗に終わっている。普段のこの宙域は<a href="#lylat-prime">ライラット・プライム</a>の強烈な磁力線の通り道であり、磁気が静まる時期を除けば船の通行はそもそもできない。その磁力が星間ガスをプラズマ発光させ、赤と緑に輝く星雲を光らせている。つまり星雲が綺麗な時期は通れない時期と同義であり、空を見れば可否が分かるという点で、通行時期の限られる宙域の中では親切な部類に入る。<a href="glossary.html#migratory-fauna">発光生物の渡り</a>と星雲が同時に輝く瞬間は両者の周期の最小公倍数で決まり、概ね標準時で60年に一度となる。この最高の天体ショーを撮影しようと<a href="glossary.html#route-core-ring">コア・ワールド環状線</a>のⳡ近傍エリアで大渋滞が起きたこともあり、直近の回では専用の観測所と長距離望遠鏡を備えた人工天体基地が用意されるなど、対策が取られたのは記憶に新しい。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_40_nyi.png" alt="Sector Nyi"></div>
+    </article>
+    <article class="codex-entry loc" id="sampi" data-type="sector">
+      <h2 class="codex-h">セクターϠ <span class="en">SECTOR SAMPI — グリーン・ビット管理宙域</span></h2>
+      <p class="codex-p"><a href="#lambda">セクターλ</a>と<a href="#epsilon">ε</a>の間に位置する、研究区画<a href="#green-bit">「グリーン・ビット」</a>の専用管理宙域。植物工場と研究棟が<a href="glossary.html#route-fortuna">フォルトナ・ライン</a>に沿って連なり、<a href="#fortuna">フォルトナ</a>で発見される未知の植物の解析と品種改良、および有用植物の大量栽培を担っている。施設そのものは古い時代から存在していたが、セクターとして完全に独立したのはごく近年のことである。施設の来歴と任務の詳細はグリーン・ビットの項に記録がある。</p>
+      <p class="codex-p">この立地には複数の理由がある。第一に、フォルトナへ向かう調査隊の中継基地としての適地であること。第二に、<a href="glossary.html#migratory-fauna">星間移動回遊生物</a>の大群が押し寄せた際、設備を丸ごと<a href="military.html#great-wall">グレートウォール</a>の内側へ退避させられること。壁の隕石群を盾とするこの避難計画は単純ながら、12年に一度の「ドドラの渡り」のたびに実際の効果を上げている。そして最大の理由が、フォルトナの植物が宙域を離れると枯れてしまう現象への対処である。原因は今も解明されていないが、故郷の環境から段階を踏んで慣らせば枯死を免れることが経験的に知られており、λとコアワールドの中間に植物を「慣らす」ための区画がどうしても必要であった。研究員たちはこの工程を熱帯魚の水槽の水替えに例える。手間を惜しめば、水槽の魚も星系の食卓も等しく駄目になるのである。</p>
+      <p class="codex-p">セクターϠの空を占めるのは、<a href="#epsilon">ε</a>の琥珀の雲海から続いているように見える、大きく丸い光の泡である。<a href="#lylat-prime">ライラット・プライム</a>の太陽風に内側から抉られ、薄い殻となったガスがプラズマ発光することで、温室の列の頭上に淡い光の天蓋を架けている。ただしεの星雲が隕石誘導の副産物として近年生まれた構造であるのに対し、この泡の観測記録ははるかに古い。加えてその輪郭は、消滅前の<a href="glossary.html#stephano">第6惑星ステファノー</a>の上空に確認されていた星雲と形状がよく一致する。このため天文局は、泡の正体をかつてステファノーの空を照らしていた星雲の残欠が漂着したものと解析している。真偽はどうあれ、消えた惑星の空の下で新しい作物が育てられているという符合は、この宙域の職員たちにひそかに好まれている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_41_sampi.png" alt="Sector Sampi"></div>
+    </article>
+
+    <article class="codex-entry loc" id="vau" data-type="sector">
+      <h2 class="codex-h">セクターⳣ <span class="en">SECTOR VAU — 氷晶帯「フロスト・リーフ」</span></h2>
+      <p class="codex-p">メジャーワープドライブ航路<a href="glossary.html#warp-route">「フロンティア・ライン」</a>の中継基地<a href="#meteo-base">メテオベース</a>と<a href="#koppa">グリッピア（セクターϞ）</a>の間に広がる、微細な氷塊の帯のセクター。純度の高い水氷はフロンティアの飲料水・推進剤・生命維持の全てを賄う「浮かぶ水源」であり、採氷業者──通称「アイスランナー」──の小型船が昼夜なく行き交う。その最大手が、缶飲料『ファルコン・スロップ』で知られる<a href="../corporations/frostreef.html">フロストリーフ・ボトラーズ</a>である。<a href="#heta">パペトゥーン</a>やグリッピアの暮らしは、この氷の帯なくしては成立しない。</p>
+      <p class="codex-p">採掘権（クレーム）の境界を巡る小競り合いは日常茶飯事で、開拓庁の調停官が常駐する出張所「氷上裁判所」は、星系で最も忙しい行政窓口の一つに数えられる。また氷塊の一部からは太古の星間有機物が検出されており、「生命の種の化石」を求める学術チームが採氷業者と発掘権を争うという、この宙域ならではの騒動も続いている。</p>
+      <p class="codex-p"><a href="glossary.html#frontier">フロンティア</a>と呼ばれる区域において、この宙域は<a href="#koppa">セクターϞ</a>と並んで最も賑やかな場所である。フロスト・リーフでは純度の高い氷を採るための船が行き交い、グリッピアで採掘された希少元素や加工済みの金属が通過するのもこの宙域である。今のライラットで最も勢いのある場所はここと言っても過言ではない。中継基地には巨大な小惑星を丸ごと使ったメテオベースが用意されており、業者たちはここを起点にグリッピアやフロスト・リーフへ向かう。ただし着陸できる宇宙船の数に限りがあるため、宙域では順番待ちを減らすべく、そもそもの入域数を調整する試みが行われている。この結果、<a href="glossary.html#route-frontier">フロンティア・ライン</a>後半への通過は整理券で管理されるようになった。その弊害として宙域規模の大渋滞が発生するようになり、これが<a href="glossary.html#calm-mirage">「凪の市」</a>を生み出す要因となっているのだが、これについては<a href="#chima">セクターϭ</a>の記事を参照されたい。宙域に見える星雲は膨大な量の氷の破片が作り出したものであり、オレンジと青の<a href="glossary.html#blagzalight">ブラグザライト</a>の光を受けて、まるで牙のような形状に光り輝いている。セクター名の響きが狼の牙を連想させることから「狼のあぎと星雲」というお洒落な名前が付けられているが、実際この星雲の中では、業者たちが牙をむき出しにした言い争いが絶えない。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_42_vau.png" alt="Sector Vau"></div>
+    </article>
+    <article class="codex-entry loc" id="ya" data-type="sector">
+      <h2 class="codex-h">セクターϊ <span class="en">SECTOR YA — 静電の海</span></h2>
+      <p class="codex-p"><a href="glossary.html#warp-route">通商連合私設航路</a>の東側に横たわる、恒常的な静電嵐に覆われたセクター。嵐の内部では通信・レーダー・航法支援の全てが機能を失い、船は計器を捨てて「目」だけで飛ぶことを強いられる。船乗りの間では「ヤーに入ったら口笛も吹くな」──嵐が声を覚えて真似をする──という古い戒めが語り継がれている。</p>
+      <p class="codex-p">監視の目が届かないこの宙域は、検問を嫌う密輸業者にとって天然の抜け道であり、<a href="military.html#cdf">CDF</a>と<a href="factions.html#hactiva-union">通商連合</a>の双方が頭を抱える取り締まりの空白地帯となっている。嵐の晴れ間、過去数百年分の難破船が一瞬だけレーダーに映る現象は「幽霊の点呼」と呼ばれ、これを見た者は無事に帰り着けるというジンクスがある。</p>
+      <p class="codex-p">この宙域は何かと<a href="#sargasso">サルガッソー</a>に似た要素が多い。原因不明の静電嵐が常時吹き荒れ、計器は故障して使いものにならず、ここを通過した船からは相当な頻度で幽霊船の話が出てくる。唯一の違いは、艦船を捕縛する<a href="glossary.html#devils-hand">「悪魔の手」</a>に類する現象が存在しない点である。あの現象がサルガッソーの危険度をどれほど引き上げているかを測る、良い比較対象と言われている。<a href="#shei">セクターϣ</a>の違法航路とこの宙域の私設航路が引き合いに出されることもあるが、こちらは非公式情報とはいえ<a href="../corporations/emeraldas-bank.html">エメラルダス・星系銀行</a>の資本が入ったれっきとしたワープドライブ航路であり、道の格が違うと言わざるを得ない。そしてこの宙域で本当に恐れるべきは、幽霊船でも計器の狂いでもない。ここには電気を主食とする「スペースアメーバ」が大量に生息しており、群れを成して艦船の電力を吸い取ろうと集まってくるのである。名前の響きこそ可愛いが、この星系で唯一「<a href="../weapons/venom-cell.html">ベノム・セル</a>を捕食した上で浸食もされない生物」と書けばヤバさが分かりやすい。生息環境が特殊なため防疫に利用できるわけではないが、通過する上での危険度は折り紙付きである。電力を完全に奪われれば漂流は避けられないため一刻も早く通り抜けたいところだが、計器の使えない嵐がそれを邪魔する。このためここを通過する帝国と通商連合の貿易船は、どれも特別仕様となっている。宙域の星雲はでんでんむしのように見える形状が可愛らしいが、その正体は凄まじい高エネルギーの束である。突っ込めば消し炭すら残らないため、絶対に近寄ってはいけない。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_43_ya.png" alt="Sector Ya"></div>
+    </article>
+    <article class="codex-entry loc" id="gain" data-type="sector">
+      <h2 class="codex-h">セクターƢ <span class="en">SECTOR GAIN — ルビコン・スペース前哨宙域</span></h2>
+      <p class="codex-p"><a href="#koppa">セクターϞ</a>のさらに先、<a href="glossary.html#rubicon">ルビコン・スペース</a>の中腹に位置するセクター。<a href="glossary.html#route-frontier">フロンティア・ライン</a>を延長するために築かれた前哨基地群と、ライラットε星<a href="#dogma-central">ドグマ・セントラル</a>の近傍へワープドライブを拡張するための空間跳躍装置「オービタル・ゲート」が配備されている。ここまで遠ざかると周囲はもはや外宇宙に近く、航路のビーコンの列だけが、ここがまだ道の途中であることを示す照明として輝いている。</p>
+      <p class="codex-p">点在する前哨基地の数は、そのままドグマへの挑戦の回数を示している。分厚い暗黒星雲に覆われたドグマへ直接道を通すことが容易でないのは最初期の調査で判明しており、以来、安全な中継点を探す手探りの調査が基地を一つずつ積み増しながら続けられてきた。試みはいずれも失敗に終わり、最後に採られたのが、航路そのものを伸ばす代わりに空間跳躍装置で一足飛びに渡る航法である。計画は実用まであと一歩に迫ったが、スポンサーの破産によりそのまま頓挫。完成度95%と評価されるステーションは、無人のまま今も宙域に浮かんでいる。顛末の詳細は<a href="#orbital-gate">オービタル・ゲート</a>の項に記録がある。</p>
+      <p class="codex-p">セクターƢの星雲は、ライラットの天体の中でも特に不気味で不可解なものとして知られる。組成の解析結果は<a href="#solar">ソーラ</a>や<a href="#hactiva">ハクティバ・パラニド</a>と同じ中小型恒星のそれを示すにもかかわらず、中心部だけが綺麗に抜き取られており、残された殻の残骸が漂ってこの星雲を作っている。光の乏しいこの宙域で星雲を照らすものは<a href="glossary.html#blagzalight">ブラグザライト</a>くらいしかなく、そのブラグザライトも鈍く弱い光の粒ばかりである。抜け殻の星雲はさながら、星が何者かに食べられた跡のように見える。正体については、抜き取られたコアが独立した星こそ<a href="#dogma-central">ドグマ</a>であるとする分離説、ライラット第6の恒星が巨大な何者かに食われた跡とする捕食説などが有名だが、決着は今も付いていない。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_44_gain.png" alt="Sector Gain"></div>
+    </article>
+    <article class="codex-entry loc" id="dasia" data-type="sector">
+      <h2 class="codex-h">セクター’ <span class="en">SECTOR DASIA — 星系最小セクター</span></h2>
+      <p class="codex-p">星図の上では句読点ほどの大きさしかない、ライラット星系最小のセクター。<a href="#san">セクターϻ</a>の内側、<a href="#hactiva">ハクティバ・パラニド連星</a>の間に生じる異常力場の「中心点」だけを指定した研究専用区域であり、ワームホール形成仮説の常時観測ステーション「ピリオド」がただ一つ浮かんでいる。二星が重なって見える「合」の日に力場は最も安定するとされ、観測員たちはその瞬間を静かに記録し続けている。</p>
+      <p class="codex-p">セクター名が発音記号一つであるのは「登録申請書に付いたインクの染みを、航行局がそのまま登録してしまったため」という逸話が広く信じられているが、航行局は肯定も否定もしていない。研究者の間では「星系で最も小さな謎を、星系で最も小さなセクターが見張っている」と言い習わされている。</p>
+      <p class="codex-p">この宙域に星雲は無い。セクターそのものが、特異点と観測所を収めたほんの一区間でしかないためである。ステーション「ピリオド」の直下にはブラックホールにも似た特異点が口を開けており、観測員たちは自分たちの勤務を「垂直な崖の途中でキャンプをしている」と例える。真下のことを考えると食事が喉を通らなくなるため、普段は深く考えないことにしているという。そしてこの小さな崖際には、なぜか星系中の電波が届く。星系を渡る電波が特異点の重力で曲げられ、ちょうどこの一点で焦点を結ぶためと解析されている。つまりここでは、あらゆる通信を労せず傍受できてしまう。<a href="../corporations/awazon-primal.html">アワゾン・プライマル</a>の映画配信も、<a href="factions.html#hactiva-union">通商連合</a>の秘密の会談も、共和国と帝国の戦時無線もである。報告すればこの場所そのものが標的になりかねないと判断したのか、この事実は観測所の隊員だけが知る秘密であり続けている。この星系の全ての秘密を覗ける唯一の窓は、何の自覚も持たない者たちの足元にある。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LF_S_45_dasia.png" alt="Sector Dasia"></div>
+    </article>
+    <!-- アウト・オブ・セクターの記事は glossary.html#out-of-sector へマージ（2026-08-05） -->
+
+    <!-- ═══ その他（宙域・軍事拠点・施設） ═══ -->
+
+    <article class="codex-entry loc" id="sargasso" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">サルガッソー宙域 <span class="en">SARGASSO REGION — 宇宙の墓場</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="#upsilon">セクターυ</a>・<a href="#phi">φ</a>・<a href="#chi">χ</a> / 特A級危険宙域</div>
+        <p class="codex-p">タイタニアの異常磁場が星系中の残骸を集めた、天文学的規模のデブリの海。インナーリムとアウターリムを分断する「巨大な壁」であり、安全な通過点は<a href="glossary.html#trinculo">トリンキュロー回廊</a>のみ。両軍が恐れて近づかない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/sargasso.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/Sargasso_thumb.png" alt="Sargasso"></div>
+    </article>
+
+    <article class="codex-entry loc" id="area3" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">グレートウォール AREA3 <span class="en">GREAT WALL AREA3 — 環状宇宙ステーション</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="#epsilon">セクターε</a> / <a href="military.html#cdf">CDF</a> 軍事拠点</div>
+        <p class="codex-p">直径210kmの環状ステーション。<a href="military.html#great-wall">グレートウォール</a>全隕石の軌道を管理する「壁の頭脳」にして、都市戦・艦隊戦の模擬演習が行われる共和国軍実戦訓練の総本山。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/area3.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_5.png" alt="Area3"></div>
+    </article>
+
+    <article class="codex-entry loc" id="perdita" data-type="misc">
+      <h2 class="codex-h">ペルディタ宇宙センター <span class="en">PERDITA SPACE CENTER — 星系最大の宇宙港</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="#kappa">セクターκ</a> / 共和国 — 航行局直轄・民間開放港</div>
+      <p class="codex-p"><a href="glossary.html#trinculo">トリンキュロー回廊</a>の入り口、<a href="#kappa">セクターκ</a>の中心に浮かぶ星系最大の宇宙港。<a href="glossary.html#nine-routes">9大ワープ航路</a>のうち6本が一点で重なる結節点であり、行き先の異なる交通を発着層ごとに振り分ける立体の分岐構造が、そのまま巨大な港へと成長した。桟橋と乗継ターミナルは今も星雲の翅に沿って増築が続いており、この港に完成図は存在しない。「工事が終わらないのではなく、終わらせないのである」とは港湾局の広報が好んで使う言い回しである。</p>
+      <p class="codex-p">埠頭は航路ごとに六つの区画へ分かれ、区画を一つ跨ぐだけで飛び交う言葉も屋台の匂いも変わる。星系中の文化が乗り継ぎの数時間だけ滞在しては流れていく「星系の縮図」であり、港で生まれ、星に降りないまま港で働く<a href="#kappa">「ペルディタ生まれ」</a>の民が管制と港湾業の中核を担っている。六つの区画の道順を全て諳んじてようやく一人前と認められるという。開戦後は軍の輸送船団もこの港を集結地としており、民間の雑踏と軍の物資が同じ桟橋に並ぶ光景は、戦時のライラットを最も端的に映す一枚として報道写真に繰り返し登場している。</p>
+      <p class="codex-p">星雲の翅を遠くから望む景観は<a href="#kappa">セクターκ</a>の項に記録がある。港の内側から見上げる空は、それとはまた別の顔を持つ。頭上では幾層ものワープドライブ航路が交差し、発着の光が星雲を背景に絶え間なく流れていく。管制塔の職員はこの流れを「潮」と呼び、環状線の便が集中する時間帯の光の奔流は「大潮」として旅行案内にまで載っている。灯りの消えない港である以上、この宙域に夜は存在しない。それでもペルディタ生まれの民は、蝶の翅が最も濃く輝く時間帯を選んで一日の終わりとしている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_10.png" alt="Perdita Space Center"></div>
+    </article>
+
+    <article class="codex-entry loc" id="green-bit" data-type="misc">
+      <h2 class="codex-h">グリーン・ビット <span class="en">GREEN BIT — 宇宙植物工場群</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="#sampi">セクターϠ</a> / 共和国 エバーグリーン州 — 研究・生産複合体</div>
+      <p class="codex-p"><a href="#sampi">セクターϠ</a>に展開する植物工場と研究施設の集合体。<a href="#fortuna">フォルトナ</a>産植物の解析、品種改良、有用植物の大量栽培という三つの任務を担い、星系の<a href="glossary.html#food-culture">「食の探求」</a>の最前線であり続けている。定番の高栄養食品<a href="glossary.html#herb-culture">「エナジーナッツ」</a>をはじめ、今日の食卓に並ぶ品種の少なくない数が、この工場群の試験場を経て世に出た。<a href="glossary.html#route-fortuna">フォルトナ・ライン</a>沿いに温室が連なる光景から「緑の環」の通称で知られ、航路図では緑の点群で示される。</p>
+      <p class="codex-p">前身は、惑星コーネリアの<a href="glossary.html#state-tigerleaves">タイガーリーブス州</a>にあった同名の研究都市である。フォルトナ調査の黎明期、採取された植物の解析はこの地上都市が一手に担っていた。しかし持ち帰られた植物の大半は、フォルトナの宙域を離れた途端に枯れてしまう。原因不明のこの現象が計画の壁となり、研究拠点そのものを航路の途中へ移し、環境を段階的に切り替えて「慣らす」中間区画を設ける構想が生まれた。こうして軌道上へ移った試験場は成果とともに増築を重ね、やがて州一つ分の人口と生産力を抱える工場群へと成長した。現在は<a href="#prospero">プロスペロー</a>の農業州を姉妹州とするエバーグリーン州として自治を敷き、宙域も<a href="glossary.html#sector-system">管轄の原則</a>に従いセクターϠとして独立している。</p>
+      <p class="codex-p">施設の中核は、フォルトナの高温多湿を再現した大温室からコーネリア標準の栽培棟までを一列に並べた「慣らしの列」である。採取された株は数年を掛けて列を一棟ずつ渡り、最後の棟で花を付けてようやく星系の畑へ送り出される。列の始まりに立つ最初の温室は密林の空気をそのまま封じており、職員の間では「一番小さいフォルトナ」と呼ばれている。夜側から宙域へ入る船には無数の温室の明かりが緑の帯となって映り、フォルトナ帰りの調査船にとっては、この光こそが危険地帯の出口を示す目印となる。「緑が見えたら生きて帰れた」という調査隊の言い回しは、今ではフォルトナ・ラインの船乗り全体の合言葉になっている。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_11.png" alt="Green Bit"></div>
+    </article>
+
+    <article class="codex-entry loc" id="meteo-base" data-type="misc">
+      <h2 class="codex-h">メテオベース <span class="en">METEO BASE — CGM メテオ・プラットフォームベース</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="#vau">セクターⳣ</a>（ⳣ-1） / <a href="factions.html#hactiva-union">ハクティバ通商連合</a>圏 — <a href="corporations.html#grippia-works">CGM社</a> 中継基地</div>
+      <p class="codex-p"><a href="glossary.html#route-frontier">フロンティア・ライン</a>の中継基地として<a href="#vau">セクターⳣ</a>の玄関（ⳣ-1）に据えられた大型小惑星。正式名称は「CGM・メテオ・プラットフォームベース」であり、船乗りは皆メテオベースと略す。今でこそ<a href="corporations.html#grippia-works">CGM社</a>の物流と氷晶帯の採氷を束ねるフロンティアの司令塔だが、この岩塊が歩んできた道のりは星系のどの施設よりも数奇である。始まりは遊園地であった。</p>
+      <p class="codex-p">第1次ライラットウォーズが収まってしばらく後、この小惑星では大人気アミューズメント施設「ワンダフル・メテオランド」が営業していた。開園当時は一日の来場者が10万人を超える空前絶後の人気を誇り、連日テレビと新聞の紙面を独占したと記録されている。しかし開発元のオリエンタルプラネット社と、パークのテーマキャラクターを貸し出していた<a href="corporations.html#horain-zone">ホライン・ゾーン・コーポレーション</a>が経営方針を巡って仲違いし、パークは人気絶頂のただ中で惜しまれつつ閉園。小惑星は数年のあいだ、コーネリアと同じ軌道をただ漂う廃墟となった。</p>
+      <p class="codex-p">放置されたメテオランドは軌道調整を失い、次第にコーネリアへ接近していく。かつての人気テーマパークが北半球を吹き飛ばす大惨事の元凶になりかねないという報道が紙面に躍り、爆破処理による除去が検討され始めた。ここで名乗りを上げたのが、当時まだコアワールドとの交流が乏しかった<a href="factions.html#hactiva-union">ハクティバ通商連合</a>である。エメラルダス・ゴールドマン銀行（後の<a href="corporations.html#emeraldas-bank">エメラルダス・星系銀行</a>）の社長の息子が、施設と小惑星を丸ごと買い取りたいと申し出たのである。誕生日プレゼントとして、銀行は本当にそれを買った。凄まじい財力で星の危機ごと買い上げたこの一件は、衝突の恐怖を報じていたニュースを吹き飛ばすほどの衝撃をもって伝えられ、外星系の経済力がいかに強大かを内星系に知らしめることとなった。</p>
+      <p class="codex-p">当時まだ非常に高価だった「惑星推進バーニア」を8基も装着され、メテオランドは比喩でなく丸ごとフロンティアへ移設された。しばらくは<a href="#kew">キュー</a>の富豪たちが貸し切りでパーティを開く、星一つ分の遊び場として使われた。だが持ち主の息子が大人になるにつれ足は遠のき、手入れだけが続けられて誰も遊びに来ない歳月が流れる。やがてメテオランドは<a href="factions.html#iga">独立星系連合</a>の襲撃を受け、遊具の鉄骨から8基のバーニアまで根こそぎ持ち去られてしまった。奪われた資材が後にセティボス圏で環を管理する<a href="../planets/bolse.html">環状防衛衛星ボルス</a>の原型に充てられたことは、同項に詳しい。かくして丸裸の小惑星は看板であった「ランド」すら失い、ただの大きな「メテオ」になったのである。</p>
+      <p class="codex-p">メテオランドの記憶が忘れられたころ、この岩塊に新たな買い手が現れる。フロンティア外縁の惑星<a href="#koppa">グリッピア</a>を丸ごと買い取った男、<a href="characters.html#grippy">グリッピー・トード</a>である。中継基地の適地を探していたグリッピーは、この静かな小惑星を一目見るなり購入を即断したと伝えられる。丸裸にされたとはいえ、内部には遊園地時代の基礎工事がそっくり残っている。何もない宙域に基地を建てるより遥かに安上がりで、巨大な人工島として幾らでも役割を持たせられることを、先見の明を持つ男は見抜いていたのである。ほどなくして中継基地の機能を据え付けられた小惑星には新しい名が与えられた。「CGM・メテオ・プラットフォームベース」、略してメテオベースである。</p>
+      <p class="codex-p">現在のメテオベースは、フロンティアの外縁にありながら全盛期の<a href="#macbeth">マクベス</a>を彷彿とさせる賑わいを見せている。<a href="#vau">セクターⳣ</a>の氷晶帯からは膨大な氷が採り出され、グリッピアとその衛星からはCGM社の精錬金属と希少元素が届く。行き交う業者の暮らしを支えるために町が生まれ、着陸枠の<a href="glossary.html#calm-mirage">整理券</a>が語り草になるほど船が並ぶ。メテオベースはその全ての司令塔である。遊園地から始まったこの小惑星は今、どの時代よりも多くの人が訪れる場所になった。</p>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_12.png" alt="Meteo Base"></div>
+    </article>
+
+    <article class="codex-entry loc" id="orbital-gate" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">オービタル・ゲート <span class="en">ORBITAL GATE — 空間跳躍ビーコン基地</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="#gain">セクターƢ</a> / 所有権係争中 — 完成度95%・無人</div>
+        <p class="codex-p"><a href="glossary.html#route-frontier">フロンティア・ライン</a>の終点のさらに先に浮かぶ、未完成の空間跳躍装置。<a href="#dogma-central">ドグマ・セントラル</a>近傍へ船を一足飛びに投げ渡すために建造されたが、出資者の倒産により完成の一歩手前で停止。扉は一度も開かれないまま、星系の航路図で唯一「未成」の注記を持つ施設であり続けている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/orbital-gate.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_6.png" alt="Orbital Gate"></div>
+    </article>
+
+    <article class="codex-entry loc" id="starblade" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">宇宙艦隊スターブレード <span class="en">FLEET STARBLADE — 駐屯宙域</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="#zeta">セクターζ</a> / <a href="military.html#cdf">CDF</a> 第1宇宙艦隊 — <span style="color:var(--danger);">再編中</span></div>
+        <p class="codex-p">「共和国の刃」の名を持つ主力艦隊とその泊地。旧5国家の艦隊を統合した共和国統合の象徴だったが、帝国軍の奇襲<a href="glossary.html#zeta-tragedy">「セクターζの惨劇」</a>で主力の過半を喪失。現在稼働率4割で再建が進む。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/starblade.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_13.png" alt="Fleet Starblade"></div>
+    </article>
+
+    <article class="codex-entry loc" id="oberon" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">オベロンⅡ <span class="en">OBERON II — 廃棄スペースコロニー</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="#iota">セクターι</a> / 管理放棄 — <span style="color:var(--danger);">立入禁止</span></div>
+        <p class="codex-p">理想の居住環境を追った実験コロニーの成れの果て。公式人口ゼロのはずのこの宙域では、調査船や戦闘機の失踪が今も続く。無人の街に季節が巡り、誰も見ていない桜が咲いているという。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/oberon.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_9.png" alt="Oberon II"></div>
+    </article>
+
+    <article class="codex-entry loc" id="area6" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">AREA6 <span class="en">AREA6 — ベノム最終防衛ライン</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="#psi">セクターψ</a> / <span style="color:var(--danger);">帝国軍 — 接近＝交戦</span></div>
+        <p class="codex-p">ベノム惑星圏を球殻状に包む帝国の絶対防衛圏。「宇宙最強」の<a href="military.html#space-armada">スペースアマダ</a>艦隊と防衛衛星ボルスが、本星への全ての道を塞ぐ。戦争を終わらせるには、いつか誰かがこの壁を抜けねばならない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/area6.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_7.png" alt="Area6"></div>
+    </article>
+
+    <article class="codex-entry loc" id="bolse" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">防衛衛星ボルス <span class="en">BOLSE — 動かない旗艦</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="#psi">セクターψ</a> / <a href="#area6">AREA6</a> — <span style="color:var(--danger);">帝国軍 — 稼働中</span></div>
+        <p class="codex-p">AREA6の中核を成す全高2.4kmの無人戦闘ステーション。自立思考AI「タイタン」が全周囲シールドと主砲パージ・キャノンを操り、本星へ至る最後の門を塞ぐ。乗員を一人も必要としない、帝国で最も静かな要塞である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/bolse.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_8.png" alt="Bolse"></div>
+    </article>
+
+      </div>
+    </div>
+
+    <div class="gls-scrub" id="glsScrub">
+      <div class="gls-scrub-track" id="glsScrubTrack">
+        <div class="gls-scrub-thumb" id="glsScrubThumb"></div>
+      </div>
+    </div>
+
+    <div class="gls-status">
+      <span class="rec-no" id="glsCounter">REC 001 / 069</span>
+      <span class="rec-name" id="glsName"></span>
+      <span class="keys">◄ ► KEYS / CLICK ORBIT OBJECT</span>
+    </div>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px':'1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+
+    (function() {
+      const stage   = document.getElementById('orbStage');
+      const body    = document.getElementById('panelBody');
+      const filter  = document.getElementById('locFilter');
+      if (!stage || !body || !filter) return;
+
+      /* ── 素の <article> から軌道オブジェクトを生成 ──
+         記事追加は article を置くだけでよい（loc-thumb の画像が軌道に上がる） */
+      const pairs = [];   // { orb, art }
+      Array.from(body.querySelectorAll('article.codex-entry')).forEach((art) => {
+        // リスト表示は .codex-entry.loc を flex（本文＋右サムネ）で並べるため、
+        // 本文が article 直下に裸で並ぶ記事（セクター等）は .loc-body で包んで
+        // 惑星記事と同じ構造に揃える（包まないと段落が横並びの列になる）
+        if (!art.querySelector('.loc-body')) {
+          const wrap = document.createElement('div');
+          wrap.className = 'loc-body';
+          Array.from(art.children)
+            .filter(c => !c.classList.contains('loc-thumb'))
+            .forEach(c => wrap.appendChild(c));
+          art.insertBefore(wrap, art.firstChild);
+        }
+        const orb = document.createElement('div');
+        orb.className = 'orb';
+        const thumb = art.querySelector('.loc-thumb');
+        const img = thumb && thumb.querySelector('img');
+        let tileImg = null;
+        if (img) {
+          // ブロック表示用の複製（orb-scale 上書き前・サムネ用の縮尺補正ごと写す）
+          tileImg = img.cloneNode(true);
+          orb.appendChild(img);           // 縮尺補正の inline style ごと移設
+          // 軌道表示専用の縮尺補正（縦長画像の見切れ対策など）:
+          // article に data-orb-scale="1.3" を付けるとサムネ用補正を上書きする
+          if (art.dataset.orbScale) img.style.transform = 'scale(' + art.dataset.orbScale + ')';
+          if (img.style.objectFit === 'cover') img.style.borderRadius = '50%';
+        } else {
+          orb.innerHTML =
+            '<div class="orb-noimg"><span class="lat"></span><span class="ring"></span>' +
+            '<span class="rt tl"></span><span class="rt tr"></span><span class="rt bl"></span><span class="rt br"></span>' +
+            '<span class="cap">NO VISUAL<br>AWAITING SCAN</span></div>';
+        }
+        // リスト表示用: サムネ枠は記事内に残し、軌道へ抜いた img の複製
+        // （orb-scale 上書き前のもの）を戻す。noimg 枠はそのまま残る
+        if (thumb && tileImg) thumb.appendChild(tileImg.cloneNode(true));
+        stage.appendChild(orb);
+        pairs.push({ orb, art, tileImg });
+      });
+
+      const prevBtn = document.getElementById('glsPrev');
+      const nextBtn = document.getElementById('glsNext');
+      const counter = document.getElementById('glsCounter');
+      const nameEl  = document.getElementById('glsName');
+      const idxBtn  = document.getElementById('glsIndexBtn');
+      const idxOverlay = document.getElementById('glsIndexOverlay');
+      const idxList = document.getElementById('glsIndexList');
+
+      let deck = pairs.slice();
+      let cur = 0;
+
+      const titleOf = (p) => {
+        const h = p.art.querySelector('.codex-h');
+        const clone = h.cloneNode(true);
+        const en = clone.querySelector('.en'); if (en) en.remove();
+        return clone.textContent.trim();
+      };
+
+      /* ネームプレート用の英名（.en の「— 補足」より前を採用、無ければ和名） */
+      const plate = document.getElementById('orbPlate');
+      const plateName = document.getElementById('orbPlateName');
+      let plateLast = null;
+      const enOf = (p) => {
+        const en = p.art.querySelector('.codex-h .en');
+        if (en) {
+          const t = en.textContent.split('—')[0].trim();
+          if (t) return t;
+        }
+        return titleOf(p);
+      };
+
+      /* ── 軌道配置: 中央から離れるほど弧を描いて沈み、縮小・減光する ── */
+      function layout() {
+        const spacing = Math.max(180, Math.min(300, stage.clientWidth * 0.19));
+        deck.forEach((p, i) => {
+          const n = i - cur;
+          const cl = Math.max(-4, Math.min(4, n));
+          const ax = Math.abs(cl);
+          const x = cl * spacing * (1 - 0.07 * ax);
+          const y = -Math.pow(ax, 1.35) * 26;                   // 軌道の湾曲（両脇が持ち上がる）
+          const sc = n === 0 ? 1.22 : 1 / (1 + 0.42 * ax);   // 選択中は一回り拡大
+          p.orb.style.transform =
+            `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${sc.toFixed(3)})`;
+          p.orb.style.opacity = Math.abs(n) > 3 ? '0' : (n === 0 ? '1' : String(0.8 - 0.16 * ax));
+          p.orb.style.zIndex = 40 - ax;
+          p.orb.style.filter = n === 0 ? '' : `brightness(${(0.8 - 0.13 * ax).toFixed(2)}) saturate(0.65)`;
+          p.orb.style.pointerEvents = Math.abs(n) > 3 ? 'none' : '';
+          p.orb.classList.toggle('is-active', n === 0);
+          p.art.classList.toggle('is-active', n === 0);
+        });
+        prevBtn.disabled = cur <= 0;
+        nextBtn.disabled = cur >= deck.length - 1;
+        counter.textContent =
+          'REC ' + String(cur + 1).padStart(3, '0') + ' / ' + String(deck.length).padStart(3, '0');
+        nameEl.textContent = deck.length ? titleOf(deck[cur]) : '—';
+        if (plate && plateName) {
+          const en = deck.length ? enOf(deck[cur]) : '—';
+          if (en !== plateLast) {
+            plateLast = en;
+            plateName.textContent = en;
+            plate.classList.remove('flash');
+            void plate.offsetWidth;
+            plate.classList.add('flash');
+          }
+        }
+        buildIndex();
+        syncScrub();
+      }
+
+      function go(i) {
+        if (!deck.length) return;
+        const before = cur;
+        cur = Math.max(0, Math.min(deck.length - 1, i));
+        layout();
+        if (cur !== before) body.scrollTop = 0;
+      }
+
+      /* ── filter ── */
+      const filterBtn = document.getElementById('glsFilterBtn');
+      function applyFilter(type) {
+        filter.querySelectorAll('button').forEach(b => {
+          b.classList.toggle('active', b.dataset.type === type);
+          if (b.dataset.type === type) filterBtn.textContent = '◈ Filter: ' + b.textContent;
+        });
+        const keepId = deck[cur] ? deck[cur].art.id : null;
+        deck = pairs.filter(p => {
+          const ok = (type === 'all' || p.art.dataset.type === type);
+          p.orb.hidden = !ok;
+          if (p.tile) p.tile.hidden = !ok;
+          p.art.classList.toggle('flt-out', !ok);   // リスト表示用
+          if (!ok) p.art.classList.remove('is-active');
+          return ok;
+        });
+        // ブロック表示の帯: 中身が全て消えた帯は見出し・点線ごと畳む
+        blkGroups.forEach(g => {
+          g.hidden = !g.querySelector('.blk-tile:not([hidden])');
+        });
+        const keepIdx = deck.findIndex(p => p.art.id === keepId);
+        cur = keepIdx >= 0 ? keepIdx : 0;
+        layout();
+      }
+      filter.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        applyFilter(btn.dataset.type);
+        filter.classList.remove('open');
+      });
+      filterBtn.addEventListener('click', () => filter.classList.toggle('open'));
+
+      /* ── navigation ── */
+      prevBtn.addEventListener('click', () => go(cur - 1));
+      nextBtn.addEventListener('click', () => go(cur + 1));
+      document.addEventListener('keydown', (e) => {
+        const inList = mainEl.classList.contains('mode-list');
+        if (!inList && e.key === 'ArrowLeft')  { e.preventDefault(); go(cur - 1); }
+        if (!inList && e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
+        if (e.key === 'Escape') {
+          idxOverlay.classList.remove('open');
+          closeRecOverlay();
+        }
+      });
+      pairs.forEach(p => p.orb.addEventListener('click', () => {
+        if (!p.orb.classList.contains('is-active')) go(deck.indexOf(p));
+      }));
+
+      /* horizontal wheel → record switch */
+      let wheelLock = 0;
+      stage.addEventListener('wheel', (e) => {
+        if (mainEl.classList.contains('mode-block')) return;
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+        e.preventDefault();
+        const now = Date.now();
+        if (now - wheelLock < 450) return;
+        wheelLock = now;
+        go(cur + (e.deltaX > 0 ? 1 : -1));
+      }, { passive: false });
+
+      /* touch swipe */
+      let touchX = null, touchY = null;
+      stage.addEventListener('touchstart', (e) => {
+        touchX = e.touches[0].clientX; touchY = e.touches[0].clientY;
+      }, { passive: true });
+      stage.addEventListener('touchend', (e) => {
+        if (touchX === null || mainEl.classList.contains('mode-block')) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        const dy = e.changedTouches[0].clientY - touchY;
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          go(cur + (dx < 0 ? 1 : -1));
+        }
+        touchX = touchY = null;
+      }, { passive: true });
+
+      /* ═══ 表示モード（カード＝軌道カルーセル / ブロック＝一覧グリッド） ═══ */
+      const mainEl      = document.querySelector('.gls-main');
+      const blkView     = document.getElementById('blkView');
+      const blkBackdrop = document.getElementById('blkBackdrop');
+      const blkCloseBtn = document.getElementById('blkClose');
+      const cardBtn     = document.getElementById('dispCard');
+      const blockBtn    = document.getElementById('dispBlock');
+      const listBtn     = document.getElementById('dispList');
+      const blkGroups   = [];
+
+      /* 種別ごとの帯（点線区切り）を組み、各記録のサムネイルを流し込む。
+         記事追加時の作業は従来どおり article を置くだけ（ここが自動で拾う） */
+      [
+        { type: 'planet', label: 'PLANETS — 惑星' },
+        { type: 'star',   label: 'STARS — 恒星' },
+        { type: 'sector', label: 'SECTORS — セクター' },
+        { type: 'misc',   label: 'MISC — その他' },
+      ].forEach((gdef) => {
+        const members = pairs.filter(p => {
+          const t = p.art.dataset.type || 'misc';
+          return gdef.type === 'misc'
+            ? (t !== 'planet' && t !== 'star' && t !== 'sector')
+            : t === gdef.type;
+        });
+        if (!members.length) return;
+        const g = document.createElement('section');
+        g.className = 'blk-group';
+        const label = document.createElement('div');
+        label.className = 'blk-label';
+        label.textContent = '◈ ' + gdef.label;
+        const grid = document.createElement('div');
+        grid.className = 'blk-grid';
+        g.appendChild(label);
+        g.appendChild(grid);
+        members.forEach((p) => {
+          const tile = document.createElement('button');
+          tile.className = 'blk-tile';
+          const fig = document.createElement('span');
+          fig.className = 'blk-fig';
+          if (p.tileImg) fig.appendChild(p.tileImg);
+          else fig.innerHTML = '<span class="blk-noimg"></span>';
+          const nm = document.createElement('span');
+          nm.className = 'blk-name';
+          nm.textContent = titleOf(p);
+          tile.appendChild(fig);
+          tile.appendChild(nm);
+          tile.addEventListener('click', () => {
+            const idx = deck.indexOf(p);
+            if (idx < 0) return;
+            go(idx);
+            openRecOverlay();
+            history.replaceState(null, '', '#' + p.art.id);
+          });
+          grid.appendChild(tile);
+          p.tile = tile;
+        });
+        blkView.appendChild(g);
+        blkGroups.push(g);
+      });
+
+      function openRecOverlay() {
+        if (!mainEl.classList.contains('mode-block')) return;
+        mainEl.classList.add('blk-open');
+        body.scrollTop = 0;
+      }
+      function closeRecOverlay() {
+        mainEl.classList.remove('blk-open');
+      }
+      /* 選択中の記録を現在のモードに応じた形で見せる:
+         ブロック＝オーバーレイを開く / リスト＝該当記事へスクロール / カード＝何もしない */
+      function revealCurrent() {
+        if (!deck.length) return;
+        if (mainEl.classList.contains('mode-block')) {
+          openRecOverlay();
+        } else if (mainEl.classList.contains('mode-list')) {
+          body.scrollTop = Math.max(0, deck[cur].art.offsetTop - 12);
+        }
+      }
+      function setMode(m) {
+        mainEl.classList.toggle('mode-block', m === 'block');
+        mainEl.classList.toggle('mode-list',  m === 'list');
+        cardBtn.classList.toggle('active',  m === 'card');
+        blockBtn.classList.toggle('active', m === 'block');
+        listBtn.classList.toggle('active',  m === 'list');
+        closeRecOverlay();
+        if (m === 'card') layout();   // カード側に戻ったら座標・スクラブを再計算
+        try { localStorage.setItem('locDispMode', m); } catch (e) {}
+      }
+      cardBtn.addEventListener('click', () => setMode('card'));
+      blockBtn.addEventListener('click', () => setMode('block'));
+      listBtn.addEventListener('click', () => setMode('list'));
+      blkBackdrop.addEventListener('click', closeRecOverlay);
+      blkCloseBtn.addEventListener('click', closeRecOverlay);
+
+      let savedMode = 'card';
+      try { savedMode = localStorage.getItem('locDispMode') || 'card'; } catch (e) {}
+      if (savedMode === 'block' || savedMode === 'list') setMode(savedMode);
+
+      /* ── deep link ── */
+      function openHash(hash) {
+        if (!hash || hash === '#') return false;
+        if (hash.startsWith('#type-')) { applyFilter(hash.slice(6)); return true; }
+        let target;
+        try { target = document.getElementById(decodeURIComponent(hash.slice(1))); }
+        catch (err) { target = document.getElementById(hash.slice(1)); }
+        if (!target) return false;
+        const art = target.closest('article.codex-entry');
+        if (!art) return false;
+        let idx = deck.findIndex(p => p.art === art);
+        if (idx < 0) {
+          applyFilter('all');
+          idx = deck.findIndex(p => p.art === art);
+          if (idx < 0) return false;
+        }
+        go(idx);
+        revealCurrent();   // ブロック＝オーバーレイ / リスト＝スクロール / カード＝何もしない
+        if (target !== art && !target.classList.contains('codex-entry')) {
+          body.scrollTop = Math.max(0, target.offsetTop - 12);
+        }
+        return true;
+      }
+      window.addEventListener('hashchange', () => openHash(location.hash));
+
+      body.addEventListener('click', (e) => {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+        e.preventDefault();
+        if (openHash(a.getAttribute('href'))) {
+          history.replaceState(null, '', a.getAttribute('href'));
+        }
+      });
+
+      /* ── scrub bar ── */
+      const scrub      = document.getElementById('glsScrub');
+      const scrubTrack = document.getElementById('glsScrubTrack');
+      const scrubThumb = document.getElementById('glsScrubThumb');
+
+      function rebuildTicks() {
+        scrubTrack.querySelectorAll('.tick').forEach(t => t.remove());
+        const tw = scrubTrack.clientWidth, thw = scrubThumb.offsetWidth;
+        deck.forEach((p, i) => {
+          const t = document.createElement('i');
+          t.className = 'tick' + (i === cur ? ' current' : '');
+          const frac = deck.length > 1 ? i / (deck.length - 1) : 0;
+          t.style.left = (thw / 2 + frac * (tw - thw)) + 'px';
+          scrubTrack.appendChild(t);
+        });
+      }
+      function syncScrub() {
+        const tw = scrubTrack.clientWidth, thw = scrubThumb.offsetWidth;
+        const frac = deck.length > 1 ? cur / (deck.length - 1) : 0;
+        scrubThumb.style.left = (frac * (tw - thw)) + 'px';
+        rebuildTicks();
+      }
+      function scrubIndexFromX(clientX) {
+        const r = scrubTrack.getBoundingClientRect();
+        const thw = scrubThumb.offsetWidth;
+        const frac = (clientX - r.left - thw / 2) / Math.max(1, r.width - thw);
+        return Math.round(Math.max(0, Math.min(1, frac)) * (deck.length - 1));
+      }
+      let scrubbing = false;
+      scrub.addEventListener('pointerdown', (e) => {
+        if (!deck.length) return;
+        scrubbing = true;
+        scrub.classList.add('dragging');
+        scrub.setPointerCapture(e.pointerId);
+        go(scrubIndexFromX(e.clientX));
+      });
+      let scrubRaf = false;
+      scrub.addEventListener('pointermove', (e) => {
+        if (!scrubbing || scrubRaf) return;
+        scrubRaf = true;
+        const x = e.clientX;
+        requestAnimationFrame(() => {
+          scrubRaf = false;
+          const i = scrubIndexFromX(x);
+          if (i !== cur) go(i);
+        });
+      });
+      const endScrub = (e) => {
+        if (!scrubbing) return;
+        scrubbing = false;
+        scrub.classList.remove('dragging');
+        go(scrubIndexFromX(e.clientX));
+      };
+      scrub.addEventListener('pointerup', endScrub);
+      scrub.addEventListener('pointercancel', () => {
+        scrubbing = false;
+        scrub.classList.remove('dragging');
+      });
+
+      /* ── index overlay ── */
+      function buildIndex() {
+        idxList.innerHTML = '';
+        deck.forEach((p, i) => {
+          const a = document.createElement('a');
+          a.href = '#' + p.art.id;
+          a.textContent = titleOf(p);
+          if (i === cur) a.className = 'current';
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            idxOverlay.classList.remove('open');
+            go(i);
+            revealCurrent();
+            history.replaceState(null, '', a.getAttribute('href'));
+          });
+          idxList.appendChild(a);
+        });
+      }
+      idxBtn.addEventListener('click', () => idxOverlay.classList.toggle('open'));
+      idxOverlay.addEventListener('click', (e) => {
+        if (e.target === idxOverlay) idxOverlay.classList.remove('open');
+      });
+
+      window.addEventListener('resize', layout);
+
+      /* デフォルト選択はコーネリア（ハッシュ指定があればそちらを優先） */
+      const defIdx = deck.findIndex(p => p.art.id === 'corneria');
+      if (defIdx >= 0) cur = defIdx;
+      layout();
+      openHash(location.hash);
+      // 読み込み完了後にハッシュを再適用（読み込み中の遷移で着地がずれる事象への保険）
+      window.addEventListener('load', () => { if (location.hash) openHash(location.hash); });
+    })();
+  </script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

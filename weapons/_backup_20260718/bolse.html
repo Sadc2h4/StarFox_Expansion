@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOLSE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff5566;--accent:#ff99a0;--border:rgba(255,85,102,0.32);--border-hi:rgba(255,85,102,0.7);--dim:#401018;--dim2:#20080c; }
+    .p-title    { color: #ffecee; text-shadow: 0 0 50px rgba(255,85,102,0.35); }
+    .p-tagline  { border-color: #ff5566; color: #ff5566; }
+    .terminal-hdr { color: #ff99a0; }
+    .terminal-hdr::before { background: #ff99a0; box-shadow: 0 0 8px #ff99a0; }
+    .dk { color: #ff5566; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../codex/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-09 / BOLSE — 防衛衛星ボルス ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff99a0;">●</span> HOSTILE — ACTIVE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — BOLSE DEFENSE SATELLITE — AREA6 CORE — VENOM EMPIRE</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0009 — CLEARANCE: OPEN — DO NOT ENGAGE</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-09 / ARMORY FILE ]</div>
+        <div class="p-name-jp">防衛衛星ボルス (BOLSE)</div>
+        <h1 class="p-title">BOLSE</h1>
+        <div class="p-tagline">THE EYE AT THE LAST GATE ── 球形要塞衛星 ─ AREA6中核</div>
+        <p class="p-short-desc">ベノム最終防衛ラインAREA6の中核を成す球形要塞衛星。全周囲シールドと重力波兵器を備え、単独で艦隊に匹敵する「動かない旗艦」。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 09 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">BOLSE / ボルス</td></tr><tr><td class="dk">CLASS</td><td class="dv">球形要塞衛星</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv">帝国工廠（ゴモラ造船区画）</td></tr><tr><td class="dk">DIAMETER</td><td class="dv">直径 約2.4km</td></tr><tr><td class="dk">DEFENSE</td><td class="dv">全周囲エネルギーシールド（6基連環）</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">重力波兵器 / 対艦レーザー砲群 / 迎撃機発進管</td></tr><tr><td class="dk">GARRISON</td><td class="dv">迎撃戦闘機 約200機</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../codex/factions.html#venom-empire">ベノム帝国軍</a> — <a href="../codex/locations.html#area6">AREA6</a>守備隊</td></tr><tr><td class="dk">WEAK POINT</td><td class="dv warn">シールド同調中枢（推定）</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 稼働中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING -- 93 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 93%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,85,102,0.55);">
+        <img src="" alt="BOLSE" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">AREA6 — FORTRESS SATELLITE</span>
+            <span class="tg-jp">防衛衛星ボルス ── 最終防衛ラインの中核</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">あの光がベノムの『目』だ。瞬きしたのを見た者はいない。<span class="tg-note note">-AREA6強行偵察 生還者の報告より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">艦隊は沈む。要塞は落ちる。だが衛星は──あれはただ、そこに在り続ける<span class="lore-quote-src">― CDF統合参謀本部 戦域評価より</span></span></p>
+  <p class="lore-p">防衛衛星ボルス（Bolse）は、<a href="../codex/locations.html#area6">AREA6</a> に展開する<a href="../codex/factions.html#venom-empire">ベノム帝国</a> の中核を成す球形要塞衛星である。<a href="../codex/military.html#space-armada">スペースアマダ</a> 艦隊と共にベノム惑星圏への全ての接近経路を塞ぎ、「最後の門の閂」と恐れられている。</p>
+  <p class="lore-p">単独で一個艦隊に匹敵する火力と、艦隊には不可能な「無限の持久」を併せ持つ。共和国側の作戦立案において、ボルスは兵器ではなく「地形」として扱われる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p">船体は直径約2.4kmの多層球殻構造。外周を巡る6基のシールド発生塔が連環式の全周囲シールドを張り、艦砲射撃をほぼ完全に無効化する。シールドを抜けない限り、内部の対艦レーザー砲群と約200機の迎撃戦闘機が一方的に攻撃を続ける構図となる。</p>
+  <p class="lore-p">中核兵装は試射時に<a href="../codex/locations.html#corneria">コーネリア</a> からも閃光が観測された重力波兵器。直撃した艦は装甲ごと圧壊するとされ、有効射程内での艦隊行動は自殺行為に等しい。唯一の希望は、6基のシールド塔が単一の同調中枢に依存していると推定される点である──もっとも、その中枢はシールドの内側にある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">運用史 ─ HISTORY</h3>
+  <p class="lore-p">建造は帝国建国初期、<a href="../codex/locations.html#area6">AREA6</a> の絶対防衛圏構想の第一段階として、首都ゴモラの造船区画で行われた。艦隊より先に「動かない要塞」を置いたことは、<a href="../codex/characters.html#andorf">アンドルフ</a> が本星防衛に何を求めたかを雄弁に物語る。</p>
+  <p class="lore-p">開戦初期の強行偵察作戦では、偵察戦隊がボルスの有効射程を見誤り壊滅的損害を受けた。以後、共和国艦隊はセクターψの手前で必ず足を止める。その静止線こそが、ボルスの最大の戦果である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">帝国将兵はボルスを「陛下の眼」と呼ぶ。一方、共和国のパイロットたちは別の呼び名を使う──「消灯を知らない灯台」。どちらの呼び名も、あの衛星が一度も機能を止めたことがないという同じ事実を指している。</p>
+  <p class="lore-p"><span class="redacted">作戦研究注記: シールド同調中枢の位置は衛星中心軸上と推定される。迎撃機発進管の開口タイミングにのみ、シールド連環に0.4秒の位相間隙が生じる。単機ないし少数機による突入可能性についてはスターフォックスへの諮問を推奨する</span></p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TESLA KOBER — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#c0c8d8;--accent:#e4eaf4;--border:rgba(192,200,216,0.32);--border-hi:rgba(228,234,244,0.7);--dim:#2a3040;--dim2:#12161e; }
+    .p-title    { color: #f4f7fc; text-shadow: 0 0 50px rgba(192,200,216,0.4); }
+    .p-tagline  { border-color: #c0c8d8; color: #c0c8d8; }
+    .terminal-hdr { color: #e4eaf4; }
+    .terminal-hdr::before { background: #e4eaf4; box-shadow: 0 0 8px #e4eaf4; }
+    .dk { color: #c0c8d8; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-26 / TESLA KOBER — テスラー・コバー ]</div>
+    <div class="header-status"><span class="blink" style="color:#e4eaf4;">●</span> MIA — SIGNAL LOST</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — TESLA KOBER — INTELLIGENCE RECON PILOT — MISSING IN ACTION</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0026 — CLASSIFICATION: MIA — LAST CONTACT: ASTEROID SECTOR 3-2</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-26 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">テスラー・コバー (TESLA KOBER)</div>
+        <h1 class="p-title">SIGNAL<br>LOST</h1>
+        <div class="p-tagline">コーネリア諜報部 特殊第2小隊 ─ 消息不明</div>
+        <p class="p-short-desc">士官学校が輩出した計器の名手にして、昇進を断り続けた万年軍曹。小惑星帯で「銀色の隕石」と「巨大な怪鳥」に遭遇し、交信を最後に消息を絶った。機体は今も見つかっていない。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 26 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">TESLA KOBER / テスラー・コバー</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#kyusoid">キューソイド</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">コーネリア諜報部 特殊第2小隊</td></tr><tr><td class="dk">RANK</td><td class="dv">軍曹 — 昇進辞退4回</td></tr><tr><td class="dk">CRAFT</td><td class="dv">Mスカウター（<a href="../weapons/arwing.html">アーウィン</a>型指令偵察機）FX3-0058</td></tr><tr><td class="dk">SQUAD CODE</td><td class="dv">COR-XX3C743（小隊共通識別）</td></tr><tr><td class="dk">LAST CONTACT</td><td class="dv warn">⚠ 小惑星帯3-2地区 X330-Y088-Z247</td></tr><tr><td class="dk">ENCOUNTER</td><td class="dv warn">⚠ 未確認物体A「シルバーフェニックス」</td></tr><tr><td class="dk">STATUS</td><td class="dv">消息不明 — 戦死認定は保留中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">SEARCH PROGRESS -- 0 / 100 (NO WRECKAGE FOUND)</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 2%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(192,200,216,0.5);">
+        <img src="" alt="TESLA KOBER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE FLIGHT RECORDER</span>
+            <span class="tg-jp">計器の名手 ── 最後の計器は彼の声だった</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">巨大な鳥です……こんな大きな鳥は見たことがありません……すごいスピードでぶつかってくる……！<span class="tg-note note">-フライトレコーダー3 最終交信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">残骸なし。漂流物なし。信号なし。以上の理由により、本件を「戦死」と記録することはできない<span class="lore-quote-src">― 諜報部 捜索打ち切り報告書より</span></span></p>
+  <p class="lore-p">テスラー・コバーは、コーネリア諜報部特殊第2小隊に所属した偵察搭乗員である。<a href="../database/glossary.html#academy-branches">防衛軍士官学校</a>が輩出した名うての操縦士でありながら、任務中に正体不明の巨大生物と遭遇し、交信を最後に消息を絶った。同じ日、同じ小隊のもう一人の軍曹<a href="bear-noguchini.html">ベアー・ノウグッチーニ</a>も別宙域で消息を絶っており、この「二重失踪」は諜報部最大の未解決案件となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">前半生 ─ EARLY LIFE</h3>
+  <p class="lore-p">コーネリアシティの計器修理工の家に生まれた。幼少期の遊びは玩具ではなく、父の工房に持ち込まれる高度計と燃圧計の狂いを当てることだったという。<a href="../database/glossary.html#academy-branches">士官学校本校</a>では操縦と航法計器の読みで歴代上位の成績を残し、教官たちから「計器の申し子」と呼ばれた。</p>
+  <p class="lore-p">卒業後は当然士官への道が開かれていたが、本人は「机が増えると計器が減る」という理由で任官後の昇進を断り続け、軍歴の記録には昇進辞退が4回残されている。階級は最後まで軍曹のままだったが、その腕を疑う者は誰もいなかった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">活躍 ─ SERVICE</h3>
+  <p class="lore-p">開戦後は偵察飛行の専門家として頭角を現し、やがてコーネリア諜報部の特殊第2小隊に引き抜かれた。同小隊は<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>製の指令偵察機「Mスカウター」──<a href="../weapons/arwing.html">アーウィン</a>の機体設計を観測任務用に振り直した派生機──を運用する少数精鋭であり、危険宙域の単独長距離偵察を任務とする。生還率が搭乗員の腕に直結するこの部隊で、コバーの帰投率は開隊以来の最高記録を保持していた。</p>
+  <p class="lore-p">彼の偵察報告は「計器より正確」と参謀部で評判になり、要注意宙域の哨戒図の多くが彼の観測データを下敷きにしている。皮肉なことに、その正確無比な男が最後に残した報告だけが、今も誰にも検証できないでいる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">現在 ─ MISSING</h3>
+  <p class="lore-p">失踪当日、コバーは<a href="../database/locations.html#asteroid">グレートウォール</a>近傍の小惑星帯3-2地区を単独飛行していた。緊急回線で入った最後の交信によれば、彼は「銀色の隕石」の中に破壊可能な個体があることを発見し、さらにその残骸の中から「卵」を確認している。直後、見たこともない巨大な怪鳥が出現。機体へ猛速度で突進し、「あたりが真っ白になって……見えない……助けて……」の声を最後に、通信は雑音とともに途絶えた。</p>
+  <p class="lore-p">転送された映像データには、既知のどの生物とも一致しない巨大な鳥類が映っていた。諜報部はこれを未確認物体A、コードネーム「シルバーフェニックス」として登録している。現場宙域の捜索では機体の残骸も漂流物も一切発見されず、戦死認定は現在も保留のままである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">最終交信の記録は「フライトレコーダー3」の整理番号で保管され、分析が続けられている。得られたデータがあまりに少ないため断定は避けられているが、分析官の間で有力なのは、怪鳥を「別次元の世界から迷い込んだ生物」とする説である。<span class="redacted">かつて<a href="../database/sectors.html#rho">セクターρ</a>では、サルガッソー除去計画の一環として反陽子爆弾による除去実験が行われており、その跡には現在もワームホールが確認されている。接続先は<a href="../database/locations.html#katina">カタリナ</a>やメテオベース、さらには観測記録と全く一致しない「完全な異世界」に及ぶと解析されており、<a href="../database/glossary.html#out-of-dimension">アウト・オブ・ディメンション</a>報告群との関連が示唆されている。なお実験を主導したのはアンドルフだとする説が根強いが、爆弾の設計者は別の博士であり、彼の関与は推測の域を出ていない</span>。</p>
+  <p class="lore-p">失踪から数か月後、行方不明の偵察隊員の最終通信が消息地点ではなくカタリナの座標から発信されるという事件が起きている（アウト・オブ・ディメンションの項を参照）。この通信をコバーのものとみる分析官は少なくない。もしそうなら、彼はまだどこかの空を飛んでいる。計器の申し子のことである。どの次元の計器であろうと、読み間違えはしないだろう。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

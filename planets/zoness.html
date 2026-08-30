@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZONESS — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#88cc33;--accent:#bbee66;--border:rgba(136,204,51,0.32);--border-hi:rgba(187,238,102,0.7);--dim:#2a3a10;--dim2:#151d08; }
+    .p-title    { color: #f2ffe0; text-shadow: 0 0 50px rgba(136,204,51,0.3); }
+    .p-tagline  { border-color: #88cc33; color: #88cc33; }
+    .terminal-hdr { color: #bbee66; }
+    .terminal-hdr::before { background: #bbee66; box-shadow: 0 0 8px #bbee66; }
+    .dk { color: #88cc33; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/locations.html" class="nav-back">◄ LOCATIONS</a>
+    <div class="header-tag">[ 11 / ZONESS — ゾネス ]</div>
+    <div class="header-status"><span class="blink" style="color:#bbee66;">●</span> SECTOR-ν — OCCUPIED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">LYLAT SYSTEM — ZONESS — FORMER RESORT WORLD — SECTOR-NU — CONTAMINATION ALERT</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: ZNS-0011 — CLASSIFICATION: OCCUPIED TERRITORY — TOXIC HAZARD</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ 11 / LYLAT SYSTEM — SECTOR-ν ]</div>
+        <div class="p-name-jp">ゾネス (ZONESS)</div>
+        <h1 class="p-title">PARADISE<br>POISONED</h1>
+        <div class="p-tagline">旧リゾート惑星 ─ 帝国占領下</div>
+        <p class="p-short-desc">かつて「ライラットの宝石」と呼ばれた海洋リゾート惑星。ベノム帝国の占領と廃棄物投棄により、エメラルドの海は毒の海へと変わり果てた。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PLANETARY SCAN — SECTOR-ν ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">ZONESS / ゾネス（旧名ウンブリエル）</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">ミッド・リム</td></tr><tr><td class="dk">LOCATION</td><td class="dv">LYLAT 13th — Sectorν</td></tr><tr><td class="dk">PLANET TYPE</td><td class="dv">E3型 海洋惑星（汚染進行中）</td></tr><tr><td class="dk">MOONS</td><td class="dv">1</td></tr><tr><td class="dk">PRIMARY STAR</td><td class="dv"><a href="../database/locations.html#solar">ソーラ</a></td></tr><tr><td class="dk">AVG TEMP</td><td class="dv">+12°C ～ +38°C</td></tr><tr><td class="dk">DAY / YEAR</td><td class="dv">21.2H / 295D</td></tr><tr><td class="dk">FACTION</td><td class="dv bad">ベノム帝国軍（占領中）</td></tr><tr><td class="dk">CAPITAL</td><td class="dv">海上城塞都市 <a href="../database/glossary.html#city-juliet">ジュリエット</a> — 帝国再開発</td></tr><tr><td class="dk">RESIDENT RACES</td><td class="dv">ヘケトイド（大半が避難）</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">ENVIRONMENT INDEX -- 18 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 18%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(136,204,51,0.6);">
+        <img src="../resource/LA_image/LS_P_13.png" alt="Zoness" class="planet-img-detail planet-img-small" style="animation: 7s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">Mid Rim — CONTAMINATED OCEAN</span>
+            <span class="tg-jp">旧リゾート惑星 ── 汚染警報発令中</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">俺たちの海で好き勝手暴れて　挨拶もなしか？<br>コイツらにはちと　礼儀ってやつを教えねぇとな！<span class="tg-note note">-大破した潜水艦サルマリンの会話履歴より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「観光案内を書き直す必要はない。『美しい海』を『毒の海』に、『歓迎』を『警告』に置き換えるだけでいい」<span class="lore-quote-src">― 従軍記者の占領地レポートより</span></span></p>
+  <p class="lore-p">ゾネス（Zoness）は、<a href="../database/sectors.html#nu">セクターν</a>に位置するライラット星系第13惑星。<a href="../database/locations.html#aquas">アクアス</a>と同じく恒星<a href="../database/locations.html#solar">ソーラ</a>を公転する海洋惑星で、旧名を「ウンブリエル」という。かつては星系一の海洋リゾートとして知られたが、現在は<a href="../database/factions.html#venom-empire">ベノム帝国</a>の占領下にあり、違法採掘業者の巣窟と化している。</p>
+  <p class="lore-p">帝国の廃棄物投棄によって海洋汚染は惑星規模に達し、環境指数は開戦前の80台から18まで急落した。星系史上最悪の環境破壊の現場であり、共和国はこの星の奪還を「領土の回復」ではなく「海の救助」と位置付けている。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 帝国軍占領下 — 汚染警報</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 形成史</h3>
+  <p class="lore-p">ゾネスもまた、若き<a href="../database/locations.html#solar">ソーラ</a>の点火が外側へ押し出した水を分け合って生まれた「水の姉妹」の一人である（星域全体の形成は<a href="aquas.html">アクアス</a>と<a href="fichina.html">フィチナ</a>の項に譲る）。ただしアクアスと比較すると、ゾネスへの水の配分は少なかったと推定される。加えて地殻の起伏が小さかったため、水は深い海盆に集まらず、惑星全体へ薄く広く行き渡ることになった。地表の9割を覆いながら大部分が遠浅という稀有な海と、そこに散らばる無数の環礁は、この配分の産物である。</p>
+  <p class="lore-p">客星<a href="../database/locations.html#titania">タイタニア</a>の飛来がもたらした星域の大混乱を、ゾネスはほとんど無傷で潜り抜けている。ミランダは砕け、<a href="fichina.html">フィチナ</a>は最外縁へ引き剥がされ、<a href="../database/locations.html#macbeth">マクベス</a>は軌道ごと連れ去られた中で、この星だけは元の軌道帯に留まり、形成時からの固有衛星である単一の月の軌道も乱されなかった。真円に近い軌道を巡る月が起こす潮汐は穏やかで規則正しく、遠浅の海と合わさって、星系で最も安全と評された「優しい海」を成立させた。</p>
+  <p class="lore-p">遠浅の海底地形と穏やかな潮汐は、以上のとおり形成過程に由来する恒常的な性質である。現在の汚染が損なったのは水質と生態系であって、これらの地質学的条件そのものは失われていない。浄化さえ達成されれば「優しい海」の環境は復元可能とする専門家の評価は、この点に根拠を持つ。帰還同盟の合言葉「海が死んでいなければ、故郷は死んでいない」は、地質学の見地からも支持できる主張である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">地表の9割を占める海は、かつてエメラルド色に輝き、無数の環礁と白砂の島々が観光客を迎えていた。現在その海は帝国の投棄した化学廃棄物と精錬残渣で毒々しい黄緑色に濁り、水面には廃棄物処理プラントの排出口が並ぶ。海棲生物の多くは死滅あるいは変異し、巨大化した変異生物の目撃報告が後を絶たない。</p>
+  <p class="lore-p">自転周期は21.2標準時間、公転周期は295日。隣の軌道を巡る<a href="../database/locations.html#aquas">アクアス</a>（公転282日）とは、ソーラ圏の形成初期に同じ軌道を分け合った「水の姉妹星」の間柄である（成り立ちは形成史の項を参照）。</p>
+  <p class="lore-p"><a href="../database/sectors.html#nu">セクターν</a>は<a href="../database/sectors.html#mu">セクターμ</a>と航路を介さず直接隣接しており、そのまま乗り入れが可能という星系でも珍しい構造を持つ。この「開かれた隣人」という地理条件が、皮肉にも帝国侵攻時の橋頭堡としての価値を高めてしまった。さらに帝国の廃棄物投棄は軌道上でも常態化しており、宙域を漂流する廃棄コンテナが<a href="../database/sectors.html#mu">セクターμ</a>側へ流出する事案が相次いでいる。観光客を迎え入れてきた開放的な宙域構造は、今や姉妹の海への汚染流出の入り口にすらなりかねないと危惧されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">ウンブリエルに最初の文明を築いたのは、<a href="../database/locations.html#kew">惑星キュー</a>を発った<a href="../database/races.html#heketoid">ヘケトイド</a>移民団の一派だったと考えられている。通説によれば、移民団は水の姉妹星を前に二手に分かれ、一方はアクアスの海へ、もう一方はこのウンブリエルの環礁へ根を下ろした。やがてアクアスで先住種族<a href="../database/races.html#native-aquan">ネイティブ・アクアン</a>と融和した同胞の国と合流し、両惑星にまたがる海洋国家<a href="../database/factions.html#cornerian-republic">『タッドー共和国』</a>が成立することになる。</p>
+  <p class="lore-p">ウンブリエル時代のこの星は、<a href="../database/locations.html#aquas">アリエル（現アクアス）</a>とともに旧・タッドー共和国を構成する双子の海洋惑星だった。<a href="../database/factions.html#cornerian-republic">共和国</a>への併合後は州の観光開発が進み、「ライラットの宝石」「星系の保養地」と謳われる黄金期を迎える。休暇シーズンには<a href="../database/locations.html#corneria">コーネリア</a>から直行の観光航路が組まれ、その予約は半年先まで埋まっていたという。<br>
+なお共和国成立に際し、アリエルは「アクアス」に、ウンブリエルは「ゾネス」に改名されている。また旧5国家の艦隊を統合した<a href="../database/military.html#starblade">スターブレード</a>には、外洋航行で鍛え抜かれたタッドー艦隊の運用術が、その中核の一つとして流れ込んでいる。</p>
+  <p class="lore-p"><a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>で帝国軍はこの星を早期に占拠。リゾート施設は接収されて兵站基地となり、海は帝国工廠の廃棄物処分場にされた。住民の大半は<a href="../database/locations.html#aquas">アクアス</a>および<a href="../database/locations.html#corneria">コーネリア</a>へ避難したが、脱出できなかった人々が今も占領下に残されている。</p>
+  <p class="lore-p">共和国の戦略分析によれば、この環境破壊は当初から「見せしめ」だった。星系一のリゾートをあえて無残に汚してみせることで、隣接するアクアス州の抗戦意志を挫き、無血で陥落させる──それが帝国の狙いだったと見られている。だが結果は正反対だった。毒に沈む宝石の映像は星系中の怒りに火を点け、帰還同盟の結成に象徴される「反旗の狼煙」を上げさせてしまったのである。<br>
+この誤算を受け、皇帝は方針を転換したと分析されている。アクアスを可能な限り無傷のまま併合するため、露骨な破壊に代わって選ばれたのが、ゾネス方面からアクアスの海へ密かに持ち込まれた<a href="../weapons/bioweapon.html">生体兵器</a>による、緩やかで気づかれにくい海洋汚染だった。<span class="redacted">撃破された中枢個体バクーンの解析では、汚染機能と対をなす「浄化モード」の存在が確認されている。併合後にモードを切り替え、自ら毒した海を清めて見せることで統治の恩を売る算段だったと、共和国分析班は結論付けている</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">戦前の住民は<a href="../database/races.html#heketoid">ヘケトイド</a>を中心に約2億人。現在確認できる定住人口はその1割にも満たない。代わりに流入したのが、帝国の緩い「認可」の下で海底資源を漁るならず者の採掘業者たちである。その多くは<a href="../database/factions.html#venom-empire">帝国</a>の等級制で「三等国民」に区分される寄せ集めであり、帝国正規軍は資源の上前を撥ねるだけで、彼らの乱暴を一切取り締まらない。今日のゾネスの海を直接荒らしているのは、実のところ帝国軍の本隊ではなく、この雇われた無法者たちである。彼らは汚染された海を意に介さず、変異生物の襲撃と隣り合わせの採掘を続けている。</p>
+  <p class="lore-p">避難民たちは各地で<a href="../database/glossary.html#return-alliance">「ゾネス帰還同盟」</a>を結成し、海洋浄化技術の研究資金を集め続けている。「海が死んでいなければ、故郷は死んでいない」──それが彼らの合言葉である。</p>
+  <p class="lore-p">代表都市は、旧タッドー共和国の副首都であった<a href="../database/glossary.html#city-juliet">海上城塞都市ジュリエット</a>。オレンジの夕日とエメラルド色の海、マゼンタのネオンが煌めくその景観は星系随一と謳われた観光都市だったが、現在は帝国軍の<a href="../database/glossary.html#zoness-sea-base">海上要塞および石油採掘基地</a>として、無残に再開発されてしまっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ECONOMY ─ 経済・産業</h3>
+  <p class="lore-p">戦前のゾネス経済は、その大半を観光関連が占める星系随一の「休暇の星」だった。環礁の水上コテージ、ウンブリエル・パールの真珠細工、夜光虫の海を巡るナイトクルーズが三大名物と謳われ、星系の民衆にとって「ゾネスに行く」は成功の代名詞ですらあった。新婚旅行の行き先アンケートでは、開戦の年まで24年連続で首位を守っていたという。</p>
+  <p class="lore-p">現在、その経済は帝国の戦時経済へ丸ごと組み替えられている。接収されたリゾート群は兵站基地に、海は資源採掘場となり、帝国の緩い認可を受けた違法採掘業者が海底の石油と鉱床を漁っている。採掘物の大半は<a href="../database/locations.html#macbeth">マクベス</a>の兵器工廠へ送られており、かつて星系中の休暇を潤したこの海は、文字通り帝国の戦争機械の燃料にされている。</p>
+  <p class="lore-p">一方、避難民の「ゾネス帰還同盟」が運営する海洋浄化基金は、州の枠を超えた星系規模の寄付を集め続けている。基金の象徴として頒布される「エメラルドの小瓶」──開戦前に汲まれたゾネスの海水を封じたもの──は、コーネリアの官庁街から前線の操縦席まで、あらゆる場所で目撃される。それは避難民たちが故郷を諦めていない、何よりの証である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">帝国軍はゾネスを<a href="../database/sectors.html#mu">アクアス方面</a>への前進基地および資源供給地として運用している。海上には対空探照灯網が張り巡らされ、旧観光航路は機雷原に変わった。哨戒には水陸両用の潜水艦艇が投入されており、海中からの奇襲に対応できる共和国側戦力は限られている。</p>
+  <p class="lore-p"><a href="../database/military.html#starfox">スターフォックス</a>による<a href="../database/glossary.html#zoness-recon">強行偵察</a>では、探照灯網を掻い潜る超低空侵入で帝国の海上補給線に打撃を与えた記録が残る。この作戦以降、帝国は探照灯の数を倍増させたと言われ、ゾネスの夜の海は今、毒の緑と探照灯の白に照らされている。</p>
+  <p class="lore-p">海を荒らす無法者たちの象徴が、悪名高い武装潜水艦<a href="../weapons/salmarine.html">「サルマリン」</a>だった。船長はフィチナ出身のアルフォイドの男で、共和国への融和を拒み続けたサルジーナヤ民の流れを汲み、ならず者稼業の果てに帝国へ合流した経歴を持つとされる。艇は<a href="../database/locations.html#fichina">フィチナ</a>の<a href="../database/glossary.html#salvager">サルベージャー</a>時代から使い込んだ年代物を、船長自ら修理しながら駆るという徹底した愛着ぶりで知られ、毒の海を我が物顔で荒らし回っていたが、スターフォックスの強行偵察の際に交戦し大破した。回収された会話履歴には「俺たちの海で好き勝手暴れて、挨拶もなしか？」という台詞が残されており、避難民たちの間では「どの口が言うのか」と語り草になっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">占領前、ゾネスの環礁には「誓いの灯台」と呼ばれる古い灯台があり、恋人たちが灯りの下で永遠を誓う名所だった。灯台は今も稼働している。ただし灯りを守っているのは、避難を拒んで残った老灯台守ではなく、彼の顔を覚えた変異海鳥の群れだという。真偽は確認されていない。</p>
+  <p class="lore-p">変異生物の細胞を分析した共和国の研究班は、汚染物質の中に自然由来でない生体触媒の痕跡を発見した。帝国が意図的に生態系を「作り変えている」可能性が指摘されており、この海が単なる処分場ではなく、巨大な<a href="../weapons/bioweapon.html">生体兵器</a>の培養槽なのではないかという最悪の仮説が囁かれている。アクアスの海へ生体兵器が持ち込まれた浸透経路がこの星の方面だったという事実も、仮説を最悪の形で裏書きしつつある。</p>
+  <p class="lore-p">アクアスの州都が<a href="../database/glossary.html#city-romeo">海中都市ロミオ</a>、ゾネスの代表都市が<a href="../database/glossary.html#city-juliet">海上城塞都市ジュリエット</a>である──この符合は偶然ではない。旧タッドー時代、両都は同じ年に起工された「対の都」であり、悲恋の古典から名を取ったのは、海中と海上、決して同じ景色を見られない二つの都への、建設者たちの粋な洒落だったと伝えられている。会えない恋人たちは、それでも二百年以上、同じソーラの光の下で互いの星を見上げてきた。ジュリエットが囚われの身となった今、ロミオの展望層からゾネスの方角を眺める避難民の姿は絶えないという。</p>
+  <p class="lore-p">旧名「ウンブリエル」は、タッドー語で「水面に落ちる星影」を意味する。「水面に映る星」アリエルと対をなす命名であり、光の姉と影の妹、二つで一つの海だと語り継がれてきた。影の名を持つ妹星が本当に影の中へ沈められてしまった現在、この旧名を口にするとき、古い世代のヘケトイドは決まって一拍の沈黙を置くという。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body></html>

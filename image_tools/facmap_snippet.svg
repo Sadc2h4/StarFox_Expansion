@@ -1,0 +1,138 @@
+<svg class="facmap" viewBox="0 0 1060 475" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="勢力分布早見表">
+  <defs>
+    <pattern id="stEmpireOnRep" width="12" height="12" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#265f8f"/>
+      <rect width="5" height="12" fill="#8f2f38" opacity="0.75"/>
+    </pattern>
+    <pattern id="stBoth" width="12" height="12" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#2c3838"/>
+      <rect width="5" height="12" fill="#8f2f38" opacity="0.75"/>
+    </pattern>
+    <pattern id="stRepOnHac" width="12" height="12" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#5d3f8f"/>
+      <rect width="5" height="12" fill="#265f8f" opacity="0.75"/>
+    </pattern>
+  </defs>
+  <g class="fac-group fac-neutral">
+    <polygon points="366.5,229.5 344.8,267.2 301.2,267.2 279.5,229.5 301.2,191.8 344.8,191.8" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="323.0" y="227.5" text-anchor="middle" font-size="17" fill="#8fa8a2" opacity="0.9">α</text>
+    <text x="323.0" y="243.5" text-anchor="middle" font-size="8.5" fill="#cfe0da">恒星宙域</text>
+    <polygon points="366.5,309.2 344.8,346.9 301.2,346.9 279.5,309.2 301.2,271.5 344.8,271.5" fill="url(#stBoth)" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="323.0" y="307.2" text-anchor="middle" font-size="17" fill="#8fa8a2" opacity="0.9">ο</text>
+    <text x="323.0" y="323.2" text-anchor="middle" font-size="8.5" fill="#cfe0da">ソーラ戦線</text>
+    <polygon points="366.5,149.8 344.8,187.5 301.2,187.5 279.5,149.8 301.2,112.2 344.8,112.2" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="323.0" y="147.8" text-anchor="middle" font-size="17" fill="#8fa8a2" opacity="0.9">ι</text>
+    <text x="323.0" y="163.8" text-anchor="middle" font-size="8.5" fill="#cfe0da">オベロンⅡ</text>
+    <polygon points="435.5,110.0 413.8,147.7 370.2,147.7 348.5,110.0 370.2,72.3 413.8,72.3" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="392.0" y="108.0" text-anchor="middle" font-size="17" fill="#8fa8a2" opacity="0.9">π</text>
+    <text x="392.0" y="124.0" text-anchor="middle" font-size="8.5" fill="#cfe0da">封印宙域</text>
+    <polygon points="573.5,189.7 551.8,227.3 508.2,227.3 486.5,189.7 508.2,152.0 551.8,152.0" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="530.0" y="187.7" text-anchor="middle" font-size="17" fill="#8fa8a2" opacity="0.9">υ</text>
+    <text x="530.0" y="203.7" text-anchor="middle" font-size="8.5" fill="#cfe0da">サルガッソー</text>
+    <polygon points="642.5,149.8 620.8,187.5 577.2,187.5 555.5,149.8 577.2,112.2 620.8,112.2" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="599.0" y="147.8" text-anchor="middle" font-size="17" fill="#8fa8a2" opacity="0.9">χ</text>
+    <text x="599.0" y="163.8" text-anchor="middle" font-size="8.5" fill="#cfe0da">タイタニア</text>
+    <polygon points="918.5,229.5 896.8,267.2 853.2,267.2 831.5,229.5 853.2,191.8 896.8,191.8" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="875.0" y="227.5" text-anchor="middle" font-size="17" fill="#8fa8a2" opacity="0.9">Ϟ</text>
+    <text x="875.0" y="243.5" text-anchor="middle" font-size="8.5" fill="#cfe0da">グリッピア</text>
+    <polygon points="918.5,149.8 896.8,187.5 853.2,187.5 831.5,149.8 853.2,112.2 896.8,112.2" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="875.0" y="147.8" text-anchor="middle" font-size="17" fill="#8fa8a2" opacity="0.9">ϸ</text>
+    <text x="875.0" y="163.8" text-anchor="middle" font-size="8.5" fill="#cfe0da">ドグマ</text>
+    <polygon points="987.5,189.7 965.8,227.3 922.2,227.3 900.5,189.7 922.2,152.0 965.8,152.0" fill="#2c3838" stroke="#8fa8a2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="944.0" y="187.7" text-anchor="middle" font-size="17" fill="#8fa8a2" opacity="0.9">j</text>
+    <text x="944.0" y="203.7" text-anchor="middle" font-size="8.5" fill="#cfe0da">未踏宙域</text>
+  </g>
+  <a href="#cornerian-republic" class="fac-link" aria-label="コーネリア連合共和国">
+  <g class="fac-group">
+    <polygon points="228.5,229.5 206.8,267.2 163.2,267.2 141.5,229.5 163.2,191.8 206.8,191.8" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"/>
+    <image href="../resource/emblem/Corneria_emblem.png" x="162.0" y="200.5" width="46" height="46"/>
+    <text x="185.0" y="196.5" text-anchor="middle" font-size="11" fill="#7fc0ee" opacity="0.9">β</text>
+    <text x="185.0" y="255.5" text-anchor="middle" font-size="8.5" fill="#e8f2ee">コーネリア</text>
+    <polygon points="159.5,189.7 137.8,227.3 94.3,227.3 72.5,189.7 94.2,152.0 137.8,152.0" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="116.0" y="187.7" text-anchor="middle" font-size="17" fill="#7fc0ee" opacity="0.9">ζ</text>
+    <text x="116.0" y="203.7" text-anchor="middle" font-size="8.5" fill="#cfe0da">スターブレード</text>
+    <polygon points="159.5,269.3 137.8,307.0 94.3,307.0 72.5,269.3 94.2,231.7 137.8,231.7" fill="url(#stEmpireOnRep)" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="116.0" y="267.3" text-anchor="middle" font-size="17" fill="#7fc0ee" opacity="0.9">γ</text>
+    <text x="116.0" y="283.3" text-anchor="middle" font-size="8.5" fill="#cfe0da">カタリナ</text>
+    <polygon points="228.5,309.2 206.8,346.9 163.2,346.9 141.5,309.2 163.2,271.5 206.8,271.5" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="185.0" y="307.2" text-anchor="middle" font-size="17" fill="#7fc0ee" opacity="0.9">δ</text>
+    <text x="185.0" y="323.2" text-anchor="middle" font-size="8.5" fill="#cfe0da">グレートウォール</text>
+    <polygon points="297.5,269.3 275.8,307.0 232.2,307.0 210.5,269.3 232.2,231.7 275.8,231.7" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="254.0" y="267.3" text-anchor="middle" font-size="17" fill="#7fc0ee" opacity="0.9">ε</text>
+    <text x="254.0" y="283.3" text-anchor="middle" font-size="8.5" fill="#cfe0da">AREA3</text>
+    <polygon points="297.5,189.7 275.8,227.3 232.2,227.3 210.5,189.7 232.2,152.0 275.8,152.0" fill="url(#stEmpireOnRep)" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="254.0" y="187.7" text-anchor="middle" font-size="17" fill="#7fc0ee" opacity="0.9">θ</text>
+    <text x="254.0" y="203.7" text-anchor="middle" font-size="8.5" fill="#cfe0da">プロスペロー</text>
+    <polygon points="228.5,149.8 206.8,187.5 163.2,187.5 141.5,149.8 163.2,112.2 206.8,112.2" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="185.0" y="147.8" text-anchor="middle" font-size="17" fill="#7fc0ee" opacity="0.9">Ϡ</text>
+    <text x="185.0" y="163.8" text-anchor="middle" font-size="8.5" fill="#cfe0da">グリーン・ビット</text>
+    <polygon points="297.5,349.0 275.8,386.7 232.2,386.7 210.5,349.0 232.2,311.4 275.8,311.4" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="254.0" y="347.0" text-anchor="middle" font-size="17" fill="#7fc0ee" opacity="0.9">μ</text>
+    <text x="254.0" y="363.0" text-anchor="middle" font-size="8.5" fill="#cfe0da">アクアス</text>
+    <polygon points="366.5,388.9 344.8,426.5 301.2,426.5 279.5,388.9 301.2,351.2 344.8,351.2" fill="#265f8f" stroke="#7fc0ee" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="323.0" y="386.9" text-anchor="middle" font-size="17" fill="#7fc0ee" opacity="0.9">ξ</text>
+    <text x="323.0" y="402.9" text-anchor="middle" font-size="8.5" fill="#cfe0da">フィチナ</text>
+    <text x="185.0" y="288.5" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#7fc0ee" class="fac-name">コーネリア連合共和国</text>
+  </g>
+  </a>
+  <a href="#venom-empire" class="fac-link" aria-label="ベノム帝国">
+  <g class="fac-group">
+    <polygon points="435.5,269.3 413.8,307.0 370.2,307.0 348.5,269.3 370.2,231.7 413.8,231.7" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="392.0" y="267.3" text-anchor="middle" font-size="17" fill="#f0a0a8" opacity="0.9">ν</text>
+    <text x="392.0" y="283.3" text-anchor="middle" font-size="8.5" fill="#cfe0da">ゾネス</text>
+    <polygon points="504.5,149.8 482.8,187.5 439.2,187.5 417.5,149.8 439.2,112.2 482.8,112.2" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="461.0" y="147.8" text-anchor="middle" font-size="17" fill="#f0a0a8" opacity="0.9">ς</text>
+    <text x="461.0" y="163.8" text-anchor="middle" font-size="8.5" fill="#cfe0da">マクベス</text>
+    <polygon points="504.5,229.5 482.8,267.2 439.2,267.2 417.5,229.5 439.2,191.8 482.8,191.8" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="461.0" y="227.5" text-anchor="middle" font-size="17" fill="#f0a0a8" opacity="0.9">ψ</text>
+    <text x="461.0" y="243.5" text-anchor="middle" font-size="8.5" fill="#cfe0da">AREA6</text>
+    <polygon points="573.5,269.3 551.8,307.0 508.2,307.0 486.5,269.3 508.2,231.7 551.8,231.7" fill="#8f2f38" stroke="#f0a0a8" stroke-width="1.4" stroke-opacity="0.55"/>
+    <image href="../resource/emblem/Venom_emblem.png" x="507.0" y="240.3" width="46" height="46"/>
+    <text x="530.0" y="236.3" text-anchor="middle" font-size="11" fill="#f0a0a8" opacity="0.9">Ω</text>
+    <text x="530.0" y="295.3" text-anchor="middle" font-size="8.5" fill="#e8f2ee">ベノム</text>
+    <text x="530.0" y="328.3" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#f0a0a8" class="fac-name">ベノム帝国</text>
+  </g>
+  </a>
+  <a href="#saurian-alliance" class="fac-link" aria-label="サウリアン同盟">
+  <g class="fac-group">
+    <polygon points="504.5,309.2 482.8,346.9 439.2,346.9 417.5,309.2 439.2,271.5 482.8,271.5" fill="#2f6f42" stroke="#8fe0a8" stroke-width="1.4" stroke-opacity="0.55"/>
+    <image href="../resource/emblem/Saurian_emblem.png" x="438.0" y="280.2" width="46" height="46"/>
+    <text x="461.0" y="276.2" text-anchor="middle" font-size="11" fill="#8fe0a8" opacity="0.9">λ</text>
+    <text x="461.0" y="335.2" text-anchor="middle" font-size="8.5" fill="#e8f2ee">フォルトナ</text>
+    <text x="461.0" y="368.2" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#8fe0a8" class="fac-name">サウリアン同盟</text>
+  </g>
+  </a>
+  <a href="#hactiva-union" class="fac-link" aria-label="ハクティバ通商連合">
+  <g class="fac-group">
+    <polygon points="642.5,309.2 620.8,346.9 577.2,346.9 555.5,309.2 577.2,271.5 620.8,271.5" fill="url(#stRepOnHac)" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="599.0" y="307.2" text-anchor="middle" font-size="17" fill="#c9a6f2" opacity="0.9">Ͱ</text>
+    <text x="599.0" y="323.2" text-anchor="middle" font-size="8.5" fill="#cfe0da">パペトゥーン</text>
+    <polygon points="711.5,269.3 689.8,307.0 646.2,307.0 624.5,269.3 646.2,231.7 689.8,231.7" fill="#5d3f8f" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="668.0" y="267.3" text-anchor="middle" font-size="17" fill="#c9a6f2" opacity="0.9">ϻ</text>
+    <text x="668.0" y="283.3" text-anchor="middle" font-size="8.5" fill="#cfe0da">双子星宙域</text>
+    <polygon points="780.5,229.5 758.8,267.2 715.2,267.2 693.5,229.5 715.2,191.8 758.8,191.8" fill="#5d3f8f" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <image href="../resource/emblem/Haktiva_emblem.png" x="714.0" y="200.5" width="46" height="46"/>
+    <text x="737.0" y="196.5" text-anchor="middle" font-size="11" fill="#c9a6f2" opacity="0.9">Ϛ</text>
+    <text x="737.0" y="255.5" text-anchor="middle" font-size="8.5" fill="#e8f2ee">キュー</text>
+    <polygon points="780.5,309.2 758.8,346.9 715.2,346.9 693.5,309.2 715.2,271.5 758.8,271.5" fill="#5d3f8f" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="737.0" y="307.2" text-anchor="middle" font-size="17" fill="#c9a6f2" opacity="0.9">ϝ</text>
+    <text x="737.0" y="323.2" text-anchor="middle" font-size="8.5" fill="#cfe0da">エラダード</text>
+    <polygon points="849.5,269.3 827.8,307.0 784.2,307.0 762.5,269.3 784.2,231.7 827.8,231.7" fill="#5d3f8f" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="806.0" y="267.3" text-anchor="middle" font-size="17" fill="#c9a6f2" opacity="0.9">ϫ</text>
+    <text x="806.0" y="283.3" text-anchor="middle" font-size="8.5" fill="#cfe0da">セティボス</text>
+    <polygon points="849.5,189.7 827.8,227.3 784.2,227.3 762.5,189.7 784.2,152.0 827.8,152.0" fill="#5d3f8f" stroke="#c9a6f2" stroke-width="1.4" stroke-opacity="0.55"/>
+    <text x="806.0" y="187.7" text-anchor="middle" font-size="17" fill="#c9a6f2" opacity="0.9">ⳣ</text>
+    <text x="806.0" y="203.7" text-anchor="middle" font-size="8.5" fill="#cfe0da">氷晶帯</text>
+    <text x="737.0" y="288.5" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#c9a6f2" class="fac-name">ハクティバ通商連合</text>
+  </g>
+  </a>
+  <a href="#garou-federation" class="fac-link" aria-label="ガロウ連邦">
+  <g class="fac-group">
+    <polygon points="849.5,349.0 827.8,386.7 784.2,386.7 762.5,349.0 784.2,311.4 827.8,311.4" fill="#8f7716" stroke="#f0d878" stroke-width="1.4" stroke-opacity="0.55"/>
+    <image href="../resource/emblem/Garou_emblem.png" x="783.0" y="320.0" width="46" height="46"/>
+    <text x="806.0" y="316.0" text-anchor="middle" font-size="11" fill="#f0d878" opacity="0.9">Ⅲ</text>
+    <text x="806.0" y="375.0" text-anchor="middle" font-size="8.5" fill="#e8f2ee">セティボスⅢ</text>
+    <text x="806.0" y="408.0" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#f0d878" class="fac-name">ガロウ連邦</text>
+  </g>
+  </a>
+</svg>

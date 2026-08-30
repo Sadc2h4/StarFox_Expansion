@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SALVADORA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#c4525c;--accent:#f0a0a8;--border:rgba(196,82,92,0.32);--border-hi:rgba(240,160,168,0.7);--dim:#3a1418;--dim2:#180a0c; }
+    .p-title    { color: #ffeef0; text-shadow: 0 0 50px rgba(196,82,92,0.45); }
+    .p-tagline  { border-color: #c4525c; color: #e08a92; }
+    .terminal-hdr { color: #f0a0a8; }
+    .terminal-hdr::before { background: #f0a0a8; box-shadow: 0 0 8px #f0a0a8; }
+    .dk { color: #c4525c; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-31 / SALVADORA — サルバドーラ ]</div>
+    <div class="header-status"><span class="blink" style="color:#f0a0a8;">●</span> HOSTILE — ACTIVE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">WEAPON FILE — SALVADORA — NAGAS-GRADE INTERCEPTOR — DIVISION III FLAGSHIP</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0031 — CLASSIFICATION: CAPITAL SHIP — SURVEILLANCE: PERMANENT</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-31 / WEAPON FILE ]</div>
+        <div class="p-name-jp">サルバドーラ (SALVADORA)</div>
+        <h1 class="p-title">SALVADORA</h1>
+        <div class="p-tagline">超弩級要撃艦 ─ 帝国第3師団 主要艦</div>
+        <p class="p-short-desc">ベノム帝国第3師団の主要艦を務める超弩級要撃艦。比喩抜きに小惑星へ匹敵する巨体でワープドライブ航法を行う、共和国が正面から交戦した帝国艦船の中で最大クラスの存在である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ WEAPON SCAN — FILE 31 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">SALVADORA / サルバドーラ</td></tr><tr><td class="dk">CLASS</td><td class="dv">超弩級要撃艦</td></tr><tr><td class="dk">GRADE</td><td class="dv"><a href="../database/glossary.html#ship-grades">ナガス級</a> — 小型の小惑星に匹敵</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/factions.html#venom-empire">ベノム帝国</a>軍 <a href="../database/glossary.html#imperial-divisions">第3師団</a> — 主要艦</td></tr><tr><td class="dk">POWER</td><td class="dv">サブリアクター×5 — 分散配置</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">全方位砲台群 —「レーザーの流星群」</td></tr><tr><td class="dk">SISTER</td><td class="dv warn">先行機〈ペルシカ〉— セクターαの攻防で大破</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 現役・常時監視対象</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 94 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 94%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(196,82,92,0.5);">
+        <img src="" alt="SALVADORA" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">DIVISION III FLAGSHIP</span>
+            <span class="tg-jp">帝国第3師団 主要艦 ── 超弩級要撃艦</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">あれが港を出る日は、帝国が本気になった日だ。<span class="tg-note note">-共和国艦隊将兵の語り草より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">観測班の数字を三度確認させた。誤記ではない。あれは戦艦ではなく、継戦能力を有した"小惑星"である<span class="lore-quote-src">― 初観測時のCDF艦隊司令部 所見より</span></span></p>
+  <p class="lore-p">超弩級要撃艦サルバドーラは<a href="../database/factions.html#venom-empire">ベノム帝国</a>軍<a href="../database/glossary.html#imperial-divisions">第3師団</a>に所属するライラット星系でも最大クラスの戦艦である。共和国が正面から交戦した記録を持つ帝国艦船の中では最大クラスにあたり、比喩表現抜きに小惑星へ匹敵する巨大さと、それをもって<a href="../database/glossary.html#warp-drive">ワープドライブ航法</a>を可能にする機動力を併せ持つ。これらの要素から共和国軍は本艦を敵性勢力では最大級の脅威に値すると見積もっており、その動向は常に監視の対象にある。</p>
+  <p class="lore-p"><a href="../database/glossary.html#ship-grades">艦船の等級</a>はナガス級。この高さに達する艦は星系全体でも数隻しかなく、共和国側で匹敵する艦船は<a href="../planets/starblade.html">スターブレード艦隊</a>旗艦〈コーディリア〉のほかに存在しない。所属する第3師団は帝国防衛の本隊にして切り札であり、本艦がベノム圏を離れること自体が帝国の本気の証と受け取られている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p">戦艦の肩書にある「超弩級要撃艦」は伊達ではない。その戦闘力は、同じく弩級の称号を持つ超弩級戦車<a href="odd-weapons.html#little-mouse">リトルマウス</a>と比肩する驚異的なものと評価されている。</p>
+  <p class="lore-p">艦内にはサブリアクターが5基分散配置されており、これまでの艦船が抱えてきた「中枢部を破壊されると沈黙する」という致命的な弱点を克服している。またこの分散配置によりエネルギー管理が効率化されているためか、本艦の砲撃は雨のように継続して途切れることが全くない。全方位に配備された砲台群がリチャージの時間を相互に守り合うことで、攻防一体となる「レーザーの流星群」を作り出すのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴 ─ SERVICE</h3>
+  <p class="lore-p">この巨大戦艦を含む帝国第3師団は一度、<a href="../database/locations.html#kappa">セクターκ</a>にまで迫ったことがある。宇宙歴3997年末、<a href="../database/glossary.html#zeta-tragedy">北十字防衛戦線</a>の敗退による対空戦力の不足をピンポイントで突いた帝国の本命侵攻、すなわち<a href="../database/glossary.html#chrono-ares">刻の軍神作戦</a>で記録された会戦である。随伴したのはそれ単体で戦術の中核たりえるマッコウ級の大型艦〈グランビー〉3隻、ザトウ級の戦艦〈コルビー〉12隻、オルカ級の巡洋艦〈ドリスビー〉25隻という交戦以来の巨大戦力であった。</p>
+  <p class="lore-p">艦船の数が足りない共和国側が苦肉の策として採ったのは、これまでの交戦履歴でも例がない「サルベージャーを買収して地形で勝つ」という作戦である。指揮を執ったのは<a href="../characters/wenli.html">ニャン・ウェンリー</a>准将とその部下たちであり、この巨大戦力を見事に翻弄した立役者は遊撃隊の<a href="../characters/peppy.html">ペッピー・ヘア</a>であった。紙一重の防衛戦は結果として、<a href="../database/locations.html#phi">セクターφ</a>からκへ抜けようとする艦隊を回廊の出口で止めることに成功する。会戦の全容は<a href="../database/glossary.html#chrono-ares">個別項目</a>を参照されたし。</p>
+  <p class="lore-p">帝国側の狙いは<a href="../database/locations.html#perdita">ペルディタ宇宙センター</a>の戦略拠点化にあったと思われる。これを撃退できなかった場合、開戦からわずか半年足らずでコアワールドの喉元に王手を打たされる前代未聞の事態になっていたと分析される。</p>
+</div>
+<div class="lore-section" id="persica">
+  <h3 class="lore-h">兄弟艦 ─ THE ELDER SISTER</h3>
+  <p class="lore-p">サルバドーラには外見とサイズが少し違う兄弟艦が存在する。兄に相当する先行機〈ペルシカ〉は帝国第7師団に配備されていた。試験機としての開発だったのかサイズは一回り小さく、エネルギー炉も従来のコアシステムによる一括制御だったためサルバドーラほどの脅威ではなかった。</p>
+  <p class="lore-p">ペルシカは<a href="../planets/lylat_prime.html">セクターα</a>への侵攻の際に投入され共和国との正面からの艦隊戦で優位に立った。だが<a href="../database/military.html#starfox">スターフォックス</a>チームによる内部への侵入を許し、内側から破壊されて大破している（<a href="../database/glossary.html#eclipse-op">セクターαの攻防</a>の詳細はライラット・プライムの項を参照）。中枢を一点で束ねる従来型の弱点をそのまま突かれた最期であり、サルバドーラの分散炉の価値を皮肉な形で証明することになった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">サルバドーラの艦長は冷静沈着かつ高い指揮能力の持ち主であり、他の戦線でも高い脅威として認知されている。この艦長には、帝国<a href="../database/glossary.html#imperial-divisions">第17師団</a>のマクベス駐屯軍に外見が瓜二つの兄がいるとみられている。兄の方も<a href="../database/locations.html#macbeth">マクベス</a>のミサイル基地の運営管理者として活動しており、兄弟そろって危険度が高いということになる。</p>
+  <p class="lore-p">刻の軍神作戦の夜、セクターφ近傍を航行していた定期便から「美しい流星群が見えた」という民間の目撃報告が複数寄せられている。それが何であったかを航行局は今も訂正していない。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

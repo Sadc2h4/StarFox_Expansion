@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <script>if (sessionStorage.getItem('apx-authorized') !== '1') location.replace('../apocalypsis.html');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SW-02 GIGARILLA — APOCALYPSIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff4455;--accent:#ff8899;--border:rgba(255,68,85,0.32);--border-hi:rgba(255,136,153,0.7);--dim:#3a1015;--dim2:#1d080b; }
+    .p-title    { color: #ffeaea; text-shadow: 0 0 50px rgba(255,68,85,0.4); }
+    .p-tagline  { border-color: #ff4455; color: #ff4455; }
+    .terminal-hdr { color: #ff8899; }
+    .terminal-hdr::before { background: #ff8899; box-shadow: 0 0 8px #ff8899; }
+    .dk { color: #ff4455; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../apocalypsis.html" class="nav-back">◄ APOCALYPSIS</a>
+    <div class="header-tag">[ SW-02 / GIGARILLA — ギガリラ ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff4455;">●</span> CLEARANCE LV.5 — SESSION AUTHORIZED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">APOCALYPSIS FILE — GIGARILLA — STRATEGIC COLOSSUS — PROTOTYPE LOST — IMITATION ACTIVE</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: SW-0002 — CLASSIFICATION: APOCALYPSIS — SEALED RECORD</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ SW-02 / APOCALYPSIS FILE ]</div>
+        <div class="p-name-jp">ギガリラ (GIGARILLA)</div>
+        <h1 class="p-title">GIGARILLA</h1>
+        <div class="p-tagline">地上戦略級 超大型機動兵器 ─ 原型機消失・封印記録</div>
+        <p class="p-short-desc">独立星系連合（IGA）が本拠地セティボスⅣで秘密裏に開発した超大型機動兵器。原型機は基地の自爆とともに失われたが、設計図の行方は不明のまま、帝国による模倣改良機がプロスペローに現存する。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE SW-02 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">GIGARILLA / ギガリラ</td></tr><tr><td class="dk">CLASS</td><td class="dv">地上戦略級 超大型機動兵器</td></tr><tr><td class="dk">DEVELOPER</td><td class="dv"><a href="../database/factions.html#iga">独立星系連合（IGA）</a></td></tr><tr><td class="dk">SITE</td><td class="dv">セティボスⅣ（秘密開発）</td></tr><tr><td class="dk">MOBILITY</td><td class="dv">多脚歩行 — 低重力地表対応</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">ホーミングミサイル砲群（全方位制圧）</td></tr><tr><td class="dk">PROTOTYPE</td><td class="dv warn">消失 — 基地自爆に巻き込まれ喪失</td></tr><tr><td class="dk">BLUEPRINT</td><td class="dv bad">⚠ 行方不明 — 帝国への流出が確定</td></tr><tr><td class="dk">VARIANT</td><td class="dv bad">⚠ ギガリラ.Jr — プロスペロー展開中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT (Jr) -- 90 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 90%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,68,85,0.55);">
+        <img src="" alt="GIGARILLA" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ULTIMATE GUARDIAN — LOST &amp; IMITATED</span>
+            <span class="tg-jp">地上戦略級超兵器 ── 原型機消失</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">これがわれらの究極にして最強の守護神<span class="tg-note note">-セティボスⅣ白兵戦 N・ギルバスター将軍の通信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">原型機 ─ THE PROTOTYPE</h3>
+  <p class="lore-p"><a href="../database/factions.html#iga">独立星系連合（IGA）</a>が本拠地セティボスⅣで秘密裏に開発していた超大型機動兵器。多脚歩行により低重力の衛星地表を進撃し、機体上部のホーミングミサイル砲群で全方位を制圧する、当時の技術水準を大きく逸脱した怪物であった。初起動の際、IGA猛将<a href="../characters/nahash.html">ナハシュ・ギルバスター将軍</a>は交戦中のペパー部隊長（当時）へ向け「これがわれらの究極にして最強の守護神」と誇示している。</p>
+  <p class="lore-p">IGA掃討戦の最終局面、セティボスⅣでの白兵戦において起動され共和国側を窮地に追い込んだが、ある新人部隊長の咄嗟の采配による制御系ハッキングで無力化に成功。直後の基地自爆に巻き込まれ、機体は完全に失われたとされる。ただし設計データの行方は今も確認されておらず、共和国軍情報部はIGA残党の合流先とされる<a href="../database/factions.html#venom-empire">帝国</a>への技術流出を警戒し続けてきた。なお機体を無力化した部隊長の氏名は、本権限においても記録上「■■■■■■」と検閲されている。</p>
+</div>
+<div class="lore-section" id="jr">
+  <h3 class="lore-h">模倣改良機『ギガリラ.Jr』 ─ THE IMITATION</h3>
+  <p class="lore-p"><span class="badge badge-classified">▮ LV.4</span><br>
+  <a href="../database/locations.html#prospero">プロスペロー</a>占領地で観測されている大型機動兵器は、セティボスⅣで失われた原型機の設計図を流用した帝国の模倣改良版『ギガリラ.Jr』であると断定された。最大の相違点は制御系であり、大幅に強化された人工知能に「疑似人格」が導入されている。原型機の敗因、すなわち外部ハッキングによる制御奪取への対策として、機体自身に状況判断と命令拒否の権限を与える設計思想だが、その結果、現地司令部の命令に従わない事例が複数報告されている。</p>
+</div>
+<div class="lore-section" id="memory-disc">
+  <h3 class="lore-h">戦闘メモリディスク ─ MEMORY DISC</h3>
+  <p class="lore-p"><span class="badge badge-classified">▮ LV.4</span><br>
+  機体後頭部には「戦闘メモリディスク」と呼ばれる外装式記録媒体の換装機構が確認されており、ディスクの差し替えによって機体特性そのものが別物に可変する。確認済みの形態は、装甲を捨てて機動力に全てを振った高速形態、多脚を大地に固定し全火器を開放する要塞形態など。ディスクの認証には特定の音響パターンが用いられているとみられ、解析班はこの機構を「機体に別の獣を憑依させる仕組み」と表現している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">異常行動記録 ─ ANOMALY</h3>
+  <p class="lore-p"><span class="badge badge-classified">▮ LV.5</span><br>
+  特筆すべき異常行動が1件記録されている。占領区画の境界で迷子になったプロスペロー市民の少女（身元は保護のため非公開）がギガリラ.Jrの警戒圏へ侵入した際、機体は交戦規定を無視して全火器を停止。泣いていた少女が自分を落ち着かせるために口ずさんだ歌に駆動音を重ねて「合唱」し、少女を掌部に乗せて瓦礫の間を運び、市民居住区の境界に降ろして帰投した。傍受された帝国側の記録によれば、この間、司令部の全命令が拒否されている。</p>
+  <p class="lore-p">解析班は少女の歌の旋律が戦闘メモリディスクの音響認証キーと部分一致した可能性を指摘しているが、確証はない。以後、当該機は少女の居住区画への砲撃命令を一貫して無視しており、帝国技術陣は疑似人格の初期化を検討しているものの、初期化すれば原型機と同じ制御脆弱性が復活するため、着手できずにいるという。<a href="../database/locations.html#prospero">プロスペロー</a>奪還作戦の立案において、この「歌」は最重要の検討材料の一つとなっている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

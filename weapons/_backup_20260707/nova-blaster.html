@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GALACTIC NOVA BLASTER — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ffd166;--accent:#ffe8aa;--border:rgba(255,209,102,0.32);--border-hi:rgba(255,209,102,0.7);--dim:#3a3010;--dim2:#1d1808; }
+    .p-title    { color: #fff8e8; text-shadow: 0 0 50px rgba(255,209,102,0.35); }
+    .p-tagline  { border-color: #ffd166; color: #ffd166; }
+    .terminal-hdr { color: #ffe8aa; }
+    .terminal-hdr::before { background: #ffe8aa; box-shadow: 0 0 8px #ffe8aa; }
+    .dk { color: #ffd166; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../codex/glossary.html#type-weapon" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-07 / GALACTIC NOVA BLASTER — ギャラクティック・ノヴァ・ブラスター ]</div>
+    <div class="header-status"><span style="color:#ffe8aa;">●</span> DESTROYED — WRECK SEALED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — GALACTIC NOVA BLASTER — PLANET-KILLER — DESTROYED</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0007 — CLEARANCE: PARTIAL — SECTOR PI SEALED</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-07 / ARMORY FILE ]</div>
+        <div class="p-name-jp">ギャラクティック・ノヴァ・ブラスター (GALACTIC NOVA BLASTER)</div>
+        <h1 class="p-title">THE WISH<br>THAT BROKE<br>A PLANET</h1>
+        <div class="p-tagline">惑星破壊級超兵器 ─ 討伐済・残骸封印</div>
+        <p class="p-short-desc">第1次ライラットウォーズ末期、グランベル国が星系外の遺構をリストアして生み出した惑星破壊級の超兵器。第6惑星ステファノーを消滅させ、共和国憲章第1条を生んだ「全ての原点」。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 07 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">GALACTIC NOVA BLASTER</td></tr><tr><td class="dk">CLASS</td><td class="dv">惑星破壊級超兵器（起源不明遺構）</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv">グランベル国軍事司令部（リストア）</td></tr><tr><td class="dk">ORIGIN</td><td class="dv warn">星系外より飛来した巨大建造物</td></tr><tr><td class="dk">CORE</td><td class="dv">心臓状コア＋12基リアクター</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">虹色エネルギー帯（惑星貫通）ほか多数</td></tr><tr><td class="dk">KILL RECORD</td><td class="dv bad">第6惑星ステファノー / 両軍艦隊多数</td></tr><tr><td class="dk">DESTROYED</td><td class="dv">スター・ドリーム作戦（セクターπ）</td></tr><tr><td class="dk">WRECKAGE</td><td class="dv bad">接触は全星の法で禁止</td></tr><tr><td class="dk">STATUS</td><td class="dv warn">討伐済 — 残骸封印中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING (HISTORICAL) -- 100 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 100%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,209,102,0.55);">
+        <img src="" alt="GALACTIC NOVA BLASTER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">PLANET-KILLER — DESTROYED</span>
+            <span class="tg-jp">惑星破壊級超兵器 ── 討伐済</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">どんな願いも、叶えてしまうのです。<span class="tg-note note">-稼働記念式典 生存者の証言より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">我々は星に願いを叶えてもらう物語を子供に聞かせる。あれは、その物語の結末を知らなかった者たちの記録である<span class="lore-quote-src">― キュレーター遺文『第六の空白』序文より</span></span></p>
+  <p class="lore-p">ギャラクティック・ノヴァ・ブラスター（Galactic Nova Blaster）は、<a href="../codex/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a> 末期にグランベル国が開発・使用した惑星破壊級の超兵器である。<a href="../codex/glossary.html#stephano">ステファノーの戦い</a> で第6惑星を消滅させ、星系史上最悪の惨禍をもたらした。</p>
+  <p class="lore-p">この兵器は、過激な思想を持つグランベル国軍事司令部が政府の意向を無視して強行に作り上げたものであり、その正体は──星系外から齎されたとされる巨大建造物を、軍事目的にリストアしたものだった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ORIGIN ─ 出自</h3>
+  <p class="lore-p">ベースとなった巨大建造物は、中央に心臓を模したコア部分、外部とのアクセスに使用されたと思われる「顔」のような天盤を持ち、機械とも生物ともつかない、無機質でありながらどこか有機的な印象を与える構造をしていた。星系内のどの文明にも属さない、明らかに異質な存在だったと記録されている。</p>
+  <p class="lore-p">稼働記念式典では、参列した全ての民衆に、兵器そのものが『叶えてほしい願い』を語りかけてきたという。当時のグランベル政権・軍事の頂点にいたオルトス総帥はこれを受け、コーネリアに古くから伝わる『どんな願いも叶える大彗星』のおとぎ話から引用し、この兵器を「ギャラクティック・ノヴァ・ブラスター」と命名した。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 戦歴と狂気</h3>
+  <p class="lore-p">稼働当初、その力は星系の既知のあらゆる戦力を遥かに凌駕し、瞬く間にグランベルの戦況を塗り替えた。国民には希望の星、対立国には悪夢──だが軍部内でさえ、勝利の喜びは次第に畏怖と恐怖へ変わっていった。オルトス総帥はこの兵器を「機械仕掛けの神」と賞賛し、その心酔はやがて狂気と呼ぶべき域に達する。『神』に等しい武力を得た個人に、もはや誰も逆らえなかった。</p>
+  <p class="lore-p">警鐘を鳴らしたのは、<a href="../codex/glossary.html#stephano">ステファノー</a> のアルフォイドが誇る星系最高の英知集団『キュレーター』だった。彼らは『大彗星』のおとぎ話が二部構成であること──コーネリアに伝わるのは前半のみで、後半が<a href="../codex/locations.html#venom">ベノム</a> に残されていることを知っていた。ステファノー全国家による遺跡大発掘プロジェクトが指揮され、数年の後、超兵器の正体と決定的弱点の解明に迫る。だが惑星規模の探査はグランベル諜報部に筒抜けだった。</p>
+  <p class="lore-p">無力化を恐れたオルトス総帥は、耳を疑う決断を下す。ベノムでの遺跡調査を「軍事行動」と断罪し、ステファノーの全人類へ一方的に宣戦布告したのである。当時の星間戦争法でも許されない暴挙だったが、総帥の凶行を止められる者は、もういなかった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">DOWNFALL ─ 第6惑星の消滅と討伐</h3>
+  <p class="lore-p">超兵器率いるグランベル軍とステファノー全艦隊の激戦は3か月に及んだ。超兵器の兵装が大戦艦を対象としたものであることを見抜いたステファノー側は、少数精鋭の奇襲部隊を多数展開する消耗戦で次第に戦況を傾ける──それを受け入れられなかった総帥は、ついに最も犯してはならない『最後の願い』を超兵器に伝えてしまう。</p>
+  <p class="lore-p">その瞬間は、あまりにも一瞬だった。虹色のエネルギーの帯が惑星を貫き、数秒後、戦場だった宙域は、おびただしい瓦礫と両軍の艦隊だった鉄片の散乱する空間に変わった。願いを伝えた張本人も、そこにいた。制御者を失った超兵器は自立稼働を開始し、コーネリアを除く星系全ての星を『流れ星』に変えるべく、矛先を惑星アリエル（現<a href="../codex/locations.html#aquas">アクアス</a>）へ向ける。</p>
+  <p class="lore-p">各国は即時停戦を決定。ライラット星系統合艦隊──総戦力の8割強──が編成され、最終作戦『スター・ドリーム作戦』が発動する。セクターπの大激戦は超兵器の無尽蔵の兵装により膠着したが、ここで奇跡が重なった。崩壊する第6惑星宙域から流れ着いた一機の残骸──それはステファノー全軍総司令官の専用機であり、解析により唯一の弱点が「心臓部を囲む12基のリアクター」であることが突き止められたのである。</p>
+  <p class="lore-p">最終攻撃は超兵器に悟られぬよう、たった2機で行われた。コーネリア最強と謳われた部隊ジェイド・ナイトのエースパイロット、ジェームズ・バートン。超兵器の追撃から命辛々逃げ延びた総司令官の息子でありメカニック、アーノルド・トモウキ。2名の強襲は急所に決定的な一撃を与え──ライラット星系最大の危機は、ついに去った。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">LEGACY ─ 遺されたもの</h3>
+  <p class="lore-p">この兵器の存在こそが、共和国憲章第1条「質量破壊兵器の研究・保有の永久禁止」の直接の理由である。そして<a href="../codex/characters.html#andorf">アンドルフ・ボウマン</a> の追放、ひいては<a href="../codex/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a> の遠因ともなった。</p>
+  <p class="lore-p">討伐が行われたセクターπには今も超兵器の残骸が散らばるが、残骸への接触はライラット星系のあらゆる星の法律で禁止されている。セクターπ自体もワープドライブ航路が全て削除・迂回され、座標を秘匿された結果、実質的な<a href="../codex/glossary.html#out-of-sector">アウト・オブ・セクター</a> に近い扱いとなっている。星図の空白は、忘れたからではない。忘れないために空けてある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">『大彗星』のおとぎ話の後半──ベノムに残されたとされるその内容を、公式記録は今も収録していない。キュレーターの遺文には断片だけが残る。「願いの叶え方を、彗星は選ばない」。</p>
+  <p class="lore-p"><span class="redacted">情報戦略本部 注記: ドグマ宙域のコンタクト信号と、稼働式典で観測された『語りかけ』の音声記録には、周波数構造に統計的類似が認められる。本件はファイルFCH-311および監視区分アポカリュプシスと関連付けて継続監視中である</span></p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

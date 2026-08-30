@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G-DIFFUSER SYSTEM — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#5fc7ff;--accent:#a5e2ff;--border:rgba(95,199,255,0.32);--border-hi:rgba(165,226,255,0.7);--dim:#0e2a3a;--dim2:#07151d; }
+    .p-title    { color: #eef8ff; text-shadow: 0 0 50px rgba(95,199,255,0.35); }
+    .p-tagline  { border-color: #5fc7ff; color: #5fc7ff; }
+    .terminal-hdr { color: #a5e2ff; }
+    .terminal-hdr::before { background: #a5e2ff; box-shadow: 0 0 8px #a5e2ff; }
+    .dk { color: #5fc7ff; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-10 / G-DIFFUSER SYSTEM — G・ディフューザーシステム ]</div>
+    <div class="header-status">● IN SERVICE — LYLAT STANDARD</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — G-DIFFUSER SYSTEM — ANTI-GRAVITY CORE TECHNOLOGY — SPACE DYNAMICS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0010 — CLEARANCE: OPEN — THEORY: A. BOWMAN</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-10 / TECHNOLOGY FILE ]</div>
+        <div class="p-name-jp">G・ディフューザーシステム (G-DIFFUSER SYSTEM)</div>
+        <h1 class="p-title">G-DIFFUSER SYSTEM</h1>
+        <div class="p-tagline">THE SKY GIVEN TO EVERYONE ── 反重力発生・慣性制御機構</div>
+        <p class="p-short-desc">ライラット星系の民間・軍事を問わず、あらゆる乗り物に搭載される反重力発生装置。基礎理論を築いたのは、後に星系を戦火に包むことになる男──科学技術省長官時代のアンドルフ・ボウマンである。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 10 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">G-DIFFUSER SYSTEM / G・ディフューザーシステム</td></tr><tr><td class="dk">CLASS</td><td class="dv">反重力発生・慣性制御機構</td></tr><tr><td class="dk">THEORY</td><td class="dv"><a href="../database/characters.html#andorf">アンドルフ・ボウマン</a>（科学技術省長官・当時）</td></tr><tr><td class="dk">DEVELOPMENT</td><td class="dv">デ・ポン航宙機工房（現 <a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>）</td></tr><tr><td class="dk">POWER SOURCE</td><td class="dv">恒星プラズマ — ブラグザ結晶体封入式</td></tr><tr><td class="dk">SUPPLY</td><td class="dv"><a href="../database/sectors.html#alpha">セクターα</a> プラズマ採取施設</td></tr><tr><td class="dk">APPLICATION</td><td class="dv">姿勢制御 / 垂直離着陸 / 慣性緩和 / 星系航法基準</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 星系標準機構</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">STRATEGIC VALUE -- 99 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 99%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(95,199,255,0.55);">
+        <img src="" alt="G-DIFFUSER SYSTEM" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ANTI-GRAVITY CORE MECHANISM</span>
+            <span class="tg-jp">ライラット標準 反重力機構</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">今日、空が誰のものでもなくなった。<span class="tg-note note">-初期試験当時の科学省整備士の日誌より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">共和国のごく潰し<span class="lore-quote-src">― 開発当時、この機構に与えられた公式評価（科学技術省 予算審議記録より）</span></span></p>
+  <p class="lore-p">G・ディフューザーシステム（G-Diffuser System）は、機体にかかる重力（G）と慣性を拡散（ディフューズ）・制御する反重力発生機構。ライラット星系では民間・軍事を問わずあらゆる場面で多用されており、戦闘機から旅客船・作業艇まで、およそ「飛ぶもの」でこの機構を積んでいない乗り物を探す方が難しい。</p>
+  <p class="lore-p">主翼や船体の付け根に姿勢制御装置として組み込むことで、通常の推進機関では不可能な水平移動、急旋回・急加減速、そして滑らかな垂直離着陸を可能にする。軍用応用の代表例は<a href="arwing.html">アーウィン</a>と<a href="landmaster.html">ランドマスター</a>だが、本記録では機構そのものの来歴を扱う。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">開発史 ─ HISTORY</h3>
+  <p class="lore-p">基礎理論を確立したのは、コーネリア科学技術省長官時代の<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a>である。だが開発当初、理論の立証も実用の有用性も理解していなかった官僚たちの評価は辛辣を極め、予算審議の席でこの研究に与えられた渾名が冒頭の「共和国のごく潰し」だった。一方で、科学省の構成員や試験運用を実際に目にした者たちは皆、この機構が星系の勢力図を塗り替えるほどの価値に化けることを、すぐに理解することができたと伝えられる。</p>
+  <p class="lore-p">予算は殆ど下りず、制御の難しい装置の扱いに科学省が手を焼く中、機転を利かせた職員の発案で「民間の工場に試させる」という異例の一手が打たれることになる。白羽の矢が立ったのは、軍末端の星間パトロール隊の機材整備を請け負っていた小さな町工場──後の<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>、デ・ポン航宙機工房である。商船や民間船など幅広い機材を扱う技術者がおり、軍規に縛られないテストが可能で、なおかつ予算も削減できる。一石三鳥と評されたこの計画のアイデア出しと交渉を行ったのは、記録によれば後のスターウルフ構成員<a href="../database/characters.html#pigma">ピグマ・デンガー</a>だったようだ。</p>
+  <p class="lore-p">科学省の読みは的中した。当時従業員わずか2名の工房を率いていた<a href="../database/characters.html#yaru">ヤル・デ・ポン</a>の技術力と、軍部からは決して出てこない自由な発想により、お蔵入りになりかけていた反重力機構は、数か月で『G・ディフューザーシステム』として完成の日の目を見ることになる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構と動力 ─ MECHANISM</h3>
+  <p class="lore-p">このシステムにより、あらゆる船舶・戦闘機は通常では不可能な水平移動やスムーズな離着陸が可能となった。さらに、当時喫緊の課題となっていた化石燃料資源の枯渇問題も、このシステムが同時に解決している。</p>
+  <p class="lore-p">動力源は、恒星<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>の太陽風から検出されるプラズマである。このプラズマをソーラーパネルで受け、ブラグザ結晶体に閉じ込めることで、従来の「給油」に相当する補給が完結する──早い話が、太陽光がそのまま燃料の代わりになるということだ。ただし結晶体に封入すべきプラズマの量は相応であり、共和国は<a href="../database/sectors.html#alpha">セクターα</a>に大規模なプラズマ採取施設を建造する必要があった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">航法と安全装置 ─ NAVIGATION</h3>
+  <p class="lore-p">G・ディフューザーは単なる反重力装置ではない。制御の一環として、ライラット星系の座標系と連動した安全装置の役割も果たしている。システムは<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>の極から伸びる磁力線を基準点とし、星系全体のX・Y・Z座標を即時に算出することができる。</p>
+  <p class="lore-p">上下左右の存在しない宇宙空間では、パイロットが方向感覚を失う事故が絶えなかった。だがこの自動制御により、全ての船舶は「共通の地平面」を共有した状態に近い操縦感覚を再現できる。これは<a href="../database/glossary.html#warp-route">ワープドライブ航路</a>でも活用されており、あらゆる船舶が宇宙空間で上下の感覚を失わずに航行できるのは、システムが『重力がある惑星の空』を再現した挙動を常時サポートしているからである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">文化と興行 ─ LEGACY</h3>
+  <p class="lore-p">近年では、この管制システムを限界まで突き詰めた反重力レース「X-Zero」が<a href="../database/glossary.html#cross-bout">クロスバウト</a>と並んで大いに人気を博しており、大企業がスポンサーに付いた大規模な大会も開かれている。競技規定ぎりぎりまで安全装置の制限を緩めたレース機の挙動は戦闘機乗りですら青ざめるといわれ、「ディフューザーの限界は、いつもパイロットの限界の少し先にある」という格言はここから生まれた。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">この機構を「共和国のごく潰し」と評した審議官の名は、議事録の改訂とともに記録から静かに消えている。一方、初期試験の日に科学省の片隅で試作機を見上げた整備士の日誌は、今も省の資料室に残されている──「今日、空が誰のものでもなくなった」。</p>
+  <p class="lore-p">星系を飛ぶ全ての翼に組み込まれた技術の理論を築いた男が、その翼を焼く戦争を始めた張本人であるという事実は、ライラット科学史最大の皮肉として語り継がれている。<a href="../database/characters.html#andorf">アンドルフ</a>の反乱後、共和国議会はシステムの正式名称から彼の功績を抹消する法案を二度審議し、二度とも否決した。理由は簡潔だった──「事実は消せない」。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

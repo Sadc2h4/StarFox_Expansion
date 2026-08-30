@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATTACK CARRIER — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#8aa8b8;--accent:#b8d4e2;--border:rgba(138,168,184,0.32);--border-hi:rgba(184,212,226,0.7);--dim:#20303a;--dim2:#0e161c; }
+    .p-title    { color: #ecf4f8; text-shadow: 0 0 50px rgba(138,168,184,0.4); }
+    .p-tagline  { border-color: #8aa8b8; color: #8aa8b8; }
+    .terminal-hdr { color: #b8d4e2; }
+    .terminal-hdr::before { background: #b8d4e2; box-shadow: 0 0 8px #b8d4e2; }
+    .dk { color: #8aa8b8; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-20 / ATTACK CARRIER — アタック・キャリアー ]</div>
+    <div class="header-status"><span class="blink" style="color:#b8d4e2;">●</span> HOSTILE — ACTIVE THREAT</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — ATTACK CARRIER — IMPERIAL LIGHT STRATEGIC CARRIER — THREAT ANALYSIS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0020 — CLASSIFICATION: HOSTILE WEAPON — MANUFACTURER: ELADARD</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-20 / ARMORY FILE ]</div>
+        <div class="p-name-jp">アタック・キャリアー (ATTACK CARRIER)</div>
+        <h1 class="p-title">LUNCHBOX<br>DOCTRINE</h1>
+        <div class="p-tagline">帝国対空・対宇宙 小型戦略空母 ─ 完全量産機</div>
+        <p class="p-short-desc">帝国が量産する対空・対宇宙用の小型戦略空母。総パーツ数はわずか30。戦局に合わせて左右の攻撃ユニットを自由に換装するその設計思想は、一軒の弁当屋から生まれた。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ THREAT SCAN — FILE 20 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">ATTACK CARRIER / アタック・キャリアー</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">対空・対宇宙 小型戦略空母（量産機）</td></tr><tr><td class="dk">STRUCTURE</td><td class="dv">単純ブロック構造 — 総パーツ数30</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv">エラダード — フォーティンブラス商工会が一括受注</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv warn">⚠ 換装式攻撃ユニット×2 — 全7種</td></tr><tr><td class="dk">HANGAR</td><td class="dv">小型無人機 多数を格納</td></tr><tr><td class="dk">BASE HULL</td><td class="dv">フィチナ製コンテナ船の転用</td></tr><tr><td class="dk">DESIGNER</td><td class="dv">カーマス・ピヨット提督（換装システム考案）</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">現役 — 帝国主戦力・被害継続中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 78 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 78%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(138,168,184,0.5);">
+        <img src="" alt="ATTACK CARRIER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">MODULAR MENACE</span>
+            <span class="tg-jp">選べる兵装 ── 弁当屋生まれの戦略空母</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">また新型か？　……いや違う、同じ機体だ。腕だけ換えてきやがった。<span class="tg-note note">-対空哨戒隊 交戦記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">構造は弁当箱なみに単純で、中身は日替わりだ。厄介なのはそこである<span class="lore-quote-src">― CDF技術部 鹵獲機体解析報告より</span></span></p>
+  <p class="lore-p">アタック・キャリアー（Attack Carrier）は、<a href="../database/factions.html#venom-empire">帝国</a>が量産している対空および対宇宙用の小型戦略空母である。機体は単純なブロック構造で、総パーツ数は驚きの30個。戦車や艦船に相当する兵器としては異例の単純さであり、この簡便な作りはそのまま量産体制に向いている。製造は<a href="../database/locations.html#eladard">エラダード</a>の<a href="../database/glossary.html#fortinbras">フォーティンブラス商工会</a>に外注され、完全量産体制に入っているとみられる。</p>
+  <p class="lore-p">単純な構造に反して性能は並の戦闘機を超えており、量産機とは思えない脅威として共和国軍は警戒を続けている。空母の名のとおり<a href="lw2-drones.html">小型無人機</a>を多数格納できるが、最大の特徴は左右に備えた換装可能な攻撃ユニットである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">換装システム ─ MODULAR UNITS</h3>
+  <p class="lore-p">攻撃ユニットは戦局に合わせて7種類のパーツから好きな組み合わせを選ぶことができ、塗装やノーズペイントも搭乗員の自由に任されている。このため帝国軍においてアタック・キャリアーは、標準装備の銃と同じくらい馴染みのある存在となりつつある。最も使用率が高いユニットは、<a href="granga.html">グランガ</a>の誘導ミサイルポッドと同系統の自動追尾弾である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">考案者 ─ THE DESIGNER</h3>
+  <p class="lore-p">この換装システムを考案したのは、帝国将校カーマス・ピヨットである。<a href="../database/factions.html#iga">独立星系連合</a>の残党として帝国軍の軍門を潜った筋金入りの軍人だが、他の軍人とは異なり、彼なりのマイペースさと人当たりの良さを併せ持つ稀有な存在だった。仲間内ですらすぐに粛清する連合末期の風土を生き残ったのは、この世渡りのうまさに起因すると推定されている。</p>
+  <p class="lore-p">建国宣言前のある時期、ピヨットは帝国上層部から「低予算で成果を上げられる対空戦力」を調達するという無茶ぶりを押し付けられ、頭を抱えていた。共和国は日に日に勢力を増し、<a href="../database/locations.html#starblade">スターブレード艦隊</a>の哨戒網は外縁へ伸びつつある。水面下の活動とはいえ、帝国の存在は一部の共和国軍に気づかれ始めていた。建国を宣言したところで、戦力も人材も不足したままでは即座に潰されるのは目に見えていたのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">弁当屋の閃き ─ THE LUNCHBOX EPIPHANY</h3>
+  <p class="lore-p">物資も兵隊もない、ないない尽くしの状態で<a href="../database/glossary.html#standard-time">標準時</a>の一週間を考え抜いた末、途方に暮れたピヨットは気が付くと近所の弁当屋へ向かっていた。<a href="../corporations/ukiuki-bento.html">うっきうき弁当</a>帝国支店──サルジーナヤ系のチェーン店が驚くことに帝国首都の軍施設の目の前にオープンしており、帝国兵士の憩いの場になっていた。ピヨットはいつも通りAランチを頼んだが、運悪く売り切れだった。その際、目にクマを作った彼を見かねた店員が気を利かせ、別の弁当のおかずを組み合わせてもよいというサービスをした。白米にBセットのおかず、Eセットのドリンクとデザート。そう注文しようとした瞬間、彼の中で何かがつながった。</p>
+  <p class="lore-p">パイロット不足は、三等帝国民として受け入れたまま略奪以外に任せる任務のなかった無法者を、教育して補えばよい。無人機が都度撃ち落とされて成果が出ない問題は、量産機を大量に格納したまま現地へ出撃できる空母を用意すればよい。戦局が変われば艦載機と兵装を換装して対応すればよい。空母の大本は<a href="../database/locations.html#fichina">フィチナ</a>のコンテナ船をベースに機動力向上の外付けパーツを装備し、護衛は艦載機に任せればコストも下がる。コンテナ船なら無法者や残党兵にも簡単に操縦でき、教えるのも楽である。パーツごとに既存の兵器を組み合わせるだけだから設計の時間もかからず、生産は交渉中のフォーティンブラス商工会へ一括発注すれば、相手も簡単な仕事で大きな儲けを得られるため乗ってくる可能性が高い──弁当屋で閃いたこの構想が消えないうちに、彼はナプキンへ一気に殴り書きしたという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦果と現在 ─ LEGACY</h3>
+  <p class="lore-p">かくしてこの男が取り付けた大規模発注は、後のエラダードとベノムの蜜月関係の第一歩となった。ガルーダ系無人機の設計ごとの外注に代表される「エラダード製の帝国機体」の系譜は、この一件を起点とする。目下の課題だった対空戦力の不足は一気に解消され、共和国軍は大量に押し寄せる帝国の新型兵器に大苦戦を強いられることとなった。今日に至るまでアタック・キャリアーは帝国の主戦力であり続けており、<a href="granga.html">グランガ</a>と異なり、大規模な被害がコンスタントに出続けている。</p>
+  <p class="lore-p">カーマス・ピヨットはこの功績を称えられ、弁当屋の生涯ドリンク無料と昇進が決まった。昇進の幅はなんと一足飛びの「提督」である。彼は現在<a href="../database/locations.html#setebos">セティボス</a>圏の第1衛星セティボスⅡに置かれた出荷中継基地を拠点に、<a href="../database/glossary.html#ember-gas">エンバーガス</a>を<a href="../database/locations.html#macbeth">マクベス</a>へ送る任務に就いており、型にはまらない奇策で戦局を突如塗り替える帝国艦隊の名将として恐れられている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

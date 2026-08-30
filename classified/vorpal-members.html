@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <script>if (sessionStorage.getItem('apx-authorized') !== '1') location.replace('../apocalypsis.html');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VORPAL FULL ROSTER — APOCALYPSIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#b8cfe8;--accent:#e6f0fa;--border:rgba(184,207,232,0.32);--border-hi:rgba(230,240,250,0.7);--dim:#1c2836;--dim2:#0c1218; }
+    html, body { overflow-y:auto; }
+    .p-title    { color: #f4f8fc; text-shadow: 0 0 50px rgba(184,207,232,0.45); }
+    .p-tagline  { border-color: #b8cfe8; color: #b8cfe8; }
+    .terminal-hdr { color: #e6f0fa; }
+    .terminal-hdr::before { background: #e6f0fa; box-shadow: 0 0 8px #e6f0fa; }
+    .dk { color: #b8cfe8; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header" style="border-color:rgba(184,207,232,0.3);">
+    <a href="../apocalypsis.html" class="nav-back" style="color:#b8cfe8;border-color:rgba(184,207,232,0.3);">◄ APOCALYPSIS</a>
+    <div class="header-tag">[ P-01 / VORPAL SQUADRON — ヴォーパル隊 全構成記録 ]</div>
+    <div class="header-status"><span class="blink" style="color:#b8cfe8;">●</span> CLEARANCE LV.5 — SESSION AUTHORIZED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">RESTRICTED PERSONNEL FILE — VORPAL SQUADRON — THE WHITE SEVEN — FULL ROSTER</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: P-0001 — CLASSIFICATION: RESTRICTED PERSONNEL — DO NOT DISCLOSE — NAMES SEALED</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ P-01 / RESTRICTED PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ヴォーパル隊 全構成記録 (VORPAL — FULL ROSTER)</div>
+        <h1 class="p-title">THE WHITE SEVEN<br>UNSEALED</h1>
+        <div class="p-tagline">白の7 ─ 実名照合記録・取扱区分 LV.5</div>
+        <p class="p-short-desc">「コーネリアの白い刃」全7名の実名と経歴を照合した唯一の記録。人ではない隊員が1名、潜入任務中の隊員が1名含まれる。読み終えた後は読まなかったことにするのが、本区画の作法である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ ROSTER SCAN — FILE P-01 ▐</div>
+        <table class="dt"><tr><td class="dk">FILE</td><td class="dv">VORPAL SQUADRON / ヴォーパル隊 — 全構成記録</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">コーネリア共和国軍 — 公開記事は<a href="../other/vorpal.html">軍事データベース</a>に残置</td></tr><tr><td class="dk">STRENGTH</td><td class="dv">7名 — 実名公開3 / 封印4</td></tr><tr><td class="dk">COMMANDER</td><td class="dv">白の1 <a href="../characters/amber.html">アンバー・シルフェイド</a>少佐</td></tr><tr><td class="dk">SPECIAL ASSET</td><td class="dv warn">⚠ 白の3 — 自立稼働兵器（非生体・詳細本文）</td></tr><tr><td class="dk">COVERT OP</td><td class="dv warn">⚠ 白の5 — 潜入任務継続中（偽名運用）</td></tr><tr><td class="dk">SECURITY</td><td class="dv">封印4名の実名口外は軍法会議の対象</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — カタリナへ緊急展開中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">UNIT CAPABILITY -- 96 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(184,207,232,0.5);">
+        <img src="" alt="VORPAL SQUADRON — FULL ROSTER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">NAMES THAT DO NOT EXIST</span>
+            <span class="tg-jp">白の7 ── 存在しないことになっている名前</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">名簿は読まれないために書かれることもある。これはその見本である。<span class="tg-note note">-本ファイル管理官の引き継ぎメモより-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">うちの隊の自己紹介は簡単でな。全員、名乗れんのだ<span class="lore-quote-src">― 白の2 採録談話より</span></span></p>
+  <p class="lore-p">本ファイルは特殊戦闘部隊<a href="../other/vorpal.html">ヴォーパル隊</a>の全構成員7名について、実名と経歴を照合した星系で唯一の記録である。公開データベースの部隊記事が表の顔だとすれば、これはその裏面にあたる。</p>
+  <p class="lore-p">秘匿の理由は隊員ごとに異なる。人ではない隊員。潜入任務の途中にある隊員。軍の暗部と地続きの経歴を持つ隊員。彼らを一枚の公開名簿に載せることは、複数の作戦と複数の人生を同時に終わらせることを意味する。取扱区分がLV.5に置かれている理由は、それで足りる。</p>
+</div>
+<div class="lore-section" id="false-roster">
+  <h3 class="lore-h">欺瞞名簿 ─ THE FALSE ROSTER</h3>
+  <p class="lore-p">かつて公開記録に載っていた「シルバー・リュカオン」「ブチ・アルジャーノ」の2名は実在しない。複数の隊員から要素を組み替えて作られた欺瞞名であり、記録が流出した際にどの経路から漏れたかを特定する追跡マーカーを兼ねていた。</p>
+  <p class="lore-p">開戦後、帝国側の鹵獲資料に欺瞞名の使用が確認されたため名簿は更新された。現在公開されている白の1・6・7の3名は実名である。素性を伏せるより顔を晒す方が守りになる隊員だけを選んだ結果であり、公開枠の2名がいずれも対外折衝の役職であることは偶然ではない。</p>
+</div>
+<div class="lore-section" id="white-01">
+  <h3 class="lore-h">白の1『アンバー・シルフェイド』 ─ AMBER SYLPHADE</h3>
+  <p class="lore-p">隊長兼奇襲戦闘員。唯一、個人ファイルが人物データベースに公開されている隊員である（詳細は<a href="../characters/amber.html">個別ファイル</a>を参照）。本区画が付け加えるべき事項は多くないが、彼女の経歴にも公開ファイルの語らない頁がある。試作特殊戦闘機<a href="../weapons/chastiefol.html">シャスティフォル</a>の適合被検体としての来歴であり、詳細は当該機の開発記録の封印項目に譲る。</p>
+</div>
+<div class="lore-section" id="white-02">
+  <h3 class="lore-h">白の2『ジョン・シルバー』 ─ JOHN SILVER</h3>
+  <p class="lore-p">ゴリラ系<a href="../database/races.html#alphoid">アルフォイド</a>の男性。57歳は隊最年長であり、400cmを超える巨躯は隊最大である。役職は副隊長。副官・参謀・メカニックを一人で兼任し、ヴォーパル隊が現在の形になる前の前身体制から在籍する唯一の古株でもある。隊の記憶そのものと呼ばれる所以である。</p>
+  <p class="lore-p">素手で戦闘機や戦車を持ち運ぶ怪力の持ち主だが、本領は膂力ではなく頭脳にある。作戦立案から機材整備までを一手に担い、実質最大戦力である隊長を「刃」として振るうため、現場で隊を率いるのはむしろ彼であることが多い。<a href="../weapons/chastiefol.html">シャスティフォル</a>の運用限界「5分」を最大限に活かす戦場の組み立ても彼の仕事である。隊の作戦が常に5分で終わるのは、5分で終わる形になるまで彼が戦場を設計し直すからにほかならない。</p>
+  <p class="lore-p">特殊な境遇の者が多いこの隊で、隊員たちから父親のように慕われている。コックピットの特殊溶液の味に関する例の質問へは、本区画の聴取でもノーコメントを貫いた。</p>
+</div>
+<div class="lore-section" id="white-03">
+  <h3 class="lore-h">白の3『フェンリル』 ─ FENRIR</h3>
+  <p class="lore-p"><span class="badge badge-classified">▮ LV.5</span><br>
+  登録簿の上では「正体不明のメンバー」。実態は人型ですらない。戦闘機形態と獣形態を相互に可変する自立稼働の万能戦略兵器であり、ヴォーパル隊の真の切り札である。その正体を知る者は隊員と<a href="../database/military.html#cdf">CDF</a>上層のごく一部に限られる。</p>
+  <p class="lore-p">かつてローザリンドの州都を火の海にしたと伝わる「機械の獣」その機体であり、少年期の<a href="../characters/pepper.html">Z・Z・ペパー</a>が無傷で捕縛した経緯は当人の人物ファイルに詳しい。長期の保全運用ののちAI疑似人格の形成が確認され、これを機に隊へ編入された。フェンリルの名はこの人格へ与えられたコードネームである。セティボスⅣで失われた<a href="gigarilla.html">超兵器</a>との制御系の共通性については、当該封印記録の解析注記を参照されたい。</p>
+  <p class="lore-p">敵味方の被害が予測できないため、基本的に作戦へは投入されない。集会や議会への出席は子機のアンドロイド端末で行っている。近年は軍の想定にない自己学習が進み、人間の女性に相当する人格が芽生えつつあると評価されており、管理官の所見欄には「兵器」の分類を再考すべき時期が近いとの一文が残されている。</p>
+</div>
+<div class="lore-section" id="white-04">
+  <h3 class="lore-h">白の4『リュカオン・キルヒアイズ』 ─ LYCAON KIRCHEIS</h3>
+  <p class="lore-p">リカオン系<a href="../database/races.html#anubisoid">アヌビソイド</a>の女性。コーネリアの名門武門キルヒアイズ家の長女である。当代に男子がなかったため「男」として父に厳しく育てられ、外見も話し方も振る舞いも完全に男性のそれである。白い制服の凛々しい将校としか見えず、素性を見抜ける者はまずいない。旧欺瞞名の「リュカオン」は彼女から借りられた要素である。</p>
+  <p class="lore-p">本領は戦略ではなく白兵戦と上陸作戦にある。闘争心に火が付くと隊員でも止められない戦闘狂であり、隊一番の問題児と目されている。</p>
+  <p class="lore-p">共和国軍の試作兵器のための改造を施された経歴を持ち、強化に四肢が耐えられず崩壊した過去から、右腕を除く四肢はサイバネティクス義肢へ置換されている。義肢そのものが武器であり、この経歴は隊長アンバーの被検体来歴と同系列の暗部にあたる。</p>
+</div>
+<div class="lore-section" id="white-05">
+  <h3 class="lore-h">白の5『フェイ・シンクレア』 ─ FAY SINCLAIR</h3>
+  <p class="lore-p">シェパード系アヌビソイドの女性。役職は諜報・隠密担当である。隠密作戦を旨とするため仲間にすら情報を明かさず、身辺は隊内でもほぼ不明とされる。判明しているのは貴族の出であることと、コーネリア士官学校本校を首席で卒業した経歴だけである。</p>
+  <p class="lore-p">現在は偽名「フェイ・スパニエル」を用いて民間の航空自警団に潜伏し、とある作戦の下準備に当たっている。潜伏先では航空機整備士として厚い信頼を集め、遊撃隊<a href="../database/military.html#starfox">スターフォックス</a>への接触も確認された。量産型<a href="../weapons/arwing.html">アーウィン</a>の速度を極限まで高めた自分好みの改造機「ゼラニューム」を駆り、彼らの作戦にも協力しているようだが、その真意は本ファイルの管理官にも報告されていない。</p>
+</div>
+<div class="lore-section" id="white-06">
+  <h3 class="lore-h">白の6『マイス・アルジャーノン』 ─ MAISE ALGERNON</h3>
+  <p class="lore-p">ハツカネズミ系<a href="../database/races.html#kyusoid">キューソイド</a>の男性。身長82cmは隊最小であり、普段は背丈の倍近いコートと触手状の専用補助腕で体を大きく見せている。小柄な体躯・長い白髪に隠れた目元・マスコット然とした体型・可愛らしい少年の声。この4拍子ゆえ対外露出の多い「隊の顔」であり、その4拍子のどれにも実態が伴っていない。</p>
+  <p class="lore-p">内部評価は一行で足りる。コーネリア共和国軍で最も残酷な男である。尋問官は本人が自ら買って出た役職であり、捕虜を必要以上に痛めつけ結果的に始末してしまう事例が繰り返し記録されている。その性質はスターウルフの<a href="../characters/leon.html">レオン・ポワルスキー</a>と比較されることが多い。ただし歩幅合わせと任務第一の原則は守る、命令には忠実な側の人間でもある。隊内からの嫌悪と命令系統上の信頼が同居する、稀有な人事となっている。</p>
+  <p class="lore-p">隊長評が全てを要約している。「戦争がなければ、真っ先に<a href="../database/glossary.html#muinshankle">ムィンシャンクル</a>行きのガキだ」</p>
+</div>
+<div class="lore-section" id="white-07">
+  <h3 class="lore-h">白の7『ヤペテ・ヤワントバル』 ─ JAPHETH YAWANTOBAL</h3>
+  <p class="lore-p">種族不明の<a href="../database/races.html#holsoid">ホルソイド</a>の男性。既知のあらゆるホルソイドと微妙に異なる形質を持ち、生体登録の分類欄は今も空欄のままである。外見はアルビノのクジャク系人種と形容するのが最も近い。身長210cm。物腰柔らかな礼節の紳士であり、どんな局面でも自身のペースを崩さない胆力を備える。</p>
+  <p class="lore-p">表の役職は交渉役。実態は任務の「後始末」までを完遂するプロのヒットマンである。平時との落差があまりに大きいため、一度交戦した敵兵が再遭遇時に同一人物と認識できなかった事例が複数報告されている。</p>
+  <p class="lore-p">隊にあっては、いつも紅茶を持参して笑顔で皆に振る舞い、招集のたびに必ず明るい話題を振るムードメーカーである。招集時の紅茶は事実上の点呼代わりであり、湯気の数で欠員が分かると隊員たちは言う。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">議会に出席する白の3の端末は、毎回わずかに髪型が違う。指摘した者はまだいないが、記録係は毎回記録している。</p>
+  <p class="lore-p">本ファイルの表題は「全構成記録」だが、白の5の項が最も短いことは管理官も認めるところである。諜報担当の項が薄い名簿は、諜報担当が優秀である証左だと思うことにしている。</p>
+  <p class="lore-p">名簿の最終頁には歴代の除籍者欄がある。そこだけは、コールサックの時代から一度も様式が変わっていない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

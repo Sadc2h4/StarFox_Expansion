@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AREA6 — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff5566;--accent:#ff99a0;--border:rgba(255,85,102,0.32);--border-hi:rgba(255,153,160,0.7);--dim:#401018;--dim2:#20080c; }
+    .p-title    { color: #ffecee; text-shadow: 0 0 50px rgba(255,85,102,0.35); }
+    .p-tagline  { border-color: #ff5566; color: #ff5566; }
+    .terminal-hdr { color: #ff99a0; }
+    .terminal-hdr::before { background: #ff99a0; box-shadow: 0 0 8px #ff99a0; }
+    .dk { color: #ff5566; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/locations.html" class="nav-back">◄ LOCATIONS</a>
+    <div class="header-tag">[ 16 / AREA6 — ベノム最終防衛ライン ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff5566;">●</span> SECTOR-ψ — HOSTILE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">LYLAT SYSTEM — AREA6 — VENOM DEFENSE PERIMETER — SECTOR-PSI — SPACE ARMADA GARRISON</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: AR6-0016 — CLASSIFICATION: ENEMY STRONGHOLD — DO NOT ENGAGE</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ 16 / LYLAT SYSTEM — SECTOR-ψ ]</div>
+        <div class="p-name-jp">AREA6（エリアシックス）</div>
+        <h1 class="p-title">THE LAST<br>GATE OF<br>VENOM</h1>
+        <div class="p-tagline">帝国最終防衛ライン ─ 敵性軍事宙域</div>
+        <p class="p-short-desc">ベノム惑星圏を取り囲む帝国の最終防衛ライン。宇宙最強と謳われる艦隊「スペースアマダ」が駐屯し、防衛衛星ボルスとともにベノムへの全ての道を塞ぐ。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ HOSTILE SCAN — SECTOR-ψ ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">AREA6 防衛線</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">敵性軍事セクター</td></tr><tr><td class="dk">LOCATION</td><td class="dv">Sectorψ — ベノム惑星圏外周</td></tr><tr><td class="dk">CLASS</td><td class="dv">多層艦隊防衛網</td></tr><tr><td class="dk">MAIN FORCE</td><td class="dv bad">艦隊<a href="../database/military.html#space-armada">「スペースアマダ」</a></td></tr><tr><td class="dk">SATELLITE</td><td class="dv bad">防衛衛星<a href="bolse.html">ボルス</a></td></tr><tr><td class="dk">OPERATOR</td><td class="dv bad">ベノム帝国軍</td></tr><tr><td class="dk">STRENGTH</td><td class="dv bad">推定600隻以上</td></tr><tr><td class="dk">FACTION</td><td class="dv bad">ベノム帝国</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">⚠ 交戦確実 — 接近禁止</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT LEVEL -- 98 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 98%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,85,102,0.6);">
+        <img src="../resource/LA_image/LS_F_7.png" alt="Area6" class="planet-img-detail planet-img-medium" style="animation: 10s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">Sector ψ — VENOM DEFENSE LINE</span>
+            <span class="tg-jp">帝国最終防衛ライン ── 突破難度：最凶</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">こちらカイマン　異常ないッスよ…!?<br>敵襲!　緊急配備につけ!!<span class="tg-note note">-防衛ライン哨戒機の緊急通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「ベノムに至る道は全てAREA6を通る。つまり、正攻法では太刀打ちはできないということだ…」<span class="lore-quote-src">― 統合参謀本部 戦域評価報告より</span></span></p>
+  <p class="lore-p">AREA6（エリアシックス）は、<a href="../database/sectors.html#psi">セクターψ</a>に展開する<a href="../database/factions.html#venom-empire">ベノム帝国</a>の最終防衛ラインである。<a href="../database/locations.html#venom">ベノム</a>惑星圏の周囲を取り囲むように配備され、本星への奇襲攻撃の可能性を芽のうちに摘み取ることを唯一の任務とする。</p>
+  <p class="lore-p">中核を成すのは「宇宙最強」と謳われる<a href="../database/military.html#space-armada">スペースアマダ</a>艦隊と単独で艦隊に匹敵する火力を持つ防衛衛星<a href="../database/military.html#bolse">ボルス</a>。<a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>を終わらせるためには、いつか誰かがこの壁を抜けなければならない。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 敵性宙域 — 接近＝交戦</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">セクターψは<a href="../database/locations.html#venom">ベノム</a>を球殻状に包む宙域であり、天体らしい天体を持たない。代わりにあるのは、幾重にも重なる艦隊哨戒線、機雷原、対空プラットフォーム、そして探知網である。帝国はこの宙域全体を一個の「要塞」として設計しており、その防衛密度は星系のいかなる宙域とも比較にならない。</p>
+  <p class="lore-p">宙域の最深部には防衛衛星<a href="bolse.html">ボルス</a>が座している。全周囲シールドと主砲パージ・キャノンを備えた箱型の要塞衛星であり、迎撃戦闘機の巣でもある。ボルスの管制網はAREA6全域の無人兵器群と連動しており、艦隊が壊滅してもなお防衛線は「勝手に」戦い続けると言われる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">AREA6の構築は帝国建国と同時に始まった。<a href="../database/glossary.html#andorf">アンドルフ</a>は自らが流刑者として送り込まれた経験から「ベノムへの道」の重要性を誰よりも理解しており、帝国の拡大より先に、まず本星の絶対防衛圏を完成させたのである。</p>
+  <p class="lore-p">開戦以来、共和国側がこの防衛線に正面攻撃を仕掛けた記録は一度しかない。開戦初期の強行偵察作戦で投入された偵察戦隊は、防衛線の第2層にすら到達できずに壊滅した。以後、<a href="../database/military.html#cdf">CDF</a>はAREA6の突破を「艦隊戦では不可能」と結論付け、少数精鋭による浸透突破へと戦術研究の軸足を移している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">AREA6に「市民」は存在しないが、数十万の帝国将兵が艦隊と基地群で生活している。彼らは帝国軍の中でも選抜されたエリートであり、本星防衛の任は帝国軍人最高の名誉とされる。<a href="../database/races.html#alphoid">アルフォイド</a>の技術士官、<a href="../database/races.html#paranodian">パラノディアン</a>の戦闘機搭乗員など、帝国社会の縮図がそのまま艦隊の編成に表れている。</p>
+  <p class="lore-p">一方で、最前線から最も遠い「後方の最精鋭」という立場は、前線部隊との間に微妙な感情のねじれを生んでいるという。傍受された通信には「我々は皇帝の門番か、それとも飾りか」という自嘲が混ざることがある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">推定戦力は艦艇600隻以上、無人兵器は数万機規模。<a href="../database/military.html#space-armada">スペースアマダ</a>の旗艦級戦艦は単艦で共和国の一個戦隊を相手取れるとされ、防衛衛星ボルスがその中核を固める。さらに宙域全体に張り巡らされたジャミング網が、侵入者の索敵・通信・航法を同時に奪う。この絶対防衛圏を設計し、管理主任として束ねているのが、帝国軍最高司令官にして星系史上最強の軍師と評される<a href="../database/characters.html#kellone">ミズローヌ・ケローン</a>大提督である。</p>
+  <p class="lore-p">ボルスの主砲<a href="../database/glossary.html#purge-cannon">パージ・キャノン</a>は空間跳躍兵器であり、警戒網が捉えた対象の真横へ即座に撃ち込まれる。死角を突いて艦船を潜り込ませる類の奇襲がこの宙域で意味をなさないのはこのためであり、過去に放たれた砲撃の軌跡が淡い星雲を赤く輝かせる<a href="../database/sectors.html#psi">「帝国の鉾」</a>は、侵入者への無言の警告として意図的に残されている。</p>
+  <p class="lore-p">ボルスの周囲には、警備衛星群「リトル・ボルス」約30機が展開している。興味深いことに、この子機群は最初からボルスの子機として設計されたものではない。原型は共和国の植物工場・初代<a href="oberon.html">オベロン</a>の設計思想を軍事転用した警備衛星であり、その管理プログラムが偶然にもボルスの管制AI「タイタン」と高い相性を示したため、子機網として統合された経緯を持つ。初代オベロンを制御していたのがタイタンと同機能のAI「アトラス」であったことが、この相性の一因と分析されている。敵対する要塞の衛兵が共和国の野菜工場の末裔であるという事実を、CDFの分析官は「星系で最も皮肉な転職」と評した。</p>
+  <p class="lore-p">唯一の弱点は、その完璧さ故の硬直性とされる。全ての防衛システムは「艦隊規模の侵攻」を想定して最適化されており、単機ないし数機による超高速の中央突破は、理論上、防衛網の反応速度を上回りうる──<a href="../database/military.html#starfox">スターフォックス</a>のような部隊であれば。この仮説が正しいかどうかは、最終決戦の日に証明されることになるだろう。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">AREA6の哨戒艦は、防衛線の外周に近づく民間船に対して警告射撃の前に必ず一度だけ退去勧告を発する。その文面は開戦以来一言一句変わっていない。「ここから先はアンドルフ皇帝の聖域だ。引き返せ」──共和国のパイロットたちはこれを「星系で最も親切な脅迫」と呼んでいるという。</p>
+  <p class="lore-p">ボルスの主砲パージ・キャノンが試射された夜、その閃光は<a href="../database/locations.html#corneria">コーネリア</a>からも肉眼で観測された。星系の反対側から見えた「新しい星」は市民に静かな恐怖を与えたが、同時に共和国軍の士気を逆に固めたとも言われる。あの光の向こうに終わらせるべき戦争の中心があるのである。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body></html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMALL SUPPLY — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ddbb55;--accent:#f0dd99;--border:rgba(221,187,85,0.32);--border-hi:rgba(221,187,85,0.7);--dim:#3a3008;--dim2:#1d1804; }
+    .p-title    { color: #fff9e8; text-shadow: 0 0 50px rgba(221,187,85,0.35); }
+    .p-tagline  { border-color: #ddbb55; color: #ddbb55; }
+    .terminal-hdr { color: #f0dd99; }
+    .terminal-hdr::before { background: #f0dd99; box-shadow: 0 0 8px #f0dd99; }
+    .dk { color: #ddbb55; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-30 / SMALL SUPPLY — スモールサプライ ]</div>
+    <div class="header-status">● ACTIVE — STANDARD EQUIPMENT</div>
+  </header>
+
+  <div class="side-l"><div class="vt">TECHNOLOGY FILE — SMALL SUPPLY — BLAGZALIGHT HARVESTER SWARM — SUPPLY RING</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0030 — CLEARANCE: OPEN — FITTED TO MOST MODERN FIGHTERS</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-30 / TECHNOLOGY FILE ]</div>
+        <div class="p-name-jp">スモールサプライ (SMALL SUPPLY)</div>
+        <h1 class="p-title">SMALL SUPPLY</h1>
+        <div class="p-tagline">RING OF LIFE ── ブラグザライト回収機構 ─ 通称サプライリング</div>
+        <p class="p-short-desc">戦場を飛び回る蜂の群れのような超小型モジュール。エネルギーを見つけてはリング状に集い、潜った機体のシールドと装甲を癒す「空に浮かぶ補給線」。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 30 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">SMALL SUPPLY / スモールサプライ（通称: サプライリング）</td></tr><tr><td class="dk">CLASS</td><td class="dv">エネルギー回収補助機構（群体モジュール）</td></tr><tr><td class="dk">FUNCTION</td><td class="dv"><a href="../database/glossary.html#blagzalight">ブラグザライト</a>等の回収 → 電力 / ブラグザエネルギー変換</td></tr><tr><td class="dk">FORM</td><td class="dv">超小型モジュール群 — エネルギー反応にリング状で集合</td></tr><tr><td class="dk">INDICATOR</td><td class="dv">形状と色で純度を表示 — 金色リング＝高回復 ／ 星形＝サプライスター（全回復）</td></tr><tr><td class="dk">FITTED</td><td class="dv"><a href="arwing.html">アーウィン</a> / <a href="wolfen.html">ウルフェン</a> ほか新型機の多く</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 標準搭載</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">UTILITY RATING -- 93 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 93%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(221,187,85,0.55);">
+        <img src="" alt="SMALL SUPPLY" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">BLAGZALIGHT HARVESTER SWARM</span>
+            <span class="tg-jp">エネルギー回収リング</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">前方に金色のリング！<br>潜れフォックス、シールドが戻るぞ！<span class="tg-note note">-戦域通信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">補給艦より頼りになる蜂の群れ<span class="lore-quote-src">― 前線パイロットの通称より</span></span></p>
+  <p class="lore-p">スモールサプライ（Small Supply）は、宇宙空間や恒星の表面で生成される<a href="../database/glossary.html#blagzalight">ブラグザライト</a> を回収するための補助機械である。実体は虫のような超小型モジュールの群れであり、手頃なエネルギー反応を見つけると集まってリング状の集合体を作り、エネルギーを再利用可能な電力かブラグザエネルギーへ変換する。</p>
+  <p class="lore-p">機体でこのリングを潜れば、変換されたエネルギーを即座にシールドや機体損傷の保護へ回すことができる。前線ではリングの姿から「サプライリング」の通称で呼ばれることが多く、撃ち合いの最中に見つける金色の輪は文字どおりの命綱である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p"><a href="arwing.html">アーウィン</a> や<a href="wolfen.html">ウルフェン</a> など新型機の多くには本機構が標準搭載されており、機体の稼働中はミツバチのように周囲を飛び回ってエネルギーの気配を探し続けている。中型以上の艦船が備えるブラグザライト回収装置（<a href="../database/glossary.html#blagzalight">ブラグザライトの項</a>を参照）を、戦闘機のスケールへ落とし込んだ技術と言い換えてもよい。</p>
+  <p class="lore-p">集合したリングは形状と色でエネルギーの純度を視認できるよう設計されており、金色のリングほど回復量が高い。計器を読む暇のない空戦の最中でも、輪の色を見るだけで潜る価値が分かる。この割り切った設計が現場の信頼を支えている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">サプライスター ─ SUPPLY STAR</h3>
+  <p class="lore-p">目にする機会は少ないが、金色のリングになる以上の純度の高いエネルギーを取得すると、リングの円周ではエネルギーを保持しきれなくなり角ばった星のような形状へ変化することがある。この状態は「サプライスター」と呼ばれ、損傷度合いの高い戦闘機を一つでフル状態までシールド回復できる代物として重宝される。</p>
+  <p class="lore-p">近年では大型の艦船が自身のエネルギーの一部を一つのサプライへ込めることでこのサプライスターを生成し、エネルギー補給の手段として使用する戦法もよく見られるようになっている。<a href="smart-bomb.html">スマートボム</a> と合わせて、即戦力として使える補給物資の代表格である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">運用 ─ SERVICE</h3>
+  <p class="lore-p">真価を発揮するのは極限環境である。<a href="../database/locations.html#solar">ソーラ</a> のような恒星表面に近い環境や、<a href="../database/locations.html#ya">セクターϊ</a> のような超高エネルギーの渦巻く宙域ではそこら中にエネルギーが満ちているためか、あらゆる場所でサプライがフル稼働し、視界がリングだらけになることで知られる。</p>
+  <p class="lore-p">超高温でバリア展開が必須となる環境において、周囲のエネルギーをすぐ転用できる形で可視化してくれるこの機能は非常に有難い。恒星観測や高エネルギー宙域の調査といった極限環境での活動は、この小さな蜂たちに大きく支えられているといえる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">新兵が最初に叩き込まれる教えは「銀の輪で欲をかくな。金の輪まで我慢しろ」である。もっとも被弾中のパイロットにこの区別がつく余裕はなく、実戦では見えた輪から潜るのが常だという。</p>
+  <p class="lore-p">損傷した僚機の針路へ自機のサプライを先回りさせ、リングを「置いてやる」誘導技術が一部のエースの間で使われている。仕様外の運用であり教範には載っていないが、これに救われた者は少なくない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

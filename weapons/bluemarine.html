@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLUE-MARINE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#33bbee;--accent:#88ddff;--border:rgba(51,187,238,0.32);--border-hi:rgba(51,187,238,0.7);--dim:#0a2a40;--dim2:#051520; }
+    .p-title    { color: #e8faff; text-shadow: 0 0 50px rgba(51,187,238,0.35); }
+    .p-tagline  { border-color: #33bbee; color: #33bbee; }
+    .terminal-hdr { color: #88ddff; }
+    .terminal-hdr::before { background: #88ddff; box-shadow: 0 0 8px #88ddff; }
+    .dk { color: #33bbee; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-04 / BLUE-MARINE — ブルーマリン ]</div>
+    <div class="header-status">● IN SERVICE — STAR FOX</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — BLUE-MARINE — COMBAT SUBMERSIBLE — SLIPPY TOAD DESIGN</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0004 — CLEARANCE: OPEN — AQUATIC WARFARE</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-04 / ARMORY FILE ]</div>
+        <div class="p-name-jp">ブルーマリン (BLUE-MARINE)</div>
+        <h1 class="p-title">BLUE-MARINE</h1>
+        <div class="p-tagline">THE ONLY WING BELOW THE WAVES ── 小型戦闘潜航艇</div>
+        <p class="p-short-desc">スリッピー・トードが設計した小型戦闘潜航艇。星系でほぼ唯一の「水中を飛ぶ」戦闘艇であり、アクアス戦の立役者。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 04 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">BLUE-MARINE / ブルーマリン</td></tr><tr><td class="dk">CLASS</td><td class="dv">小型戦闘潜航艇（単座）</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv">S・トード個人設計 / <a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>協力</td></tr><tr><td class="dk">LENGTH</td><td class="dv">全長 14sm</td></tr><tr><td class="dk">MAX SPEED</td><td class="dv">水中 88kt / 限界深度 3,200m</td></tr><tr><td class="dk">POWERPLANT</td><td class="dv">密閉式プラズマウォータージェット</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">魚雷ランチャー（自動装填・誘導弾頭・照明魚雷兼用）/ 水中レーザー</td></tr><tr><td class="dk">EQUIPMENT</td><td class="dv">Gディフューザー水圧補正 / 魚雷照準計算機 / 高輝度探照灯</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../database/military.html#starfox">スターフォックス</a></td></tr><tr><td class="dk">SUCCESSOR</td><td class="dv"><a href="bullfrog.html">ブルフロッグ</a> — 設計者の手で開発中</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 特殊任務時のみ</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">COMBAT RATING -- 84 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 84%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(51,187,238,0.55);">
+        <img src="" alt="BLUE-MARINE" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">COMBAT SUBMERSIBLE</span>
+            <span class="tg-jp">小型戦闘潜航艇 ブルーマリン</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">暗くて見えないなら、魚雷に照らさせればいいんだよ！<br>ね、天才でしょ？<span class="tg-note note">-S・トード 設計メモの走り書きより-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">水中戦のマニュアルは存在しない。だからスリッピーが書いた。機体ごと<span class="lore-quote-src">― ペッピー・ヘアの戦後報告より</span></span></p>
+  <p class="lore-p">ブルーマリン（Blue-Marine）は、<a href="../database/military.html#starfox">スターフォックス</a> のメカニック<a href="../database/characters.html#slippy">スリッピー・トード</a> が設計した小型戦闘潜航艇である。星系の軍隊は水中戦力をほぼ持たず、「海の中」は長らく戦術の空白地帯だった。その空白を、たった一隻で埋めるために生まれた機体である。</p>
+  <p class="lore-p"><a href="arwing.html">アーウィン</a> の操縦感覚を水中で再現することを目標に設計されており、パイロットは持ち替えなしで「水中を飛ぶ」ことができる。正式な型式番号は存在せず、試作艇の登録名として設計者が塗装の色から付けた愛称がそのまま採用された。試作のまま実戦へ出て、そのまま伝説になった艇である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">開発経緯 ─ DEVELOPMENT</h3>
+  <p class="lore-p">開発の引き金は<a href="../database/locations.html#aquas">アクアス</a> の海洋汚染事件である。保護区の海に広がる異変の元凶が深海にあると絞り込まれてもなお、<a href="../database/military.html#cdf">CDF</a> に打てる手はなかった。艦砲は海面で威力を失い航空戦力は潜れず、水中戦力の新規開発には数年を要するという試算だけが会議室に残った。その報告を隊の整備席で聞いていたスリッピーは、翌朝には最初の図面を描き上げていたという。</p>
+  <p class="lore-p">建造は父ベルツィーノを通じて<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a> が引き受けた。もっとも社の帳簿に正式な受注記録はなく、主任設計技師が息子の図面のために試験設備と部品倉庫を「私的に」開放した形である。設計者は竣工まで格納庫に籠もり、様子を見にきた父へ返し続けた「あと5分」は都合11日に及んだ。<a href="../characters/toad-family.html">トード家</a> の病を知る者はこの数字に驚かない。家伝の最長記録に並んだだけだからである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p">推進は外部露出部のない密閉式プラズマウォータージェット。Gディフューザーを水圧補正に転用するという発想の転換により、急潜行・急浮上時の艇体負荷と乗員への衝撃を同時に解決した。これは<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a> の技術陣すら唸らせた、スリッピー独自の応用である。</p>
+  <p class="lore-p">特筆すべきは自動装填式の魚雷ランチャーで、弾頭は炸裂と同時に強烈な光を放つ照明魚雷を兼ねる。深海の闇では「撃つこと」がそのまま「見ること」になる──視界と火力を一本化した、水中戦の本質を突く設計思想である。弾頭は艇の照準計算機と連動し深海の乱流下でも目標を追い続ける誘導式で、系統上は<a href="../database/glossary.html#ws-powder">パウダー/火薬系統</a>の水中発展形にあたる。装填機構の給弾速度は撃ち尽くしという概念を事実上消し去っており、設計者は「装填が追いつかないほど連射できた試しがない」ことを今も不満にしている。</p>
+  <p class="lore-p">艇首の水中レーザーは「レーザーは水中で減衰して使い物にならない」という星系の常識を発振波長の側から覆した特殊砲である。<a href="../database/glossary.html#ws-laser">兵装の系統①レーザー/光学</a>の中でも本艇にしか積まれていない孤高の傍流であり、参照可能な先行研究はいまだ存在しない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">運用史 ─ HISTORY</h3>
+  <p class="lore-p">唯一にして決定的な実戦投入が、<a href="../database/locations.html#aquas">アクアス</a> の海中掃討作戦である。帝国が持ち込んだ<a href="bioweapon.html">バイオウェポン</a> が海底に根を張る中、艦隊も航空機も手が出せない深海へ単艇で潜航。巨大生体兵器バクーンを撃破し、先住種族<a href="../database/races.html#native-aquan">ネイティブ・アクアン</a> の聖域を守り抜いた。</p>
+  <p class="lore-p">この一件以降、<a href="../database/military.html#cdf">CDF</a> は水中戦力の整備検討を開始したが、報告書の結論は毎回同じである──「同等品の調達先が存在しない。設計者ごと雇う以外の解決策を発見できず」。</p>
+  <p class="lore-p">現在は<a href="greatfox.html">グレートフォックス</a> の格納庫深くで待機し、水域任務の際にのみ引き出される。稼働率は隊の保有機で最も低いが整備状態は常に完璧であり、点検表の署名欄は毎回同じ筆跡で埋まっている。星系唯一の水中戦力の維持費は隊の帳簿上「その他」に計上されているという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">後継機構想 ─ SUCCESSOR</h3>
+  <p class="lore-p">設計者本人は本艇の戦果に満足していない。水中でしか使えず、水域まで母艦で運ばねばならず、乗り換えのたびに隊列から戦闘機が一機消える。アクアス戦の帰投後に整備班へ漏らした「次は全部入りにするよ」の一言が、後継機開発の事実上の起工宣言だったとされる。</p>
+  <p class="lore-p">開発名は「<a href="bullfrog.html">ブルフロッグ</a>」。大気圏内・宇宙・水中の三領域を持ち替えなしで戦い抜く万能戦闘機の構想であり、設計メモには本艇と<a href="arwing.html">アーウィン</a> 双方の技術系譜を継ぐ要目が並ぶ。照準補正を捨てた高出力プラズマ火器、標準機を大きく上回る重装シールド、そして<a href="smart-bomb.html">スマートボム</a> 3発の携行爆装。速度と引き換えに「絶対に落ちない機体」へ全てを振ったこの思想は、操縦実技歴代最低評価の設計者が自分自身を最初の想定パイロットに置いていることの証明でもある。</p>
+  <p class="lore-p">計画は現在も図面と試作部品の段階にある。完成予定を尋ねられた本人の回答は毎回同じ、「あと5分」である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">艇名の由来をスリッピーは「だって、"ブルー"で"マリン"じゃん？」としか説明しないが、アクアスに伝わる古い<a href="../database/races.html#heketoid">水中都市の民</a> の童謡「青い魚は海の願いを運ぶ」の一節を元にしたと共同開発者である父ベルツィーノは語る。アクアスには様々な情緒的な童謡が伝わるが其れを名付けの元として、ここまでこざっぱりした命名にできるのはある意味でスリッピーらしさを物語るエピソードである。</p>
+  <p class="lore-p">初出撃には知られざる顛末がある。CDFの調査依頼に際し軍部からは潜水艦の手配に時間を要するとの通達があった。スリッピーは内心の高揚を隠しもせず竣工したばかりの本艇の出撃を進言したが、返ってきたのは散々な言われようだった。<a href="../characters/falco.html">ファルコ</a> は艇を一目見て「バスタブ」と呼び、<a href="../characters/peppy.html">ペッピー</a> は安全面を重ねて案じ、そして進水式すら済んでいない「出来立てほやほや」という事実が<a href="../characters/fox.html">フォックス</a> の顔を引き攣らせた。折悪しくコーネリアでは「ベンチャー企業社長と富豪5名を乗せた無謀な深海ツアーの潜水艇が深度7,000mで爆縮により海の藻屑に…」というニュースが連日流れていた。最悪のタイミングだったと隊員たちは今も口を揃える。なお正式な進水式は結局行われず直接実戦投入となった。</p>
+  <p class="lore-p">実際の航行は快調を通り越して快進撃であり、調査依頼のはずが元凶の排除まで成功させたことでメカニックとしての格の違いを見せつける結果となった。凱旋後のスリッピーは終始誇らしげだったが、それでもファルコは懐疑を曲げずペッピーまで茶化す側に回り、しばらくは言い合いと小競り合いが続いたと記録されている。この間に二人が繰り返した「狭い」「暗い」「怖い」「安全性」の四点がよほど腹に据えかねたらしい。後継機<a href="bullfrog.html">ブルフロッグ</a> の開発で最優先に掲げられたのは「圧倒的防御力」「先手必勝の絨毯爆撃」そして「三重の耐圧隔壁」であり、機体案が丸みを帯びたずんぐりとしたフォルムへ行き着いたのはその帰結だという。</p>
+  <p class="lore-p">アクアス戦の後、ネイティブ・アクアンの「歌」にブルーマリンの推進音を模したとみられる新しい旋律が加わったことが報告されている。海の隣人たちなりの粋な感謝の形なのかもしれない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOLSE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff5566;--accent:#ff99a0;--border:rgba(255,85,102,0.32);--border-hi:rgba(255,85,102,0.7);--dim:#401018;--dim2:#20080c; }
+    .p-title    { color: #ffecee; text-shadow: 0 0 50px rgba(255,85,102,0.35); }
+    .p-tagline  { border-color: #ff5566; color: #ff5566; }
+    .terminal-hdr { color: #ff99a0; }
+    .terminal-hdr::before { background: #ff99a0; box-shadow: 0 0 8px #ff99a0; }
+    .dk { color: #ff5566; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/locations.html" class="nav-back">◄ LOCATIONS</a>
+    <div class="header-tag">[ SECTOR-ψ / BOLSE — 自立戦闘宇宙ステーション ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff99a0;">●</span> HOSTILE — ACTIVE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">LYLAT SYSTEM — BOLSE AUTONOMOUS FORTRESS STATION — AREA6 CORE — SECTOR-PSI — VENOM EMPIRE</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: BLS-0009 — CLEARANCE: MILITARY — RECLASSIFIED FROM WPN-0009</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ SECTOR-ψ / AREA6 CORE ]</div>
+        <div class="p-name-jp">防衛衛星ボルス (BOLSE)</div>
+        <h1 class="p-title">THE GUARDIAN<br>AT THE<br>LAST GATE</h1>
+        <div class="p-tagline">自立戦闘宇宙ステーション ─ 帝国最終防衛の中核</div>
+        <p class="p-short-desc">ベノム最終防衛ラインAREA6の中核を成す無人の自立戦闘宇宙ステーション。自立思考AI「タイタン」に制御され、全周囲シールドと主砲パージ・キャノンを備えた「動かない旗艦」。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ STATION SCAN — SECTOR-ψ ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">BOLSE / ボルス（2号機）</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">軍事拠点（無人ステーション）</td></tr><tr><td class="dk">LOCATION</td><td class="dv"><a href="area6.html">AREA6</a> — Sectorψ</td></tr><tr><td class="dk">CLASS</td><td class="dv">自立戦闘宇宙ステーション</td></tr><tr><td class="dk">CONTROL</td><td class="dv">自立思考AI「タイタン」</td></tr><tr><td class="dk">DIMENSIONS</td><td class="dv">全高 約2.4km — 箱型構造体</td></tr><tr><td class="dk">POWER</td><td class="dv">基幹系: <a href="../weapons/vpr.html">VPR</a>電力網 / 主砲専用: バイオニュークリアエネルギー炉（改）</td></tr><tr><td class="dk">DEFENSE</td><td class="dv">全周囲シールド（バリアモジュール6基連環）</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">主砲<a href="../database/glossary.html#purge-cannon">パージ・キャノン</a>（空間跳躍レーザー） / 全方位重力波</td></tr><tr><td class="dk">GARRISON</td><td class="dv">無人 — 警備衛星群「リトル・ボルス」約30機 / 無人迎撃機 約200機</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../database/factions.html#venom-empire">ベノム帝国軍</a> — AREA6守備隊</td></tr><tr><td class="dk">WEAK POINT</td><td class="dv warn">エネルギー炉コア（緊急放熱時に露出）</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 稼働中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING -- 93 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 93%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,85,102,0.55);">
+        <img src="../resource/LA_image/LS_F_8.png" alt="BOLSE" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">Sector ψ — AUTONOMOUS FORTRESS STATION</span>
+            <span class="tg-jp">自立戦闘ステーション ボルス ── 最終防衛ラインの中核</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">つい先刻 ベノム軌道上の 防衛衛星ボルスが起動したと知らせが入った<br>難攻不落と名高い 帝国軍の要塞だ。<span class="tg-note note">-ペパー将軍からのAREA6強行偵察隊 緊急撤収命令より抜粋-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">戦線に赤い閃光が走るとき艦隊は沈み、要塞は落ちる。だがボルスは…あれはただ、そこに在り続ける<span class="lore-quote-src">― CDF統合参謀本部 戦域評価より</span></span></p>
+  <p class="lore-p">防衛衛星ボルス（Bolse）は、<a href="area6.html">AREA6</a>の最深部<a href="../database/sectors.html#psi">セクターψ</a>に座す、無人の自立戦闘宇宙ステーションである。全権は自立思考AI「タイタン」に委ねられており、乗員を一人も持たないまま<a href="../database/military.html#space-armada">スペースアマダ</a>艦隊と共にベノム惑星圏への全ての接近経路を塞ぎ、「最後の門の閂」と恐れられている。</p>
+  <p class="lore-p">単独で一個艦隊に匹敵する火力と、艦隊には不可能な「無限の持久」を併せ持ち、共和国側の作戦立案においてボルスは兵器ではなく「地形」として扱われる。同じ扱いを受ける帝国の兵器はバキュラム鋼の戦艦<a href="../weapons/guinbee-line.html#dorisbee">ドリスビー</a>のみである。その過剰ともいえる戦闘力と防御力の前に、共和国軍がボルスを突破できた事例は現在まで一件も存在しない。</p>
+  <p class="lore-p">管制システムの系譜と「本拠地の防衛」という使用目的の両面で、このステーションは共和国の<a href="area3.html">AREA3</a>と共通点が多い。敵対する両陣営が星系の両端で、よく似た計算機に本拠の鍵を預けている──この符合から、二つのステーションは近い役割を与えられた「兄弟機」と呼ばれることがある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">STRUCTURE ─ 構造・機構</h3>
+  <p class="lore-p">船体は全高約2.4kmの箱型構造体である。中央のドラム型中軸を上下二段の箱型外殻が挟み込み、側面には放熱翼を兼ねた赤い展開パドルが伸びる。外殻を巡る6基のシールド発生塔、通称バリアモジュールが連環式の全周囲シールドを張り、艦砲射撃をほぼ完全に無効化する。シールドを抜けない限り、対艦レーザー砲群と約200機の無人迎撃機が一方的に攻撃を続ける構図となる。</p>
+  <p class="lore-p">回転しているのは外殻部分である。主砲と観測系を担う中央のドラム型中軸は、二重の反転回転によって角運動量を相殺され、空間に対して精密に固定されている。これは<a href="area3.html">AREA3</a>が壁の管制に用いる機構と同型の技術であり、同じ技術を防御と攻撃という相反する手段に応用した例として、両軍の教育現場で並べて語られることが多い。</p>
+  <p class="lore-p">主砲は艦隊迎撃用の大口径砲<a href="../database/glossary.html#purge-cannon">「パージ・キャノン」</a>。試射の閃光は<a href="../database/locations.html#corneria">コーネリア</a>からも肉眼で観測され、直撃した艦は装甲ごと圧壊するとされる。共和国将兵はこれを直訳した俗称「粛清砲」の名で呼ぶ。ミサイルの飽和爆撃や小型機の波状攻撃で敵を削るという艦隊戦の従来のセオリーを無視し、艦船を直接破壊するこの砲の存在こそが、ボルスを「地形」たらしめている。</p>
+  <p class="lore-p">このパージ・キャノンの弾道を支えているのが、胴体部に組み込まれた<a href="../database/glossary.html#warp-drive">ワープドライブ航法</a>のグラビトロン管制システムを応用した空間跳躍機構である。跳躍座標へ直接光条を送り込むため射程は宙域の外縁よりもさらに遠方へ及び、弾道は目標の真横へワープアウトする。開戦初期に偵察戦隊が「有効射程を見誤った」悲劇の正体はこれであったと分析されている（弾道特性の詳細は<a href="../database/glossary.html#purge-cannon">粛清砲</a>の項に譲る）。さらにその余波を応用した全方位への重力波発生が、シールドの内懐へ潜り込もうとする小型機を叩き落とす。艦隊は主砲が拒み、単機は重力波が拒む。</p>
+  <p class="lore-p">ただしCDF技術部は、この重力波が<a href="../database/military.html#starfox">スターフォックス</a>の<a href="../weapons/arwing.html">アーウィン</a>には意味をなさないと分析している。<a href="../database/characters.html#slippy">スリッピー・トード</a>の大規模チューニングを受けた管制システムは、もはや別物といえるほどの性能に達しているためである。同等の改造が行えているのは現時点でスターウルフの<a href="../weapons/wolfen.html">ウルフェン</a>のみとされ、ボルスのシステムを理解できる天才的なメカニック、<a href="../database/characters.html#pigma">ピグマ・デンガー</a>の存在と、その機体を乗りこなす隊員たちの総合的な技術力の高さを示すものといえる。</p>
+  <p class="lore-p">主砲パージ・キャノンを支える動力が、鹵獲した<a href="../weapons/venom-cell.html">ベノム・セル</a>の生み出す莫大な電気エネルギーを利用した「バイオニュークリアエネルギー炉」である。ただしこの炉が賄うのは主砲の瞬間出力のみである。プロトボルスの暴走の反省から、シールド連環や管制系を含む基幹系は炉から切り離され、本星の<a href="../weapons/vpr.html">ベノム・プラネット・リアクター</a>から届く電力網に繋がれている。現行の炉は初代試作炉から大幅に改良されており、緊急時には放熱によって大爆発を回避しながら戦闘を継続できる。<span class="redacted">ただしこの緊急放熱はコアの露出を伴う。排熱を砲撃へ転用する機構と引き換えに、露出中のコアはボルス唯一にして致命的な弱点となる</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">INTELLIGENCE ─ 管制AI「タイタン」</h3>
+  <p class="lore-p">ボルスの頭脳は自立思考AI「タイタン」である。解析によればその演算基盤は<a href="area3.html">AREA3</a>の管制演算網「アトラス」とほぼ同型であり、砕けた星の残骸を並べ続ける計算機と、惑星の環を管理するために生まれた計算機が、いまは星系の両端で敵味方に分かれて門を守っている。</p>
+  <p class="lore-p">タイタンの軌道演算は主砲の照準にとどまらない。ボルスの周囲に展開する30機余りの警備衛星群「リトル・ボルス」（成り立ちは<a href="area6.html">AREA6</a>の項に詳しい）の統制を一手に担い、さらにベノム本星から飛来する<a href="../weapons/venom-cell.html">ベノム・セル</a>に侵食された機体を、帝都ベノム・インペリアル・シティへ到達する前に撃ち落とす防疫の役まで負わされている。ボルスの銃口は共和国だけでなく、帝国自身が生んだ災厄にも向けられているのである。</p>
+  <p class="lore-p">タイタンの「人格」を巡っては一つの逸話がある。<a href="../database/characters.html#andrew">アンドリュー・オイッコニー</a>の演習に先立ち、ボルス上空での訓練を一番「無謀」と評したのはタイタン自身であった。強大な戦力を持つAIの自惚れだと帝国内では笑い話にされたが、実際にオイッコニーは墜ち、問題は現実となった。事故の後この予測と忠告は、自惚れではなくボルス自体が隊員の身を案じた可能性を示す例として、上層部へ報告されるに至っている。</p>
+  <p class="lore-p">この報告を受けた帝国軍は、タイタンがアトラスと同様に「同胞を守ること」を第一に動くAIであると気づいた。そしてこの気づきこそが、タイタンをボルスだけでなく帝都ベノム・インペリアル・シティの管制システムとしても使用する決定のきっかけとなる。帝都をライラット史上最強の移動軍事要塞へ押し上げたこの決定を、関係者は「偶然にして必然」と語っている。</p>
+  <p class="lore-p"><span class="redacted">タイタンの戦闘能力の源流について、CDFは<a href="../database/glossary.html#dark-goddess">闇の女神事件</a>で採取された戦闘データ、すなわち戦闘代行コンピュータ「ヘルメス」の学習成果が中核設計へ移植されたものと分析している。ただし亡命技師の証言によれば、タイタンはヘルメス由来のデータに含まれる不審な構造を自ら検出し、その一部を隔離区画へ封じた上で、自身の制御系が外部から乗っ取られないよう幾重ものプロテクトを自己増築しているという。同胞を守るはずの要塞AIがいったい「誰」を警戒しているのか。この点については、分析官の間でも意見が一致していない</span>。</p>
+  <p class="lore-p">子機の群れと帝都との連携が示すとおり、ボルスの管制システムはすでに一つの防衛衛星に収まっていない。本体・子機・帝都系のいずれかが残る限り、タイタンは残された資産で攻撃を継続でき、資源さえ整えば失った部位の復旧すら可能とされる。AREA6が難攻不落と呼ばれる最大の要因は、艦隊の数ではなくこの「殺しきれなさ」にある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">ボルスは最初から最強の防衛衛星として造られたわけではない。原型は、空中国家<a href="../database/glossary.html#bolz-duchy">ボルツ公国</a>が惑星<a href="setebos.html">セティボス</a>の第5衛星セティボスⅥの軌道上に置いた、希薄な岩石の環を管理するための管制基地であったとされる。環の岩塊からガス採掘都市と輸送路を守るには、岩塊の軌道を把握し続ける番人が欠かせなかったためである。<a href="../database/glossary.html#iga-war">IGA戦役</a>のさなか、この基地を武力で接収したのが独立星系連合であった。環をゲリラ戦の隠れ場として使い続けるには、公国が磨き上げてきたこの「壁の番」の管制能力こそが必要だったのである。奇しくも<a href="greatwall.html">グレートウォール</a>と同じ発想を反乱者たちもまた抱いていたことになる。衛星の名が公国のものを引き継いでいるのはこの経緯によるものである。</p>
+  <p class="lore-p">戦役の末期、共和国軍が<a href="../database/locations.html#macbeth">マクベス</a>と<a href="../database/locations.html#eladard">エラダード</a>を経由する迂回路から<a href="starblade.html">スターブレード</a>の大艦隊を進めていると知った連合は、資材が払底する中、<a href="../database/locations.html#meteo-base">メテオランド</a>の襲撃で根こそぎ持ち去ったバーニアと鉄材を継ぎ足してこの基地を砲台へ改修し、「防衛衛星」としての基礎を与えた。当時は有人で管理される戦闘宇宙コロニーであり、外見も<a href="area3.html">AREA3</a>に似た環状であったと記録されている。もっとも、急ごしらえの砲台が戦果を挙げることはなかった。艦隊にはこの空域を通過する必要がそもそもなく、ボルスは素通りされたのである。連合の崩壊後は電源を落とされたまま軌道上に放置され、ただセティボスを周回するだけの歳月が続いた。</p>
+  <p class="lore-p">この忘れられた衛星に再び目を向けたのが、後に帝国軍最高司令官としてAREA6の管理主任を務めることになる男、<a href="../database/characters.html#kellone">ミズローヌ・ケローン</a>である。帝国史上最強の司令官と謳われ、「ケローン大提督」の名で呼ばれるこの人物は、当時粗末な防空迎撃機能しか残されていなかったボルスに眠る価値を見抜いた。スターブレード艦隊への強い危機意識から、ケローンは環状ステーションという外見ごと造り替える大改修を<a href="../database/sectors.html#tau">sectorτ</a>で開始する。鹵獲したベノム・セルが生み出す莫大な電気エネルギーを動力へ転用する「バイオニュークリアエネルギー炉」の試作機が搭載され、試験運用が行われたのもこの時である。この炉は、ミサイルの飽和爆撃や小型機の絨毯爆撃で敵艦隊を削るという当時のセオリーに頼らず、艦船を直接破壊する弩級の巨大レーザーの搭載を可能にした。</p>
+  <p class="lore-p"><span class="redacted">改修は大失敗に終わった。不安定な試作炉は暴走し、sectorτの星雲と基地の一切を吹き飛ばしたのである。帝国の建国宣言より前に起きたこの事件を知らされたのは共和国でも上層部のみであり、公式には独立星系連合の残党討伐として処理された。移動要塞と化していたプロトボルスの弱点を突いて撃破したのは共和国の正規兵ではなく、雇われの遊撃士3名であったと記録されている。星系を脅かす巨大兵器の開発を巡るこの攻防は、「サイレント・ナイトメア事件（見えざる悪夢）」の名で機密記録に残されている</span>。</p>
+  <p class="lore-p"><span class="redacted">現在のボルスは、事件の際に退避された中枢システムと設計図を基に新造された2号機である</span>。再建は帝国建国初期、AREA6の絶対防衛圏構想の第一段階として第1衛星ゴモラの造船区画で行われた。艦隊より先に「動かない要塞」を置いたことは、<a href="../database/characters.html#andorf">アンドルフ</a>が本星防衛に何を求めたかを雄弁に物語る。</p>
+  <p class="lore-p">開戦初期の強行偵察作戦では、偵察戦隊がボルスの有効射程を見誤り壊滅的損害を受けた。以後、共和国艦隊はセクターψの手前で必ず足を止める。その静止線こそが、ボルスの最大の戦果である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">AREA6の防衛網の最終地点に座るボルスは、帝国にとって戦略上外すことのできない切り札に近い立ち位置と考えられている。その管制網はAREA6全域の無人兵器群とも連動しており、艦隊が壊滅してもなお防衛線は「勝手に」戦い続けると言われる。<a href="../database/military.html#cdf">CDF</a>はボルスの突破を「艦隊戦では不可能」と結論付け、少数精鋭による浸透突破へと戦術研究の軸足を移している。なおこの研究には冷厳な但し書きが付く。仮にボルスを沈黙させ得たとしても、その報を受けた帝国が戦線へ送り出すのは大提督の決戦旗艦<a href="../database/military.html#great-commander">グレート・コマンダー</a>であると目されているのである。</p>
+  <p class="lore-p">一方で、ボルスが「落とされる」場合を最も真剣に研究しているのは帝国軍自身である。ボルスへの攻撃を想定した合同軍事訓練が繰り返し実施されており、<a href="../database/characters.html#andrew">アンドリュー・オイッコニー</a>が新鋭機ウルフェンⅡを大破させた大事故もこの訓練で起きている。本人は全治3か月の重傷を負い、軍医はその経過すら「奇跡的」と称した。艦体すれすれの超低空飛行を要求する想定訓練の苛烈さは、この要塞の防御網の厚さの裏返しでもある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">帝国将兵はボルスを「陛下の守護者」と呼ぶ。一方、共和国のパイロットたちは別の呼び名を使う──「消灯を知らない灯台」。どちらの呼び名もあの衛星が一度も守りを解いたことがないという同じ事実を指している。</p>
+  <p class="lore-p"><span class="redacted">サイレント・ナイトメア事件でプロトボルスを撃破した遊撃士3名の氏名を、作戦記録は今も伏せたままである。現スターウルフのピグマ・デンガーがボルスのシステムを誰よりも深く理解している事実について、情報部の注記はただ一言「奇妙な符合」とだけ記している</span></p>
+  <p class="lore-p"><span class="redacted">作戦研究注記: 迎撃機発進管の開口タイミングにのみ、シールド連環に0.4秒の位相間隙が生じる。突入後、エネルギー炉へ緊急放熱を強いる負荷を与えられればコアは自ら装甲の外へ現れる。単機ないし少数機による突入可能性についてはスターフォックスへの諮問を推奨する</span></p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body></html>

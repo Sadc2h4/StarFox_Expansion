@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KENAMI — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#ff9944;--accent:#ffcc88;--border:rgba(255,153,68,0.32);--border-hi:rgba(255,204,136,0.7);--dim:#3a2410;--dim2:#1d1208; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/corporations.html" class="nav-back">◄ CORPORATE DB</a>
+    <div class="header-tag">[ CIS-HQ / CORPORATION — KENAMI ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ / CORPORATE FILE 20 ]</div>
+      <h1 class="codex-title">KENAMI</h1>
+      <p class="codex-p">KENAMI ── かつて全ジャンルの頂点に立ち、いまはプールで泳ぎを教えている伝説の開発会社。失われた技術は「オーパーツ」と呼ばれ、遺した隠しコマンドは思わぬ場所で今も生きている。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#overview">概要</a>
+      <a href="#golden">黄金期</a>
+      <a href="#sound">音の魔術</a>
+      <a href="#conversion">転換</a>
+      <a href="#legacy">遺産</a>
+      <a href="#archives">記録余話</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="../database/corporations.html">企業DB</a> / <a href="pega-games.html">PEGA Games</a> / <a href="hanamuko.html">ハナムコ</a></span>
+    </nav>
+
+    <article class="codex-entry" id="overview">
+      <h2 class="codex-h">概要 <span class="en">OVERVIEW</span></h2>
+      <p class="codex-p">KENAMI（ケナミ）は、かつてライラット星系のゲーム産業で頂点の評価をほしいままにした開発会社である。約20年前までアクション・射撃・音楽ゲームとジャンルを問わず最高峰の作品を送り出し続け、「KENAMIの新作に外れなし」は市場の常識とまで言われていた。</p>
+      <p class="codex-p">現在の業態は大きく異なる。同社はゲーム開発の第一線から段階的に撤退し、いまや星系各地でスイミングスクールとスポーツクラブを運営する健康産業の会社である。青いロゴの入ったプールバッグを提げる子供たちは、その屋号がかつて星系中のゲーム少年を熱狂させた名前であることを知らない。</p>
+    </article>
+
+    <article class="codex-entry" id="golden">
+      <h2 class="codex-h">黄金期 <span class="en">GOLDEN AGE</span></h2>
+      <p class="codex-p">KENAMIの代名詞は2Dアクションである。一枚絵と見紛うドット絵の職人芸、指に吸い付く精密な操作性、そして理不尽と紙一重の絶妙な難易度。同時代の他社が追いつけなかったのは技術ではなく執念だったと評される。鞭一本で魔王の城に挑む探索アクションと、横スクロール射撃ゲーム「ラディアス」の二枚看板は、発売から数十年を経た今も「2Dの教科書」として現役で研究されている。</p>
+      <p class="codex-p">とりわけ「ラディアス」は軍関係者のファンが多いことで知られる。撃墜されても装備を集め直して再起する構成が「実戦的である」と妙な角度から評価され、<a href="../database/military.html#cdf">CDF</a>の航空隊詰所に筐体が置かれていた時代もあった。パイロットの間でこのゲームの腕前は、非公式ながら操縦適性の指標として扱われていたという。</p>
+    </article>
+
+    <article class="codex-entry" id="sound">
+      <h2 class="codex-h">音の魔術 <span class="en">SOUND WIZARDRY</span></h2>
+      <p class="codex-p">もう一つの代名詞が音である。KENAMIは家庭用ゲーム機の音源性能に満足せず、カートリッジ側に自社設計の音源チップを追加で積むという常識外れの手法で、同じゲーム機から誰にも真似できない音を鳴らしてみせた。同じ本体で遊んでいるのにKENAMIのソフトだけ音が違う。この体験は当時の子供たちにとってちょっとした魔法であり、他社の技術者にとっては悪夢だった。</p>
+      <p class="codex-p">社内の音楽チームは「矩形波倶楽部」の名で独立したブランドとして扱われ、サウンドトラック盤はゲームを持っていない者にまで売れた。音楽ゲームというジャンルをほぼ独力で開拓したのも同チームである。</p>
+    </article>
+
+    <article class="codex-entry" id="poppin-music">
+      <h2 class="codex-h">ポッピンミュージック <span class="en">POPPIN' MUSIC</span></h2>
+      <p class="codex-p">矩形波倶楽部が開拓した音楽ゲームというジャンルの中でも、KENAMIの名を最も広い層に知らしめたのが「ポッピンミュージック」シリーズである。丸くて大きいカラフルなボタンを両手で叩く直感的な操作と、童謡からアニメ主題歌、矩形波倶楽部の書き下ろしまでを一つの筐体に詰め込んだ雑食の選曲で、ゲームセンターの奥にあった音楽ゲームを親子連れの遊びへ変えた立役者である。腕前が上がるほど譜面は苛烈になり、最高難度の楽曲群は「音楽というより格闘技」と評された。稼働終了から年月を経た今も対戦会が各地で開かれており、<a href="../database/glossary.html#tokyo-myaumyau">トーキョーミャウミャウ☆ラズベリーハート</a>の主題歌「ソウルフル☆ラズベリージャム」の終盤譜面を完走できるかどうかは、界隈で今も腕前の代名詞として通用している。</p>
+      <p class="codex-p">なお本シリーズの譜面は色付きのボタン記号で記録されるが、ボタンの配置と名称は筐体版・家庭用・ギア移植版といった媒体によって異なる。このため愛好家の間では下記の公式対応表が「翻訳表」として共有されてきた。色さえ覚えれば、どの媒体でも同じ曲が叩けるという寸法である。</p>
+      <div class="sub-entry" id="poppin-chart">
+        <div class="sub-entry-h"><span class="num">♪</span>譜面対応表 <span class="en">OFFICIAL KEY CHART</span></div>
+        <p class="codex-p" style="line-height:2.4;letter-spacing:2px;">
+          🟥：A<br>
+          🟧：B<br>
+          🟨：X<br>
+          🟩：Y<br>
+          🟦：R<br>
+          🟪：L
+        </p>
+      </div>
+    </article>
+
+    <article class="codex-entry" id="conversion">
+      <h2 class="codex-h">転換 <span class="en">CONVERSION</span></h2>
+      <p class="codex-p">絶頂にあった会社がなぜ業態を変えたのか、納得のいく説明は今も存在しない。確かなのは約20年前を境に開発部門の縮小が始まり、健康産業への投資が加速したという事実だけである。最高峰と言われた技術は社員の流出とともに散逸し、残された資産の管理はずさんを極めた。設計資料は倉庫ごと処分され、音源チップの製造データは担当者の退職と前後して所在不明になっている。</p>
+      <p class="codex-p">結果としてKENAMIの過去作は「作った本人たちにももう作れない」作品群となった。市場がこれらを「オーパーツ」と形容するのは、誇張ではなく分類として正確である。動作する実機基板は骨董品として高騰を続け、博物館が保存に乗り出す事態となっている。</p>
+    </article>
+
+    <article class="codex-entry" id="legacy">
+      <h2 class="codex-h">遺産 <span class="en">LEGACY</span></h2>
+      <p class="codex-p">技術の全てが失われたわけではない。業態転換の際に流出した開発陣の一部、それも2Dアクションの中核を担った精鋭たちは、小さな開発工房「トレジャーハント」を立ち上げた。大作主義とは無縁の少人数体制で、いまも年に一本のペースで骨太のアクションを作り続けている。「KENAMIの魂の正当な相続人」というファンの評に対し、工房側は一貫して沈黙を保っているが、否定もしていない。</p>
+      <p class="codex-p">矩形波倶楽部の元団員たちも各地に散り、音楽ゲームの開発現場や軍楽隊の電子音響部門でその名を見かけることができる。会社は消えても、耳と指に刻まれたものは消えないのである。</p>
+    </article>
+
+    <article class="codex-entry" id="archives">
+      <h2 class="codex-h">記録余話 <span class="en">ARCHIVES</span></h2>
+      <p class="codex-p">KENAMIの名を今日まで語り継がせているものが、作品の他にもう一つある。ほぼ全ての自社作品に共通で仕込まれていた隠しコマンド、通称「KENAMIコマンド」である。入力すれば自機が一瞬で全装備になるこの救済措置は、腕に自信のないファンへ開発陣が贈った公然の秘密だった。方向キーと二つのボタンだけで完結する短い並びでありながら、一度覚えると生涯忘れないと評判で、星系のゲーム文化における「共通の合言葉」として世代を越えて受け継がれている。</p>
+      <p class="codex-p">この合言葉は思わぬ場所にも根を下ろした。大戦期のパイロットたちは出撃前の緊張を解くまじないとしてこの入力を指に覚え込ませ、整備士たちに至っては機体診断モードの起動コマンドへ同じ並びをそのまま流用した。今日の軍用機の一部にこの「伝統のコマンド」が現役で残っていることは、整備の現場では周知の事実である。</p>
+      <p class="codex-p">そして本項の末尾には、笑い話にしてよいのか判断の分かれる事件が記録されている。数年前、情報戦略本部のとある構成員が懲戒免職となった。「ラディアス」の熱心なファンだったこの職員は、国家機密かつ最重要に区分される某アーカイブの認証キーを、KENAMIコマンドの後ろに自社の音楽ゲームの譜面を繋げただけの内容に設定していたのである。ゲーマーならば体で覚えている並びである以上、当然の帰結として情報の一部が漏洩し、事態は星系議会の非公開審議にまで発展した。事件後、当該の認証キーは速やかに変更されたと発表されているが…</p>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../sector-tips.js"></script>
+</body></html>

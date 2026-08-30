@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YARU DE PON — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#5fc7ff;--accent:#a5e2ff;--border:rgba(95,199,255,0.32);--border-hi:rgba(95,199,255,0.7);--dim:#0e2a3a;--dim2:#07151d; }
+    .p-title    { color: #eef8ff; text-shadow: 0 0 50px rgba(95,199,255,0.35); }
+    .p-tagline  { border-color: #5fc7ff; color: #5fc7ff; }
+    .terminal-hdr { color: #a5e2ff; }
+    .terminal-hdr::before { background: #a5e2ff; box-shadow: 0 0 8px #a5e2ff; }
+    .dk { color: #5fc7ff; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-15 / YARU DE PON — ヤル・デ・ポン ]</div>
+    <div class="header-status">● CIVILIAN — CORPORATE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — YARU DE PON — SPACE DYNAMICS PRESIDENT — G-DIFFUSER INVENTOR</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0015 — CLEARANCE: OPEN — STRATEGIC SUPPLIER</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-15 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ヤル・デ・ポン (YARU DE PON)</div>
+        <h1 class="p-title">YARU DE PON</h1>
+        <div class="p-tagline">THE FATHER OF THE ARWING ── スペース・ダイナミクス社 社長</div>
+        <p class="p-short-desc">Gディフューザーシステムの発明者にして、アーウィンの生みの親。技師のまま社長になった変わり者で、今も週の半分は設計室にいる。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 15 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">YARU DE PON / ヤル・デ・ポン</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#anubisoid">アヌビソイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">53歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#corneria">コーネリア</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>（社長）</td></tr><tr><td class="dk">INVENTION</td><td class="dv">Gディフューザーシステム</td></tr><tr><td class="dk">MASTERPIECE</td><td class="dv">アーウィン / グレートフォックス</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">民間 — 戦略的重要人物</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">TECH RATING -- 99 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 99%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(95,199,255,0.55);">
+        <img src="" alt="YARU DE PON" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">SPACE DYNAMICS — PRESIDENT</span>
+            <span class="tg-jp">Gディフューザーの発明者</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">操縦できない機体はない。乗り手が育っていないだけだ。<span class="tg-note note">-設計室の壁の言葉より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">彼は経営会議で居眠りをする。だが風洞試験には徹夜で立ち会う。だからこの会社は潰れない<span class="lore-quote-src">― SD社役員の弁より</span></span></p>
+  <p class="lore-p">ヤル・デ・ポンは、<a href="../database/locations.html#corneria">コーネリア</a> に本社を置く<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a> の社長にして、同社を星系技術の頂点に押し上げた天才技師である。重力と慣性を拡散制御するGディフューザーシステムの発明者であり、<a href="../database/military.html#starfox">スターフォックス</a> の乗機アーウィンと母艦グレートフォックスは彼の代表作にあたる。</p>
+  <p class="lore-p">肩書きは社長だが自認は「主任設計技師」。週の半分は設計室で図面と暮らし、決裁書類は「飛ばないもの」と呼んで後回しにする。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">デ・ポン家は旧コーディリア王国時代から続く技師の家系で、社の前身「デ・ポン航宙機工房」の直系にあたる。約20年前、若手技師時代に<a href="../weapons/g-diffuser.html">Gディフューザー</a>の実用化に成功し、宇宙機の運動性能の常識を書き換えた。</p>
+  <p class="lore-p">設計思想は一貫している──「機体は乗り手に噓をつくな」。安全のために性能へ蓋をする設計を嫌い、限界性能を乗り手に全て委ねるアーウィンの尖った操縦特性は、この思想の産物である。初飛行テストで<a href="../database/characters.html#james">ジェームズ・マクラウド</a> が残した「この機体は、乗り手に噓をつかない」の一言を、彼は生涯最高の設計評価と公言している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">事業と現在 ─ SERVICE</h3>
+  <p class="lore-p"><a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a> 勃発後は共和国側の主要機体供給元として、<a href="../database/military.html#cdf">CDF</a> の機体更新と<a href="../database/locations.html#starblade">スターブレード艦隊</a> 再建計画の中核を担う。一方で「防衛の道具は作る。侵略の道具は作らない」という社是を掲げ、攻性兵器の受注は戦時下の今も断り続けている。</p>
+  <p class="lore-p">主任技師ベルツィーノ・トードとは30年来の相棒であり、「社長と主任のどちらが図面を多く描くか」は社内の名物競争となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">アーウィンの4枚可変ウィングの着想は、コーネリアの海鳥が強風の日にだけ見せる羽の畳み方だという。彼は今も嵐の日に海岸へ出かける。傘は差さない。「データが濡れるから」と、傘は図面ケースに使う。</p>
+  <p class="lore-p">フォックスのアーウィンには、彼が個人的に組んだ非公式のチューニングが入っているという噂がある。問われた彼の答え──「保証外の改造は感心しないな。誰がやったんだろうな」。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

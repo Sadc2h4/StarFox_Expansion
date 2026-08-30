@@ -1,0 +1,10 @@
+Please generate an image with the image_gen tool, using the attached reference picture as the art-style guide.
+
+Match the reference's rendering style exactly: a stylized 3D animated-film look, semi-realistic skin and material shading with fine surface detail, soft cinematic lighting, shallow depth of field on the background, glossy highlights on eyes and equipment.
+
+Subject: a bust-up portrait of an anthropomorphic tree frog mechanic, facing slightly to the left of frame, cheerful good-natured expression with a small open smile. Smooth green skin with a pale cream throat and belly tone, wide friendly amber eyes, a broad rounded head with no neck, small rounded hands. He wears an engineer's work vest in dull green and grey over an orange undershirt, with a compact headset over one side of his head and a magnifying visor lens pushed up onto his forehead. Small tools and cable clips are attached to his vest straps.
+
+Framing and composition:
+- Head and shoulders only, head positioned in the upper-center of the frame.
+- Background: the dim interior of a spacecraft engineering bay, out of focus, with soft teal and amber instrument glow. No text, no logos, no watermark, no user interface elements.
+- Square image, 1024x1024 or larger, matching the same portrait framing and lighting as the reference so the two images can sit side by side in one character gallery.

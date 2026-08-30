@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COFFIN SUIT — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#b39df5;--accent:#d4c6ff;--border:rgba(179,157,245,0.32);--border-hi:rgba(212,198,255,0.7);--dim:#251d3a;--dim2:#120e1d; }
+    .p-title    { color: #f2edff; text-shadow: 0 0 50px rgba(179,157,245,0.35); }
+    .p-tagline  { border-color: #b39df5; color: #b39df5; }
+    .terminal-hdr { color: #d4c6ff; }
+    .terminal-hdr::before { background: #d4c6ff; box-shadow: 0 0 8px #d4c6ff; }
+    .dk { color: #b39df5; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-14 / COFFIN SUIT — コフィンスーツ ]</div>
+    <div class="header-status"><span class="blink" style="color:var(--danger);">●</span> ACTIVE — LOCATION UNKNOWN (EST. VENOM)</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — COFFIN SUIT — SEALED LIFE-SUPPORT EXOFRAME — PENAL APPARATUS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0014 — CLEARANCE: LV.3 — SENTENCED: A. BOWMAN — RECORD SEALED</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-14 / TECHNOLOGY FILE ]</div>
+        <div class="p-name-jp">コフィンスーツ (COFFIN SUIT)</div>
+        <h1 class="p-title">COFFIN SUIT</h1>
+        <div class="p-tagline">THE COFFIN THAT REFUSES DEATH ── 密閉型生命維持外骨格・延命拘束装具</div>
+        <p class="p-short-desc">装着者の「死」を機構的に禁じる全身密閉型の生命維持外骨格。星系司法史上最も重いとされる量刑の執行装具であり──皮肉にも、ベノムに皇帝を誕生させた技術である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 14 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">COFFIN SUIT / コフィンスーツ（俗称）</td></tr><tr><td class="dk">CLASS</td><td class="dv">全身密閉型 生命維持外骨格 ─ 延命拘束装具</td></tr><tr><td class="dk">DEVELOPMENT</td><td class="dv">コーネリア科学技術省 生体工学部門</td></tr><tr><td class="dk">PREREQUISITE</td><td class="dv">専用の強化手術（神経・臓器直結）</td></tr><tr><td class="dk">FUNCTION</td><td class="dv">生体機能の強制維持 / 環境完全遮断 / 自己修復</td></tr><tr><td class="dk">LEGAL STATUS</td><td class="dv bad">特別量刑装具 — 判決2例 / 執行1例</td></tr><tr><td class="dk">FIRST USE</td><td class="dv">宇宙歴3987 — <a href="../database/characters.html#andorf">アンドルフ・ボウマン</a></td></tr><tr><td class="dk">STATUS</td><td class="dv bad">稼働中（推定） — 追跡不能</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">SURVIVAL ASSURANCE -- 99 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 99%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(179,157,245,0.55);">
+        <img src="" alt="COFFIN SUIT" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">SEALED LIFE-SUPPORT EXOFRAME</span>
+            <span class="tg-jp">死を締め出す棺</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">あれは棺だ。ただし、死者を納めるためのものではない。<span class="tg-note note">-量刑審議 公聴会の証言より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">死を禁じられるということが何を意味するのか、あの法廷で本当に理解していた者はいない<span class="lore-quote-src">― 倫理団体〈ライラット生命尊厳会議〉抗議声明より</span></span></p>
+  <p class="lore-p">コフィンスーツ（Coffin Suit）は、装着者の生命活動を機構的に維持し続ける全身密閉型の生命維持外骨格である。原型はコーネリア科学技術省生体工学部門が開発した重篤患者・極限環境作業者向けの医療用外骨格であり、本来は「助かるはずのない命を助ける」ための技術だった。</p>
+  <p class="lore-p">それが星系司法史に名を刻むことになったのは、この機構の完成度が、ある一点においてあまりに高すぎたからである──コフィンスーツの内側では、装着者は死ぬことを許されない。この性質に着目した司法当局により、本装具は「死刑では償いきれない罪」に対する特別量刑の執行装具へと転用された。俗称の「コフィン（棺）」は皮肉であり、正確ではない。これは死者を納める棺ではなく、死そのものを締め出す棺である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p">装着には専用の強化手術が前提となる。神経系と主要臓器を装具側の代替機関へ直結し、心肺・代謝・免疫の全機能をスーツの管理下へ移譲する不可逆の施術であり、完了した時点で、装着者の生死の決定権は本人の身体から装具へと移る。生体機能が停止の兆候を見せれば装具は即座に介入し、臓器代替と強制蘇生を実行する。飢餓、疾病、老衰、自傷──既知のあらゆる「死因」に対して、同様の介入が行われる。</p>
+  <p class="lore-p">外殻は環境を完全に遮断する多層密閉構造で、真空、高汚染、400℃を超える高温環境でも機能を維持する。動力は装着者自身の生体代謝と外部環境からのエネルギー回収で賄われ、外殻と内部機構の損耗は自己修復機構が継続的に補う。理論上の稼働年限は「設定されていない」──開発記録には、そう記されている。</p>
+  <p class="lore-p">そして延命拘束装具としての本質は、装着者自身にはこの棺を開けられないという一点にある。解除権限は司法当局のみが保持し、装着者の意思による停止・脱装の手段は、設計段階から存在しない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">量刑としての運用 ─ SENTENCE</h3>
+  <p class="lore-p">この装具を用いた判決は、星系司法史上わずか2例しか存在しない。1例目は<a href="../database/factions.html#iga">独立星系連合（IGA）</a>戦役後の戦犯法廷で言い渡された、IGAの猛将<a href="../characters/nahash.html">ナハシュ・ギルバスター将軍</a>に対するものである。だが将軍は判決の直後、法廷内で自爆を決行して果てたため、この量刑が実際に執行されることはなかった。</p>
+  <p class="lore-p">2例目が、宇宙歴3987年の<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a>である。禁止兵器研究の罪に問われた博士は、強化手術とコフィンスーツの装着を前提として惑星<a href="../database/locations.html#venom">ベノム</a>への追放処分を受けた。死ぬことを許されない身体にされた上で、汚染された辺境の無人の地に独りで生き続けることを強制する──この執行内容は「死刑をはるかに超えた重い量刑」として星系中の倫理団体を騒がせ、抗議声明は判決から数年にわたって続いた。史上初にして、現在まで唯一の執行例である。</p>
+  <p class="lore-p">なお当時の審理記録は議事録ごと封印されており、誰がこの執行形態を提案したのかは、今も明らかになっていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">執行から10年後、ベノムに帝国が勃興した。皇帝が10年に及ぶ流刑の歳月を「死なずに」耐え抜いた理由を、共和国の分析官はよく知っている──耐え抜かせたのは、共和国自身が着せた棺である。コフィンスーツによる延命措置こそがベノムに「皇帝」を誕生させた最大の要因であるという指摘に、反論できた者はいない。</p>
+  <p class="lore-p">追放から11年、スーツの現況を確認した者は存在しない。傍受映像に現れる皇帝の姿は断片的で、そのいずれにも、かつての装具の面影はないとされる。装具が今も稼働しているのか、あるいは装着者の手で「別のなにか」に作り替えられたのか──生体工学部門の見解は、後者を否定していない。</p>
+  <p class="lore-p">技術としてのコフィンスーツが残した神経直結と強制生体維持の体系は、後年、<a href="../database/military.html#cybernetics">アポフィソイド系の装備型サイバネティクス</a>と合流し、とある<a href="chastiefol.html">試験機</a>の操縦系開発に活かされたとされる。死を締め出すために磨かれた技術が、いま最前線で命を張る操縦士を守っている──この事実を救いと呼ぶべきかどうかは、記録者の判断の外にある。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.15 + Math.random()*0.6).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(210,200,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+</body>
+</html>

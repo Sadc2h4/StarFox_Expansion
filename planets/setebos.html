@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SETEBOS — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ffa678;--accent:#ffd0ae;--border:rgba(255,166,120,0.32);--border-hi:rgba(255,208,174,0.7);--dim:#40220f;--dim2:#201106; }
+    .p-title    { color: #fff4ec; text-shadow: 0 0 50px rgba(255,166,120,0.3); }
+    .p-tagline  { border-color: #ffa678; color: #ffa678; }
+    .terminal-hdr { color: #ffd0ae; }
+    .terminal-hdr::before { background: #ffd0ae; box-shadow: 0 0 8px #ffd0ae; }
+    .dk { color: #ffa678; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 70% 60%, rgba(60,25,10,0.5) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 25% 25%, rgba(45,15,25,0.4) 0%,transparent 55%),
+      #070405; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/locations.html" class="nav-back">◄ LOCATIONS</a>
+    <div class="header-tag">[ 24 / SETEBOS — セティボス ]</div>
+    <div class="header-status">● SECTOR-ϫ — GAS GIANT</div>
+  </header>
+
+  <div class="side-l"><div class="vt">LYLAT SYSTEM — SETEBOS — THE LONE GAS GIANT — SECTOR-JANJA — HACTIVA OUTERMOST ORBIT</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: STB-0015 — CLASSIFICATION: FORMER WARZONE — EMBER GAS MINING ZONE</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ 24 / LYLAT SYSTEM — SECTOR-ϫ ]</div>
+        <div class="p-name-jp">セティボス (SETEBOS)</div>
+        <h1 class="p-title">THE LONE<br>GAS GIANT</h1>
+        <div class="p-tagline">星系唯一の巨大ガス惑星 ─ 旧IGA本拠地</div>
+        <p class="p-short-desc">ハクティバ・パラニド星系の最外縁を巡る、ライラット星系でただ一つのガスの王。ピンクと橙の雲海に採掘空中都市が浮かび、六角形のオーロラが極域を彩る。かつて独立星系連合が本拠を置き、静寂の辺境から突如戦火の中心地となった数奇な星。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PLANETARY SCAN — SECTOR-ϫ ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">SETEBOS / セティボス</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">ハクティバ・パラニド星系 最外縁</td></tr><tr><td class="dk">LOCATION</td><td class="dv">LYLAT 15th — Sectorϫ</td></tr><tr><td class="dk">PLANET TYPE</td><td class="dv">J型 巨大ガス惑星（星系唯一）</td></tr><tr><td class="dk">DIAMETER</td><td class="dv">118,000 km</td></tr><tr><td class="dk">MOONS</td><td class="dv">16（うち大気を持つ大型衛星5 — Ⅱ〜Ⅵ）</td></tr><tr><td class="dk">PRIMARY STAR</td><td class="dv"><a href="../database/locations.html#hactiva">ハクティバ</a>／<a href="../database/locations.html#paranid">パラニド</a>（捕捉軌道）</td></tr><tr><td class="dk">ATMOSPHERE</td><td class="dv warn">アンモニア・窒素・水素 — 有毒</td></tr><tr><td class="dk">DAY / YEAR</td><td class="dv">10H / 2,928D（約8年）</td></tr><tr><td class="dk">FACTION</td><td class="dv"><a href="../database/factions.html#hactiva-union" style="color:inherit;">通商連合</a>採掘圏 / 旧・<a href="../database/factions.html#iga" style="color:inherit;">IGA</a>本拠地</td></tr><tr><td class="dk">CAPITAL</td><td class="dv">空中都市 <a href="../database/glossary.html#city-megalodome">メガロドーム</a>（ハビタブルベルト）</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">ENVIRONMENT INDEX -- 15 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 15%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,166,120,0.6);">
+        <img src="../resource/LA_image/LS_P_15.png" alt="Setebos" class="planet-img-detail planet-img-xhuge" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE LONE GAS GIANT — EMBER GAS FIELD</span>
+            <span class="tg-jp">星系唯一の巨大ガス惑星 ── エンバーガス採掘圏</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">刮目せよ!　コーネリアの犬ども!<br>これがわれらの究極にして　最強の守護神『ギガリラ』だぁ!!<span class="tg-note note">-ペパー将軍より語られる ナハシュ・ギルバスターとの交戦時の記録より抜粋-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「地面のない星に旗は立てられない。だから連中は、雲の上に城を建てた」<span class="lore-quote-src">― IGA掃討戦従軍記者の手記より</span></span></p>
+  <p class="lore-p">セティボス（Setebos）は、<a href="../database/sectors.html#janja">セクターϫ</a>に位置するライラット星系第15惑星にして、星系唯一の巨大ガス惑星である。直径11万8000キロメートルの巨体はハクティバ・パラニド星系の最外縁を周回し、二つの恒星と複雑な重力相互作用で影響し合っている。<a href="../database/locations.html#hactiva">ハクティバ</a>の太陽風の影響で極域に六角形のオーロラが出現するなど、この星の気象は星系のどこにも似ていない。大気はアンモニア・窒素・水素を主成分とする分厚い有毒の層で、陸地は存在しない。</p>
+  <p class="lore-p">星系でこの星だけがガスの巨体を保ち得た経緯は、形成史の項に譲る。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 形成史</h3>
+  <p class="lore-p">ライラット星系にガス惑星がこの星しかないのには理由がある。主星<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>の強すぎる太陽風放射が原始惑星系円盤のガスを早期に掻き消してしまい、さらに残された降着円盤の塵は<a href="../database/locations.html#solar">ソーラ</a>・ハクティバ・パラニドがすべて消費して恒星になったためである。セティボスだけが例外となれたのは、星系誕生時に最も濃い塵の集まるエリアで生まれてガスを吸着し、その後、原始星だった<a href="../database/locations.html#hactiva">ハクティバ</a>に捕捉されて同恒星の勢力圏に入ったことで、ライラット・プライムの太陽風からガスが守られたからと考えられている。<a href="../database/locations.html#solar">ソーラ</a>が「惑星として生まれ、恒星として目覚めた」例だとすれば、セティボスは恒星級の濃い塵の中で形成されながら臨界質量に達せず、惑星に留まった対照例として位置づけられている。</p>
+  <p class="lore-p">セティボスは独自の衛星系を形成している。若きセティボスが吸い集めたガスと塵は本体の周囲にも小規模な円盤を作り、16を数える衛星群はこの周惑星円盤から集積したと考えられている。大気を持つ大型衛星が5つ並ぶ構成は小規模な惑星系に相当し、なかでもセティボスⅣは、惑星の潮汐力による地殻加熱で熱を持ち続ける「温められた衛星」に分類される。外縁宙域では例外的なこの温暖さが後の軍事利用を招いた経緯は、歴史の項に記録されている。</p>
+  <p class="lore-p">周回軌道上の希薄な岩石の環は、潮汐破砕の残骸とする説が有力である。惑星の潮汐力が衛星自身の重力を上回る限界線の内側へ落ち込んだ氷と岩の小衛星が破砕され、軌道上に散って細い帯として残ったと解析されている。この残骸帯が後年ゲリラ戦の隠れ場として利用された経緯についても、歴史の項のとおりである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">自転周期はわずか10標準時間──ガス層の移動から換算した値である。高速で回転する大気は幾層もの縞模様を描き、ピンクと橙色の雲海が終わりなく流れ続ける。大気そのものは有毒だが、赤道面の大気高層には「ハビタブルベルト」と呼ばれる呼吸可能な領域が存在し、このエリアに産業空中都市が立ち並んでいる。空中都市群は気流に乗って64時間で星を一巡する運航に合わせて稼働しており、都市の「一日」は地上世界のそれとは全く異なる独自の生活周期を刻んでいる。現在の代表都市は<a href="../database/glossary.html#ember-gas">エンバーガス</a>採掘用空中都市のひとつ<a href="../database/glossary.html#city-megalodome">「メガロドーム」</a>である。</p>
+  <p class="lore-p">衛星は16個を数え、うち大気を有する大型衛星は5個。16の衛星はいずれも固有名を持つが、セティボスⅠが惑星そのものを指すため、大気を有する大型の5衛星にだけⅡからⅥまでの序数が与えられている。このうち第2衛星セティボスⅢは鎖国国家<a href="../database/factions.html#garou-federation">ガロウ連邦</a>の本拠であり、ドーム都市群の内情は外界にほとんど知られていない。周回軌道上には希薄ながら岩石の環が形成されており、かつてはゲリラ戦の格好の隠れ場となった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">セティボスの存在自体は古くから知られており、インナーリムの惑星からもその光を観測することは容易だった。だが巨大ガス惑星ゆえに地上が存在しないこと、星系内でもかなりの外縁に位置することも重なって長らく見向きもされず、静寂の時を過ごしていた。この星が星系の歴史に直接影響を及ぼしたのは、かなり後になってからである。</p>
+  <p class="lore-p"><a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>終結後、元グランベル国高官の失言により、くすぶっていた人種差別への怒りが爆発して組織された勢力<a href="../database/factions.html#iga">『独立星系連合（IGA）』</a>が、第3衛星セティボスⅣの軍事要塞都市<a href="../database/glossary.html#sycorax-ruins">「シコラクス」</a>に本拠を置いたのである。セティボスⅣは惑星との潮汐力で地殻が熱せられ、周辺天体と比較して温暖な環境が保たれていた。加えて低い重力と異常に高い浮力により既存の戦闘機は出力が出すぎてまともに運用できず、軌道上の岩石環はゲリラ戦に適していた──要塞の立地として、これ以上の場所はなかった。</p>
+  <p class="lore-p">当時のワープドライブは、セティボスの重力が航路を捻じ曲げて異なる宙域へ飛ばしてしまうため艦隊を直接向かわせることができず、共和国は<a href="../database/locations.html#macbeth">マクベス</a>・<a href="../database/locations.html#eladard">エラダード</a>を経由する<a href="../database/glossary.html#route-of">中継航路</a>を組まざるを得なかった。この航路の開通と技術者の流入こそが、後の二つの工業惑星の発展の始まりである（恒星にも同じ問題はあったが、恒星宙域へ進む船はほぼ存在しなかったため顕在化しなかった。この重力航路問題はIGA解体後の時代、天才数学者兼技術者<a href="../characters/toad-family.html">イワッチー・トード</a>──名門トード家の始祖──によって解決されている）。</p>
+  <p class="lore-p">惑星軌道上での戦闘はゲリラ戦に持ち込まれ、完全な平定までに十数年を要した。セティボスⅣでの白兵戦となった最終局面では、IGAが秘密裏に開発していた<a class="apx-lock" href="../classified/gigarilla.html">超兵器</a>が起動され連合国側は窮地に立たされたが、新人部隊長の咄嗟の見事な采配によるハッキングで無力化に成功する。IGA総統は基地の自爆装置を起動し、味方全員を見捨てて逃走──しかし隣の<a href="../database/locations.html#papetoon">パペトゥーン</a>で商船に擬態して潜伏中、野盗集団に拘束された上で緊急通信を起動させられた。本来ならセティボスⅢおよびⅡの迎撃部隊が救援に駆け付ける信号だったが、基地はすでに自爆した後であり、信号は追跡する共和国軍の位置探知に使われる結末となった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ECONOMY ─ 産業・経済</h3>
+  <p class="lore-p">独立星系連合の時代、ハビタブルベルトには<a href="../database/glossary.html#ember-gas">エンバーガス</a>──大気の水素と惑星固有の化合物が独特の比重で混ざり合って作られる燃料資源──の採掘用空中都市がいくつも建設された。エンバーガスは<a href="../weapons/g-diffuser.html">Gディフューザーシステム</a>開発以前の星系の主要燃料であり、極低温で液化させることで効率よく燃焼するロケット燃料として重宝された代物である。</p>
+  <p class="lore-p">Gディフューザーの登場で需要は大幅に激減したものの、ロケットやミサイルの燃料としての採掘は今も続いており、都市も現役である。現在の最大の卸先は産業惑星マクベスと、<a href="../database/factions.html#venom-empire">ベノム帝国軍</a>の開発する対戦艦用ミサイル<a href="../database/military.html#man-drill">『マン・ドリル』</a>の燃料需要であり、後者は<a href="../database/locations.html#kew">キュー</a>とベノムの間に秘密裏に作られた<a href="../database/glossary.html#warp-route">ワープドライブ航路</a>で<a href="../database/factions.html#hactiva-union">ハクティバ通商連合</a>から送られているとみられている。またいくつかの空中都市は、ピンクと橙色の美しい雲海を活かした観光都市としても機能している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">現在の防衛・治安維持は通商連合の警備部門が担う。旧シコラクス要塞は自爆により消失し、統治者を失った第3衛星セティボスⅣは戦役完了から3年の後に<a href="../database/factions.html#garou-federation">ガロウ連邦</a>が管理を申し出て接収した。連邦は要塞跡を無人のまま封鎖しており、本拠セティボスⅢとあわせて二つの衛星が今も外界へ固く閉ざされている。共和国軍はエンバーガスの帝国への供給疑惑を巡ってこの宙域の監視を続けているが、通商連合圏の最深部というべき位置がそれを容易にさせていない。</p>
+  <p class="lore-p">なお<a href="../database/glossary.html#gravity-gap">低重力</a>・高浮力というセティボスⅣの特性は現在も変わらず、通常の戦闘機はまともに飛行できない。IGA掃討戦で共和国軍が投入した「出力を殺した」特殊調整機のノウハウは、後の可変出力機関開発の礎になったと言われている。</p>
+  <p class="lore-p">また第4衛星セティボスⅤには、星系最大級の重犯罪者収容施設<a href="../database/glossary.html#muinshankle">「ムィンシャンクル刑務所」</a>が置かれている。元はIGAが運用した収容所であり、組織が健在だった時代には意にそぐわない異分子が次々と投獄され、苛烈な看守の暴力、囚人同士の陰惨な虐待、そして星系最外縁という立地により、生きて生還した者は皆無だったとされる──「独立星系連合の恐怖の象徴」として、その名は星系中に知れ渡っていた。IGA征討に伴い施設は共和国に接収されたが、その際の「後始末」はまさに悪夢だったと、当時の従軍部隊は記録に書き残している。</p>
+  <p class="lore-p">接収後、施設は大幅に作り替えられ、処遇は往時から遥かに改善された。それでも星系中の裁判所は、今なお「死刑に次ぐ量刑」としてこの監獄の名を挙げる。セティボスⅤの周回軌道は他の領域と区別された専用管理区域<a href="../database/sectors.html#dasitetas">セクターꟶ</a>に指定されており、衛星を巡る環には岩石や氷に擬態した警備ロボットと監視センサーが無数に潜んでいる。開所以来──IGA時代を含めて──脱獄の記録は一件もない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">ハクティバの太陽風が描く六角形のオーロラは「セティボスの王冠」と呼ばれ、観光都市の目玉となっている。雲海に沈む二つの太陽と、その頭上に輝く六角形の光冠──この光景を見るためだけに、戦時下の今も観光船が外縁への長い航海に出る。</p>
+  <p class="lore-p">辺境のガス惑星として静寂の中にあり続けながら、突如として戦火の中心地となり、さらには現在の戦争にもその産物が関与している──研究者たちはこの星を「星系で最も数奇な運命をたどった惑星」と呼ぶ。地面を持たないこの星は、それでも確かに、星系の歴史に足跡を残し続けている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../apx-lock.js"></script>
+<script src="../lore-tabs.js"></script>
+</body></html>

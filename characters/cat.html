@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAT MONROE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff88bb;--accent:#ffbbdd;--border:rgba(255,136,187,0.32);--border-hi:rgba(255,136,187,0.7);--dim:#3a1028;--dim2:#1d0814; }
+    .p-title    { color: #ffeef6; text-shadow: 0 0 50px rgba(255,136,187,0.35); }
+    .p-tagline  { border-color: #ff88bb; color: #ff88bb; }
+    .terminal-hdr { color: #ffbbdd; }
+    .terminal-hdr::before { background: #ffbbdd; box-shadow: 0 0 8px #ffbbdd; }
+    .dk { color: #ff88bb; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-16 / CAT MONROE — キャット・モンロー ]</div>
+    <div class="header-status">● CIVILIAN — FREELANCE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — CAT MONROE — FREELANCE PILOT — UNAFFILIATED</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0016 — CLEARANCE: OPEN — DO NOT ATTEMPT TO RECRUIT (FAILED x7)</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-16 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">キャット・モンロー (CAT MONROE)</div>
+        <h1 class="p-title">CAT MONROE</h1>
+        <div class="p-tagline">THE WIND THAT OWES NOBODY ── フリーの運び屋・パイロット</div>
+        <p class="p-short-desc">星系中を根城にする凄腕の運び屋。ファルコとは飛行族「フリー・アズ・ア・バード」時代からの腐れ縁であり、呼ばれていない戦場に現れては貸しを増やして消える。所属を聞かれれば「風」と答える。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 16 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">CAT MONROE / キャット・モンロー</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#bastetoid">バステトイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">19歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#zoness">ゾネス</a></td></tr><tr><td class="dk">FAMILY</td><td class="dv">父: 元観光船操舵士（現・コーネリア港湾 水先案内人）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">なし（フリーランス）</td></tr><tr><td class="dk">FORMER</td><td class="dv">飛行族「フリー・アズ・ア・バード」／異名「風読み」</td></tr><tr><td class="dk">VESSEL</td><td class="dv"><a href="../weapons/cats-eye.html">高速艇〈キャッツ・アイ〉</a></td></tr><tr><td class="dk">RELATION</td><td class="dv"><a href="../database/characters.html#falco">ファルコ・ランバルディ</a>と旧知</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">民間 — 勧誘失敗7回</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 87 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 87%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,136,187,0.55);">
+        <img src="" alt="CAT MONROE" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">FREELANCE — COURIER PILOT</span>
+            <span class="tg-jp">フリーの運び屋 ── 所属は「風」</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">貸しイチね、ファルコ。今ので通算いくつだったかしら？<br>アンタが全部返し終わるまで、落ちるんじゃないわよ<span class="tg-note note">-戦域に乱入した際の通信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">彼女を雇うことはできない。彼女が『ついでに』助けてくれることを祈るだけだ<span class="lore-quote-src">― CDF採用担当官の報告書より</span></span></p>
+  <p class="lore-p">キャット・モンローは、<a href="../database/locations.html#zoness">ゾネス</a> 出身のフリーランス・パイロット。定住も所属も持たず、高速艇<a href="../weapons/cats-eye.html">〈キャッツ・アイ〉</a>一隻で星系中を流れる運び屋である。危険な空域ほど安く請けるという奇癖があり、理由を問う客には「命の値段を自分で決めたいから」と答える。荷物と行き先について口の堅いことでも知られ、運び屋モンローの信用は現金より硬いというのが港々の相場である。</p>
+  <p class="lore-p">気性は伝法で歯切れがよく貸し借りの勘定にだけは異様に細かい。受けた恩は倍にして返し貸した相手は星の裏まで追いかける。所属を聞かれると「風」と答えるのが常であり、入港書類の所属欄を空欄のまま通した回数は記録に残るだけで三桁に達する。</p>
+  <p class="lore-p">「ライラットではネコジャラシと猫はどこにでもいる」という諺を一人で体現するような人物である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ ORIGIN</h3>
+  <p class="lore-p">リゾート時代の<a href="../database/locations.html#zoness">ゾネス</a> に生まれた。父は観光船の操舵士であり物心つく前から操舵室が彼女の遊び場だった。舵輪より先に握ったものを覚えていないというのが本人の弁である。エメラルドの海を渡る船の頭上では遊覧飛行の機体が海面すれすれを滑っており、船の客と機の客が互いに手を振るのがあの湾の日常だった。甲板から機影を見上げるたび「いつか自分は上の側に乗る」と宣言し船員たちを笑わせていたと伝えられる。</p>
+  <p class="lore-p">一家が<a href="../database/locations.html#corneria">コーネリア</a>へ渡ったのは彼女の少女時代である。観光航路の減便で父が船を降りた年であり移り住んだ先はコーネリアシティ郊外の港湾区だった。そこは飛ぶことに取り憑かれた者たちの縄張りである。父は現在もコーネリアの港湾で水先案内人を務めており娘の職業を「家業の続き」と呼んでいる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">転機は<a href="../database/glossary.html#route-core-ring">コア・ワールド環状線</a>である。港湾区の悪童たちに混じって夜の環状線へ潜り込んだ彼女は、そこで飛行族「フリー・アズ・ア・バード」の頭<a href="../database/characters.html#falco">ファルコ・ランバルディ</a> の機体に出会った。族の掟はただ一つ「背後を取られるな」。彼女は借り物の艇でその背後に喰らいつき三周回粘って…ついに取れなかった。悔し紛れに啖呵を切る新入りを頭が気に入り、その場で族へ引き入れたのが二人の付き合いの始まりである。この一件は今も口喧嘩の切り札として双方から蒸し返される。片方は「取れなかったくせに」と言い、もう片方は「三周も逃げ回ったくせに」と言う。</p>
+  <p class="lore-p">族での彼女は操縦の腕もさることながら航路読みで名を上げた。管制の巡回・貨物船の隙間・気流の癖…環状線のその夜の「風」を読み切る眼は族の宝であり、「風読み」の異名はこの頃のものである。副頭を務めていたのは青毛の<a href="../database/races.html#bastetoid">バステトイド</a>クールである。寡黙な調停役として族の喧嘩の後始末と資金繰りを一手に引き受けた苦労人であり、彼がキャットに想いを寄せていたことは族の全員が知っていた。気づいていなかったのは頭ただ一人だったと伝えられる。</p>
+  <p class="lore-p">開戦に伴う民間航路の封鎖で族は事実上の解散となった。仲間の多くが<a href="../database/military.html#cdf">CDF</a>の義勇航空隊へ流れる中、彼女は軍服を選ばず運び屋として独立する。族時代に鍛えた航路読みはそのまま商売道具になり、環状線の中継港に散った族のOBたちは星系で最も速い非公式の情報網として彼女の商売を支え続けている。クールは現在も中継港で貨物仲介業を営んでおり彼女の荷の一割を黙って回しているという。</p>
+  <p class="lore-p">故郷ゾネスが帝国に占領され毒の海に変えられて以降、彼女は<a href="../database/glossary.html#return-alliance">ゾネス帰還同盟</a>への物資輸送だけは無償で請けている。理由を聞かれると「安売りしただけ」と答える。操縦席の計器の脇には同盟が頒布するエメラルドの小瓶が下がっており、この小瓶にだけは誰も触れさせない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p"><a href="../database/locations.html#zoness">ゾネス</a> の探照灯網空域に<a href="../database/military.html#starfox">スターフォックス</a>が突入した際、要請もなく戦域に現れて帝国哨戒網の「穴」を無線で流し続けた記録が残る。後に判明したところでは、そもそもこの<a href="../database/glossary.html#zoness-recon">強行偵察</a>の侵入経路そのものが彼女の持ち帰った探照灯網の死角記録を下敷きにしている。故郷の海を知る者の地図なしにあの作戦は立たなかったというのが立案側の回想である。</p>
+  <p class="lore-p">以後も彼女は呼ばれていない戦場に現れては、貸しを一つ増やして消える。呼ばれていないはずの戦場をどうやって知るのかは謎とされるが、分析官は族のOB網と本人の航路読みで大半は説明がつくと見ている。残りの説明については「あの二人に限っては勘としか言いようがない」というのが報告書の結論である。</p>
+  <p class="lore-p">CDFは過去7回勧誘し、7回断られている。断り文句は毎回同じで「アンタたちの給料じゃ命の値段が決められないでしょ」と伝えられる。8回目の稟議書は「無駄と知りつつ」の但し書き付きで承認された。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">ファルコとの「貸し借り」の通算は本人たちにも不明だが、周囲の観測では常に彼女が貸し越しである。返済方法を聞かれた彼女は「利子が可愛いから、まだいい」と答えた。帳簿の第一頁が環状線の時代に開かれたことだけは双方の証言が一致しており、最初の一件がどちらの貸しだったのかは証言が真っ向から食い違っている。</p>
+  <p class="lore-p">一度だけ、彼女がファルコに「新しい男を見つけた」と告げた通信記録が残っている。相手の名は最後まで語られなかった。この通信の直後からファルコの僚機救援反応がさらに速くなったことをデータで示した分析官がいるが、本人たちへの照会は双方から拒否された。</p>
+  <p class="lore-p">ファルコが一度だけ無断で隊を離れた数か月について（<a href="falco.html">ファルコの項</a>を参照）、彼女は何も語らない。<span class="redacted">同期間、〈キャッツ・アイ〉の入港記録も星系の全港湾から消えている。二つの空白が同じ空域を指すのかどうか、照合し得た者はいない</span></p>
+  <p class="lore-p">〈キャッツ・アイ〉の船体には、ゾネスの海の色──占領前のエメラルド色が使われている。塗料の調合表は彼女しか知らない。帰還同盟の子供たちが操縦席の小瓶と船体を見比べて「同じ色」と請け合ったことを彼女は密かに自慢にしているという。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

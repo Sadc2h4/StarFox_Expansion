@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMART BOMB — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ffaa44;--accent:#ffd499;--border:rgba(255,170,68,0.32);--border-hi:rgba(255,170,68,0.7);--dim:#3a2508;--dim2:#1d1204; }
+    .p-title    { color: #fff6e8; text-shadow: 0 0 50px rgba(255,170,68,0.35); }
+    .p-tagline  { border-color: #ffaa44; color: #ffaa44; }
+    .terminal-hdr { color: #ffd499; }
+    .terminal-hdr::before { background: #ffd499; box-shadow: 0 0 8px #ffd499; }
+    .dk { color: #ffaa44; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-29 / SMART BOMB — スマートボム ]</div>
+    <div class="header-status">● ACTIVE — STANDARD ORDNANCE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — SMART BOMB — IFF-REGISTERED MICRO ORDNANCE — ALL FORCES</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0029 — CLEARANCE: OPEN — PREDECESSOR: NOVA BOMB</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-29 / ARMORY FILE ]</div>
+        <div class="p-name-jp">スマートボム (SMART BOMB)</div>
+        <h1 class="p-title">SMART BOMB</h1>
+        <div class="p-tagline">THE BOMB THAT KNOWS YOUR NAME ── 登録式 超小型爆弾</div>
+        <p class="p-short-desc">威力と範囲は極大、それでいて味方だけは巻き込まない。敵味方識別IDに紐づく「賢い」爆弾であり、星系の全勢力が標準装備とする決戦兵装。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 29 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">SMART BOMB / スマートボム</td></tr><tr><td class="dk">CLASS</td><td class="dv">超小型誘導爆弾（識別ID登録式）</td></tr><tr><td class="dk">PREDECESSOR</td><td class="dv">ノヴァボム（旧式・高威力）</td></tr><tr><td class="dk">BLAST</td><td class="dv bad">威力・範囲とも極大</td></tr><tr><td class="dk">FUZE</td><td class="dv">着発 / 近接 / 手動起爆</td></tr><tr><td class="dk">SAFETY</td><td class="dv warn">9発以上の保持を遮断（連鎖反応防止ブロック）</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../database/military.html#cdf">CDF</a> / 帝国軍ほか星系全勢力</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 標準配備</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT LEVEL -- 90 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 90%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,170,68,0.55);">
+        <img src="" alt="SMART BOMB" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">IFF-REGISTERED ORDNANCE</span>
+            <span class="tg-jp">登録式 超小型爆弾</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">ボムの残りは？　……なら十分だ。<br>全機、俺の合図で散開しろ。<span class="tg-note note">-出撃前点検の定型交信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">賢い爆弾とは、敵と味方を知っている爆弾のことだ<span class="lore-quote-src">― CDF兵器教範の冒頭より</span></span></p>
+  <p class="lore-p">スマートボム（Smart Bomb）は星系全勢力が運用する超小型の爆弾であり、その爆発の威力と範囲は極大と評される。艦載兵装として桁外れの破壊力を持ちながら、敵味方識別IDに紐づく登録式であるため味方機を決して巻き込まない。「スマート」の名はこの賢さに由来する。</p>
+  <p class="lore-p">起爆方式は敵機への張り付きと近傍での近接起爆を基本とし、射手による手動起爆にも対応する。編隊ごと薙ぎ払う対編隊攻撃から大型艦の要所破壊まで用途は幅広く、戦闘機乗りにとっては最後の切り札である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ノヴァボム ─ NOVA BOMB</h3>
+  <p class="lore-p">旧式のものは「ノヴァボム」と呼ばれる。現行のスマートボムよりさらに高威力だったが、取り扱いの難しさから第一線を退き、現在は在庫が地方の基地に残るのみとなっている。廃棄にも危険が伴うため、辺境の弾薬庫には今も手つかずのノヴァボムが眠っているという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p">最大の弱点は爆弾自身の「群れ」である。大量に集めると勝手に連鎖反応を起こして大爆発するため、基本的にどの機体も9発以上は保持できないよう管制ブロックが施されている。この上限は星系のあらゆる軍で共通であり、撤廃を試みた勢力は例外なく手痛い教訓を得ている。</p>
+  <p class="lore-p">賊の中にはこれを絶縁体の砲弾に包み、膨大な量を保持する恐ろしい戦艦を仕立てた例もある（<a href="salmarine.html">サルマリン号の項</a>を参照）。もっとも何かの拍子に大爆発する可能性は捨てきれず、実際にこれをやってのける者はごく少数に留まる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">鹵獲 ─ CAPTURE</h3>
+  <p class="lore-p">登録式であることは裏を返せば、IDを書き換えればそのまま鹵獲できるということでもある。ただし書き換えの猶予は起爆までの10秒程度しかなく、これを実戦で可能にしている機体は現時点で<a href="arwing.html">アーウィン</a> しか確認されていない。</p>
+  <p class="lore-p">ID書き換え機能の設計者は<a href="../database/characters.html#pigma">ピグマ・デンガー</a> であるとみられる。そこへ<a href="../database/characters.html#slippy">スリッピー・トード</a> の高速演算が加わることで、確実にボムを奪い取る高性能なシステムに化けているとCDFは分析している。初代と新生…二代のメカニックの仕事が一つの機能の上で重なっている数少ない例である（<a href="greatfox.html">グレートフォックスの項</a>も参照）。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">サルマリン号との交戦で用いられた「飛んできた砲弾のIDを書き換えて撃ち手へお返しする」戦法は、現在CDFの対艦戦術教範に「返礼」の名で収録されている。実行できる機体が事実上一つしかないため、教範の当該ページには「参考」の但し書きが付いている。</p>
+  <p class="lore-p">保持上限を超える10発目を積もうとするとどうなるのかは、新兵が一度は口にする質問である。教官の答えは決まっている。「それを試した奴の名前が、慰霊碑のどこにも残っていない理由を考えろ」。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

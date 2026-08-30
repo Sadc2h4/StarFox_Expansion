@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORPORATE DATABASE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <link rel="stylesheet" href="../gls-view.css">
+  <style>
+    :root { --primary:#ffcf5e;--accent:#ffe2a0;--border:rgba(255,207,94,0.32);--border-hi:rgba(255,226,160,0.7);--dim:#3a2c0e;--dim2:#1d1607; }
+    :root { --gv-pri-rgb: 255, 207, 94; --gv-acc-rgb: 255, 226, 160; }
+    /* ブロック表示の帯色 */
+    .blk-group.bt-heavy { --blk-c: #7dffb0; }
+    .blk-group.bt-food  { --blk-c: #ff9a76; }
+    .blk-group.bt-life  { --blk-c: #ffcc66; }
+    .blk-group.bt-logi  { --blk-c: #76c8ff; }
+    .blk-group.bt-ent   { --blk-c: #b9a8ff; }
+    .blk-group.bt-fin   { --blk-c: #5ef2d6; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ CIS-HQ / CORPORATE DATABASE — 企業データベース ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="gls-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ 08 / CORPORATE DATABASE ]</div>
+      <h1 class="codex-title">CORPORATIONS OF THE LYLAT SYSTEM</h1>
+      <p class="codex-p">ライラット星系の経済を動かす主要企業の記録。艦を作る者、道を敷く者、食卓と毛並みを支える者──戦争の裏で、星系の日常はこの企業たちによって回り続けている。各記録の詳細は「▶ 企業ファイルを開く」から閲覧できる。一部の取引記録には検閲が含まれる。</p>
+    </div>
+
+    <div class="gls-ctrl">
+      <button class="gls-index-btn" id="glsFilterBtn">◈ Filter: ALL</button>
+      <button class="gls-index-btn" id="glsIndexBtn">◈ Index</button>
+      <div class="disp-toggle" role="group" aria-label="表示モード切替">
+        <button class="disp-btn d-card active" id="dispCard" title="カード表示"></button>
+        <button class="disp-btn d-block" id="dispBlock" title="ブロック表示"></button>
+        <button class="disp-btn d-list" id="dispList" title="リスト表示"></button>
+      </div>
+    </div>
+
+    <div class="loc-filter" id="locFilter">
+      <button class="active" data-type="all">ALL</button>
+      <button data-type="heavy">重工・インフラ</button>
+      <button data-type="food">食品・飲料</button>
+      <button data-type="life">生活・消費財</button>
+      <button data-type="logi">運送・物流</button>
+      <button data-type="fin">金融・商社</button>
+      <button data-type="ent">娯楽・メディア</button>
+    </div>
+
+    <div class="gls-stage" id="glsStage">
+      <div class="gls-track" id="glsTrack">
+
+    <!-- ═══ 重工・インフラ ═══ -->
+
+    <article class="codex-entry loc" id="space-dynamics" data-type="heavy">
+      <div class="loc-body">
+        <h2 class="codex-h">スペース・ダイナミクス社 <span class="en">SPACE DYNAMICS CO., LTD.</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">重工・インフラ</span> 本社: <a href="locations.html#corneria">コーネリア</a> / 宇宙機開発 最大手</div>
+        <p class="codex-p">Gディフューザーシステムを核とした宇宙戦闘機開発の最大手にして、ライラットの空の形を決めてきた企業。<a href="military.html#arwing">アーウィン</a>と母艦グレートフォックスの生みの親。社長は天才設計者<a href="characters.html#yaru">ヤル・デ・ポン</a>。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/space-dynamics.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="vector-prime" data-type="heavy">
+      <div class="loc-body">
+        <h2 class="codex-h">ベクター・プライム社 <span class="en">VECTOR PRIME CONSTRUCTION</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">重工・インフラ</span> 宙域建築・航路建設 最大手</div>
+        <p class="codex-p">星間航路という「宇宙の幹線道路」を敷き、ライラットをひとつの星系にした宙域建築の巨人。派手さはないが、この会社なくして星系の日常は一日も回らない。戦時下でも両軍から「撃ってはならない船」として扱われる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/vector-prime.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="galactic-cybot" data-type="heavy">
+      <div class="loc-body">
+        <h2 class="codex-h">ギャラクティック・サイボット社 <span class="en">GALACTIC CYBOT</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">重工・インフラ</span> 本拠: <a href="glossary.html#claudius-belt">準惑星クロウディアス</a> / 作業用ドロイド 最大手</div>
+        <p class="codex-p">不器用なサイと背の高すぎるボルゾイが酒場で意気投合して始めた農業機械の会社。IGA戦役の株の大変動で得た資金を<a href="glossary.html#claudius-belt">溶鉱炉宙域</a>の準惑星クロウディアスに投じ、ベクター・プライム社と敷いた坑道ワープドライブはOF航路の基礎になった。鉱山で働く第5級ドロイドの六割は同社製である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/galactic-cybot.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="ys-sim" data-type="heavy">
+      <div class="loc-body">
+        <h2 class="codex-h">Ys・SIM社 <span class="en">YS-SIM INDUSTRIES</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">重工・インフラ</span> 本社: コーネリア（<a href="glossary.html#state-troilus">トロイラス州</a>） / 航宙機・航行管制 老舗</div>
+        <p class="codex-p">星系で最初にスターファイターを量産し「空の帝王」と呼ばれた老舗にして、SD社の最も古いライバル。Gディフューザー以前の空を支えた<a href="glossary.html#ys-control">「Ys管制システム」</a>は、難しい免許と共に農業機械と高級車両の中で今も生きている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/ys-sim.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="grippia-works" data-type="heavy">
+      <div class="loc-body">
+        <h2 class="codex-h">グリッピア・ワークス社 / CGM社 <span class="en">GRIPPIA WORKS &amp; CGM</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">重工・インフラ</span> 本社: <a href="locations.html#grippia">グリッピア</a> / 特殊金属・採掘</div>
+        <p class="codex-p">一企業グループが一惑星と一宙域を丸ごと私有する、前例なき特殊金属企業。CGM合金は艦艇装甲の標準素材として星系全体が依存する戦略物資である。創業者は<a href="characters.html#grippy">グリッピー・トード</a>。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/grippia-works.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="diamond-cities" data-type="heavy">
+      <div class="loc-body">
+        <h2 class="codex-h">ダイヤモンドシティズ.inc <span class="en">DIAMOND CITIES INC.</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">重工・インフラ</span> 本社: <a href="locations.html#kew">キュー</a>（アルピニア） / 建設・金属加工</div>
+        <p class="codex-p">キューの白亜の摩天楼を建てている会社と言えば話が早い、ハクティバ圏建設業の頂点。その始まりがパペトゥーンの悪徳詐欺会社だったこと、そして更生の理由が社長の「光落ち」だったことは、社史の公認である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/diamond-cities.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="solar-empire" data-type="heavy">
+      <div class="loc-body">
+        <h2 class="codex-h">ソーラエンパイアカンパニー <span class="en">SOLAR EMPIRE COMPANY</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">重工・インフラ</span> 本社: <a href="locations.html#aquas">アクアス</a> / 造船・艦船建造</div>
+        <p class="codex-p">星系一大仰な社名で、星系一地味な船を作る造船会社。セイレーン諸島の漁船から氷下海の漁業潜水艦、恒星探査船<a href="glossary.html#prominence-chaser">プロミネンス・チェイサー</a>まで、貫かれる理念はただ一つ「生きて帰る船をつくりたい」。創業者はエイハブ・ケロイチロウ。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/solar-empire.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="britney-environmental" data-type="heavy">
+      <div class="loc-body">
+        <h2 class="codex-h">ブリトニー・エンバイロメンタル社 <span class="en">BRITNEY ENVIRONMENTAL</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">重工・インフラ</span> 本社: <a href="locations.html#corneria">コーネリア</a>・ヴァリス州 / 空調・農業ステーション</div>
+        <p class="codex-p">町のエアコン屋が星系の食卓を支えるまでになった、空調と農業ステーションのパイオニア。結露の水を「抽出」へ逆転させたVFX-水分凝結機と、星系の野菜の半数を育てる宇宙野菜工場<a href="glossary.html#an-brella">アン・ブレラ</a>の生みの親である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/britney-environmental.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ 食品・飲料 ═══ -->
+
+    <article class="codex-entry loc" id="butchermans" data-type="food">
+      <div class="loc-body">
+        <h2 class="codex-h">ブッチャーマンズ・ワークス <span class="en">BUTCHERMAN'S WORKS</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">食品・飲料</span> 本社: <a href="locations.html#corneria">コーネリア</a> / 精肉・昆虫タンパク</div>
+        <p class="codex-p">肉食種族の食卓を二百年支えてきたコーネリアの老舗精肉メーカー。認可流通の旗手として「裏市」と戦い続ける一方、昆虫人工肉のパイオニアでもある。同社の品質印は「食べてよい肉」の代名詞。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/butchermans.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="breadbasket" data-type="food">
+      <div class="loc-body">
+        <h2 class="codex-h">ブレッドバスケット・コンビナート <span class="en">BREADBASKET COMBINE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">食品・飲料</span> 本社: <a href="locations.html#corneria">コーネリア</a> / 植物性食品 最大手</div>
+        <p class="codex-p">コーネリアとプロスペローの巨大植物工場群を運営する、草食・雑食種族の台所。星系中の食卓に並ぶ野菜と穀物の過半は同社製である。プロスペロー占領により生産能力の半分を失い、今まさに正念場にある。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/breadbasket.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="frostreef" data-type="food">
+      <div class="loc-body">
+        <h2 class="codex-h">フロストリーフ・ボトラーズ <span class="en">FROSTREEF BOTTLERS</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">食品・飲料</span> 本拠: <a href="sectors.html#vau">セクターⳣ（氷晶帯）</a> / 飲料・製氷</div>
+        <p class="codex-p">氷晶帯「フロスト・リーフ」の採氷を商業化した飲料メーカー。看板商品の缶飲料『ファルコン・スロップ』は、セクターαやθで働く者たちの垂涎の的にして、星系売上首位の常連である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/frostreef.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="pizza-cat" data-type="food">
+      <div class="loc-body">
+        <h2 class="codex-h">ピザ・キャット <span class="en">PIZZA CAT INTERSTELLAR</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">食品・飲料</span> 星間宅配ピザチェーン / 創業: バステトイド系</div>
+        <p class="codex-p">「ライラットに猫とピザ・キャットの届かない場所はない」を掲げる星間宅配ピザチェーン。食性別メニューと種族別サイズ展開の先駆けであり、前線基地への配達伝説には事欠かない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/pizza-cat.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="ukiuki-bento" data-type="food">
+      <div class="loc-body">
+        <h2 class="codex-h">うっきうき弁当 <span class="en">UKIUKI BENTO</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">食品・飲料</span> 本社: <a href="locations.html#fichina">フィチナ</a>（モスクマ） / 弁当チェーン</div>
+        <p class="codex-p">「いつでもうきうき、おいしく健康」を掲げる人畜無害な弁当チェーン。ただし出店戦略だけは星系一無茶で、氷晶帯から恒星圏、果ては帝国首都まで、店がない場所は「太陽の中心だけ」と言われる。帝国支店のカスタム注文はアタック・キャリアー誕生のきっかけにもなった。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/ukiuki-bento.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="shimarisuka" data-type="food">
+      <div class="loc-body">
+        <h2 class="codex-h">シマリスカ株式会社 <span class="en">SHIMARISKA CO.</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">食品・飲料</span> 本社: コーネリア（<a href="glossary.html#state-granbel">グランベル州</a>） / 食品加工・駄菓子 老舗</div>
+        <p class="codex-p">星系一有名な駄菓子<a href="glossary.html#umai-bone">「うまいボーン」</a>を360年作り続ける老舗中小企業。創業は380年前、始まりは大グランベル国軍のレーション製造である。社名を知らなくても、製品は星系の誰もが知っている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/shimarisuka.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ 生活・消費財 ═══ -->
+
+    <article class="codex-entry loc" id="awazon-primal" data-type="life">
+      <div class="loc-body">
+        <h2 class="codex-h">アワゾン・プライマル社 <span class="en">AWAZON PRIMAL (AWSP)</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">生活・消費財</span> 本社: <a href="locations.html#prospero">プロスペロー</a> / 配信・通販・配送プラットフォーム</div>
+        <p class="codex-p">音楽・ホロ番組の配信から日用品の通販、玄関先への配送までを一社で握る星系最大のプラットフォーム。定額会員制「プライマル会員」は共和国世帯の過半に普及し、「水道・電気・プライマル」と生活インフラに数えられる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/awazon-primal.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="q-brand" data-type="life">
+      <div class="loc-body">
+        <h2 class="codex-h">Q印良品 <span class="en">Q-BRAND</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">生活・消費財</span> 生産拠点: <a href="locations.html#eladard">エラダード</a> / 小型種向け家具・生活用品</div>
+        <p class="codex-p">キューソイドの体格に合わせて一から設計された「実生活規格」の家具・生活用品ブランド。平均体高60sm、最小30smの市民たちの暮らしは、この会社の寸法の上に成り立っている。<a href="factions.html#hactiva-union">通商連合</a>圏の家具市場の主。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/q-brand.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="chiwawa-pharma" data-type="life">
+      <div class="loc-body">
+        <h2 class="codex-h">チーワワ合同製薬会社 <span class="en">CHIWAWA AMALGAMATED PHARMACEUTICALS</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">生活・消費財</span> 本社: <a href="locations.html#corneria">コーネリア</a> / 医薬品・医療機器・医療ドロイド</div>
+        <p class="codex-p">星系最大の医療コングロマリット。医薬品の四割と手術用ドロイドの過半を握り、三勢力が揃って取引を続ける数少ない企業。手術用アンドロイド「カドケウスX-119型」の製造元であり、その後継機が星系中の酒場でバーテンダーをしていることを今も公式に認めていない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/chiwawa-pharma.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="tail-and-tailor" data-type="life">
+      <div class="loc-body">
+        <h2 class="codex-h">テイル＆テイラー社 <span class="en">TAIL &amp; TAILOR</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">生活・消費財</span> 本社: <a href="locations.html#corneria">コーネリア</a> / 多種族服飾 最大手</div>
+        <p class="codex-p">尻尾・翼・角──あらゆる身体に服を仕立てる多種族服飾の最大手。既製服の「テイル・スリット規格」の策定を主導し、<a href="military.html#cdf">CDF</a>軍服の種族別仕立てを一手に請け負う。社訓は「服が身体に合わせるのだ。逆ではない」。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/tail-and-tailor.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="scent-and-coat" data-type="life">
+      <div class="loc-body">
+        <h2 class="codex-h">セント＆コート社 <span class="en">SCENT &amp; COAT</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">生活・消費財</span> 本社: <a href="locations.html#prospero">プロスペロー</a> / デオドラント・化粧品 最大手</div>
+        <p class="codex-p">嗅覚社会ライラットの「匂いのマナー」を支えるデオドラント・化粧品の最大手。毛皮・鱗・羽、それぞれのための製品ラインと、換毛期のヘアカラー文化を生んだ張本人。「香りは、いちばん近くの外交」。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/scent-and-coat.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ 運送・物流 ═══ -->
+
+    <article class="codex-entry loc" id="black-cargo" data-type="logi">
+      <div class="loc-body">
+        <h2 class="codex-h">ブラックカーゴ社 <span class="en">BLACK CARGO</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">運送・物流</span> 星系最大の総合物流 / 創業: バステトイド系</div>
+        <p class="codex-p">「黒い箱は約束の印」──星系最大の総合物流企業。9本のメジャー航路全てに定期便を持ち、戦時下でも中立輸送を貫く。ただしその「中立」の中身については、複数の情報機関が静かに関心を寄せている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/black-cargo.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="white-fang" data-type="logi">
+      <div class="loc-body">
+        <h2 class="codex-h">ホワイトファング急便 <span class="en">WHITE FANG EXPRESS</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">運送・物流</span> 本社: <a href="locations.html#fichina">フィチナ</a> / 極地・僻地配送専門</div>
+        <p class="codex-p">「届かない荷物はない。遅れる荷物は、ある」──星系最高難度と称されるフィチナの田舎配送で名を上げた極地運送の雄。人気ドキュメンタリー<a href="glossary.html#dogsled">『ドッグスレッド 氷原を駆ける犬たち』</a>の主役として、星系中にファンを持つ。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/white-fang.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="phoenix-group" data-type="logi">
+      <div class="loc-body">
+        <h2 class="codex-h">フェニックス財閥 <span class="en">PHOENIX GROUP</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">運送・物流</span> 本社: <a href="locations.html#corneria">コーネリア</a> / 旅客航宙・客船造船・観光</div>
+        <p class="codex-p">客船の建造から運航、寄港地の観光までを握る星系最大の旅客航宙財閥。定期航路の巨船〈プリマヴェーラ〉と豪華客船〈プレアデス〉の船主であり、「人の流れの半分はフェニックスの船で運ばれている」と評される。当主の一人娘ファラはSD社のテストパイロットである。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/phoenix-group.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ 娯楽・メディア ═══ -->
+
+    <article class="codex-entry loc" id="pega-games" data-type="ent">
+      <div class="loc-body">
+        <h2 class="codex-h">PEGA Games <span class="en">PEGA GAMES</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">娯楽・メディア</span> 本社: <a href="locations.html#corneria">コーネリア</a> / ゲーム開発 — 元カジノ機材整備</div>
+        <p class="codex-p">格闘ゲーム「バルチャー・ファイター」と「スニック・ヘッジホッグ」の開発元。第1次ライラットウォーズ末期のカジノ機材整備から身を起こし、時代の先を見据えすぎたハードを作り続けた「星系で最も愛されている敗者」。ハード開発は「ドリキャス」を最後に途絶えている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/pega-games.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="nintendou" data-type="ent">
+      <div class="loc-body">
+        <h2 class="codex-h">Nintendou <span class="en">NINTENDOU</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">娯楽・メディア</span> 創業地: <a href="glossary.html#stephano">ステファノー</a>（消滅） / ゲーム開発 — 星系8大企業</div>
+        <p class="codex-p">消えた星の賭場と花札製造から生まれ、星系最大の8大企業まで上り詰めたゲーム産業の覇者。社長は代々「妖狐の一族」と噂される創業家が継ぎ、社屋の門にはいまは無き故郷の千本鳥居が再現されている。ゲームに仕込まれたステファノーの隠し要素は、若者が星系の悲劇を忘れない要因の一つとなっている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/nintendou.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="hanamuko" data-type="ent">
+      <div class="loc-body">
+        <h2 class="codex-h">ハナムコ <span class="en">HANAMUKO</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">娯楽・メディア</span> 本社: <a href="locations.html#corneria">コーネリア</a> / ゲーム開発 — 最古のゲーム会社の一つ</div>
+        <p class="codex-p">「クウソウは頭の肥やしです」。デパート屋上の電動木馬から始まり、戦時は戦闘機の椅子を作り、椅子部門の売却資金で星系初の「電子ゲーム」を生んだ最古参。売却された椅子部門は、<a href="military.html#cdf">CDF</a>専属のスーパーフラッグ社として今も兵士の背中を支えている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/hanamuko.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="kenami" data-type="ent">
+      <div class="loc-body">
+        <h2 class="codex-h">KENAMI <span class="en">KENAMI</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">娯楽・メディア</span> ゲーム開発（撤退） → スイミング・スポーツクラブ運営</div>
+        <p class="codex-p">約20年前まで全ジャンルの頂点に立った伝説の開発会社。現在は健康産業へ転換し、失われた技術で作られた過去作は「オーパーツ」と形容される。ほぼ全作品共通の隠しコマンド「KENAMIコマンド」は、世代を越えた合言葉として今も生きている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/kenami.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="horain-zone" data-type="ent">
+      <div class="loc-body">
+        <h2 class="codex-h">ホライン・ゾーン・コーポレーション <span class="en">HORAIN ZONE CORPORATION</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">娯楽・メディア</span> 本社: <a href="locations.html#corneria">コーネリア</a> / キャラクター事業・アトラクション開発</div>
+        <p class="codex-p">第1次ライラットウォーズ終結後のコーネリアに、どの登記簿にも前史を残さず現れたキャラクター事業会社。誰も見たことのない生き物ばかりのキャラクター群は瞬く間に星系の子供たちをつかみ、かつては大人気テーマパーク「ワンダフル・メテオランド」（現在の<a href="locations.html#meteo-base">メテオベース</a>）にも貸し出されていた。同社のアトラクションは観る者に「ここではないどこかへ行きたい」と思わせる作りで知られる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/horain-zone.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ 金融・商社 ═══ -->
+
+    <article class="codex-entry loc" id="emeraldas-bank" data-type="fin">
+      <div class="loc-body">
+        <h2 class="codex-h">エメラルダス・星系銀行 <span class="en">EMERALDAS INTERSTELLAR BANK</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">金融・商社</span> 本社: <a href="locations.html#kew">キュー</a> / 貿易決済・融資</div>
+        <p class="codex-p">ライラット星系最大級の資本を持つ一族銀行。<a href="factions.html#hactiva-union">通商連合</a>圏の金融を取り仕切り、キューの企業群とエラダードの商工会を実質的に握る。帝国へ通じているとの噂が絶えず、共和国は取引を続けながら警戒を解いていない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/emeraldas-bank.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="rai-jing" data-type="fin">
+      <div class="loc-body">
+        <h2 class="codex-h">RAI-JING &amp; HOO-JING コーポレーション <span class="en">RAI-JING &amp; HOO-JING</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">金融・商社</span> 本社: <a href="glossary.html#city-corneria">コーネリアシティ</a> / 貿易・検索サービスWAHOO・興行</div>
+        <p class="codex-p">雷と風の兄弟会社。兄は古風な社風の貿易商社にして格闘技の大スポンサー、弟は星系ネットの代表検索サービスWAHOOの管理者。犬猿の仲だった兄弟がアワゾン・プライマル社に押されて仲直りし、星系一の鉄板コンテンツ<a href="glossary.html#cross-bout">「クロスバウト」</a>の興行と配信を共同で回している。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/rai-jing.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+      </div>
+
+      <button class="gls-nav prev" id="glsPrev" aria-label="前の記録"><span class="chev"></span></button>
+      <button class="gls-nav next" id="glsNext" aria-label="次の記録"><span class="chev"></span></button>
+
+      <div class="blk-view" id="blkView"></div>
+    </div>
+
+    <!-- INDEXオーバーレイは gls-main 直下に置く（リスト表示で stage がスクロールするため） -->
+    <div class="gls-index-overlay" id="glsIndexOverlay">
+      <div class="gls-index-panel">
+        <h3>◈ RECORD INDEX</h3>
+        <div class="gls-index-list" id="glsIndexList"></div>
+        <div class="gls-index-rel">関連: <a href="locations.html">ロケーション</a> / <a href="factions.html">勢力</a> / <a href="characters.html">人物</a> / <a href="glossary.html">用語</a> / <a href="military.html">軍事</a></div>
+      </div>
+    </div>
+
+    <!-- ブロック表示の記録オーバーレイ用 背景と閉じるボタン -->
+    <div class="blk-backdrop" id="blkBackdrop"></div>
+    <button class="blk-close" id="blkClose" aria-label="記録を閉じる">✕</button>
+
+    <div class="gls-scrub" id="glsScrub">
+      <div class="gls-scrub-track" id="glsScrubTrack">
+        <div class="gls-scrub-thumb" id="glsScrubThumb"></div>
+      </div>
+    </div>
+
+    <div class="gls-status">
+      <span class="rec-no" id="glsCounter">REC 001 / 000</span>
+      <span class="rec-name" id="glsName"></span>
+      <span class="keys">◄ ► KEYS / CLICK SIDE RECORD</span>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script>
+    window.GLS_VIEW = {
+      storageKey: 'corpDispMode',
+      defaultMode: 'list',
+      cardLabel: 'RECORD // CORPORATE',
+      bands: [
+        { type: 'heavy', label: 'HEAVY — 重工・インフラ' },
+        { type: 'food',  label: 'FOOD — 食品・飲料' },
+        { type: 'life',  label: 'LIFE — 生活・消費財' },
+        { type: 'logi',  label: 'LOGISTICS — 運送・物流' },
+        { type: 'ent',   label: 'ENT — 娯楽・メディア' },
+        { type: 'fin',   label: 'FINANCE — 金融・商社' },
+      ]
+    };
+  </script>
+  <script src="../gls-view.js"></script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

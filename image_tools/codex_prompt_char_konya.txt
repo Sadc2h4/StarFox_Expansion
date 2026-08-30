@@ -1,0 +1,18 @@
+Please generate an image with the image_gen tool, using the attached reference picture as the art-style guide.
+
+Match the reference's rendering style: a stylized 3D animated-film look, semi-realistic fur shading with visible individual hair strands, soft cinematic lighting, glossy highlights on eyes and equipment.
+
+Subject: a bust-up portrait of a young anthropomorphic black cat soldier, male, early twenties, rendered as a HOLOGRAPHIC PROJECTION. Sleek short jet-black fur with a subtle blue sheen (Bombay cat), large round copper-gold eyes, alert and earnest expression, slightly nervous but determined. Ears upright and attentive.
+
+Uniform (ground-defense infantry of a planetary garrison on a hot savanna world): a sand-tan and dust-khaki field uniform with rolled-up collar, a dark olive ballistic vest with utility pouches and a shoulder radio clipped near the collarbone, a sergeant's chevron patch on the upper sleeve, and a slim tactical headset with a thin boom mic. Gear looks new and well-maintained, freshly issued. No helmet.
+
+Holographic treatment (very important):
+- The figure must clearly read as a projected hologram: semi-transparent body, so the dark background is faintly visible through his shoulders and the edges of his uniform.
+- Fine horizontal scan lines running across the whole figure, subtle chromatic fringing at the silhouette edges, and a soft cyan-teal emissive glow rimming his outline.
+- The lower part of the chest dissolves into thin drifting light particles and horizontal glitch bands, as if the projection fades out at the bottom of the frame.
+- Overall color grade dominated by cyan and pale teal projector light, with the natural fur and uniform colors showing through more solidly in the center of the figure.
+
+Framing and composition:
+- Head and shoulders only, head positioned in the upper-center of the frame, same portrait framing as the reference.
+- Background: a very dark, nearly black command-room interior, heavily out of focus, with a few faint teal indicator lights. No text, no logos, no watermark, no user interface elements.
+- Square image, 1024x1024 or larger.

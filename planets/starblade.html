@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLEET STARBLADE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#8899ee;--accent:#bbc8ff;--border:rgba(136,153,238,0.32);--border-hi:rgba(187,200,255,0.7);--dim:#181c40;--dim2:#0c0e20; }
+    .p-title    { color: #eceeff; text-shadow: 0 0 50px rgba(136,153,238,0.3); }
+    .p-tagline  { border-color: #8899ee; color: #8899ee; }
+    .terminal-hdr { color: #bbc8ff; }
+    .terminal-hdr::before { background: #bbc8ff; box-shadow: 0 0 8px #bbc8ff; }
+    .dk { color: #8899ee; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/locations.html" class="nav-back">◄ LOCATIONS</a>
+    <div class="header-tag">[ 14 / FLEET STARBLADE — 宇宙艦隊スターブレード ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff8c40;">●</span> SECTOR-ζ — CRITICAL</div>
+  </header>
+
+  <div class="side-l"><div class="vt">LYLAT SYSTEM — FLEET STARBLADE — CDF FIRST SPACE FLEET — SECTOR-ZETA — GARRISON REGION</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: SBL-0014 — CLEARANCE: MILITARY — FLEET STATUS CRITICAL</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ 14 / LYLAT SYSTEM — SECTOR-ζ ]</div>
+        <div class="p-name-jp">宇宙艦隊スターブレード (STARBLADE)</div>
+        <h1 class="p-title">THE BLADE<br>OF THE<br>REPUBLIC</h1>
+        <div class="p-tagline">共和国主力艦隊 ─ 駐屯宙域</div>
+        <p class="p-short-desc">コーネリア連合共和国の誇る第1宇宙艦隊とその駐屯宙域。カタリナ防衛網と連携し星系中央部の守りを固めてきたが、帝国軍の奇襲により壊滅の危機に瀕している。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ FLEET SCAN — SECTOR-ζ ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">CDF第1宇宙艦隊「スターブレード」</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">軍事セクター（駐屯宙域）</td></tr><tr><td class="dk">LOCATION</td><td class="dv">Sectorζ — セクターγ隣接</td></tr><tr><td class="dk">CLASS</td><td class="dv">統合機動艦隊</td></tr><tr><td class="dk">FLAGSHIP</td><td class="dv">旗艦〈コーディリア〉</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../database/military.html#cdf">コーネリア防衛軍（CDF）</a></td></tr><tr><td class="dk">STRENGTH</td><td class="dv warn">定数380隻 → 稼働約4割</td></tr><tr><td class="dk">MISSION</td><td class="dv">星系中央防衛 / GW支援</td></tr><tr><td class="dk">FACTION</td><td class="dv">コーネリア連合共和国</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">⚠ CRITICAL — 再編中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">FLEET COMBAT READINESS -- 40 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 40%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(136,153,238,0.65);">
+        <img src="../resource/LA_image/LS_F_13.png" alt="Fleet Starblade" class="planet-img-detail planet-img-medium" style="animation: 10s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">Sector ζ — FLEET GARRISON REGION</span>
+            <span class="tg-jp">共和国主力艦隊 駐屯宙域</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">刃はくだけたが　心は折れちゃいない！<br>全軍　敵の襲撃に備えよ　繰り返す　敵の襲撃に備えよ！<span class="tg-note note">-スターブレード旗艦 コーディリア艦長の通信より抜粋-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「艦隊は国境である。動く国境だ。それが引けば、国土も引く」<span class="lore-quote-src">― CDF戦略教本 艦隊運用の章より</span></span></p>
+  <p class="lore-p">スターブレード（Starblade）は、<a href="../database/factions.html#cornerian-republic">コーネリア連合共和国</a>の主力を担う<a href="../database/military.html#cdf">コーネリア防衛軍</a>第1宇宙艦隊の名称であり、同時にその駐屯宙域<a href="../database/sectors.html#zeta">セクターζ</a>を指す通称でもある。「共和国の刃」の名を持つこの艦隊は、建軍以来星系中央部の守りの要であり続けてきた。</p>
+  <p class="lore-p">駐屯宙域は<a href="../database/sectors.html#gamma">セクターγ</a>と隣接し、<a href="../database/locations.html#katina">カタリナ</a>の軍事基地と相互に守りを固める配置となっている。しかし<a href="../database/factions.html#venom-empire">帝国軍</a>の大規模な奇襲作戦により艦隊は甚大な損害を受け、現在壊滅の危機に瀕している。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 艦隊再編中 — 稼働率4割</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">セクターζに天体は存在しない。あるのは整然と並ぶ泊地ブイ、補給プラットフォーム、乾ドック、そして艦列である。天体なき宙域が「場所」として星図に太字で記されるのは、そこに艦隊がいるからに他ならない。軍関係者はこの宙域を「動く要塞都市」と呼ぶ。</p>
+  <p class="lore-p">泊地の配置は<a href="../database/military.html#great-wall">グレートウォール</a>の「内側」を守る最終予備として設計されており、壁を抜けた敵をカタリナ駐留軍と挟撃できる位置関係にある。補給は<a href="../database/locations.html#corneria">コーネリア</a>と<a href="../database/locations.html#prospero">プロスペロー</a>からの定期輸送船団に依存しており、この補給線自体もまた防衛対象である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">その原型は、共和国よりも古い。宇宙歴3767年、暴走する<a href="../database/glossary.html#stephano">グランベルの超兵器</a>を討つため、二百年以上殺し合ってきた各国が<a href="../database/glossary.html#concord-declaration">『協和宣言』</a>の下に初めて艦を並べた──ライラット星系統合艦隊である。<a href="../database/glossary.html#star-dream">『スター・ドリーム作戦』</a>の勝利の後、この艦隊を解散させることを各国の司令官たちは望まなかった。「一度組めた隊列を崩せば、二度と組めない」。停戦から共和国成立までの一年、統合艦隊は法的根拠のないまま自主的に隊列を保ち続け、共和国の成立とともに正式な建制を得た。スターブレードが「共和国の刃」であると同時に「共和国より年上の艦隊」と呼ばれる所以である。</p>
+  <p class="lore-p">こうして旧5国家の艦隊を統合した「連合第1艦隊」は、かつて敵同士だった艦が同じ隊列を組む、共和国の統合そのものの象徴とされた。旗艦〈コーディリア〉の艦名は連合の中核となった旧王国から取られている。</p>
+  <p class="lore-p">統合は艦隊に、五つの流派を遺した。単機のエース運用を磨き抜いた旧コーディリア「ジェイド・ナイト」の騎士団文化。外洋の長期行動で鍛えられた旧タッドーの艦隊運用術。旧グランベルの重砲教義に、旧ローザリンドの艦体工学。そして旧サルジーナヤの長距離ミサイル戦術──かつてタッドーを脅した<a href="../weapons/man-drill.html#dread-kong">「ドレッド・コング」</a>の技術系譜は、皮肉にも同じ艦隊の中でタッドー式運用術と組み合わされ、スターブレードの遠距離打撃力の背骨となった（<a href="../database/locations.html#fichina">フィチナ</a>の項参照）。CDFの教本はこれを「五本の指が、一つの拳になった」と表現している。</p>
+  <p class="lore-p">続く二世紀の平和は、艦隊に「戦わない仕事」を与えた。<a href="../database/military.html#great-wall">グレートウォール</a>建設では漂流するステファノー残骸の曳航と軌道投入を一手に担い、半世紀に及ぶ大工事を支えた。五年に一度の巡礼<a href="../database/glossary.html#lantern-return">「灯還り」</a>の護衛、災害救助、海賊の取り締まり──「艦隊の主砲より曳航ワイヤーの方が働いた」と揶揄される時代だったが、この二世紀の実務こそが艦隊の練度と星系民の信頼を養ったと評価されている。</p>
+  <p class="lore-p">星系を二分した<a href="../database/glossary.html#iga-war">IGA戦役</a>では、正規艦隊戦を避けるゲリラ戦術に苦しめられ、艦隊は「大きすぎる刃」の限界を露呈した。転機は戦闘補助AI<a href="../database/military.html#polybius">『ポリヴィアス』</a>の全艦隊配備である。撃墜数と生還率は劇的に改善し、戦役末期の<a href="../database/glossary.html#sycorax-ruins">セティボスⅣ攻略戦</a>では艦隊の火力支援が白兵部隊の突入を成功させた。この戦役が残した戦訓「艦隊は単独では戦えない」は、後の三位一体防衛構想の直接の母体となっている。</p>
+  <p class="lore-p"><a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>緒戦、艦隊は<a href="../database/locations.html#macbeth">マクベス</a>方面への反攻作戦を準備していたが、その集結情報は帝国側に漏れていた。<a href="../database/locations.html#sargasso">サルガッソー</a>のデブリ帯に偽装潜伏していた帝国艦隊による奇襲は泊地を直撃し、艦隊は一夜にして主力の過半を失った。この<a href="../database/glossary.html#zeta-tragedy">「セクターζの惨劇」</a>は開戦以来最大の敗北として記録されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">駐屯宙域の「住民」は将兵とその支援要員である。艦隊勤務は長期に及ぶため、大型艦には家族区画や学校まで設けられており、艦で生まれ艦で育つ「艦隊っ子」と呼ばれる世代も存在する。彼らにとって艦隊は軍隊である以前に故郷である。なお艦内時計は例外なく<a href="../database/glossary.html#standard-time">コーネリア標準時</a>で刻まれており、惑星時差に悩まされるこの星系で「時差のない故郷」を持つのは艦隊っ子だけだと言われる。</p>
+  <p class="lore-p">奇襲後の艦隊再編では、撃沈艦の生存者たちが新造艦へ乗り換える「艦魂の継承」という儀式が行われた。失われた艦の名は新造艦の艦内神棚に刻まれ、乗員たちは二隻分の名を背負って戦列に戻っていく。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">LOGISTICS ─ 兵站・再建</h3>
+  <p class="lore-p">艦隊の再建を阻んでいる最大の敵は、帝国ではなく資材である。開戦劈頭の<a href="../database/locations.html#macbeth">マクベス</a>喪失により、艦体装甲の代名詞だった<a href="../database/glossary.html#macbeth-steel">「マクベス鋼」</a>の供給は完全に断たれた。さらに<a href="../database/locations.html#prospero">プロスペロー</a>の占領で将兵の食卓も配給制下にある。工廠は撃沈艦の残骸から資材を回収する再生プログラムで急場を凌いでおり──「鎮魂の環」に納められた艦を除き、回収可能な残骸はすべて新造艦の血肉に回される──将兵はこれを「自らの墓標を鍬に変える仕事」と呼んでいる。</p>
+  <p class="lore-p">艦隊工廠の中枢を担うのは、旧コーディリア王国の時代から代々艦艇修理を家業としてきたデ・ポン航宙機工房──現<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>──の系譜に連なる技術者たちである。二百年前の艦と今日の艦を同じ手つきで直せる整備士の存在は、寄せ集めから始まったこの艦隊が受け継いできた、もう一つの伝統といえる。</p>
+  <p class="lore-p">兵站は物資だけではない。軍郵便が滞る前線泊地へ、<a href="../corporations/white-fang.html">ホワイトファング急便</a>は今日も将兵への私信を無償で届け続けており、缶飲料<a href="../database/glossary.html#drink-falcon-slop">『ファルコン・スロップ』</a>の補給箱は士気物資として弾薬に次ぐ優先順位を与えられている。「艦隊は腹と手紙で戦う」──兵站将校たちの古い格言である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">全盛期のスターブレードは戦艦・空母・巡洋艦など定数380隻を擁し、<a href="../database/locations.html#area3">AREA3</a>・<a href="../database/locations.html#katina">カタリナ</a>と三位一体でコーネリア圏の多層防衛を構成していた。<a href="../database/glossary.html#ship-grades">艦船の等級</a>でいえば艦列の主体はザトウ級からマッコウ級であり、中核を担うマッコウ級の配備数は全盛期でも20隻に満たない。その頂点に立つ旗艦〈コーディリア〉は星系に数隻しか現存しないナガス級であり、共和国が保持する最大の艦でもある。現在の稼働戦力は約4割。失われた抑止力を補うため、<a href="../database/military.html#cdf">CDF</a>は残存艦による機動防御と、<a href="../database/military.html#starfox">スターフォックス</a>をはじめとする少数精鋭部隊の運用へと戦略の転換を余儀なくされている。</p>
+  <p class="lore-p">帝国が奇襲の第二波を仕掛けなかった理由は謎とされるが、一説には<a href="../database/locations.html#sargasso">サルガッソー</a>越しの長距離侵攻で帝国側の損耗も想定を超えたためと言われる。艦隊の再建が先か、次の侵攻が先か──セクターζの時計は、星系で最も重い時を刻んでいる。</p>
+  <p class="lore-p">現在の艦隊が採るのは、古典教義でいう「在りて脅かす艦隊」戦略である。稼働艦の所在を徹底して秘匿し、電子的な偽装泊地と欺瞞信号で「健在なる380隻」を演じ続けることで、帝国に再侵攻の決断を躊躇させる──刃こぼれした剣を、鞘の中で光らせ続ける戦いである。<span class="redacted">なお公表されている「稼働率4割」という数字それ自体が情報戦の一部であり、実数はより深い機密区分に置かれている</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">奇襲の夜、旗艦〈コーディリア〉は撃沈を免れた。損傷した僚艦が身を挺して旗艦の盾となったためである。その艦、巡洋艦〈タッドー〉の艦長は退避命令を最後まで拒み、通信記録には「連合の刃は折らせない」という言葉が残されていた。〈タッドー〉の名は次期新造戦艦に継承されることが既に決定している。</p>
+  <p class="lore-p">艦隊泊地には撃沈艦の残骸を集めた「鎮魂の環」と呼ばれる一角があり、航行する全ての艦は環の傍を通る際に汽笛を一度鳴らす。この習慣に軍規上の根拠はない。だが、破られたこともない。</p>
+  <p class="lore-p">惨劇の代償を最も重く払ったのは、皮肉にも艦隊自身ではなかった。「カタリナの奇跡」と呼ばれる防衛戦の日、艦隊は再編の只中にあり、ついに一隻の増援も送れなかったのである。駐留軍が独力で凌ぎ切った顛末は<a href="../database/locations.html#katina">カタリナ</a>の項に譲るが、以来、艦隊司令部の作戦室の壁には誰が貼ったともしれない一枚の紙が残されている──「カタリナに借りがある」。<span class="redacted">そして情報部は5日後、<a href="../weapons/great-dish.html">グレートディッシュ</a>のカタリナ来襲を予測している。借りを返す機会は、再建の完了より早く訪れようとしている</span>。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body></html>

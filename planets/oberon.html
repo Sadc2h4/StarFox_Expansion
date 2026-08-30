@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OBERON II — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#aa88ee;--accent:#ccbbff;--border:rgba(170,136,238,0.32);--border-hi:rgba(204,187,255,0.7);--dim:#241840;--dim2:#120c20; }
+    .p-title    { color: #f2ecff; text-shadow: 0 0 50px rgba(170,136,238,0.3); }
+    .p-tagline  { border-color: #aa88ee; color: #aa88ee; }
+    .terminal-hdr { color: #ccbbff; }
+    .terminal-hdr::before { background: #ccbbff; box-shadow: 0 0 8px #ccbbff; }
+    .dk { color: #aa88ee; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/locations.html" class="nav-back">◄ LOCATIONS</a>
+    <div class="header-tag">[ 15 / OBERON II — 廃棄コロニー・オベロンⅡ ]</div>
+    <div class="header-status"><span class="blink" style="color:#ccbbff;">●</span> SECTOR-ι — ABANDONED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">LYLAT SYSTEM — OBERON II — DERELICT SPACE COLONY — SECTOR-IOTA — ENTRY PROHIBITED</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: OBR-0015 — CLASSIFICATION: ABANDONED — MISSING VESSELS REPORTED</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ 15 / LYLAT SYSTEM — SECTOR-ι ]</div>
+        <div class="p-name-jp">オベロンⅡ (OBERON II)</div>
+        <h1 class="p-title">THE COLONY<br>THAT DREAMS<br>ALONE</h1>
+        <div class="p-tagline">実験スペースコロニー ─ 廃棄宙域</div>
+        <p class="p-short-desc">理想の居住環境を追求した実験スペースコロニーの成れの果て。廃棄から数十年、無人のはずのこの宙域では、調査船の失踪が今も続いている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ STATION SCAN — SECTOR-ι ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">実験コロニー「オベロンⅡ」</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">廃棄宙域</td></tr><tr><td class="dk">LOCATION</td><td class="dv">Sectorι</td></tr><tr><td class="dk">CLASS</td><td class="dv">リング型スペースコロニー</td></tr><tr><td class="dk">DIAMETER</td><td class="dv">リング直径 32 km</td></tr><tr><td class="dk">ROTATION</td><td class="dv">約4分 / 周 — リング内壁重力 1G</td></tr><tr><td class="dk">OPERATOR</td><td class="dv warn">なし（管理放棄）</td></tr><tr><td class="dk">POPULATION</td><td class="dv">0（公式記録）</td></tr><tr><td class="dk">POWER</td><td class="dv warn">微弱反応あり（原因不明）</td></tr><tr><td class="dk">FACTION</td><td class="dv">なし</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">⚠ 立入禁止 — 失踪多発</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">ENVIRONMENT INDEX -- 8 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 8%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(170,136,238,0.6);">
+        <img src="../resource/LA_image/LS_F_9.png" alt="Oberon II" class="planet-img-detail planet-img-medium" style="animation: 13s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">Sector ι — DERELICT COLONY</span>
+            <span class="tg-jp">実験コロニー廃棄宙域 ── 立入禁止</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">ここって昔は　いろんな実験をしてたコロニーなんだよね？<br>異常な電波をキャッチしたんだけど…すっごい気にならない？<span class="tg-note note">-グレートフォックス 航行記録の会話より抜粋-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「我々は理想の楽園を建造した。問題はただ一つ──誰も住み続けられなかったことだ」<span class="lore-quote-src">― オベロン計画 最終報告書の結語より</span></span></p>
+  <p class="lore-p">オベロンⅡ（Oberon II）は、<a href="../database/sectors.html#iota">セクターι</a>に漂う直径32kmの巨大リング型スペースコロニーである。かつて「理想の居住環境を人工的に作り出す」壮大な実験として建造されたが、計画は放棄され、コロニーは無人のまま廃棄宙域に取り残された。</p>
+  <p class="lore-p">公式には無人。しかしこの宙域では近年、調査船や演習中の戦闘機が多数行方不明になっており、不穏な噂が絶えない。<a href="../database/military.html#cdf">CDF</a>は宙域全体を立入禁止に指定しているが、失踪は今も続いている。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 立入禁止宙域 — 失踪事案多発</span></p>
+  <p class="lore-p">「オベロン」の名は、星系開発史に三度現れる。植物工場として生まれた初代、居住コロニーの本命Ⅱ、そして<a href="prospero.html">プロスペロー</a>の空で今も回り続ける環境支援システムの<a href="prospero.html">Ⅲ</a>である。三兄弟のうち唯一の失敗作が、最も巨大で、最も有名になった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 建造史</h3>
+  <p class="lore-p">オベロンⅡの技術的な母体は、一基の植物工場である。初代オベロンが実証した閉鎖環境栽培と水・大気の循環技術は「補給されない世界」の設計図の原型となり、これを都市の規模へ引き延ばすという構想が計画の出発点となった（経緯は歴史の項を参照）。建造地には主要航路にも演習空域にも干渉しない<a href="../database/sectors.html#iota">セクターι</a>の静かな宙域が選ばれ、構造材の大半は資源惑星からの曳航ではなく、近傍の小惑星をその場で精錬する軌道製錬所方式で賄われた。宙域の現地生産だけで巨大建造物を建てた史上初の事例であり、この工法で育った技術者たちは、後の大規模宙域建築を支える中核となっている。</p>
+  <p class="lore-p">建造が幾世代にも及んだ最大の理由は、船体の規模ではなく時間にある。完全循環の生態系は、検証期間を短縮できない。土壌が熟し、水が巡り、植生が安定するまでの確認には実時間の年月が必要であり、区画ごとに数十年単位の実証試験が積み重ねられた。この気の遠くなる工程こそが計画の長期化と世論の倦みを招いた最大の要因であり、皮肉にもその成果の確かさは、廃棄後の今もなお検証され続けている（構造・環境の項を参照）。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">STRUCTURE ─ 構造・環境</h3>
+  <p class="lore-p">船体は直径32kmの巨大リング構造体である。居住区を収めた外周リングが約4分で一周する回転により、リング内壁の大地に惑星並みの重力を生んでいる。回転半径が大きいため、居住者がコリオリの違和感を覚えることはない。中央には管制と動力を束ねる多層のドラムコアが座り、細い連絡スポークがリングとコアを結び、コアの上下へ弧を描く巨大パイロンが特徴的な輪郭を形作る。リングの天蓋越しに見上げれば、遥か先で大地が湾曲しながら空へ立ち上がる。入植者の手記はこの光景を「世界の果てが見える街」と記している。</p>
+  <p class="lore-p">コロニー内部には山も湖も森も、そして街もある。全ては理想気候の再現のために設計され、人工太陽の光量から風の速度、雨の周期までもが完全に制御されていた。大地も空も重力も精密な計算の産物であるこの環境を、設計陣は内輪で「大地を騙す工学」と呼んでいたという。廃棄後の現在も一部の環境機関が謎の微弱電源で稼働を続けており、無人の街に季節が巡り、誰も見ていない桜が咲き、誰も浴びない雨が降っているという。</p>
+  <p class="lore-p">設計思想の核は「完全循環」である。水も大気も土壌も外部からの補給なしに巡り続ける閉鎖生態系は、当時の工学では不可能とされた難題であり、オベロンⅡはそれを星系で初めて都市規模で成立させた金字塔であった。廃棄から数十年を経てなお内部の生態系が崩壊していないという観測事実は、この設計の完成度を証明すると同時に、研究者を最も不安にさせている点でもある。機械は限界を迎えているのに、緑だけが健康すぎるのである。</p>
+  <p class="lore-p">外殻には廃棄時に開けられた退去用の大破孔が複数残り、内部環境は区画によって真空から高湿潤まで極端に異なる。構造材の疲労は限界を超えており、崩落と隔壁の自動閉鎖が予測不能に発生する。物理的な危険性だけでも、この構造物は星系有数の危険地帯である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">オベロン計画の起点は、宇宙空間で野菜を育てる一基の植物工場であった。復興期の楽観の時代に建造された初代オベロンは閉鎖環境での栽培を成功させ、やがて汚染化学物質の除染試験を担う研究施設を兼ねるようになる。後年この除染計画を任されたのが、<a href="../database/glossary.html#bowman-catalyst">ボウマン触媒</a>による水質改善で若くして名を上げた研究者、のちの皇帝<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a>である。</p>
+  <p class="lore-p">初代の遺産は農業にとどまらない。管理を担った環境AI「アトラス」の名は、後に<a href="area3.html">AREA3</a>の管制演算網の愛称へと受け継がれた。さらに帝国軍が<a href="area6.html">AREA6</a>に展開する警備衛星群<a href="bolse.html">「リトル・ボルス」</a>は、この植物工場の設計思想を軍事転用した酷似の輪郭を持つ（AREA6の項参照）。小さな野菜工場は、星系の攻守双方の門に血を分けたことになる。</p>
+  <p class="lore-p">実績を重ねた計画はやがて「戦争で荒れた惑星に頼らない第二の故郷」という大看板を掲げ直し、主目的は人工的な楽園の建造へと拡大される。本命たる居住コロニーⅡの建造は、しかし当時最大の人工建造物ゆえに長期化の一途を辿る。</p>
+  <p class="lore-p">計画を存続させたのは、皮肉にも「弟」の成功であった。Ⅱの中核システムを環境支援に特化させた派生型オベロンⅢが、一足先に<a href="prospero.html">プロスペロー</a>の沼地開発へ投入され劇的な成果を挙げたのである（プロスペローの項参照）。兄より先に実を結んだ弟の名声は世論と予算をⅡへ呼び戻し、着工から幾世代を経て、コロニーはついに竣工へ漕ぎつけた。</p>
+  <p class="lore-p">オベロンⅡの設計主任は、<a href="../database/locations.html#corneria">コーネリア</a>科学省の研究員<a href="../characters/fatman.html">ジェラルド・ファットマン</a>である。初代の研究を引き継いだ彼のもとで構想は農場から楽園へと姿を変えたが、植物研究区画と除染試験区画だけは、本人の強いこだわりにより居住ステーションへの転換後も図面から消えることがなかった。研究者の聖域を残したこの決定が後年何をもたらしたかについて、公式記録は多くを語らない。<span class="redacted">なおファットマン自身の経歴は、後年のある時点を境にFCH-119関連記録とともに抹消されている（<a href="../characters/andorf.html">アンドルフ</a>の項の封印項目を参照）</span>。</p>
+  <p class="lore-p">竣工したオベロンⅡは当時最大の人工居住施設であり、抽選で選ばれた10万人の入植者が新生活を始めた。入植船団の出航は星系中に中継され、船内で産声を上げた「宇宙生まれの第一世代」は時代の象徴として祝福された。誰もが、恒久の楽園が始まったと信じていた。</p>
+  <p class="lore-p">コロニーを彩った植物は、星系各地の植生から持ち込まれたものである。とりわけ<a href="../database/locations.html#fortuna">フォルトナ</a>産の種は強健に過ぎ、設計区画を越えて根を張るたびに整備班を悩ませた記録が繰り返し残されている。近年の研究はこの植物のネットワークが最終的にステーション全体へ及んでいたと見ており、管理AIの挙動にまで影響を与えた可能性を指摘している。</p>
+  <p class="lore-p">異変は入植3年目から記録されている。原因不明の体調不良、集団的な不眠、そして「コロニーに見られている」という訴えの急増。調査は難航し、住民の退去が相次いだ末、計画は「心理環境設計の失敗」という曖昧な結論とともに中止された。最後の住民が退去した日、コロニーの環境制御系は全停止されたはずだった──現在も稼働している電源が何なのか、記録上の説明は存在しない。</p>
+  <p class="lore-p">廃棄後も解体案と払い下げ案は幾度となく浮上した。だがそのたびに先遣調査隊の帰還率が議題に上り、審議は立ち消えている。中止で浮いた予算と人材の多くは折からの<a href="../database/glossary.html#iga-war">IGA戦役</a>期の軍需へ吸収され、「楽園の予算は砲弾に化けた」と当時の紙面は皮肉を書き残した。以後、共和国が理想郷の建造を志したことは一度もない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">公式人口はゼロである。だが宙域の縁では、廃棄コロニーから資材を剥ぎ取る<a href="../database/glossary.html#salvager">サルベージャー</a>や、立入禁止の刺激を求める無許可探検者が後を絶たない。そして彼らの一部は帰ってこない。</p>
+  <p class="lore-p">帰還した者たちの証言は奇妙に一致している。「無人の窓に灯りが点いていた」「人工太陽が勝手に朝を作った」「案内放送が自分の名を呼んだ」──精神医学者は閉鎖環境での集団幻覚と説明するが、異なる時期に入った無関係の集団が同じ体験を語る理由は、説明できていない。</p>
+  <p class="lore-p">一方で、退去した元住民たちは移住先の各地で「オベロンっ子」と呼ばれる同郷会を続けている。彼らは数年に一度、許可を得て宙域の縁から故郷に花に見立てた発光体を流す慰霊航行を行うが、この航行だけは一度も失踪者を出していない。統計上の偶然と片付けるには回数が重なりすぎていると、封鎖任務の管制官たちは声を潜める。コロニーは、帰ってきた住民を覚えているのではないか──と。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">セクターιは<a href="../database/glossary.html#warp-route">ワープドライブ航路</a>の要所からは外れており、軍事的価値は本来低い。しかし戦闘機の演習空域と隣接しているため、演習中の機体が宙域に迷い込み消息を絶つ事案が繰り返し発生。<a href="../database/military.html#cdf">CDF</a>は演習空域そのものを移設する対応を取った。</p>
+  <p class="lore-p">一部の情報将校は、失踪が<a href="../database/factions.html#venom-empire">帝国</a>の秘密作戦──コロニーを隠れ蓑にした潜伏基地や実験施設──によるものではないかと疑っている。皮肉なことに、共和国側にも「オベロンⅡを調査したがらない」空気があり、真相の解明よりも封鎖の維持が優先されているのが現状である。</p>
+  <p class="lore-p">より直接的な解決策として、艦隊によってコロニーごと焼き払う作戦も一度は立案されている。だが投入を予定された艦隊が、あろうことか事前展開の段階でこの宙域に消息を絶ち、作戦はそのまま白紙となった。対帝国戦へ全力を注ぐ現在の<a href="../database/locations.html#corneria">コーネリア</a>に、オベロンⅡへ割ける戦力は残っていない。宙域は「様子見」のまま封鎖が続き、解明はおそらく戦後の仕事である。<span class="redacted">なお機密報告は、一連の失踪の原因を既に結論づけている。変異した植物である。変異体は知性や記憶に似た感覚を持ち、武器を装備して襲いかかった記録が残る。その武装の型式は消息を絶った部隊の携行品と一致しており、植物が何らかの方法で部隊を鹵獲し、自らの武装へ転用しているものと結論された</span>。</p>
+  <p class="lore-p">開戦後には新たな記録が加わった。傭兵部隊<a href="../database/military.html#starfox">スターフォックス</a>の母艦グレートフォックスが、宙域近傍の航行中に発信源不明の異常電波を受信しているのである。<span class="redacted">解析の結果、信号パターンは廃棄されたはずの環境管制核の識別コードと一致した。ただし送信に用いられていたのは、廃棄後に制定された現行の軍用通信規格である。管制核が停止していないだけでなく「学習」を続けている可能性を報告書は指摘し、監視区分の格上げを勧告している。さらに後続の解析はこの信号を、遭難信号や識別応答を装って船を宙域へ誘い込む「おとり」と結論づけた。目的は、被検体の収集である。これを受け<a href="../database/characters.html#pepper">ペパー将軍</a>の作戦候補リストには、優先度こそ低いもののオベロンⅡへの白兵調査が加えられており、近く<a href="../database/military.html#starfox">スターフォックス</a>による艦内調査が実施される見込みである</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">オベロンⅡの中央公園には、入植記念に植えられた「はじまりの樹」と呼ばれる大樹があった。廃棄から数十年を経た近年の長距離観測で、この樹が枯れるどころか、公園の設計区画を大きく越えて生長し続けていることが確認された。無人のコロニーの中で、何かが樹を世話しているかのように。</p>
+  <p class="lore-p">失踪した調査船の一隻から、廃棄後のものとしては唯一の通信が受信されている。ノイズに埋もれた数秒の音声に残されていたのは、悲鳴でも救難信号でもなく、穏やかな声のこう言う一言だった──「ここは、いいところだよ」。<span class="redacted">なお声紋照合の結果、この声は失踪した乗員の誰とも一致していない。データベース全体で唯一の一致を示したのは、Ⅱの退去を最後に消息を絶ち、以後の公式記録が抹消されている設計主任<a href="../characters/fatman.html">ジェラルド・ファットマン</a>の記録音声である。彼は、死んでいない</span>。</p>
+  <p class="lore-p"><span class="redacted">機密報告は、特筆すべき個体を二つ挙げている。一つは「カトレア」。コロニーの植物群を率いる、巨大な意思を持つ花である。<a href="../weapons/bioweapon.html">バイオウェポン</a>に似た組織と高い攻撃性・知性を併せ持ち、交戦に至る場合は細心の注意を要する。そして各記録の照合を経た最深部の報告は、その正体に結論を出している。カトレアとは、設計主任ジェラルド・ファットマンその人である。彼が没頭した「究極の生物」の研究は、動物と植物のハイブリッドという形で結実した。通常の植物には不可能な胚融合を、<a href="../database/locations.html#fortuna">フォルトナ</a>奥地の<a href="../database/glossary.html#snow-mountain">スノーマウンテン</a>にのみ育つ植物が可能にしたのである。博士は自らの被造物と融合してオベロンの権限の大半を掌握し、共和国が帝国との交戦で宙域を放置している現状を好機として、植物兵を駆使し自らも怪物へと変化しながら研究を続けている。研究区画には次の段階である「<a href="../database/glossary.html#hybrid-marriage">レアハイブリッド</a>兵」を人工的に作り出すプラントが確認されており、失踪した哨戒機や艦隊の隊員は、この研究の材料として消費されていると報告は結論づけている。かつての共同主任<a href="../database/characters.html#andorf">アンドルフ</a>すら、彼にとっては手駒の一つに過ぎない。その腐りきった精神性を映すかのように、彼自身であるカトレアの姿は悍ましい</span></p>
+  <p class="lore-p"><span class="redacted">もう一つは、ステーションの名を名乗る「植物の王」オベロン。管理AIと意識が融合している可能性が指摘されており、このコロニーで対話と交渉が成立する唯一の存在である。オベロンにルーツを持つ者たちが周辺宙域で襲われないのは、王が彼らに会うのを楽しみにしているからなのかもしれない。報告書の末尾には、分析官のものとは思えないその一文が残されている</span></p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body></html>

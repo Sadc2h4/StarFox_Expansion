@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPACE DYNAMICS — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#5fc7ff;--accent:#a5e2ff;--border:rgba(95,199,255,0.32);--border-hi:rgba(165,226,255,0.7);--dim:#0e2a3a;--dim2:#07151d; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/corporations.html" class="nav-back">◄ CORPORATE DB</a>
+    <div class="header-tag">[ CIS-HQ / CORPORATION — スペース・ダイナミクス社 ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ / CORPORATE FILE 01 ]</div>
+      <h1 class="codex-title">SPACE DYNAMICS CO., LTD.</h1>
+      <p class="codex-p">スペース・ダイナミクス社 ── Gディフューザーシステムを核とした宇宙戦闘機開発の最大手にして、ライラットの空の形を決めてきた企業。社長は天才設計者<a href="../database/characters.html#yaru">ヤル・デ・ポン</a>。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#overview">概要</a>
+      <a href="#history">沿革</a>
+      <a href="#products">主力製品</a>
+      <a href="#people">組織と人物</a>
+      <a href="#archives">記録余話</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="../database/corporations.html">企業DB</a> / <a href="vector-prime.html">ベクター・プライム社</a> / <a href="ys-sim.html">Ys・SIM社</a> / <a href="../database/locations.html">ロケーション</a> / <a href="../database/characters.html">人物</a> / <a href="../database/glossary.html">用語</a></span>
+    </nav>
+
+    <article class="codex-entry" id="overview">
+      <h2 class="codex-h">概要 <span class="en">OVERVIEW</span></h2>
+      <p class="codex-p">スペース・ダイナミクス社（Space Dynamics Co., Ltd.、通称SD社）は、<a href="../database/locations.html#corneria">コーネリア</a>に本社を置く宇宙機開発企業。重力を拡散・制御する独自機構「<a href="../weapons/g-diffuser.html">Gディフューザーシステム</a>」を用いた高機動宇宙戦闘機の開発を主力とし、その技術水準は星系随一と評される。<a href="../database/military.html#cdf">コーネリア防衛軍</a>の制式機の多くが同社製であり、「ライラットのパイロットは、皆どこかでSD社の椅子に座る」と言われるほどである。</p>
+      <p class="codex-p">また<a href="vector-prime.html">ベクター・プライム社</a>と共同で星系の<a href="../database/glossary.html#warp-route">ワープドライブ航路</a>網を建設した二大企業の一角でもあり、航路の維持管理は現在も両社の合同組織<a href="../database/glossary.html#bs-route-dev">「B・S航路事業開発」</a>の事業として、戦時下でも中立を保ちながら続けられている。</p>
+    </article>
+
+    <article class="codex-entry" id="history">
+      <h2 class="codex-h">沿革 <span class="en">HISTORY</span></h2>
+      <p class="codex-p">前身は<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>期に旧コーディリア王国の艦艇修理を請け負っていた小さな工廠「デ・ポン航宙機工房」である。戦後、共和国成立に伴う軍縮で多くの軍需企業が倒れる中、同工房は「戦争の機体ではなく、宇宙を近くする機体を」を掲げて民需へ転換。商船・民間船の修理と軍末端の星間パトロール隊の機材整備を請け負いながら、細々と技術の火を守り続けた。</p>
+      <p class="codex-p">転機は約20年前、従業員わずか2名の工房に科学技術省から舞い込んだ反重力機構の試験委託──若き技師ヤル・デ・ポンによる「<a href="../weapons/g-diffuser.html">Gディフューザーシステム</a>」の実用化である（経緯は独立記事を参照）。機体にかかる重力・慣性を拡散するこの機構は宇宙機の運動性能を一変させ、同工房は一夜にして星系技術の頂点に立った。このとき玉座を明け渡した相手こそ、二百年にわたり空を独占してきた老舗<a href="ys-sim.html">Ys・SIM社</a>である（凋落の経緯は同社の項に詳しい）。以後、恒星間旅客機と作業艇で財を成し、社名をスペース・ダイナミクスへ改めた。<a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>勃発後は共和国側の主要機体供給元となっているが、同社は今も「弊社は防衛の道具を作る。侵略の道具は作らない」という創業以来の社是を公言している。</p>
+    </article>
+
+    <article class="codex-entry" id="products">
+      <h2 class="codex-h">主力製品 <span class="en">PRODUCTS</span></h2>
+      <p class="codex-p">最も名高い製品は、<a href="../database/military.html#starfox">スターフォックス</a>の主力戦闘機「<a href="../database/military.html#arwing">アーウィン</a>」である。Gディフューザーの出力を4基の可変ウィングに分配するこの機体は、設計上は「操縦不能なほど過敏」とされたが、一流のパイロットが乗った時にのみ真価を発揮する「乗り手を選ぶ名機」として伝説となった。同隊の母艦「グレートフォックス」も同社の建造による。</p>
+      <p class="codex-p">このほか、地上戦車型の「<a href="../database/military.html#landmaster">ランドマスター</a>」、潜航艇「<a href="../database/military.html#bluemarine">ブルーマリン</a>」など、Gディフューザー技術の応用製品は多岐にわたる。民需部門では旅客船・輸送船・救難艇が主力であり、星系の宇宙港で同社のロゴを見ない日はない。</p>
+    </article>
+
+    <article class="codex-entry" id="people">
+      <h2 class="codex-h">組織と人物 <span class="en">ORGANIZATION</span></h2>
+      <p class="codex-p">現社長は<a href="../database/characters.html#yaru">ヤル・デ・ポン</a>。Gディフューザーの発明者自身が経営を執る「技師が頂点に立つ会社」であり、役員会よりも設計室の発言力が強いことで知られる。主任設計技師には<a href="../database/races.html#heketoid">ヘケトイド</a>の天才ベルツィーノ・トードが名を連ね、その息子スリッピー・トードは<a href="../database/military.html#starfox">スターフォックス</a>のメカニックとして同社機体の実戦データを担う──トード家との縁は同社の技術の背骨である。</p>
+      <p class="codex-p">なおベルツィーノの弟グリッピー・トードは<a href="../database/glossary.html#mining-guild">グリッピア・ワークス社</a>の創業者であり、アーウィンの装甲材にはCGM合金が採用されている。ライラットの航空宇宙産業は、実のところ二つのトード家企業の間で完結しているという冗談は、あながち冗談でもない。</p>
+    </article>
+
+    <article class="codex-entry" id="archives">
+      <h2 class="codex-h">記録余話 <span class="en">ARCHIVES</span></h2>
+      <p class="codex-p">アーウィンの初飛行テストの操縦桿を握ったのは、社のテストパイロットではなく、当時まだ傭兵になりたてだった<a href="../database/characters.html#james">ジェームズ・マクラウド</a>だったという逸話が残る。着陸後の彼の第一声「この機体は、乗り手に噓をつかない」は、今も同社の広告に使われ続けている。</p>
+      <p class="codex-p">本社ロビーには歴代機体の模型とともに、一枚の白紙の設計図が額装されている。銘板にはこうある──「次の一枚。まだ誰も描いていないだけだ」。</p>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

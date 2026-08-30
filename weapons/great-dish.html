@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GREAT DISH — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#a88cc4;--accent:#ccb2e6;--border:rgba(168,140,196,0.32);--border-hi:rgba(204,178,230,0.7);--dim:#2a2036;--dim2:#140e1c; }
+    .p-title    { color: #f2ecf8; text-shadow: 0 0 50px rgba(168,140,196,0.4); }
+    .p-tagline  { border-color: #a88cc4; color: #a88cc4; }
+    .terminal-hdr { color: #ccb2e6; }
+    .terminal-hdr::before { background: #ccb2e6; box-shadow: 0 0 8px #ccb2e6; }
+    .dk { color: #a88cc4; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-23 / GREAT DISH — グレートディッシュ ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff6a6a;">●</span> HOSTILE — INBOUND: T-MINUS 5 DAYS</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — GREAT DISH — IMPERIAL SUPER-HEAVY ASSAULT BATTLESHIP — THREAT ANALYSIS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0023 — CLASSIFICATION: HOSTILE WEAPON — CLEARANCE: TEMPORARY LV.2</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-23 / ARMORY FILE ]</div>
+        <div class="p-name-jp">グレートディッシュ (GREAT DISH)</div>
+        <h1 class="p-title">LID OF<br>THE SKY</h1>
+        <div class="p-tagline">帝国超巨大強襲戦艦 / 移動要塞 ─ 対地下要塞戦術兵器</div>
+        <p class="p-short-desc">地下に潜った基地を地殻ごと爆砕するために建造された、空前絶後の巨大さを誇る移動要塞兼戦艦。皿のような艦影が真上を覆えば、昼が終わる。5日後、この「空の蓋」はカタリナへ再来する。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ THREAT SCAN — FILE 23 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">GREAT DISH / グレートディッシュ</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">超巨大強襲戦艦・移動要塞（対地下要塞）</td></tr><tr><td class="dk">SCALE</td><td class="dv warn">⚠ 拠点制圧兵器<a href="salresia.html">サルレシア</a>の約10倍 — 基地上空を覆い昼を夜に変える</td></tr><tr><td class="dk">ALIAS</td><td class="dv">ソーサラー — 「皿」と「魔法使い」</td></tr><tr><td class="dk">PROPULSION</td><td class="dv"><a href="../database/military.html#g-diffuser">G・ディフューザー機関</a> 大型多基掛け</td></tr><tr><td class="dk">MAIN WEAPON</td><td class="dv warn">⚠ 超大型バンカーバスター（火薬・質量爆砕弾）</td></tr><tr><td class="dk">ESCORT</td><td class="dv">艦載無人機群・随伴空母 — 「物量の傘」</td></tr><tr><td class="dk">KILL RECORD</td><td class="dv warn">⚠ フィチナ地下基地×2 / カタリナ補助基地×1</td></tr><tr><td class="dk">LOSS RECORD</td><td class="dv">本艦なし — 同時投入の別系統機サルレシア1機喪失（「カタリナの奇跡」）</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">⚠ 5日後 カタリナ再来襲を高確度予測</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 96 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(168,140,196,0.5);">
+        <img src="" alt="GREAT DISH" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE SKY IS FALLING</span>
+            <span class="tg-jp">空が落ちてくる ── 地下要塞殺しの「空の蓋」</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">雲じゃない……影だ！　基地の真上に、空より大きい影が来る！<span class="tg-note note">-フィチナ第2地下基地 最終通信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">あれは艦ではない。空から降ってくる攻城槌である<span class="lore-quote-src">― CDF参謀部 脅威評価報告の結語より</span></span></p>
+  <p class="lore-p">グレートディッシュ（Great Dish）は、<a href="../database/factions.html#venom-empire">帝国</a>軍が地表の地下に隠された基地を根こそぎ破壊するために開発した、空前絶後の巨大さを誇る移動要塞兼戦艦である。皿状の艦体が防衛陣地の真上を覆うと地表から昼が消え、住民が夜と錯覚して街灯が点るほどである。規模は同系統の思想で作られた拠点制圧兵器サルレシアの約10倍に達し、直後に超大型バンカーバスターが地殻ごと基地を爆砕する。既存のいかなる艦種にも分類できないその規模から、共和国側の記録では便宜的に「超巨大強襲戦艦」と登録されている。</p>
+  <p class="lore-p">帝国将兵の間では「ソーサラー」の通称で呼ばれる。皿（ソーサー）のような外見と、要塞が一夜で更地になる様を「魔法」に例えた掛け言葉であり、この不謹慎な洒落が笑い話でなくなるまでに、共和国は基地を三つ失った。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">開発経緯 ─ THE ANSWER OF BRUTE FORCE</h3>
+  <p class="lore-p">開発の背景には、要塞構築思想の変遷がある。<a href="../database/glossary.html#lylat-wars-1">過去の大戦</a>や<a href="../database/factions.html#iga">IGA</a>戦役では、地表に築かれた基地が空爆や絨毯爆撃で軒並み破壊される事態が続出した。この戦訓から、基地の入り口のみを地上に置き、司令部・格納庫・生産設備といった本丸を地下深くへ隠す方式が両陣営の標準となっていった。対空砲火をかいくぐって爆撃を当てたところで、削れるのは「玄関」だけ。地下要塞は攻撃側にとって、時間と物量を際限なく呑み込む底なしの沼だったのである。</p>
+  <p class="lore-p">帝国もこの地下要塞への対処に頭を悩ませていたとみられるが、導き出した答えは単純明快だった。対空戦力を物量で封じながら基地の真上に飛来し、超大型バンカーバスターで地殻ごと基地を爆砕する。掘られたなら、山ごと潰せばよい。力押しの極地というべきこの戦術兵器には、あの<a href="../characters/kellone.html">ケローン大提督</a>ですら開発当初は疑問を呈していたと伝えられる。だが実戦投入後の成果は凄まじく、すでに<a href="../database/locations.html#fichina">フィチナ</a>の<a href="../database/glossary.html#hihyotsk-fall">地下基地二つ</a>と<a href="../database/locations.html#katina">カタリナ</a>の補助基地一つが地図から消えた現在、大提督も認めざるを得ない状況にあると分析されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">設計思想 ─ LESSONS OF THE NIGHTMARE</h3>
+  <p class="lore-p">発想自体は、かの<a href="../database/glossary.html#silent-nightmare">サイレント・ナイトメア事件</a>で使用されたプロトボルスの規模を下げたものである。ただし決定的な違いが二つある。第一に、航行は実験的な動力炉ではなく、安定性の実証されつくした通常の<a href="../database/military.html#g-diffuser">G・ディフューザー機関</a>の大型多基掛けで行われる。原型を作り上げたのが皇帝<a href="../characters/andorf.html">アンドルフ</a>本人である以上、帝国はこの技術の限界と安全域を誰よりも知る立場にある。第二に、主兵装のバンカーバスターは単純な火薬と重量に由来する質量兵器であり、暴走も汚染もなく、取り扱いは極めて容易である。</p>
+  <p class="lore-p">動力に夢を見ず、弾頭に理屈をこねない。プロトボルスを失った失敗から学んだ帝国軍の設計思想は、この艦において「確実に動き、確実に落とす」の一点に集約されている。共和国の技術士官がこの艦を評した言葉が、参謀部の報告書に残されている。「腹立たしいことに、健全な工学である」。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴 ─ SERVICE RECORD</h3>
+  <p class="lore-p">初期のテスト運用と目される作戦で、本艦はフィチナの地下基地二つを爆砕した。氷層と岩盤に守られ「艦砲では傷一つ付かない」とされた地下都市式の要塞が、それぞれ一晩で沈黙した衝撃は大きく、以後の共和国軍は地下であることを安全の根拠に数えることをやめている。続くカタリナでは補助基地一つが同様の手口で失われた。</p>
+  <p class="lore-p">補助基地を潰したこの来襲で、帝国は本艦と並べて別系統の拠点制圧兵器サルレシアを同時に飛ばしていた。二つの皿で観測を錯綜させ、秘蔵の本艦から弱点分析の目を逸らす手口である。数日後にノラ・ラゴスへ単独で現れたサルレシアを、<a href="../characters/bill.html">ビル・グレイ</a>率いる駐留軍が基地全滅寸前の防空戦を凌ぎ切り、駆けつけた<a href="../database/military.html#starfox">スターフォックス</a>との連携によって撃墜した。世に言う<a href="../database/glossary.html#katina-miracle">「カタリナの奇跡」</a>である。ただし本艦そのものは一度も落とされていない。帝国側は系列機の損失を「試験段階の許容損耗」として処理したとみられ、本艦の建造はむしろ加速している。グレートディッシュは今や、<a href="attack-carrier.html">アタック・キャリアー</a>に続く帝国の新たな主戦力になろうとしている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">脅威評価 ─ THREAT ANALYSIS</h3>
+  <p class="lore-p">脅威評価で最も警戒されているのは規模そのものである。<a href="../database/glossary.html#katina-miracle">カタリナの奇跡</a>で守備隊が落としたサルレシアは本艦の10分の1に過ぎず、バリアのような小手先の兵装に頼らない構造の堅牢さを持つため、あの戦いで有効だった接続部への集中攻撃が本艦には通用しない。艦体が基地上空を覆えば地表は夜と同等の暗さとなり対空陣地は目標の全景を捉えることすら難しくなる。「帝国の秘密兵器は落とせる」という士気の回復が、次に来る本物の皿への過小評価に転じることを参謀部は最も恐れている。</p>
+  <p class="lore-p"><span class="redacted">セクターτ会戦の鹵獲データ照合により5日後、グレートディッシュがカタリナへ再度来襲することが高確度で判明している。共和国にとってこれは最大級の緊急事態である。前回が試験運用の域を出なかったのに対し、今回のカタリナで「地下要塞は消せる」という成果が明確になった場合、帝国軍はそのままコーネリアへ向けてこの戦艦を出撃させる可能性が高い。衛星ダリスの防衛層を飽和させ得る物量を伴うと予測されており、次の奇襲作戦の防衛は共和国軍の今後の戦況を左右する重要な局面となる</span>。</p>
+  <p class="lore-p"><span class="redacted">迎撃計画は多層で進行中である。カタリナには特殊戦闘部隊<a href="../database/military.html#vorpal">ヴォーパル隊</a>が緊急展開し、駐留軍と対策会議を続けている。第1宙域の軌道補正権限は<a href="../planets/area3.html">AREA3</a>管制司令へ臨時移管され「壁の呼吸」が史上初めて実戦使用される見込みである。再編中の<a href="../database/locations.html#starblade">スターブレード</a>艦隊も「カタリナへの借り」を返すべく可動戦力の抽出を進めている。なお本データベースの閲覧権限が臨時にLV.2へ引き上げられているのは、この迎撃計画に関わる全部隊へ情報を行き渡らせるための措置である。</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">本艦の開発は帝国軍と<a href="../database/factions.html#hactiva-union">ハクティバ通商連合</a>の共同事業とみられている。試作艦は惑星<a href="../database/locations.html#eladard">エラダード</a>でいくつも建造されており、共和国軍への言い訳は「新型豪華客船の製造」であった。皿の正体が明らかになった今、この釈明を信じて視察を見送った当時の判断は、情報部の反省資料に収められている。</p>
+  <p class="lore-p">その実戦試験では地上からの対空砲台への耐性が課題となっていた。立ち会った帝国将校が「最大級の対空戦車を用意しろ。これに耐えられれば合格とする」と横柄に言い放ったところ、通商連合が持ち出してきたのは、知る人ぞ知る星系最強最大の戦車<a href="odd-weapons.html#little-mouse">「リトルマウス」</a>だった。ド級の一撃を受けた試作艦は文字どおり一撃で「割れ」、発端となった帝国将校は顎が外れたうえ、腰まで抜けてしまったという。この日から帝国側の横柄な態度は少し改まり、以後の商談では互いに礼儀をわきまえるようになったという逸話が残されている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

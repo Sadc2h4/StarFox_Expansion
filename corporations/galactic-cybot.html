@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GALACTIC CYBOT — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#c9a86a;--accent:#eed9a8;--border:rgba(201,168,106,0.32);--border-hi:rgba(238,217,168,0.7);--dim:#33290f;--dim2:#1a1408; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/corporations.html" class="nav-back">◄ CORPORATE DB</a>
+    <div class="header-tag">[ CIS-HQ / CORPORATION — ギャラクティック・サイボット社 ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ / CORPORATE FILE 29 ]</div>
+      <h1 class="codex-title">GALACTIC CYBOT</h1>
+      <p class="codex-p">ギャラクティック・サイボット社 ── 準惑星クロウディアスに本拠を置く作業用ドロイドの最大手。不器用なサイと背の高すぎる犬が酒場で意気投合して始めた農業機械の会社は、いま鉱山で働く第5級ドロイドの六割を作っている。社是は「手が足りないなら、手を作ればいい」。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#overview">概要</a>
+      <a href="#history">沿革</a>
+      <a href="#claudius">クロウディアス開発</a>
+      <a href="#products">主力製品</a>
+      <a href="#archives">記録余話</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="../database/glossary.html#droids">ドロイドの等級</a> / <a href="../database/glossary.html#claudius-belt">クロウディアス準惑星帯</a> / <a href="../database/corporations.html">企業DB</a></span>
+    </nav>
+
+    <article class="codex-entry" id="overview">
+      <h2 class="codex-h">概要 <span class="en">OVERVIEW</span></h2>
+      <p class="codex-p">ギャラクティック・サイボット社は<a href="../database/glossary.html#claudius-belt">準惑星クロウディアス</a>に本拠を置くドロイドメーカーである。主力は<a href="../database/glossary.html#droids">ドロイドの等級</a>で言う第5級の非人型作業用ドロイドであり、鉱山・工事現場・農地で黙々と働く機械の多くがこの会社の製品である。一応人型ドロイドもいくつか生産しているが、同社の設計思想は一貫して「人の形を真似るより、人の手が届かない仕事を片付ける形を作る」ことにある。</p>
+      <p class="codex-p">現在は<a href="../planets/macbeth.html">マクベス</a>本星やクロウディアス周辺の鉱山で使用される第5級作業用ドロイドを製造しており、この分野のニーズの六割は同社の製造品で賄われている。マクベスが<a href="../database/factions.html#venom-empire">帝国</a>の占領下に入った現在も鉱山で稼働する機体の大半は同社製のままであり、本社は占領地の外にありながら製品だけが占領地で働き続けるという奇妙な立場に置かれている。</p>
+    </article>
+
+    <article class="codex-entry" id="history">
+      <h2 class="codex-h">沿革 <span class="en">HISTORY</span></h2>
+      <p class="codex-p">創業者はサイ型の<a href="../database/races.html#minor-races">少数人種</a>の男である。太い指と厚い皮膚のせいで手先が絶望的に不器用であった彼は、同じ悩みを抱える仲間たちを助けるために作業用ドロイドを作る会社を立ち上げることを思い立った。もう一人の創業者はボルゾイ系<a href="../database/races.html#anubisoid">アヌビソイド</a>の実業家である。こちらは身長が高すぎて工場の作業に苦労しており、天井に頭をぶつけながら農業機械の会社を経営していた。二人は<a href="../database/glossary.html#cantina">酒場</a>で偶然隣り合い、「手が届かない」と「手が動かない」の愚痴が噛み合ったことで意気投合したと伝えられる。実業家の経営する農業機械の会社を足掛かりに、ドロイド生産を担う新会社が設立された。</p>
+      <p class="codex-p">設立地は実業家の勧めでコーネリアのグランベル州が選ばれ、当初の主力は農業作業用ドロイド「psy-アグリボット1型」であった。畑の畝を一日中往復する六脚の機械は農家の評判を集め、会社は堅実に育っていく。転機は実業家の側からやって来た。農業用ドロイドで得た資金を元手に株式投資をしていた彼は、<a href="../database/glossary.html#iga-war">IGA戦役</a>の戦時特需による株の大変動で偶然にも膨大な資金を手にしたのである。同社はこれを元手に社運をかけた決断を迫られた。<a href="../database/glossary.html#frontier">フロンティア</a>方面にある未知の惑星を探すか、マクベス近傍の準惑星開発を実施するかの二択である。</p>
+      <p class="codex-p">株主総会では前者は無謀すぎるという声が噴出した。社長は未知の惑星への夢を語ろうとしたが株主を納得させる発言ができず、結局後者へ投資することとなった。「あの時うまく喋れていれば今ごろ会社はフロンティアの果てにある」というのが社長の口癖であり、株主にとっては何よりの安心材料になっている。</p>
+    </article>
+
+    <article class="codex-entry" id="claudius">
+      <h2 class="codex-h">クロウディアス開発 <span class="en">THE CLAUDIUS PROJECT</span></h2>
+      <p class="codex-p">投資先に選ばれた準惑星クロウディアスは<a href="../planets/macbeth.html">マクベス</a>の後ろに付いて回る特殊な軌道を巡る星であり、周囲は隕鉄が飛び交い星雲が赤熱する<a href="../database/glossary.html#claudius-belt">「溶鉱炉宙域」</a>と呼ばれる危険な宙域であった。鉱山を開いたところで業者が安全に通えなければ製品も資材も運べない。同社はこの宙域に道を作る必要を感じ、<a href="vector-prime.html">ベクター・プライム社</a>と共同で専用の「坑道ワープドライブ」を開通させた。飛来する隕鉄を避けて宙域を貫く固定航路であり、当時は一民間企業が敷いた私設の抜け道に過ぎなかったこの航路は、後に共和国軍がセティボスへ至る中継航路として整備し、今日でも使用されている<a href="../database/glossary.html#route-of">オズリック・フォーティンブラス工業航路</a>の基礎になっている。星系の大動脈の一本が不器用なサイの鉱山の私道から始まったという事実は、航路の名に同社の名が刻まれていないこともあって意外に知られていない。</p>
+      <p class="codex-p">本社をクロウディアスへ移した同社は宙域の鉱山向けに作業用ドロイドの供給を始め、隕鉄の飛来に耐える装甲と赤熱するプラズマ雲の中でも狂わないセンサーを持つ「溶鉱炉仕様」の機体が主力になった。マクベスの鉱山業がこの仕様を標準として採用したことで、同社の製品は宙域の鉱山から惑星の坑道までを埋め尽くしていく。六割という現在の占有率はこの時期に決まったものである。</p>
+    </article>
+
+    <article class="codex-entry" id="products">
+      <h2 class="codex-h">主力製品 <span class="en">PRODUCTS</span></h2>
+      <p class="codex-p">現行の主力は鉱山向けの第5級作業用ドロイド群である。掘削・運搬・選別の三系統に分かれ、いずれも非人型の多脚構造を採る。人型が採用されないのは坑道の天井が低いためであり、創業者二人の体格の悩みがそのまま設計方針に生きていると社内では語られている。農業用の「psy-アグリボット」は今も改良を重ねて生産が続いており、型番は既に二桁に達している。</p>
+      <p class="codex-p">人型の第3級サーヴァントドロイドも少数ながら生産していた時期がある。工場の事務や来客対応を担わせるための機種であったが、主力の作業機との共通部品が少なく採算が合わなかったため早々に廃盤となった。生産台数が少ないことから現在では収集家の間で取引される機種になっており、同社は補修部品の供給を打ち切って久しい。</p>
+    </article>
+
+    <article class="codex-entry" id="archives">
+      <h2 class="codex-h">記録余話 <span class="en">ARCHIVES</span></h2>
+      <p class="codex-p"><a href="../planets/titania.html">タイタニア</a>の砂漠で稼働を続ける旧式採掘機<a href="../characters/professor-hanger.html">プロフェッサー・ハンガー</a>が近頃の商談で従えている人型の小型子機は、同社が生産していたあの廃盤のサーヴァントドロイドを何者かが修理してカスタマイズしたもののようである。補修部品が存在しないはずの機種が禁断の惑星の砂漠で動いている理由、そして誰が修理したのかはいまだに謎である。同社の技術者が写真を見て最初に発した言葉は「うちの部品じゃない」であった。</p>
+      <p class="codex-p">本社の玄関には創業者二人の等身大の像が並んでいる。サイの像は手を後ろに組み、ボルゾイの像は少し前屈みである。二人の癖をそのまま写したこの像は、来客が思わず自分の姿勢を正してしまう効果があるとして評判が良い。</p>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

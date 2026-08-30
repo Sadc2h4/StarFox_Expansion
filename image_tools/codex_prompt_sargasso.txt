@@ -1,0 +1,15 @@
+Please generate an image with the image_gen tool.
+
+Create a single high-resolution, photorealistic sci-fi rendering of a dense orbital debris field known as a "space graveyard": a tightly packed drifting swarm of wrecked spacecraft and iron meteoroids, clustered into one compact, roughly spherical mass floating in deep space.
+
+Content and detailing:
+- Hundreds of derelict hulls at many scales, from small fighter fragments up to a few large capital-ship sections with broken spines and torn hull plating, all tangled together with twisted structural beams and smaller rubble.
+- Heavily weathered, burnt and corroded metal. Dead ships, no engine glow, no running lights, no visible crew.
+- Faint violet-magenta magnetic glow threading between the wrecks, as if an unseen magnetic field were binding the mass together. Subtle purple rim light on the metal edges.
+- Cinematic key light from the upper left, deep shadows, realistic PBR-style metal materials, fine greebled detail.
+
+Composition requirements (very important):
+- Render ONLY the debris mass. No planets, no nebula, no stars, no text, no watermark, no lens flare.
+- The debris mass must be centered and compact, filling roughly 85 percent of the frame, so it reads clearly as one object when shown small as a catalogue thumbnail.
+- The entire background must be one flat, uniform, pure magenta color (RGB 255, 0, 255). No gradients, no vignetting, no glow or haze bleeding over the magenta background. Crisp edges so the magenta can be chroma-keyed out.
+- Square image, 1024x1024 or larger.

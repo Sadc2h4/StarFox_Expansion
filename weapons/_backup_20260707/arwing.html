@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARWING — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#37d0b2;--accent:#9ff2e2;--border:rgba(55,208,178,0.32);--border-hi:rgba(55,208,178,0.7);--dim:#0d3a30;--dim2:#071d18; }
+    .p-title    { color: #e8fff8; text-shadow: 0 0 50px rgba(55,208,178,0.35); }
+    .p-tagline  { border-color: #37d0b2; color: #37d0b2; }
+    .terminal-hdr { color: #9ff2e2; }
+    .terminal-hdr::before { background: #9ff2e2; box-shadow: 0 0 8px #9ff2e2; }
+    .dk { color: #37d0b2; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../codex/glossary.html#type-weapon" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-01 / ARWING — アーウィン ]</div>
+    <div class="header-status">● IN SERVICE — STAR FOX</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — ARWING — ALL-RANGE FIGHTER — SPACE DYNAMICS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0001 — CLEARANCE: OPEN — G-DIFFUSER SYSTEM</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-01 / ARMORY FILE ]</div>
+        <div class="p-name-jp">アーウィン (ARWING)</div>
+        <h1 class="p-title">THE WING<br>THAT NEVER<br>LIES</h1>
+        <div class="p-tagline">超高性能全領域戦闘機</div>
+        <p class="p-short-desc">スペース・ダイナミクス社が生んだ、Gディフューザーシステム搭載の全領域戦闘機。スターフォックスの代名詞にして、ライラットの空の最高傑作。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 01 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">ARWING / アーウィン</td></tr><tr><td class="dk">CLASS</td><td class="dv">超高性能全領域戦闘機</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv"><a href="../codex/space-dynamics.html">スペース・ダイナミクス社</a></td></tr><tr><td class="dk">LENGTH / HEIGHT</td><td class="dv">全長 28sm / 全高 5.5sm</td></tr><tr><td class="dk">MAX SPEED</td><td class="dv">M4.2</td></tr><tr><td class="dk">POWERPLANT</td><td class="dv">プラズマエンジン NTD-FX壱型</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">シングルレーザー（チャージ弾）/ ツインレーザー / スマートボム</td></tr><tr><td class="dk">EQUIPMENT</td><td class="dv">Gディフューザー / デフレクターシールド / 大気圏内用フラップ</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../codex/glossary.html#starfox">スターフォックス</a></td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 運用中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">COMBAT RATING -- 96 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(55,208,178,0.55);">
+        <img src="" alt="ARWING" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ALL-RANGE FIGHTER — G-DIFFUSER</span>
+            <span class="tg-jp">超高性能全領域戦闘機 アーウィン</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">この機体は、乗り手に噓をつかない。<span class="tg-note note">-J・マクラウド 初飛行テスト後の第一声-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="../resource/weapons/arwing_anatomy.jpg" alt="Arwing anatomy" class="active">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">操縦できない機体はない。乗り手が育っていないだけだ<span class="lore-quote-src">― ヤル・デ・ポン社長 ── アーウィン批判への返答</span></span></p>
+  <p class="lore-p">アーウィン（Arwing）は、<a href="../codex/space-dynamics.html">スペース・ダイナミクス社</a> が開発した超高性能全領域戦闘機。宇宙空間・大気圏内・地表付近を問わず戦闘行動が可能な「全領域（オールレンジ）」性能を持ち、雇われ遊撃隊<a href="../codex/glossary.html#starfox">スターフォックス</a> の主力機として星系中にその機影を知られている。</p>
+  <p class="lore-p">ベースは同社の量産戦闘機だが、現在運用されている機体はチームメンバーの手によって各所に改造が施された、事実上のワンオフ機である。強力なデフレクターシールドを備え、あらゆる環境での飛行が可能とされる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MECHANISM ─ 機構</h3>
+  <p class="lore-p">心臓部は社長<a href="../codex/characters.html#yaru">ヤル・デ・ポン</a> 自らが発明した重力・慣性拡散機構「Gディフューザーシステム」。左右のウィングユニットに内蔵されたディフューザーが機体にかかる負荷を拡散することで、通常なら搭乗者が失神する機動──急旋回、宙返り、そして代名詞のローリング──を可能にしている。</p>
+  <p class="lore-p">推進器はプラズマエンジンNTD-FX壱型。最高速度はM4.2に達し、ブースト・ブレーキの緩急を織り交ぜた機動は「空戦の教科書を書き換えた」と評される。武装はチャージ照準可能なシングルレーザーを基本に、換装式のツインレーザー、そして敵編隊を一掃するスマートボムを搭載。大気圏内飛行用のフラップ、通信モニター、急旋回ペダルなど、操縦系は徹底して「乗り手の反射」に追従する設計である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 運用史</h3>
+  <p class="lore-p">初飛行テストの操縦桿を握ったのは、当時傭兵になりたてだった<a href="../codex/characters.html#james">ジェームズ・マクラウド</a>。着陸後の第一声「この機体は、乗り手に噓をつかない」は、開発陣にとって最高の設計評価として今も語り継がれる。以来アーウィンは初代<a href="../codex/glossary.html#starfox">スターフォックス</a> の翼となり、<a href="../codex/locations.html#venom">ベノム</a> 偵察作戦の悲劇を経て、現在は2代目リーダー<a href="../codex/characters.html#fox">フォックス・マクラウド</a> ら4機が運用を続けている。</p>
+  <p class="lore-p">設計上は「過敏すぎて操縦不能」とまで言われた尖った特性を持つが、一流のパイロットが乗った時にのみ真価を発揮する。<a href="../codex/glossary.html#cdf">CDF</a> では「乗り手を選ぶ名機」の代名詞として、新型機の操縦性を語る際の基準機となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">機首に描かれたスターフォックスのチームマーク──翼を広げた狐の意匠は、初代メンバーの<a href="../codex/characters.html#pigma">ピグマ・デンガー</a> によるデザインだと伝えられている。裏切り者の描いた紋章を今も掲げ続ける理由を、フォックスは語らない。ペッピーいわく「あの頃のあいつまで嫌いになる必要はない、ということさ」。</p>
+  <p class="lore-p"><a href="../codex/space-dynamics.html">スペース・ダイナミクス社</a> には歴代アーウィンの試作ウィングが保管されており、その中には焼け焦げた初代の破片も含まれる。銘板にはこうある──「翼は折れる。飛び方は残る」。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

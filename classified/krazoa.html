@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script>if (sessionStorage.getItem('apx-authorized') !== '1') location.replace('../apocalypsis.html');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X-01 KRAZOA — APOCALYPSIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --apx:#ff4455; --apx-dim:rgba(255,68,85,0.35); --apx-amber:#ffdd88; }
+    body { background:#050307; font-family:"Share Tech Mono",monospace; }
+    html, body { overflow-y:auto; }
+    .apx-p, .warn-box { font-family:'NitalagoRuika','Share Tech Mono','Yu Gothic UI','Meiryo',monospace; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 50% 40%, rgba(40,5,10,0.55) 0%,transparent 60%), #050307; }
+    .apx-main { position:relative; z-index:5; max-width:800px; margin:0 auto; padding:70px 24px 60px; }
+    .apx-title { font-family:Orbitron,monospace; font-weight:900; letter-spacing:4px;
+      color:#ffeaea; font-size:24px; text-shadow:0 0 30px var(--apx-dim); }
+    .apx-sub { color:var(--apx); font-size:11px; letter-spacing:3px; margin:8px 0 30px; }
+    .apx-sec { border:1px solid var(--apx-dim); background:rgba(18,4,8,0.85); margin-bottom:22px; }
+    .apx-sec-hdr { display:flex; align-items:center; gap:8px; padding:9px 14px; font-size:11px;
+      letter-spacing:2px; color:var(--apx); background:rgba(255,68,85,0.1);
+      border-bottom:1px solid var(--apx-dim); }
+    .apx-sec-hdr .dot { width:7px; height:7px; border-radius:50%; background:var(--apx);
+      box-shadow:0 0 8px var(--apx); }
+    .apx-p { color:#d8c0c0; font-size:13px; line-height:2; letter-spacing:0.5px; padding:14px 18px; margin:0; }
+    .apx-p + .apx-p { padding-top:0; }
+    .apx-p b { color:var(--apx-amber); font-weight:normal; }
+    .apx-p a { color:var(--apx-amber); }
+    .lv { display:inline-block; margin-right:8px; padding:1px 8px; font-size:10px;
+      color:var(--apx); border:1px solid var(--apx-dim); letter-spacing:2px; }
+    .warn-box { border:1px solid rgba(255,68,85,0.6); background:rgba(45,6,12,0.9);
+      padding:14px 18px; margin-bottom:26px; color:#ffb8b8; font-size:12px; line-height:2; letter-spacing:0.5px; }
+    .warn-box b { color:var(--apx-amber); font-weight:normal; }
+    .apx-foot { text-align:center; color:#775555; font-size:10px; letter-spacing:2px; padding-top:8px; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(255,68,85,0.3);">
+    <a href="../apocalypsis.html" class="nav-back" style="color:#ff4455;border-color:rgba(255,68,85,0.3);">◄ APOCALYPSIS</a>
+    <div class="header-tag">[ X-01 / KRAZOA — クラゾア ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff4455;">●</span> CLEARANCE LV.6 — SESSION AUTHORIZED</div>
+  </header>
+
+  <main class="apx-main">
+    <div class="apx-title">KRAZOA ── クアン・アタ・ラチュ</div>
+    <div class="apx-sub">▮ 起源記録 X-01 — 外宇宙由来知的存在 / 星系規模の脅威 ▮</div>
+
+    <div class="warn-box">
+      <b>▮ 取扱区分 LV.6</b>／星系に現存する記録のうち、開示による社会的損害が最大と評価された唯一の文書である。本記録は仮説を多く含む。だが仮説の段階であっても、これが公になれば星系の信仰・歴史・民族関係の三つが同時に崩壊する。<b>「平和の神」の名で祀られている対象が何であるかを、現時点で知る必要のある者は極めて少ない。</b>閲覧者は本記録の存在に言及してはならない。
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 01 — 特異点からの来訪者 ▐</div>
+      <p class="apx-p">今日<a href="../database/glossary.html#krazoa">平和の神クラゾア</a>と呼ばれている存在の本来の名は<b>クアン・アタ・ラチュ</b>である。フォルトナの聖地に冠された地名がそのまま本名であり、恐竜族は数千年にわたって、自分たちが崇める対象の真名を正確に呼び続けてきたことになる。</p>
+      <p class="apx-p">この存在はライラットで生まれていない。<b>3800年以上前</b>、<a href="../database/locations.html#hactiva">ハクティバ</a>と<a href="../database/locations.html#paranid">パラニド</a>の二つの太陽の中間に存在する特異点を通り、外宇宙からこの星系へ到達した完全な外来者である。両太陽の中間領域で観測機器が一様に狂い、ワープ航行が今も禁じられている異常磁場は、この通過の痕跡と考えられる。<a href="../planets/kew.html">キュー</a>の項が「星系最古の統治機構と数千年ぶん進んだ工学が同時に、しかも外部からもたらされた」と記す解釈は、比喩ではなく事実の記述である。</p>
+      <p class="apx-p">平行世界の惑星<b>アラネマック</b>を中心に活動していた銀河規模の帝国。その支配種族。掲げた目標は宇宙の統一である。星系の民が三千八百年にわたり秩序と平等の神として祀ってきたものの正体は、外宇宙で版図を広げ続けていた征服者である。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 02 — 敗走 ▐</div>
+      <p class="apx-p">クアン・アタ・ラチュがこの辺境へ来たのは、征服のためではない。逃亡のためである。宇宙の統一を掲げた彼らに反旗を翻した種族がいた。竜の騎士<b>カメリアン</b>である。数百年に及ぶ激戦の末、絶対の存在であったはずのクアン・アタ・ラチュは敗北寸前まで追い詰められた。並行次元へ逃れた先が偶然ライラットだったにすぎない。到達した時点で肉体の崩壊は止まらず、力の大部分は既に失われていた。</p>
+      <p class="apx-p"><span class="lv">LV.6</span>ここで一つの事実を記録しておく。<b>特異点は空間だけでなく時間も保存しない。</b>逃走の本体はこの性質にあった。次元を越えて追ってきたカメリアンの追撃隊は、出口で<b>およそ二億年の過去</b>へ振り捨てられている。クアン・アタ・ラチュ自身が出現したのは三千八百余年前である。追う者が先に降り、追われる者が後から来る。この逆転が成立した時点で追跡は事実上終わっていた。そして出現の時期は<a href="../database/glossary.html#bremen">始祖の開拓団</a>が星系に根を下ろした直後にあたる。特異点の内側で出口の時を選べたのだとすれば、これは偶然ではない。<b>収穫に足る文明が育つのを、扉の内側で待っていたことになる。</b></p>
+      <p class="apx-p">追撃隊が排出されたのも同じ門である。<a href="../planets/kew.html">キュー</a>のタンガタ自然公園に立つ神聖帝国以前の様式の翼の石柱は、彼らが門の傍らに残した標と断定してよい。装飾的遺構として登録されているそれは、二億年前の哨戒の跡である。騎士たちはやがて生命の最も豊かなフォルトナへ移り、いずれ現れるはずの獲物の名を冠した追跡拠点を築いた。この末裔が<a href="../planets/fortuna.html#tribe-draconia">ドラコニア族</a>であり、フォルトナの聖地クアン・アタ・ラチュの起源もこれである。<b>神の名は神より二億年古い。</b>恐竜族が神の来訪より遥か前からその真名を呼び続けてきたという倒錯は、ここに由来する。彼らが今日まで自らを「選ばれし統治者」と信じ、聖地の遺跡に執着し続けてきた理由は、待つうちに忘れ果てた追跡任務の残骸にほかならない。</p>
+      <p class="apx-p"><span class="lv">LV.6</span>この敗走が、後の星系史の性格をほぼ決定した。銀河の絶対者を窮地へ追い込んだのが爬虫類に近い姿の竜だったという事実は、この存在の矜持を深く傷つけたと推定される。以後の行動に一貫して現れる爬虫類系種族への処遇は、この屈辱の延長線上にある。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 03 — 神聖帝国という器 ▐</div>
+      <p class="apx-p">崩れゆく体と失われた力を取り戻すため、この存在は器を必要とした。選ばれたのが当時なんの価値もない辺境だった惑星<a href="../database/locations.html#kew">キュー</a>である。当時のキューでは爬虫類系の人種が支配層にあり、<a href="../database/races.html#holsoid">ホルソイド</a>は奴隷階級に置かれていた。クアン・アタ・ラチュはその最下層へ英知と法を授けた。<a href="../database/glossary.html#paranid-empire">パラニド神聖帝国</a>の建国である。</p>
+      <p class="apx-p">神聖帝国の記録でホルソイドが神のように崇められている理由も、二つの太陽に「民を従える戒律」と「自然を凌駕する知識」の名が与えられている理由も、これで説明が付く。授けられたのは信仰ではなく、統治の技術そのものだった。建国は星系暦190年前後と推定され、そこから一世紀余りのうちに神聖帝国は星系最大級の版図を築き上げる。</p>
+      <p class="apx-p"><span class="lv">LV.6</span><b>この建国によって、キューの支配層と奴隷階級は完全に逆転した。</b>爬虫類系人種すなわち<a href="../database/races.html#paranodian">パラノディアン</a>が被支配側へ落とされ、その構造は帝国が滅びた後も形を変えて残り続けた。<a href="../database/glossary.html#racial-friction">今日のパラノディアン差別</a>の源流はここにある。星系が三千数百年ものあいだ克服できずにいる人種問題は、文化のすれ違いから自然発生したものではない。<b>竜に敗れた者が、竜に似た姿の種族へ向けた私怨が起点である。</b></p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 04 — 進軍と文明の後退 ▐</div>
+      <p class="apx-p">力を取り戻しつつあった存在とその信奉者は、やがて星系の内側へ向かう。狙いは<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>とコアワールドの惑星が抱える生命力である。進軍の途上で中継基地として利用された星々には、<a href="../database/glossary.html#bremen">始祖の開拓団</a>を経てインナーリム側やソーラ側へ移り住んだ文明が既に根を下ろしていた。</p>
+      <p class="apx-p">神聖帝国はそれらの文明を一律には扱わなかった。恭順した土地には文明の水準を数世代ぶん引き上げる技術が与えられ、抗った土地は戦火で焼かれた。<b>そして与えられた技術は、いずれも当時の彼らが扱うには過ぎた利器だった。</b></p>
+      <p class="apx-p"><span class="lv">LV.6</span>星系暦200年から300年を前後して、開拓団由来の高度な文明水準が星系の広い範囲から消え失せている。この時期を境に、星間航行の技術を持っていたはずの社会が奴隷制と貴族制の段階まで後退した記録は各地に残る。<b>与えられた過ぎた利器を戦争に用い、一度滅びかけたためである。</b>星系がその後に経験した長い停滞期は、外から持ち込まれた技術が自壊した跡地であった可能性が高い。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 05 — 収穫 ▐</div>
+      <p class="apx-p"><span class="lv">LV.6</span>この存在が糧とするのは、星と生命の持つエネルギーそのものである。<a href="../database/sectors.html#lambda">セクターλ</a>をはじめ星系各所に偏在する<b>スペースオベリスク</b>は、クアン・アタ・ラチュが設置したエネルギー集積装置と断定してよい。オベリスクが「何を向いて立っているのか」という長年の疑問には答えがある。向いている先は集積の対象である。</p>
+      <p class="apx-p">集められた力の大半は本体の回復に充てられ、残りが<b>スピリット</b>へ変換される。神秘の力として扱われてきたスピリットの正体は、外宇宙の技術、すなわち生命エネルギーを力へ変換する機構にすぎない。<a href="../database/glossary.html#spell-stone">スペルストーン</a>も聖地の遺跡も、現在はこの機構の末端として動いている。後者は元来カメリアンの追跡拠点であったが、築いた者たちが使命を忘れた後に接収され、逆の目的へ配線を替えられた。スピリットが放つ青白い輝きがライラット・プライムの生命エネルギーと同質であることは、両者の直結を示している。</p>
+      <p class="apx-p">スピリットを用いた兵器が例外なく「生命と引き換えの力」を与える理由も、ここで説明が付く。適合しない者が扱えば、力に体が追いつかず生命力を消費する。逆に言えば、この力を正しく扱える種族はその代償を受けない。ライラットにとってスピリットは、いまだ早すぎる代物である。</p>
+      <p class="apx-p"><span class="lv">LV.6</span>そして最も重い結論がここに続く。<b>星系が有史以来ほとんど絶え間なく戦争を続けてきた事実は、偶然ではない。</b>戦いで失われた生命、資源採掘で消えた小惑星、滅んだ国家と焼かれた星。そのすべてが収穫の対象である。ライラットの負の循環を設計し維持してきたのは、この存在である。「平和の神」という肩書きは誤りではない。<b>自分だけが平和に暮らせる世界を作りたい、という意味においては正確である。</b></p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 06 — 唯一の天敵 ▐</div>
+      <p class="apx-p">この存在にとって現時点で唯一の脅威が、正体を知る側の血筋、すなわち<a href="../characters/drakor.html">ドラコニア族</a>の末裔である。彼らは自らの存在理由を忘れ果てているが、忘れているだけで失ってはいない。聖地や遺跡を調査するたび、末裔は自分たちが何を追ってこの星へ来たのかを思い出しかける。</p>
+      <p class="apx-p"><span class="lv">LV.6</span><b>そのたびに一族は災厄に見舞われてきた。</b>ドラコニア族のみを正確に選んで猛威を振るった正体不明の伝染病、彼らの領域を襲った天変地異。いずれもスピリットを経由した干渉と考えられる。二億年の風化が削り残したわずかな記憶の芽を、飛来からの三千八百年が摘み続けてきた。<b>追われている側が、追う側を計画的に間引いてきたのである。</b></p>
+      <p class="apx-p">現在ドラコニア族に残る男性は一人とみられる。<a href="../characters/drakor.html">ドラコー</a>が死病を免れて機械の体を得たことが、この構図にどう作用するかは予測できない。天敵が鋼で補強されたとも、最後の一頭が延命されたにすぎないとも読める。</p>
+    </div>
+
+    <div class="apx-sec">
+      <div class="apx-sec-hdr"><span class="dot"></span>▌ 07 — 復活 ▐</div>
+      <p class="apx-p"><span class="lv">LV.6</span>神聖帝国は星系暦600年を前後して記録から消える。崩壊の原因は戦争とも疫病とも語られてきたが、本記録は別の可能性を最有力とみなす。<b>回復を進めた主にとって、器が不要になっただけである。</b>以後クアン・アタ・ラチュはライラットの惑星のうち最も適合した<a href="../database/locations.html#fortuna">フォルトナ</a>の地下へ移り、およそ三千四百年に及ぶ休眠に入った。潜伏先が天敵の末裔の膝元であることは矛盾ではない。間引きの機構が最も濃く張り巡らされた土地こそ、鈍りきった剣の見張りに最も適している。潜伏は今日まで成功しており、いまもそこに在ると考えられる。</p>
+      <p class="apx-p">結果としてこの存在は、ほぼ無尽蔵の生命エネルギーを得られる場所を手に入れた。特異点を越えてまでこの世界を探し当てた理由としては十分である。</p>
+      <p class="apx-p"><span class="lv">LV.6</span><b>復活の時は誰にも知られないまま近づいている。</b>仮にこれを打倒したとしても星系から戦争が消えるとは限らない。だが復活を許した場合、ライラットは使い潰される。共和国も帝国も通商連合も恐竜族も、例外なくこの掌の上で動いている。そしてそれに気づいている者は、星系全体で数人にすぎない。</p>
+      <p class="apx-p">現時点で本部が把握している該当者は2名である。<a href="../database/characters.html#krystal">クリスタル</a>、および<a href="../characters/scales.html">スケール将軍</a>。前者が何をどこまで知っているかは不明であり、後者は共和国の管理下にない。<b>この星系で真実に最も近い位置にいる二人のうち、一人はこちらの味方ではない。</b></p>
+    </div>
+
+    <div class="apx-foot">— 本記録の存在に言及すること自体が機密保持規定違反にあたる —</div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 200; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.1 + Math.random()*0.6).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(255,200,200,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../sector-tips.js"></script>
+</body>
+</html>

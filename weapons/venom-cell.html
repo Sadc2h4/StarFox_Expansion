@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VENOM CELL — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#c07ad0;--accent:#e2aef0;--border:rgba(192,122,208,0.32);--border-hi:rgba(226,174,240,0.7);--dim:#33203a;--dim2:#170f1c; }
+    .p-title    { color: #f8ecfc; text-shadow: 0 0 50px rgba(192,122,208,0.4); }
+    .p-tagline  { border-color: #c07ad0; color: #c07ad0; }
+    .terminal-hdr { color: #e2aef0; }
+    .terminal-hdr::before { background: #e2aef0; box-shadow: 0 0 8px #e2aef0; }
+    .dk { color: #c07ad0; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-18 / VENOM CELL — ベノム・セル ]</div>
+    <div class="header-status"><span class="blink" style="color:#e2aef0;">●</span> BIOHAZARD — CONTAINMENT ACTIVE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — VENOM CELL — BIO-CONTAMINATED CAPTURED UNITS — HAZARD ANALYSIS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0018 — CLASSIFICATION: BIOHAZARD — ORIGIN: PLANET VENOM</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-18 / ARMORY FILE ]</div>
+        <div class="p-name-jp">ベノム・セル (VENOM CELL)</div>
+        <h1 class="p-title">NEITHER<br>DEAD<br>NOR ALIVE</h1>
+        <div class="p-tagline">浸食鹵獲機体の総称 ─ 生体災害</div>
+        <p class="p-short-desc">惑星ベノムを覆うバイオウェポンの生体組織に浸食され、鹵獲された機体の総称。派閥を問わず無差別に取り込み、撃破されてなお死なない。星系が抱える最悪の生体災害である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ HAZARD SCAN — FILE 18 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">VENOM CELL / ベノム・セル</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">浸食鹵獲機体の総称 — 生体災害</td></tr><tr><td class="dk">ORIGIN</td><td class="dv">惑星ベノム — バイオウェポン生体組織</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">なし — 全勢力を無差別に浸食</td></tr><tr><td class="dk">PROPAGATION</td><td class="dv warn">⚠ 細胞分裂 — 周期およそ2時間</td></tr><tr><td class="dk">COUNTERMEASURE</td><td class="dv">忌避信号（帝国のみ保有）／浸食箇所の破壊</td></tr><tr><td class="dk">WEAK POINT</td><td class="dv warn">⚠ 恒星級の高エネルギー照射のみ有効</td></tr><tr><td class="dk">CONTAINMENT</td><td class="dv">防衛衛星ボルス — ベノム圏内へ封じ込め</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">増殖継続中 — 根絶手段なし</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">HAZARD ASSESSMENT -- 88 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 88%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(192,122,208,0.5);">
+        <img src="" alt="VENOM CELL" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">BIO-CONTAMINATED HULKS</span>
+            <span class="tg-jp">死ねない機体 ── 撃墜が終わりにならない敵</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">応答しろ、七番機。……全機、聞け。あれはもう七番機じゃない。撃墜を許可する。<span class="tg-note note">-対セル掃討任務 交戦記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">撃墜を確認。……訂正する。目標は墜ちた後も動いている<span class="lore-quote-src">― CDF戦訓資料 ベノム圏交戦報告より</span></span></p>
+  <p class="lore-p">ベノム・セル（Venom Cell）は、<a href="../planets/venom.html">惑星ベノム</a>の地表を覆いつくす<a href="../weapons/bioweapon.html">バイオウェポン</a>の生体組織に浸食され、鹵獲された機体の総称である。ベノムに蔓延るバイオウェポン細胞は恐るべき増殖力と環境耐性を持ち、なおかつ有機物と無機物を問わず取り込む浸食性を併せ持つ。この細胞に触れた機体は、細胞の分裂周期にあたるおよそ2時間以内に<a href="../database/factions.html#venom-empire">帝国</a>が保有する特殊信号で忌避させて引き剥がすか、浸食箇所を物理的に破壊しない限り、搭乗員もろとも取り込まれる運命にある。</p>
+  <p class="lore-p">鹵獲の対象に敵味方の区別はない。確認されている機体には共和国製も帝国製も<a href="../database/factions.html#hactiva-union">通商連合</a>製も含まれており、派閥を問わず無差別に取り込まれているといってよい。ベノム惑星圏にはおびただしい数の存在が判明しており、帝国唯一の急所とされる<a href="vpr.html">VPR基地</a>を叩くためのベノム地上降下作戦を事実上不可能にしている最大の要因である。</p>
+  <p class="lore-p">なお本データベースが本件を「兵器」として登録しているのは、分類上の便宜に過ぎない。指揮系統も製造元も持たないこの敵は、兵器というより災害として扱うのが実態に近い。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">性質 ─ BIOLOGY</h3>
+  <p class="lore-p">単体の戦闘力は鹵獲した機体の性能に依存し、決して高くない。真に恐れられているのは、撃破した後の始末の悪さである。</p>
+  <p class="lore-p">機体を乗っ取るバイオウェポン細胞は、比喩表現を抜きにして死なない。恒星や核爆発に匹敵する超高エネルギー照射環境を除き、いかなる環境でも死滅した例が確認されていない。細胞内には光合成に類する機構とエネルギーの再利用機構が備わっているとみられ、機体に残った微量の燃料はおろか、装甲の鉄を分解する際に生じる熱までも生命活動へ変換する。すなわち補給を必要とせず、実質あらゆる場所で無制限に増殖を続けることが報告されている。この性質が最悪の形で実証された事例については、<a href="../database/glossary.html#demonseed-crisis">デモンシード・クライシス事件</a>の項を参照されたい。</p>
+  <p class="lore-p"><a href="../database/military.html#cdf">共和国軍</a>は現在、セルとの接触報告を浸食の進行度によってクラスV-1からV-5に区分している。V-5は機体原形の消失を意味し、この等級が付いた時点で救難活動は回収から掃討へ切り替えられる。冷徹な規定に思えるが、2時間という分裂周期が許す猶予の短さを知る前線に、これを非難する者はいない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">群体 ─ THE SWARM</h3>
+  <p class="lore-p">セルの細胞は微弱な電位を帯びており、これが神経細胞のように高速の交信を行っている。個々のセルはこの交信で結ばれ、群れとして一つの意識を形成している可能性が指摘されている。魚群や鳥の群れを思わせる一糸乱れぬ編隊機動は、この意思疎通によるものと解析されている。</p>
+  <p class="lore-p">交信はベノム地表を覆う生体組織との間でも観測されている。惑星そのものが一つの頭脳として機能しているとする「巨大な頭脳」仮説において、セルの群体挙動が有力な根拠に挙げられる理由である。</p>
+  <p class="lore-p">また、この電位は複数の個体が集まることで増幅される性質を持ち、ベノム大気圏で猛烈な雷が多発する一因とされている。ベノムに侵入者があると目に見えて天候が荒れ、雷が増えることから、何らかの関係性があることは確実視されている。帝国がこの雷の莫大な電力を首都のエネルギー源としている点は、<a href="../planets/venom.html">惑星ベノム</a>の記録に詳しい。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">成れの果て ─ THE FALLEN</h3>
+  <p class="lore-p">セルの中には、取り込まれた有人機がそのまま変わり果てた姿で活動を続けているものが含まれる。共和国軍はこれを『成れの果て』と呼んでいる。成れの果ては編隊を組む際にリーダー格や先導個体として振る舞う例が多く、強力な戦闘能力を有する個体も少なくない。</p>
+  <p class="lore-p">不可解なことに、成れの果てに先導された編隊はみな、<a href="../database/locations.html#corneria">コーネリア</a>や<a href="../planets/katina.html">カタリナ</a>、<a href="../database/locations.html#fichina">フィチナ</a>といった有人惑星を目指してベノム圏からの離脱を試みる行動が確認されている。現在この動きは<a href="../planets/bolse.html">防衛衛星ボルス</a>の防疫網が食い止めている。離脱の動機については、際限なき増殖本能が新たな苗床を求めているとする膨張説と、取り込まれた搭乗員に残された帰還の衝動が機体を故郷へ向かわせているとする残存説が対立したまま、決着を見ていない。</p>
+  <p class="lore-p">成れの果ては、解読できない意味不明な文字列を通信で発信することがある。この文字列の意味についても意見は分かれている。<span class="redacted">暗号解析班の記録には、復号に成功したとされる事例が一件だけ残されている。復元された文字列は、旧式の救難信号の定型文と完全に一致していた。この結果は「ノイズの偶然の一致」として公式には棄却されたが、以後、当該解析班から成れの果ての通信解析を志願する者は出ていない</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">対抗手段 ─ COUNTERMEASURES</h3>
+  <p class="lore-p">前述のとおり、セルへの対抗手段は忌避信号によって浸食の対象から外れるか、超高エネルギーで焼き切るかの二つしか存在しないとされてきた。だが現在、これに続く第三の可能性が浮上している。</p>
+  <p class="lore-p"><span class="badge badge-classified">▮ 軍事機密 — CLEARANCE LV.4</span><br>
+  <span class="redacted">転機は<a href="../database/glossary.html#demonseed-crisis">デモンシード・クライシス事件</a>である。対処に投入された特殊任務部隊の隊長機、試作戦闘機『アイグロス』の放つ高エネルギーに対し、セルが明白な忌避反応を示したことが交戦記録に残されている。アイグロスは<a href="../database/locations.html#fortuna">フォルトナ</a>からもたらされた神秘の力『スピリット』を用い、搭乗者の生命エネルギーを消費して稼働する機体であり、「命と引き換えに力を与える魔槍」と呼ばれた。<a href="../database/characters.html#amber">アンバー・シルフェイド</a>少佐の駆る<a href="chastiefol.html">シャスティフォル</a>はこの機体の直系の後継にあたる。生命を直接削るアイグロスの機構は後継機で脳負荷方式へ改められており、シャスティフォルの「5分」の稼働制限は、この安全化の名残と説明されている</span>。</p>
+  <p class="lore-p"><span class="redacted">スピリットのエネルギーがセルに対する特効性能を持つ可能性は、コーネリア科学省に重要な知見をもたらした。現在このエネルギーを従来の光学兵器に代えて投射する砲システム『サウリアン波動砲』が開発中である。ベノム本星を難攻不落たらしめている元凶へ正面から立ち向かえる初の兵器として、開発は急ピッチで進められている。同時並行で、鹵獲したセルに制御プラグを打ち込み球体状に成形した万能防御兵器『リンネ』の開発も進む。死なない細胞をそのまま盾へ転用するという、セルの不死性を逆手に取った発想である。両計画の試験場はセティボスⅡに置かれた基地であり、実戦投入へ向けた試験運用が近く開始されるとみられる</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">帝国将兵がベノム圏でセルに襲われない理由は、帝国民の国章バッジに刻まれた忌避信号の発信機構にある。むしろセルの側から保護の対象として扱われている節すらあることは、<a href="../planets/venom.html">惑星ベノム</a>の軍事記録が伝えるとおりである。</p>
+  <p class="lore-p">迷い込んだセルの掃討任務にあたる砲手たちには「二度撃ち」と呼ばれる慣習がある。一度目の射撃で機体を墜とし、二度目の射撃で浸食組織を焼く。教範に記された二度目の意味は「再浸食の防止」であるが、砲手たちは違う言い方を好む。一度目は敵を墜とすために撃ち、二度目は敵を眠らせるために撃つのだという。</p>
+  <p class="lore-p">同じ現場にはもう一つ、成文化されない決まりがある。掃討対象を機体番号で呼ばないことである。照合表を引けば、その機体がかつてどの部隊の何番機だったかは分かってしまう。かつての僚機の番号を読み上げながら引き金を引ける者は、どの部隊にもいない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

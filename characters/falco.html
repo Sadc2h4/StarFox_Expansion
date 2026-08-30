@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FALCO LOMBARDI — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#4488ff;--accent:#99bbff;--border:rgba(68,136,255,0.32);--border-hi:rgba(68,136,255,0.7);--dim:#0a1a40;--dim2:#050d20; }
+    .p-title    { color: #e8f0ff; text-shadow: 0 0 50px rgba(68,136,255,0.35); }
+    .p-tagline  { border-color: #4488ff; color: #4488ff; }
+    .terminal-hdr { color: #99bbff; }
+    .terminal-hdr::before { background: #99bbff; box-shadow: 0 0 8px #99bbff; }
+    .dk { color: #4488ff; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-02 / FALCO LOMBARDI — ファルコ・ランバルディ ]</div>
+    <div class="header-status">● ACTIVE — MERCENARY</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — FALCO LOMBARDI — STAR FOX TEAM — ACE PILOT</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0002 — CLEARANCE: OPEN — EVALUATION: ACE</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-02 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ファルコ・ランバルディ (FALCO LOMBARDI)</div>
+        <h1 class="p-title">FALCO LOMBARDI</h1>
+        <div class="p-tagline">THE PROUD FREE BIRD ── スターフォックス エースパイロット</div>
+        <p class="p-short-desc">元・宇宙暴走族の頭にして、隊随一の操縦センスを誇るエースパイロット。口の悪さと腕の良さは星系公認。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 02 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">FALCO LOMBARDI / ファルコ・ランバルディ</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#holsoid">ホルソイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">19歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#corneria">コーネリア</a> 港町<a href="../database/glossary.html#lowerdog">ロウアードッグ</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#starfox">スターフォックス</a></td></tr><tr><td class="dk">ROLE</td><td class="dv">アーウィン6号機 / 制空担当</td></tr><tr><td class="dk">FORMER</td><td class="dv">飛行族「フリー・アズ・ア・バード」頭</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 共和国契約傭兵</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 94 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 94%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(68,136,255,0.55);">
+        <img src="../resource/Character_image/character_falco.png" alt="FALCO LOMBARDI" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR FOX — ACE PILOT</span>
+            <span class="tg-jp">スターフォックス エースパイロット</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">礼はいらないぜ。……ま、聞こえなかったならもう一回言ってやってもいい。<span class="tg-note note">-戦域通信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">あいつと編隊を組むのは最悪だ。あいつのいない編隊は、もっと最悪だが<span class="lore-quote-src">― 匿名の僚機評より</span></span></p>
+  <p class="lore-p">ファルコ・ランバルディは<a href="../database/military.html#starfox">スターフォックス</a> のエースパイロットにして制空担当である。誇りと義理を何より重んじ、腕っぷしが立ち短気という教科書のような<a href="../database/races.html#holsoid">ホルソイド</a>である。協調性は皆無に近いがその操縦センスは天賦のもので、機体の限界性能を「勘で」引き出す飛び方は整備班泣かせとして知られる。</p>
+  <p class="lore-p">口癖は「俺に指図するな」。ただし記録の上ではフォックスの指示を無視して作戦を失敗させたことは一度もなく、そのことについて本人は「たまたま気が向いただけだ」と主張している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">生い立ち ─ EARLY LIFE</h3>
+  <p class="lore-p">コーネリアシティ郊外の港町<a href="../database/glossary.html#lowerdog">ロウアードッグ</a>に生まれた。父は星間貨物の操縦士、母は『<a href="../database/glossary.html#cross-bout">クロスバウト</a>』の元チャンピオンという絵に描いたような「飛んで殴る」<a href="../database/races.html#holsoid">ホルソイド</a> の家庭である。読み書きより先に気に喰わない奴をぶちのめす腕っぷしと計器の読み方を覚え、10歳の頃には父の貨物タグボートを桟橋の隙間で乗り回して港湾管制官を一人ならず胃痛で退職に追い込んだという。長じてからは町一番の「悪ガキ」として名を売り、カース・マルツゥ社交クラブの店内記録「壁に穴を開けた回数」を大幅に更新した「最強の不良」の武勇伝は、今もロウアードッグの不良たちの語り草である。</p>
+  <p class="lore-p">その家庭は長く続かなかった。父が作った借金で一家は離散し、彼は故郷の町を離れることになる。ダウンタウンの学校には最後まで馴染めず、14歳で暴走族「<a href="../database/glossary.html#route-core-ring">フリー・アズ・ア・バード</a>」に合流し16歳で頭を張った。フリー・アズ・ア・バードは「誰が一番速いか」に取り憑かれた集団であり、「背後を取られるな」というただ一つの掟を元に日夜<a href="../database/glossary.html#route-core-ring">コア・ワールド環状線</a>を飛び回る札付きのワルの集まりである。彼が頭だった時代にその掟が破られた記録はない。腐れ縁の<a href="../database/characters.html#cat">キャット・モンロー</a> との付き合いもこの時代からである。</p>
+  <p class="lore-p">開戦に伴う民間航路の封鎖で族は事実上の解散となった。メンバーの多くが<a href="../database/military.html#cdf">CDF</a>の義勇航空隊へ流れる中「軍服は性に合わない」と一人だけ残り、賞金稼ぎまがいの日銭暮らしに入った。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">転機はCDFが民間パイロットを対象に開いた賞金付きの選抜模擬戦である。金目当てに参加した彼は決勝で無名の若造フォックス・マクラウド（<a href="fox.html">フォックスの項</a>を参照）に生涯で初めて「背後」を取られた。3日後に再戦を申し込み、また負けた。7日後に三度目を申し込もうとしたところで逆に「悔しかったらうちで飛べ」と誘われ、気づけば<a href="../database/military.html#starfox">スターフォックス</a> の契約書にサインしていた。</p>
+  <p class="lore-p">この勧誘が口先だけでなかったことは機体が証明している。入隊の時点で格納庫に並ぶアーウィンはペッピーの2号機・フォックスの4号機・スリッピーの5号機の3機だけで、新入りへ回す機体は存在しなかった（1号機は<a href="../database/characters.html#james">ジェームズ</a> と共に還らず、3号機は離反した<a href="../database/characters.html#pigma">ピグマ</a> が持ち去った。<a href="../database/military.html#starfox">スターフォックスの項</a>を参照）。<a href="../database/characters.html#slippy">スリッピー</a> はトード家の伝手を総動員し、彼の飛び方に合わせて調律した特注の6号機…現存する<a href="../weapons/arwing.html">アーウィン</a> で最後に建造された最新鋭機を用意した。<a href="../weapons/greatfox.html">グレートフォックス</a> の建造ローンに苦しむ隊がそれでも新造機を仕立てた事実は、この無礼な新人をどれほど欲しがっていたかの何よりの証明とされる。</p>
+  <p class="lore-p">本人は今も「雇われたんじゃない。決着がついてないだけだ」と主張している。もっとも6号機の受領日に計器を一通り撫でて「……悪くねぇ」とだけ呟いたことが整備記録の余白に残されている。以来エースの座を誰にも譲っていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p"><a href="../database/locations.html#katina">カタリナ</a> 防衛戦、<a href="../database/locations.html#fichina">フィチナ</a> 奪還作戦など主要戦域の大半に参戦している。単機での撃墜数は隊内トップを維持しており、本人がそれを月に一度は全員に思い出させる。スターウルフとの交戦では決まって二番機<a href="../database/characters.html#leon">レオン・ポワルスキー</a> と空戦がもつれ、こちらの決着も今日まで持ち越されている。</p>
+  <p class="lore-p">危機に陥った僚機の救援反応速度は皮肉なことに隊内で最速である。データを突き付けられた本人は「目についただけだ」と回答した。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">一度だけ無断で隊を離れ、数か月後に何事もなかったように戻ってきたことがある。理由を聞いたのはフォックスだけで、フォックスは誰にも話していない。</p>
+  <p class="lore-p">『クロスバウト』の元宇宙チャンピオンからスパーリングを申し込まれた際に「空でなら受けてやる」と返した逸話は、<a href="../database/glossary.html#cross-bout">クロスバウト</a> の若手の間で今も語り草である。</p>
+  <p class="lore-p">ファルコは故郷と実の家族についてほとんど語らない。帰郷すれば商店街が勝手に感謝セールを始めるほど歓迎される身でありながら、<a href="../database/glossary.html#lowerdog">ロウアードッグ</a>へ戻った記録は数えるほどしかない。その一方でフリー・アズ・ア・バード絡みの頼み事を断った記録は一件もなく、スターフォックスの僚機へ向ける仲間意識の強さは口の悪さの裏で誰の目にも明らかである。血の繋がった家族より自分で選んだ「家族」を大切にする男だというのが彼を知る者の一致した評であり、その選び方の原点はロウアードッグの街での記憶にあると分析官は見ている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

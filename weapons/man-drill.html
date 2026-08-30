@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAN DRILL — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#e06848;--accent:#ffb090;--border:rgba(224,104,72,0.32);--border-hi:rgba(255,176,144,0.7);--dim:#3a160c;--dim2:#1c0a05; }
+    .p-title    { color: #ffe8e0; text-shadow: 0 0 50px rgba(224,104,72,0.35); }
+    .p-tagline  { border-color: #e06848; color: #e06848; }
+    .terminal-hdr { color: #ffb090; }
+    .terminal-hdr::before { background: #ffb090; box-shadow: 0 0 8px #ffb090; }
+    .dk { color: #e06848; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-26 / MAN DRILL — マン・ドリル ]</div>
+    <div class="header-status"><span class="blink" style="color:#ffb090;">●</span> HOSTILE — ACTIVE THREAT</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — MAN DRILL — INTERPLANETARY CRUISE MISSILE — VENOM EMPIRE</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0026 — CLEARANCE: OPEN — LINEAGE: DREAD KONG</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-26 / ARMORY FILE ]</div>
+        <div class="p-name-jp">マン・ドリル (MAN DRILL)</div>
+        <h1 class="p-title">MAN DRILL</h1>
+        <div class="p-tagline">THE HULL PIERCER ── 帝国軍 対戦艦用惑星間巡航ミサイル</div>
+        <p class="p-short-desc">ベノム帝国軍が運用する対戦艦用の大型惑星間巡航ミサイル。ドリル状の弾頭で装甲を穿ち、艦の内側で炸裂して母艦級を一撃で沈める。その系譜は旧サルジーナヤの「ドレッド・コング」まで、二百年以上を遡る。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 26 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">MAN DRILL / マン・ドリル（共和国側識別呼称）</td></tr><tr><td class="dk">CLASS</td><td class="dv">対戦艦用 大型惑星間巡航ミサイル</td></tr><tr><td class="dk">LINEAGE</td><td class="dv">旧<a href="../database/locations.html#fichina">サルジーナヤ連邦</a>「ドレッド・コング」直系</td></tr><tr><td class="dk">WARHEAD</td><td class="dv">ドリル状貫徹弾頭 — 装甲貫入後に内部炸裂</td></tr><tr><td class="dk">GUIDANCE</td><td class="dv">自動索敵追尾システム（複合検知・欺瞞耐性）</td></tr><tr><td class="dk">PROPULSION</td><td class="dv"><a href="../database/glossary.html#ember-gas">エンバーガス</a>極低温液化燃料</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../database/factions.html#venom-empire">ベノム帝国軍</a></td></tr><tr><td class="dk">STATUS</td><td class="dv bad">運用中 — 現役の脅威</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING -- 80 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 80%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(224,104,72,0.55);">
+        <img src="" alt="MAN DRILL" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">VENOM EMPIRE — INTERPLANETARY CRUISE MISSILE</span>
+            <span class="tg-jp">対戦艦用巡航ミサイル マン・ドリル</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">回避は無意味だ、諸君。<br>撃ち落とすか、沈むかだ。<span class="tg-note note">-CDF対艦ミサイル講習・教官の第一声-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">「艦隊勤めで一番聞きたくない音？　決まっている。ドリル警報の三連音だ」<span class="lore-quote-src">― 共和国巡洋艦の機関長の手記</span></span></p>
+  <p class="lore-p">マン・ドリル（Man Drill）は、<a href="../database/factions.html#venom-empire">ベノム帝国軍</a>が開発・運用する対戦艦用の大型惑星間巡航ミサイルである。自動索敵追尾システムを搭載し、目標がどれほど回避行動を取ろうと確実に命中させる精度と母艦級の大型艦を一撃で仕留める破壊力を併せ持つ。ドリル状の弾頭で装甲を穿ってから内部で炸裂する構造がその名の由来であり、共和国軍の艦隊乗りからは「聞きたくない警報の第1位」と恐れられている。</p>
+  <p class="lore-p">なお「マン・ドリル」は共和国側の識別呼称であり、帝国の制式名は現在も確認されていない。呼称の経緯は記録余話の項に譲るが、警報コードとして星系中の艦橋に浸透しきった現在のところ改名の予定はないという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p">弾頭は超硬質合金の回転貫徹体である。着弾の瞬間にドリルが装甲へ食い込み艦の中枢区画まで潜り込んでから主炸薬が起爆する。爆圧を外殻で受け止める従来の対弾設計を根本から無効化する仕組みであり、被弾箇所は一見小さな穴で済んでいるのに艦が内側から折れて沈む。生存者の証言が一様に「何が起きたのか分からなかった」と述べる所以である。</p>
+  <p class="lore-p">追尾は熱源・質量・機関波形の複合検知と解析されており囮や欺瞞信号にほとんど騙されない。<a href="../database/glossary.html#cis-hq">CDF情報戦略本部</a>の分析では、回避機動は「命中までの時間を稼ぐ手段」以上の意味を持たず、生存の鍵は迎撃の一点に絞られる。ただし弾体は艦載機より小さく高速であるため、確実な撃墜には戦闘補助AI<a href="../database/military.html#polybius">『ポリヴィアス』</a>が管制する対空連携がほぼ必須となっている。</p>
+  <p class="lore-p">特筆すべきはその推進剤で、<a href="g-diffuser.html">Gディフューザー</a>時代に旧式化したはずの<a href="../database/glossary.html#ember-gas">エンバーガス</a>の極低温液化燃料をあえて採用することで、大出力と生産コストの安さを両立している。<a href="../database/military.html#cdf">CDF</a>の試算によれば1発の製造費は、迎撃側が撃墜までに費やす弾薬と電力の費用を下回るとみられる。「撃ち落としてもなお、帝国の懐はほとんど痛まない」という報告書の一文は議会で大いに物議を醸した。</p>
+</div>
+<div class="lore-section" id="dread-kong">
+  <h3 class="lore-h">系譜 ─ LINEAGE ─ コングの一族</h3>
+  <p class="lore-p">このミサイルの系譜は二百年以上の昔に遡る。始祖は旧<a href="../database/locations.html#fichina">サルジーナヤ連邦</a>が開発した長距離星間ミサイル「ドレッド・コング」である。性能のどれを取っても一級品ではなかったが、宙域をまたぐ射程と、燃料のエンバーガスさえあればとりあえず飛ばせる取り扱いの容易さを武器に辺境の弱小国が強国と渡り合うための「脅しの道具」として悪名を轟かせた。誇示のための試射は隣接宙域へ幾度も撃ち込まれ、<a href="../database/locations.html#xi">セクターξ</a>の星雲に今も残る複数の貫通孔はこの系譜の弾体が開けたものである。マン・ドリルが旧式のエンバーガス燃料をあえて採用する設計思想はこの始祖から一直線に受け継がれたものであり、帝国の中核人口が旧サルジーナヤ系流民の末裔で占められる事実と考え合わせれば系譜の出どころに疑問の余地はない。</p>
+  <p class="lore-p">ドレッド・コングには旧サルジーナヤの手で幾つもの後継機が作られたがその道のりは平坦とは言い難い。最初の後継機「コンフー・コング」は系譜で一番の変化球であり、着弾後に弾頭が自立人型兵機へ変形して敵拠点で暴れ回る手筈だったが、肝心の弾頭が着弾の衝撃に耐えられずただのミサイル止まりに終わった。そもそも仮想敵のタッドー領は<a href="../database/locations.html#aquas">アクアス</a>も<a href="../database/locations.html#zoness">ゾネス</a>も海ばかりであり、変形機能が真っ当に活きる局面は最後まで訪れなかったのである。続く「ブシドー・コング」は全方位の温度感知センサーで迎撃を躱しつつ、敵の人と兵器が最も集まる一点を突く構想だったが、過剰なセンサーが仇となってあらゆる熱源に怯えて逃げ回り、発射基地へ帰投して基地と在庫を丸ごと消し飛ばした（<a href="odd-weapons.html#bushido-kong">珍兵器総覧</a>に詳しい）。三番目の「ヒャッカン・コング」はサルジーナヤ史上最大の巨大ミサイルであり、ビル一棟分もある特大の質量弾頭を敵の大気圏へ直接送り付け、落下の質量爆発で拠点を壊滅させるつもりだったらしい。むろん重すぎる弾体が災いし発射の30秒後にそのまま落下して基地ごと自爆している。サルジーナヤの発射基地はこれで二度も自国のミサイルに消し飛ばされたことになる。</p>
+  <p class="lore-p">四度目の正直でようやく完成したのが決戦改修型「ファイナル・コング」である。中身は単純明快そのもので、ドレッド・コングへ自動迎撃砲台を組み付けた「対空攻撃もできるミサイル」に過ぎない。だが試運転では各種成績の最高値を軒並み塗り替え、約230年前の<a href="../database/glossary.html#star-dream">スター・ドリーム作戦</a>では<a href="../database/glossary.html#stephano">超兵器</a>の展開する無人艦隊の猛攻を迎撃機能で凌ぎながら飽和攻撃を敢行し、強襲に赴くジェームズ・バートンらの侵入経路を最後までこじ開け続けた。「サルジーナヤの夜明け」と呼ばれる、星系を救った一撃である。それから二百年余り。星系を救った技術の系譜は今は共和国の艦隊を沈める矛として戦場へ帰ってきた。アクアスの外交演説が語り継ぐ「脅しの道具が恩返しの道具に変わった」という美談にはこうして皮肉な続きが書き足されつつある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">運用 ─ DEPLOYMENT</h3>
+  <p class="lore-p">燃料は<a href="../database/locations.html#setebos">セティボス</a>の採掘都市から、<a href="../database/sectors.html#stigma">キュー</a>と<a href="../database/sectors.html#omega">ベノム</a>を結ぶ<a href="../database/glossary.html#warp-route">通商連合の私設航路</a>を経由して供給されているとみられ、共和国が<a href="../database/factions.html#hactiva-union">通商連合</a>への抗議を繰り返す火種となっている。現在、帝国はこの安価なミサイルを惜しみなく撃つことができる体制が整っており。会戦のたびに「在庫の底が見えた」と観測され次の会戦までに必ず補充されている。</p>
+  <p class="lore-p">常設の配備先として確認されているのは<a href="../database/locations.html#macbeth">マクベス</a>のミサイル基地群である。同惑星の鉄路を昼夜なく走る武装列車の積み荷のうち、大型兵器に分類されるミサイル類は全てこのマン・ドリルと判明している。厄介なのはその立地で惑星の軌道と公転周期の関係上、<a href="../database/glossary.html#trinculo">トリンキュロー回廊</a>から<a href="../database/glossary.html#outer-rim">アウターリム</a>へ艦船を進める航路は必ずマクベスの前を横切る。すなわちこの区間の通過は、マン・ドリルの射程内への進入と同義である。ここを抜ける共和国勢力は高確率で狙い撃たれるため、艦隊にミサイル迎撃技術が必須とされる最大の要因になっている。</p>
+  <p class="lore-p">このミサイルの惑星間射程は「後方の泊地は安全である」という艦隊戦の常識を殺した。<a href="../database/military.html#starblade">スターブレード艦隊</a>が現在徹底する偽装泊地と欺瞞信号の運用はその直接の回答の一つとされている。開戦以来、共和国側が失った主力艦の戦闘詳報にはこの警報の名が繰り返し現れる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">「マン・ドリル」の名は、初観測時に識別名の登録を任された若い管制士官が咄嗟に付けた仮称である。照準映像に映った弾頭は、展開した誘導翼とセンサー群がちょうど牙を剥いた<a href="../database/glossary.html#kedamono-pets">ケダモノ</a>の顔に見えたと当人は証言している。後年、正式呼称への改称を問われた管制部門の回答は「入力し慣れた警報コードを触ると事故のもとになる」という実務一辺倒のものであり、仮称はそのまま星系標準となった。</p>
+  <p class="lore-p">迎撃に成功した砲雷長には、艦内で「ドリル抜き」の異名が贈られる風習がある。異名持ちは開戦以来いまだ二桁に届いておらず、その全員が<a href="../database/glossary.html#academy-branches">士官学校</a>の対艦戦術講義へ招かれ続けている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

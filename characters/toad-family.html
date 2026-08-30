@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE TOAD FAMILY — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#77ccb0;--accent:#aaeedd;--border:rgba(119,204,176,0.32);--border-hi:rgba(119,204,176,0.7);--dim:#123a30;--dim2:#091d18; }
+    .p-title    { color: #eafff8; text-shadow: 0 0 50px rgba(119,204,176,0.35); }
+    .p-tagline  { border-color: #77ccb0; color: #77ccb0; }
+    .terminal-hdr { color: #aaeedd; }
+    .terminal-hdr::before { background: #aaeedd; box-shadow: 0 0 8px #aaeedd; }
+    .dk { color: #77ccb0; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-14 / THE TOAD FAMILY — 名門トード家 ]</div>
+    <div class="header-status">● CIVILIAN — CORPORATE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">FAMILY FILE — THE TOAD FAMILY — IWATCHY / BELTINO / GRIPPY — CIVILIAN</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0014 — CLEARANCE: OPEN — STRATEGIC FAMILY DOSSIER</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-14 / FAMILY FILE ]</div>
+        <div class="p-name-jp">名門トード家 (THE TOAD FAMILY)</div>
+        <h1 class="p-title">BORN WITH<br>A GEAR</h1>
+        <div class="p-tagline">星系技術界の名門 ─ イワッチー / ベルツィーノ / グリッピー</div>
+        <p class="p-short-desc">セティボスの重力航路問題を解いた天才数学者イワッチーに始まる技術者一族。空を設計する兄と、素材を育てる弟、そして機体を守る三代目。ライラットの航空宇宙技術は、この一家の食卓で完結する。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ FAMILY SCAN — FILE 14 ▐</div>
+        <table class="dt"><tr><td class="dk">FAMILY NAME</td><td class="dv">TOAD / トード家</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#heketoid">ヘケトイド</a></td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#corneria">コーネリア</a></td></tr><tr><td class="dk">FOUNDER</td><td class="dv">イワッチー・トード — 重力航路問題の解決者</td></tr><tr><td class="dk">2ND GEN</td><td class="dv">ベルツィーノ（<a href="../corporations/space-dynamics.html">SD社</a>主任設計技師）/ グリッピー（<a href="../corporations/grippia-works.html">GW社</a>会長・50歳）</td></tr><tr><td class="dk">3RD GEN</td><td class="dv"><a href="slippy.html">スリッピー・トード</a>（<a href="../database/military.html#starfox">スターフォックス</a>）</td></tr><tr><td class="dk">ASSET</td><td class="dv"><a href="../database/locations.html#grippia">惑星グリッピア</a>（私有）/ <a href="../database/sectors.html#koppa">セクターϞ</a>宙域管理</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">民間 — 戦略的重要一族</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">INDUSTRY RATING -- 93 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 93%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(119,204,176,0.55);">
+        <img src="" alt="THE TOAD FAMILY" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">GEARS RUN IN THE BLOOD</span>
+            <span class="tg-jp">歯車を握って生まれる一族</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">トードの子は、歯車を握って生まれてくる。<span class="tg-note note">-星系技術業界の言い回しより-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">家系概要 ─ THE FAMILY</h3>
+  <p class="lore-p"><span class="lore-quote">兄さんはぁ　空を飛ぶ機械に夢中になったのネン。ワシはー それを作る金属に夢中になっただあョ。トード家はぁ　そういう家系なのネン<span class="lore-quote-src">― グリッピー・トード 講演録より</span></span></p>
+  <p class="lore-p">トード家は、<a href="../database/locations.html#corneria">コーネリア</a>出身の<a href="../database/races.html#heketoid">ヘケトイド</a>の技術者一族である。始祖イワッチー以来「トードの子は歯車を握って生まれる」と言われ、<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>の設計室、<a href="../database/locations.html#grippia">グリッピア</a>の精錬所、そして<a href="../database/military.html#starfox">スターフォックス</a>の格納庫と、ライラットの航空宇宙技術の要所には必ずこの一家の誰かがいる。「星系の航空宇宙技術はトード家の食卓で完結している」という業界の冗談は、あながち冗談でもない。</p>
+  <p class="lore-p">その来歴をたどると、行き着くのはコーネリアの下町の小さな修理工房である。トード家は代々、計器や農機具を直して暮らす無名の職人一家であり、家訓と呼べるものは「直せないなら、分解してから考えろ」の一つきりだった。「名門」の看板は実のところ新しい。イワッチーの偉業からまだ十年余り。看板を本物にしたのは、それぞれの分野の頂点へ勝手に登っていった二代目の兄弟である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">トード家の病 ─ THE TOAD FEVER</h3>
+  <p class="lore-p">この一族を語る上で避けて通れないのが、俗に「トード家の病」と呼ばれる家伝の気質である。医学的な病ではない。何かに熱中すると寝食と常識が頭から消え、気になるものは確かめるまで絶対に止まらない。発症すると呼びかけへの返事が「あと5分」に固定されることが知られており、その5分の最長記録は11日間である。イワッチーの数式も、ベルツィーノの機体も、グリッピーの惑星も、スリッピーの整備も、根はすべてこの同じ病である。</p>
+  <p class="lore-p">一族もこれを自覚しており、トード家へ嫁ぐ者・婿入りする者には、歴代の配偶者たちが書き継いできた非公式の手引き書が渡される。表紙の題は『あと5分と言われたら』。初版はイワッチーの妻の手によるもので、「音信不通は無事の証拠」「食事は工房の入り口まで届けてよい。中に入ってはならない」「火災報知器が鳴ってから慌てれば十分間に合う」といった実践的な知見が、現在も改訂を重ねながら読み継がれている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">始祖 ─ IWATCHY TOAD</h3>
+  <p class="lore-p">一族の始祖イワッチー・トードは、天才数学者兼技術者である。ワープドライブの実用化以来、<a href="../planets/setebos.html">セティボス</a>の重力は航路を捻じ曲げて艦船を異なる宙域へ飛ばす星系随一の難所であり続け、共和国は<a href="../database/locations.html#macbeth">マクベス</a>・<a href="../database/locations.html#eladard">エラダード</a>を経由する中継航路を強いられてきた。<a href="../database/factions.html#iga">IGA</a>解体後の時代、この重力航路問題を解決したのがイワッチーであり、ハクティバ圏への航路は文字どおり彼の数式によって描き替えられた。その解法は今日も、星系の全ての航行計算機の中で動き続けている。</p>
+  <p class="lore-p">この歴史的偉業の出発点は、存外に私的なものであった。若き日のイワッチーが「揺れない航路」の計算を始めたのは、船酔いの激しい妻を郷里へ里帰りさせるためだったと一族は伝えている。妻一人のための連立方程式は三十年をかけて星系の地図を描き替える解法へと育ち、その間の副産物として残された発明品は玉石混淆である。最短経路を強制するあまり利用者に川を渡らせた「絶対に迷子にならない靴」、効率を極めた末に隣家の畑まで耕し続けた全自動農場、揺れを完全に打ち消した代わりに乗員が到着に気付けない試作客船。下町の工房から回収されたこれらの品々は、現在グリッピアの社立学校に「教材」として展示されている。</p>
+  <p class="lore-p">本人は栄誉にほとんど関心を示さなかった。解決を発表した会見で残した言葉は「重力は曲がっているのだから、まっすぐ飛ぼうとした今までが間違いである」の一言だけで、質疑を待たずに帰ってしまったと伝えられる。偉業からほどなく表舞台を退き、現在は隠居の身である。その居所を知るのは、家族だけとされる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">二代目・兄 ─ BELTINO TOAD</h3>
+  <p class="lore-p">長男ベルツィーノは、<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>の主任設計技師である。社長<a href="../database/characters.html#yaru">ヤル・デ・ポン</a>の右腕として機体設計の中枢を担い、<a href="../database/military.html#arwing">アーウィン</a>をはじめとする名機の開発を裏で支えてきた。息子<a href="slippy.html">スリッピー</a>が11歳で試作シールドの欠陥を夕食の席で指摘した際、翌日には修正を済ませ、社内報にただ一言「息子に感謝する」と記した逸話は、技術者としての彼の器を語る際に必ず引かれる。</p>
+  <p class="lore-p">もっとも、その経歴も失敗と無縁ではない。若手時代に設計した全自動着陸装置の初期型は、安全性を極めるあまり着陸進入に40分を要し、痺れを切らしたテストパイロットに操縦桿を奪い返された記録が残っている。この一件で彼が得た教訓「機械は乗り手より賢くなってはいけない。乗り手を信じる分だけ賢くあれ」は、のちにSD社の機体設計に通底する思想となった。乗り手を選ぶ名機と呼ばれるアーウィンの操縦系の根には、この40分の失敗がある。</p>
+  <p class="lore-p">その器が唯一形を保てないのが、息子に関する事柄である。分校入学で初めて旅立つ息子を見送った宇宙港では20歩ごとに記念写真を撮り、周囲に今生の別れと誤解された。中退の報せには夫婦揃って気を失い、食事も御代わり2杯までしか喉を通らなかったという。なお息子の入学の道を開いたのは、親友であり顧客でもあったロバート・グレイ、すなわち<a href="../database/characters.html#bill">ビル・グレイ</a>の父の推薦状である。トード家とグレイ家の縁は、二代に渡って続いている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">二代目・弟 ─ GRIPPY TOAD</h3>
+  <p class="lore-p">次男グリッピーは、星系随一の特殊金属企業<a href="../corporations/grippia-works.html">グリッピア・ワークス社</a>を一代で築いた実業家である。何かに熱中すると止まらない家伝の血が、彼の場合は「金属加工」に向いた。若くして金属加工業で身を立て、星系最外縁で「採算の合わない鉱脈」とされていた無名の惑星に一目惚れすると、会社の全財産と引き換えに採掘権を落札し、惑星ごと購入。当時の経済紙はこれを「トードの氷牢」と嘲笑した。だが数年後、氷の下から出た超高純度鉱脈が艦艇装甲の水準を塗り替えると、嘲笑は沈黙に変わった。星には自らの名が付けられた──<a href="../database/locations.html#grippia">グリッピア</a>である。採掘・精錬の実務部門として興した子会社CGM社（コーネリア特殊金属株式会社）の特殊合金は、今や艦艇装甲の標準素材として星系全体が依存する戦略物資となっている。</p>
+  <p class="lore-p">戦時下の現在、彼の合金は共和国防衛の生命線であり、帝国からの接触工作の標的でもある。本人は「ウチはぁー 金属を売る会社であってー 戦争を売る会社じゃないのネン」の一点張りで、両陣営の政治工作を老練にいなし続けている。間延びした喋りに油断して核心を突かれた交渉人は、両陣営に数え切れない。今も月の半分を採掘現場で過ごす「役員室より坑道が好きな総帥」であり、惑星の警備については甥のスリッピーが設計する自動警備ロボットを個人契約で導入している。「身内贔屓では」との株主の問いへの回答は明快だった──「良いものを作るヒトから買うだあョ。それがー たまたま甥っ子だっただけなのネン」。</p>
+  <p class="lore-p">商売の流儀は「一物一価」である。品質・納期・価格を全顧客で同一とし、軍であろうと値引きには応じない。「合金は旗を選ばない」が営業部の決まり文句である。近年はサイバネティクス向けの生体適合合金で医療分野にも進出しているが、一方でトード家の病はこの男にも平等であり、非常食を兼ねた「食べられる合金食器」を大真面目に開発・発売したことがある。噛み砕けるのがヘケトイドの顎だけだと判明したのは、発売の三日後だった。回収された食器は現在、社立学校の教材棚でイワッチーの靴の隣に並んでいる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">三代目 ─ NEXT GENERATION</h3>
+  <p class="lore-p">三代目にあたるのが、ベルツィーノの息子<a href="slippy.html">スリッピー・トード</a>である。トード家の病の発症は一族史上最年少とされ、6歳で最初のロボットを組み、8歳で自宅の家事ロボットを無断で「防犯仕様」に改良して配達員を三人撃退し、11歳で父の試作シールドの欠陥を夕食の席で指摘した。周囲が押し付ける「イワッチーの再来」の称号を本人はひどく嫌い、家伝の才能は数式ではなく工具へ、理論ではなく現場へ向かった。誰かの乗る機体を絶対に落とさないという極めて実践的な執念の行き着いた先が、<a href="../database/military.html#starfox">スターフォックス</a>のメカニックという現在地である。詳細は本人の人事記録を参照されたい。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">兄弟は今も月に一度、通信で「金属と機体のどちらが偉いか」を論争する。決着は数十年ついていないが、アーウィンの装甲にCGM合金が使われている時点で「引き分け以上」というのが業界の見方である。なおこの論争、始祖に判定を仰いだことが一度だけあるらしい。返ってきた答えは「どちらも数式には勝てない」だったと伝えられ、以後兄弟は父を審判に呼んでいない。</p>
+  <p class="lore-p">グリッピアの社立学校の卒業生に贈られる合金板の言葉「どこで働いてもいい。だが、どこにいても良い仕事をしろ」はグリッピー自身の言葉である。会長室の壁には、その第一号──歪んで文字も拙い試作品──が今も掛かっている。</p>
+  <p class="lore-p">業界には「トード家の食卓に技術問題を持ち込めば、夕食までに解決する」という伝説がある。実際にSD社の若手技師が結婚の挨拶を装って難題を持ち込んだ事件が一度だけあり、問題は前菜の間に解決された。若手は本題の挨拶を切り出せないまま帰されたが、後日、手引き書『あと5分と言われたら』の最新版が匿名で届けられたという。参謀部にも古い格言が残る──「トード家を敵に回すな。機体が飛ばなくなる」。幸いにして、この一家が旗を選んだことは一度もない。合金と同じである。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

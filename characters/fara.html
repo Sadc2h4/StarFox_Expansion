@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FARA PHOENIX — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#b89ae8;--accent:#e2d4ff;--border:rgba(184,154,232,0.32);--border-hi:rgba(226,212,255,0.7);--dim:#22183a;--dim2:#100b1d; }
+    .p-title    { color: #f6f0ff; text-shadow: 0 0 50px rgba(184,154,232,0.35); }
+    .p-tagline  { border-color: #b89ae8; color: #b89ae8; }
+    .terminal-hdr { color: #e2d4ff; }
+    .terminal-hdr::before { background: #e2d4ff; box-shadow: 0 0 8px #e2d4ff; }
+    .dk { color: #b89ae8; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-43 / FARA PHOENIX — ファラ・フェニックス ]</div>
+    <div class="header-status">● ACTIVE — CIVILIAN TEST PILOT</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — FARA PHOENIX — SPACE DYNAMICS CHIEF TEST PILOT — PHOENIX GROUP HEIRESS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0043 — CLEARANCE: OPEN — PROTECTIVE WATCH: ACTIVE</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-43 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ファラ・フェニックス (FARA PHOENIX)</div>
+        <h1 class="p-title">FARA PHOENIX</h1>
+        <div class="p-tagline">THE LAVENDER PROTOTYPE ── SD社 チーフテストパイロット</div>
+        <p class="p-short-desc">星系最大の旅客航宙財閥フェニックス家の一人娘にして、スペース・ダイナミクス社のチーフテストパイロット。アーウィンの試作機を最初に飛ばす女性であり、フォックス・マクラウドの母ヴィクシーに容姿と雰囲気だけがよく似ていることで、本人の与り知らぬところで幾つもの視線を集めている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 43 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">FARA PHOENIX / ファラ・フェニックス</td></tr><tr><td class="dk">RACE</td><td class="dv">フェネック系<a href="../database/races.html#anubisoid">アヌビソイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">22歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#corneria">コーネリア</a>（コーネリアシティ）</td></tr><tr><td class="dk">FAMILY</td><td class="dv"><a href="../corporations/phoenix-group.html">フェニックス財閥</a> 当主の一人娘</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a> 飛行試験部 — チーフテストパイロット</td></tr><tr><td class="dk">CRAFT</td><td class="dv">アーウィン試作機（歴代） — 現行: 試作機「ラベンダー」（所在不明）</td></tr><tr><td class="dk">INCIDENT</td><td class="dv warn">⚠ 拉致未遂1件 / 試作機強奪1件 — いずれも帝国側の関与</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — <a href="../database/military.html#cdf">CDF</a>保護監視下</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 90 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 90%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(184,154,232,0.55);">
+        <img src="" alt="FARA PHOENIX" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">SPACE DYNAMICS — CHIEF TEST PILOT</span>
+            <span class="tg-jp">試作機を最初に飛ばす女 ── フェニックス家の跡取り</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">設計図どおりに飛ぶ機体なんて一機もないわ。<br>だから私が先に乗るの。図面と現実の差を埋めるのが仕事よ。<span class="tg-note note">-SD社 飛行試験部 定例報告の音声記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">財閥の令嬢が操縦桿を握るのは道楽だと思っていた。彼女が試作機を三機壊すまでは。<span class="lore-quote-src">― SD社 主任設計技師ベルツィーノ・トードの談</span></span></p>
+  <p class="lore-p">ファラ・フェニックスは<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>の飛行試験部に所属するチーフテストパイロットである。<a href="../corporations/phoenix-group.html">フェニックス財閥</a>当主の一人娘であり、星系最大の客船財閥の跡取りでありながら客船には乗らず、供給契約先であるSD社で戦闘機の限界を試す仕事を選んだ。フェネック系の<a href="../database/races.html#anubisoid">アヌビソイド</a>で一族の特徴である大きな耳は操縦席の中でも隠しようがない。</p>
+  <p class="lore-p">性格は快活で物怖じせず危険な試験飛行を「図面と現実の差を埋める仕事」と言い切る。財閥の令嬢らしい育ちの良さは言葉遣いに残っているが、格納庫では油にまみれて設計技師と口論する姿の方が知られている。<a href="../database/races.html#heketoid">ヘケトイド</a>の主任設計技師ベルツィーノ・トードは当初この人事を財閥への義理と見ていたが、彼女が試作機を三機壊して三機分の欠陥を洗い出した時点で評価を改めたという。</p>
+  <p class="lore-p">そしてこの人物には本人の与り知らぬ特徴が一つある。<a href="fox.html">フォックス・マクラウド</a>の亡き母<a href="vixy.html">ヴィクシー・マクラウド</a>に、容姿と雰囲気がよく似ているのである。年齢も境遇も性格も別人であり似ているのはあくまで顔立ちと佇まいだけである。だがその似方は、当人を知る者が一瞬言葉を失う程度には正確であった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">コーネリアシティの財閥の屋敷に生まれ、幼少期から父の客船で星系中を旅して育った。客室の窓から見る宇宙より操縦席から見る宇宙に惹かれたのはプリマヴェーラの船橋で船長に操縦桿を握らせてもらった幼い日の経験によるという。財閥の跡取りとして経営の教育を受ける一方で操縦免許を最年少で取得し、成人と同時にSD社の飛行試験部へ志願した。財閥の推薦状は持たされていたが本人は面接でそれを提出しなかったと伝えられる。</p>
+  <p class="lore-p">SD社での仕事は<a href="../weapons/arwing.html">アーウィン</a>系列の試作機を最初に飛ばすことである。<a href="../weapons/g-diffuser.html">Gディフューザー</a>の出力特性は機体ごとに癖があり、図面上の性能と実際の挙動の差を体で測って設計へ戻すのがテストパイロットの役割である。彼女は三年でチーフの座に就き、以来SD社の試作機で彼女の操縦桿を経ていない機体は存在しない。<a href="slippy.html">スリッピー・トード</a>が父の工房で設計を学んでいた時期の試験飛行の相手役でもあり、スリッピーは彼女を「図面を裏切るのが仕事の人」と呼んでいる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">邂逅 ─ THE RESEMBLANCE</h3>
+  <p class="lore-p"><span class="lore-quote">母の顔なんてほとんど覚えていない。それなのに、あの一瞬だけは覚えていた。<span class="lore-quote-src">― フォックス・マクラウドの述懐（艦内記録より）</span></span></p>
+  <p class="lore-p">フォックスとの初対面はコーネリア上空のアーウィン試験飛行であった。<a href="../database/military.html#starfox">スターフォックス</a>の4号機の改修を請け負ったSD社が試験飛行に彼女を付け、着陸後の格納庫で二人は顔を合わせた。フォックスは一瞬、明らかに別の名を呼びかけて止まっている。母の顔をほとんど覚えていないと語る彼が、グレートフォックスの私室に飾る古い写真の顔と目の前の女性を重ねたのはその一瞬だけであり、次の瞬間には礼儀正しく名乗り直した。ファラはこの一件を「変な人」の一言で済ませているが以来二人の間には奇妙に遠慮のない付き合いが続いている。年上の彼女がフォックスを「隊長さん」と呼び、フォックスがそれを嫌がるのが定型である。</p>
+  <p class="lore-p">より不穏なのは帝国側の反応である。CDF情報部が傍受した記録によれば、コーネリア上空を撮影した帝国の偵察衛星の写真を見た皇帝<a href="andorf.html">アンドルフ</a>が写っていた彼女を指して「ヴィクシーが生き返った…いや、そんなはずはない…！」と口にしたとされる。若き日にパペトゥーンの酒場でヴィクシーに求婚して退けられた男の目に、彼女がどう映ったのかを情報部は推し量るしかない。だが以後彼女の身辺に起きた二つの事件を情報部はこの一言と切り離して考えていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">事件の記録 ─ INCIDENTS</h3>
+  <p class="lore-p">一つ目は拉致未遂である。<a href="../database/locations.html#papetoon">パペトゥーン</a>の分校視察から戻るフェニックス・ラインの定期便が航路上で帝国の武装兵に乗り込まれ、乗客の中から彼女一人を名指しで連れ去ろうとした。護衛のCDF士官が応戦し船は無事にコーネリアへ帰港したが、金目当てでも財閥への脅迫でもなく彼女個人を狙った襲撃であったことは情報部の分析官を長く悩ませている。</p>
+  <p class="lore-p">二つ目は試作機の喪失である。<a href="../database/glossary.html#corneria-defense">コーネリア防衛戦</a>の際、彼女は試験中であった黒一色の試作機で自主的に出撃し、<a href="../weapons/attack-carrier.html">アタック・キャリアー</a>との交戦で機体を失っている。本人は脱出して無事であったが試作機は回収されなかった。その後SD社が用意したラベンダー色の新型試作機は完成直後の試験飛行の最中に帝国の手の者に強奪され現在も所在が掴めていない。彼女の乗機が続けて帝国の手に落ちたことと、彼女自身が二度とも無傷であったことは狙いが機体なのか彼女なのかという問いを情報部に残したままである。以来CDFは彼女を保護監視の対象に置いている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">財閥の当主である父は娘の職業を公に咎めたことがない。ただしSD社への供給契約が近年やけに手厚くなったことを株主は無言で見ており、彼女はこれを「パパの過保護」と一言で片付けている。SD社側は契約の条件に「チーフテストパイロットの安全確保」の一項が加わったことを否定していない。</p>
+  <p class="lore-p">スリッピーは彼女を「図面を裏切るのが仕事の人」と呼ぶが、彼女が壊した試作機の欠陥報告書は全てスリッピーの設計ノートに貼り込まれており、現行のアーウィンの安全装置の幾つかは彼女の墜落から生まれている。SD社の飛行試験部には「ファラが落とした数だけ安全になる」という言い回しがある。</p>
+  <p class="lore-p">財閥の港ではグレートフォックスの補給が無料であるが、彼女が艦を訪ねる時は決まって手土産に客船の菓子を持参する。<a href="naus.html">ナウス</a>はこれを「ホキュウブッシ」として艦の在庫に計上しており、菓子の消費速度から艦内の士気を推定する独自の指標を運用している。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CODENAME: KRYSTAL — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#6f9dff;--accent:#b0ccff;--border:rgba(111,157,255,0.32);--border-hi:rgba(111,157,255,0.7);--dim:#13234a;--dim2:#091225; }
+    .p-title    { color: #f0f5ff; text-shadow: 0 0 50px rgba(111,157,255,0.35); }
+    .p-tagline  { border-color: #6f9dff; color: #6f9dff; }
+    .terminal-hdr { color: #b0ccff; }
+    .terminal-hdr::before { background: #b0ccff; box-shadow: 0 0 8px #b0ccff; }
+    .dk { color: #6f9dff; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-18 / CODENAME: KRYSTAL — 仮称「クリスタル」 ]</div>
+    <div class="header-status"><span class="blink" style="color:#b0ccff;">●</span> UNRESOLVED — IN STASIS</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — CODENAME KRYSTAL — UNIDENTIFIED FEMALE — FORTUNA TEMPLE DISCOVERY</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0018 — CLEARANCE: LEVEL 5 — ATTACHED TO QAL DOCUMENTS</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-18 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">仮称「クリスタル」 (CODENAME: KRYSTAL)</div>
+        <h1 class="p-title">KRYSTAL</h1>
+        <div class="p-tagline">THE GIRL IN THE CRYSTAL ── 身元不明 — 拘束状態</div>
+        <p class="p-short-desc">フォルトナの神殿最奥、用途不明の制御装置に拘束されたまま発見された身元不明の女性。本名は分かっておらず、「クリスタル」は発見時の状況から与えられた仮の呼び名である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 18 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">不明 — 仮称「クリスタル」</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#anubisoid">アヌビソイド</a>（狐系・推定）</td></tr><tr><td class="dk">AGE</td><td class="dv">不明（外見上20歳前後）</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv">不明 — 星系内に該当記録なし</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">なし（未接触）</td></tr><tr><td class="dk">DISCOVERED</td><td class="dv"><a href="../database/locations.html#fortuna">フォルトナ</a> — <span class="redacted">クラゾア神殿 最奥部</span></td></tr><tr><td class="dk">EQUIPMENT</td><td class="dv">万能杖（回収済 — <a href="../database/military.html#cdf">CDF</a>技術部にて解析中）</td></tr><tr><td class="dk">STATUS</td><td class="dv warn">拘束状態 — 救出手段未確立</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">STAFF ANALYSIS PROGRESS -- 8 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 8%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(111,157,255,0.55);">
+        <img src="" alt="CODENAME: KRYSTAL" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">UNIDENTIFIED — STASIS CRYSTAL</span>
+            <span class="tg-jp">水晶の中の要救助者</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">彼女は、助けを待っている。俺にはそう見えた。<span class="tg-note note">-F・マクラウド 帰投報告より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">報告書には「要救助者」と書いた。間違っているとは、今も思っていない<span class="lore-quote-src">― F・マクラウド 帰投報告の補足記録より</span></span></p>
+  <p class="lore-p"><span class="badge badge-classified">▮ 最重要軍事機密 — QAL文書付随記録</span><br>
+  仮称「クリスタル」は、<a href="../database/locations.html#fortuna">フォルトナ</a>で発見された身元不明の女性である。<a href="../database/characters.html#fox">フォックス・マクラウド</a>が<span class="redacted">オイッコニー私設軍隊の壊滅後に偶然たどり着いたクラゾア神殿の最奥部</span>で、用途不明の制御装置に拘束された状態──水晶状の鉱石に閉じ込められた姿──で発見された。</p>
+  <p class="lore-p">本名は不明であり、「クリスタル」という名称は発見当時の状況から付けられた仮の呼び名である。装置の拘束手段を解析できなかったフォックスは、彼女の傍らにあった武器「万能杖」のみを回収してその場を去ることしかできず、詳しい素性は現在もほとんど分かっていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">観察記録 ─ OBSERVATIONS</h3>
+  <p class="lore-p">最大の外見的特徴は、鮮やかな青い体毛である。骨格と外見的特徴からおそらく狐系の<a href="../database/races.html#anubisoid">アヌビソイド</a>であると推測されるが、地毛として青い体毛を持つ者は星系内でも報告例が皆無であり、これも<span class="redacted">スピリットによる神秘の力</span>によるものと考察するしかないのが現状である。</p>
+  <p class="lore-p">服装は被覆度の低い装束であり、発見場所が<span class="redacted">クラゾア神殿</span>であったことも考慮すると、何らかの儀式を執り行う過程で想定外の事態が起きたものと考えられている。装置が「拘束」なのか「保護」なのか──それすらもまだ、判別できていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">万能杖 ─ THE STAFF</h3>
+  <p class="lore-p">彼女が携えていた武器は、<span class="redacted">スピリットを込めて撃ち出すことで</span>近距離戦と遠距離戦を兼ねる「万能杖」である。星系の既知のいかなる兵器体系にも属さず、動力機構に至っては解析装置がまともな数値を返さない。</p>
+  <p class="lore-p">杖は現在、CDF技術部の最深部で厳重に解析が進められている。杖そのもの、および内包される<span class="redacted">スピリット</span>の解析結果が待たれる──それが彼女の救出の、おそらく唯一の手がかりである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">救出手段が確立するまで、本記録は「未解決」のまま保管される。フォックスは帰投後、任務の合間にフォルトナ方面の哨戒を優先的に希望するようになったという。理由を問われた彼の回答だけが、記録に残っている──「借りたものを、返しに行く約束がある」。</p>
+  <p class="lore-p">解析班の一人は、万能杖についてこう漏らしたと伝えられる。「これは武器というより、鍵に見える」。何を開けるための鍵なのかは、まだ誰も知らない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

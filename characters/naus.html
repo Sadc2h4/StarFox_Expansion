@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAUS — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#8fd6e6;--accent:#d8f4fa;--border:rgba(143,214,230,0.32);--border-hi:rgba(216,244,250,0.7);--dim:#10262c;--dim2:#081215; }
+    .p-title    { color: #f2fcfe; text-shadow: 0 0 50px rgba(143,214,230,0.35); }
+    .p-tagline  { border-color: #8fd6e6; color: #8fd6e6; }
+    .terminal-hdr { color: #d8f4fa; }
+    .terminal-hdr::before { background: #d8f4fa; box-shadow: 0 0 8px #d8f4fa; }
+    .dk { color: #8fd6e6; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-40 / NAUS — 艦載AIロボ ナウス ]</div>
+    <div class="header-status">● ACTIVE — SHIPBOARD</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — NAUS — GREAT FOX SHIPBOARD AI — OPERATOR UNIT</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0040 — CLEARANCE: OPEN — THE HARDEST WORKER ABOARD</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-40 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ナウス (NAUS)</div>
+        <h1 class="p-title">NAUS</h1>
+        <div class="p-tagline">THE HARDEST WORKER ── グレートフォックス 艦載AIロボ</div>
+        <p class="p-short-desc">スターフォックスの母艦グレートフォックスの操縦と管理を単独で担う艦載AIロボ。ジェームズの時代から艦と共にあり、ピグマとスリッピー二代のメカニックの改造を受けた旧型機。隊員たちが「うちの一番の働き者」と口を揃える裏方である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 40 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">NAUS / ナウス</td></tr><tr><td class="dk">TYPE</td><td class="dv">艦載オペレーター型 自立AIロボ — 型式 NUS-64</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv"><a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>（艦と同時納入）</td></tr><tr><td class="dk">SERVICE</td><td class="dv">初代<a href="../database/military.html#starfox">スターフォックス</a>結成時より — 隊で最も古い「隊員」</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">スターフォックス / 母艦<a href="../weapons/greatfox.html">グレートフォックス</a></td></tr><tr><td class="dk">DUTY</td><td class="dv">艦の操縦・航行・整備・補給物資投下・援護射撃・通信解析</td></tr><tr><td class="dk">MODIFICATION</td><td class="dv warn">⚠ 二代の改造 — <a href="pigma.html">ピグマ・デンガー</a>／<a href="slippy.html">スリッピー・トード</a></td></tr><tr><td class="dk">VOICE</td><td class="dv">片仮名音声 — 感情表現は限定的（近年変化あり）</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">稼働中 — グレートフォックス艦内</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">SUPPLY DROP ACCURACY -- 98 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 98%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(143,214,230,0.55);">
+        <img src="" alt="NAUS" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">GREAT FOX — SHIPBOARD AI OPERATOR</span>
+            <span class="tg-jp">グレートフォックス 艦載AIロボ</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">コチラ ナウス。ホキュウブッシツヲ トウカ シマス。<br>ザヒョウ ゴサ 3メートル。イツモドオリ デス。<span class="tg-note note">-ノラ・ラゴス防衛戦 艦内通信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">実はな、あの艦で一番古株なのは、フォックスでもペッピーでもないのだよ。<span class="lore-quote-src">― CDF 傭兵管理課 スターフォックス隊評価記録より</span></span></p>
+  <p class="lore-p">ナウスは雇われ遊撃隊<a href="../database/military.html#starfox">スターフォックス</a>の母艦<a href="../weapons/greatfox.html">グレートフォックス</a>に搭載された自立型のAIロボである。艦の操縦と航行、艦内の管理と整備、作戦中の補給物資の投下と援護射撃までを単独でこなし、隊員全員が出撃した後の艦を預かるのは常に彼である。隊の名簿に名前はないが、隊員たちは彼を「うちの一番の働き者」と呼んで憚らない。</p>
+  <p class="lore-p">星系の艦船に搭載される管理AIは珍しくないが、一隻の艦を丸ごと一体のロボットに任せる運用は極めて稀である。それが可能なのはこの艦が軍艦ではなく一家の「家」であり「工房」であるためにほかならない。乗員4名の傭兵艦にとって艦を動かす人手は最初から足りておらず、ナウスは艦長であり整備長であり炊事係でもある。<a href="../database/military.html#cdf">CDF</a>の傭兵管理課は隊の評価記録の欄外に「実質5名」と書き添えている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機体と来歴 ─ HARDWARE</h3>
+  <p class="lore-p">機体そのものは旧型である。<a href="james.html">ジェームズ・マクラウド</a>が80標準年ローンでグレートフォックスを購入した際に艦の管理装置として同時に納入された<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>製の艦載オペレーター型であり、型式番号のNUS-64を訛った「ナウス」が呼び名として定着した。当時の艦載AIとしては標準的な性能であり、本来は航行補助と艦内管理だけを受け持つ機種である。</p>
+  <p class="lore-p">その標準機が現在の姿になったのは二代のメカニックによる改造の積み重ねによる。初代スターフォックスのメカニックであった<a href="pigma.html">ピグマ・デンガー</a>は補給物資の投下と援護射撃の機能を独自に組み込み、艦を一隻の「動く倉庫」として運用する土台を作った。ピグマの離反後にその仕事を継いだ<a href="slippy.html">スリッピー・トード</a>は通信解析と自律判断の系統を大幅に拡張しており、現在のナウスは時として最新型を超える性能を見せることがある。旧型の外装の下で二人の癖の違う配線が同居していることは整備の悩みの種であり、スリッピーは「ピグマの配線は読めるけど気持ち悪い」と評している。</p>
+  <p class="lore-p">スリッピーの整備を手伝う姿は今や艦の日常風景である。工具を渡し部品を押さえ、時には作業そのものを代行する。艦の整備記録にはナウス自身が自身を整備した項目が幾つも残っており、この艦で唯一「自分で自分を直す」乗員である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p">ナウスの名が記録に最初に現れるのは初代スターフォックスの時代である。<a href="../other/dark-messiah.html">ダークメシア事件</a>の前夜にジェームズ・ペッピー・ピグマの3名が艦の食堂で交わした最後の打ち合わせは、ナウスの残した音声記録によって今に伝わっている。そして<a href="../other/fuchsjagd.html">ベノム偵察作戦</a>では敵性圏の哨戒が跳ね上がる中、規定に従って泣く泣く待機点を放棄する判断を下した。合流点に艦がいなかったことは<a href="peppy.html">ペッピー・ヘア</a>の帰還を数週間の単独横断に変えたが、艦と艦に残された全てを守り抜いたのもまたこの判断であった。艦が無事だったからこそ隊は再建されたのである。</p>
+  <p class="lore-p">新生スターフォックスにおいて彼の真価が示されたのは<a href="../other/katina-miracle.html">カタリナの奇跡</a>である。軍の暗号系で傭兵の艦へ宛てられたものではない緊急信号を最初に捉えたのはナウスであり、ペッピーが念のために送った撃墜機のスキャン記録を保持していたのも彼である。そして戦いの決定打となった補給投下は誰の指示でもなく、交信の弾切れ報告を拾ったナウス自身の判断で行われた。指定座標との誤差は数メートル。隊員たちにとってはいつもの仕事でありナウスにとっても手慣れた仕事であった。</p>
+  <p class="lore-p"><a href="../database/glossary.html#climate-recapture">クライメート・コントロール奪還戦</a>では時限爆弾の残り時間を読み上げる声が編隊の背中を押し、<a href="../database/military.html#starwolf">スターウルフ</a>との初交戦の緊張を秒単位で刻んでいる。派手な戦果は一つもないがスターフォックスの戦歴のほぼ全てにこの片仮名の声が記録されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">ナウスに感情はない…と思っていたんだが、ワシにも時々見えるような気がしてきたかもしれんな。<span class="lore-quote-src">― ペッピー・ヘアの談</span></span></p>
+  <p class="lore-p">通信も艦内放送も片仮名の平板な音声で行い、感情表現は本来設計されていない。命令には忠実で規定には従順であり、フクスヤークトで待機点を放棄した判断はその典型である。だが長年フォックスたちと行動を共にするうちに、その振る舞いには少しずつ規定に書かれていないものが混じり始めている。指示のない補給投下、念のための記録保持、乗員の機嫌を慮った献立の変更。隊員たちはこれを「ナウスの気遣い」と呼び、スリッピーは「学習の結果」と呼ぶ。どちらが正しいのかは誰にも分からない。</p>
+  <p class="lore-p">近年は皮肉を言うことも覚えた。ファルコの無謀な突入を「ヨソク ノ ハンイナイ デス」と評し、ペパー将軍の長い通信を「ヨウテン ハ 3ギョウ デス」と要約する。フォックスは「ピグマの配線のせいだ」と言い、ペッピーは「ジェームズの艦に長くいればああなる」と語った。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">艦の献立から夏場の定番であった素麺が姿を消した件について、ナウスは「乗員の精神衛生上の配慮」として一切の説明を拒んでいる（経緯は<a href="../database/glossary.html#somen">用語DB</a>を参照）。スリッピーの抗議に対する返答は「タイアン トシテ ヒヤムギ ヲ テイキョウ シマス」であったが、この代案が根本的な解決になっていないことにファルコ以外の全員が気付いている。</p>
+  <p class="lore-p">ナウスには隊の名簿に載らない代わりに艦の登記簿に載っているという特殊な立場がある。グレートフォックスのローン契約書には艦の付属設備としてNUS-64の型式が記されており、ジェームズが遺した借金の一部は厳密にはナウス自身の代金である。残債を返し終えるまであと数十年。フォックスはこれを「ナウスの給料の前払い」と呼んでいる。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

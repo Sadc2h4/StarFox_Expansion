@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GENERAL SCALES — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#9a6ae8;--accent:#c4a8ff;--border:rgba(154,106,232,0.32);--border-hi:rgba(196,168,255,0.7);--dim:#1c1030;--dim2:#0e0818; }
+    .p-title    { color: #f2ecfc; text-shadow: 0 0 50px rgba(154,106,232,0.4); }
+    .p-tagline  { border-color: #9a6ae8; color: #9a6ae8; }
+    .terminal-hdr { color: #c4a8ff; }
+    .terminal-hdr::before { background: #c4a8ff; box-shadow: 0 0 8px #c4a8ff; }
+    .dk { color: #9a6ae8; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-29 / GENERAL SCALES — スケール将軍 ]</div>
+    <div class="header-status"><span class="blink" style="color:#ff6a6a;">●</span> AT LARGE — MAXIMUM CAUTION</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — GENERAL SCALES — WARLORD OF THE SHARPCLAW — TOP OF THE FUTURE THREAT LIST</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0029 — CLASSIFICATION: HOSTILE — TRUE NAME UNKNOWN — WHEREABOUTS UNKNOWN</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-29 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">スケール将軍 (GENERAL SCALES)</div>
+        <h1 class="p-title">THE NAMELESS<br>CONQUEROR</h1>
+        <div class="p-tagline">シャープクロウ族 現族長 ─ 名を持たぬ征服者</div>
+        <p class="p-short-desc">実力のみでシャープクロウ族の長に上り詰めた、出自不明の超人。文武と統率を兼ね備え、帝国が最も欲しがり、共和国が最も警戒する男。その名すら、本人のものではない。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ THREAT SCAN — FILE 29 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">GENERAL SCALES / スケール将軍 — 真名不明</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#saurian">サウリアン</a> — シャープクロウ族とは別系統と推定</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv">不明 — 本人は「サウリアの大地で目覚めた」と語る</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../planets/fortuna.html#tribe-sharpclaw">シャープクロウ族</a> 現族長</td></tr><tr><td class="dk">ALIAS</td><td class="dv">「スケール」— アソーカ語で「征服者」</td></tr><tr><td class="dk">ABILITY</td><td class="dv warn">⚠ スピリット解放 — 倍力・幻覚・分身・平衡撹乱</td></tr><tr><td class="dk">THREAT LIST</td><td class="dv bad">⚠ 共和国「将来脅威」筆頭 / 帝国「勧誘対象」筆頭</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">⚠ 健在 — 所在不明（フォックスへ復讐を宣言）</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 91 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 91%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(154,106,232,0.5);">
+        <img src="" alt="GENERAL SCALES" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE CONQUEROR WITHOUT A NAME</span>
+            <span class="tg-jp">剣牙の将軍 ── 名を持たぬ征服者</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">誇りを捨てろ。さすれば生かしてやる。<br>抗うなら──その誇りごとへし折るまでだ<span class="tg-note note">-捕虜となった部族の証言記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">彼を「蛮族の長」と侮った者から順に、彼の砦の労働力になっている<span class="lore-quote-src">― CDF脅威評価報告 所見より</span></span></p>
+  <p class="lore-p">スケール将軍は、<a href="../database/locations.html#fortuna">フォルトナ</a>の<a href="../planets/fortuna.html#tribe-sharpclaw">シャープクロウ族</a>を率いる現族長である。<a href="../planets/fortuna.html#tribe-asoka">アソーカ族</a>と<a href="../planets/fortuna.html#tribe-cloud">クラウド族</a>の2大部族が部族間の衝突を平定するまで、あらゆる争いの裏で常に暗躍していた男であり、<a href="../database/glossary.html#fortuna-campaign">フォルトナ戦役</a>では<a href="../characters/andrew.html">オイッコニー</a>の私設軍隊と結んで侵攻の実行部隊を担った。</p>
+  <p class="lore-p">その有能さは星系の両陣営に知れ渡っている。帝国将校や皇帝の耳にも届いており、「なんとしてでも味方に引き入れたい人材」のリストで彼は常に筆頭に記載されている。一方の共和国側では「今後脅威になる可能性」のリストの筆頭である。同じ男に対する扱いのこの差は、二つの組織のスタンスの違いをそのまま物語っている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ ORIGIN</h3>
+  <p class="lore-p">シャープクロウ族の勢力拡大は、前の族長ザボックの代に始まる。もとは臆病で非力な弱小部族だった彼らは、外来の武器と組織化によって30年足らずのうちに2大部族へ迫る勢力に化けた。スケールはその拡大期を戦いで支え、ザボックの後を継いだ男である。</p>
+  <p class="lore-p">だが、実のところ彼はザボックと直接の血の繋がりを持たない。それどころか出身もシャープクロウ族ではない。構成員と明らかに体格が違うのは、厳密には種族そのものが違うからである。血統を何より重んじるサウリアンの部族社会において、「血族」ではなく「実力」のみで族長に認められた例は現時点で彼ただ一人。その異質さこそが、彼の強さの何よりの証明となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">能力 ─ THE SUPERHUMAN</h3>
+  <p class="lore-p">この男が恐れられる理由は、人間離れした能力の数々にある。凄まじい怪力と精密動作を要する技を同時に使いこなし、土壇場でも怯まない度胸を持つ。状況判断を誤らず、不利と見れば躊躇なく撤退し、そして必ず勝機を逃さない。<a href="../other/fortuna-survey-1.html">フォルトナ戦役の白兵戦</a>でフォックス・マクラウドとトリッキーの二人がかりを相手に生還してみせた事実が、その全てを裏付けている。</p>
+  <p class="lore-p">知識もまた豊富である。星系共通語とサウリアのほぼ全ての言語を話し、古代文字から共通語の文字まで一通り識字し、読み書きができる。それでもなお自身の能力を過信せず、必要とあればアニマリアの技術も使いこなし、日々の鍛錬を怠らない。分析官の報告書は結論部でさじを投げている。「もはや超人の域に達しており、単一の弱点を前提とする作戦立案は推奨できない」。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">統率 ─ LEADERSHIP</h3>
+  <p class="lore-p">暴力と恐怖で他の種族を支配するスタンスは<a href="../planets/fortuna.html#tribe-redeye">レッドアイ族</a>と共通するが、決定的に異なる点が一つある。利害が一致する相手には、むしろ協力的なのである。オイッコニーの私設軍と合流し恐竜改造施設の再建を手伝った例はその典型であり、部族の「誇り」を重んじるあまりほとんど発展のない他のサウリアンの部族とは、この点で一線を画す。</p>
+  <p class="lore-p">部下の教育にも熱心である。頭の回らない仲間にも根気よく武器の使い方を教え、必要と判断すれば実戦で体に叩き込む。味方と判断した勢力へ無礼を働かぬよう厳重な戒律を定めて守らせるなど、統率者としての手腕も高い。一方で失敗した部下への八つ当たりや荒い人使いも目立ち、陰口を叩かれる場面は多い。本人は後述の感知能力でそれを全て知っているが、あえて黙認している。</p>
+  <p class="lore-p">そして敵対した相手には、一切の容赦がない。徹底的にプライドをへし折って屈服させ、味方になるか死ぬかを選ばせるやり方を好む。彼を正面から撃破できなかった部族の大半は、現在も砦の発電要員や労働の肩代わりといった重労働で屈服させられている。冒頭に掲げた脅威評価の所見は、誇張ではなく実態の描写である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">スピリット解放 ─ AWAKENING</h3>
+  <p class="lore-p">怒りが頂点に達した時、スケールはスピリット感知の能力を解放し、本来の力を倍加させることができる。この状態では両目が青白く輝き、全身に青紫の入れ墨のような紋様が浮かび上がる。力の影響は周囲の環境にまで及び、幻覚による分身や、相手の平衡感覚を奪うことすら可能とみられている。</p>
+  <p class="lore-p">ただし、同質の能力を持つ者が近くにいて力が拮抗すると、これらの搦め手は阻害される。フォルトナ戦役の白兵戦で彼が幻覚を使えず力の強化のみに留まったのは、<a href="tricky.html">トリッキー</a>が無意識のうちにスピリットの力を解放しており、両者の力が拮抗していたためと分析されている。あの決闘は、実のところ見た目以上に際どい勝負だったのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">知性 ─ THE SCHOLAR</h3>
+  <p class="lore-p">暴力性と併せ持つ知性は、趣味にも表れている。彼の趣味は読書と考古学である。戦闘のない時期になると、アニマリアから貰ったものや部下が集めてきたものなど様々な本を部屋に集め、大きさや色別に整列させて飾る。そしてそれをジャンルを問わず一つずつ読んでいくのである。冷静時の彼が感じさせる語彙の多さと感情表現の豊かさはこの旺盛な知識欲の産物であり、彼が提唱した理論のいくつかは、あの皇帝ですら認めるほどの内容だったと伝えられる。</p>
+  <p class="lore-p">特に気に入っている本は、奇書「ヴォイニッチ紀行」である。平行世界のコーネリアの植物や文化が記されているとされる正体不明の書物で、オカルトブームの際には解説本が大量に刷られた。彼が大事に所有するのはその一冊である。正体不明の平行世界。存在しないはずの惑星「サウリア」と「セリニア」。そして超文明と、それを追う竜の一族──彼がその頁のどこに自分を見ているのかを、知る者はいない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">暗躍 ─ THE HIDDEN HAND</h3>
+  <p class="lore-p"><span class="badge badge-classified">▮ 軍事機密</span><br>
+  <span class="redacted">スケールは<a href="kellone.html">ミズローヌ・ケローン</a>と旧知の仲であり、オイッコニーの私設軍と協力関係を結んだのはケローンからの依頼を承諾したためと分析されている。また配下のシャープクロウ族が各地から物品を掻き集めていたのは単なる侵略行為ではなく、スピリットの証拠となる、とある「武器」を探していたためとみられる</span>。</p>
+  <p class="lore-p"><span class="redacted"><a href="../planets/fortuna.html#tribe-snowhorn">スノーホーン族</a>も本来は改造施設へ送られる対象だったが、彼はあえて労働奴隷に留めている。ケローンがスノーホーン族の族長と友人だったからである。友人の友人ということで、一族郎党を根絶やしにするフォルトナの常道を避け、一族の半数を砦建設の労働力に使役するだけに留めた。だが皮肉にも、生かされたスノーホーンの戦士たちこそが部族を超えた共闘の先陣となり、オイッコニーの敗北と基地消滅の遠因となった。部族の壁を越えた共闘が成立し巨大兵器を打倒するという結末だけは、あのスケールですら予想の外にあったと思われる</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">高いカリスマと文武を併せ持ち、手段を選ばず撤退も辞さないその姿は、しばしば<a href="nahash.html">「ナハシュ・ギルバスターの再来」</a>と恐れられる。かつて武装したシャープクロウ族を単身で壊滅寸前まで追い込んだ男の名が、いまシャープクロウ族を率いる男の代名詞になっているのは、歴史の皮肉というほかない。</p>
+  <p class="lore-p">実のところ、彼は自身の本当の名前を知らない。「スケール」とはアソーカ語で「征服者」を意味する他称であり、本人ですら名乗るべき名を持たないのである。本人の語るところによれば、残されているのはおぼろげな記憶だけだという。クラゾア神殿で魂を何者かに抜き取られ、死を覚悟した。そして長い暗闇を越えた先、気が付けば今のサウリアの大地で目覚めていた──。初対面のはずのフォックス・マクラウドに対して「何度も交戦した記憶」があると語り、白兵戦のスタイルを初見で見破ってみせた要因は、この記憶にあると言われている。それが何を意味するのかは、本データベースの扱える範囲を超えている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

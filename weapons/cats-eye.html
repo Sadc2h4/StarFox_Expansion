@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAT'S EYE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#44ddaa;--accent:#aaffdd;--border:rgba(68,221,170,0.32);--border-hi:rgba(68,221,170,0.7);--dim:#0e3a2c;--dim2:#071d16; }
+    .p-title    { color: #eafff6; text-shadow: 0 0 50px rgba(68,221,170,0.35); }
+    .p-tagline  { border-color: #44ddaa; color: #44ddaa; }
+    .terminal-hdr { color: #aaffdd; }
+    .terminal-hdr::before { background: #aaffdd; box-shadow: 0 0 8px #aaffdd; }
+    .dk { color: #44ddaa; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-37 / CAT'S EYE — キャッツ・アイ ]</div>
+    <div class="header-status">● CIVILIAN — TRACKING FAILED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — CAT'S EYE — CIVILIAN HIGH-SPEED COURIER CRAFT — OWNER: CAT MONROE</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0037 — CLEARANCE: OPEN — PURSUIT NOT RECOMMENDED</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-37 / ARMORY FILE ]</div>
+        <div class="p-name-jp">キャッツ・アイ (CAT'S EYE)</div>
+        <h1 class="p-title">CAT'S EYE</h1>
+        <div class="p-tagline">RUN FIRST, SHOOT NEVER ── キャット・モンロー愛艇</div>
+        <p class="p-short-desc">フリーの運び屋キャット・モンローの愛艇。環状線の興行レース艇を「逃げ足」に全振りで改修したワンオフの高速艇であり、<a href="../database/military.html#cdf">CDF</a>と帝国の双方に追跡記録があり、双方に成功例がない。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 37 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">CAT'S EYE / キャッツ・アイ</td></tr><tr><td class="dk">CLASS</td><td class="dv">高速艇（ワンオフ改修・民間登録）</td></tr><tr><td class="dk">OWNER</td><td class="dv"><a href="../database/characters.html#cat">キャット・モンロー</a>（フリーの運び屋）</td></tr><tr><td class="dk">BASE HULL</td><td class="dv"><a href="../database/glossary.html#route-core-ring">コア・ワールド環状線</a> 興行レース艇（払い下げ）</td></tr><tr><td class="dk">PROPULSION</td><td class="dv"><a href="../database/military.html#g-diffuser">G・ディフューザー</a>（民生型・限界調律）</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">軽ザッパー ×1（自衛用・照準補正なし）</td></tr><tr><td class="dk">COUNTERMEASURES</td><td class="dv warn">チャフ / デコイ散布機構 — 「撃つより撒く」</td></tr><tr><td class="dk">CARGO</td><td class="dv">密閉貨物区画 — 容積・内容とも非公開</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">民間 — 追跡成功例なし</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PURSUIT EVASION -- 93 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 93%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(68,221,170,0.55);">
+        <img src="" alt="CAT'S EYE" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">CIVILIAN COURIER — ONE-OFF RACER</span>
+            <span class="tg-jp">エメラルドの高速艇 ── 逃げ足の芸術品</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">積み荷が急ぎなの。道を開けてくれる、坊やたち？<br>…あら、開いた<span class="tg-note note">-帝国哨戒管制の傍受記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">レーダーには映る。追いつけないだけだ<span class="lore-quote-src">― 帝国哨戒艇 艇長の戦闘詳報より</span></span></p>
+  <p class="lore-p">キャッツ・アイ（Cat's Eye）は、フリーの運び屋<a href="../database/characters.html#cat">キャット・モンロー</a>の愛艇である。民間登録の高速艇でありながら軍用機顔負けの機動性能を持ち、星系のあらゆる港でエメラルド色の船体が目撃されている。武装は自衛用の軽ザッパー一挺のみで、積み荷を守る手段はただ一つ…速さである。</p>
+  <p class="lore-p">帳簿の上では一介の輸送艇にすぎない。しかし危険空域への配達記録と追跡を振り切られた哨戒部隊の報告の数は、この艇を星系で最も名の知れた民間船の一つに押し上げている。CDFと帝国の双方に追跡記録があり、双方に成功例がない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機体 ─ AIRFRAME</h3>
+  <p class="lore-p">船体の出自は<a href="../database/glossary.html#route-core-ring">コア・ワールド環状線</a>を走っていた興行レース艇である。飛行族「フリー・アズ・ア・バード」の解散後、運び屋として独立した彼女が最初の稼ぎで買い取った払い下げ機であり、改修には環状線の中継港に散った族のOBたちが総出で関わった。仲介したのは元副頭のクールである（<a href="../characters/cat.html">キャット・モンローの項</a>を参照）。</p>
+  <p class="lore-p">改修の設計思想は族の掟「背後を取られるな」をそのまま機体へ写した形といわれる。民生型<a href="../database/military.html#g-diffuser">G・ディフューザー</a>を限界まで調律し、直線速度よりも旋回と減速からの再加速に全てを振った調整は、レース艇として見れば邪道であり逃げ足として見れば完璧である。管制の目を盗む低空進入と貨物船の航跡に隠れる「風読み」の航法が加わることでこの艇は追う側にとっての悪夢になる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">兵装 ─ ARMAMENT</h3>
+  <p class="lore-p">兵装欄は一行で終わる。自衛用の軽ザッパーが一挺。照準補正すら省かれたこの装備について、本人は「当てる気がないもの」と語っている。</p>
+  <p class="lore-p">代わりに貨物区画の一角を占めるのがチャフとデコイの散布機構である。追跡者のレーダーへ数十の偽影を撒き、本物がどれかを考えさせている間に空域を離れるのが基本の型であり、帝国哨戒隊の間では「猫の目を追うな、財布が減る」という戒めが伝わるという。積み荷の照会には毎回にこやかに応じ、開けられた貨物区画は毎回空である。何をどこで降ろしたのかを知る者は依頼主のほかにいない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録 ─ SERVICE</h3>
+  <p class="lore-p">最も知られた飛行記録は<a href="../database/locations.html#zoness">ゾネス</a>の探照灯網空域である。<a href="../database/glossary.html#zoness-recon">強行偵察</a>の夜に要請もなく戦域へ現れたこの艇は、探照灯の白い柱の間を縫いながら帝国哨戒網の「穴」を無線で流し続け、対空砲火を一発も浴びずに離脱した。以後も持ち主ともども呼ばれていない戦場に現れては貸しを一つ増やして消えている。</p>
+  <p class="lore-p"><span class="redacted">なお本艇の入港記録には数か月にわたる完全な空白が一度存在する。同時期に無断離隊していたある人物の記録との照合は、現在も成立していない</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">船体のエメラルド色は占領前のゾネスの海の色である。塗料の調合表は持ち主しか知らず、修理で塗装が剥げた際の塗り直しは必ず本人の手で行われる。整備を任せる相手も環状線の中継港の顔馴染みに限られており、それ以外の整備士は計器盤に触れることも許されない。</p>
+  <p class="lore-p">機名の由来については二つの説がある。暗闇で光る猫の目とする説と、エメラルドに輝く宝石のキャッツアイとする説である。本人の回答は「両方よ」の一言で終わっている。</p>
+  <p class="lore-p">戦域を離脱する際、一機のアーウィンがこの艇に並走して長い応酬を交わしてから別れていく光景が複数の宙域で目撃されている。公式の通信記録にこの応酬は一切残っていない。二人が使うのが飛行族時代の旧い秘匿周波数だからであり、解読を試みた通信士は「作戦情報は皆無、九割が口喧嘩、残る一割は貸し借りの計算」と報告書に記している。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

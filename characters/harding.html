@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GENERAL HARDING — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#a884e0;--accent:#d4c0f4;--border:rgba(168,132,224,0.32);--border-hi:rgba(212,192,244,0.7);--dim:#2a1c44;--dim2:#140c22; }
+    .p-title    { color: #f4eeff; text-shadow: 0 0 50px rgba(168,132,224,0.45); }
+    .p-tagline  { border-color: #a884e0; color: #a884e0; }
+    .terminal-hdr { color: #d4c0f4; }
+    .terminal-hdr::before { background: #d4c0f4; box-shadow: 0 0 8px #d4c0f4; }
+    .dk { color: #a884e0; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-38 / GENERAL HARDING — ハーディング将軍 ]</div>
+    <div class="header-status">● ACTIVE — FOREIGN OFFICER</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — ALBUS G. HARDING — HACTIVA UNIFIED SECURITY COMMAND — THE CONSCIENCE OF THE UNION</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0038 — CLASSIFICATION: FOREIGN GENERAL OFFICER — RELATION: FRIENDLY / NEUTRAL</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-38 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ハーディング将軍 (GENERAL HARDING)</div>
+        <h1 class="p-title">THE<br>UNBROKEN<br>SHELL</h1>
+        <div class="p-tagline">ハクティバ通商連合 統合警備司令 ─ 「連合の良心」</div>
+        <p class="p-short-desc">利益が法である商人の星系で、ただ一人「客の命」を帳簿の一番上に置き続ける老将。エラダードの鉱夫の甥に生まれ、滅びた公国の自警団から身を起こしてIGA戦役の先陣を切り、企業警備艦隊を束ねる連合唯一の「将軍」となった。ペパー将軍が「通商連合で最も信頼している男」と呼ぶ人物である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 38 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">ALBUS G. HARDING / アルバス・G・ハーディング — 公国式の姓呼称のみ流通</td></tr><tr><td class="dk">RACE</td><td class="dv">ワニガメ系<a href="../database/races.html#paranodian">パラノディアン</a></td></tr><tr><td class="dk">AGE</td><td class="dv">75歳前後</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../planets/eladard.html">エラダード</a> 地方都市コヴェントリー</td></tr><tr><td class="dk">ORIGIN</td><td class="dv">旧<a href="../database/glossary.html#bolz-duchy">ボルツ公国</a>自警団 — 最後の艦隊将官</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/factions.html#hactiva-union">ハクティバ通商連合</a> — 統合警備司令</td></tr><tr><td class="dk">COMMAND</td><td class="dv"><a href="../database/glossary.html#corporate-fleet">企業警備艦隊</a>の合同運用・<a href="../planets/kew.html">キュー</a>治安維持・凪領域の管理調停</td></tr><tr><td class="dk">EPITHET</td><td class="dv">「連合の良心」「動かぬ甲羅」</td></tr><tr><td class="dk">FAMILY</td><td class="dv">叔父・叔母（養育者）／一人息子（キュー旧神殿区画の神官）</td></tr><tr><td class="dk">LIAISON</td><td class="dv warn">⚠ 対<a href="../database/factions.html#garou-federation">ガロウ連邦</a> 三勢力情報連携 — 連合側代表</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 対共和国関係: 友好</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">COMMAND RATING -- 91 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 91%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(168,132,224,0.5);">
+        <img src="" alt="GENERAL HARDING" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE CONSCIENCE OF THE UNION</span>
+            <span class="tg-jp">動かぬ甲羅 ── 商人の星系にただ一枚残った盾</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">撃つのは最後の商談が流れてからだ。それまでは誰も席を立つな。<span class="tg-note note">-エラダード防空指揮所 交信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">連合に良心があるとすれば、それは制度の名ではなく一人の老いた亀の名である<span class="lore-quote-src">― CIS-HQ 勢力分析報告より</span></span></p>
+  <p class="lore-p">アルバス・G・ハーディングは<a href="../database/factions.html#hactiva-union">ハクティバ通商連合</a>の統合警備司令を務める老練の将官である。固有の大艦隊を持たない連合にあって各社の<a href="../database/glossary.html#corporate-fleet">企業警備艦隊</a>を束ねて一つの防衛網として運用できる唯一の人物とされ、理事会が「将軍」の階級呼称を認めた現役ではただ一人の例外である。利益を法とする商人の星系でこの男だけは「客の命」を帳簿の一番上に置き続けており、敵味方の別なく「連合の良心」の名で呼ばれる。通商連合は何かと警戒の目で見られがちであるが、ハーディングに関しては完全に別扱いであり、<a href="pepper.html">Z・Z・ペパー</a>は彼を「通商連合で最も信頼している男」と公言している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">前半生 ─ EARLY LIFE</h3>
+  <p class="lore-p"><span class="lore-quote">体に悪いと分かっていても、あの金色の空は美しかった<span class="lore-quote-src">― 本人の回想より</span></span></p>
+  <p class="lore-p">出身は惑星<a href="../planets/eladard.html">エラダード</a>の地方都市コヴェントリーである。今日の同惑星は管理AIによる都市丸ごとの生産ラインで知られるが、コヴェントリーはその生産ラインに乗らない端に位置する街であった。効率化が重視されるようになる前のエラダードの姿を残す街には鉱山労働と手作業の内職を行う作業所が立ち並び、彩りはないものの堅実で仲間意識を重んじる暮らしが営まれていた。ハーディングはこの街で鉄鉱石鉱山の鉱夫である叔父と内職産業に携わる叔母と共に育った。貧しさに耐えかねた父は希少元素採掘プラットフォームのパーツ改修屋で身を立てようと単身<a href="../planets/papetoon.html">パペトゥーン</a>へ渡り、その後消息を絶っている。子のいなかった叔父夫婦が幼い彼を引き取ったのである。</p>
+  <p class="lore-p">屈強なワニガメ系<a href="../database/races.html#paranodian">パラノディアン</a>の一族は皆が肉体労働に従事しており、ハーディングも鉱夫になるべく叔父の手伝いを続ける日々であった。仕事が終わればボイラーで沸かした沼風呂に仲間たちと浸かり、帰りには労働を終えた仲間や家族とささやかな慰労会を開く。鉱塵で常に薄暗く寒冷なエラダードの気候はパラノディアンには堪えるものであったが、金色に輝く鉱塵が舞う空は体に悪いと分かっていても美しかったと本人は振り返っている。</p>
+  <p class="lore-p">転機は彼が25歳のときに訪れた。叔父は体調不良で鉱山の仕事を続けられなくなり、叔母は内職産業が工業AIに取って代わられる知らせを受けて職を失った。エラダードが既存の工業生産ラインをAIに委ね始め、<a href="../database/glossary.html#fortinbras">フォーティンブラス商工会</a>に加入する業態にAI産業が混じり始めた時期である。安定した収入を求めて三人はコヴェントリーからの移住を決め、候補地を探すなかでエンバーガスによって大成した近代国家の噂を耳にする。それこそが<a href="../database/glossary.html#bolz-duchy">ボルツ公国</a>であった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">公国 ─ THE DUCHY</h3>
+  <p class="lore-p"><a href="../planets/setebos.html">セティボス</a>の大気圏に浮かぶ公国には鉱山となる山など存在せず、見渡す限りが山脈よりも巨大な雲だらけの世界であった。ハビタブルベルトに大型の台風が到来すれば空気の浮力の均衡が変わって体重が変わり、気圧の変化で耳の調子まで変わる。有毒の大気が到達すれば専用の区画へ避難し、声が高くなったり低くなったりする現象に遭遇する。目にする光景も住人も経済も全てが異なる世界であり、エラダードはおろか他のどの星にもない暮らしは若いハーディングにとって大きな刺激となった。</p>
+  <p class="lore-p">この宙に築かれた国を悠々と取り仕切っていたのはホルソイドたちである。プライドが高いが義理を重んじる彼らは潤う財政を国中の施設運営と公共インフラへ惜しみなく投じ、短期間でユートピアを作り上げていた。その恩恵はよそ者であるはずのハーディングの家族にも及び、鉱塵で肺を患った叔父はほぼ無償で最新鋭の医療を受けて体調を回復した。これまで大きな勢力から施しを受けたことのなかった彼の人生観はこの一件で変わったという。何とかこの国に恩を返したいと考えた彼は役場の推薦で自警団へ応募した。公国が軍と呼ばず自警団と呼び続けたこの組織こそが、後に彼が「最後の艦隊将官」として率いることになる公国軍である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">IGA戦役 ─ THE REBELLION</h3>
+  <p class="lore-p">軍事のことなど何も知らなかったハーディングは自警団に籍を置きながら独学で勉学を積み、当時から友好関係にあった共和国の聴聞機関の取材に答えるなど次第に頭角を現していく。当時のボルツは共和国との共同飽和作戦とエンバーガスの供給制裁により<a href="../database/factions.html#iga">独立星系連合</a>を追い込む要の作戦を遂行している最中であった。連合は開発が凍結されていた<a href="../weapons/man-drill.html">ドレッド・コング</a>の後継機ヒャッカン・コングの情報を独自に入手し、その改良型に核弾頭を載せたミサイルの開発を進めていたとされる。エンバーガスを渡せば最悪の事態に直結するとして両陣営が無条件の協力を結んでいた時期である。</p>
+  <p class="lore-p">そして<a href="../database/glossary.html#iga-war">IGA戦役</a>の最後の戦いに際し、ハーディングは作戦の先陣を切る部隊の指令に抜擢された。これが歴史に残る彼の最初の晴れ舞台である。この時彼は同じセティボス圏の<a href="../database/factions.html#garou-federation">ガロウ連邦</a>に救援を求めたが、答えは無言であった。連邦が当時すでに連合と協力関係にあった可能性は後年指摘されており、当時一介の軍曹に過ぎなかった<a href="grimclaw.html">グリムクロウ</a>が<a href="../database/glossary.html#sycorax-ruins">シコラクス</a>に出入りしていたことも確認されている。共和国側に靡かないことは目に見えており、ハーディングはやむなく救援を断念した。彼とグリムクロウの因縁はここから始まったと考えられている。</p>
+  <p class="lore-p">共和国軍と連携して行われた作戦は内部がすでに腐りきっていた連合を瞬く間に撃退し、特殊部隊<a href="../database/glossary.html#unit-sword">ソード</a>が中枢である軍事要塞シコラクスへ突入する道を切り開いた。ソードを率いていたのが若き日のZ・Z・ペパーである。二人の信頼はこの戦場で結ばれた。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">連合へ ─ THE UNION</h3>
+  <p class="lore-p">この一件は大いに評価され、ボルツ公国が経済破綻で崩壊した後も彼と自警団はそのまま「買い取られる」形で<a href="../database/factions.html#hactiva-union">通商連合</a>に吸収された。艦隊の武装解除と引き換えに全乗員の再雇用を連合に呑ませた際の言葉は今も有名である。「わかった…艦は売る。だが人は売らんぞ」。金で解決しようとする連合をこの一言で牽制したことで、公国が消滅した今も旧自警団は連合の中で一種の緩衝機関としての役割を持たされている。艦隊は確かに金で買い取られたが、兵士とその誇りは保持することに成功したのである。この交渉記録が理事会の目に留まり、敗軍の将はそのまま連合警備部門の再建を任された。各地で差別されてきたパラノディアンが帝国ではなく連合で頂点まで登った例として彼の経歴はしばしば引き合いに出される。</p>
+  <p class="lore-p">以後は連合圏で起きる事件の解決に奔走した。<a href="../database/glossary.html#migratory-fauna">スペースアメーバ</a>が大発生して<a href="../planets/kew.html">キュー</a>の宙域が大騒ぎになった際も冷静な分析と対処により最小限の被害でアメーバを元の<a href="../database/locations.html#ya">静電の海</a>へ送り返している。キューの治安維持の顔役としての仕事も全うしており、キューやエラダードがそれぞれ専用の施設艦隊を持つといってもそれらは商人に雇われた兵に過ぎない。商売を抜きに民を守ることを最優先で動く彼はこの連合において貴重な存在であり、理事会は彼のためだけに「将軍」の地位を用意した。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">良心 ─ THE CONSCIENCE</h3>
+  <p class="lore-p">その名を星系に知らしめたのは宇宙歴3997年の<a href="../planets/zoness.html">ゾネス</a>陥落である。中立を盾に沈黙する理事会を前に彼は麾下の警備艦隊を独断で戦域の縁へ進め、脱出する難民船団を通商航路へ収容し続けた。荷主たちの抗議に返した一喝「馬鹿もん！積荷より客だ。降ろしたければワシを降ろせ、ワシはワシのやり方でみなを救うぞ！」は連合圏の語り草になっている。処分は結局見送られ、連合の看板に「良心」の値札が付いた瞬間だった。</p>
+  <p class="lore-p">凪領域の管理調停でも彼の存在は大きい。東凪の共同管理では共和国側との折衝役を長く務め、海賊のあいだですら「ハーディングの艦隊になら投降してよい」という奇妙な不文律が知られている。投降者を虐げず、しかし逃がしもしない。甲羅の内側は存外に几帳面なのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">用兵 ─ DOCTRINE</h3>
+  <p class="lore-p">用兵は徹底した防勢主義である。決して焦らず相手が罠にかかるまで辛抱強く待ち、かかった瞬間に一気に決着へ持ち込む。この戦い方は自警団時代に先輩たちから教え込まれた兵法と、自身の家系が得意とした釣りの作法を合わせたものである。企業警備艦隊は装備こそ一級だが練度と指揮系統が各社ばらばらであり、攻勢に用いれば必ず綻ぶ。彼はその弱点を熟知した上で護るべきものの周りに艦を「据える」戦いに徹してきた。動かない、退かない、そして先に撃たない。焦れた相手が仕掛けた瞬間の反撃だけが彼の艦隊の唯一の攻勢である。この様式に付いた異名が「動かぬ甲羅」であり、彼の防衛線が破られた記録は公国時代を含めて存在しない。</p>
+  <p class="lore-p">本人は自らの用兵を誇らない。曰く「ワシは強いのではない。ただ、噛みつく場所を先に決めているだけだ」。ワニガメ系人種の得意とする狩りと同じ理屈である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">監視網 ─ THE WATCH</h3>
+  <p class="lore-p">現在の彼のもう一つの顔は<a href="../database/factions.html#garou-federation">ガロウ連邦</a>の動向を巡って帝国・共和国・連合の三者が続ける奇妙な情報連携の「連合側代表」である。立場も思惑も異なる三大勢力の連絡将校たちが同じ卓に着き続けていられる理由を共和国側の担当官は「議長があの爺さんだからだ」と述べている。</p>
+  <p class="lore-p">当のハーディングは<a href="grimclaw.html">グリムクロウ提督</a>について多くを語らない。記録に残る評はただ一つである。「アヤツは商談で解決できない相手だ。だからこそ恐ろしい」。シコラクスで救援を拒まれた日から二十余年、無言の答えを返した相手が今は連邦の頂点に座っている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">彼には一人息子がいるが職業は軍関連ではなく、<a href="../planets/kew.html">キュー</a>の旧神殿区画で二つの太陽に仕える神官である。この事実を伝えると誰もが驚くというが、将軍自身は息子のやりたいことを尊重しており交流は今も続いている。将軍の携帯端末から讃美歌が聞こえたらそれは息子からの通話であるという話は、連合の軍部では知らぬ者のない逸話である。</p>
+  <p class="lore-p">軍人としての姿があまりに有名なため知られていないが、彼は小説家としての一面も持つ。公国で暮らしていた時期に数年間だけ社会勉強としてライラット星系の様々な惑星を旅して回ったことがあり、その時の様々な街での経験をもとにしたファンタジー冒険小説は年月を経た今も人気のベストセラーである。数年前に実写映画化が決定して本人も鼻高々である一方、読者の中心である若者たちには自分の目で世界を見て回ることを勧めるスタンスを崩していない。</p>
+  <p class="lore-p"><a href="arpeggio.html">アルペジオ</a>の総帥ビッグ・ボスとは旧知の仲である。当初は同じ勢力内で真逆の理念を持つ敵同士という関係であったが、50年近くハクティバ圏をそれぞれ表と裏から維持してきた二人は何かと話が合うらしく、最近は一緒に石板の解読作業や自費出版の相談を行う「爺茶会」をひっそり開いているという。礼儀に煩いビッグ・ボスも彼だけは例外で作法を指摘することはない。</p>
+  <p class="lore-p">執務室には滅びた公国の軍旗が一旒だけ掛けられている。連合の式典で古びた旗を訝しむ声が出るたび彼は同じ答えを返すという。「ワシの給料はハクティバから出ておる。だが背骨は公国製でな　がはははっ」。歩みは遅く会議への到着はいつも最後である。ただし遅刻の記録は一度もない。彼の到着時刻から逆算して開始時刻を組むのがエラダード防衛会議の暗黙の作法になっている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

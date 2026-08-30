@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WOLFEN — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#aa88dd;--accent:#ccbbee;--border:rgba(170,136,221,0.32);--border-hi:rgba(170,136,221,0.7);--dim:#241840;--dim2:#120c20; }
+    .p-title    { color: #f2ecff; text-shadow: 0 0 50px rgba(170,136,221,0.35); }
+    .p-tagline  { border-color: #aa88dd; color: #aa88dd; }
+    .terminal-hdr { color: #ccbbee; }
+    .terminal-hdr::before { background: #ccbbee; box-shadow: 0 0 8px #ccbbee; }
+    .dk { color: #aa88dd; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../codex/glossary.html#type-weapon" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-05 / WOLFEN — ウルフェン ]</div>
+    <div class="header-status"><span class="blink" style="color:#ccbbee;">●</span> HOSTILE — STAR WOLF</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — WOLFEN — HOSTILE ALL-RANGE FIGHTER — STAR WOLF</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0005 — CLEARANCE: OPEN — COUNTERPART OF ARWING</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-05 / ARMORY FILE ]</div>
+        <div class="p-name-jp">ウルフェン (WOLFEN)</div>
+        <h1 class="p-title">THE FANG<br>BUILT TO<br>HUNT A FOX</h1>
+        <div class="p-tagline">敵性全領域戦闘機 ─ スターウルフ主力機</div>
+        <p class="p-short-desc">スターウルフが駆る敵性の全領域戦闘機。アーウィンと互角に渡り合う星系で唯一の機体であり、その系譜には裏切りの影がある。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 05 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">WOLFEN / ウルフェン</td></tr><tr><td class="dk">CLASS</td><td class="dv">全領域戦闘機（敵性）</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv">帝国工廠（設計主任: 不明）</td></tr><tr><td class="dk">LENGTH</td><td class="dv">全長 29sm（推定）</td></tr><tr><td class="dk">MAX SPEED</td><td class="dv">M4.1（観測値）</td></tr><tr><td class="dk">POWERPLANT</td><td class="dv">プラズマエンジン（型式不明）</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">ツインレーザー / 誘導弾</td></tr><tr><td class="dk">EQUIPMENT</td><td class="dv">G拡散機構（Gディフューザー同系と推定）</td></tr><tr><td class="dk">OPERATOR</td><td class="dv">傭兵部隊スターウルフ</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 交戦注意</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING -- 94 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 94%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(170,136,221,0.55);">
+        <img src="" alt="WOLFEN" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR WOLF — ALL-RANGE FIGHTER</span>
+            <span class="tg-jp">敵性戦闘機 ウルフェン</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">鏡を見ろ、スターフォックス。オレたちの機体はよく似ている。<span class="tg-note note">-交戦時の傍受通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">アーウィンの好敵手を作れるのは、アーウィンを知る者だけだ<span class="lore-quote-src">― CDF技術情報部 解析報告の結論より</span></span></p>
+  <p class="lore-p">ウルフェン（Wolfen）は、傭兵部隊スターウルフが運用する全領域戦闘機である。速度・機動性・武装のすべてで<a href="arwing.html">アーウィン</a> とほぼ互角という、共和国側にとって悪夢のような性能を持ち、<a href="../codex/characters.html#wolf">ウルフ・オドネル</a> ら4名の手で数々の戦域に牙を剥いてきた。</p>
+  <p class="lore-p">赤い機体色と前進翼のシルエットは前線パイロットの恐怖の的であり、「翼の影が二重に見えたら、それはウルフェンだ」という警句が生まれている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MECHANISM ─ 機構</h3>
+  <p class="lore-p">最大の謎は、機体を支えるG拡散機構である。観測される機動特性はGディフューザーシステムと酷似しており、<a href="../codex/space-dynamics.html">スペース・ダイナミクス社</a> が独占するはずの技術がなぜ帝国側に存在するのか──。</p>
+  <p class="lore-p"><a href="../codex/glossary.html#cdf">CDF</a> は複数の状況証拠から、<a href="../codex/locations.html#venom">ベノム</a> 偵察作戦の際に<a href="../codex/characters.html#pigma">ピグマ・デンガー</a> がスターフォックスの機体データと整備記録を持ち出し、報酬の一部として帝国へ売却したものと結論付けている。ウルフェンとは、裏切りによって生まれたアーウィンの「異母兄弟」なのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 運用史</h3>
+  <p class="lore-p">初観測は<a href="../codex/locations.html#fichina">フィチナ</a> 上空戦。以後、<a href="../codex/locations.html#fortuna">フォルトナ</a>、<a href="../codex/locations.html#katina">カタリナ</a> と、スターフォックスの現れる戦域には必ずウルフェンが現れた。撃墜スコアではアーウィンが常に一歩上回るものの、決定的な差は今もついていない。</p>
+  <p class="lore-p">興味深いのは運用思想の違いである。スターフォックスが4機の連携を武器とするのに対し、スターウルフは4つの個性が別々に獲物を追う。ウルフェンの設計もそれを反映し、各機のチューニングは搭乗者ごとに大きく異なるという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">撃墜され回収されたウルフェンの残骸から、機体フレームに刻まれた小さな銘が発見された──「良い狩りを（Good Hunt）」。同じ言葉が<a href="../codex/glossary.html#starfox">スターフォックス</a> の出撃管制でも使われており、両部隊の因縁がどこまで遡るのか、情報部を悩ませ続けている。</p>
+  <p class="lore-p">ウルフの乗る隊長機は左舷センサーが特注の広域型に換装されている。左目を失った男の機体が、左をより遠くまで見る──整備記録のこの一行に、彼の流儀が集約されている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

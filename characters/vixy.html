@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIXY McCLOUD — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ffaa88;--accent:#ffd0bb;--border:rgba(255,170,136,0.32);--border-hi:rgba(255,170,136,0.7);--dim:#3a2014;--dim2:#1d100a; }
+    .p-title    { color: #fff2ea; text-shadow: 0 0 50px rgba(255,170,136,0.35); }
+    .p-tagline  { border-color: #ffaa88; color: #ffaa88; }
+    .terminal-hdr { color: #ffd0bb; }
+    .terminal-hdr::before { background: #ffd0bb; box-shadow: 0 0 8px #ffd0bb; }
+    .dk { color: #ffaa88; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-17 / VIXY McCLOUD — ヴィクシー・マクラウド ]</div>
+    <div class="header-status"><span style="color:#ffd0bb;">●</span> DECEASED — FILE SEALED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — VIXY McCLOUD — CIVILIAN — DECEASED</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0017 — CLEARANCE: PARTIAL — INVESTIGATION SEALED</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-17 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ヴィクシー・マクラウド (VIXY McCLOUD)</div>
+        <h1 class="p-title">VIXY McCLOUD</h1>
+        <div class="p-tagline">THE LIGHT OF THE TAVERN ── 故人 ─ フォックスの母</div>
+        <p class="p-short-desc">パペトゥーンの酒場の看板娘としてジェームズと出会い、フォックスを産み育てた女性。その死は「事故」として処理され、捜査資料は今も封印されている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 17 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">VIXY McCLOUD / ヴィクシー・マクラウド</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#anubisoid">アヌビソイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">没年32歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#papetoon">パペトゥーン</a></td></tr><tr><td class="dk">FAMILY</td><td class="dv">夫: <a href="../database/characters.html#james">ジェームズ</a> / 子: <a href="../database/characters.html#fox">フォックス</a></td></tr><tr><td class="dk">CAUSE</td><td class="dv">車両爆発 — 「事故」として処理</td></tr><tr><td class="dk">INVESTIGATION</td><td class="dv warn">捜査資料 封印中</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">故人</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">FILE INTEGRITY -- 34 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 34%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,170,136,0.55);">
+        <img src="" alt="VIXY McCLOUD" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">CIVILIAN — DECEASED</span>
+            <span class="tg-jp">封印された事故記録</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">あの人の帰る場所と、あの子の飛び立つ場所。それがうちよ。<span class="tg-note note">-生前の言葉として伝わる一節-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">あの店の灯りがついている限り、この町は大丈夫だと思えた<span class="lore-quote-src">― パペトゥーンの古老の回想より</span></span></p>
+  <p class="lore-p">ヴィクシー・マクラウドは、<a href="../database/locations.html#papetoon">パペトゥーン</a> の酒場の看板娘として町の誰からも愛された女性であり、<a href="../database/characters.html#james">ジェームズ・マクラウド</a> の妻、そして<a href="../database/characters.html#fox">フォックス・マクラウド</a> の母である。快活で芯が強く、荒くれ者の集う酒場を笑顔一つで静めたという逸話が残る。</p>
+  <p class="lore-p">夜盗稼業から足を洗い、鬱屈を抱えて農業に励んでいた頃のジェームズと意気投合し、彼の「二度目の人生」の支えとなった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">彼女を巡っては、若き日のジェームズともう一人、風変わりな年上の求婚者がいたことが知られている──後の帝国皇帝、<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a> である。20歳の年齢差にもかかわらず酒場での彼の評判は悪くなかったというが、彼女が選んだのはジェームズだった。この三角関係が後の星系史に落とした影の大きさを、当時知る者はいない。</p>
+  <p class="lore-p">結婚後も夫妻はパペトゥーンを離れず、丘の上の牧場で一人息子フォックスを育てた。ジェームズが建ったばかりの士官学校の門を叩いたのはフォックスが生まれた頃のことで、彼女は酒場と牧場を切り盛りしながら、夫の遅すぎる学生生活を支え続けている。</p>
+  <p class="lore-p">やがてジェームズは最優秀の成績で課程を修了し、共和国軍からエースパイロットとしての正式採用と、コーネリアの居住権を提示される。だが彼は家族とこの星での暮らしを選び、分校の教官職を希望する旨の返答を用意していたという。それを覆したのがヴィクシーだった──「あの人は飛んでいる時だけ、全部本当のことを言う」。夫が手放そうとしている夢に気づいていた彼女は、家族そろって故郷を離れ、コーネリアに移り住む決心を告げた。だが、彼女自身がコーネリアの土を踏む日は、ついに訪れなかった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">事件の記録 ─ SERVICE</h3>
+  <p class="lore-p">彼女の命を奪った車両爆発は、公式には整備不良による「事故」として処理された。しかし<span class="redacted">当時の捜査記録には、爆発物の痕跡と、標的がジェームズ本人だった可能性を示す複数の物証が記載されている。捜査は上層部の指示により中断され、資料は封印された。ファイルFCH-119（アンドルフの反乱・再調査報告）との関連参照が、封印直前に追記されている</span>。</p>
+  <p class="lore-p">この「事故」の後、幼いフォックスを抱えたジェームズがどんな夜を過ごしたのかを、記録は語らない。ただ、以後の彼が二度と誰かを深く憎む素振りを見せなかったことだけが、周囲の証言に残っている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">パペトゥーンの酒場は今も営業しており、カウンターの奥には彼女の写真が飾られている。マクラウド姓を名乗る客からは、代金を受け取らないのが店の不文律である。</p>
+  <p class="lore-p">フォックスは母の顔をほとんど覚えていないと語る。だがグレートフォックスの彼の私室には、パペトゥーンの酒場の古いコースターが一枚、額に入れて飾られている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

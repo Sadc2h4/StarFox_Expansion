@@ -1,0 +1,11 @@
+Please generate an image with the image_gen tool, using the attached reference picture as the design guide.
+
+Recreate the space station in the attached reference image as a single high-resolution, photorealistic sci-fi rendering. Keep the same overall silhouette and proportions as the reference: a dark metallic deep-space station with a multi-tiered central drum core, sweeping curved pylon arms that arc up and over the core, and a broad outer ring connected to the hub by thin struts.
+
+Mood and detailing: an abandoned, derelict experimental colony station. Weathered and micrometeorite-scarred hull plating, fine greebled surface detail, a handful of faint warm window lights still glowing in otherwise dark structures, no engine exhaust, no ships nearby. Dramatic cinematic key light from the upper left with deep shadows, realistic PBR-style materials.
+
+Composition requirements (very important):
+- Render ONLY the station. No planets, no stars, no text, no watermark.
+- Station centered, filling roughly 85-90% of the frame.
+- The entire background must be one flat, uniform, pure magenta color (RGB 255, 0, 255). No gradients, no vignetting, no glow or haze bleeding over the magenta background. Crisp edges so the magenta can be chroma-keyed out.
+- Square image, 1024x1024 or larger.

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARWING — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#37d0b2;--accent:#9ff2e2;--border:rgba(55,208,178,0.32);--border-hi:rgba(55,208,178,0.7);--dim:#0d3a30;--dim2:#071d18; }
+    .p-title    { color: #e8fff8; text-shadow: 0 0 50px rgba(55,208,178,0.35); }
+    .p-tagline  { border-color: #37d0b2; color: #37d0b2; }
+    .terminal-hdr { color: #9ff2e2; }
+    .terminal-hdr::before { background: #9ff2e2; box-shadow: 0 0 8px #9ff2e2; }
+    .dk { color: #37d0b2; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-01 / ARWING — アーウィン ]</div>
+    <div class="header-status">● IN SERVICE — STAR FOX</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — ARWING — ALL-RANGE FIGHTER — SPACE DYNAMICS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0001 — CLEARANCE: OPEN — G-DIFFUSER SYSTEM</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-01 / ARMORY FILE ]</div>
+        <div class="p-name-jp">アーウィン (ARWING)</div>
+        <h1 class="p-title">ARWING</h1>
+        <div class="p-tagline">THE WING THAT NEVER LIES ── 超高性能全領域戦闘機</div>
+        <p class="p-short-desc">スペース・ダイナミクス社が生んだ、Gディフューザーシステム搭載の全領域戦闘機。スターフォックスの代名詞にして、ライラットの空の最高傑作。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 01 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">ARWING / アーウィン</td></tr><tr><td class="dk">CLASS</td><td class="dv">超高性能全領域戦闘機</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv"><a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a></td></tr><tr><td class="dk">LENGTH / HEIGHT</td><td class="dv">全長 28sm / 全高 5.5sm</td></tr><tr><td class="dk">MAX SPEED</td><td class="dv">M4.2</td></tr><tr><td class="dk">POWERPLANT</td><td class="dv">プラズマエンジン NTD-FX壱型</td></tr><tr><td class="dk">POWER OUTPUT</td><td class="dv">5,000万SPW</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">シングルレーザー（チャージ弾）/ ツインレーザー A・B系統（B＝通称ハイパーレーザー）/ <a href="smart-bomb.html">スマートボム</a> ×5</td></tr><tr><td class="dk">EQUIPMENT</td><td class="dv">Gディフューザー ×4 / デフレクターシールド / ローリングシールド / エネルギー変換システム / <a href="supply-ring.html">スモールサプライ</a> / 大気圏内用フラップ</td></tr><tr><td class="dk">TRANSFORMATION</td><td class="dv"><a href="walker.html">二足歩行形態「ウォーカー」</a></td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../database/military.html#starfox">スターフォックス</a></td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 運用中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">COMBAT RATING -- 96 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(55,208,178,0.55);">
+        <img src="" alt="ARWING" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ALL-RANGE FIGHTER — G-DIFFUSER</span>
+            <span class="tg-jp">超高性能全領域戦闘機 アーウィン</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">この機体は、乗り手に噓をつかない。<br>だったら…こっちも噓はつけないだろう？<span class="tg-note note">-J・マクラウド 初飛行テスト後の第一声-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="../resource/weapons/arwing_anatomy.jpg" alt="Arwing anatomy" class="active">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">操縦できない機体はありません。乗り手が育っていないだけですよ<span class="lore-quote-src">― ヤル・デ・ポン社長 ── アーウィン批判への返答</span></span></p>
+  <p class="lore-p">アーウィン（Arwing）は、<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a> が開発した超高性能全領域戦闘機。宇宙空間・大気圏内・地表付近を問わず戦闘行動が可能な「全領域（オールレンジ）」性能を持ち、雇われ遊撃隊<a href="../database/military.html#starfox">スターフォックス</a> の主力機として星系中にその機影を知られている。</p>
+  <p class="lore-p">ベースは同社の量産戦闘機だが現在運用されている機体はチームメンバーの手で各所に改造を重ねた事実上のワンオフ機である。運用数はわずか4機。しかしその4機が戦域に現れるだけで空気が変わると言われ、共和国の兵士は空を指して歓声を上げ、帝国の管制官は増援の要請文を打ち始める。「星系で最も有名な翼」という呼び名に誇張はない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p">心臓部は重力・慣性拡散機構「<a href="g-diffuser.html">Gディフューザーシステム</a>」である。コックピット両脇の主翼付け根に埋め込まれた計4基のディフューザーを交互に作動させ、反重力の反発を左右で切り替えることで機体を制御する。従来の戦闘機に必須だった巨大な主翼・方向舵・姿勢制御バーニアの類を一切不要とする方式であり、急旋回・宙返り・代名詞のローリングといった通常なら搭乗者が失神する機動は全てこの4基の連携から生まれている。</p>
+  <p class="lore-p">姿勢制御装置を排した省スペース化の恩恵も大きい。空いた機体容積が惑星間航行級のプラズマエンジンNTD-FX壱型（出力5000万SPW・最高速度M4.2）と<a href="smart-bomb.html">スマートボム</a>の搭載を可能にしたのであり、この機体の火力と足の速さは反重力機構の副産物ともいえる。ブーストとブレーキの緩急を織り交ぜた機動は「空戦の教科書を書き換えた」と評され、大気圏内用フラップ・通信モニター・急旋回ペダルに至るまで、操縦系は徹底して「乗り手の反射」に追従する設計である。なお垂直離着陸はおろか着陸脚すら存在せず、停泊中の機体は地上から約1smに浮いたまま静止する。格納庫で車止めの要らない戦闘機はこの機体だけである。</p>
+  <p class="lore-p">特筆すべきは片翼を失ってなお飛び続ける冗長性である。損傷側の揚力と姿勢制御を残ったディフューザーが即座に肩代わりするため、主翼の半分を折られた状態でも戦闘続行が可能とされる。この特性ゆえに主翼ユニットは最初から換装前提の消耗品として設計されており、格納庫には常に予備翼が吊られている。歴代の翼交換記録を最も多く持つ隊員が誰であるかについて、整備班は職業倫理を理由に回答を拒んでいる。</p>
+  <p class="lore-p">長期作戦を支えるのが機内のエネルギー変換システムである。撃破した敵機の残骸から放出されるエネルギーを取り込んで変換し、シールドの補給・武装の強化・機体の応急修復にまで回すことができる。<a href="supply-ring.html">スモールサプライ</a>によるエネルギー回収と併せて、母艦に戻れない戦域でこの機体が戦い続けられる理由はここにある。破損した主翼さえ良質なエネルギー塊を取り込めばその場で復元した記録が残る。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">兵装 ─ ARMAMENT</h3>
+  <p class="lore-p">主兵装は機首1門・主翼2門のレーザー砲である。六角柱状のレーザー水晶をイオンコンデンサーと発振コイルで挟み、チェンバーレンズで収束させる古典的かつ完成された構造で、SD社の設計図面では今も旧称「ブラスター」で呼ばれている。エネルギー効率の制約から3門の同時発射は現在も不可能とされ、機首のシングルレーザーか主翼2門のツインレーザーかを状況で使い分ける。70年前にツインレーザーを体系化した設計思想の正統な後継にあたり、系譜については<a href="../database/glossary.html#ws-laser">兵装の系統①レーザー/光学</a>の項に詳しい。</p>
+  <p class="lore-p">主翼側の出力系統にはA・Bの2段階がある。B系統はA系統の約1.5倍の攻撃力を持ち、通称「ハイパーレーザー」と呼ばれる強化枠がこれにあたる。帝国軍の一部装甲に施されたレーザー反射コーティングはA系統の光条を弾き返すが、B系統の出力の前には機能しない。</p>
+  <p class="lore-p">独自装備がチャージショットである。銃身にエネルギーを溜めた状態で照準器が敵機を自動捕捉し、解放と同時に追尾性のプラズマ弾を叩き込む。直撃時の爆発は周囲の随伴機まで巻き込むため、密集編隊への一撃としては<a href="smart-bomb.html">スマートボム</a>に次ぐ威力を持つ。そのスマートボムの搭載定数は5発。着弾起爆に加えて空中での遠隔起爆にも対応しており、使いどころの采配はほぼ操縦者の勘に委ねられている。</p>
+  <p class="lore-p">防御面ではデフレクターシールドに加え、機体を横転させながら電磁バリアを展開する「ローリングシールド」が知られる。レーザー・リングレーザー・プラズマ弾といった光学系の射撃を弾き返す一方、ミサイルなどの実体弾には効果がなく、この弱点は<a href="../database/glossary.html#ws-powder">パウダー/火薬系統</a>が対アーウィン戦で好まれる理由にもなっている。バリアの展開は消費エネルギーの都合で高速回転中のみに制限されるが、敵弾を弾きながら回避機動を完了するこの防御は今やアーウィンの代名詞であり、教本には「背後を取られたら、まず回れ」とだけ記されている。この一文を最初に書いた人物の名は記録にないが隊内に心当たりは一人しかいない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">号機 ─ THE SIX AIRFRAMES</h3>
+  <p class="lore-p">アーウィンの新造機は歴史上6機しか存在しない。各機は番号で呼ばれ、その来歴はそのまま<a href="../database/military.html#starfox">スターフォックス</a>の歴史である。1号機は<a href="../database/characters.html#james">ジェームズ・マクラウド</a>の乗機として<a href="../database/locations.html#venom">ベノム</a>偵察作戦から還らず、3号機は離反した<a href="../database/characters.html#pigma">ピグマ・デンガー</a>が持ち去った。この3号機が後に<a href="wolfen.html">ウルフェンⅠ</a>の素体として再構成されたとみられることは、両機の性能が「ほぼ互角」であることの何よりの説明とされる。</p>
+  <p class="lore-p">現行の4機はペッピーの2号機・フォックスの4号機・スリッピーの5号機・ファルコの6号機である。6号機はファルコの勧誘に際してトード家の伝手を総動員して建造された特注の最新鋭機であり、現存するアーウィンで最後に造られた機体でもある（<a href="../characters/falco.html">ファルコの項</a>を参照）。</p>
+  <p class="lore-p">7号機が造られない最大の理由は資金である。ワンオフ化した機体の建造費は量産機の比ではなく、隊の家計は<a href="greatfox.html">グレートフォックス</a>のローンが数十年単位で圧迫し続けている。それでも<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>からの部品供給が途切れないのは、社長と隊の浅からぬ縁によるところが大きい。</p>
+  <p class="lore-p">現行機には二足歩行形態<a href="walker.html">「ウォーカー」</a>への変形機構が組み込まれている。主翼ユニットを脚部へ転換し、戦闘機が本来立ち入れない戦場へ「歩いて」侵入するこの機構の詳細は当該項に詳しい。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">運用史 ─ HISTORY</h3>
+  <p class="lore-p">初飛行テストの操縦桿を握ったのは、当時傭兵になりたてだった<a href="../database/characters.html#james">ジェームズ・マクラウド</a>。着陸後の第一声「この機体は、乗り手に噓をつかない」は、開発陣にとって最高の設計評価として今も語り継がれる。以来アーウィンは初代<a href="../database/military.html#starfox">スターフォックス</a> の翼となり、<a href="../database/locations.html#venom">ベノム</a> 偵察作戦の悲劇を経て、現在は2代目リーダー<a href="../database/characters.html#fox">フォックス・マクラウド</a> ら4機が運用を続けている。</p>
+  <p class="lore-p">新生スターフォックス以降の戦歴は、そのまま主要戦域の年表と重なる。<a href="../database/glossary.html#katina-miracle">カタリナの奇跡</a>では駆けつけた4機が母艦撃墜の起点となり、<a href="../database/locations.html#fichina">フィチナ</a>奪還では地下施設をウォーカー形態が制圧し、<a href="../database/glossary.html#zoness-recon">ゾネス強行偵察</a>では探照灯の柱の間を編隊が縫った。<a href="../database/glossary.html#eclipse-op">日食作戦</a>で恒星を背にした強襲を成立させたのもこの機体である。</p>
+  <p class="lore-p">設計上は「過敏すぎて操縦不能」とまで言われた尖った特性を持つが、一流のパイロットが乗った時にのみ真価を発揮する。<a href="../database/military.html#cdf">CDF</a> では「乗り手を選ぶ名機」の代名詞として、新型機の操縦性を語る際の基準機となっている。この設計を量産向けに簡略化し「誰もが乗れる翼」としたのが、今日CDFの空を支える<a href="cornerian-fighter.html">コーネリアファイター</a>である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">機首に描かれたスターフォックスのチームマーク──翼を広げた狐の意匠は、初代メンバーの<a href="../database/characters.html#pigma">ピグマ・デンガー</a> によるデザインだと伝えられている。裏切り者の描いた紋章を今も掲げ続ける理由をフォックスは語らない。ペッピーいわく「あの頃のアイツまで嫌いになる必要はないということさ…」。</p>
+  <p class="lore-p"><a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a> には歴代アーウィンの試作ウィングが保管されており、その中には焼け焦げた初代の破片も含まれ、銘板にはこうある──「翼は折れる。飛び方は残る」。</p>
+  <p class="lore-p">CDFの教習シミュレータには、操縦特性をアーウィンに合わせた最高難度の「アーウィンモード」が収録されている。歴代ランキングの上位は現メンバーの名で占められているが、首位の記録者名義「J.M.」だけは十数年間一度も更新されていない。挑み続けている二番手の名はここには記さないでおく。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

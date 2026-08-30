@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ODDBALL WEAPONS — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#b8a888;--accent:#dcd0b0;--border:rgba(184,168,136,0.32);--border-hi:rgba(220,208,176,0.7);--dim:#332c1e;--dim2:#17130c; }
+    .p-title    { color: #f8f4e8; text-shadow: 0 0 50px rgba(184,168,136,0.4); }
+    .p-tagline  { border-color: #b8a888; color: #b8a888; }
+    .terminal-hdr { color: #dcd0b0; }
+    .terminal-hdr::before { background: #dcd0b0; box-shadow: 0 0 8px #dcd0b0; }
+    .dk { color: #b8a888; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-22 / ODDBALL WEAPONS — ライラット珍兵器総覧 ]</div>
+    <div class="header-status"><span class="blink" style="color:#dcd0b0;">●</span> ARCHIVE — ONGOING</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — ODDBALL WEAPONS COMPENDIUM — ALL FACTIONS — HISTORICAL CURIOSITIES</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0022 — CLASSIFICATION: MISCELLANEOUS — HAZARD: MOSTLY TO THEMSELVES</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-22 / ARMORY FILE ]</div>
+        <div class="p-name-jp">ライラット珍兵器総覧 (ODDBALL WEAPONS)</div>
+        <h1 class="p-title">GENIUS,<br>ALLEGEDLY</h1>
+        <div class="p-tagline">兵器史別録 ─ 全勢力・収録9件</div>
+        <p class="p-short-desc">時代が早すぎて誰にも理解されなかった発明と「どう見てもダメ」だった発明の記録集。全勢力の黒歴史を等しく収蔵する星系で最も平和な兵器データベースである。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ ARCHIVE SCAN — FILE 22 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">ODDBALL WEAPONS FILE / 珍兵器総覧</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">兵器史別録（総覧）</td></tr><tr><td class="dk">SCOPE</td><td class="dv">全勢力 — 共和国・帝国・通商連合・旧国家</td></tr><tr><td class="dk">CRITERIA</td><td class="dv">「時代が早すぎた」または「どう見てもダメ」</td></tr><tr><td class="dk">ENTRIES</td><td class="dv">収録9件 — 追加受付中</td></tr><tr><td class="dk">STATUS</td><td class="dv">更新継続中 — 戦争が続く限り</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">HAZARD TO FRIENDLY FORCES -- 74 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 74%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(184,168,136,0.5);">
+        <img src="" alt="ODDBALL WEAPONS" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">HALL OF MAGNIFICENT FAILURES</span>
+            <span class="tg-jp">偉大なる失敗作の殿堂 ── 設計者は全員大真面目</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">報告します、敵の新兵器が……その、勝手に沈みました。　「もう一度言え？」<span class="tg-note note">-流氷戦艦サスカッチ観測時の哨戒通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">戦争は発明の母である。ただし、生まれた子の全員が歩けるとは限らない<span class="lore-quote-src">― 本総覧 編者序文より</span></span></p>
+  <p class="lore-p">本ファイルはライラット星系の戦史に埋もれた「実を結ばなかった発明」を勢力の別なく収蔵するアーカイブである。収録基準は「時代が早すぎて当時の誰にも理解されなかった」ことと「どこからどう見てもダメだった」ことの2点であり両方を満たす兵器も多い。</p>
+  <p class="lore-p">まだ誰も実装していないコンセプトを笑うことは誰にでもできる（<a href="granga.html">グランガ</a>の項を参照）。それでも記録は残さねばならない。</p>
+</div>
+<div class="lore-section" id="benjamin-1">
+  <h3 class="lore-h">① 牽引式兵装「ベンジャミンⅠ」（帝国） ─ BENJAMIN I</h3>
+  <p class="lore-p">武装列車に牽引されることを前提とした皇帝の自信作。風を受けて浮遊しながら舵を取り移動エネルギーの全てを攻撃へ転用できる先進設計だが、成立条件が「高速走行する列車」と「大気」と「線路の敷かれた惑星地表」である。つまり線路がないと使えない。戦闘力は同世代帝国兵器の上位に食い込むと解析されながら、実戦で披露された事例は今日まで一件もない（詳細は<a href="../planets/macbeth.html#benjamin-1">マクベスの項</a>を参照）。走らせる場所さえあれば強いという点では星系一の大器晩成型である。</p>
+</div>
+<div class="lore-section" id="sasquatch">
+  <h3 class="lore-h">② 流氷戦艦「サスカッチ」（帝国） ─ SASQUATCH</h3>
+  <p class="lore-p">予算不足にあえいでいた黎明期の帝国が考案した宇宙を漂う氷塊に偽装した巨大戦艦。特殊加工した氷を船体に用いることで氷さえ補充すれば何度でも再生し、宇宙の極低温なら溶ける心配もない──という理屈で建造された。だが試作艦は光学兵器のレーザーで溶けに溶け最後は操縦区画だけが残される事態となった。さらに<a href="../database/glossary.html#planetoid-vernier">移動用バーニア</a>を吹かすと自らの熱で自壊するという本末転倒の欠点を抱え、「ただ移動していただけで勝手に撃沈した」という報告さえ残る。この「撃沈」を戦果として申請できるのかを巡り、共和国軍の戦果認定課が真剣に会議を開いた記録がある。</p>
+</div>
+<div class="lore-section" id="jura-moon">
+  <h3 class="lore-h">③ 顔面隕石「ジュラ・ムーン」（共和国） ─ JURA MOON</h3>
+  <p class="lore-p"><a href="../database/locations.html#asteroid">グレートウォール</a>の防衛要員として考案された自動警備ロボット。隕石群に紛れ込ませておき敵機が近づくと隠された「顔」を露わにして突撃する寸法だったが、実際に<a href="../planets/area3.html">AREA3</a>への強襲（<a href="../database/glossary.html#rhodes-siege">ロードス包囲戦</a>）が発生した際には、敵戦艦に接触したものの対スペースデブリ用バリアに衝撃を無効化されまるで効果がなかった。それどころか敵味方を区別できない粗末なAIの仕様により、友軍機が正面衝突で大破する事態まで発生しあえなく撤去となった。…問題はここからである。配備数は200余りのはずが何度数え直しても半数近くが行方不明であり、今もグレートウォール内のどこかで敵味方の見境なく突撃してくる可能性が残されている。見つけようにも顔を出していない状態では通常の隕石と見分けがつかず、宙域を通る小型船舶には現在も注意喚起が出ている。なおロードス包囲戦では自爆する敵戦艦と友軍機の間へ割り込んで消滅した個体が一体だけ確認されており、星系ネットでは<a href="../database/glossary.html#ode-kun">「オデ君」</a>の愛称で語り継がれている。</p>
+</div>
+<div class="lore-section" id="little-mouse">
+  <h3 class="lore-h">④ 超弩級巨大戦車「リトルマウス」（通商連合） ─ LITTLE MOUSE</h3>
+  <p class="lore-p"><a href="../database/factions.html#hactiva-union">通商連合</a>が惑星圏での防衛戦を想定して開発した戦車。便宜上「戦車」と書くが、そのサイズはもはや戦車の域を超えて小惑星級に達しており、操縦系が<a href="../database/races.html#kyusoid">キューソイド</a>向けの小型管制であるため車体は尚更巨大に見える。あまりの巨大さにキャタピラが自重で崩壊して移動不能という致命的欠点が発覚し代わりに光学スライドボードによる滑走移動を採用したが、こちらも問題だらけでフル充電で移動できる距離は100mに満たない。絶望的な燃費ゆえ長らく固定砲台として運用され、最近になってようやくまともに動けるようになったらしい。もっとも緩慢な動きに反比例して砲撃の威力は最終兵器級であり一撃で小型の小惑星や山、<a href="../weapons/great-dish.html">空を覆うほどの巨大戦艦</a>をも消し飛ばす。なお実物と真逆の名は情報漏洩時に敵を混乱させるための意図的な命名であり、開発当初の名は「ギガントマキア」である。改名の効果は確かにあった。初観測した共和国軍の管制は「リトルマウス接近」の報告を三度聞き返している。なお<a href="../database/glossary.html#ship-grades">艦船の等級</a>に照らせば、本車は戦車でありながらミズガルド級相当と査定されている。この規模の脅威度を持ちながら珍兵器の枠に留まっているのは、ひとえに動きの遅さと陸戦専用という二点による。同じ設計が戦艦として建造されていた場合の脅威度は<a href="../planets/bolse.html">ボルス</a>に匹敵したというのが評価部の試算であり、これが「戦車」として作られたことに安堵する分析官は多い。</p>
+</div>
+<div class="lore-section" id="bushido-kong">
+  <h3 class="lore-h">⑤ 惑星間弾道ミサイル「ブシドー・コング」（旧サルジーナヤ） ─ BUSHIDO KONG</h3>
+  <p class="lore-p">旧サルジーナヤ連邦が開発した、長距離星間ミサイル<a href="man-drill.html#dread-kong">「ドレッド・コング」</a>の直系後継機。先代が着弾前に撃墜されがちだった反省から、敵の迎撃を自動で回避する熱源回避センサーを全方位に搭載した。ところがこの全方位熱源感知が仇となり、そこら中の熱源に怯えて右往左往した挙句、発射地点まで折り返して基地ごと吹き飛ばす大事故を起こし、生産中止となった。名前に武士道のかけらもないこの醜態から、タッドー共和国では「逃げ腰ミサイル」と呼ばれていたという。もっとも反省はいくつかの後継機に活かされた。その一つ「ファイナル・コング」は弾体自身が迎撃機能を持ち、約230年前、<a href="../database/glossary.html#stephano">超兵器</a>の展開する自動兵器網に風穴をあけて討伐作戦の突破口を開いている。「サルジーナヤの夜明け」の陰に逃げ腰ミサイルの屍あり──完全な無駄ではなかったという意見には、それなりの説得力がある。</p>
+</div>
+<div class="lore-section" id="dancing-spider">
+  <h3 class="lore-h">⑥ 小惑星捕縛ロボ「ダンシング・スパイダー」（帝国） ─ DANCING SPIDER</h3>
+  <p class="lore-p">採掘者が辺境の隕石群へ赴くのではなく隕石そのものを持ち帰ればよいという逆転の発想で作られた作業ロボット。8本の脚を折りたたんでUFO状の飛行形態となり地図情報から手頃な隕石を見つけて自動で飛行、到着すると脚をクロウ状に展開して捕縛しベノム近辺の宙域まで持ち帰る──というのが期待された挙動である。だが実際に起動すると辺境で最も巨大な隕石、すなわち<a href="../database/glossary.html#route-frontier">フロンティア・ライン</a>の<a href="../database/locations.html#meteo-base">中継基地「メテオベース」</a>に反応して一直線に向かってしまった。当然持ち上がるはずもなく地表で電池が切れるまでダンスのように右往左往するばかり。太陽電池化で燃料問題こそ解決したが肝心の挙動は何度設定を変えても直らず、現在は「メテオベースの上で謎のダンスを踊る不思議なロボット」としてすっかり基地の名物になっている。開発者もまさか本当に名前どおりのロボットになるとは思っていなかったはずである。</p>
+</div>
+<div class="lore-section" id="uncle-keaton">
+  <h3 class="lore-h">⑦ 自走爆弾「アンクル・キートン」（帝国） ─ UNCLE KEATON</h3>
+  <p class="lore-p"><a href="../database/glossary.html#gravity-gap">重力の強いマクベスやセティボスⅥ</a>といった特殊環境での使用を想定した試作自爆兵器。着火した爆弾を敵方向へ転がし敵陣のど真ん中で炸裂させるという単純明快なコンセプトだったが、実戦で使用した所あろうことか自軍の火薬庫の方角へ突撃して大爆発。周辺基地まで誘爆した損害はそれまでの共和国軍のどの攻勢よりも大きかった。一説によると、<a href="../database/glossary.html#donalbain-op">ドナルベイン攻略戦</a>の際、奇襲ルートから現れた共和国軍を発見しながら帝国側の初動が鈍かったのは「強者の余裕」などではなく、この爆発事故の後始末が響いていた節があるという。第5動力炉の座が<a href="../database/glossary.html#mt-donalbain">ドナルベイン火山</a>でなければマクベスはあの日陥落していた可能性すら示唆されている。考案者と火薬庫の近くで使用した兵士は即日クビとなり<a href="../database/glossary.html#zoness-sea-base">ゾネス海上基地</a>へ左遷されたという。</p>
+</div>
+<div class="lore-section" id="kurjina">
+  <h3 class="lore-h">⑧ 完全円形砲艦「クルジーナ」（旧サルジーナヤ連邦） ─ KRUJINA</h3>
+  <p class="lore-p">「全方位に主砲を向けられる艦」を目指して建造された真円形の砲艦であり理屈の上では死角がない。一見すると最強なように見えるが、主砲を斉射すると反動で船体そのものが回転を始め2射目には砲口が明後日の方向を向いた。ドックに係留しての試射ならまだしも摩擦のない宇宙では一度回り出した船体は止まらない。姿勢制御の推進剤は斉射のたびに砲弾より先に尽き乗員は戦う前に酔い潰れた。本艦の評価は「敵に回すより味方に乗せられる方が怖い」という当時の兵士の評が全てを物語っている。「逃げ腰ミサイル」と並び<a href="../database/locations.html#fichina">旧サルジーナヤ連邦</a>が「星系で最も愚かな国」と呼ばれた時代の双璧である──その同じ国が後に<a href="../weapons/man-drill.html#dread-kong">星系を救う</a><a href="../database/glossary.html#unchi-kong">一撃を放つ</a>のだから歴史というものは分からない。</p>
+</div>
+<div class="lore-section" id="bob">
+  <h3 class="lore-h">⑨ 装甲トラクター「働き者のボブ」（パペトゥーン） ─ HARDWORKING BOB</h3>
+  <p class="lore-p">賊の襲撃に備え<a href="../database/locations.html#papetoon">パペトゥーン</a>の開拓民が農業トラクターに波板の鉄板を貼り付けて仕立てた郷土防衛戦車。銃眼は5つ、うち2つには反動吸収用と称してマットレスが詰めてあり最高速度は徒歩のランナーに追い抜かれる。装甲は小銃弾を「だいたい」防ぐらしいが…敢えて言うまでもないだろう。襲撃に間に合ったことは一度もないが、この戦車が村祭りの先頭を走ると義勇軍への寄付と入隊志願が倍になったため「史上最も戦果を挙げた、戦えない戦車」として現在も収穫祭のパレードで先頭を務めている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">本総覧の収録兵器には、勢力も時代も越えた共通点が一つだけある。設計者が全員大真面目だったことである。</p>
+  <p class="lore-p">なお編者のもとには「うちの部隊にもっとひどいのがあった」という情報提供が後を絶たない。本ファイルの収録件数は今後も増える見込みである。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

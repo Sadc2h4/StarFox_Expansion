@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LANDMASTER — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ddaa66;--accent:#ffd9a8;--border:rgba(221,170,102,0.32);--border-hi:rgba(221,170,102,0.7);--dim:#3a2810;--dim2:#1d1408; }
+    .p-title    { color: #fff6ea; text-shadow: 0 0 50px rgba(221,170,102,0.35); }
+    .p-tagline  { border-color: #ddaa66; color: #ddaa66; }
+    .terminal-hdr { color: #ffd9a8; }
+    .terminal-hdr::before { background: #ffd9a8; box-shadow: 0 0 8px #ffd9a8; }
+    .dk { color: #ddaa66; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../codex/glossary.html#type-weapon" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-03 / LANDMASTER — ランドマスター ]</div>
+    <div class="header-status">● IN SERVICE — STAR FOX</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — LANDMASTER — ASSAULT TANK — G-DIFFUSER APPLICATION</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0003 — CLEARANCE: OPEN — GROUND SUPERIORITY</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-03 / ARMORY FILE ]</div>
+        <div class="p-name-jp">ランドマスター (LANDMASTER)</div>
+        <h1 class="p-title">THE TANK<br>THAT DOES<br>BARREL ROLLS</h1>
+        <div class="p-tagline">Gディフューザー搭載強襲戦車</div>
+        <p class="p-short-desc">Gディフューザー技術を地上に持ち込んだ強襲戦車。ホバー滑走とローリング回避をこなす「戦車の常識の外にいる戦車」。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 03 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">LANDMASTER / ランドマスター</td></tr><tr><td class="dk">CLASS</td><td class="dv">強襲戦車（ホバー併用）</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv"><a href="../codex/space-dynamics.html">スペース・ダイナミクス社</a></td></tr><tr><td class="dk">LENGTH</td><td class="dv">全長 11.9sm</td></tr><tr><td class="dk">MAX SPEED</td><td class="dv">地上 130km/h / ホバー滑走時 210km/h</td></tr><tr><td class="dk">POWERPLANT</td><td class="dv">NTD-GT地上型プラズマ機関</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">長砲身レーザーキャノン（チャージ可）/ スマートボム</td></tr><tr><td class="dk">EQUIPMENT</td><td class="dv">Gディフューザー / ホバリングユニット / ローリング回避機構</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../codex/glossary.html#starfox">スターフォックス</a> / <a href="../codex/glossary.html#cdf">CDF</a>機甲科（制式型）</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 運用中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">COMBAT RATING -- 90 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 90%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(221,170,102,0.55);">
+        <img src="" alt="LANDMASTER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ASSAULT TANK — G-DIFFUSER</span>
+            <span class="tg-jp">強襲戦車 ランドマスター</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">戦車が横転した、と敵は報告した。回避機動だと気付いたのは撃墜された後だ。<span class="tg-note note">-マクベス戦線 戦闘詳報より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">装甲で受けるな、機動で躱せ。それが許される戦車は史上これ一両だ<span class="lore-quote-src">― CDF機甲学校 教官の講評より</span></span></p>
+  <p class="lore-p">ランドマスター（Landmaster）は、<a href="../codex/space-dynamics.html">スペース・ダイナミクス社</a> がGディフューザー技術を地上兵器に応用した強襲戦車である。<a href="../codex/glossary.html#starfox">スターフォックス</a> が重力の強い<a href="../codex/locations.html#macbeth">マクベス</a> のような戦域──特殊な航行技術なしでは地上戦を強いられる惑星──で運用することを想定して開発された。</p>
+  <p class="lore-p">戦車でありながらローリングによる回避、短時間のホバリング、車体を傾けての射線変更をこなし、その戦闘機動はもはや「地を這う航空戦」と評される。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MECHANISM ─ 機構</h3>
+  <p class="lore-p">車体下部に環状配置されたGディフューザーが車重を部分的に相殺し、履帯接地圧を自在に変化させる。これにより急制動・急加速・横っ飛びの回避機動が可能となり、浮上時はホバー滑走で断崖や溶岩流すら越える。</p>
+  <p class="lore-p">主砲は機首固定式の長砲身レーザーキャノン。チャージ射撃はアーウィンのシングルレーザーと同系統の照準支援を持ち、対空射撃すら想定されている。「戦車が空を撃ち落とす」という設計要求に、開発陣が本気で応えた結果である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 運用史</h3>
+  <p class="lore-p">実戦データの多くは<a href="../codex/locations.html#macbeth">マクベス</a> 戦線で記録された。装甲列車網への強襲、補給基地のパイプライン破壊──航空優勢を取れない重力圏での作戦において、ランドマスターは事実上「翼の代わり」を務めた。</p>
+  <p class="lore-p">また<a href="../codex/locations.html#titania">タイタニア</a> の砂嵐の下、磁気嵐で全航空機が飛行不能となった状況での隊員救出行は、本車の代名詞的戦例として知られる。<a href="../codex/characters.html#fox">フォックス・マクラウド</a> の操縦記録は現在も機甲科の教材だが、注釈には「模倣は推奨しない」とある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">CDF制式型は安定性重視のデチューン仕様であり、スターフォックス仕様の機動をやろうとした訓練生が毎年数名、模擬戦場の隅で車体を天に向けている。機甲学校ではこれを「初詣」と呼ぶ。</p>
+  <p class="lore-p">スリッピーが車内に組み込んだ自動航行AIは、フォックスの操縦パターンを学習しすぎた結果、待機中に勝手にローリングの素振りをするようになった。現在は封印されている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

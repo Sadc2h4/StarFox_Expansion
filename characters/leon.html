@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEON POWALSKI — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#66cc88;--accent:#aaeecc;--border:rgba(102,204,136,0.32);--border-hi:rgba(102,204,136,0.7);--dim:#103a20;--dim2:#081d10; }
+    .p-title    { color: #eefff4; text-shadow: 0 0 50px rgba(102,204,136,0.35); }
+    .p-tagline  { border-color: #66cc88; color: #66cc88; }
+    .terminal-hdr { color: #aaeecc; }
+    .terminal-hdr::before { background: #aaeecc; box-shadow: 0 0 8px #aaeecc; }
+    .dk { color: #66cc88; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-11 / LEON POWALSKI — レオン・ポワルスキー ]</div>
+    <div class="header-status"><span class="blink" style="color:#aaeecc;">●</span> HOSTILE — MERCENARY</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — LEON POWALSKI — STAR WOLF — HOSTILE MERCENARY</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0011 — CLEARANCE: OPEN — FORMER UNDERWORLD OPERATIVE</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-11 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">レオン・ポワルスキー (LEON POWALSKI)</div>
+        <h1 class="p-title">LEON POWALSKI</h1>
+        <div class="p-tagline">THE QUIET CHAMELEON ── スターウルフ 隊員</div>
+        <p class="p-short-desc">静かな口調と残忍な戦法のギャップで恐れられるスターウルフの二番機。かつては裏社会の「掃除屋」だったとされる。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 11 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">LEON POWALSKI / レオン・ポワルスキー</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#paranodian">パラノディアン</a>（登録上）</td></tr><tr><td class="dk">AGE</td><td class="dv">29歳（推定）</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv">不明 ─ 活動拠点: <a href="../database/locations.html#kew">キュー</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">傭兵部隊スターウルフ</td></tr><tr><td class="dk">FORMER</td><td class="dv">裏社会請負人（推定）</td></tr><tr><td class="dk">SIGNATURE</td><td class="dv">偏執的な追尾機動</td></tr><tr><td class="dk">CRAFT</td><td class="dv"><a href="../weapons/wolfen.html">ウルフェン</a> / <a href="../weapons/rainbow-delta.html">レインボー・Δ</a></td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 交戦注意</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 89 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 89%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(102,204,136,0.55);">
+        <img src="" alt="LEON POWALSKI" class="planet-img-detail planet-img-medium portrait" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR WOLF — SECOND</span>
+            <span class="tg-jp">スターウルフ 二番機 ── 静かなる爬虫類</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">ふふ……ゆっくり、丁寧に、削ってあげよう。<span class="tg-note note">-交戦時の傍受通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">怒鳴る敵は怖くない。ささやく敵から逃げろ<span class="lore-quote-src">― 前線パイロットの経験則より</span></span></p>
+  <p class="lore-p">レオン・ポワルスキーはスターウルフの二番機を務めるパイロットである。前歴は裏社会の請負人と推定され、リーダーの<a href="../database/characters.html#wolf">ウルフ</a> に次ぐとも並ぶとも評される技量を持つ。丁寧で穏やかな口調を崩さないまま標的を執拗に追い詰める戦法は、対戦した全てのパイロットに強烈な印象を残している。</p>
+  <p class="lore-p">粗野で衝動的とされる<a href="../database/races.html#paranodian">パラノディアン</a> の通俗的イメージとは正反対の人物であり、皮肉にもそのことが彼をより不気味な存在にしている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">前半生 ─ EARLY LIFE</h3>
+  <p class="lore-p">レオン・ポワルスキーの前半生と素性には不明な点があまりに多い。出身については様々な憶測が飛び交うが、少なくとも<a href="../database/locations.html#corneria">コーネリア</a> などコアワールドの生まれでないことだけは確かとされる。<a href="../database/locations.html#kew">キュー</a> の殺し屋横丁に現れるようになったのは15年ほど前からであり、当初は番付にも載らず誰の注目も集めなかった。ただし手配書だけは常にそこかしこに貼られている。序列でいえば「5番手」に近い立ち位置だったと伝えられる。横丁の上位たちが口を揃えて見抜いていたのは、実力の不足ではなくあえて目立たぬよう振る舞っているという事実である。</p>
+  <p class="lore-p">生涯で手にかけた人間の数を数える術はない。だがその中には<a href="../database/locations.html#papetoon">パペトゥーン</a> の役人や<a href="../database/locations.html#corneria">コーネリア</a> の地方州知事といった著名人が含まれるとみられ、腕前が恐るべき水準にあることは明白である。<a href="../database/glossary.html#arpeggio">アルペジオ</a> の周辺組織との関与も疑われるが、立件されたことは一度もない。標的の「消え方」があまりに綺麗で、証拠が常に残らなかったためである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">七つの姿 ─ THE SEVEN FACES</h3>
+  <p class="lore-p">彼の容姿は謎に包まれている。カメレオンの性質を持つ特殊な体の持ち主だが、イグアナのような荒々しい棘を生やした時期や、極端な高身長に猫背となった時期も確認されている。脱皮のたびにその姿を…骨格ごと変えている可能性が示唆される所以である。</p>
+  <p class="lore-p">口調も背格好も外見と併せて変わるため、同一人物と同定する手がかりはレオン自らが犯行現場へ気まぐれに残すサインだけである。一時期は<a href="granga-pilot.html">グランガパイロット</a> と同様に複数人が一人を演じるタイプと疑われたこともあった。だがサインは決まって彼自身の血で描かれており、タンパク質構造と遺伝子の検査から同一人物であることが確定している。</p>
+  <p class="lore-p">これらの事実から<a href="../database/military.html#cdf">CDF</a>は、彼がただのパラノディアンではなく複数種族の希少混血がさらに組み合わさった存在である可能性を疑っているが、正体は全くつかめていない。現在のレオンはCDFが確認できている範囲で「7つ目の姿」である。監視の目は緩められていないが、姿の変化が確認された場合は速やかな情報更新が必要とみられる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">依頼の遂行率の高さからキューで彼の名を知らない者はいない。標的へ届く暗殺予告のメールは星系でも指折りの恐怖の代名詞であり、これを受け取った役人が最も安全な場所として自ら刑務所の最深部を選んだ事例さえ残っている。</p>
+  <p class="lore-p">スターウルフへの加入経緯は断片しか判明していない。勧誘の裏方は<a href="../database/characters.html#pigma">ピグマ・デンガー</a> であり、ウルフとの「やり取り」が本物の殺し合いに発展した末の結成であったことは<a href="wolf.html">ウルフの項</a>に記したとおりである。一切の報酬に靡かないこの男が<a href="../database/characters.html#andrew">アンドリュー</a> の尻ぬぐいまで引き受けて在籍し続ける理由は、金銭では説明がつかない。</p>
+  <p class="lore-p">隊内で唯一、彼はウルフの指示に一切の異を唱えない。傍受記録の中で感情らしきものを見せるのはウルフが撃墜されかけた時だけである。一方でときおりウルフの控室へ忍び込む様子が確認されており、当のウルフからも警戒の対象にされているようである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p">操縦技術は天才的と称される。繊細な機体操作に加え、宙返りを駆使した視線誘導からドッグファイトへ繋ぐ空戦技術は勧誘者ピグマを遥かに上回りウルフに匹敵すると評される。空中戦で<a href="../database/characters.html#falco">ファルコ・ランバルディ</a> を正面から翻弄した記録を持つ帝国側のパイロットがウルフとレオンの2名だけという事実が、動かぬ証拠である。</p>
+  <p class="lore-p">そのファルコとは互いを「宿敵」と定めており、交戦は毎回、戦域全体が終わった後も二人だけ続いていると報告される。他のメンバーそっちのけでファルコを追い回すこの固執が、彼が隊に留まり続ける理由の一つとみる分析官は多い。ファルコやウルフの何にそこまで執着するのかをCDF側から窺い知ることは不可能だが、アンドリューとピグマの無線傍受から「碌でもない趣味」であることだけは推測されている。</p>
+  <p class="lore-p">なおこの空中戦の強さすら「手加減」である可能性を忘れてはならない。本来の愛機は旧式戦闘機<a href="../weapons/rainbow-delta.html">レインボー・Δ</a> である。管制システムをあえて取り払うことで一切の挙動予測を許さない変則機動を自在に行う。兵装も追尾弾や誘導ミサイルなど執拗に相手を追い詰めるものばかりで、光学迷彩の搭載により宇宙空間では一切の視認ができなくなる。この厄介さについては<a href="../weapons/rainbow-delta.html">レインボー・Δの項</a>を参照されたい。</p>
+  <p class="lore-p">スターウルフ結成前から彼と刃を交えてきた人物がCDFにいる。<a href="../database/military.html#vorpal">ヴォーパル隊</a> 隊長<a href="amber.html">アンバー・シルフェイド</a> 少佐である。秘密警察時代から幾度も正面から挑み、時に撃退され時に深手を負わされてきた因縁の相手である。決着は今もついていない。当初は興味を示さなかったレオンも彼女の駆る特殊な武器と戦闘スタイルには敬意を示しているのか、彼女との交戦時は最大戦力をもって現れることが多いという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">悪癖の数々は枚挙に暇がない。捕虜の尋問を「趣味」と公言し、帝国軍内ですら彼への尋問依頼は最終手段とされている。面白半分に上官の将校すら恐喝し、敵味方構わず震え上がらせる。自室を飾るのは悍ましい柄の壁紙と自作とみられる絵画であり、室内には拷問器具の数々に加えて獲物の「体の一部」を綺麗にピンで留め名前と年月日を添えた標本箱が確認されている。</p>
+  <p class="lore-p"><span class="redacted">見る者の嫌悪感を極点へ押し上げるのが、部屋の端のドールハウスに飾られた人形たちである。中を覗いてしまったアンドリューの証言によれば、ウルフとファルコ、ウサギの姿をした女性将校（<a href="amber.html">アンバー・シルフェイド</a> と推定される）、そして<a href="../database/characters.html#james">ジェームズ・マクラウド</a> を模した人形が含まれていた。レオン本人を模した人形には何度も刃で切り裂かれ、縫い直された跡があったという。この証言が事実ならば、彼の精神状態は極めて危険と判断せざるを得ない</span></p>
+  <p class="lore-p">キュー下層の旧神殿区画で二つの太陽に祈る彼の姿を見たという証言がある。裏社会時代の標的の名を今も全て覚えていて数えているのだという──真偽は不明であり、確かめたいと思う者もいない。</p>
+  <p class="lore-p">「ポワルスキー」の名はキューの出生記録に存在しない。彼がどこかの時点で自分に与えた名であるとみられるが、その由来を知る者はいない。</p>
+  <p class="lore-p">ここまでの記録から話の通じない狂人を想像した者は多いと思われるが、平時のレオンはこの記事の内容からは信じられないほどの「紳士」である。口調は静かで丁寧、女性にはレディファーストを尊重し、他者の意見には割って入らず必ず全て聞いた上でコメントを残す。スターウルフで建設的な議論ができるのはレオンとピグマだけであり、ウルフはプライドが高すぎアンドリューは考えが稚拙すぎて話にならないというのが傍受記録から窺える隊の実情である。この極端すぎる二面性が何を示しているのかは、もはや推測することしかできない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WOLF O'DONNELL — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#aa88dd;--accent:#ccbbee;--border:rgba(170,136,221,0.32);--border-hi:rgba(170,136,221,0.7);--dim:#241840;--dim2:#120c20; }
+    .p-title    { color: #f2ecff; text-shadow: 0 0 50px rgba(170,136,221,0.35); }
+    .p-tagline  { border-color: #aa88dd; color: #aa88dd; }
+    .terminal-hdr { color: #ccbbee; }
+    .terminal-hdr::before { background: #ccbbee; box-shadow: 0 0 8px #ccbbee; }
+    .dk { color: #aa88dd; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-10 / WOLF O'DONNELL — ウルフ・オドネル ]</div>
+    <div class="header-status"><span class="blink" style="color:#ccbbee;">●</span> HOSTILE — MERCENARY</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — WOLF O'DONNELL — STAR WOLF LEADER — HOSTILE MERCENARY</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0010 — CLEARANCE: OPEN — ENGAGE WITH CAUTION</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-10 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ウルフ・オドネル (WOLF O'DONNELL)</div>
+        <h1 class="p-title">WOLF O'DONNELL</h1>
+        <div class="p-tagline">THE LONE WOLF'S CODE ── 傭兵部隊スターウルフ リーダー</div>
+        <p class="p-short-desc">帝国に雇われた精鋭傭兵部隊スターウルフを率いる隻眼の狼。スターフォックスへの執着と、奇妙な戦いの「作法」で知られる。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 10 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">WOLF O'DONNELL / ウルフ・オドネル</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#anubisoid">アヌビソイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">46歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv">不明（<a href="../database/locations.html#sargasso">サルガッソー</a>周辺と推定）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">傭兵部隊スターウルフ（リーダー）</td></tr><tr><td class="dk">CONTRACT</td><td class="dv"><a href="../database/factions.html#venom-empire">ベノム帝国</a>と交戦契約</td></tr><tr><td class="dk">SIGNATURE</td><td class="dv">隻眼 / 乗機ウルフェン</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 交戦注意</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 95 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 95%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(170,136,221,0.55);">
+        <img src="" alt="WOLF O'DONNELL" class="planet-img-detail planet-img-medium portrait" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR WOLF — LEADER</span>
+            <span class="tg-jp">スターウルフ リーダー ── 隻眼の狼</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">オレ様から逃げられると思うなよ、スターフォックス。<span class="tg-note note">-交戦時の傍受通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">あの男は帝国の犬ではない。帝国の金で狩りをする、一匹の狼だ<span class="lore-quote-src">― CDF情報部の人物評より</span></span></p>
+  <p class="lore-p">ウルフ・オドネルは傭兵部隊スターウルフを率いるパイロットである。左目の眼帯と乗機<a href="../weapons/wolfen.html">ウルフェン</a> を代名詞とし、操縦技術は<a href="../database/characters.html#fox">フォックス・マクラウド</a> と互角…星系でも数えるほどしかいない水準と評される。</p>
+  <p class="lore-p">冷酷な傭兵でありながら、民間船への攻撃を請けない・堕ちた敵機に追撃をかけない等の奇妙な「作法」を持つことで知られる。彼を単なる殺し屋と呼ぶ者は少なくとも彼と戦った者の中にはいない。</p>
+  <p class="lore-p">その半生は星系のどの名簿にも載っていない。以下は交戦記録とサルベージャーの証言、そして押収された連合側資料から再構成された暫定の人物像である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">生い立ち ─ EARLY LIFE</h3>
+  <p class="lore-p">ウルフ・オドネルは両親揃ってならず者という家庭に生まれた。物心ついた時には二人とも行方知れずで、以後は完全な独りで<a href="../database/locations.html#sargasso">サルガッソー</a> の賊界隈を生き抜いている。生年も出生地も記録はなく、本人が語らないため「サルガッソー周辺」という推定だけが公式資料に残る。</p>
+  <p class="lore-p">幼少の彼の家業は<a href="../database/glossary.html#salvager">サルベージャー</a> とも宇宙海賊とも異なる。宙域に入り込んだ艦船を見境なく襲う「襲撃者」である。若干12歳にして手にかけた者の数は数えきれないとされ、当時のサルベージャーたちは合言葉に近いやり取りで彼を危険視していた。「サルガッソーで虹色を見たら出口だ。赤い光を見たら地獄の入り口…ウルフに会っちまったんだからな！」。</p>
+  <p class="lore-p">身寄りのない荒み切った日々は彼を狂犬のように振る舞わせた。恐れられはしても顧みられることのない獣。後年の「作法」からは想像もつかないその姿を、古いサルベージャーたちは今も覚えている。「あの隻眼は賞金首になる前から有名だった」という証言はこの時代を指すものであり、眼帯の下の傷の由来については諸説あるが本人が語ったことはない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">邂逅 ─ THE SERPENT</h3>
+  <p class="lore-p">転機はIGA戦役の末期…<a href="../database/glossary.html#trinculo-recapture">トリンキュロー回廊の奪還戦</a>の直後に訪れた。サルガッソー第2宙域たる回廊から離脱する連合の船を、20歳を過ぎたばかりのウルフはいつものように襲ったのである。乗っていたのは若き部隊長Z・Z・ペパーに敗れ、胴の半ばを焼き落とされた連合最強の野戦指揮官<a href="nahash.html">ナハシュ・ギルバスター</a> だった。息も絶え絶えでなぜ意識があるのかすら分からない状態でありながら、蛇の将軍は明確な意思と戦意を保っていた。</p>
+  <p class="lore-p">身ぐるみを剥ごうと手負いの獲物に襲い掛かったウルフは、逆に毒牙で足を抉られ壊死の進む重傷を負う。それでも牙を剥き出しにして戦意を露わにする若造に、瀕死の将軍は初めて興味を示した。「愚かな子狼よ　もし力が欲しいならば　ワシはそれを与えてやらんこともないぞ。まあ、ここで貴様が死ななければの話だがな！　本気ならば半年後　ここにまた来い！」。</p>
+  <p class="lore-p">ギルバスターは解毒血清をウルフに打ち込み、自らの船から彼を叩き出すと<a href="../database/locations.html#macbeth">マクベス</a> 宙域…<a href="../database/locations.html#sigma">セクターΣ</a> の準惑星にある隠れ家へ消えた。半年後。誰かの下につくことなど毛頭考えず、プライドがそれを許すはずもなかった男は、朧げな意識の中で覚えていたその場所へなぜか自然と足を運んでいた。やがて現れたのは全身をサイバネティクスで再構成された6本腕の大男である。ペパーに焼かれた男が機械によって蘇り、親を知らない子狼の前に現れたのだった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">師 ─ THE MENTOR</h3>
+  <p class="lore-p">隠れ家へ半ば連れ去られる形で、ウルフは戦いの基礎と流儀を叩き込まれた。相手に恐怖を与えて正しい判断を奪い、体力を削り、最後の一瞬でとどめを刺す。<a href="../database/locations.html#fortuna">フォルトナ</a> の大地が作り出した狩りの戦法は、連合の科学力と共和国の強豪との交戦経験を経て変質し、最も合理的で隙のない…武士道にも似た型としてウルフに継承された。</p>
+  <p class="lore-p">詳しいことは分かっていない。ただギルバスターが親を知らぬ子狼にとって父親のような存在となり、以後行動を共にしていたことは複数の証言が一致している。記録の上でその歳月はシコラクスの攻防（<a href="nahash.html">ギルバスターの項</a>を参照）までの1年余りに過ぎない。ウルフが連合の戦線に立った記録がない点も含め、この師弟の全容は今も闇の中である。</p>
+  <p class="lore-p">将軍が法廷で自らの命を散らせた後、ウルフの振る舞いは変わっていった。民間船への攻撃を請けず、堕ちた敵機に追撃をかけない。見境のない恐怖の対象は次第に一目置かれる存在へ変わり、共和国の掃討部隊からサルベージャーの集落を守った一件（<a href="../planets/sargasso.html">サルガッソーの項</a>を参照）を経て、現在知られるウルフのイメージ像が形作られていった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">因縁 ─ THE VACANT SEAT</h3>
+  <p class="lore-p"><span class="redacted"><a href="../database/glossary.html#silent-nightmare">サイレント・ナイトメア事件</a>の管制記録には、アーウィン3機と共にプロトボルス討伐へ加わった4機目の機影が残されている。解析AIが搭乗者をウルフ本人と特定したこの機体こそ、後に「<a href="../weapons/wolfen.html">ウルフェン-ZERO</a>」と呼ばれる彼の個人所有機である。一匹狼がなぜ創設期の<a href="../database/military.html#starfox">スターフォックス</a> と編隊を組んでいたのか。公式の答えはいまだ存在しない</span></p>
+  <p class="lore-p"><span class="redacted">この機影と、初代スターフォックスが長らく空席のまま抱えていたアーウィン4号機とを結び付ける仮説がある。ジェームズ・マクラウドが4人目として推していたのはサルガッソーの一匹狼であり、勧誘は実際に行われていたのではないか…という見方である（<a href="../planets/sargasso.html">サルガッソーの項</a>を参照）。事実であれば<a href="../database/characters.html#fox">フォックス</a> へ向ける常軌を逸した執着にも別の説明がつく。かつて自分のために空けられていたかもしれない機体に、今はあの男の息子が乗っているのだから</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">スターウルフ ─ STAR WOLF</h3>
+  <p class="lore-p">傭兵部隊スターウルフの結成をウルフに持ち掛けたのは、離反したばかりの<a href="../database/characters.html#pigma">ピグマ・デンガー</a> である。ウルフはこの提案を何度も蹴っている。転機となったのは<a href="../database/characters.html#leon">レオン・ポワルスキー</a> とのやり取りだった。仔細は双方とも語らないが、交渉はやがて本物の殺し合いに発展し…紆余曲折の末にウルフは結成の話へ乗った。裏社会の掃除屋と賊あがりの傭兵の間に何があったのかは、両名の性格からして永遠に記録されないとみられる。</p>
+  <p class="lore-p">最後に加わったのが<a href="../database/characters.html#andrew">アンドリュー・オイッコニー</a> である。皇帝アンドルフからしつこく頼まれたピグマが、仕方なく入隊させたと傍受記録は伝えている。もっともこの「コネ入隊」が帝国から引き出すバックアップは計り知れず、新型機の開発予算から根城の補給線まで、隊の台所は甥の存在に支えられている部分が大きい。</p>
+  <p class="lore-p">部隊名がスターフォックスを強く意識したものであることは誰の目にも明らかである。名付けの経緯を問われたウルフは一度だけこう返している。「決まってんだろ。あいつらを狩る隊だからだ」。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p"><a href="../database/glossary.html#climate-recapture">フィチナ奪還作戦</a>での初交戦以来、<a href="../database/locations.html#fortuna">フォルトナ</a> などの戦域でスターフォックスと交戦を重ねている。撃墜スコアでは常に一歩及ばないが、彼らの介入によって共和国側の作戦が遅延・変更を余儀なくされた例は多く、戦略的な脅威度は撃墜数以上と評価されている。</p>
+  <p class="lore-p">帝国司令部との関係は良好とは言い難く、命令を「契約範囲外」として突っぱねた記録が複数傍受されている。彼の忠誠は契約書と自分の流儀にのみ向けられている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">フォックスへの執着は敵意なのか、それとも別の何かなのか──交戦記録を分析した心理士官は「あれは決闘の申し込みである。毎回」と結論した。</p>
+  <p class="lore-p"><a href="../database/locations.html#sargasso">サルガッソー</a> のどこかに彼らの根城があるとされ、サルベージャーたちは詮索しない。「墓場の掟」を最も律儀に守る客だからだという。</p>
+  <p class="lore-p">新入りの隊員にウルフが最初に教えるのは射撃でも機動でもなく、相手の恐怖を読むことだという。教官としての彼を知る者は口を揃える…あの教え方は、誰かから教わった者の教え方だと。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

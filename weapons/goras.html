@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GORAS — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#cc7744;--accent:#f0c8a0;--border:rgba(204,119,68,0.32);--border-hi:rgba(240,200,160,0.7);--dim:#301a0c;--dim2:#180d05; }
+    .p-title    { color: #fdf0e4; text-shadow: 0 0 50px rgba(204,119,68,0.45); }
+    .p-tagline  { border-color: #cc7744; color: #cc7744; }
+    .terminal-hdr { color: #f0c8a0; }
+    .terminal-hdr::before { background: #f0c8a0; box-shadow: 0 0 8px #f0c8a0; }
+    .dk { color: #cc7744; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-33 / GORAS — ゴラス ]</div>
+    <div class="header-status"><span class="blink" style="color:#f0c8a0;">●</span> ACTIVE — QUARANTINED WORLD</div>
+  </header>
+
+  <div class="side-l"><div class="vt">WEAPON FILE — GORAS — ANCIENT WEAPON-BEAST OF TITANIA — THE FORBIDDEN PLANET</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0033 — CLASSIFICATION: UNCLASSIFIABLE — APPROACH PROHIBITED</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-33 / WEAPON FILE ]</div>
+        <div class="p-name-jp">ゴラス (GORAS)</div>
+        <h1 class="p-title">GORAS</h1>
+        <div class="p-tagline">暴走する古代兵器兼生物 ─ タイタニア</div>
+        <p class="p-short-desc">惑星タイタニアが「禁断の惑星」と呼ばれる原因の一つ。地表を徘徊し、生命反応をどこまでも追い続けて捕食する古代の獣である。数ある脅威の中でも突出して危険度が高い。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ WEAPON SCAN — FILE 33 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">GORAS / ゴラス</td></tr><tr><td class="dk">CLASS</td><td class="dv">古代兵器兼生物 — 分類不能</td></tr><tr><td class="dk">HABITAT</td><td class="dv"><a href="../database/locations.html#titania">タイタニア</a>地表 — 徘徊</td></tr><tr><td class="dk">BEHAVIOR</td><td class="dv warn">⚠ 生命反応を感知し追跡・捕食</td></tr><tr><td class="dk">SIZE</td><td class="dv">数階建てビル級</td></tr><tr><td class="dk">WEAK POINT</td><td class="dv">肋骨の檻の内側 — 臓器部のみ</td></tr><tr><td class="dk">ORIGIN</td><td class="dv">不明 — 文明以前から生息の示唆</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">活動中 — 複数個体の可能性</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING -- 93 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 93%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(204,119,68,0.5);">
+        <img src="" alt="GORAS" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE STARVING GOD</span>
+            <span class="tg-jp">禁断の惑星を徘徊する 飢えた神</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">走れ、振り返るな。あれは疲れというものを知らん。<span class="tg-note note">-タイタニア生還者の証言より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">神は死んだのではない。腹を空かせたまま取り残されたのだ<span class="lore-quote-src">― タイタニア遺跡調査団の手記より</span></span></p>
+  <p class="lore-p">ゴラス（Goras）は、惑星<a href="../database/locations.html#titania">タイタニア</a>に「禁断の惑星」という呼称を付けた原因の一つである。機械を狂わせる「磁場の檻」、空から降る<a href="../database/locations.html#titania">「鉄の雨」</a>、流砂の循環「蠢く砂」。タイタニアの数ある脅威と並びつつ、その中でも突出して脅威度が高いとされる、暴走する古代兵器兼生物である。</p>
+  <p class="lore-p">古代兵器と記載したものの性質は生物に近い。タイタニアの地表を徘徊しながら生命反応（二酸化炭素か体温を見ているとみられる）を感知すると、どこまでも追い続けて捕食してしまう。出自は不明だが地表にはこのゴラスと思われる生物の遺骸が大量に散乱しており、文明が起こされる前の時点で相当な個体数が既に存在していた可能性が示唆されている。</p>
+</div>
+<div class="lore-section" id="ruins">
+  <h3 class="lore-h">遺跡の証言 ─ TESTIMONY OF THE RUINS</h3>
+  <p class="lore-p">数は少ないもののタイタニアの遺跡調査からは以下の内容が明らかになっている。ゴラスは幾億年前に惑星タイタニアに生息していた「先史時代の獣」の一種として知られる巨大な異星生物であり、かつては神として崇拝され大量の農作物の収穫を捧げられていた。それから数多の年月。原始の惑星がタイタニアに衝突してからはゴラスだけが生き残って惑星を徘徊し、かつて栄華を誇ったタイタニアは砂漠と砂丘の広がる荒涼とした不毛の地と化してしまった──遺跡の記述は概ねこのように読み解かれている。</p>
+  <p class="lore-p">この記述がいつ書かれたのかは定かでない。だが「原始の惑星」が何を指すかによって見方は大きく変わってくる。これがソーラシアン形成期の<a href="../planets/solar.html">ミランダ仮説</a>に基づくものなのだとしたら、あの衝突の時代からゴラスと共にタイタニアには超古代文明が存在していたことになるのである（衝突の経緯は<a href="../planets/titania.html">タイタニアの形成史</a>を参照）。現時点でタイタニアの遺跡調査は戦争により中断されており、真相を知るのはもう少し先になるとみられる。</p>
+</div>
+<div class="lore-section" id="anatomy">
+  <h3 class="lore-h">形態 ─ ANATOMY</h3>
+  <p class="lore-p">遭遇した艦船の通信データからゴラスの外見や生態はある程度うかがい知れているが、それはどれも悍ましいものである。外見は骨格がむき出しになったまるで死体のような巨大な怪物であり、数階建てのビルほどの巨躯を持つ。長い節のある四肢──2本の脚と4本の腕、そして尻尾──に、肩と腰から突き出た大きな骨の突起。頭部は一本の角を持つ大きな竜のそれである。</p>
+  <p class="lore-p">上肢2本には3本指の爪がありエネルギー弾を発射できる。下肢2本にはカマキリのような大きなハサミがあり、物を引っ掻くのに使われる。口からは行く手を阻むもの全てを破壊するほどの強力な火炎を吐き出すこともできる。そして檻のように開閉する露出した肋骨の内側には、ゴラスの繊細な臓器が収められており、確認できる明確な弱点はこの臓器部のみである。</p>
+  <p class="lore-p">このゾンビのような姿ですら生存を可能にしている理由は分かっていない。ゴラスが何らかの超自然的な存在であるか、あるいは「骨」に見えるものが実際には一種の外骨格であることを示唆している…との見方がある。</p>
+</div>
+<div class="lore-section" id="engagement">
+  <h3 class="lore-h">交戦記録 ─ ENGAGEMENT</h3>
+  <p class="lore-p"><a href="../database/military.html#starfox">スターフォックス</a>はこのゴラスとの戦闘記録を持つ。メカニックの<a href="../characters/slippy.html">スリッピー・トード</a>が事故により惑星タイタニアへ不時着した際、乗機ごとゴラスに捕縛され救助のために交戦したのである。当時のゴラスはエネルギー不足により半休止状態に近かったとみられるが、それでもすさまじい戦闘力を発揮したことが記録に残されている。戦闘の場が強烈な砂嵐と鉄の雨の吹き荒れる極限環境だったことも、この交戦の難度を引き上げた要因と考えられる。</p>
+  <p class="lore-p">複数の手足から放たれる攻撃は苛烈であり、火力を持つ<a href="landmaster.html">ランドマスター</a>ですら防ぐのが精一杯だったと思われる。この局面を打開できたのは、<a href="../characters/falco.html">ファルコ・ランバルディ</a>が鉄の雨の環境ですら空中戦を維持し、ランドマスターへ援護射撃を送り続けたことが大きいと分析されている。タイタニアの砂嵐と鉄の雨を空中で切り抜けられる人物は、星系でもファルコのほかに見つかっていない。</p>
+</div>
+<div class="lore-section" id="taxonomy">
+  <h3 class="lore-h">分類と余話 ─ TAXONOMY &amp; ARCHIVES</h3>
+  <p class="lore-p">ゴラスは長らくアンドルフ設計の生体兵器群<a href="bioweapon.html">バイオウェポン</a>の一個体として分類されてきた。生体と兵器の混ざり合った性質があまりに似ていたためである。だが細胞サンプルの遺伝子構造は既知のどの生物とも一致せず、報告書の結論欄には「分類不能」とだけ記されている。遺跡の証言と併せ、現在はバイオウェポンに先行する古代由来の別系統とみる説が有力であり、<span class="redacted">フィチナの<a href="../database/glossary.html#cis-hq">情報戦略本部</a>ではベノムのバイオウェポン細胞との比較分析が続けられている。類似が偶然でないなら、アンドルフは「何を参考に」バイオウェポンを設計したのかという問いが残る</span></p>
+  <p class="lore-p">ベノム遺跡の壁画に描かれた「オーバーロードの従える獣」との形態的類似を指摘する研究者もいる（<a href="bioweapon.html">バイオウェポンの項</a>を参照）。またこのゴラスに関する情報を記載した遺跡にはダークメシア事件で撃破された古代戦略兵器<a href="oh-and-mu.html">ओ&amp;मू</a>との関連性を指摘される「人面岩」も出土しており、この獣を巡る問いはいまだ一つも答えを得ていない。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(240,200,160,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

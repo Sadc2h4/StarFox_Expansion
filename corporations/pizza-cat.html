@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIZZA CAT INTERSTELLAR — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#ffb054;--accent:#ffd096;--border:rgba(255,176,84,0.32);--border-hi:rgba(255,208,150,0.7);--dim:#38230c;--dim2:#1c1106; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/corporations.html" class="nav-back">◄ CORPORATE DB</a>
+    <div class="header-tag">[ CIS-HQ / CORPORATION — ピザ・キャット ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ / CORPORATE FILE 07 ]</div>
+      <h1 class="codex-title">PIZZA CAT INTERSTELLAR</h1>
+      <p class="codex-p">ピザ・キャット ── 「ライラットに、猫とピザ・キャットの届かない場所はない」。星系のジャンクフード文化を体現する星間宅配ピザチェーンにして、あらゆる種族の「悪い夜食」の共犯者。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#overview">概要</a>
+      <a href="#history">沿革</a>
+      <a href="#menu">メニュー哲学</a>
+      <a href="#delivery">配達の流儀</a>
+      <a href="#archives">記録余話</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="black-cargo.html">ブラックカーゴ</a> / <a href="../database/corporations.html">企業DB</a> / <a href="../database/races.html#bastetoid">バステトイド</a></span>
+    </nav>
+
+    <article class="codex-entry" id="overview">
+      <h2 class="codex-h">概要 <span class="en">OVERVIEW</span></h2>
+      <p class="codex-p">ピザ・キャットは、<a href="../database/races.html#bastetoid">バステトイド</a>の兄妹が創業した星間宅配ピザチェーン。定住を嫌い星系中に散らばるバステトイドの気質を配達網に変えた「猫の手ネットワーク」で知られ、有人惑星のほぼ全てに支店を持つ。ロゴの「片目をつぶった猫」は、ライラットで最も認知度の高い企業マークの一つである。</p>
+      <p class="codex-p">高級料理でも伝統食でもない、ただの「うまくて早いピザ」──だがそれこそが、種族も昼夜も食性も異なる市民たちが唯一同じ箱を囲める料理である、というのが同社の自負である。</p>
+    </article>
+
+    <article class="codex-entry" id="history">
+      <h2 class="codex-h">沿革 <span class="en">HISTORY</span></h2>
+      <p class="codex-p">始まりは<a href="../database/locations.html#corneria">コーネリアシティ</a>の屋台の石窯一つ。兄が焼き、妹が配達した。転機は妹が「隣の区まで」の注文を受けた際、間違えて軌道上の宇宙ステーションへ届けてしまった事件である。冷めきったピザに激怒する客へ、妹は翌日、保温ポッドを自作して焼きたてを再配達した──この保温ポッドの特許が、星間宅配という業態そのものを発明した。</p>
+      <p class="codex-p">以後、<a href="../database/glossary.html#night-cycle">昼夜二部制</a>の都市で「第三シフトの夜食」需要を独占して急成長。現在は宅配に加えてドライブスルー型の路面店「キャットポッド」を展開し、ジャンクフード業界の王座を維持し続けている。</p>
+    </article>
+
+    <article class="codex-entry" id="menu">
+      <h2 class="codex-h">メニュー哲学 <span class="en">MENU</span></h2>
+      <p class="codex-p">全メニューに<a href="../database/glossary.html#dining-pictogram">食性ピクトグラム</a>を導入した最初の外食チェーンであり、一枚のピザを扇形に区分けして肉食・植物食・昆虫食のトッピングを同居させる「ハーフ&ハーフ&ハーフ」は同社の発明である。異種族のルームメイトや部隊が一枚を分け合える設計は、「共育世代のソウルフード」と呼ばれるまでになった。</p>
+      <p class="codex-p">サイズ展開は<a href="../database/races.html#holsoid">ホルソイド</a>向けの「ジャンボ」から、<a href="../database/races.html#kyusoid">キューソイド</a>向け直径3smの「Qピザ」まで7段階。Qピザは小さすぎて焼くより冷める方が早いため、専用の掌サイズ窯が開発された──「星系で最も小さな石窯」としてギネス級の記録に載っている。</p>
+    </article>
+
+    <article class="codex-entry" id="delivery">
+      <h2 class="codex-h">配達の流儀 <span class="en">DELIVERY</span></h2>
+      <p class="codex-p">「3セクター以内、熱いまま。それより先は、うまいまま」が配達保証の口上である。配達員は伝統的に相棒の小型艇に名前を付ける習わしがあり、艇ごと星系中を流れて働く「渡り配達員」はバステトイドの若者の定番の生き方となっている。</p>
+      <p class="codex-p">戦時下では前線への配達伝説には事欠かない。<a href="../database/locations.html#katina">カタリナ</a>防衛戦のさなか、塹壕へ50枚を届けて帰った配達員の逸話は従軍記者により報道され、「戦場に来るのは弾とピザ・キャットだけ」という前線ジョークを生んだ。なお同社は両軍への出前を断らないが、「配達先の座標は誰にも売らない」ことを唯一の社規としている。</p>
+    </article>
+
+    <article class="codex-entry" id="archives">
+      <h2 class="codex-h">記録余話 <span class="en">ARCHIVES</span></h2>
+      <p class="codex-p">創業兄妹は現在も存命で、兄は本社の「窯番頭」として新人研修で生地を教え、妹は今も月に一度、抜き打ちで支店の配達に混ざるという。配達員たちの間では「妙に速い新人が来たら妹社長」というのが合言葉になっている。</p>
+      <p class="codex-p">星間宅配ピザという業態への批判に対し、妹社長が残した返答は同社の広告塔となった──「くだらない商売ですよ。でもね、くだらないものを取り上げられた星系を、平和とは呼ばないでしょう」。</p>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

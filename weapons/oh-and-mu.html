@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OH &amp; MU — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#d4b45e;--accent:#f0dca0;--border:rgba(212,180,94,0.32);--border-hi:rgba(240,220,160,0.7);--dim:#2a2210;--dim2:#151105; }
+    .p-title    { color: #fdf6e0; text-shadow: 0 0 50px rgba(212,180,94,0.45); }
+    .p-tagline  { border-color: #d4b45e; color: #d4b45e; }
+    .terminal-hdr { color: #f0dca0; }
+    .terminal-hdr::before { background: #f0dca0; box-shadow: 0 0 8px #f0dca0; }
+    .dk { color: #d4b45e; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-32 / OH &amp; MU — ओ&amp;मू ]</div>
+    <div class="header-status">● DESTROYED — RECORD ARCHIVED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">WEAPON FILE — OH &amp; MU — ANCIENT STRATEGIC WEAPON — THE IDOL OF MURASIA</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0032 — CLASSIFICATION: UNKNOWN TECHNOLOGY — STATUS: DESTROYED</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-32 / WEAPON FILE ]</div>
+        <div class="p-name-jp">オー＆ムー (OH &amp; MU)</div>
+        <h1 class="p-title">ओ&amp;मू</h1>
+        <div class="p-tagline">古代戦略兵器（推定） ─ ムー教団旗艦・撃破済み</div>
+        <p class="p-short-desc">巨大移動要塞ムーラシアの装飾に擬態していた正体不明の戦略兵器。二つの顔が組み合って戦艦となり、歌とも念仏ともつかない言葉で目覚めた。ダークメシア事件でスターフォックスに撃破され、現存しない。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ WEAPON SCAN — FILE 32 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">ओ&amp;मू / オー＆ムー — <a href="../database/military.html#cdf">CDF</a>記録名 OH &amp; MU</td></tr><tr><td class="dk">CLASS</td><td class="dv">戦略級機動兵器 — 古代兵器（推定）</td></tr><tr><td class="dk">ORIGIN</td><td class="dv"><a href="../database/locations.html#lambda">スペースオベリスク</a>の鹵獲・改造（推定）</td></tr><tr><td class="dk">OPERATOR</td><td class="dv">教団<a href="../database/glossary.html#mu-cult">「ムー」</a>教祖 「オー」「ムー」</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">イオンリング砲 / 光学レーザー / 念波（詳細本文）</td></tr><tr><td class="dk">ESCORT</td><td class="dv warn">⚠ ビット×8 — うち1基が真の中枢</td></tr><tr><td class="dk">POWER</td><td class="dv warn">⚠ 未知の機関 — 解析所見は封印</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">撃破 — 現存せず（<a href="../database/glossary.html#dark-messiah">ダークメシア事件</a>）</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RECORD -- 96 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(212,180,94,0.5);">
+        <img src="" alt="OH AND MU" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE IDOL THAT AWOKE</span>
+            <span class="tg-jp">謎の言葉で目覚めた古代の偶像</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">『キサマラ　ヨクモ　ムーノセイイキヲ　ケガシタナ…！』<span class="tg-note note">-ダークメシア事件 交戦記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">敵は要塞に張り付いた不気味な飾りだと、我々は最後まで思い込んでいた<span class="lore-quote-src">― ダークメシア事件 CDF強襲部隊の戦闘詳報より</span></span></p>
+  <p class="lore-p">ओ&amp;मू（オー＆ムー）は、教団<a href="../database/glossary.html#mu-cult">宇宙統一平和協会「ムー」</a>の巨大移動要塞ムーラシアに張り付く、気味の悪いモニュメントに擬態していた巨大戦略兵器である。<a href="../database/locations.html#lambda">セクターλ</a>のスペースオベリスクや、<a href="../database/locations.html#titania">タイタニア</a>に存在する謎の「人面岩」との関連性が指摘されており、おそらくは前者を鹵獲して改造したものとされる。</p>
+  <p class="lore-p"><a href="../database/glossary.html#dark-messiah">ダークメシア事件</a>では首謀者である教祖「オー」と「ムー」が、歌とも念仏ともつかない奇怪な言葉によって本機を実際に起動しており、他の古代兵器や生物兵器<a href="bioweapon.html">ゴラス</a>との関連性も指摘されている。起動時には2体の「顔」が要塞から分離して互いに組み合い、一つの艦体となる。完成した姿は彫りの深い二つの顔が背中合わせに繋がった双面の異形であり、交戦した将兵の記憶に長く焼き付くことになった。</p>
+</div>
+<div class="lore-section" id="glyphs">
+  <h3 class="lore-h">銘 ─ THE GLYPHS</h3>
+  <p class="lore-p">機体の各部には解読不能の銘文が刻まれていた。そのうち艦首に相当する部位の最も大きな二文字が「ओ」と「मू」である。読みは確定していないが、教団はこの二文字を神格の名と崇めており、教祖の双子「オー」「ムー」の名もこの刻印から採られたとみられる。CDFの記録名「OH &amp; MU」はその呼びに従った仮称であり、本ファイルの表記は刻印そのものを用いる。一説には教団名の「ムー」自体がこの銘に由来するとも言われるが、教団の壊滅した今となっては確かめようがない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p">兵装は顔面の口から放つ巨大なイオンリング砲と、目から放つ光学レーザーである。さらに額からは「念波」としか呼びようのないものを発して念力を行使するなど、既存兵器では一切報告されていない奇怪な攻撃を使用する。火薬ともレーザーとも異なる未知の兵装群は、交戦したCDF部隊の常識をことごとく裏切った。</p>
+  <p class="lore-p">周囲には8基のビットが浮遊しており、本体の攻撃を乱反射させることで軌道の読めない厄介な弾幕を作り出す。そして本機の真の恐ろしさは、恐るべき修復能力と継戦能力の高さにある。片方のユニットを破壊しても、もう片方が無事であれば即座に破損部を修復してしまうのである。ダークメシア事件で待機部隊が教祖と交戦に至った際もCDF側の攻勢はほぼダメージになっておらず、決定打となったのはスターフォックスの弱点分析による対処だけだったとみられている。</p>
+</div>
+<div class="lore-section" id="double-bluff">
+  <h3 class="lore-h">二重のブラフ ─ THE DOUBLE BLUFF</h3>
+  <p class="lore-p">巨大な顔面が対で動く外見と未知の兵装ゆえ、交戦者はつい顔面の光るパーツばかりを狙ってしまう。これも巧妙な罠である。本機の動力兼中枢は周囲を周回する8基のビットのうちの1基であり、残る7基はそっくりな外見のデコイという、二重のブラフが仕込まれていた。</p>
+  <p class="lore-p">遊撃隊<a href="../database/military.html#starfox">スターフォックス</a>が本機を撃破できたのは、構成員3名が各々の持てる最大の手札を結集して迎え撃ったからである。隊長の操縦技術がビットの弾幕を潜り、メカニックの即席改造が借り物の<a href="cornerian-fighter.html">コーネリアファイター</a>の出力を引き上げ、歴戦の経験がデコイの中からただ一つの中枢を見抜いた。誰か一人が欠けていたら勝てなかった、というのが後の分析の一致した結論である（交戦の経過は<a href="../other/dark-messiah.html">戦闘記録</a>を参照）。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">本機は撃破されており現物は現存しない。それでも本記録が残されるのは、動力と兵装の特殊性、そして大本となるスペースオベリスクの要素が、今後の共和国軍の新兵器開発へ少なからず影響を与えるとみられるためである。<span class="redacted">CDF強襲部隊の交戦データの解析は、本機が「スピリット」を用いて動く兵器であることは間違いないと結論している。後年フォックス・マクラウドが<a href="../database/locations.html#fortuna">フォルトナ</a>から持ち帰った<a href="../database/glossary.html#crystal-staff">クリスタル・スタッフ</a>の解析記録と類似の性質を持つことも特筆に値する</span></p>
+  <p class="lore-p">本機が破壊された際、セクターλに生息する宇宙生物が搭乗する教祖2人へ真っ先に向かった理由は定かではない。本来スペースオベリスクを破壊すれば蜂の巣をつついたような騒ぎとなり、オベリスクを修復するか同じ位置へ配備し直すまで、敵味方の別なく宇宙生物が全てを食い尽くすまで止まらないはずだからである。同じ座標にいたスターフォックスのコーネリアファイター3機が無事だった理由について、ある分析官は冗談交じりにこう答えている。「オベリスクを持ち出した犯人をあぶり出してくれた礼なのでは？」…どちらにせよ真相は闇の中である。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(240,220,160,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

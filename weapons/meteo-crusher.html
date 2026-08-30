@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>METEO CRUSHER — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#e0a050;--accent:#f8c888;--border:rgba(224,160,80,0.32);--border-hi:rgba(248,200,136,0.7);--dim:#3a2a14;--dim2:#1a1208; }
+    .p-title    { color: #fcf4e6; text-shadow: 0 0 50px rgba(224,160,80,0.4); }
+    .p-tagline  { border-color: #e0a050; color: #e0a050; }
+    .terminal-hdr { color: #f8c888; }
+    .terminal-hdr::before { background: #f8c888; box-shadow: 0 0 8px #f8c888; }
+    .dk { color: #e0a050; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-21 / METEO CRUSHER — メテオクラッシャー ]</div>
+    <div class="header-status"><span class="blink" style="color:#f8c888;">●</span> HOSTILE — LAST UNIT DESTROYED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — METEO CRUSHER — ASTEROID CRUSHER / SABOTAGE VESSEL — THREAT ANALYSIS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0021 — CLASSIFICATION: HOSTILE WEAPON — ORIGIN: CIVILIAN MACHINERY</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-21 / ARMORY FILE ]</div>
+        <div class="p-name-jp">メテオクラッシャー (METEO CRUSHER)</div>
+        <h1 class="p-title">THE DRILL<br>THAT<br>LIED</h1>
+        <div class="p-tagline">帝国隕石破砕船 ─ 拠点破壊工作船</div>
+        <p class="p-short-desc">帝国軍が保有する隕石破砕船と、その改造工作船の総称。正体は鹵獲された民間重機の模造品であり、グレートウォールに「抜け穴」を掘ろうとした前科を持つ。降参宣言は信用してはならない。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ THREAT SCAN — FILE 21 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">METEO CRUSHER / メテオクラッシャー</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">隕石破砕船／拠点破壊工作船（総称）</td></tr><tr><td class="dk">EQUIPMENT</td><td class="dv">ドラム式掘削ドリル（光線吸収加工）</td></tr><tr><td class="dk">LINEAGE</td><td class="dv">ベクター・プライム社「ガイアクラッシャー」系譜</td></tr><tr><td class="dk">SOURCE</td><td class="dv warn">⚠ 航路整備用の鹵獲機体の模造品と推定</td></tr><tr><td class="dk">PILOT</td><td class="dv">サル系<a href="../database/races.html#alphoid">アルフォイド</a>の男 — 慇懃な物腰</td></tr><tr><td class="dk">NOTE</td><td class="dv">同名の民間機が現役（航路整備・氷採取）</td></tr><tr><td class="dk">TACTICS</td><td class="dv warn">⚠ 虚偽の降参宣言 — 検証手順必須</td></tr><tr><td class="dk">STATUS</td><td class="dv">直近確認機はスターフォックスが撃墜 — 追加配備情報なし</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 55 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 55%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(224,160,80,0.5);">
+        <img src="" alt="METEO CRUSHER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">SABOTAGE DRILL</span>
+            <span class="tg-jp">兵器の顔をしていない敵 ── 壁に穴を掘る重機</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">私の負けです……素直に認めましょう。 …思っていたよりも知恵が回るようだな！<span class="tg-note note">-グレートウォール第2宙域 交信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">サルの言うことを信用するのか！！<span class="lore-quote-src">― 敵機の虚偽を見破ったファルコ・ランバルディの通信より</span></span></p>
+  <p class="lore-p">メテオクラッシャー（Meteo Crusher）は、<a href="../database/factions.html#venom-empire">帝国</a>軍が保有する隕石破砕船および、それを改造した拠点破壊工作船の総称である。本来の用途は名前のとおり、辺境宙域の隕石や氷を破壊して資源や水の回収を補助することであり、兵器というより重機に近い立ち位置の船である。</p>
+  <p class="lore-p">船体の表側にはドラム式の掘削ドリルが備え付けられ、捕捉した隕石に穴を開けるように掘削・破砕することができる。巨大隕石や小惑星を掘削すると、まるでトンネルを掘ったような大穴が空く。この能力こそが、後述する工作転用の火種となった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p">掘削ドリルには、光線を吸収して前方へ逃がす加工が施されている。これは<a href="../database/sectors.html#ya">セクターϊ（静電の海）</a>の静電嵐の影響を受けた隕石を掘削した際、ザッパー並みの荷電粒子が光線を乱反射し、機体が爆散した事故の前例があるためである。</p>
+  <p class="lore-p">類似の現象は現時点でセクターϊでしか確認されていないが、安全の観点からこの加工は全機体に標準搭載されている。そして兵器転用された機体では、この機構がそのまま正面防御に活用されているとみられる。事故対策の安全装備が、そのまま対レーザー装甲になっているのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">起源 ─ ORIGIN</h3>
+  <p class="lore-p">この船の起源は宇宙用ですらない。<a href="../corporations/vector-prime.html">ベクター・プライム社</a>が地下鉄のトンネル掘削に用いた巨大ドラム式ドリル「ガイアクラッシャー」である。ドリル部分には星系最硬の金属<a href="../database/glossary.html#baculum">バキュラム鋼</a>が用いられている。宙域建築へ進出した同社が掘る相手を地面から空へ変えただけであり、設計思想は一貫して「邪魔なものに穴を開ける」ことにある。</p>
+  <p class="lore-p">同名の「メテオクラッシャー」は現在も同社によって民間機として現役運用されている。<a href="../database/glossary.html#warp-route">ワープドライブ航路</a>の整備事業で使用されているほか、<a href="../corporations/frostreef.html">フロストリーフ・ボトラーズ</a>へ機体を提供する形で氷の採取にも使われている。帝国軍はこの航路整備用のメテオクラッシャーを何基か鹵獲しており、現時点で交戦が確認される機体は、その模造品とみられている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦闘記録 ─ COMBAT LOG</h3>
+  <p class="lore-p">最も新しい戦闘記録は<a href="../database/sectors.html#delta">グレートウォール第2宙域</a>でのものである。警戒網のないエリアに帝国艦船が通り抜けられる通路を作成しようとしていたと考えられており、壁を通る唯一の公式航路が<a href="../planets/area3.html">AREA3</a>の検問下にある以上、帝国が壁に「無警戒の抜け穴」を欲する動機は十分である。発見のきっかけは、AREA3の管制演算網が検知した「あるはずの隕石の、あるはずのない軌道のずれ」だったと伝えられる。全ての隕石の軌道を管理する壁の頭脳の前では、壁を削ること自体が自白に等しい。</p>
+  <p class="lore-p">この機体は通常のメテオクラッシャーと異なり、掘削ドリルのある表面だけでなく機体の裏面まで武装していた。さらに悪質なのは操縦者である。サル系アルフォイドのこの男は慇懃な物腰の持ち主で、劣勢になると「どうやら私のかなう相手ではなさそうですな。私の負けです……素直に認めましょう」と降参を申し出る。この虚偽の降参宣言に騙された共和国軍が、何度か餌食になったという報告が残されている。</p>
+  <p class="lore-p">同機は最終的に遊撃隊<a href="../database/military.html#starfox">スターフォックス</a>によって撃墜された。このときも操縦者は例の降参宣言を試みたが、<a href="../database/characters.html#falco">ファルコ・ランバルディ</a>の「サルの言うことを信用するのか！！」の一喝で看破され、「ハッハハ　お見通しか」と本性を現した末に、裏面武装による最後の悪あがきごと撃ち落とされている。以後、現時点で追加のメテオクラッシャーが配備されたという情報は入っていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">この一件以来、<a href="../database/military.html#cdf">CDF</a>の交戦規定には「降参宣言の検証手順」が追記された。武装停止の確認が取れるまで接近しない、というだけの単純な手順だが、この一行が加わるまでに支払われた授業料は安くない。撃墜時の交信の全文は識別課程の教材として今も再生されている。もっとも、締めくくりのファルコの一喝は、<a href="../database/glossary.html#racial-friction">人種間の偏見</a>の実例そのもののような発言でもある。教官たちは毎回あきれ顔で再生を止めようとするのだが、犬系人種が多数を占めるCDFの教室では毒気に気づく者の方が少なく、一喝は今日も変わらず一番の笑いを取ってしまう。教官のため息は半分がファルコに、もう半分は笑っている教室に向けられている。</p>
+  <p class="lore-p">頭の痛い問題は、星系のあちこちで本物の民間メテオクラッシャーが今日も真面目に働いていることである。ベクター・プライム社は模造機との識別のため、自社機の作業灯の点滅パターンと識別信号を共和国軍へ開示している。航路を整備する会社が、航路を壊す偽物と区別してもらうために手を尽くすという構図に、同社の広報は「うちの製品で一番出来が悪いのは、うちが作っていないやつです」とコメントしている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

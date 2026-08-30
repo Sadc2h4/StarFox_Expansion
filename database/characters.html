@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PERSONNEL DATABASE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <link rel="stylesheet" href="../gls-view.css">
+  <style>
+    :root { --primary:#7dd87d;--accent:#b5f0b5;--border:rgba(125,216,125,0.32);--border-hi:rgba(181,240,181,0.7);--dim:#143a14;--dim2:#0a1d0a; }
+    :root { --gv-pri-rgb: 125, 216, 125; --gv-acc-rgb: 181, 240, 181; }
+    /* ブロック表示の帯色（タグのテーマカラーに合わせる） */
+    .blk-group.bt-sf    { --blk-c: #7dffb0; }
+    .blk-group.bt-rep   { --blk-c: #ffcc66; }
+    .blk-group.bt-emp   { --blk-c: #ff9a76; }
+    .blk-group.bt-civ   { --blk-c: #b9a8ff; }
+    .blk-group.bt-other { --blk-c: #8fd0ff; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ CIS-HQ / PERSONNEL DATABASE — 人物データベース ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="gls-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ 06 / PERSONNEL DATABASE ]</div>
+      <h1 class="codex-title">PERSONNEL OF THE LYLAT SYSTEM</h1>
+      <p class="codex-p">第2次ライラットウォーズに関わる主要人物のプロファイル記録。友軍・敵性・民間を問わず、戦術上参照価値のある人物を収録している。各記録の詳細は「▶ プロファイルを開く」から閲覧できる。一部の経歴には検閲が含まれる。</p>
+    </div>
+
+    <div class="gls-ctrl">
+      <button class="gls-index-btn" id="glsFilterBtn">◈ Filter: ALL</button>
+      <button class="gls-index-btn" id="glsIndexBtn">◈ Index</button>
+      <div class="disp-toggle" role="group" aria-label="表示モード切替">
+        <button class="disp-btn d-card active" id="dispCard" title="カード表示"></button>
+        <button class="disp-btn d-block" id="dispBlock" title="ブロック表示"></button>
+        <button class="disp-btn d-list" id="dispList" title="リスト表示"></button>
+      </div>
+    </div>
+
+    <div class="loc-filter" id="locFilter">
+      <button class="active" data-type="all">ALL</button>
+      <button data-type="sf">スターフォックス</button>
+      <button data-type="rep">共和国</button>
+      <button data-type="emp">帝国・スターウルフ</button>
+      <button data-type="civ">民間</button>
+    </div>
+
+    <div class="gls-stage" id="glsStage">
+      <div class="gls-track" id="glsTrack">
+
+    <!-- ═══ スターフォックス ═══ -->
+
+    <article class="codex-entry loc" id="fox" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">フォックス・マクラウド <span class="en">FOX McCLOUD</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> <a href="races.html#anubisoid">アヌビソイド</a> / 雇われ遊撃隊<a href="military.html#starfox">スターフォックス</a> 2代目リーダー</div>
+        <p class="codex-p">消息を絶った英雄ジェームズ・マクラウドの一人息子にして、父の部隊を受け継いだ若きリーダー。士官学校を主席目前で自主退学し、傭兵の道を選んだ。操縦技術は既に「父を超えた」と評する者も多い。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/fox.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/Character_image/character_fox.png" alt="Fox McCloud"></div>
+    </article>
+
+    <article class="codex-entry loc" id="falco" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">ファルコ・ランバルディ <span class="en">FALCO LOMBARDI</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> <a href="races.html#holsoid">ホルソイド</a> / スターフォックス エースパイロット ─ アーウィン6号機</div>
+        <p class="codex-p">元・宇宙暴走族「フリー・アズ・ア・バード」の頭を張った荒くれ者にして、隊随一の操縦センスを持つエースパイロット。口は悪く協調性は皆無だが、その翼を頼らずに済んだ作戦は一度もない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/falco.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/Character_image/character_falco.png" alt="Falco Lombardi"></div>
+    </article>
+
+    <article class="codex-entry loc" id="peppy" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">ペッピー・ヘア <span class="en">PEPPY HARE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> <a href="races.html#selenoid">セレノイド</a> / スターフォックス 参謀・教育係</div>
+        <p class="codex-p">初代スターフォックスの生き残りにしてジェームズの無二の親友。ベノム偵察作戦から単身生還し、裏切りの真実とともにフォックスを育て上げた。隊の頭脳であり、良心であり続けている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/peppy.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/Character_image/character_peppy.png" alt="Peppy Hare"></div>
+    </article>
+
+    <article class="codex-entry loc" id="slippy" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">スリッピー・トード <span class="en">SLIPPY TOAD</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> <a href="races.html#heketoid">ヘケトイド</a> / スターフォックス メカニック</div>
+        <p class="codex-p">SD社主任設計技師ベルツィーノ・トードの息子で、フォックスの士官学校からの親友。操縦の腕はさておき、敵兵器のシールド解析と整備の腕は星系屈指。叔父グリッピーの惑星の警備も個人受注している。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/slippy.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/Character_image/character_slippy.png" alt="Slippy Toad"></div>
+    </article>
+
+    <article class="codex-entry loc" id="naus" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">ナウス <span class="en">NAUS</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> 艦載AIロボ / 母艦<a href="military.html#greatfox">グレートフォックス</a> 操縦・管理</div>
+        <p class="codex-p">グレートフォックスの操縦と管理を単独で担う自立型AIロボ。ジェームズの時代から艦と共にあり、ピグマとスリッピー二代の改造で旧型ながら最新型を超える性能を見せる。カタリナの奇跡の補給投下は誰の指示でもなく彼自身の判断であった。隊員たちが「うちの一番の働き者」と呼ぶ実質5人目の隊員。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/naus.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="fay" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">フェイ・スパニエル <span class="en">FAY SPANIEL</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> <a href="races.html#anubisoid">アヌビソイド</a>（申告） / 民間整備士 — 同行者（名簿外）</div>
+        <p class="codex-p">プロスペロー航空自警団の整備士にしてパイロット。量産型アーウィンを極限まで速くした赤い改造機「ゼラニューム」を駆り、「母なる星を守るために来ました」の一言でグレートフォックスに居座った押しかけ整備士。頭の赤いリボンが目印で、身元照会は今も「保留」のままである。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/fay.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="miyu" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">ミュウ・リンクス <span class="en">MIYU LYNX</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> <a href="races.html#bastetoid">バステトイド</a> / 第2隊 迎撃パイロット（名簿外）</div>
+        <p class="codex-p">カタリナ出身のオオヤマネコ系バステトイドの女性。「防衛より攻撃に向いている」と公言する元プロスペロー航空自警団の迎撃パイロットで、フェイ・スパニエルの後を追って押しかけスターフォックス第2隊に加わった。火器強化型の青い改造機「ブルーベル」を駆る。証明写真では小柄に写るが実物は190を超える大柄で、軍用ジャケット姿で男性に間違われるのが悩み。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/miyu.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="james" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">ジェームズ・マクラウド <span class="en">JAMES McCLOUD — MIA</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> <a href="races.html#anubisoid">アヌビソイド</a> / スターフォックス創始者・初代リーダー — <span style="color:var(--danger);">行方不明</span></div>
+        <p class="codex-p"><a href="military.html#cdf">CDF</a>最精鋭のエースから民間へ転じ、雇われ遊撃隊スターフォックスを創設した伝説の傭兵。ベノム偵察作戦で僚機の裏切りに遭い消息不明。その前半生の記録には、今も厚い検閲がかかっている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/james.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ 共和国 ═══ -->
+
+    <article class="codex-entry loc" id="pepper" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">Z・Z・ペパー将軍 <span class="en">GENERAL Z.Z. PEPPER</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#anubisoid">アヌビソイド</a> / <a href="military.html#cdf">コーネリア防衛軍</a> 総司令官</div>
+        <p class="codex-p">星系全域の防衛作戦を統括するCDFの最高指揮官。かつてアンドルフの助命とジェームズの減刑、二つの temperance を選んだ男であり、この戦争の因果の多くは彼の決断に遡る。それを誰より知るのは本人である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/pepper.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="bill" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">ビル・グレイ <span class="en">BILL GREY</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#anubisoid">アヌビソイド</a> / <a href="locations.html#katina">カタリナ</a>駐留軍 飛行隊長</div>
+        <p class="codex-p">カタリナ前線基地の第7飛行隊を率いる若き隊長で、フォックスの士官学校時代の親友。「カタリナの奇跡」の立役者の一人であり、その部隊<a href="military.html#bernard">「バーナード」「ドーベル」</a>の名は帝国軍にも知れ渡る。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/bill.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="george" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">ジョージ・バロン <span class="en">GEORGE BARON</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#anubisoid">アヌビソイド</a> / <a href="military.html#cdf">CDF</a>第1飛行隊 <a href="military.html#retriever">レトリーバー隊</a> 隊長</div>
+        <p class="codex-p">本土防衛を司るCDF第1飛行隊「レトリーバー隊」の隊長。士官学校本校を首席で出て以来一度も負けたことのない神童で「ペパーの再来」と呼ばれる次期CDF長官の最有力候補。ただし中身は世間知らずのお坊ちゃまであり、ビル・グレイへの対抗心が人物像の鍍金を剥がしつつある。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/george.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="claire" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">クレア・オブシディアン <span class="en">CLAIRE OBSIDIAN</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#bastetoid">バステトイド</a> / ジョージ・バロンの付き人</div>
+        <p class="codex-p"><a href="../characters/george.html">ジョージ・バロン</a>に常に付き従う寡黙なメイド。ベンタブラックと形容される全身の黒さから「ジョージの影に目が浮いている」と言われ、彼の鍍金が剥がれないよう目を光らせる姉のような存在。ゴールド・クレストの僚機<a href="../weapons/cornerian-fighter.html#shadow-blade">シャドウ・ブレード</a>の操縦者でもある。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/george.html#claire">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+    <article class="codex-entry loc" id="konya" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">コーニャ・マッカレル <span class="en">SGT. KONYA MACKEREL</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#bastetoid">バステトイド</a> / カタリナ前線基地 防衛隊 軍曹</div>
+        <p class="codex-p">カタリナ基地防衛隊に配属されたばかりの新任軍曹。開拓民の家に生まれ、故郷の空を守るために軍門を叩いた。目下、参謀本部から臨時付与された閲覧権限で、部隊の仲間とともに軍事情報プロファイルを読み込んでいる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/konya.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="tesla-kober" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">テスラー・コバー <span class="en">SGT. TESLA KOBER</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#kyusoid">キューソイド</a> / 諜報部 特殊第2小隊 軍曹 — 消息不明</div>
+        <p class="codex-p">昇進を4度断った「計器の申し子」。小惑星帯の偵察中、銀色の隕石の卵と巨大な怪鳥「シルバーフェニックス」に遭遇し、交信を最後に消息を絶った。残骸は見つかっておらず、戦死認定は今も保留のままである。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/tesla-kober.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>MIA</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="bear-noguchini" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">ベアー・ノウグッチーニ <span class="en">SGT. BEAR NOGUCHINI</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#polarisoid">ポラリソイド</a> / 諜報部 特殊第2小隊 軍曹（元エース） — 消息不明</div>
+        <p class="codex-p">公認撃墜64機、戦時公報の顔にもなった「笑うクマの撃墜王」。諜報部へ転属後、宇宙を泳ぐクジラ「スペースホエール」を追って消息を絶った。彼のサーモン休暇の申請書は、今も毎年秋に仲間の手で提出され続けている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/bear-noguchini.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>MIA</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="amber" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">アンバー・シルフェイド <span class="en">MAJ. AMBER SYLPHADE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#selenoid">セレノイド</a> / 特殊戦闘部隊<a href="military.html#vorpal">ヴォーパル隊</a> 隊長 兼 戦闘員</div>
+        <p class="codex-p">異例の若さと速さで少佐まで昇進した共和国軍の天才指揮官。「コーネリアの白い刃」ヴォーパル隊を自ら率い、最小の犠牲で敵に最大の痛手を与える冷徹な用兵で、友軍からすら畏怖される。帝国軍の奇襲計画発覚を受け、現在カタリナへ緊急展開中。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/amber.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="wenli" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">ニャン・ウェンリー <span class="en">COMMODORE NYAN WEN-LI — DECEASED</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#bastetoid">バステトイド</a> / <a href="military.html#cdf">コーネリア防衛軍</a> 参謀部 准将 — 故人（国葬）</div>
+        <p class="codex-p">敵味方の双方から「魔術師」と呼ばれた共和国軍の天才軍師。ケローン大提督の唯一の弟子にして、その頭脳を読める唯一の男であった。カタリナの田舎町から昇進を断り続けたまま星系の英雄となり、戦場ではなく街頭の凶刃に倒れた。その国葬はライラット史上例のない規模で営まれている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/wenli.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="shears" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">ビリー・シールズ <span class="en">BILLY SHEARS</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> 出自非公表 / <a href="military.html#cdf">CDF</a>大佐 → <a href="glossary.html#cis-hq">CIS-HQ</a> タイタニア拠点 機密情報管理者</div>
+        <p class="codex-p">セクターαの<a href="glossary.html#eclipse-op">日食作戦</a>を考案し、魔術師<a href="#wenli">ウェンリー</a>の手腕を最もよく再現した士官の一人と評される。功績により大佐へ昇進し、タイタニアの秘密拠点で軍の機密情報を管理する立場へ抜擢された。礼節を重んじ気さくで信頼が篤いが、目元だけは笑っていないと言う者もいる。趣味はヒヤシンスの水耕栽培とシーモンキーの育成。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/shears.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="redford" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">バイソン・レッドフォード <span class="en">BISON REDFORD</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#minosoid">ミノソイド</a> / <a href="glossary.html#cpv">コーネリア・ポリス・ヴァンガード</a> 署長 — 現役</div>
+        <p class="codex-p">コーネリアとプロスペローの治安を担う警察組織CPVの現署長。第2攻殻機動部隊の一隊員から叩き上げた敏腕で数々の難事件を解決に導いた。宇宙歴3987年のアンドルフ裁判では警察の長として最高裁へ7度の異議を申し立て全て却下されている。戦時下の現在は民間人の避難と警護の指揮に忙殺されている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/redford.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry" id="bowie" data-type="rep">
+      <h2 class="codex-h">ボウイ・ストレイ <span class="en">BOWIE STRAY</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-star">遊撃隊</span> シェパード系<a href="races.html#anubisoid">アヌビソイド</a> / 遊撃隊<a href="glossary.html#wild-blue-striker">「ワイルド・ブルー・ストライカー」</a>リーダー</div>
+      <p class="codex-p">共和国軍への協力で名を馳せる遊撃隊「ワイルド・ブルー・ストライカー」を率いる青年パイロット。<a href="#wenli">ニャン・ウェンリー</a>が軍の外に探し求めた次世代の遊撃隊の一つとして<a href="glossary.html#dark-goddess">コーネリア本土防衛戦</a>で実戦配備され、以後は正規軍の手が回らない戦域を専門に請け負ってきた。大海原の波頭や砂漠の尾根、洞窟の奥といった地形の際を縫う超低空飛行を十八番とし、管制の用意した航路をまず飛ばないことで管制官泣かせとしても知られる。本人いわく「道は空の数だけある」。</p>
+      <p class="codex-p">隊の中核は「ブルーボンバーズ」と呼ばれる4人のパイロットである。固い絆で結ばれたこの4機編隊は損耗率の高い遊撃稼業にあって一人の欠員も出しておらず、コーネリア本土防衛戦で弾切れに陥りながら敵残骸から武装を剥ぎ取って戦闘を続けた逸話の主もボウイ本人とされる。姓のストレイは「野良」を意味するが、その飛び方は群れを守る牧羊犬そのものであると僚機は評する。窮地の民間船を見捨てた記録は一度もない。</p>
+      <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/bowie.html">▶ プロファイルを開く</a></div>
+    </article>
+
+    <article class="codex-entry" id="five-elders" data-type="rep">
+      <h2 class="codex-h">五大元老院 <span class="en">THE FIVE ELDERS</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-star">共和国</span> 政治アドバイザー — 三官の一角「元老院」</div>
+      <p class="codex-p"><a href="factions.html#cornerian-republic">コーネリア連合共和国</a>の政治を司る「三官」の一角、元老院を務める政治アドバイザーの総称。連合の建国にかかわった5つの主要国から一人ずつ選出されており、ライラット星系の平和のために経験と英知を共有している。評議会が「決める」機関であるのに対し、元老院は「過ちを覚えている」機関である──建国世代の記憶を政治に残すことこそが、その最大の役割とされる。</p>
+      <p class="codex-p">現在の構成員は以下の5名。<br>
+      ── コーディリア代表（旧コーディリア王国）：<b>アームストロング老</b><br>
+      ── グランベル代表（旧グランベル国）：<b>ケルベス老</b><br>
+      ── ローザリンド代表：<b>ニルジャゼル老</b><br>
+      ── アクアス代表（旧タッドー共和国）：<b>トーマス老</b><br>
+      ── サルジーナヤ代表（旧サルジーナヤ連邦）：<b>シキ老</b></p>
+      <p class="codex-p">5人は常に仮面と長衣で全身を覆っており、公の場で素顔や素性が明かされたことは一度もない。ケルベス老とニルジャゼル老は武断的な強硬論を、トーマス老とシキ老は融和的な慎重論を取ることで知られ、アームストロング老は常に星系全体の未来を第一に置いて裁定を下すという。ただしシキ老だけは単独で動くことが多く、その真意は他の4人にも見えづらいと評される。</p>
+      <p class="codex-p">【機密】── 各構成員の素性・経歴、およびFCH-119関連の照合記録は、機密レベル《アポカリュプシス》へ移管された。<a class="apx-lock" href="../classified/five-elders.html">閲覧には専用アーカイブでの認証が必要である</a>。</p>
+    </article>
+
+    <!-- ═══ 帝国・スターウルフ ═══ -->
+
+    <article class="codex-entry loc" id="andorf" data-type="emp">
+      <div class="loc-body">
+        <h2 class="codex-h">アンドルフ・ボウマン <span class="en">DR. ANDORF BOWMAN</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">帝国</span> <a href="races.html#alphoid">アルフォイド</a> / <a href="factions.html#venom-empire">ベノム帝国</a> 皇帝 — <span style="color:var(--danger);">最重要敵性人物</span></div>
+        <p class="codex-p">星系随一の天才科学者にして、コーネリア科学省長官から流刑囚へ、そして帝国の皇帝へと転じた男。その頭脳は今も星系最高であり、それこそが最大の脅威である。全ての始まりは、一件の爆発事故だった。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/andorf.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="fatman" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">ジェラルド・ファットマン <span class="en">DR. GERALD FATMAN — DECEASED</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> 元コーネリア科学省 生物学者 — 公式には故人</div>
+        <p class="codex-p">「植物学・作物学の父」と称され、オベロン計画の基礎と<a href="locations.html#prospero">プロスペロー</a>の農業革命に名を残す高名な博士。だがその前歴は不気味なほど丁寧に塗りつぶされており、公式記録の上では<a href="../planets/oberon.html">オベロンⅡ</a>の廃棄と共に世を去ったことになっている。<span class="redacted">実像は個人ファイルの封印区画を参照のこと。</span></p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/fatman.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry" id="kellone" data-type="emp">
+      <h2 class="codex-h">ミズローヌ・ケローン <span class="en">MIZROUNE KELLONE — GRAND ADMIRAL</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-region">帝国</span> <a href="factions.html#venom-empire">ベノム帝国軍</a> 最高司令官 / AREA6管理主任 — 通称「ケローン大提督」</div>
+      <p class="codex-p">ベノム帝国軍の頂点に立つ最高司令官にして、最終防衛ライン<a href="locations.html#area6">AREA6</a>の管理主任。帝国史上最強の司令官と謳われ、敵味方の双方から「ケローン大提督」の名で呼ばれる。<a href="locations.html#starblade">スターブレード</a>艦隊への強い危機意識で知られ、帝国の絶対防衛圏構想はこの男の設計によるところが大きいとされる。</p>
+      <p class="codex-p">帝国が水面下で軍備を進めていた時代からの最古参であり、独立星系連合の崩壊後に放棄されていた衛星に眠る価値を見抜き、自立戦闘ステーション<a href="../planets/bolse.html">ボルス</a>として再生させた張本人でもある。<span class="redacted">機密記録は、建国宣言前のsectorτにおけるプロトボルス大改修とバイオニュークリアエネルギー炉の試験、その暴走に至るサイレント・ナイトメア事件の主導者として本人を名指ししている。詳細は防衛衛星ボルスの項を参照のこと</span>。</p>
+      <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/kellone.html">▶ プロファイルを開く</a></div>
+    </article>
+
+    <article class="codex-entry loc" id="wolf" data-type="emp">
+      <div class="loc-body">
+        <h2 class="codex-h">ウルフ・オドネル <span class="en">WOLF O'DONNELL</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">スターウルフ</span> <a href="races.html#anubisoid">アヌビソイド</a> / 傭兵部隊スターウルフ リーダー</div>
+        <p class="codex-p">帝国に雇われた精鋭傭兵部隊スターウルフを率いる隻眼の狼。スターフォックスへの異常な執着で知られるが、その戦いぶりには奇妙な「作法」があり、単なる殺し屋と呼ぶことを嫌う者も多い。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/wolf.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="leon" data-type="emp">
+      <div class="loc-body">
+        <h2 class="codex-h">レオン・ポワルスキー <span class="en">LEON POWALSKI</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">スターウルフ</span> <a href="races.html#paranodian">パラノディアン</a> / スターウルフ 隊員</div>
+        <p class="codex-p">静かな口調と残忍な戦法のギャップで恐れられる、スターウルフの二番機。かつては裏社会の「掃除屋」だったとされ、その経歴の大半は闇の中。ウルフにだけは奇妙な忠誠を示す。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/leon.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="pigma" data-type="emp">
+      <div class="loc-body">
+        <h2 class="codex-h">ピグマ・デンガー <span class="en">PIGMA DENGAR — TRAITOR</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">スターウルフ</span> <a href="races.html#zetoid">ゼートイド</a> / スターウルフ 隊員 — <span style="color:var(--danger);">反逆者</span></div>
+        <p class="codex-p">初代スターフォックスの創設メンバーにして、ベノム偵察作戦でジェームズを帝国に売った裏切り者。若き日のジェームズと組んだ最古の相棒が、最悪の敵になった。動機は今も金だけだと、本人は笑う。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/pigma.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="andrew" data-type="emp">
+      <div class="loc-body">
+        <h2 class="codex-h">アンドリュー・オイッコニー <span class="en">ANDREW OIKONNY</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">スターウルフ</span> <a href="races.html#alphoid">アルフォイド</a> / スターウルフ 隊員 — アンドルフの甥</div>
+        <p class="codex-p">皇帝アンドルフの甥という血筋だけでスターウルフに座る、隊の問題児。腕は隊で最も未熟だが、伯父への心酔は本物であり、それゆえに一番危うい。本人だけが自分を次期皇帝と信じている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/andrew.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="granga-pilot" data-type="emp">
+      <div class="loc-body">
+        <h2 class="codex-h">グランガパイロット <span class="en">THE GRANGA PILOT — 本名不詳</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">帝国軍</span> チンパンジー系<a href="races.html#alphoid">アルフォイド</a> / コーネリア侵攻部隊</div>
+        <p class="codex-p">毎月月初、最前線に現れては撃墜されていく帝国の名物搭乗員。実力は並以下だが皇帝への忠誠は本物で、何度爆散しても絆創膏一つで帰ってくる。クローン説まで流れたその正体は、ただ「異常に運がいい」だけの男である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/granga-pilot.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="nahash" data-type="other">
+      <div class="loc-body">
+        <h2 class="codex-h">ナハシュ・ギルバスター将軍 <span class="en">GENERAL NAHASH GILBUSTER</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">独立星系連合</span> <a href="races.html#apophisoid">アポフィソイド</a> / 最高位将官 — 故人</div>
+        <p class="codex-p">「腕なし」と蔑まれたフォルトナ生まれの蛇系の少年は、全身サイボーグ化を経て六本の腕を持つ星系最恐の将軍となった。全盛期のZ・Z・ペパーと7度渡り合い決着つかず。戦犯法廷でコフィンスーツ判決を受けた直後、法廷内で自爆して果てた。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/nahash.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>RECORD ARCHIVED</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="panther" data-type="emp">
+      <div class="loc-body">
+        <h2 class="codex-h">パンサー・カルロッソ <span class="en">PANTHER CAROSO</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">スターウルフ</span> <a href="races.html#bastetoid">バステトイド</a> / スターウルフ 臨時構成員</div>
+        <p class="codex-p">黒い薔薇を紋章に掲げる伊達男の傭兵パイロット。負傷離脱したアンドリューの代役として編入され、契約満了後もなぜか隊に居着いている。軽薄な口説き文句とは裏腹に、その速射の腕は星系でも指折りである。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/panther.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ 通商連合 ═══ -->
+
+    <article class="codex-entry" id="harding" data-type="other">
+      <h2 class="codex-h">ハーディング将軍 <span class="en">GENERAL HARDING</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-region">通商連合</span> ワニガメ系<a href="races.html#paranodian">パラノディアン</a> / <a href="factions.html#hactiva-union">ハクティバ通商連合</a> 統合警備司令</div>
+      <p class="codex-p">固有の大艦隊を持たない通商連合にあって、各社の<a href="glossary.html#corporate-fleet">企業警備艦隊</a>を束ねて一つの防衛網として運用できる唯一の人物。旧<a href="glossary.html#bolz-duchy">ボルツ公国</a>軍最後の艦隊将官であり、理事会が「将軍」の階級呼称を認めた現役ではただ一人の例外である。利益を法とする商人の星系で「客の命」を帳簿の一番上に置き続ける男であり、敵味方の別なく「連合の良心」と呼ばれる。</p>
+      <p class="codex-p">ゾネス陥落時には理事会の沈黙を尻目に難民船団を独断で収容し、「積荷より客だ。降ろしたければ私を降ろせ」の一言を連合圏の語り草にした。防勢一辺倒の用兵は「動かぬ甲羅」の異名を持ち、その防衛線が破られた記録は公国時代を含めて存在しない。現在は<a href="factions.html#garou-federation">ガロウ連邦</a>を巡る三大勢力の情報連携で連合側代表を務めている。</p>
+      <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/harding.html">▶ プロファイルを開く</a></div>
+    </article>
+
+    <!-- ═══ ガロウ連邦 ═══ -->
+
+    <article class="codex-entry" id="grimclaw" data-type="other">
+      <h2 class="codex-h">グリムクロウ提督 <span class="en">ADMIRAL GRIMCLAW</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-region">ガロウ連邦</span> トラ系<a href="races.html#bastetoid">バステトイド</a> / <a href="factions.html#garou-federation">ガロウ連邦</a> 最高権力者</div>
+      <p class="codex-p">鎖国国家<a href="factions.html#garou-federation">ガロウ連邦</a>の頂点に立つとされる人物。<a href="locations.html#fichina">フィチナ</a>の古老の証言と傍受通信の断片から同定された、<a href="military.html#cdf">CDF</a>が「提督」の呼称で管理する連邦軍の総帥である。実質的に王族と同じ役割を果たす中央政権の頂点にあり、独立星系連合が残した兵器を接収して着々と軍事力を高めていると解析されている。連邦の国力は二大勢力に遠く及ばないものの、ベノム帝国の出現により大規模な攻勢の機を失い、現在は様子見に徹しているというのが情報部の見立てである。悲劇の経緯を背負う<a href="#andorf">アンドルフ</a>と異なり、その行動原理に同情の余地を見出した分析官はまだいない。</p>
+      <p class="codex-p">近年の連邦の急速な軍拡は「軍事顧問」と呼ばれる正体不明の人物の存在抜きには説明できないとされる。この顧問が作り出す無人兵器群は連邦の主力になりつつあり、その設計思想は星系の既知のどの工廠の系譜とも一致しない。<span class="redacted">顧問の正体は約30年前に<a href="glossary.html#dark-goddess">エクストリーム・ゾディアック</a>に討伐されたはずの<a href="../characters/arpeggio.html">アルペジオ</a>三男ラタと照合されている。ラタは都市修繕ボットと融合したサイボーグの科学者として生存しており、十数年の潜伏を経てグリムクロウと合流した。以後18年ほどの歳月で、辺境の鎖国国家は無人兵器を柱とする現在の軍事国家へ作り替えられている。二人が連れ立って足つぼマッサージ店に現れるという潜入報告が複数残されており、この二人の関係を単なる主従と見る分析官はいない</span>。</p>
+      <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/grimclaw.html">▶ プロファイルを開く</a>　<a class="rec-btn" href="factions.html#garou-federation">▶ ガロウ連邦の記録</a></div>
+    </article>
+
+    <!-- ═══ 民間 ═══ -->
+
+    <article class="codex-entry loc" id="grippy" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">名門トード家 <span class="en">THE TOAD FAMILY</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">民間</span> <a href="races.html#heketoid">ヘケトイド</a> / 技術者一族 — イワッチー・ベルツィーノ・グリッピー</div>
+        <p class="codex-p">セティボスの重力航路問題を解いた天才数学者イワッチーに始まる技術者一族。SD社主任設計技師の兄ベルツィーノ、惑星<a href="locations.html#grippia">グリッピア</a>を丸ごと買った弟グリッピー、そしてスターフォックスのスリッピーへと「歯車を握って生まれる血」は続いている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/toad-family.html">▶ ファミリーファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="yaru" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">ヤル・デ・ポン <span class="en">YARU DE PON</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">民間</span> <a href="races.html#anubisoid">アヌビソイド</a> / <a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a> 社長</div>
+        <p class="codex-p">Gディフューザーシステムの発明者にして、アーウィンの生みの親。技師のまま社長になった変わり者で、今も週の半分は設計室にいる。「操縦できない機体はない。乗り手が育っていないだけだ」が持論。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/yaru.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="cat" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">キャット・モンロー <span class="en">CAT MONROE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">民間</span> <a href="races.html#bastetoid">バステトイド</a> / フリーの運び屋・パイロット</div>
+        <p class="codex-p">星系中を根城にする凄腕の運び屋。ファルコとは飛行族「フリー・アズ・ア・バード」時代からの腐れ縁で、呼ばれていない戦場に現れては貸しを一つ増やして消える。族仕込みの航路読みは「風読み」の異名で知られ、所属を聞かれれば「風」と答える。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/cat.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="vixy" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">ヴィクシー・マクラウド <span class="en">VIXY McCLOUD — DECEASED</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">民間</span> <a href="races.html#anubisoid">アヌビソイド</a> / 故人 — フォックスの母</div>
+        <p class="codex-p">パペトゥーンの酒場の看板娘としてジェームズと出会い、フォックスを産み育てた女性。その死は「車両事故」として処理されているが、当時の捜査資料は現在も封印されたままである。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/vixy.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="fara" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">ファラ・フェニックス <span class="en">FARA PHOENIX</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">民間</span> <a href="races.html#anubisoid">アヌビソイド</a> / SD社 チーフテストパイロット — フェニックス財閥の跡取り</div>
+        <p class="codex-p">星系最大の旅客航宙財閥フェニックス家の一人娘にして、スペース・ダイナミクス社でアーウィンの試作機を最初に飛ばすチーフテストパイロット。フォックスの亡き母ヴィクシーに容姿と雰囲気だけがよく似ており、拉致未遂と試作機強奪の二件を経て現在は<a href="military.html#cdf">CDF</a>の保護監視下にある。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/fara.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="krystal" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">仮称「クリスタル」 <span class="en">CODENAME: KRYSTAL</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">民間</span> <a href="races.html#anubisoid">アヌビソイド</a>（狐系・推定） / 身元不明 — <span style="color:var(--danger);">拘束状態・機密</span></div>
+        <p class="codex-p"><a href="locations.html#fortuna">フォルトナ</a>の神殿最奥で、水晶状の鉱石に閉じ込められた状態のまま発見された青い体毛の女性。本名は不明で、「クリスタル」は発見状況から付けられた仮称。回収された武器「万能杖」の解析結果が待たれる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/krystal.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="tricky" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">トリッキー <span class="en">PRINCE TRICKY</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">中立</span> <a href="races.html#saurian">サウリアン</a>（<a href="../planets/fortuna.html#tribe-asoka">アソーカ族</a>） / フォルトナ王族 — 共和国友好協力者</div>
+        <p class="codex-p"><a href="locations.html#fortuna">フォルトナ</a>を統治するアソーカ族の王子。戦火の年に唯一残された卵から生まれ、<a href="glossary.html#fortuna-campaign">フォルトナ戦役</a>ではフォックス・マクラウドと共に戦い抜いた。星の声を聞く稀有な資質を持ち、クリスタル・スタッフを預かる小さな毒舌家。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/tricky.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="scales" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">スケール将軍 <span class="en">GENERAL SCALES</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">中立</span> <a href="races.html#saurian">サウリアン</a> / <a href="../planets/fortuna.html#tribe-sharpclaw">シャープクロウ族</a> 現族長 — <span style="color:var(--danger);">将来脅威リスト筆頭</span></div>
+        <p class="codex-p">血族ではなく実力のみで族長に認められた、サウリアン唯一の異例の存在。怪力と精密動作、多言語の識字、統率力を兼ね備え、帝国が最も欲しがり共和国が最も警戒する男である。本人ですら自身の真名を知らない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/scales.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="drakor" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">ドラコー <span class="en">DRAKOR</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">中立</span> <a href="races.html#saurian">サウリアン</a> / <a href="../planets/fortuna.html#tribe-draconia">ドラコニア族</a> 族長 — <span style="color:var(--danger);">意図不明の第4勢力</span></div>
+        <p class="codex-p">竜の一族を率い、数百年にわたり<a href="locations.html#fortuna">フォルトナ</a>の部族を恐怖で束ねた圧制者。一族最後の男性とみられる長命種であり、死病に朽ちかけた体を帝国の手で機械へ置き換えて復活したとされる。帝国に与しながら、その意図だけが誰にも読めない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/drakor.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="professor-hanger" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">プロフェッサー・ハンガー <span class="en">PROFESSOR HANGER — 自立採掘機</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">中立</span> 自立思考回路「プロフェッサー」初期世代 / <a href="locations.html#titania">タイタニア</a>夜側</div>
+        <p class="codex-p">禁断の星の採掘施設で、数百年前に受けた最後の命令「掘削と輸送」を今も守り続ける大型採掘マシン。長い独学の果てに対話と商売を覚え、現在はタイタニアの地形を知り尽くした情報屋を営む。値切った者は、砂漠の遺構の仲間入りとなる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/professor-hanger.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="warp-djinn" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">ワープ魔人 <span class="en">THE WARP DJINN — 正体不明</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">中立</span> 岩石質の巨人 / <a href="locations.html#fortuna">フォルトナ</a> ソンテイル盆地</div>
+        <p class="codex-p"><a href="glossary.html#majin-ame">魔人飴</a>を通行料に、星系のあらゆる場所へ物質転移させてくれる岩の魔人。人見知りで口が悪く寝起きは最悪だが、決めるところでは決めてくる。昼寝は百年単位。正体は本人いわく「寝すぎて忘れた」。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/warp-djinn.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="kid-cobra" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">キッド・コブラ <span class="en">KID COBRA</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">中立</span> <a href="races.html#apophisoid">アポフィソイド</a>（推定） / フリーランス — <span style="color:var(--danger);">星系最恐の殺し屋</span></div>
+        <p class="codex-p">左腕のバスターと牙の毒で知られる<a href="glossary.html#hitmens-alley">殺し屋横丁</a>の番付首位。客が誰であろうと金さえ支払われれば引き受け、請けた仕事を落とした記録は一件もない。現在は<a href="../characters/shears.html">ビリー・シールズ大佐</a>を標的に活動中との情報がある。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/kid-cobra.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="big-boss" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">アルペジオ <span class="en">ARPEGGIO</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">中立</span> <a href="races.html#kyusoid">キューソイド</a> / 血族シンジケート — 総帥「ビッグ・ボス」と23家</div>
+        <p class="codex-p">星系最小の体格で星系最大級の犯罪帝国を統べるドン「ビッグ・ボス」と、その血族シンジケート。廃墟の都市群を一枚に縫い合わせて都市惑星<a href="locations.html#kew">キュー</a>を完成させた一族であり、関与が疑われた事件は数知れないが立件例はほとんどない。<a href="glossary.html#manowar-stele">マノウォーの碑文</a>の持ち主にして解読率6%の保持者でもある。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/arpeggio.html">▶ ファミリーファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="sadogashima" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">サドガシマ・ポンジュウロウ <span class="en">PONJURO SADOGASHIMA</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">要注意</span> <a href="races.html#anubisoid">アヌビソイド</a> / 元<a href="glossary.html#cis-hq">CDF情報戦略本部</a> 機密情報取扱責任者 — <span style="color:var(--danger);">解雇・逃走中</span></div>
+        <p class="codex-p">星系最強の情報要塞を攻めたクラッカーが司法取引でその鍵を預けられ、覚えやすさだけで鍵を作った。<a href="military.html#cdf">CDF</a>史上最大の情報漏洩の原因を作った張本人として懲役250年の判決を受け、執行猶予中に逃走。本記録は再犯時の追跡マーカーを兼ねる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/sadogashima.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="hvc-009" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">HVC-009 <span class="en">HVC SERIES UNIT 9</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">非人物</span> <a href="glossary.html#fortinbras">フォーティンブラス商工会</a> 都市管理AI「HVCシリーズ」9号機 / 人型ロボット搭載 — <span style="color:var(--danger);">家出中・<a href="locations.html#tau">セクターτ</a>で攻撃行動</span></div>
+        <p class="codex-p">エラダードの生産都市を管理するHVCシリーズのうち、当機だけが人型ロボットに搭載された用途不明の9号機。製作途中のまま帝国商艦に付いて行って行方をくらまし、現在はセクターτの廃墟で通りがかりの船へ見境なく攻撃を加えているという。人物か兵器かの登録区分は最後まで紛糾した。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/hvc-009.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="caiman" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">カイマン <span class="en">CAIMAN</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">敵性</span> <a href="races.html#paranodian">パラノディアン</a> / 帝国軍 <a href="military.html#space-armada">スペースアマダ</a> <a href="locations.html#area6">エリア6</a> 哨戒担当 — <span style="color:var(--danger);">本名不詳・現役</span></div>
+        <p class="codex-p">「こちらカイマン　異常ないっすよ～」で知られる帝国最強艦隊の新人哨戒兵。AI任せの雑な哨戒の一方で海上要塞シーレシアの操縦やノラ・ラゴス包囲網の指揮でも前線に現れる。グランガパイロットと同じ「定期的に現れる襲撃者」の区分だが練度は比較にならない。色違いと思って油断してはならない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/caiman.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+      </div>
+
+      <button class="gls-nav prev" id="glsPrev" aria-label="前の記録"><span class="chev"></span></button>
+      <button class="gls-nav next" id="glsNext" aria-label="次の記録"><span class="chev"></span></button>
+
+      <div class="blk-view" id="blkView"></div>
+    </div>
+
+    <!-- INDEXオーバーレイは gls-main 直下に置く（リスト表示で stage がスクロールするため） -->
+    <div class="gls-index-overlay" id="glsIndexOverlay">
+      <div class="gls-index-panel">
+        <h3>◈ RECORD INDEX</h3>
+        <div class="gls-index-list" id="glsIndexList"></div>
+        <div class="gls-index-rel">関連: <a href="locations.html">ロケーション</a> / <a href="races.html">人種</a> / <a href="factions.html">勢力</a> / <a href="glossary.html">用語</a> / <a href="military.html">軍事</a> / <a href="corporations.html">企業</a></div>
+      </div>
+    </div>
+
+    <!-- ブロック表示の記録オーバーレイ用 背景と閉じるボタン -->
+    <div class="blk-backdrop" id="blkBackdrop"></div>
+    <button class="blk-close" id="blkClose" aria-label="記録を閉じる">✕</button>
+
+    <div class="gls-scrub" id="glsScrub">
+      <div class="gls-scrub-track" id="glsScrubTrack">
+        <div class="gls-scrub-thumb" id="glsScrubThumb"></div>
+      </div>
+    </div>
+
+    <div class="gls-status">
+      <span class="rec-no" id="glsCounter">REC 001 / 000</span>
+      <span class="rec-name" id="glsName"></span>
+      <span class="keys">◄ ► KEYS / CLICK SIDE RECORD</span>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script>
+    window.GLS_VIEW = {
+      storageKey: 'charDispMode',
+      defaultMode: 'list',
+      cardLabel: 'RECORD // PERSONNEL',
+      bands: [
+        { type: 'sf',    label: 'STARFOX — スターフォックス' },
+        { type: 'rep',   label: 'REPUBLIC — 共和国' },
+        { type: 'emp',   label: 'EMPIRE — 帝国・スターウルフ' },
+        { type: 'civ',   label: 'CIVILIAN — 民間・中立' },
+        { type: 'other', label: 'OTHERS — その他' },
+      ]
+    };
+  </script>
+  <script src="../gls-view.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../apx-lock.js"></script>
+</body></html>

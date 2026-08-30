@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BATTLE RECORD — OPERATION FUCHSJAGD — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#8fbb66;--accent:#c8e8a0;--border:rgba(143,187,102,0.32);--border-hi:rgba(200,232,160,0.7);--dim:#16230c;--dim2:#0a1105; }
+    body { background:#070a04; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ BATTLE RECORD 03 / フクスヤークト / ベノム偵察作戦]</div>
+    <div class="header-status">● RECORD ARCHIVED</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ BATTLE RECORD 03 / OPERATION FUCHSJAGD ]</div>
+      <h1 class="codex-title">FUCHSJAGD</h1>
+      <p class="codex-p">ベノム偵察作戦 全記録 ── 宇宙歴3994年、公式記録に「偵察」の二文字だけを残して先代<a href="../database/military.html#starfox">スターフォックス</a>が消えた作戦の記録である。伝説の傭兵<a href="../characters/james.html">ジェームズ・マクラウド</a>の失踪。<a href="../characters/pigma.html">ピグマ・デンガー</a>の裏切り。そして<a href="../characters/peppy.html">ペッピー・ヘア</a>ただ一人の生還。星系がまだ戦争を知らなかった時代に帝国の首へ刃を当てた最初で最後の作戦である。本記録はペッピー・ヘアの証言、回収された交信記録、そして開戦後に押収・傍受された帝国側資料を突き合わせて再構成された。文中の会話は当事者の記憶と断片的な交信記録によるため、正確性より臨場感が優先されている点に留意されたい。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#prologue">序</a>
+      <a href="#paper">白書の空論</a>
+      <a href="#window">閉じかけた窓</a>
+      <a href="#request">名前のない依頼</a>
+      <a href="#nights">それぞれの前夜</a>
+      <a href="#sortie">三機の出撃</a>
+      <a href="#road">死の大地への道</a>
+      <a href="#wrath">ベノムの怒り</a>
+      <a href="#reactor">原子炉の灯</a>
+      <a href="#pincer">挟撃</a>
+      <a href="#justices">二つの正義</a>
+      <a href="#sky">落ちる雷</a>
+      <a href="#zapper">最後の閃光</a>
+      <a href="#homeward">一機の帰還</a>
+      <a href="#bereaved">残された者たち</a>
+      <a href="#epilogue">結 ─ 狐狩</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="../database/glossary.html#venom-recon">用語DB</a> / <a href="../database/locations.html#venom">ベノム</a> / <a href="../weapons/venom-cell.html">ベノム・セル</a> / <a href="../weapons/vpr.html">VPR基地</a></span>
+    </nav>
+
+    <article class="codex-entry" id="prologue">
+      <h2 class="codex-h">序 ─ 三機と一つの空席 <span class="en">THREE ARWINGS AND AN EMPTY SEAT</span></h2>
+      <p class="codex-p">初代スターフォックスが4機編成を前提に組織されていたことは<a href="../database/military.html#starfox">兵器記録</a>の記す通りである。4号機は搭乗者のないままドックに置かれ続け隊はいつも3機で飛んだ。隊長<a href="../characters/james.html">ジェームズ・マクラウド</a>の1号機。<a href="../characters/peppy.html">ペッピー・ヘア</a>の2号機。<a href="../characters/pigma.html">ピグマ・デンガー</a>の3号機。宇宙歴3994年のこの作戦が3機の揃って飛んだ最後の記録となる。</p>
+      <p class="codex-p">結論から述べると帰ってきたのは1機だった。1機は裏切りの末に帝国の影に消え、1機はベノムから還らなかった。空席のままの4号機に灯が入るのはそれから3年余り後のことである。本記録はその「最後の編隊」の顛末である。</p>
+    </article>
+
+    <article class="codex-entry" id="paper">
+      <h2 class="codex-h">第1章 白書の空論 ─ <span class="en">THE PAPER MIRACLE</span></h2>
+      <p class="codex-p">共和国の戦略白書は後にベノム帝国と呼ばれる勢力の中枢を停止させる方法をただ一つだけ挙げている。<a href="../database/locations.html#venom">ベノム</a>本星の猛攻と環境圧を退け、首都機能へのエネルギー供給デバイスである<a href="../weapons/vpr.html">ベノム・プラネット・リアクター（VPR基地）</a>を破壊することであり立案段階の評価は簡潔だった。「奇跡を何度も続けて起こす必要がある」－白書のこの頁は長く空論の代名詞として扱われてきた。</p>
+      <p class="codex-p">この空論を現実に実行に移した部隊が歴史上ただ一つ存在し、それこそが本作戦である。公式記録の名称が「ベノム偵察作戦」であることには理由がある。この任務は存在しないことになっていたためである。</p>
+    </article>
+
+    <article class="codex-entry" id="window">
+      <h2 class="codex-h">第2章 閉じかけた窓 ─ <span class="en">THE CLOSING WINDOW</span></h2>
+      <p class="codex-p">宇宙歴3993年末の<a href="../database/glossary.html#silent-nightmare">サイレント・ナイトメア事件</a>を境に共和国上層部のごく一部は知ることになった。辺境のベノムで国家と呼ぶほかない何かが水面下に組み上がりつつある。だがそれを公表すれば平和に慣れた切った星系の基盤は割れることは明白だった。証拠は機密の壁の内側にしかなく表向きの世界はまだどこまでも平和だったのである。</p>
+      <p class="codex-p">一方で偵察情報はベノム圏の防衛網が急速に編まれつつあることを示していた。軌道の要塞衛星は建造の途上であり哨戒網にはまだ穴がある…つまり帝国の首根っこへ手が届く「窓」は閉じる直前だった。艦隊を送ればそれは全面戦争になるが、何もしなければ最後のチャンスを逃すことになる。<a href="../database/military.html#cdf">CDF</a>に残された選択肢は一つしかなかった。少数で軍籍になく「存在を否定できる翼」である。</p>
+    </article>
+
+    <article class="codex-entry" id="request">
+      <h2 class="codex-h">第3章 名前のない依頼 ─ <span class="en">THE UNSIGNED REQUEST</span></h2>
+      <p class="codex-p">依頼書は軍のどの決裁簿にも載っておらず差出人の署名もない。任務の目的欄には「ベノム圏の偵察、および可能であれば重要目標の無力化」とだけ記され、報酬欄の数字は傭兵の相場を遥かに超えるものだった。ペッピーの証言によればジェームズは封筒の末尾に捺された見慣れない摩耗の激しい印の印影を長いこと見つめていたという。誰の依頼かを隊の誰も口にしなかった。もはや口にする必要がなかったためである。</p>
+      <p class="codex-p">後年この依頼の重さを別の角度から語る者がいる。依頼者にとってベノムの主はかつて誰よりも近しい存在だった。その男の作り上げたものへ刃を向ける決断を依頼者は署名の代わりに印へ込めたのではないかと推察するが今となっては証明する術はない。ただ、この作戦の依頼書に捺されていた印がどちらの印だったのかを知る者は今もいない。</p>
+      <p class="codex-p"><span class="redacted">さらに付記する。当時の依頼者の権限ではクリアランスLV.5の情報には触れられない。ベノムの玉座に座るものの「正体」に関する後年の知見を、依頼者は知らされないまま親友を敵として迎え撃つ決意を固めたことになる。この皮肉に見合う言葉を本記録は持たない</span></p>
+    </article>
+
+    <article class="codex-entry" id="nights">
+      <h2 class="codex-h">第4章 それぞれの前夜 ─ <span class="en">EACH MAN'S NIGHT</span></h2>
+      <p class="codex-p">出撃の数日前にピグマ・デンガーが<a href="../characters/pepper.html">ペパー将軍</a>を無断で訪ね、<a href="../database/glossary.html#andorf">アンドルフ追放</a>の理由を問い質した夜のことは<a href="../characters/pigma.html">人物記録</a>に詳しい。将軍から返ってきたのは軍の総責任者としての返答だった。その立場は個人としての言葉を許さなかったのである。戻ったピグマを待っていたのはジェームズの叱責であり口論は隊の歴史でも例のないものになった。ペッピーが扉越しに聞いた両者の叫びが証言に残されている。平和のために誰かを仮想敵に仕立て上げ、戦争で差別も偏見も有耶無耶にして束ねる。そんな共和国の矛盾をいつまで見て見ぬふりをするのか──積年の何かがこの夜に堰を切った。</p>
+      <p class="codex-p">相棒の内側で何かが帝国側へ傾き切ったことも、その通信の相手が誰であるかもジェームズは気づいていたが、それでも彼が選んだのは告発ではなく説得の言葉だった。「今できる最善を尽くせ」。欺瞞を知った上でなお隣に置き続けたこの選択を「甘さ」と呼ぶか「信頼」と呼ぶかは読む者に委ねるほかない。ピグマにとってもジェームズとペッピーはチームとして生きた歳月の中で大切な存在になっていた。ただ、彼の中に渦巻き続けた疑問を二人は解いてやることができなかったのである。そして田舎出身の賊だった自分を取り立ててくれた男もそうである。当初は利用できる相手に過ぎなかったはずの恩人はいつしか誰よりも信頼する上司になっていたと思われる。</p>
+      <p class="codex-p"><span class="redacted">開戦後に得られた亡命将校の証言はこの前夜にもう一つの場面を付け加えている。内通の窓口となったケローンは受け入れの条件として一つの意思確認を課した。「自らの手でジェームズとペッピーを手にかけること」。それが試験を兼ねていることを、あの男の何たるかを知るピグマは正確に理解した。証言によれば、ピグマは震える手で作戦の裏側を書き始めたという。裏切り者となり全ての仲間を敵に回す決意を、その震えごと書面に込めて</span></p>
+      <p class="codex-p">出撃の朝にジェームズは14歳の息子に行き先を告げなかった。いつも通りの朝食といつも通りの「少し遠い場所に行ってくる」だけを残していったと後年<a href="../database/characters.html#fox">フォックス・マクラウド</a>は語っている。</p>
+    </article>
+
+    <article class="codex-entry" id="sortie">
+      <h2 class="codex-h">第5章 三機の出撃 ─ <span class="en">THREE ARWINGS</span></h2>
+      <p class="codex-p">編成は<a href="../weapons/arwing.html">アーウィン</a>3機。母艦<a href="../weapons/greatfox.html">グレートフォックス</a>は敵性圏の外縁に待機し帰路の合流点だけを共有した。長距離潜入の常として通信は最小限。<a href="../weapons/smart-bomb.html">スマートボム</a>は規定の上限まで積み込まれた。整備記録の最終欄にはピグマの筆跡で「Condition all green 3機とも文句なし」とある。この署名が彼のスターフォックスのメカニックとして残した最後の記録となった。</p>
+    </article>
+
+    <article class="codex-entry" id="road">
+      <h2 class="codex-h">第6章 死の大地への道 ─ <span class="en">THE ROAD TO THE DEAD LAND</span></h2>
+      <p class="codex-p">編隊は建造途上の防衛網の隙を縫い哨戒の穴を正確に踏み抜きながらベノム圏の深部へ達した。針の穴を通すような進入は不気味なほど滞りなく進む様子をペッピーは後にこう証言している。「道が空いていた。今にして思えば、あれは空けられていたんだ」。かつてムーラシアの前夜にジェームズは「風通しが良すぎる」と言って警戒したが、この夜も同じ風が吹いていることを編隊の誰も口にしなかった。一人を除いて誰も気づいていなかったためである。</p>
+    </article>
+
+    <article class="codex-entry" id="wrath">
+      <h2 class="codex-h">第7章 ベノムの怒り ─ <span class="en">WRATH OF VENOM</span></h2>
+      <p class="codex-p">大気圏に入った瞬間、惑星そのものが牙を剥いた。大気は荒れ狂い、猛毒の強酸が嵐となって吹き荒れ、雷が地響きをもって鳴り響く。そして大地を覆う<a href="../weapons/venom-cell.html">生体組織</a>は急速に成長して壁や牙を生成し猛烈な勢いで攻撃を加えてくる。まるで惑星の全てが明確な敵意をもって襲い掛かるような様相だった。</p>
+      <p class="codex-p">数え切れない量のベノム・セルが編隊を組んで襲い掛かり隊の持つスマートボムは底をつきかけていたが、この地獄の中で3号機だけが奇妙に無傷だった。ピグマは懐の<a href="../classified/andorf-truth.html">帝国の国章バッジ</a>により襲撃を避けていたのである。酸に曇る風防の向こうでそれを確かめる余裕は残る2機のどちらにもなかった。</p>
+    </article>
+
+    <article class="codex-entry" id="reactor">
+      <h2 class="codex-h">第8章 原子炉の灯 ─ <span class="en">THE LIGHT OF THE REACTOR</span></h2>
+      <p class="codex-p">そして雲霞の切れ間にそれは見えた。死の大地の地平で輝く都市一つ分の光の群れと天を切り裂き走る電光の柱…VPR基地である。白書が空論と諦めた目標は確かに射程の内側へ入りつつあった。歴史上共和国側の翼がこの灯をその目で捉えたのは後にも先にもこの瞬間だけである。</p>
+      <p class="codex-p">あと一押しであったが、だからこそ反旗の狼煙はここが選ばれた。</p>
+    </article>
+
+    <article class="codex-entry" id="pincer">
+      <h2 class="codex-h">第9章 挟撃 ─ <span class="en">THE PINCER</span></h2>
+      <p class="codex-p">ピグマが動いたのは隊の弾薬と集中力が最も薄くなったその瞬間である。航法射撃による支援を装って占位した3号機はベノム・セルの大群の周期に合わせ完璧な挟撃の形を作り上げた。罠の設計者はケローンでも帝国参謀部でもない。この隊の航法と癖と燃料残量を誰より知る男、ピグマ・デンガー本人である。</p>
+      <p class="codex-p">度重なる損傷でアーウィン1号機は既に限界だったが、それでもジェームズの技量は驚異的な立ち回りを続けており最初に狙われたのは2号機である。ピグマはベノム・セルの酸液でカメラを損傷し判断の一拍遅れたペッピーへ照準を構えた。</p>
+      <p class="codex-p">「…　…あばよ…ペッピー…　…コイツをうけとりやっ！！」</p>
+      <p class="codex-p">隠し持っていたスマートボムが炸裂する。撃墜されたかと思われた閃光の中2号機は飛んでいた。ジェームズの駆る1号機が寸でのタイミングで間に割って入ったことでペッピーは九死に一生を得たのである。あまりに咄嗟の行動はピグマにも予想できず3号機は爆風と閃光に体勢を崩した。</p>
+    </article>
+
+    <article class="codex-entry" id="justices">
+      <h2 class="codex-h">第10章 二つの正義 ─ <span class="en">TWO JUSTICES</span></h2>
+      <p class="codex-p">爆炎の中で回線が開いた。</p>
+      <p class="codex-p">「ピグマ…　わかっていたさ…あんたの裏切りも　その怒りも…　だが、俺はあんたのやり方を…　肯定できなかった…」「"皇帝"の作り出す世界は、本当に平和を作り出すと思うか…？　答えろ！！」</p>
+      <p class="codex-p">モジュールが損傷し音声が途切れる中でも判るほどの、人生で一度も見たことのない鬼気迫るジェームズの声だったとペッピーは証言している。もはや言葉も出ないピグマだったが、それでも我に返り何とか返答を絞り出した。</p>
+      <p class="codex-p">「ほんに…ほんに救いようがないわっ　このあまちゃんが！！　今のコーネリアがこの戦争を作ったんちゃうか？」「あの腐った評議会と元老院が跋扈する共和国に、この世界を握らせてええと思ってんかいな！？」</p>
+      <p class="codex-p">どちらの言葉も、どちらの思想も間違いではない。嘘偽りのない二つの正義が正面からぶつかり合った瞬間だったと本記録は記すほかない。</p>
+    </article>
+
+    <article class="codex-entry" id="sky">
+      <h2 class="codex-h">第11章 落ちる雷 ─ <span class="en">THE SKY FALLS</span></h2>
+      <p class="codex-p">その瞬間だった。空から一筋の雷がジェームズのアーウィンに直撃した。ベノムの荒天が落としたただの落雷である。だがその高圧電流は限界を超えて飛び続けていた1号機の制御系に致命傷を与えた。正義と正義の問答に決着をつけたのはどちらの銃でもなく死の大地の空だった。</p>
+      <p class="codex-p">なんとか制御を取り戻したペッピーの視界に入ったのは途切れ途切れのピグマの通信と黒煙を上げて堕ちていくアーウィンだけだった。</p>
+      <p class="codex-p">「ピグマァ　貴様というやつは…　おまえという奴はぁ…！！」</p>
+      <p class="codex-p">泣き声とも後悔の叫びともつかない声を上げ、ペッピーは3号機へザッパーを向けた。その引き金に通信が割り込んだ。</p>
+    </article>
+
+    <article class="codex-entry" id="zapper">
+      <h2 class="codex-h">第12章 最後の閃光 ─ <span class="en">THE LAST ZAPPER</span></h2>
+      <p class="codex-p">「ペッピー！　俺はもう助からない…　あとは　息子　ックスを　たの　だ　　…」</p>
+      <p class="codex-p">墜落する1号機からのかすれ切った最後の通信、そして、直後にその機首が光った。残る全エネルギーをザッパー一挺に束ねた閃光は周囲のベノム・セルの群れを焼き切り、ベノムの大気に穴を穿つほどの威力だったと記録されている。開かれた空の穴が何のためのものかをペッピーは一瞬で察した。彼は涙のまま機首を上げ大気圏の外へ一気に逃げ延びた。</p>
+      <p class="codex-p">ピグマはその背中を撃てる位置にいたが引き金は最後まで引かれなかった。3号機はやがてアーウィンに内蔵された通信機とAI連携の一切を切り戦域から消息を絶っている。ケローンの課した「意思確認」がどう裁定されたのかを示す帝国側の記録は見つかっていない。ただ、この男が後の帝国で重用され続けた事実だけが残っている。</p>
+      <p class="codex-p"><span class="redacted">なお開戦後の傍受解析はこの夜の戦域で帝国側の「声」がジェームズと言葉を交わしていた痕跡を検出している。交信の内容を記録しているのは帝国だけであり、共和国側の記録は堕ちていく1号機と閃光のところで途切れている</span></p>
+    </article>
+
+    <article class="codex-entry" id="homeward">
+      <h2 class="codex-h">第13章 一機の帰還 ─ <span class="en">THE LONG WAY HOME</span></h2>
+      <p class="codex-p">合流点にグレートフォックスはいなかった。急所である拠点への強行突入の発覚とともに敵性圏の哨戒は跳ね上がり、艦載AIナウスは規定に従い泣く泣く待機点を放棄していたのである。ペッピーは追撃と通信封鎖の網を単機で潜り抜け、帝国の勢力圏を数週間かけて横断してコーネリアへ帰り着いた。着艦した2号機の被弾痕を数え始めた整備班は途中で数えるのをやめたと伝わる。</p>
+      <p class="codex-p">本人が帰路について語った言葉はほとんどない。ただ持ち帰った証言が英雄の名簿から「ピグマ・デンガー」の名を消し反逆者リストの筆頭へ書き換えた。この証言がなければ共和国はピグマの内通を開戦後も見抜けなかったとされる。ボロボロの翼が運んだのは悲報、そして次の戦争の最初の警鐘だった。</p>
+    </article>
+
+    <article class="codex-entry" id="bereaved">
+      <h2 class="codex-h">第14章 残された者たち ─ <span class="en">THE BEREAVED</span></h2>
+      <p class="codex-p">14歳のフォックス・マクラウドは父の死を報された数日後に士官学校の退学届を出した。慰留する教官へ返した言葉は本人の記録に譲る。ペッピーは後見人として少年を支え、やがて空席だらけになった隊を再建していく。灯の入らなかった4号機に3年後はじめて座ったのは、あの朝「行ってくる」だけを受け取った息子である。</p>
+      <p class="codex-p">ジェームズ・マクラウドの乗機と遺体は今も発見されていない。死亡認定の書類は毎年更新期限を迎え、毎年誰かの手で「保留」の判が押され続けている。</p>
+    </article>
+
+    <article class="codex-entry" id="epilogue">
+      <h2 class="codex-h">結 ─ 狐狩 <span class="en">FUCHSJAGD</span></h2>
+      <p class="codex-p">開戦後に傍受された帝国側の古い記録の中から、この夜の迎撃計画に振られていた符牒が見つかっている。「フクスヤークト」。古い異国で狐狩りを意味する言葉。獲物の名を冠したこの符牒が本記録の表題である。</p>
+      <p class="codex-p">だが狩りの記録としてこの符牒は不完全である。何故ならば狩られたはずの狐は乗機も亡骸も見つかっておらず撃墜報告のない戦域では今も時折、見慣れない旧式アーウィンの目撃情報が上がり続けている。そのどれもが追跡すると必ず見失い記録には残らない。パイロットたちがそれを何と呼んでいるかは<a href="../characters/james.html">人物記録の余話</a>に譲る。</p>
+      <p class="codex-p">最後に対になった二人のことを記す。一人は矛盾に耐えかねて共和国を捨て震える手で仲間を売る作戦を書いた。もう一人は矛盾を抱えたまま共和国に残り決意をもって友の星へ刃を送り出した。どちらも何かを裏切り、どちらも何かに殉じている。この作戦を単純な裏切りの物語として読むことを本記録は推奨しない。ただ一つ確かなのはあの夜ベノムの大気に穿たれた穴を抜けて、一つの願いだけは撃ち落とされずに帰り着いたということである。願いは3年後に4号機のコックピットで灯になった。</p>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(200,232,160,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIOWEAPON — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#88cc33;--accent:#bbee66;--border:rgba(136,204,51,0.32);--border-hi:rgba(136,204,51,0.7);--dim:#2a3a10;--dim2:#151d08; }
+    .p-title    { color: #f2ffe0; text-shadow: 0 0 50px rgba(136,204,51,0.35); }
+    .p-tagline  { border-color: #88cc33; color: #88cc33; }
+    .terminal-hdr { color: #bbee66; }
+    .terminal-hdr::before { background: #bbee66; box-shadow: 0 0 8px #bbee66; }
+    .dk { color: #88cc33; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../codex/glossary.html#type-weapon" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-08 / BIOWEAPON — バイオウェポン ]</div>
+    <div class="header-status"><span class="blink" style="color:#bbee66;">●</span> HOSTILE — MULTIPLE UNITS</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — BIOWEAPON — ORGANIC WEAPON SERIES — ANDORF DESIGN</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0008 — CLEARANCE: PARTIAL — SEE FILE VNM-GEO-04</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-08 / ARMORY FILE ]</div>
+        <div class="p-name-jp">バイオウェポン (BIOWEAPON)</div>
+        <h1 class="p-title">THE FLESH<br>THAT SERVES<br>THE MACHINE</h1>
+        <div class="p-tagline">生体兵器群 ─ アンドルフ設計</div>
+        <p class="p-short-desc">生体に制御用機械を埋め込んだ、アンドルフ設計の兵器群の総称。汚染環境でも恒星表面でも稼働する柔軟性こそが、その戦略的価値であり脅威である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 08 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">BIOWEAPON / バイオウェポン</td></tr><tr><td class="dk">CLASS</td><td class="dv">機械制御型生体兵器（総称）</td></tr><tr><td class="dk">DESIGNER</td><td class="dv"><a href="../codex/characters.html#andorf">アンドルフ・ボウマン</a></td></tr><tr><td class="dk">CONTROL</td><td class="dv">埋込式制御チップ＋神経接続機関</td></tr><tr><td class="dk">TRAIT</td><td class="dv">極限環境適応（汚染域・恒星表面など）</td></tr><tr><td class="dk">CONFIRMED</td><td class="dv bad">ゴラス（タイタニア）/ バクーン（アクアス）ほか</td></tr><tr><td class="dk">SIDE EFFECT</td><td class="dv warn">汚染物質の散布（侵略的外来種化）</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../codex/factions.html#venom-empire">ベノム帝国軍</a></td></tr><tr><td class="dk">ANALYSIS</td><td class="dv">フィチナ情報戦略本部で継続中</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 複数個体が活動中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING -- 91 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 91%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(136,204,51,0.55);">
+        <img src="" alt="BIOWEAPON" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ORGANIC WEAPON SERIES</span>
+            <span class="tg-jp">生体兵器群 バイオウェポン</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">あれは獣ではない。獣の形をした、命令だ。<span class="tg-note note">-アクアス戦 帰投報告より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">最も恐ろしいのは奴らの牙ではない。どんな地獄でも平然と生きていることだ<span class="lore-quote-src">― CDF生物兵器対策班 教育資料より</span></span></p>
+  <p class="lore-p">バイオウェポン（Bioweapon）は、<a href="../codex/characters.html#andorf">アンドルフ・ボウマン</a> が開発した「生体に制御用機械を埋め込んだ兵器」の総称である。全個体に共通するのは、重度汚染環境や恒星表面といった極限環境でも稼働を継続できる異常な柔軟性であり、艦隊も歩兵も展開できない場所で戦力を維持できるという事実そのものが、戦略的価値と脅威度に直結している。</p>
+  <p class="lore-p">確認個体は<a href="../codex/locations.html#titania">タイタニア</a> の巨大生体兵器ゴラス、<a href="../codex/locations.html#aquas">アクアス</a> の海棲個体バクーンなど。<a href="../codex/locations.html#venom">ベノム</a> の地表を覆う増殖細胞も同系統とみられている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MECHANISM ─ 機構</h3>
+  <p class="lore-p">基幹となるのは、生体の神経系に接続された制御チップである。個体の本能を残したまま行動目標だけを上書きするため、バイオウェポンは補給も命令通信も不要で、「放し飼いにできる兵器」として運用できる。</p>
+  <p class="lore-p">多くの個体は体組織から汚染物質を分泌し、展開先の生態系を作り変える「侵略的外来種」としての側面を併せ持つ。占領地の環境そのものを帝国仕様に変えていく──兵器でありながらテラフォーミング装置でもあるという二面性が、この兵器群の設計思想の根幹にある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ANALYSIS ─ 解析と異説</h3>
+  <p class="lore-p">だが、解析が進むにつれ奇妙な報告が増えている。<a href="../codex/locations.html#aquas">アクアス</a> で撃破されたバクーンの残骸解析では、制御チップを適切に動作させた場合、この個体はむしろ海の汚染を吸収し、真珠として安全に固形化する機能を持つことが判明した。つまり現在ベノム帝国軍が使役している個体は、本来の使用用途ではないチューニングを意図的に施されている、という見方が成り立つのである。</p>
+  <p class="lore-p"><span class="redacted">情報戦略本部 注記: この知見はファイルVNM-GEO-04（コスモクリーナー仮説）を強く補強する。バイオウェポンの原型が兵器ではなく環境浄化ユニットであるならば、『誰が』『いつ』それを兵器に転用したのかが、本戦争の最重要の問いとなる。アンドルフ拘留時期と設計履歴の照合を継続中</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p"><a href="bioweapon.html">ゴラス</a> の細胞サンプルと<a href="../codex/locations.html#venom">ベノム</a> 遺跡の壁画に描かれた「オーバーロードの従える獣」の形態的類似を指摘する研究者がいる。学会は沈黙しているが、論文は撤回されていない──この星系では、それは「まだ生きている」という意味である。</p>
+  <p class="lore-p">対バイオウェポン戦の教範の最終頁には、対策でも戦訓でもなく、ただ一行こう書かれている。「撃つ前に思い出せ。あれは選んでそこにいるのではない」。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

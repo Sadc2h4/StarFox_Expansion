@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOLAR — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff8c40;--accent:#ffbb77;--border:rgba(255,140,64,0.32);--border-hi:rgba(255,187,119,0.7);--dim:#40200a;--dim2:#201005; }
+    .p-title    { color: #fff2e0; text-shadow: 0 0 50px rgba(255,140,64,0.35); }
+    .p-tagline  { border-color: #ff8c40; color: #ff8c40; }
+    .terminal-hdr { color: #ffbb77; }
+    .terminal-hdr::before { background: #ffbb77; box-shadow: 0 0 8px #ffbb77; }
+    .dk { color: #ff8c40; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/locations.html" class="nav-back">◄ LOCATIONS</a>
+    <div class="header-tag">[ 12 / SOLAR — ソーラ ]</div>
+    <div class="header-status"><span class="blink" style="color:#ffbb77;">●</span> SECTOR-ο — STELLAR HAZARD</div>
+  </header>
+
+  <div class="side-l"><div class="vt">LYLAT SYSTEM — SOLAR — LYLAT BETA — SECTOR-OMICRON — THERMAL SHIELD REQUIRED</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: SOL-0012 — CLASSIFICATION: STELLAR OBJECT — NO LANDING</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ 12 / LYLAT SYSTEM — SECTOR-ο ]</div>
+        <div class="p-name-jp">ソーラ (SOLAR)</div>
+        <h1 class="p-title">THE SECOND<br>SUN</h1>
+        <div class="p-tagline">ライラットβ星 ─ 特異恒星</div>
+        <p class="p-short-desc">ライラット・プライムの伴星にして、惑星密集エリアを公転するオレンジ色の小型恒星。恒星と惑星の中間というべき特異な性質を持つ「第二の太陽」。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ STELLAR SCAN — SECTOR-ο ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">SOLAR / ソーラ（ライラットβ星）</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">恒星（伴星）</td></tr><tr><td class="dk">LOCATION</td><td class="dv">LYLAT β — Sectorο</td></tr><tr><td class="dk">ORBITAL PERIOD</td><td class="dv">2,928D（約8年）— ライラット・プライム周回</td></tr><tr><td class="dk">STELLAR TYPE</td><td class="dv">M3型 小型恒星（特異組成）</td></tr><tr><td class="dk">SATELLITES</td><td class="dv"><a href="../database/locations.html#aquas">アクアス</a> / <a href="../database/locations.html#zoness">ゾネス</a> / <a href="../database/locations.html#fichina">フィチナ</a></td></tr><tr><td class="dk">PRIMARY STAR</td><td class="dv"><a href="../database/locations.html#lylat-prime">ライラット・プライム</a></td></tr><tr><td class="dk">SURFACE TEMP</td><td class="dv bad">約3,400°C（推定）</td></tr><tr><td class="dk">SAFE DISTANCE</td><td class="dv warn">3,000,000 km 以遠</td></tr><tr><td class="dk">FACTION</td><td class="dv">なし（航行制限宙域）</td></tr><tr><td class="dk">RESIDENT RACES</td><td class="dv">なし</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">ENVIRONMENT INDEX -- 0 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 1%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,140,64,0.7);">
+        <img src="../resource/LA_image/LS_S_2.png" alt="Solar" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">Lylat β — M3 ANOMALOUS STAR</span>
+            <span class="tg-jp">第二の太陽 ── 接近禁止</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">アーウィンのバリアは6000℃まで　耐えられるよ<br>僕のほうが先に　内臓が溶けちゃいそうだけど…<span class="tg-note note">-ソーラで発見された謎の影の調査任務 会話記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「あれは星ではない。煮えたぎる海だ。空に浮かんでいるだけの」<span class="lore-quote-src">― ソーラ観測船〈プロミネンス・チェイサー〉航海日誌より</span></span></p>
+  <p class="lore-p">ソーラ（Solar）は、<a href="../database/sectors.html#omicron">セクターο</a>の中心に位置するライラットβ星。M3型に属するオレンジ色の小型恒星であり、主星<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>の伴星として、惑星が密集するエリアを公転している。<a href="../database/locations.html#aquas">アクアス</a>、<a href="../database/locations.html#zoness">ゾネス</a>、<a href="../database/locations.html#fichina">フィチナ</a>はこの星を公転しており、<a href="../database/locations.html#macbeth">マクベス</a>は近日点通過時にソーラと接近するタイミングがある。</p>
+  <p class="lore-p">「恒星の周りを回る恒星」というその存在は、ライラットの空に二つの太陽を昇らせる。星系の暦、神話、航海術──ライラット文明の根幹には、常にこの第二の太陽の姿があった。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 恒星圏 — 接近制限</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">ソーラ最大の特異性はその組成にある。特殊なセクター磁場の影響により通常の恒星とは全く異なる構造を持ち、プロミネンスが飛び交うプラズマ状の表面のすぐ下を、溶岩のような液体岩石が対流している。「恒星と惑星の中間」と評されるこの性質のため、天文学上の分類は今も暫定のままである。</p>
+  <p class="lore-p">表面からは周期的に巨大な火柱が噴き上がり、灼熱の岩塊が弾丸のように宙域へ撒き散らされる。耐熱シールドなしの航行は自殺行為に等しく、シールドを装備した機体ですら長時間の滞在は推奨されない。<a href="../database/sectors.html#omicron">セクターο</a>が<a href="../database/sectors.html#mu">セクターμ</a>から<a href="../database/sectors.html#xi">セクターξ</a>までの全宙域を包み込む広大な区分になっているのは、ソーラの太陽風の影響範囲がそれほどまでに広いためである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 形成と進化</h3>
+  <p class="lore-p">ソーラの成り立ちについて、現在最も支持を集めるのが「双子核説」である。原始ライラットの降着円盤は星系規模でも例外的に重く、主星<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>の核が形成された後も、円盤の中層にはもう一つの凝縮核を生む余力が残されていた。ただし第二の核は長らく、恒星には程遠い巨大惑星の段階で成長を止めていたと計算されている。転機は円盤中層の岩石と氷の暴走的な降着だった。数百万年をかけて質量を積み増した「惑星」は、ある臨界を超えた日、ついに核融合の火を灯す──惑星として生まれ、恒星として目覚めた星。ソーラが「恒星と惑星の中間」と評される所以は、その出生そのものにある。呑み込みきれなかった岩石成分は今も外殻に残り、プラズマの薄皮の下で液体岩石の海として対流を続けている。</p>
+  <p class="lore-p">ソーラの点火は、ソーラ圏の運命を決定づけた。生まれたばかりの熱が円盤中層の氷を一斉に昇華させ、押し出された水は外側の軌道で再び凝縮した。<a href="../database/locations.html#aquas">アクアス</a>・<a href="../database/locations.html#zoness">ゾネス</a>・<a href="../database/locations.html#fichina">フィチナ</a>の姉妹軌道に水の惑星が並んだのは、この「水の押し出し」の帰結と考えられている。一方、熱源の膝元に残された最内縁の<a href="../database/locations.html#macbeth">マクベス</a>は水を持たない乾いた岩の星として固まり、後の工業惑星としての資質をこの時に与えられた。主星とソーラ、二つの太陽に挟まれたこの帯域こそライラット系のハビタブルゾーンである（アクアスの項参照）。旧タッドーの創世神話は「神が海を沸かし、姉妹たちへ分け与えた」と歌う──奇しくも、双子核説の描像そのものである。</p>
+  <p class="lore-p">この穏やかな家族の構成を打ち砕いたのが、星系黎明期に外宙域から飛来した客星と推定される<a href="../database/locations.html#titania">タイタニア</a>である。復元計算によれば、当時のソーラ圏にはもう一つ、姉妹たちと軌道を接する原始惑星が存在した。研究者たちがタッドー語の命名系譜に倣って「ミランダ」と呼ぶこの星は、タイタニアの掠過衝突を正面から受けて砕け散った。タイタニアの97度に傾いた自転軸は、この衝突の傷跡と考えられている（タイタニアの項参照）。ミランダの喪失はソーラ圏全体の軌道を掻き乱し、タイタニアとソーラの重力の綱引きの末に、マクベスは連れ去られ、フィチナは最外縁へと弾き飛ばされた。</p>
+  <p class="lore-p">砕けたミランダの大半は、数千万年をかけてソーラへ降り注いだと計算されている。液体岩石の海が現在も涸れない理由、M3型としては説明のつかない特異組成、想定より遥かに低い温度での安定──ソーラをめぐる謎の多くが「姉妹を呑み込んだ星」という一点から説明できるとする論文が、近年相次いで発表されている。実際、火柱とともに撒き散らされる岩塊の組成分析からは、恒星由来とは考えにくい古い岩石が検出されている。ソーラは今も、呑み込んだ姉妹の欠片を少しずつ空へ返し続けているのかもしれない。</p>
+  <p class="lore-p">ソーラの活動には、主星を巡る約8年の公転と連動した強弱の周期がある。主星の潮汐力が活動を揺らすためとされ、活動極小の年にはフィチナのブリザードが目に見えて穏やかになる──フィチナの民が「大凪」と呼ぶ年である。そして遠い未来をめぐっては、二つの学説が真っ向から対立している。岩石の海がやがて冷えて殻を結び、静かな暗い星へ眠りにつくとする「消灯説」。物質の降着がなお続いており、数億年後にはより明るい恒星へ育つとする「成長説」。どちらが正しいにせよ、第二の太陽が今日と同じ顔で昇る朝は、天文学の尺度では有限である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">ライラットの古代文明において、ソーラは常に信仰の対象だった。<a href="../database/glossary.html#paranid-empire">パラニド神聖帝国</a>の天文記録には「小さき熱き神」としてその名が現れ、旧<a href="../database/factions.html#cornerian-republic">タッドー共和国</a>の海洋暦はソーラの動きを基準に組まれていた。コアワールドより外側の惑星はソーラの干渉を受けているとされ、ライラットの文明・文化に与えた影響は計り知れない。</p>
+  <p class="lore-p">科学観測の時代に入ると、その特異な組成は星系天文学最大の謎となった。「なぜ小型恒星が液体岩石の外殻を持つのか」「なぜ想定より遥かに低い温度で安定しているのか」──観測船による接近調査は幾度も試みられたが、決定的な答えは得られていない。</p>
+  <p class="lore-p">冒頭に掲げた観測船<a href="../database/glossary.html#prominence-chaser">〈プロミネンス・チェイサー〉</a>は、安全距離を破って接近した最後の有人観測船として知られる。船は帰還を果たしたものの、船殻の三分の一が飴のように変形しており、以後の接近観測は無人機に一本化された。「煮えたぎる海」という航海日誌の一節は、今や恒星物理学の論文にすら引用される、ソーラ描写の定番となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">当然ながらソーラに住民は存在しない。しかしソーラは「生活の一部」として星系社会に深く根を下ろしている。アクアスの漁師はソーラの色で時化を読み、フィチナの越冬隊はソーラの出を祝う祭りを持ち、マクベスの鉱夫は近日点の「二重の夕焼け」を一年の節目とする。</p>
+  <p class="lore-p">安全距離の外周には少数の観測ステーションが浮かび、太陽風予報と航行警報を星系全体へ発信し続けている。この予報は軍民問わず全ての航行者の生命線であり、観測員たちは「星系で最も熱い職場」を自称している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">ソーラ宙域は艦隊行動に全く適さないが、それゆえに軍事的な意味を持つ。大規模な追跡を振り切る「最後の逃げ道」として、この灼熱宙域へ飛び込む例が戦時中に複数記録されているのである。耐熱装備と操縦技術、そして覚悟があれば、ソーラは追手を焼き払う盾となる。</p>
+  <p class="lore-p"><a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>では、<a href="../database/military.html#starfox">スターフォックス</a>が帝国軍の追撃を回避するためこの宙域を横断した記録が残る。飛び交う火柱と岩塊の間を縫う航跡データは、現在も<a href="../database/military.html#cdf">CDF</a>航空学校で「教材にしてはいけない教材」として語り草になっている。</p>
+  <p class="lore-p">また開戦後、外周観測網が表面直下を高速で移動する巨大な「影」を捉え、CDFは<a href="../database/military.html#starfox">スターフォックス</a>による調査任務を実施した。<a href="../database/military.html#arwing">アーウィン</a>の耐熱バリアの限界に挑んだ<a href="../database/glossary.html#solar-survey">この任務</a>の詳細は公開されていないが、<span class="redacted">影の正体は溶岩の海を遊泳する超大型の生体反応であり、交戦の末に鎮静化された。生命体説は、機密区分の内側では既に「説」ではない</span>。任務後、当該宙域の接近制限は一段階引き上げられている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">ソーラの表面下に生命体が存在するという説は、観測史とともに古い。プラズマの海を泳ぐ「何か」を見たという報告は数十件に上るが、いずれも機器の誤作動か錯覚として処理されてきた。ただし最新の観測では、表面温度の分布に生物の体温分布に似た「まだら」が確認されており、一部の研究者を静かに興奮させている。</p>
+  <p class="lore-p">パイロットたちの間には「ソーラに敬礼してから出撃する」という願掛けがある。二つの太陽のうち、大きい方（ライラット・プライム）は畏れるもの、小さい方（ソーラ）は親しむもの──星系の民にとってこの橙色の星は、厳しくも身近な「もう一人の太陽」であり続けている。</p>
+  <p class="lore-p">タッドーの古い<a href="../database/glossary.html#four-sisters">子守歌</a>には「海の姉妹は四人」と歌う一節がある。水面に映る長女、見目麗しき次女、混沌の王に呑まれし三女、そして、哀しみ心を閉ざす四女──民話学者たちは長らく、これを単なる韻文の綾とみなしてきた。だがミランダ仮説の発表以来、この子守歌は星系考古学で最も議論される「四人目」の傍証となっている。文明が生まれる遥か以前に砕けた星の記憶が歌に残っているはずはないのだが…</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body></html>

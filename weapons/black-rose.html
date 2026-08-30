@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLACK ROSE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ee6688;--accent:#ffbbcc;--border:rgba(238,102,136,0.32);--border-hi:rgba(238,102,136,0.7);--dim:#3a0e1c;--dim2:#1d070e; }
+    .p-title    { color: #fff0f4; text-shadow: 0 0 50px rgba(238,102,136,0.35); }
+    .p-tagline  { border-color: #ee6688; color: #ee6688; }
+    .terminal-hdr { color: #ffbbcc; }
+    .terminal-hdr::before { background: #ffbbcc; box-shadow: 0 0 8px #ffbbcc; }
+    .dk { color: #ee6688; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-12 / BLACK ROSE — ブラック・ローズ ]</div>
+    <div class="header-status">● HOSTILE — LIMITED RECORDS</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — BLACK ROSE — TWIN-SEAT RAPID-FIRE FIGHTER — PILOT: PANTHER CAROSO</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0012 — CLEARANCE: OPEN — STAR WOLF TEMPORARY MEMBER CRAFT</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-12 / ARMORY FILE ]</div>
+        <div class="p-name-jp">ブラック・ローズ (BLACK ROSE)</div>
+        <h1 class="p-title">BLACK ROSE</h1>
+        <div class="p-tagline">ONE ROSE, ONE ZAPPER ── パンサー・カルロッソ専用機</div>
+        <p class="p-short-desc">スターウルフ臨時構成員パンサー・カルロッソの専用機。エイムアシストも追尾弾も閃光弾もない、重ザッパーただ一挺の質実剛健。ただしなぜか座席は二つある。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 12 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">BLACK ROSE / ブラック・ローズ</td></tr><tr><td class="dk">CLASS</td><td class="dv">高速戦闘機（ワンオフ・複座）</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv">不明（<a href="wolfen.html">ウルフェン</a>系の骨格と推定）</td></tr><tr><td class="dk">OWNER</td><td class="dv"><a href="../database/characters.html#panther">パンサー・カルロッソ</a>（スターウルフ臨時構成員）</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">プリズム式重ザッパー ×1 / <a href="smart-bomb.html">スマートボム</a> ×1（携行定数）</td></tr><tr><td class="dk">FIRE CONTROL</td><td class="dv warn">エイムアシスト / 追尾弾 / 閃光弾 — すべて非搭載</td></tr><tr><td class="dk">PERFORMANCE</td><td class="dv">ブースト持続 長 / シールド 薄</td></tr><tr><td class="dk">SEATS</td><td class="dv">2 — 同乗席の用途は不明</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 交戦記録少数</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT LEVEL -- 84 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 84%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(238,102,136,0.55);">
+        <img src="" alt="BLACK ROSE" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">TWIN-SEAT ONE-OFF — RAPID ZAPPER</span>
+            <span class="tg-jp">黒い薔薇の高速戦闘機</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">運命の出会いは、いつでも突然だから。<br>だから席はいつも一つ空けてある。<span class="tg-note note">-複座の理由を問われた際の本人の返答-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">薔薇には棘があるものだ。私の場合は、棘しかないがね<span class="lore-quote-src">― 交戦時の通信記録に残るパンサー・カルロッソの発言</span></span></p>
+  <p class="lore-p">ブラック・ローズ（Black Rose）はスターウルフ臨時構成員<a href="../database/characters.html#panther">パンサー・カルロッソ</a> の専用機である。スターウルフに勧誘される以前からフリーランスの傭兵として彼が駆っていた機体であり、隊の定数機<a href="wolfen.html">ウルフェン</a> とは系統も出所も異なるワンオフ機として扱われている。</p>
+  <p class="lore-p"><a href="../database/characters.html#andrew">アンドリュー・オイッコニー</a> が帝国合同軍事訓練で全治3か月の重傷を負い、代役としてパンサーが編入された期間も彼はウルフェンに乗り換えず、この機体で全交戦に参加した。契約満了後も同様であり、現存3機の<a href="wolfen.html#wolfen2">ウルフェンⅡ</a> と並んで黒い薔薇の紋章が出撃する光景は今やスターウルフの「定数外の定番」となっている。</p>
+  <p class="lore-p">機体の中身は情熱的で軽薄なパイロットの人柄に反して質実剛健を地で行く。速さと火力と一輪の薔薇以外を削ぎ落とした構成は、乗り手の素性と同じく余計なものを一切語らない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">兵装 ─ ARMAMENT</h3>
+  <p class="lore-p">主兵装はプリズム式重ザッパー一挺のみである。系統としては<a href="../database/glossary.html#ws-laser">レーザー/光学兵器</a>に属するが、標準的なツインレーザーが手数で押す設計であるのに対し、この砲は一発の出力と射程に全てを振っている。大型対艦ミサイルを2〜3発で撃ち落とす威力と有効射程は戦闘機搭載砲として破格であり、代償として機械としての連射力は低い。自動連射機構を持たず一発ごとに引き金を引く砲であるため、装填サイクルの限界で撃ち続けるには人間の側の速さが要る。</p>
+  <p class="lore-p">通常の戦闘機なら必ず搭載されているエイムアシストも追尾弾も、逃走時に使う閃光弾すら一切積まれていない。照準補正のない機体から装填の下限を叩く連続射撃を浴びせ敵編隊を正面から一掃するのが彼の戦闘スタイルであり、前線のパイロットが「花吹雪」と呼ぶ弾幕の正体は砲の性能ではなく指の速さである。武装構成を初めて見た整備士は例外なく「これで、どうやって当てるんです？」という質問をするという。</p>
+  <p class="lore-p">携行するスマートボムは1発のみで、ブースト持続は長く、シールドは薄い。一撃で仕留めて長い加速で離脱するか、仕留め損ねて薄い装甲ごと落とされるかの二択に設計そのものが割り切っており、乗り手の腕を信じない者には決して扱えない機体である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機体 ─ AIRFRAME</h3>
+  <p class="lore-p">外形は3対の前進翼を持つ細身の高速機で、現行のウルフェンⅡと似た輪郭を持つ。Ⅱの建造より前からパンサーがこの機体に乗っていた点を<a href="../database/military.html#cdf">CDF</a>の解析官は重く見ており、ウルフェン系の骨格を先取りした試作フレームか、あるいは同じ設計者の手が入った別系統の機体ではないかと推定している。製造者も入手経路も本人が語らないため確証はない。</p>
+  <p class="lore-p">帝国工廠の整備記録にも本機の図面は登録されておらず、整備はパンサー本人と彼が指名した少数の整備士だけが行う。隊の整備班にすら開示されない機体が定数外で運用され続けている事実は、この男の隊内での立ち位置をそのまま映している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">謎の複座 ─ THE SECOND SEAT</h3>
+  <p class="lore-p">一人乗りの戦闘機であるはずにもかかわらず、この機体にはなぜか複座が用意されている。本人曰く「運命の出会いは、いつでも突然だから」とのことだが、戦場で想定された用途で使用されることはないとCDF分析官は語る。</p>
+  <p class="lore-p">当然ながらこの素行は帝国軍部でも猛抗議の的となったが、<a href="../database/characters.html#andorf">アンドルフ</a> 皇帝の鶴の一声「ほどほどにしておくように」によりお咎めなしで放免される運びとなった。この発言の真意は今でも解釈が分かれるところである。</p>
+  <p class="lore-p">解析官の中には同乗席を戦術的に読む者もいる。シールドの薄い機体で脱出ポッドを見逃す男が、座席を一つ余分に積んでいる。撃墜した相手を拾って帰るための席ではないかという説であるが、本人はこの解釈を「ロマンがない」の一言で退けたと伝えられる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴 ─ SERVICE</h3>
+  <p class="lore-p">スターウルフ加入前の交戦記録は傭兵界隈の噂話の域を出ないが、黒い薔薇の紋章を機首に描いた高速機が独立星系連合残党の掃討現場に現れたという目撃談が複数残る。誰に雇われていたかは一件も判明していない。</p>
+  <p class="lore-p">加入後はアンドリュー離脱期間中の全交戦に参加し、以後も欠員補充の枠で出撃を重ねている。ウルフェンⅡの変形機構を持たないため追跡戦にはほとんど加わらず、正面からの強襲と離脱を担当することが多い。女性士官の搭乗機への攻撃をためらう傾向も含め、戦術資料には「隊で最も御しやすく、最も読めない」という所見がこの機体の評価としてもそのまま流用されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">機首には機体名の由来である黒い薔薇の紋章が描かれている。また交戦したCDFパイロットからは離脱時に「挨拶」として薔薇のホログラムを一輪残していくという報告が複数上がっている。撃ち落とす気だったのか口説く気だったのかは報告書からは判断できない。</p>
+  <p class="lore-p">プリズム式ザッパーの原型特許は<a href="../database/characters.html#andorf">アンドルフ</a> の父ヒットリン・ボウマンが手放したものであり、以後この方式は帝国側の一部でしか継承されていない。皇帝が「ほどほどに」で済ませた理由をそこに求める説もあるが本人が父の砲の名を口にした記録は存在しない。</p>
+  <p class="lore-p">なお複座に誰かが乗っていたという記録は現在までのところ一件も存在しない。整備士の一人は「あの席だけ毎回掃除してある」と証言している。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

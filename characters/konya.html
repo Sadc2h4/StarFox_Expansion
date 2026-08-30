@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGT. KONYA MACKEREL — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ffd166;--accent:#ffe8aa;--border:rgba(255,209,102,0.32);--border-hi:rgba(255,209,102,0.7);--dim:#3a3010;--dim2:#1d1808; }
+    .p-title    { color: #fff8e8; text-shadow: 0 0 50px rgba(255,209,102,0.35); }
+    .p-tagline  { border-color: #ffd166; color: #ffd166; }
+    .terminal-hdr { color: #ffe8aa; }
+    .terminal-hdr::before { background: #ffe8aa; box-shadow: 0 0 8px #ffe8aa; }
+    .dk { color: #ffd166; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-08 / SGT. KONYA MACKEREL — コーニャ・マッカレル ]</div>
+    <div class="header-status">● ACTIVE — KATINA BASE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — KONYA MACKEREL — KATINA BASE DEFENSE UNIT — SERGEANT</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0008 — CLEARANCE: SELF-REFERENCE — TEMPORARY ACCESS LV.2</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-08 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">コーニャ・マッカレル (SGT. KONYA MACKEREL)</div>
+        <h1 class="p-title">SGT. KONYA MACKEREL</h1>
+        <div class="p-tagline">THE ROOKIE ON THE FRONTLINE ── カタリナ前線基地 防衛隊 軍曹</div>
+        <p class="p-short-desc">カタリナ基地防衛隊に配属されたばかりの新任軍曹。開拓民の家に生まれ、故郷の空を守るために軍門を叩いた。本記録の閲覧者は、おそらく本人か、その戦友である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 08 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">KONYA MACKEREL / コーニャ・マッカレル</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#bastetoid">バステトイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">22歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#katina">カタリナ</a>（開拓第3世代）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#cdf">CDF</a> カタリナ基地防衛隊</td></tr><tr><td class="dk">RANK</td><td class="dv">軍曹 — 作戦実行部隊</td></tr><tr><td class="dk">ACCESS</td><td class="dv">臨時閲覧権限 LV.2（有効期限120時間）</td></tr><tr><td class="dk">STATUS</td><td class="dv warn">現役 — 奇襲対処任務中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">COMBAT RATING -- 58 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 58%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,209,102,0.55);">
+        <img src="" alt="SGT. KONYA MACKEREL" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">KATINA DEFENSE UNIT — SERGEANT</span>
+            <span class="tg-jp">カタリナ基地防衛隊 新任軍曹</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">読めるものは全部読んでみるよ。5日後に後悔したくないからね。<span class="tg-note note">-臨時権限付与時の宣誓記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">知識は最も軽い装備であり、最も硬い装甲である<span class="lore-quote-src">― カタリナ基地防衛隊 教本の扉書きより</span></span></p>
+  <p class="lore-p">コーニャ・マッカレルは、<a href="../database/locations.html#katina">カタリナ</a> の開拓家庭に生まれた基地防衛隊の下士官。
+    <br>自由を好む<a href="../database/races.html#bastetoid">バステトイド</a>には珍しく定住と規律の道を選んだが、本人いわく「守りたい場所ができた猫は、そこから動かないもんさ」とのこと。
+    <br>士官学校時代の成績は中の上、操縦は下、作戦理解力は並、と一見すると平凡にみえるが、特筆すべきは咄嗟の状況把握能力とそれに裏打ちされた制度の高い速射の技術であり、
+    <br>その速さと精密さは、帝国軍の傭兵にしてスターウルフメンバー経験者である<a href="../database/characters.html#panther">パンサー・カルロッソ</a>を比較に出されるほどである。
+    <br>教官の一人は「教室で本を読んでいるよりも、戦場で頭角を現すタイプ」と評した。そして、その評価はこれからまさに試されることとなる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p"><a href="../database/glossary.html#pioneer-ministry">開拓庁</a>職員の両親のもと、雨季の泥と乾季の砂嵐の中で育った。幼い日、大砂嵐で孤立した開拓集落へ真っ先に舞い降りたのは駐留軍の救援機だった──積んでいたのは水と毛布、それに「もう大丈夫だ」の一言。以来、彼にとって軍服は「助けに来る側」の印であり、それが軍を志した原点だという。後年の「カタリナの奇跡」の日には、既に防衛隊の一員として基地の対空陣地に配置についていた。幼い日に見上げた空を、今度は自分が支える側に立ったのである。</p>
+  <p class="lore-p">新兵訓練を経てカタリナ基地防衛隊に配属され、先日軍曹に昇進したばかり。<a href="../database/locations.html#starblade">スターブレード艦隊</a> の壊滅に伴う警戒態勢強化の中、部隊は5日後に予測される帝国軍の大規模奇襲──巨大戦艦<a href="../weapons/great-dish.html">グレートディッシュ</a>の来襲──への対処任務に就いている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p">実戦経験は基地周辺の小規模迎撃戦のみ。
+    <br>しかしsectorτ会戦で鹵獲された敵艦の航行データ照合により奇襲計画が発覚した後、参謀本部は低階級の作戦実行部隊にも臨時の資料閲覧権限を付与する異例の措置を決定。
+    <br>マッカレル軍曹はその適性から、コーネリアより緊急招集された<a href="../database/characters.html#amber">アンバー・シルフェイド少佐</a>率いる特殊部隊<a href="../database/military.html#vorpal">ヴォーパル隊</a>と、現地駐留軍<a href="../database/military.html#bernard">バーナード隊</a>の合同作戦における前線補給および護衛部隊に指名された。
+    <br>これまで披露する機会が少なかった射撃訓練の成果が、いよいよ試されることになるとみられる。
+  <p class="lore-p">本データベースのアクセスログによれば、当該権限での閲覧時間は既に規定の休憩時間を大幅に超過している。担当軍医は「読むのはいい。寝ろ」との所見を残している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">実家は基地の近くで食堂を営んでおり、「カタリナ流」の香辛料保存食のレシピ提供元の一つが彼の母である。
+    <br>部隊の仲間は彼を「食堂のスターウォーカー」と呼び、彼はそれを嫌がったものの最終的には訂正を諦めた。
+    <br>なお本人は当初、従軍医療部隊の所属を希望をだしており、今回の帝国軍奇襲発覚による緊急招集がなければ、希望通り戦闘支援科の衛生兵になっていたと思われる。</p>
+  <p class="lore-p">この個人ファイルには、後日の追記欄が異例なほど広く確保されている。
+    <br>参謀本部の人事AIによる自動措置であり、通常この措置は「大きな戦果か、大きな犠牲」が予測される人員に適用される。どちらになるか、結果は5日後にわかるだろう。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

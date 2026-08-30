@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BILL GREY — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#88ccff;--accent:#bbe0ff;--border:rgba(136,204,255,0.32);--border-hi:rgba(136,204,255,0.7);--dim:#10283a;--dim2:#08141d; }
+    .p-title    { color: #eef8ff; text-shadow: 0 0 50px rgba(136,204,255,0.35); }
+    .p-tagline  { border-color: #88ccff; color: #88ccff; }
+    .terminal-hdr { color: #bbe0ff; }
+    .terminal-hdr::before { background: #bbe0ff; box-shadow: 0 0 8px #bbe0ff; }
+    .dk { color: #88ccff; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-07 / BILL GREY — ビル・グレイ ]</div>
+    <div class="header-status">● ACTIVE — FRONTLINE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — BILL GREY — KATINA GARRISON — SQUADRON LEADER</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0007 — CLEARANCE: OPEN — HERO OF KATINA</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-07 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ビル・グレイ (BILL GREY)</div>
+        <h1 class="p-title">BILL GREY</h1>
+        <div class="p-tagline">THE WALL'S WATCHDOG ── カタリナ駐留軍 飛行隊長</div>
+        <p class="p-short-desc">カタリナ前線基地の第7飛行隊を率いる若き隊長。フォックスの士官学校時代の親友であり、「カタリナの奇跡」の立役者。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 07 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">BILL GREY / ビル・グレイ</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#anubisoid">アヌビソイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">18歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#katina">カタリナ</a>（入植家庭）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#cdf">CDF</a> カタリナ駐留軍</td></tr><tr><td class="dk">FAMILY</td><td class="dv">父: ロバート・グレイ（CDF補給部隊 指揮官） ／ 母: 衛生兵</td></tr><tr><td class="dk">RANK</td><td class="dv">中尉 / 第7飛行隊長</td></tr><tr><td class="dk">SQUADRON</td><td class="dv"><a href="../database/military.html#bernard">「バーナード」「ドーベル」</a></td></tr><tr><td class="dk">CRAFT</td><td class="dv"><a href="../weapons/cornerian-fighter.html">ソニック・ポインター</a>（コーネリアファイター改修専用機）</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 前線配備</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 88 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 88%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(136,204,255,0.55);">
+        <img src="" alt="BILL GREY" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">KATINA GARRISON — SQUADRON LEADER</span>
+            <span class="tg-jp">カタリナ前線基地 第7飛行隊長</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">よう、相棒！　こっちは任せろ。壁はまだ落ちちゃいない。<span class="tg-note note">-カタリナ防衛戦 通信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">あの若さで隊を任せるのは早いという声もあったが、今は誰も言わん。<span class="lore-quote-src">― カタリナ基地司令の人事所見より</span></span></p>
+  <p class="lore-p">ビル・グレイは<a href="../database/locations.html#katina">カタリナ</a> の入植家庭に生まれた若き防衛隊士官である。故郷の空を守るという軍人として最も単純で最も重い動機で軍門を叩き、今やその故郷の防空を実際に背負う立場となった。</p>
+  <p class="lore-p">陽気で面倒見が良く、部下からの信頼は厚い。<a href="../database/characters.html#fox">フォックス・マクラウド</a> とは士官学校の同期であり、模擬戦の勝敗記録は本人いわく「聞くな」とのことである。</p>
+  <p class="lore-p">実直で前線でこそ成果を上げる叩き上げの若手であり、撃墜数では現在も旧友フォックスと張り合い続けている。二人の累計スコアの差は常に数機以内で推移しており、司令部はこの競争を止めるつもりがない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ FAMILY</h3>
+  <p class="lore-p">グレイ家はコーネリアの<a href="../database/glossary.html#state-granbel">グランベル州</a> に発する家系である。貴族ではなく一般の家庭から腕っぷし一つで成り上がった血筋であり、後の入植でカタリナに根を下ろした。</p>
+  <p class="lore-p">父ロバート・グレイは不真面目な態度から「前線では使い物にならない」とレッテルを貼られた軍人だった。だが補給部隊へ回されると一転して頭角を現し、現在は補給畑の指揮官の地位にある。<a href="../corporations/space-dynamics.html">SD社</a> 主任設計技師ベルツィーノ・トードとは調達の顧客として知り合った親友同士であり、軍の中で互いに口利きをし合った仲でもある。スリッピーのパペトゥーン第6分校入学に推薦状を書いたのはこのロバートである（<a href="../planets/papetoon.html">パペトゥーンの項</a>を参照）。</p>
+  <p class="lore-p">母は衛生兵である。穏やかな職種に見えるが、ビルの好戦的な性格はむしろ母譲りというのが一族の共通見解だと伝えられる。前線と補給と衛生の三者が食卓を囲むグレイ家の夕食は、さながら小さな統合司令部だったという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">本来はコーネリアシティの本校へ入学する予定だった。進路を変えたのは父の親友ベルツィーノの「より実戦経験を積めるのは分校の方だ」という勧めである。かくして彼は<a href="../planets/papetoon.html">パペトゥーン</a> の第6分校へ進み、そこでフォックス・マクラウドと<a href="../database/characters.html#slippy">スリッピー・トード</a> に出会った。</p>
+  <p class="lore-p">3人は校内でも有名な親友トリオだった。操縦のフォックス、工学のスリッピー、指揮と統率のビルとそれぞれ別の方向で才能を開花させ、揃って将来の有望株と目されていた。</p>
+  <p class="lore-p"><span class="redacted">在学中のコーネリアファイター運転試験で彼は最高水準の腕前を記録している。ただしこの記録には裏がある。試験機にはスリッピーの手による照準改造が施されており、ビルはその最初の恩恵を受けた人物だった。この件はフォックスとスリッピー、ビルの3人だけの秘密とされている…はずである</span></p>
+  <p class="lore-p">卒業後は迷わず故郷カタリナへの配属を希望し、異例の若さで第7飛行隊長に就任した。彼の率いる<a href="../database/military.html#bernard">「バーナード」「ドーベル」</a>両中隊は<a href="../database/military.html#great-wall">グレートウォール</a> 第1宙域の実戦部隊として鍛え上げられている。途中で学校を去った二人の親友については長く複雑な感情を抱えていたが、最終的にはフォックスの意向を理解し、今では誰より率直な応援者である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p">帝国軍超大型母艦によるカタリナ強襲では基地全滅寸前の状況で防空戦を指揮した。駆けつけた旧友のスターフォックスと連携して母艦を撃墜し、<a href="../database/glossary.html#katina-miracle">「カタリナの奇跡」</a>を成し遂げている。無線越しの再会の第一声は、防衛戦の緊張の中で唯一記録に残る旧友の挨拶である。</p>
+  <p class="lore-p">現在も<a href="../database/locations.html#katina">カタリナ</a> 防衛の最前線に立ち続けている。乗機は自らの<a href="../weapons/cornerian-fighter.html">コーネリアファイター</a> を大規模改修した専用機「ソニック・ポインター」であり、量産機で戦い抜く隊長の背中がそのまま部隊の教範になっている。<a href="../database/locations.html#starblade">スターブレード</a> 艦隊の壊滅以降カタリナ防衛網への負荷は限界に近いが、彼の部隊の即応体制は開戦以来一度も崩れていない。</p>
+  <p class="lore-p">5日後に予測される帝国軍の大規模奇襲に備え、基地は現在最高警戒態勢にある。コーネリアから緊急招集された特殊部隊<a href="../database/military.html#vorpal">ヴォーパル隊</a>も既に基地入りし、<a href="../database/characters.html#amber">シルフェイド少佐</a>を交えた合同作戦会議が続く。彼が「壁はまだ落ちちゃいない」と言い続ける限り、部隊の士気も落ちないだろう。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">撃墜された母艦の残骸「鉄の丘」には、彼が最初に書いたとされる落書きが残っている──「二度目はもっと早く落とす」。基地の新兵は着任初日にこれを見せられる。</p>
+  <p class="lore-p">フォックスへの通信の呼びかけは今も昔も「相棒」である。どちらが先に言い出したのかは、二人とも譲らない。</p>
+  <p class="lore-p">父ロバートは息子の武勲が報じられるたび「オレの教育の賜物」と方々で吹聴して回る。正反対の親子の仲は良好であり、カタリナ防衛網の補給線が開戦以来一度も干上がっていない事実を、基地の古参たちは黙って父親の勤続表彰に数えている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

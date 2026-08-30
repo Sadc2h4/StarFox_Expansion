@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARPEGGIO — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#e3c078;--accent:#f2ddb0;--border:rgba(227,192,120,0.32);--border-hi:rgba(242,221,176,0.7);--dim:#39300f;--dim2:#1c1807; }
+    .p-title    { color: #fdf6e6; text-shadow: 0 0 50px rgba(227,192,120,0.35); }
+    .p-tagline  { border-color: #e3c078; color: #e3c078; }
+    .terminal-hdr { color: #f2ddb0; }
+    .terminal-hdr::before { background: #f2ddb0; box-shadow: 0 0 8px #f2ddb0; }
+    .dk { color: #e3c078; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ ORG-01 / ARPEGGIO — アルペジオ ]</div>
+    <div class="header-status">● ACTIVE — HQ: KEW / ALPINIA</div>
+  </header>
+
+  <div class="side-l"><div class="vt">FAMILY FILE — ARPEGGIO — BIG BOSS AND THE FAMILY — THE CAPITAL THEY BUILT</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: ORG-0001 — CLEARANCE: OPEN — CRIME FAMILY DOSSIER</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ ORG-01 / FAMILY FILE ]</div>
+        <div class="p-name-jp">アルペジオ (ARPEGGIO)</div>
+        <h1 class="p-title">THE FAMILY<br>BUSINESS</h1>
+        <div class="p-tagline">犯罪組織 ─ ビッグ・ボスと血族シンジケート</div>
+        <p class="p-short-desc">星系最小の体格で星系最大級の犯罪帝国を統べるドン「ビッグ・ボス」と、その血族シンジケート。廃墟の都市群を一枚に縫い合わせて都市惑星キューを完成させた張本人であり、キューの裏側で動く金は必ず総帥の帳簿を通る。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ FAMILY SCAN — ORG FILE 01 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">ARPEGGIO / アルペジオ</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">犯罪組織 — 血族シンジケート</td></tr><tr><td class="dk">HEADQUARTERS</td><td class="dv">惑星<a href="../planets/kew.html">キュー</a> — アルピニア</td></tr><tr><td class="dk">LEADER</td><td class="dv">BIG BOSS / ビッグ・ボス（総帥） ─ 本名: アルフォンス・ビッグマン（把握する者は少ない）</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#kyusoid">キューソイド</a>（系統は各家で異なる）</td></tr><tr><td class="dk">STRUCTURE</td><td class="dv">直系23家＋傘下の分家多数</td></tr><tr><td class="dk">SUCCESSION</td><td class="dv">継承権は<a href="#tosk">次男</a>と<a href="#samaritan">4男</a>のみ ─ 運営は次男・4男・<a href="#basque">8男</a>・<a href="#trenchu">17男</a>の分掌合議制</td></tr><tr><td class="dk">FRONT</td><td class="dv"><a href="../database/factions.html#hactiva-union">ハクティバ通商連合</a>の商業網（裏面）</td></tr><tr><td class="dk">OPERATIONS</td><td class="dv">賭博・金融・運輸・武器・禁制品・情報</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">活動中 — 立件例ほぼなし</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">INFLUENCE LEVEL -- 97 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 97%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(227,192,120,0.5);">
+        <img src="" alt="ARPEGGIO" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE SMALLEST DON</span>
+            <span class="tg-jp">星系最小の体で最大の帝国を統べる男</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">小さい小さいと言うがね、客人。棺桶の中では皆同じ大きさだよ。<span class="tg-note note">-面会者の証言より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">キューの裏側で動く金は、どこかで必ずビッグ・ボスの帳簿を通る<span class="lore-quote-src">― アルピニアの古い格言</span></span></p>
+  <p class="lore-p">アルペジオは「ビッグ・ボス」率いる、惑星<a href="../planets/kew.html">キュー</a>を根城とする星系最大級のマフィアである。<a href="../database/glossary.html#paranid-empire">神聖帝国</a>崩壊後のキューに乱立していた廃墟都市群を呑み込み、一枚の都市惑星へと縫い合わせた張本人であり、現在も<a href="../database/factions.html#hactiva-union">ハクティバ通商連合</a>の商業網の裏側で武器・禁制品の流通を握っているとされる。表の顔が通商連合ならば、裏の顔はアルペジオの帝国である。</p>
+  <p class="lore-p">頂点に立つビッグ・ボスは星系最小クラスの体格を持つチビトガリネズミ系<a href="../database/races.html#kyusoid">キューソイド</a>であり、体格が数十倍はある大型種の護衛を常に侍らせている。関与が疑われた事件は数知れないが立件された例はほとんどなく、著名な<a href="leon.html">殺し屋</a>との繋がりも疑惑の域を出ていない。星系で最も小さな種族が両大国すら手を出しかねる犯罪帝国を築いた事実こそ、この組織の性格を何より雄弁に物語っている。</p>
+  <p class="lore-p">キューに正規軍は存在せず、治安維持を分担する組織の「自警団」は通商連合の警備部門より明らかに練度が高いと評される。もっとも真の力の源泉は暴力よりも情報網であり、「星系の情報が一番安く買える場所」と呼ばれるアルピニアの酒場では、各国の情報部員とアルペジオの耳が同じ卓に相席している。</p>
+</div>
+<div class="lore-section" id="early-life">
+  <h3 class="lore-h">総帥の前半生 ─ EARLY LIFE</h3>
+  <p class="lore-p">総帥の出身はキューではない。生まれは<a href="../database/locations.html#corneria">コーネリア</a>の港町<a href="../database/glossary.html#lowerdog">ロウアードッグ</a>であり、生家は小さな<a href="../database/glossary.html#barber">理髪店</a>である。9人兄弟の4男として生まれたが、幼い弟や妹は<a href="../database/glossary.html#ngo-fever">ンゴ熱</a>の犠牲となった。生き残ったのは彼と両親、そして兄だけである。貧乏であり、体力のない者から順に犠牲になったと思われる。本名のアルフォンス・ビッグマンを知る者は今では多くない。星系中に知られているのは「ビッグ・ボス」の名のほうである。</p>
+  <p class="lore-p">学校では非常に優秀で成績も良かったが、不当な成績評価をつける教師と口論の末に「暴力沙汰」まで発展したとして退学している。誰が見てもチビトガリネズミ系の少年が教師に暴力を振るえるわけがないことは明白だったが、誰もそのことを追及する者はいなかった。キューソイドの少年の言い分を聞く耳は、当時のロウアードッグのどこにもなかったのである。</p>
+  <p class="lore-p">決定的な事件は生家の店で起きた。理髪の代金を払わない横暴な<a href="../database/races.html#bastetoid">バステトイド</a>系の客に反抗した少年は、文字どおり半殺しにされたのである。病床で彼は一つの結論にたどり着いてしまった。「世界は金と力がないと、人権すら得られない」。後年のアルペジオを貫く恩と借りの経済も、礼節への異様な固執も、すべてはこの日の裏返しであると本部の分析官は注記している。なおキューが現在に至るまでバステトイドの入星を禁じ続けている背景に、この古傷を置く分析は有力である。</p>
+  <p class="lore-p">無邪気で、酒やたばことは一生無縁と言われた少年の運命を変えたのは、ロウアードッグでも曰く付きの店「カース・マルツゥ社交クラブ」への出入りである。異名は「暴力の巣窟」。<a href="../database/races.html#holsoid">ホルソイド</a>を中心にした荒くれたちが酔っ払っては殴り合いの喧嘩を繰り広げる恐ろしい場所であり、彼はここで拳銃の使い方と刃の使い方をマスターした。小さい彼を馬鹿にする者も多かったが、首根っこへ刃を向ける腕が上達すると誰も馬鹿にする者はいなくなった。もっとも刃だけは最初から手に馴染んでいたのである。父の店で毎日、客の首筋に剃刀を当てていたからである。</p>
+  <p class="lore-p">キューソイドへのあまりにひどい差別に耐えかねた一家は、やがて家族ともどもコーネリアを離れて移民する。行き先は自分たちが多数派でいられる唯一の惑星、キューであった。もっとも当時のキューは、無主の廃墟というだけの星ではない。地上と地下では神聖帝国の建築ボット群が主を失ったまま遺構の保全を続けており、それを乗っ取った流れ者の勢力がそれぞれの大都市を築き上げていた。星系で居場所のない者たちが自前の都市を拠点に縄張りを争う無法の坩堝であり、この時代に建てられた大都市は20を超える。地表が都市で覆い尽くされる下地は、一家が降り立つ前にすでに出来上がっていたのである。</p>
+  <p class="lore-p">一家の到着から15年で、彼はこの坩堝の最大勢力を作り上げた。廃都の一角に賭場と市場を築き、人種ごとに割拠していた群小の組を抗争と婚姻を重ねて呑み込み、やがて通商連合の資本とも結びついて、都市を一つ掌握するたびに隣の都市と物理的に結合させていったのである。都市の隙間を埋める大工事は雇用と経済を爆発的に回し、街の発展もこの時期に一気に進んだ。そして全ての都市が一枚のプレートとして繋がったとき、彼は惑星の地表そのものを指す名として「信用」を意味する植物の名を与えた──アルピニアである。地表の全てが一つの街となった星では都市名と惑星名の区別に意味はなく、「首都アルピニア」の呼び名は慣用にすぎない。「裏社会が建てた首都」という異名は比喩ではなく、この星の法と無法の曖昧な境界にそのまま引き継がれている。ロウアードッグの理髪店の4男は、故郷を追われてから半世紀余りで両大国すら手を出しかねる犯罪帝国の主となった。</p>
+</div>
+<div class="lore-section" id="the-don">
+  <h3 class="lore-h">総帥の現在 ─ THE DON</h3>
+  <p class="lore-p"><span class="lore-quote">まず座りなさい、客人。キューでは礼儀が何よりも先だ。……恩と借りの話は、それからゆっくり聞こうじゃないか<span class="lore-quote-src">―「面会の作法」アルピニアの伝聞記録より</span></span></p>
+  <p class="lore-p">総帥の実年齢は100代後半とみられる。キューソイドどころか星系のいかなる人種を含めても破格の長寿であり、これは延命手術とナノマシン投与の産物である。一時期は人工呼吸器と車椅子なしでは生活できない状態にあったが、星系でも秘中の秘とされる施術を受けて肉体年齢を70代前半相当まで巻き戻し、現在の姿を手に入れたとみられる。<span class="redacted">CIS解析: 施術は共和国<a href="../database/characters.html#five-elders">元老院</a>の延命措置と同一カテゴリに属する。技術の出所は買収と推定されるが共和国は一貫して否定している。すなわちこの人物は元老院の秘密を物理的に握る数少ない一人であり、同時に「老人に手綱を握らせ続ける」共和国の現状を最も冷ややかに眺める一人でもある。</span></p>
+  <p class="lore-p">肉体の若返りと精神の劣化を、本人は切り離して考えている。自身がいずれ耄碌する日に備えて権力の一点集中はすでに解体済みであり、組織の運営は<a href="#tosk">次男</a>・<a href="#samaritan">4男</a>・<a href="#basque">8男</a>・<a href="#trenchu">17男</a>へ分掌され、諍いが起きれば家族の合議で裁く仕組みが敷かれている。この体制が<a href="#rata">三男</a>の内乱への反省から生まれたことは、一族の記録も認めるところである。有事に備えて権力そのものは手放していないが、表向きの采配を次男へ譲った現在はほぼ隠居の身である。</p>
+  <p class="lore-p">もっとも隠居してなお、アルペジオの流儀は総帥の流儀である。血族と組織の区別は存在せず、事業はすべて「家業」であり、幹部会は一族の食卓と区別がつかない。面会者には古式ゆかしい礼節を求め、受けた恩は利子を付けて返し、貸した恩は世代を跨いででも取り立てる。<a href="../database/locations.html#hactiva">ハクティバ</a>で二つの太陽が重なる「合」の日には取り立てすら休む敬虔さの一方、一族を欺いた者への沙汰は決まって一つ──アルピニアの床下に眠る神聖帝国の旧都へ「沈める」のである。金銭には驚くほど律儀でもある。<a href="andrew.html">オイッコニー家</a>の負債事件では肩代わりの完済をもって綺麗に手を引いた。一方で一族を相手に詐欺を働いた者は、そのまま消息を絶っている。</p>
+  <p class="lore-p">隠居の暇は独特の使われ方をしている。総帥は変装してキューの地上階層へ降り、路上の髭剃り屋や靴磨き屋に扮しては客の世間話から情報を集めているのである。剃刀の腕は本職であるから誰も疑わない。知人の考古学者と連れ立って遺跡の発掘にも足を運び、調度品や石板を今も掘り出し続けている。発掘の登録名は決まって同じ偽名であり、それが本名の綴りを組み替えたものだと気付いた者はまだいない。</p>
+  <p class="lore-p">私人としての彼を語る上で欠かせないものが、<a href="#basque">8男</a>の運営するカジノ「ツインサン・パレス」の最奥に飾られた<a href="../database/glossary.html#manowar-stele">マノウォーの碑文</a>である。若き日に自ら発見して以来かれこれ50年以上、稼業の合間に古文書を片手に解読を続けており、その到達率6%は現在も星系最高記録である。「読める客が来たら店ごとくれてやる」の言葉が本気であることは、4男の確認により裏が取れている。解読に挑んで散った学者と詐欺師は数知れず、店を取られる日が来ないことを運営者の8男だけが密かに祈っている。</p>
+  <p class="lore-p">総じて、地上階層の髭剃り屋の小さな老人が闇の世界の王者の一人であると想像する者はいない。仮の姿の彼はある意味では「ビッグ・ボス」ではなく、本来の「アルフォンス・ビッグマン」が送るはずだった人生を生きているのかもしれない。</p>
+</div>
+<div class="lore-section" id="family">
+  <h3 class="lore-h">一族 ─ THE FAMILY</h3>
+  <p class="lore-p">ビッグ・ボスには23人の息子と複数の娘がいるとされる。兄弟姉妹で系統がまちまちなのは、腹違いの母親から生まれているためである。家族仲は比較的良好だが、兄弟のうち幾らかは擁護できない邪道に走り勘当に近い状態の者もいる。父が継承権を認めているのは次男と4男の二人だけである。以下は本部が同定している主要な家族構成員の記録である。</p>
+</div>
+<div class="lore-section" id="gerim">
+  <h3 class="lore-h">① 長男『ゲリム』 ─ GERIM</h3>
+  <p class="lore-p">ドブネズミ系キューソイドの男性。浪費家かつ愚かな人物として悪名高く、他の兄弟も口を揃えて「碌でなし」と評する長男である。自身の地位を鼻にかけた贅沢三昧の暮らしぶりで、アルピニアの高層ビルを幾つも所有しその不動産収入で好き勝手に生きている。近年の肩書は『動画配信者』であり、根も葉もない噂話を面白おかしくまくしたてる迷惑配信者としても悪名を馳せている。父のビッグ・ボスも素行の矯正を試みているが、うまくいっていない様子である。</p>
+  <p class="lore-p">最近になり、<a href="../database/glossary.html#arannara">アランナラ</a>の主要栽培地であるセティボスⅢの<a href="../database/factions.html#garou-federation">「ガロウ連邦」</a>へ投資している形跡が確認された。<a href="../database/military.html#cdf">CDF</a>は彼を危険人物としてマークしている。エメラルダス・星系銀行の次男坊<a href="../other/imperial-guard.html">アルジー</a>と「キューの二大ドラ息子」として並べられることがあるが、アルジー本人はこの比較を本気で嫌がっている。</p>
+</div>
+<div class="lore-section" id="tosk">
+  <h3 class="lore-h">② 次男『トスク』 ─ TOSK</h3>
+  <p class="lore-p">ハイイロネズミ系キューソイドの男性。父の仁義と任侠の影響を最も受けた息子であり、4男サマリタンとともに現在のアルペジオの両翼を担う。マフィアとしての信義をもって組織を厳格に管理する非常に恐ろしい人物である一方、筋を通せば誰よりも話が通じ嘘もつかないため、その筋の界隈からは絶大な信頼を置かれている。</p>
+  <p class="lore-p">兄弟の中で最も父に近い小柄な体躯ながら、ボディガードより白兵戦が強いことで有名である。高齢のビッグ・ボスに代わりアルペジオのヘッドとして表に立つのは、近年ほとんど彼になっている。</p>
+</div>
+<div class="lore-section" id="rata">
+  <h3 class="lore-h">③ 三男『ラタ』 ─ RATA</h3>
+  <p class="lore-p">ドブネズミ系キューソイドの男性。故人である。長男と並ぶ「碌でなし」として有名であったが、その邪心は兄の比ではなかった。あまりに凶暴な性格のままビッグ・ボスへ反旗を翻し、自前の犯罪組織を立ち上げてキューに内乱を引き起こした張本人である。数多の宇宙海賊を買収して一大勢力を作り上げ、最盛期には自警団だけでは対処できない規模の艦隊まで所持していた。</p>
+  <p class="lore-p">この内乱を鎮めたのが、ビッグ・ボスが秘密裏に雇った遊撃隊「エクストリーム・ゾディアック」である。後に<a href="../database/glossary.html#dark-goddess">プロスペローの空</a>でも名を上げるこの部隊にとって最初の晴れ舞台であり、遊撃隊は現在もCDFに雇われて健在である。鎮圧後のラタの消息を公式記録は語らない。一族の記録では簡潔に、故人とだけ扱われている。なおこの反抗をきっかけに父が権力の一点集中を改めたことは、<a href="#the-don">総帥の項</a>のとおりである。</p>
+</div>
+<div class="lore-section" id="samaritan">
+  <h3 class="lore-h">④ 4男『サマリタン』 ─ SAMARITAN</h3>
+  <p class="lore-p">サバクネズミ系キューソイドの男性。一家で最も切れ者かつ油断ならない人物として知られる。エメラルダス・ゴールドマン銀行（現<a href="../corporations/emeraldas-bank.html">エメラルダス・星系銀行</a>）の跡取りに男子がいなかった時期、身分を巧妙に隠した不動産屋の資産家として先代当主の娘へ婿養子に入った経歴を持つ。後に本家へ現当主が立ち頭取の座こそ逃したものの、婿として築いた役員権益と人脈は今も生きている。</p>
+  <p class="lore-p">金融・商業と密接につながった現在のアルペジオは、この男が作り出した基盤の上で動いているといっても過言ではない。<a href="../database/glossary.html#fortinbras">フォーティンブラス商工会</a>と帝国の商談がまとまった裏にも、この男が一枚かんでいたとされる。</p>
+</div>
+<div class="lore-section" id="gideon">
+  <h3 class="lore-h">⑤ 7男『ギデオン』 ─ GIDEON</h3>
+  <p class="lore-p">古代種族ジョセフォアルチガシアの系統を引くキューソイドの男性で、キューソイドとは到底思えない大男である。先祖返りによるものと推測されており、家族写真を撮ると必ず彼だけ身長が抜けて顔まで映らない。マフィア一家の息子という呪縛から逃れたいと願い、現在はキューを離れて<a href="../database/locations.html#katina">カタリナ</a>で<a href="../database/glossary.html#cross-bout">クロスバウト</a>の興行選手として生活している。</p>
+  <p class="lore-p">全身筋肉の塊のような外見に加えて目が光を反射して赤く輝くため、選手のカット写真はまさに怪物であり観客から恐れられているが、本人はいたってまともかつ温厚な人物である。スポーツマンとしてはストイックで、クロスバウトのとある女性チャンピオンに憧れている。</p>
+</div>
+<div class="lore-section" id="basque">
+  <h3 class="lore-h">⑥ 8男『バスク』 ─ BASQUE</h3>
+  <p class="lore-p">トガリネズミ系キューソイドの男性。次男トスクと並ぶ武闘派でありながら知略も巡る男として知られ、キューのカジノと歓楽街を裏で取り仕切っているとみられる。世間が想像する「アルペジオの取り立て屋」の実体はバスクが運営する専門の組織であり、ある意味では組織の「恐怖」を一手に引き受けている存在である。彼が運営するカジノ「ツインサン・パレス」は星系でも最大クラスの巨大カジノであり、有名人の御用達にして惑星キューの顔でもある。</p>
+  <p class="lore-p">実は<a href="#gideon">7男ギデオン</a>とは双子の兄弟であり、仲は良好である。兄だけが自身の10倍を超える体格へ成長していくのを間近で見ており、いつか自分も同じ体格になる日が来るのを夢見ていたという。カジノがオフシーズンに入ると身分を隠して<a href="../database/locations.html#katina">カタリナ</a>のクロスバウト闘技場へ足を運び、気付かれないように2列目で観戦しているらしい。</p>
+</div>
+<div class="lore-section" id="trenchu">
+  <h3 class="lore-h">⑦ 17男『トレンチュ』 ─ TRENCHU</h3>
+  <p class="lore-p">トガリネズミ系キューソイドの男性。他の兄弟がやりたがらない「運輸」に関する事業を一手に取り仕切り、キューの裏通りはトレンチュ一家の縄張りである。金品、食材、そして表では言えない代物。あらゆるものを「安全に運ぶ」のが彼の仕事である。無類のフルーツ好きであり、鮮度に敏感なこの好物が運輸の知識を付ける入り口になったようである。</p>
+  <p class="lore-p">父親譲りの勘の鋭さを受け継いでおり、彼の前では一切の嘘が通じないことで知られる。無口であまり喋らないが、これは単に極度の恥ずかしがり屋であることに起因している。家族や近衛の前では普通に喋るため、家族会議と普段の様子の変わりように驚く者は多い。兄弟の中では比較的話が通じる人物とされ、<a href="../other/dark-messiah.html">ダークメシア事件</a>の捜査ではCDFの聞き取りに応じた記録が残っている。</p>
+</div>
+<div class="lore-section" id="marsh">
+  <h3 class="lore-h">⑧ 長女『マーシュ』 ─ MARSH</h3>
+  <p class="lore-p">ハツカネズミ系キューソイドの女性。一族の経理と財政を担当する才媛でありながら、アルペジオの中でも特に恐ろしい存在として知られ、人身売買を取り仕切っているとされる。美しく気品のある淑女であり、その住居に招かれて度肝を抜かれた者は数知れない。侍っているのが何人もの<a href="../database/races.html#bastetoid">バステトイド</a>の「奴隷」だからである。入星を禁じられた種族を連れ込めるのは、この惑星では彼女ただ一人である。</p>
+  <p class="lore-p">「美しくないもの」を嫌い、その嫌悪には一切の容赦がない。差別で半殺しにされた過去を持つ父を頂きながら、惑星キューで差別が横行し続けている現状はこの女性を抜きにして語れない。父からも際どい趣味を警戒されており、一族の中での信用は財政を預かる立場に見合うほど高くない。</p>
+</div>
+<div class="lore-section" id="kukuri">
+  <h3 class="lore-h">⑨ 3女『ククリ』 ─ KUKURI</h3>
+  <p class="lore-p">チンチラ系キューソイドの女性で、ビッグ・ボスが溺愛する娘である。ただし甘やかしすぎて碌でなしになった長男や<a href="#rata">三男</a>と同じ轍を踏まないよう教育は徹底されており、驚くほど真っ当な人物に育っている。現在は<a href="../database/locations.html#corneria">コーネリア</a>シティの全寮制高校に通い、平和な学園生活を送っている。</p>
+  <p class="lore-p">その平和は見かけだけのものでもある。ビッグ・ボスに恨みを持つ勢力から付け狙われており、水面下では彼女の防衛と攻勢を懸けた刺客同士の熾烈な争いが起きている。清楚でありつつ天然、性格も毛並みもふわふわしているため簡単に騙されて誘拐されかける。トスクの頭痛の種である。<span class="redacted">CDF覚書: 彼女の周辺警備を非公式に補強する予算が過去三度可決されている。名目は市民保護であり、実態はビッグ・ボスへの貸しである。</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p"><span class="lore-quote">あの店で一番恐ろしいのは用心棒でも銃でもなく、カウンターの奥の小さな声である<span class="lore-quote-src">― アルピニアの酒場の言い伝え</span></span></p>
+  <p class="lore-p">そのアルペジオが唯一恐れるのは<a href="../database/races.html#apophisoid">アポフィソイド</a>のアサシン集団だとされる。星系に根強いこの人種への過剰な差別意識は、アルペジオが意図的に流したデマが原因とする説が有力である。</p>
+  <p class="lore-p">一族の散髪は今も総帥本人が鋏を握る。ドンの鋏を断れる者は一族におらず、幹部の襟足を見ればビッグ・ボスの機嫌が分かるというのが、アルピニアの古株の言である。溺愛する<a href="#kukuri">3女</a>の髪だけは本人の注文どおりに切ることも知られている。</p>
+  <p class="lore-p">ロウアードッグの生家の理髪店は、現在も別の一家が営業を続けている。毎年決まった日に「昔の常連」名義で高額のチップが届くが、店主は差出人を詮索しないことにしているという。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

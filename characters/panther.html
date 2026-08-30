@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PANTHER CAROSO — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ee6688;--accent:#ffbbcc;--border:rgba(238,102,136,0.32);--border-hi:rgba(238,102,136,0.7);--dim:#3a0e1c;--dim2:#1d070e; }
+    .p-title    { color: #fff0f4; text-shadow: 0 0 50px rgba(238,102,136,0.35); }
+    .p-tagline  { border-color: #ee6688; color: #ee6688; }
+    .terminal-hdr { color: #ffbbcc; }
+    .terminal-hdr::before { background: #ffbbcc; box-shadow: 0 0 8px #ffbbcc; }
+    .dk { color: #ee6688; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-19 / PANTHER CAROSO — パンサー・カルロッソ ]</div>
+    <div class="header-status"><span class="blink" style="color:#ffbbcc;">●</span> HOSTILE — MERCENARY</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — PANTHER CAROSO — STAR WOLF TEMPORARY MEMBER — HOSTILE MERCENARY</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0019 — CLEARANCE: OPEN — THE ROSE OF STAR WOLF</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-19 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">パンサー・カルロッソ (PANTHER CAROSO)</div>
+        <h1 class="p-title">PANTHER CAROSO</h1>
+        <div class="p-tagline">THE CRIMSON ROSE ── スターウルフ 臨時構成員</div>
+        <p class="p-short-desc">黒い薔薇を紋章に掲げる伊達男の傭兵パイロット。歯の浮く口説き文句と超一流の操縦技術を併せ持ち、負傷離脱したアンドリューの「代役」からそのまま隊に居着いた。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 19 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">PANTHER CAROSO / パンサー・カルロッソ</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#bastetoid">バステトイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">不明（20代後半と推定）</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv">不明 — 本人は「薔薇の似合う星」とだけ</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">傭兵部隊スターウルフ（臨時構成員）</td></tr><tr><td class="dk">FORMER</td><td class="dv">フリーランス傭兵（経歴不詳）</td></tr><tr><td class="dk">SIGNATURE</td><td class="dv">離脱時に薔薇のホログラムを残す</td></tr><tr><td class="dk">CRAFT</td><td class="dv"><a href="../weapons/black-rose.html">ブラック・ローズ</a></td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 交戦注意</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 88 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 88%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(238,102,136,0.55);">
+        <img src="" alt="PANTHER CAROSO" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR WOLF — TEMPORARY MEMBER</span>
+            <span class="tg-jp">スターウルフ 臨時構成員 ── 黒い薔薇</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">お初だな、諸君。俺はパンサー──俺の薔薇を見た者は死ぬ。<span class="tg-note note">-交戦時の傍受通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">敵として会ったのが惜しい男だ。もっとも、友として会っても口説かれる以外に用がない<span class="lore-quote-src">― 交戦したCDFパイロットの報告書より</span></span></p>
+  <p class="lore-p">パンサー・カルロッソはスターウルフに臨時構成員として在籍する傭兵パイロットである。芝居がかった口上と情熱的な口説き文句で知られる筋金入りの伊達男だが、その操縦の腕は<a href="../database/characters.html#wolf">ウルフ・オドネル</a>が直々に代役へ指名したという事実が示すとおり超一流である。</p>
+  <p class="lore-p">スターウルフの中では珍しく、冷酷さや残忍さに関する報告がほとんど存在しない。敵である<a href="../database/military.html#starfox">スターフォックス</a>の技量を交戦中の通信で堂々と賞賛し撃墜した相手の脱出ポッドを見逃すといった行動が繰り返し確認されており、分析官の間では「あの部隊で一番まともで、一番調子の狂う男」と評されている。</p>
+  <p class="lore-p">どれほど親しくなろうと自身のことは一切語らず、<a href="../database/military.html#cdf">CDF</a>の身辺調査をもってしても素性の手掛かり一つ見つからない。その徹底ぶりからCDFはこの男を、ある意味でスターウルフ最大の脅威の可能性を秘めた人物と位置付けている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">前半生 ─ EARLY LIFE</h3>
+  <p class="lore-p">パンサー・カルロッソの経歴と前半生を知る者はほとんどいない。平和の裏で繰り広げられた<a href="../database/factions.html#iga">独立星系連合</a>残党との戦いの中で、社会の表からは見えない闇に生まれた人物とみられ、<a href="leon.html">レオン</a> と同じく陰に生きる者の一人である。</p>
+  <p class="lore-p">名前すら本名か怪しい。姿形が定期的に変わるレオンと同様に彼もあらゆる場所で別の名前と身分を使い分けており、どれが本名かはもはや知る由もない。「カルロッソ」の名も星系のどの出生記録とも一致しないままである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">素顔 ─ TWO FACES</h3>
+  <p class="lore-p">陽気で人当たりの良い性格から、初見で彼がヒットマンや傭兵の類だと窺い知れる者は少ない。潜伏先では配達員や料理人など様々な職業をそつなくこなして潜んでいることが多く、周囲の誰もマイナスの感情を抱かない好青年である。</p>
+  <p class="lore-p">だが本来の仕事となれば一切の容赦はしない。表の顔を知る者ほどその変わりように慄くと言われる所以である。民間人や捕虜への加害記録が皆無である一方、自身の忠告を何度も無視して攻勢を続ける者や標的となった対象への対応は180度変わるという。</p>
+  <p class="lore-p">流儀の一つ「女性は攻撃しない」や口説き文句の数々の由来には諸説あるが、おそらくは彼の人生の根幹に紐づく経験から来ているものと推測される。無類のタラシとしても有名であり、キザな言葉遣いと人懐っこい振る舞いも相まって帝国内での女性人気は常にトップに君臨しているらしい。ただし彼が誰かと交際していたという報告は今日まで一度も上がっていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">確かなのはスターウルフ加入以前から愛機<a href="../weapons/black-rose.html">ブラック・ローズ</a>を駆るフリーランスの傭兵として活動し、その界隈では既に名を知られていたことだけである。帝国の軍事訓練で<a href="../database/characters.html#andrew">アンドリュー・オイッコニー</a>が全治3か月の重傷を負った際、ウルフの指名により代役として編入された。契約期間はとうに満了しているが、本人は「薔薇は咲きたい場所で咲くものさ」と言って居座り続けており、隊も帝国軍もなし崩しに受け入れている。</p>
+  <p class="lore-p">隊では誰かが戦闘不能になった際に入る欠員補充に徹しているが、その実力はアンドリューをはるかに上回る強豪である。腕を隠すつもりもなく前へ出るつもりもない。この立ち位置の意味を測りかねているのは敵味方どちらも同じである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p">アンドリュー離脱期間中のスターウルフ全交戦記録に参加している。速射の腕は星系でも指折りとされ、照準補正を一切持たない機体から浴びせられる連続射撃は前線のパイロットから「花吹雪」と渾名されている。離脱時には「挨拶」として薔薇のホログラムを一輪残していくことが複数の交戦報告で確認されている。</p>
+  <p class="lore-p">一方で民間人や捕虜への加害記録は現在まで一件も存在しない。女性士官の搭乗機への攻撃をためらう傾向まで報告されており、戦術資料には「隊で最も御しやすく、最も読めない」という矛盾した所見が併記されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">距離 ─ THE DISTANCE</h3>
+  <p class="lore-p">搭乗機がウルフェンでなく専用カスタム機<a href="../weapons/black-rose.html">ブラック・ローズ</a>である点も含め、彼は誰とでも仲良くするように見えてその実誰も信用していないのではないかと分析されている。メンバーの誰とも良好な関係を築きながら、自室の位置はおろか戦闘記録すら共有しない態度はたびたび注意の対象となっており、ウルフがよく指摘している。</p>
+  <p class="lore-p">何を言われてもペースを崩さない男が唯一許せないのが、過去を詮索されることである。過去を調べようとした帝国情報部の所属員を許可なく葬り、一度は軍法会議にかけられかけた。この件は<a href="../database/characters.html#pigma">ピグマ</a> の弁明で事なきを得たが、以降帝国で彼を深く詮索する者は誰一人いなくなったようである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">名乗りの口上「俺の薔薇を見た者は死ぬ」は敵味方を問わず前線で有名で、若い兵士が真似をしては上官に叱られている。なお隊内では<a href="../database/characters.html#leon">レオン</a>が一度だけ「では、今まで君の薔薇を見て生きている私は何なのかね」と返し、パンサーが3日ほど沈黙したという傍受記録が残る。</p>
+  <p class="lore-p">カタリナ基地防衛隊の某軍曹の速射が「パンサー並み」と評された件が本人の耳に入った際は、「光栄だが、俺のほうが華がある」とコメントしたと伝えられる。真偽は不明である。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

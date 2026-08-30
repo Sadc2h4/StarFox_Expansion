@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMPERIAL GUARD — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#c4525c;--accent:#f0a0a8;--border:rgba(196,82,92,0.32);--border-hi:rgba(240,160,168,0.7);--dim:#3a1418;--dim2:#180a0c; }
+    .p-title    { color: #ffeef0; text-shadow: 0 0 50px rgba(196,82,92,0.45); }
+    .p-tagline  { border-color: #c4525c; color: #e08a92; }
+    .terminal-hdr { color: #f0a0a8; }
+    .terminal-hdr::before { background: #f0a0a8; box-shadow: 0 0 8px #f0a0a8; }
+    .dk { color: #c4525c; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ UNT-02 / IMPERIAL GUARD — 帝国軍親衛隊 ]</div>
+    <div class="header-status"><span class="blink" style="color:#f0a0a8;">●</span> HOSTILE — ACTIVE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">MILITARY FILE — IMPERIAL GUARD — VOLUNTEER ELITE — THE RED TWELVE</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: UNT-0002 — CLASSIFICATION: SPECIAL FORCES — THREAT: EXTREME</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ UNT-02 / MILITARY FILE ]</div>
+        <div class="p-name-jp">帝国軍親衛隊 (IMPERIAL GUARD)</div>
+        <h1 class="p-title">THE RED<br>TWELVE</h1>
+        <div class="p-tagline">ベノム帝国 特殊部隊 ─ 定数12名・現有7名</div>
+        <p class="p-short-desc">皇帝の身辺警護と最高難度の任務を担うエリート集団。皇帝が設けた部隊ではなく、皇帝に心酔した志願者が自ら集まって作り上げた組織である。忠誠の一点において、帝国軍のいかなる部隊も彼らに及ばない。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ UNIT SCAN — FILE 02 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">IMPERIAL GUARD / 帝国軍親衛隊</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">特殊部隊 — 志願制</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/factions.html#venom-empire">ベノム帝国</a> — 皇帝直属（名目上）</td></tr><tr><td class="dk">ORIGIN</td><td class="dv">志願者による自発結成</td></tr><tr><td class="dk">STRENGTH</td><td class="dv">定数12名 — 現有7名（殉職3 / 再起不能2）</td></tr><tr><td class="dk">CODENAME</td><td class="dv">「赤の◯」— 共和国側呼称</td></tr><tr><td class="dk">CHAIN OF CMD</td><td class="dv warn">ケローン大提督の指揮系統外</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 交戦継続中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 88 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 88%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(196,82,92,0.5);">
+        <img src="" alt="IMPERIAL GUARD" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">NOBODY ORDERED US HERE</span>
+            <span class="tg-jp">赤の12 ── 命じられずに集まった者たち</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">陛下は我らを必要としておられぬ。だからこそ我らが要るのだ。　赤の1より全機へ。これは命令ではない、誘いだ。<span class="tg-note note">-傍受された親衛隊内通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">忠誠とは命じられて抱くものではない。勝手に抱いてしまうから厄介なのである<span class="lore-quote-src">― CDF情報部 部隊分析報告より</span></span></p>
+  <p class="lore-p">帝国軍親衛隊はその名の通り皇帝の身辺警護と最も危険な任務の遂行にあたるエリート中のエリートである。構成員は皇帝のためなら命を惜しまない覚悟と度胸を備えており、忠誠の一点においては帝国軍のいかなる部隊も及ばない。共和国軍が最も手を焼く相手であり正面から当たった部隊の生還率は一貫して低い。</p>
+  <p class="lore-p">共和国側は各員に「赤の◯」のコードネームを振って管理している。性質の近い<a href="../database/military.html#vorpal">ヴォーパル隊</a>の「白の7」と対比した呼び方であり、この命名を最初に用いたのが情報部であったのか現場であったのかは今となっては判然としない。</p>
+</div>
+<div class="lore-section" id="foundation">
+  <h3 class="lore-h">成立 ─ FOUNDATION</h3>
+  <p class="lore-p">この部隊は皇帝が自ら設けたものではない。皇帝に心酔した志願者が勝手に集まり下から積み上がる形で結成された組織である。発足の起点となったのは皇帝の甥<a href="../database/characters.html#andrew">アンドリュー・オイッコニー</a>の活動であった。</p>
+  <p class="lore-p">皇帝自身は勝手に集まった親衛隊をそこまで重要視しておらず、麾下へ組み込むことも解散させることもしないまま構成員の意思を尊重して自由に活動させている。志願者の多くは正規の軍歴を持たない若年層であり「熱狂だけで結束された組織」というのがこの部隊を最も的確に言い表す評となる。命じられて集まったのではないという一点が彼らの練度と危うさの両方を説明している。</p>
+</div>
+<div class="lore-section" id="retired-number">
+  <h3 class="lore-h">永久欠番 ─ THE RETIRED NUMBER</h3>
+  <p class="lore-p">肝心のオイッコニー本人は問題行動があまりに多く隊内では「永久欠番」として扱われている。中核にありながら任務は一つとして任されていない。それでもオイッコニーは彼自身にも個別の親衛隊が組織されるほどの求心力があり、操縦技術の拙さや小物めいた発言を差し引いてなお隊内で一定の発言力を保ち続けている。</p>
+  <p class="lore-p">共和国軍の分析官の間では、この一点が親衛隊という組織の性格を何より雄弁に語っているとされる。実力ではなく熱を中心に据えた集団であるため実力の伴わない者が中心に居座り続けられるのである。</p>
+</div>
+<div class="lore-section" id="chain-of-command">
+  <h3 class="lore-h">指揮系統 ─ CHAIN OF COMMAND</h3>
+  <p class="lore-p">親衛隊は<a href="../database/characters.html#kellone">ケローン大提督</a>の指揮系統から完全に独立して動く。このため作戦の遂行中に他部隊と衝突し、現場での口論が進行を止めた事例が繰り返し報告されている。共和国軍の分析はこの二重指揮を精強な親衛隊の数少ない弱点と位置づけている。</p>
+  <p class="lore-p">親衛隊を戦場に引きずり出すのではなく正規部隊との間に楔を打ち込む。対親衛隊の戦術指針は現在この方向で組み立てられつつある。</p>
+</div>
+<div class="lore-section" id="roster">
+  <h3 class="lore-h">構成員 ─ ROSTER</h3>
+  <p class="lore-p">親衛隊は共和国軍との交戦歴を重ねているため、伏せられた部分の多いヴォーパル隊とは対照的に構成員の情報が比較的よく割れている。以下は現在も戦線に立つ7名である。</p>
+</div>
+<div class="lore-section" id="red-01">
+  <h3 class="lore-h">① 赤の1『ドリル・ラインハルトマン』 ─ DRILL REINHARDTMAN</h3>
+  <p class="lore-p">マンドリル系<a href="../database/races.html#alphoid">アルフォイド</a>の男性。親衛隊の指揮権と作戦決定を握る実質的な指導者である。搭乗機「グングニル」による超高速飛行でいかなる防衛網も無効化してみせる星系屈指の操縦者であり共和国軍部は最優先の撃破対象に指定している。彼が抜ければ親衛隊は烏合の衆に戻るという評価と、彼が抜けても熱だけは残るという評価が分析官の間で今も割れている。</p>
+</div>
+<div class="lore-section" id="red-02">
+  <h3 class="lore-h">② 赤の2『ヒルデガルド・ウータンハイマー』 ─ HILDEGARD UTANHEIMER</h3>
+  <p class="lore-p">オランウータン系アルフォイドの男性。組織内で「賢者」と称される作戦参謀である。<a href="../database/locations.html#upsilon">サルガッソー第3宙域</a>の際を掠めて通り抜ける奇策を軍部へ提案した人物であり、共和国がマクベスを奇襲した際に、あえて<a href="../planets/macbeth.html#spinning-core">ドナルベイン火山の第5動力炉</a>の情報を流して混乱を誘った作戦も彼の指揮による。ドリルと並ぶ最優先の撃破対象である。</p>
+</div>
+<div class="lore-section" id="red-03">
+  <h3 class="lore-h">③ 赤の3『フリッツ・チンパンドルフ』 ─ FRITZ CHIMPANDORF</h3>
+  <p class="lore-p">チンパンジー系アルフォイドの男性。親衛隊で最も血の気が多いと評される帝国随一の武闘派であり、友軍すら容赦なく巻き込む見境のない強行作戦を行うため交戦時の危険度はミッチェル・グレイハイドに次ぐ高さを誇る。専用機<a href="../weapons/blade-barrier.html">「ブレードバリア」</a>は近づく者を敵味方の区別なく粉砕する機体であり、彼の生き様をそのまま形にしたものといえる。</p>
+</div>
+<div class="lore-section" id="red-05">
+  <h3 class="lore-h">④ 赤の5『アウグスト・アイゼンホルン』 ─ AUGUST EISENHORN</h3>
+  <p class="lore-p">ナウマンゾウ系<a href="../database/races.html#ganesiosoid">ガネシオソイド</a>の男性。親衛隊で唯一の強襲陸上部隊出身である。二つ名「灼熱の燃料タンク」の通り全身のあらゆる部位に重火器を仕込んでおり、「人型をした重戦車」の異名でも呼ばれる危険人物である。強襲部隊仕込みの火器の取り扱いもさることながら、彼が駆る対空戦車「ピンク・エレファント」による空軍機の撃墜報告も無視できない数であり<a href="../database/military.html#cdf">CDF</a>に与えた被害の大きさは総じて高い。</p>
+</div>
+<div class="lore-section" id="red-09">
+  <h3 class="lore-h">⑤ 赤の9『ミッチェル・グレイハイド』 ─ MITCHELL GREYHIDE</h3>
+  <p class="lore-p">ラット系<a href="../database/races.html#kyusoid">キューソイド</a>の女性。情報戦が重要視される昨今において親衛隊で「最も危険」と称される諜報要員である。帝国による改造手術を受けた形跡があり皮膚の98%が偏光性ポリマーへ置換されている。星系最小クラスの体格と併さってその潜入諜報能力は脅威というほかない。アウグストとは恋仲との情報があり共に出撃する様子も確認されているため、彼との交戦時は必ず自陣営の内部にも注意をするよう勧告が出されている。</p>
+</div>
+<div class="lore-section" id="red-10">
+  <h3 class="lore-h">⑥ 赤の10『ヴォルフガング・ヘイルハウンド』 ─ WOLFGANG HEILHOUND</h3>
+  <p class="lore-p">ハウンド系<a href="../database/races.html#anubisoid">アヌビソイド</a>の男性。帝国最強の白兵戦力と称される圧倒的な戦闘力の持ち主であり、その身体能力は若き日の<a href="../database/characters.html#pepper">ペパー</a>を彷彿とさせる。アルフォイドを中心に据える帝国において自前の「力」だけで親衛隊へ食い込んだ怪物である。ヴォーパル隊との直接交戦記録が最も残るが、これは他親衛隊の危機の際に真っ先に彼が駆けつけ退避の時間を稼いでいるからである。</p>
+</div>
+<div class="lore-section" id="red-12">
+  <h3 class="lore-h">⑦ 赤の12『アルジー・V・エメラルダス』 ─ ALGIE V. EMERALDAS</h3>
+  <p class="lore-p">リスザル系アルフォイドの男性。帝国の<a href="../database/glossary.html#cur-galleon">ガリオン</a>通貨や裏金による資金援助を行う<a href="../corporations/emeraldas-bank.html">エメラルダス家</a>の次男。別名「キューの二大ドラ息子」と呼ばれる人物であり金の力で親衛隊へ入り込んだとみられている。現在の親衛隊の運営を支えているのは彼の資力であろう。何かとオイッコニーと馬が合うらしく二人でつるんでいる姿がたびたび目撃されている。</p>
+</div>
+<div class="lore-section" id="missing-five">
+  <h3 class="lore-h">欠番 ─ THE MISSING FIVE</h3>
+  <p class="lore-p">定数12に対し現在も戦線に立つのは7名である。欠けた5つの番号のうち3名は殉職、2名は再起不能と判定されている。番号が詰められることはなく、空いた席は空いたまま呼ばれ続けている。</p>
+  <p class="lore-p">現有戦力がヴォーパル隊と同じ7名で釣り合っているのは全くの偶然である。もっとも前線でこの符合を偶然と受け取る者は両軍を通じてほとんどいない。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

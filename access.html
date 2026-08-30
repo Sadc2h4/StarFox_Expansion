@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDF SECURE TERMINAL — ACCESS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="planet.css">
+  <style>
+    body { overflow: hidden; }
+    .bg-dim {
+      position: fixed; inset: 0; z-index: 2; pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(2,8,8,0.35) 0%, rgba(2,6,8,0.88) 100%);
+    }
+    .console-wrap {
+      position: fixed; inset: 0; z-index: 10;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .console {
+      width: min(680px, 94vw);
+      border: 1px solid var(--border-hi);
+      background: rgba(3, 12, 11, 0.92);
+      box-shadow: 0 0 0 1px rgba(0,255,238,0.06) inset, 0 0 40px rgba(0,212,180,0.16), 0 24px 60px rgba(0,0,0,0.6);
+      padding: 30px 34px 26px;
+      position: relative;
+    }
+    .console::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(0,255,238,0.045) 3px 4px);
+    }
+    .c-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px; margin-bottom: 16px;
+      font-size: 10px; letter-spacing: 0.25em; color: var(--primary);
+    }
+    /* コーネリア共和国 国章（レターヘッド＋透かし） */
+    .console-wm {
+      position: absolute; inset: 0; pointer-events: none;
+      background: url('Corneria_emblem_entrance.png') center 58% / min(56%, 340px) no-repeat;
+      opacity: 0.055;
+    }
+    .c-brand {
+      display: flex; align-items: center; gap: 18px;
+      margin-bottom: 18px;
+    }
+    .c-emblem {
+      width: 64px; height: 64px; flex: 0 0 auto;
+      filter: drop-shadow(0 0 12px rgba(0,212,180,0.45));
+    }
+    .c-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(17px, 2.6vw, 24px); font-weight: 900; color: #fff;
+      letter-spacing: 0.12em; margin-bottom: 4px;
+      text-shadow: 0 0 26px rgba(0,212,180,0.5);
+    }
+    .c-sub { font-size: 11px; letter-spacing: 0.3em; color: var(--accent); }
+    .c-warning {
+      border: 1px solid rgba(255,75,62,0.45);
+      background: rgba(255,75,62,0.07);
+      padding: 10px 14px; margin-bottom: 16px;
+      font-size: 11px; line-height: 1.9; color: #ffb3ab;
+      letter-spacing: 0.06em;
+    }
+    .c-warning b { color: var(--danger); letter-spacing: 0.2em; }
+    .c-info {
+      font-size: 11px; line-height: 2.0; color: var(--text);
+      margin-bottom: 22px;
+    }
+    .c-info .k { color: var(--primary); letter-spacing: 0.15em; margin-right: 8px; }
+    .c-info .v { color: var(--text-bright); }
+    .iris-zone {
+      display: flex; align-items: center; gap: 26px;
+      border-top: 1px dashed var(--border);
+      padding-top: 20px;
+    }
+    .iris-scanner {
+      position: relative;
+      width: 92px; height: 92px; flex: 0 0 auto;
+      border: 1px solid var(--border-hi); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      background: radial-gradient(circle at center, rgba(0,60,55,0.6) 0%, rgba(0,15,14,0.9) 70%);
+    }
+    .iris-scanner .pupil {
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 2px solid rgba(0,255,238,0.55);
+      box-shadow: 0 0 14px rgba(0,255,238,0.35), 0 0 0 8px rgba(0,255,238,0.06);
+      transition: transform 0.4s;
+    }
+    .iris-scanner .scanline {
+      position: absolute; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, var(--accent), transparent);
+      top: -4px; opacity: 0;
+    }
+    .scanning .iris-scanner .scanline { opacity: 1; animation: iris-scan 1.1s linear 2; }
+    .scanning .iris-scanner .pupil { animation: pupil-pulse 1.1s ease-in-out 2; }
+    @keyframes iris-scan { 0% { top: -4px; } 100% { top: 96px; } }
+    @keyframes pupil-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(0.72); } }
+    .iris-btn {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px; letter-spacing: 0.35em;
+      color: var(--accent);
+      background: rgba(0,255,238,0.06);
+      border: 1px solid var(--border-hi);
+      padding: 14px 30px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+    }
+    .iris-btn:hover {
+      color: #fff; background: rgba(0,255,238,0.14);
+      box-shadow: 0 0 18px rgba(0,255,238,0.35);
+    }
+    .iris-btn:disabled { opacity: 0.55; cursor: wait; }
+    .c-status {
+      margin-top: 14px; min-height: 1.6em;
+      font-size: 11px; letter-spacing: 0.18em; color: var(--primary);
+      white-space: pre-wrap;
+    }
+    .c-status .ok { color: var(--good); }
+    .c-foot {
+      margin-top: 16px; border-top: 1px solid var(--border);
+      padding-top: 8px;
+      display: flex; justify-content: space-between;
+      font-size: 8.5px; letter-spacing: 0.2em; color: var(--dim);
+    }
+    body.granted .console { animation: console-out 0.9s ease forwards 0.9s; }
+    @keyframes console-out {
+      to { opacity: 0; transform: scale(1.04); filter: brightness(2.4) blur(6px); }
+    }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="bg-dim"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <div class="console-wrap">
+    <div class="console">
+      <div class="console-wm"></div>
+      <div class="c-head">
+        <span>CDF GENERAL STAFF NETWORK</span>
+        <span>NODE: KAT-FRONT-07</span>
+      </div>
+      <div class="c-brand">
+        <img class="c-emblem" src="Corneria_emblem_entrance.png" alt="コーネリア共和国 国章">
+        <div>
+          <div class="c-title">MILITARY INTELLIGENCE PROFILE</div>
+          <div class="c-sub">コーネリア防衛軍 参謀本部 ── 軍事情報プロファイル アクセスコンソール</div>
+        </div>
+      </div>
+
+      <div class="c-warning">
+        <b>▌ WARNING — CLASSIFIED SYSTEM ▐</b><br>
+        本システムは共和国軍機密保護法の適用対象です。権限なきアクセス・複製・口外は
+        軍法会議の対象となります。閲覧記録は全て参謀本部に送信されます。
+      </div>
+
+      <div class="c-info">
+        <div><span class="k">CLEARANCE</span><span class="v">臨時閲覧権限（LV.2 / 期限付）</span></div>
+        <div><span class="k">ISSUED TO</span><span class="v">カタリナ前線基地 防衛隊 作戦実行部隊 各員</span></div>
+        <div><span class="k">AUTHORITY</span><span class="v">参謀本部作戦局 特例承認 ── 有効期限: 発行より120時間</span></div>
+        <div><span class="k">NOTICE</span><span class="v">一部記録は検閲・部分開示となります（■機密 表示箇所）</span></div>
+      </div>
+
+      <div class="iris-zone">
+        <div class="iris-scanner">
+          <div class="pupil"></div>
+          <div class="scanline"></div>
+        </div>
+        <div style="flex:1;">
+          <button id="irisBtn" class="iris-btn" type="button">◉ 虹彩認証</button>
+          <div id="status" class="c-status">スキャナに目を合わせ、認証を開始してください。</div>
+        </div>
+      </div>
+
+      <div class="c-foot">
+        <span>SECURE TERMINAL Ver.9.71</span>
+        <span>LYLAT STANDARD TIME ── <span id="lst"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 200; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+
+    (function() {
+      const lst = document.getElementById('lst');
+      function tick() {
+        const now = new Date();
+        const pad = (n) => String(n).padStart(2, '0');
+        lst.textContent = `3997.${pad(now.getMonth()+1)}.${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    (function() {
+      const btn = document.getElementById('irisBtn');
+      const status = document.getElementById('status');
+      const steps = [
+        [200,  'スキャン中 ── 虹彩パターンを照合しています…'],
+        [1300, '照合中 ── 参謀本部人事データベースに接続…'],
+        [2300, '<span class="ok">認証完了 ── 所属: カタリナ前線基地 防衛隊 / 臨時権限 LV.2 を確認</span>'],
+        [3000, '<span class="ok">データベースコンソールへ接続します。良い狩りを。</span>']
+      ];
+      btn.addEventListener('click', function() {
+        btn.disabled = true;
+        document.body.classList.add('scanning');
+        steps.forEach(([delay, html]) => setTimeout(() => { status.innerHTML = html; }, delay));
+        setTimeout(() => document.body.classList.add('granted'), 3000);
+        setTimeout(() => { window.location.href = 'console.html'; }, 4300);
+      });
+    })();
+  </script>
+</body></html>

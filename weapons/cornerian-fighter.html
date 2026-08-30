@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORNERIAN FIGHTER — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#5599dd;--accent:#aaccee;--border:rgba(85,153,221,0.32);--border-hi:rgba(85,153,221,0.7);--dim:#0e2038;--dim2:#07101c; }
+    .p-title    { color: #eef4ff; text-shadow: 0 0 50px rgba(85,153,221,0.35); }
+    .p-tagline  { border-color: #5599dd; color: #5599dd; }
+    .terminal-hdr { color: #aaccee; }
+    .terminal-hdr::before { background: #aaccee; box-shadow: 0 0 8px #aaccee; }
+    .dk { color: #5599dd; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-28 / CORNERIAN FIGHTER — コーネリアファイター ]</div>
+    <div class="header-status">● ACTIVE — CDF MAINLINE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — CORNERIAN FIGHTER — CDF MASS-PRODUCTION MULTIROLE FIGHTER</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0028 — CLEARANCE: OPEN — BACKBONE OF THE REPUBLIC AIR POWER</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-28 / ARMORY FILE ]</div>
+        <div class="p-name-jp">コーネリアファイター (CORNERIAN FIGHTER)</div>
+        <h1 class="p-title">CORNERIAN FIGHTER</h1>
+        <div class="p-tagline">WINGS FOR EVERYONE ── 共和国軍 主力量産戦闘機</div>
+        <p class="p-short-desc">CDFの空を支える多目的量産戦闘機。アーウィンの設計を量産向けに簡略化した「誰もが乗れる翼」であり、星系のあらゆる基地と艦隊に配備されている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 28 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">CORNERIAN FIGHTER / コーネリアファイター</td></tr><tr><td class="dk">CLASS</td><td class="dv">多目的戦闘機（量産機）</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv"><a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>（各州工廠でライセンス生産）</td></tr><tr><td class="dk">LENGTH / HEIGHT</td><td class="dv">全長 26sm / 全高 5.2sm</td></tr><tr><td class="dk">MAX SPEED</td><td class="dv">M3.1</td></tr><tr><td class="dk">POWERPLANT</td><td class="dv">プラズマエンジン NTD-C量産型</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">シングルレーザー ×1（ツインレーザー・モジュールへ換装可） / <a href="smart-bomb.html">スマートボム</a> ×2（外装ラック装備時）</td></tr><tr><td class="dk">EQUIPMENT</td><td class="dv">デフレクターシールド / 大気圏内用フラップ / 射出座席（<a href="g-diffuser.html">Gディフューザー</a>非搭載）</td></tr><tr><td class="dk">PERFORMANCE</td><td class="dv">シールド 標準 / ブースト持続 短 / ロックオン 非搭載</td></tr><tr><td class="dk">VARIANT</td><td class="dv">初期型（下反角翼） / 後期型（上反角翼） / <a href="#sonic-pointer">ソニック・ポインター</a>（B・グレイ専用改修機） / <a href="#gold-crest">ゴールド・クレスト</a>（G・バロン専用改修機） / <a href="#shadow-blade">シャドウ・ブレード</a>（同僚機）</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../database/military.html#cdf">CDF</a> 全軍</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 全戦線配備</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">COMBAT RATING -- 68 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 68%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(85,153,221,0.55);">
+        <img src="" alt="CORNERIAN FIGHTER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">CDF MAINLINE — MASS PRODUCTION</span>
+            <span class="tg-jp">共和国の量産翼</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">アーウィンは英雄を乗せる。<br>こいつは、俺たち全員を乗せる。<span class="tg-note note">-CDF新兵教育課程 教官の常套句-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">英雄の翼は一対あればいい。戦争に要るのは万の翼だ<span class="lore-quote-src">― CDF調達局の答申より</span></span></p>
+  <p class="lore-p">コーネリアファイター（Cornerian Fighter）は<a href="../database/military.html#cdf">コーネリア防衛軍</a> の主力量産戦闘機である。二組の主翼と<a href="arwing.html">アーウィン</a> 譲りの機首を持つ多目的機で、空母からも地上基地からも展開でき、星系のほぼ全ての基地と艦隊に配備されている。前線でも銃後でもこの機体を「アーウィンの量産機」と呼ぶことに異を唱える者はいない。</p>
+  <p class="lore-p">性能で語れば全ての数値がアーウィンに遠く及ばない。だが星系の空を実際に支えているのは、数と整備性と「誰でも乗れる」素直さを兼ね備えたこの翼である。第2次ライラットウォーズの全戦域に投入され、共和国の戦闘機パイロットのほぼ全員が最初に乗り最後まで乗る機体でもある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">設計 ─ DESIGN</h3>
+  <p class="lore-p">設計の出発点はアーウィンの量産型構想である。ただし中枢技術たる<a href="g-diffuser.html">Gディフューザーシステム</a> は製造原価と生産設備の両面で量産に不向きであり、本機はこれを搭載しない。代わりに採用されたのが堅実な慣性制御と徹底したモジュール構造で、機体各部を規格化されたブロック単位で交換できる。<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a> はこの機体を「アーウィンから天才の分を引いた設計」と社内で呼んでおり、引いた分がそのまま生産数になった。</p>
+  <p class="lore-p">操縦特性は徹底して素直に躾けられており、訓練課程の生徒が最初に乗る実機も本機である。ディフューザーを持たないため急旋回やローリングの切れ味はアーウィンに及ばず、ブーストの持続も短い。撃墜数を稼ぐ機体ではなく、生きて帰って整備を受け翌日また上がるための機体。設計思想を一言で表すなら「戦争を続けられる翼」となる。</p>
+  <p class="lore-p">対となる帝国の主力機<a href="lw2-drones.html#venom-fighter">ベノムファイター</a> は完全に自動制御の無人機であり、本機とは真逆の運用を想定されていることで有名である。こちらが「敵機を倒して生きて帰る機体」であるのに対し、あちらは「帰ることを想定されていない使い捨ての機体」である。両軍の戦闘機の設計思想の違いは、そのままパイロットという存在を戦力として数えるか否かの違いでもある。</p>
+  <p class="lore-p">後期生産型では主翼の下反角を上反角へ改める空力改修が行われており、現行部隊には新旧両方のシルエットが混在する。整備班は前者を「垂れ翼」後者を「上げ翼」と呼び分け、古参のパイロットほど垂れ翼を手放したがらないという。理由は大抵「慣れ」の一言である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">兵装 ─ ARMAMENT</h3>
+  <p class="lore-p">武装の標準はシングルレーザー1門（<a href="../database/glossary.html#ws-laser">レーザー/光学系統</a>）である。機首下の兵装ベイはモジュール式で、ツインレーザーへの換装は部隊単位で広く行われている。ロックオン機構は標準では搭載されず、誘導兵装が必要な任務では外装ラックに<a href="smart-bomb.html">スマートボム</a>（<a href="../database/glossary.html#ws-powder">パウダー/火薬系統</a>）を2発まで吊るす。</p>
+  <p class="lore-p">搭乗者の得手不得手に合わせた拡張と載せ替えが容易であり、部隊ごとの「性格」が機体に出やすいことでも知られる。辺境の防空隊が対艦ラックを常設し、艦隊の艦載機隊が軽量化のため兵装ベイを空にしたまま上がるといった差は珍しくない。調達局が一度だけ全軍の兵装構成を集計したところ、標準仕様のまま運用されている機体は全体の三割に満たなかった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">運用 ─ SERVICE</h3>
+  <p class="lore-p">配備先は正規艦隊の艦載機から辺境基地の防空隊まで全戦線に及ぶ。<a href="../database/glossary.html#katina-miracle">カタリナの奇跡</a>では<a href="../database/characters.html#bill">ビル・グレイ</a> 中尉率いる<a href="../database/military.html#bernard">「バーナード」「ドーベル」</a>両中隊の乗機として帝国軍超大型母艦の撃墜に貢献し、量産機の戦果として開戦以来最大のものと記録されている。この戦いで一度に上がった機体はおよそ百機に達し、共和国の空に量産機の編隊がこれほど密集した例は他にない。</p>
+  <p class="lore-p">損耗もまた星系で最も多い機体である。慰霊碑に刻まれる搭乗員の名は年々増え続けているが、その分だけ「この機体に命を救われた」と語る帰還者も多い。脱出機構と生残設計だけはアーウィンと同等の水準が死守されており、調達局はこの一点を譲ったことがない。射出座席の作動記録は機体ごとに保存され、二度作動した機体には整備班が小さな印を付ける習わしがある。</p>
+  <p class="lore-p"><a href="../database/military.html#starblade">スターブレード</a> 艦隊の壊滅以降、艦載機を失った共和国の前線防空は地上基地のコーネリアファイターに重く寄りかかっている。カタリナでは帝国軍の再来襲に備えて<a href="../database/military.html#vorpal">ヴォーパル隊</a> との合同作戦準備が進められており、量産機の飛行隊が特務部隊と肩を並べる光景が今や日常となった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h" id="sonic-pointer">ソニック・ポインター ─ SONIC POINTER</h3>
+  <p class="lore-p">カタリナ駐留軍第7飛行隊長<a href="../database/characters.html#bill">ビル・グレイ</a> の乗機は本機を大規模改修した専用機「ソニック・ポインター」である。独自のカラーリングで一目で識別でき、武装はツインレーザーへ強化された上でスマートボム2発の発射装置が増設されている。ロックオン機構は増設されておらず照準は本人の腕に委ねられているが、その腕が士官学校時代から「裏話付き」で最高水準であることは<a href="../characters/bill.html">本人の項</a>に詳しい。</p>
+  <p class="lore-p">量産機の枠内でどこまで戦えるかを示す生きた見本であり、CDFの機付整備班の間では改修プランの教材として有名である。改修の要点は速さでも火力でもなく整備性の維持にあり、量産機の規格部品だけで組まれているため前線で壊れても前線で直せる。隊長機だけが特別な部品で飛ぶことを、ビルは最初から拒んでいる。</p>
+  <p class="lore-p">機体名は音速と猟犬のポインターを掛けたもので、猟犬の名を冠する隷下中隊「バーナード」「ドーベル」と揃いになっている。獲物の位置を仲間へ指し示す猟犬の名を隊長機が名乗る…この命名に説明を求められたビルは「群れで狩るのがうちの流儀だ」とだけ答えている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h" id="gold-crest">ゴールド・クレスト ─ GOLD CREST</h3>
+  <p class="lore-p">CDF第1飛行隊<a href="../database/military.html#retriever">レトリーバー隊</a>の隊長<a href="../characters/george.html">ジョージ・バロン</a>の乗機は本機を改修した専用機「ゴールド・クレスト」である。翼を省いた三角形の機体形状が最大の特徴で、黄緑から金色へ流れるグラデーションで縁取られ、機首にはバターカップの花のノーズペイントがあしらわれている。本土の空でこの機体を見誤る者はいない。</p>
+  <p class="lore-p">改修の方向はソニック・ポインターと正反対である。余計な計器を摘み、<a href="g-diffuser.html">Gディフューザー</a>の管制補助機能まで取り外している。これはジョージの並外れた操縦技術が補助を必要としないためであり、CDF内では彼の真似は推奨されていない。余計な部品を取り払う設計と三角形へ行き着いた形状は偶然ながら、<a href="../database/characters.html#leon">レオン・ポワルスキー</a>の乗機<a href="rainbow-delta.html">レインボー・Δ</a>と収斂進化の関係にあると指摘される。共通点は常人離れした操縦技術に支えられた機体であることであり、量産機の改修がスターウルフの専用機と同じ答えへ辿り着いた事実は設計者たちの間で半ば伝説として語られている。</p>
+  <p class="lore-p">兵装は<a href="../database/glossary.html#ws-laser">ツインレーザー</a>を基本とし、加えて最新鋭の試験兵器「トライレーザー」を搭載してここぞという局面で使用する。爆装はスマートボムではなく旧型の<a href="smart-bomb.html">ノヴァボム</a>1発である。取り扱いが危険なため訓練では使用しないが、敵戦艦の排気口へノヴァボムを直接放り込む技は単騎で巨大戦艦を葬る必殺の一撃として有名である。過去に<a href="../database/locations.html#area3">AREA3</a>が<a href="../database/military.html#imperial-guard">帝国軍親衛隊</a>の強襲を受けた際、敵機を終始翻弄して対処できたのはジョージとこの機体の活躍によるところが大きい。</p>
+  <h3 class="lore-h" id="shadow-blade">シャドウ・ブレード ─ SHADOW BLADE</h3>
+  <p class="lore-p">あまり知られていないがゴールド・クレストには僚機が存在する。「シャドウ・ブレード」と呼ばれる兄弟機であり、ゴールド・クレストだけでは対処できない事態が発生した際に出撃する。操縦者はジョージの付き人クレア・オブシディアンである。彼女と同じくシャドウ・ブレードもゴールド・クレストと同じ三角形の形状を持つが、カラーリングは完全な黒一色で統一されている。宇宙空間や夜間の戦闘ではもはや視認できない水準の黒さであり、主機ゴールド・クレストが目立つ塗装なのはこの僚機に気付かせないための策略でもある。</p>
+  <p class="lore-p">光学兵装はシングルザッパーしか積まない代わりに、機首にイオンブレードを搭載している。すれ違いざまに相手を物理的に切り伏せるという戦闘機にあるまじき攻撃を得意とし、レーダーにも目にも映らない影が擦れ違った直後に機体が二つに分かれる。交戦した側の記録にはたいてい「何が起きたか分からない」とだけ残る。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">運転試験の最高記録は現在もビル・グレイが保持している。この記録には裏話があるとも噂されるが、詳細を知る者はいないようである（<a href="../characters/bill.html">ビル・グレイの項</a>を参照）。</p>
+  <p class="lore-p">アーウィンと編隊を組んだ経験を持つ搭乗員たちは決まって同じ感想を残す。「隣を飛ぶと別の乗り物だと分かる。それでも帰る場所は同じ格納庫だ」。整備班はどちらの機体も分け隔てなく磨き上げる。</p>
+  <p class="lore-p">スペース・ダイナミクス社のヤル・デ・ポン社長は本機を「私の一番売れた失敗作ですよ」と評したことがある。天才の分を引いた設計が社の屋台骨を支えている現実を、本人は今も少しだけ悔しがっているらしい。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

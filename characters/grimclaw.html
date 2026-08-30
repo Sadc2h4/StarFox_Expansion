@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADMIRAL GRIMCLAW — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#e0b840;--accent:#f0d878;--border:rgba(224,184,64,0.32);--border-hi:rgba(240,216,120,0.7);--dim:#3a3010;--dim2:#1a1408; }
+    .p-title    { color: #fcf6e0; text-shadow: 0 0 50px rgba(224,184,64,0.4); }
+    .p-tagline  { border-color: #e0b840; color: #e0b840; }
+    .terminal-hdr { color: #f0d878; }
+    .terminal-hdr::before { background: #f0d878; box-shadow: 0 0 8px #f0d878; }
+    .dk { color: #e0b840; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-36 / ADMIRAL GRIMCLAW — グリムクロウ提督 ]</div>
+    <div class="header-status"><span class="blink" style="color:#f0d878;">●</span> ACTIVE — JOINT SURVEILLANCE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — ADMIRAL GRIMCLAW — GAROU FEDERATION SUPREME COMMANDER — THE SLEEPING TIGER</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0036 — CLASSIFICATION: FOREIGN HEAD OF STATE / HOSTILE POTENTIAL — TRI-FACTION WATCHLIST</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-36 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">グリムクロウ提督 (ADMIRAL GRIMCLAW)</div>
+        <h1 class="p-title">THE<br>SLEEPING<br>TIGER</h1>
+        <div class="p-tagline">ガロウ連邦 最高権力者 ─ 「眠れる虎」</div>
+        <p class="p-short-desc">500年の鎖国を続ける独立国家ガロウ連邦の頂点に立つ虎。独立星系連合の遺産で軍備を整え、開門の日を待っている。誰もこの虎を起こしたくない。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 36 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">GRIMCLAW / グリムクロウ（傍受呼称）</td></tr><tr><td class="dk">RACE</td><td class="dv">トラ系<a href="../database/races.html#bastetoid">バステトイド</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/factions.html#garou-federation">ガロウ連邦</a> — 連邦軍総帥・最高権力者</td></tr><tr><td class="dk">TITLE</td><td class="dv">「提督」— 国営放送では「国父」</td></tr><tr><td class="dk">BASE</td><td class="dv">セティボスⅢ「首都シンラ」</td></tr><tr><td class="dk">FORCES</td><td class="dv warn">⚠ IGA残存兵器＋出自不明の無人兵器群</td></tr><tr><td class="dk">ADVISOR</td><td class="dv warn">⚠ 正体不明の「軍事顧問」— 照合記録は検閲下</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">現役 — 三大勢力合同監視対象</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT ASSESSMENT -- 84 / 100 (PROJECTED)</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 84%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(224,184,64,0.5);">
+        <img src="" alt="ADMIRAL GRIMCLAW" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">NO ONE WAKES THE TIGER</span>
+            <span class="tg-jp">眠れる虎 ── 起こした者がいないから、眠っているとされているだけである</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">開門の日は近い。諸君はただ、鍛え続けよ。<span class="tg-note note">-傍受された連邦国営放送「国父の訓示」より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">アンドルフには物語がある。あの虎にあるのは目的だけだ<span class="lore-quote-src">― CDF情報部 勢力分析会議の発言より</span></span></p>
+  <p class="lore-p">グリムクロウは、500年の鎖国を続ける独立国家<a href="../database/factions.html#garou-federation">ガロウ連邦</a>の頂点に立つとされる人物である。<a href="../planets/fichina.html">フィチナ</a>の古老の証言と傍受通信の断片から同定された連邦軍の総帥であり、<a href="../database/military.html#cdf">CDF</a>は「提督」の呼称でこの人物を管理している。実質的に王族と同じ役割を果たす中央政権の頂点にあり、国民のすべてが屈強な兵士と言われる連邦の軍事体系はこの男の下に一元化されているとみられる。</p>
+  <p class="lore-p">悲劇の経緯を背負う<a href="../database/glossary.html#andorf">アンドルフ</a>と異なり、その行動原理に同情の余地を見出した分析官はまだいない。数少ない傍受記録から浮かび上がるのは、征服を自明の目的として語り、そこに理由を必要としない古典的なまでの覇道の人物像である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">台頭 ─ RISE</h3>
+  <p class="lore-p">この人物の名が外界の記録に現れるのは、<a href="../database/glossary.html#iga-war">IGA戦役</a>の完了から3年後のことである。統治者を失っていた<a href="../planets/setebos.html">セティボスⅣ</a>の管理を連邦が突如申し出たとき、交渉窓口の通信に署名されていた呼称こそが「提督」であった。以来この決定が本人の主導によるものだったことは、複数の証言が一致して認めている。旧シコラクス要塞の瓦礫に眠る<a class="apx-lock" href="../classified/gigarilla.html">超兵器</a>の情報がその狙いだったとするCDFの推測は、連邦の記事に詳しい。</p>
+  <p class="lore-p">転機はその数年後に訪れる。古老たちが口を揃えて語るところによれば、およそ18年前を境に連邦の空気は一変した。独立星系連合が残した兵器が次々と再生され、ドーム都市の工廠は昼夜を問わず稼働を始めた。500年のあいだ門を閉ざして眠っていた国は、この男の代で明確に「牙を研ぐ国」へ変わったのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">軍事顧問 ─ THE ADVISOR</h3>
+  <p class="lore-p">近年の急速な軍拡は、「軍事顧問」と呼ばれる正体不明の人物の存在抜きには説明できないとされる。この顧問が作り出す無人兵器群は連邦の主力になりつつあり、その設計思想は星系の既知のどの工廠の系譜とも一致しない。提督が顧問を重用していることは傍受通信の端々から明らかであり、二人が常に行動を共にしているという報告すらある。</p>
+  <p class="lore-p"><span class="redacted">顧問の正体は約30年前に<a href="../database/glossary.html#dark-goddess">エクストリーム・ゾディアック</a>に討伐されたはずの<a href="arpeggio.html">アルペジオ</a>三男ラタと照合されている。ラタは都市修繕ボットと融合したサイボーグの科学者として生存しており、十数年の潜伏を経てグリムクロウと合流した。以後18年ほどの歳月で、辺境の鎖国国家は無人兵器を柱とする現在の軍事国家へ作り替えられている。二人の関係は主従というより共犯に近い。邪心の質が一致しているのか妙に馬が合うらしく、連れ立って足つぼマッサージ店に現れるという潜入報告が複数残されている。情報部はこの記録の扱いにいまだ困っている</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦略評価 ─ ASSESSMENT</h3>
+  <p class="lore-p">連邦の国力は帝国や共和国に遠く及ばない。それでもこの国が「帝国に次ぐ星系の脅威」の候補に数えられるのは、IGAの遺産と無人兵器という危険な組み合わせを、国民皆兵の練度が下支えしているためである。CDFの分析では、提督は<a href="../database/factions.html#venom-empire">ベノム帝国</a>の出現によって大規模な攻勢の機を失い、現在はやむなく様子見に徹していると評価されている。裏を返せば、二大勢力の戦争が終わった日こそがこの虎の起きる日になりかねない。</p>
+  <p class="lore-p">この認識は帝国・通商連合・共和国の三者に共通しており、連邦の動向を巡っては<a href="../database/factions.html#garou-federation">奇妙な停戦と情報連携</a>が今も続いている。星系の主要勢力すべてを同じ側に立たせた人物は、後にも先にもこの提督だけである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">傍受された国営放送で提督は常に「国父」と呼ばれる。ところが収録年代の異なる放送を並べると、その声紋は微妙に一致しない。影武者説と世襲説がCDF内で併存しているが、鎖国の壁の向こうを確かめた者はいない。「グリムクロウ」の名すら本名である保証はどこにもないのである。</p>
+  <p class="lore-p">フィチナの古老が語る昔話には、こんな一節があるという。門の内の虎は爪を研ぐ音を外に聞かせない。聞こえたときには、門はもう開いている──。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+  <script src="../apx-lock.js"></script>
+</body></html>

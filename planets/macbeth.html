@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MACBETH — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff5500;--accent:#ff7733;--border:rgba(255,85,0,0.35);--border-hi:rgba(255,119,51,0.7);--dim:#3a1200;--dim2:#1a0800; }
+    .p-title { color:#fff0e8; text-shadow: 0 0 50px rgba(255,85,0,0.35); }
+    .p-tagline { border-color:#ff5500; color:#ff5500; }
+    body { background:#090604; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(35,12,0,0.65) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(25,8,0,0.45) 0%,transparent 55%),
+      #090604; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(255,85,0,0.35);">
+    <a href="../database/locations.html" class="nav-back" style="color:#ff5500;border-color:rgba(255,85,0,0.3);">◄ LOCATIONS</a>
+    <div class="header-tag">[ 04 / MACBETH — マクベス ]</div>
+    <div class="header-status"><span class="blink" style="color:var(--danger);">●</span> SECTOR-ς — OCCUPIED</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(255,85,0,0.3);"><div class="vt" style="color:#3a1200;">LYLAT SYSTEM — MACBETH — VENOM EMPIRE SUPPLY DEPOT — SECTOR-SIGMA — MINING WORLD</div></div>
+  <div class="side-r" style="border-color:rgba(255,85,0,0.3);"><div class="vt" style="color:#3a1200;">DATABASE RECORD: MCB-0004 — CLASSIFICATION: ENEMY CONTROLLED — LAGRANGE BODY</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(255,85,0,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#ff5500;">[ 04 / LYLAT SYSTEM — SECTOR-ς ]</div>
+        <div class="p-name-jp" style="color:#cc6633;">マクベス (MACBETH)</div>
+        <h1 class="p-title">THE VOLCANIC<br>MINING<br>FORTRESS</h1>
+        <div class="p-tagline">ベノム帝国 最大補給拠点 ─ 採掘惑星</div>
+        <p class="p-short-desc" style="border-color:#3a1200;">かつて栄えたレアメタル採掘の惑星。今やベノム帝国軍最大の補給拠点となり、巨大弾薬倉庫が地下を埋め尽くす。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(255,85,0,0.3);background:rgba(30,8,0,0.6);">
+        <div class="terminal-hdr" style="color:#ff5500;background:rgba(255,85,0,0.1);border-color:rgba(255,85,0,0.3);">
+          <span style="background:#ff5500;box-shadow:0 0 8px #ff5500;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-ς ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#ff5500;">DESIGNATION</td><td class="dv">MACBETH / マクベス</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">PLANET TYPE</td><td class="dv">E1型 / TERRESTRIAL (VOLCANIC)</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">MOONS</td><td class="dv">なし</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">PRIMARY STAR</td><td class="dv">ライラット・プライム</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">AVG TEMP</td><td class="dv warn">+15°C ～ +45°C</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">DAY / YEAR</td><td class="dv">22.5H / 1,098D（約3年）</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">LOCATION</td><td class="dv">LYLAT 3rd — Sectorς</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">FACTION</td><td class="dv bad">ベノム帝国軍</td></tr><tr><td class="dk" style="color:#ff5500;">CAPITAL</td><td class="dv">工業都市 <a href="../database/glossary.html#city-hamlet">ハムレット</a> — 帝国占領下</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">ORBITAL TYPE</td><td class="dv warn">特異同期軌道</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(255,85,0,0.1);">
+          <div class="env-bar-label" style="color:#ff5500;">ENVIRONMENT INDEX ── 65 / 100</div>
+          <div class="env-bar-track" style="background:#1a0800;"><div class="env-bar-fill" style="width:65%;background:linear-gradient(to right,var(--danger),var(--warn),#ffbb00);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,80,20,0.65);">
+        <img src="../resource/LA_image/LS_P_3.png" alt="Macbeth" class="planet-img-detail planet-img-small">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">MINING FORTRESS — VENOM OCCUPIED</span>
+            <span class="tg-jp">鉱山惑星 ── 帝国最大補給拠点</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">まさか　着いたばかりの積み荷を使うことになるとはな<br>最新型を見せてやろう…お前たち　ツイてるな！<span class="tg-note note">-マクベス第3幹線 武装列車との戦闘会話履歴より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「この星の火は消えない。掘る者がいる限り、炉は燃え続ける」<span class="lore-quote-src">― マクベス鉱山組合 旧標語</span></span></p>
+  <p class="lore-p">マクベス（Macbeth）は、<a href="../database/sectors.html#sigma">セクターς</a>に位置するライラット星系第3惑星。発見当初より豊富なレアメタル資源を有することが判明し、鉱山惑星として栄えた星系工業の中心地である。周囲の鉱山準惑星群を含むセクター一帯には多数の中小企業が宇宙ステーション型の社屋を構え、「ライラットの鍛冶場」の異名を持つ。</p>
+  <p class="lore-p">現在は<a href="../database/factions.html#venom-empire">ベノム帝国軍</a>の占領下にあり、鉱山跡と工業インフラは帝国最大級の兵站拠点へと転用されている。この星の補給ラインを断つことができれば戦局は大きく塗り替えられるとされるが、正面からの突破は不可能と評価されている。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 帝国軍占領下</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 形成史</h3>
+  <p class="lore-p">マクベスの組成は、恒星至近で形成された惑星の典型を示している。形成初期のこの星は<a href="../database/locations.html#solar">ソーラ</a>圏の最内縁を巡っており、惑星から恒星へ目覚めたソーラの点火の熱を至近距離で受けて、水と揮発成分の大半を失った（ソーラの項を参照）。結果として残ったのは重元素に富む乾いた岩の惑星であり、軽元素の失われた地殻にはレアメタルと重金属が濃集した。研究者がこの過程を「ソーラの炉」と通称するとおり、鉱山惑星としての資源的価値はこの形成環境に直接由来する。</p>
+  <p class="lore-p">その星が現在は、ソーラ圏から遠く離れた<a href="../database/locations.html#titania">タイタニア</a>の後方を回っている。原因は、星系の地図を描き替えた客星タイタニアの飛来である（顛末は<a href="fichina.html">フィチナ</a>と<a href="titania.html">タイタニア</a>の項に譲る）。大混乱の中で軌道を引き剥がされたマクベスは、軌道を挿げ替えようとするタイタニアと繋ぎ止めようとするソーラの綱引きの末、タイタニアの後方45度を保ち続ける公転周期1,098日の同期軌道に捕縛された。もっともこの説明をもってしても、二つの恒星の重力とタイタニアの強力な磁場を織り込んだ計算にはなお残差が生じる。この星の軌道は「マクベス問題」として、天体力学上の未解決問題に数えられ続けている。</p>
+  <p class="lore-p">以上を要約すれば、マクベスの資源はソーラ近傍での形成に、現在の軌道はタイタニアによる捕縛に、地熱と温暖な気候は二恒星の潮汐加熱に、それぞれ由来する（現在の火山活動は次項を参照）。この星の主要な環境特性はいずれも外部天体との重力相互作用の産物であり、鉱山組合の旧標語「この星の火は消えない」は、潮汐加熱が続く限り火山活動が停止しないという点で、天体力学的にも正確な記述となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">マクベスは<a href="../database/locations.html#titania">タイタニア</a>の後方45度を保ち続ける特異な同期軌道の星である（成り立ちと「マクベス問題」は形成史の項を参照）。この軌道が防衛にもたらす恩恵については、軍事の項に詳しい。</p>
+  <p class="lore-p">両恒星の潮汐力による摩擦熱で地殻が常に熱せられているため、地表では活発な火山活動が続き、大気の主成分は火山性ガスとなっている。このガスの温室効果により、大気保持量の少なさに反して温暖な環境が保たれている。同じ周期を巡るタイタニアと違い、この星は潮汐熱を地殻の火山活動として逃がす仕組みを持つため、近日点で<a href="../database/locations.html#solar">ソーラ</a>と接近しても灼熱地獄には陥らない。接近期には空全体がオレンジ色に染まる「二重の夕焼け」が観測され、鉱夫たちは古くからこれを操業の暦としてきた。</p>
+  <p class="lore-p">自転周期は22.5標準時間、公転周期は1,098日（約3年）。一日は<a href="../database/glossary.html#standard-time">標準時</a>より1時間半だけ短く、現地の朝と標準時の朝はおよそ16日の周期で重なってはまたずれていく。この半端なずれを吸収してきたのが列車のダイヤである。マクベスの労働と生活は時計ではなく運行表を単位に組まれており、住民は待ち合わせを「何時」ではなく「何本目」で約束する。星系相手の納期だけは標準時で刻まれるため、ダイヤ表の欄外には必ず換算表が刷り込まれている。公転の1,098日がタイタニアと完全に歩調を揃えている経緯については、形成史の項に詳しい。</p>
+  <p class="lore-p">地下には縦横無尽に採掘坑が掘られ、無秩序な開発の名残である大穴が地表のあちこちに口を開けている。落盤や崩落、坑道へのマグマ流入が日常的に発生する危険地帯だが、この極めて凹凸の激しい地形こそが、後に帝国軍が理想の弾薬庫と見込んだものだった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">第2惑星<a href="../database/locations.html#titania">タイタニア</a>が開発困難と判断された後、マクベスは代替の資源供給地として本格的に入植された。工業惑星への飛躍を決定づけたのは<a href="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>後の<a href="../database/factions.html#iga">独立星系連合（IGA）</a>討伐戦役である。<a href="../database/locations.html#setebos">セティボス</a>の重力に航路を狂わされる当時のワープドライブ事情から、共和国艦隊はマクベス・<a href="../database/locations.html#eladard">エラダード</a>経由の中継航路を組まざるを得ず、この航路の開通と技術者の流入が星の産業構造を一変させた。以来マクベスはセティボス産<a href="../database/glossary.html#ember-gas">エンバーガス</a>の星系最大の卸先でもあり続けている。最盛期には星系の金属需要の6割を賄い、鉱山都市は24時間眠らなかったという。しかし数世代に及ぶ乱掘の末に資源はほぼ枯渇し、経済は緩やかな衰退期に入っていた。</p>
+  <p class="lore-p"><a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>の開戦とともに、帝国軍はまずこの星を急襲・占領した。狙いは残存資源よりもむしろ、精錬・兵器製造インフラと<a href="../database/races.html#zetoid">ゼートイド</a>の技術者たちであったと言われている。占領後、鉱山跡は弾薬倉庫に、精錬所は兵器工廠に姿を変え、マクベスは帝国の戦争経済を支える心臓部となった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">住民の中核は屈強な体力と鋭い嗅覚、そして精錬・ロボティクスの高い技術力で知られる<a href="../database/races.html#zetoid">ゼートイド</a>である。労働と管理を一元して担える人材の多さがこの星の工業力の源泉であり、帝国が真っ先にマクベスを奪取したのはゼートイドの技術力を手中に収めるためだったとまで言われている。</p>
+  <p class="lore-p">この星の生活様式を規定しているのは、無数の鉱山と精錬所を網の目に結ぶ星系有数の列車網とその制御システムである。資源が枯渇し採掘が止まった後も車両とダイヤはそのまま残り続け、数分刻みで途切れなく走る列車が住民の一日を区切っている。乗客は列を乱さず整列することを幼少期から叩き込まれ、定刻の運行が1分でも遅れれば車掌と管制の謝罪アナウンスが流れ始める。「星系で最も時間と納期に厳しい人間」と評されるマクベス気質はこの環境の産物とされ、ゼートイド全体に付きまとう「時間と金に精確」という偏見も、元を辿れば首都ハムレットの<a href="../database/glossary.html#hamlet-depot">車両基地の逸話</a>が星系中へ広まった影響が少なくないという。</p>
+  <p class="lore-p">幹線は惑星の赤道面に沿って敷かれ、星の表面を文字どおり一周している。「線路は続くよどこまでも」の一節が比喩にならない星である。膨大な数の進路切替ポイントが寸分の狂いなく管理されることで上下の車両が事故を起こした例はなく、これもマクベスの勤勉な仕事ぶりを物語る要素として語られる。路線網の起源は鉱山労働者のトロッコ文化に遡る。始まりは人力の砕石運搬トロッコにすぎなかったが、好景気による資金の流入が自動化を呼び、住民の職人気質も相まって、トロッコは数世代のうちに惑星を一周する列車網へと進化を遂げた。</p>
+  <p class="lore-p">惑星全体に火山が分布し、溶岩が河川や湖を形成するこの星独特の景観が各地に広がる。高温と火山性ガスに常に隣り合う生活環境もまた、マクベスの文化を形づくった要因である。水は貴重品であり、賃金の現物支給には高い確率で水が含まれる。<a href="../database/sectors.html#vau">セクターⳣ</a>で採取される氷の星系最大の卸先の一つがこの星であり、火山噴出物に含まれる水蒸気を集める採水基地も存在するものの、純度の問題から工業用に回され、飲料水と生活水はもっぱら輸入品が充てられている。</p>
+  <p class="lore-p">数は少ないが温泉も湧く。水温は70度近いものがほとんどで直接の入浴はかなわず、湯を適度に冷ましてから入る文化が根付いている。温泉の湧出域はマクベスの主要都市の位置とほぼ一致しており、入植期の集落がまず湯の周りに生まれ、そこが文化の中心であり続けた可能性が高いと考えられている。</p>
+  <p class="lore-p">占領下の現在、住民たちは帝国の軍需生産に従事させられている。表向きは従順に見えるが、鉱山組合を母体とする地下抵抗組織が坑道網を利用して活動を続けており、生産ラインでは原因不明の「不良品」が後を絶たないという。</p>
+  <p class="lore-p">代表都市は工業都市<a href="../database/glossary.html#city-hamlet">ハムレット</a>。惑星中の技術者をまとめ上げる<a href="../database/glossary.html#osric-council">「オズリック技術者協議会」</a>の開催地として知られ、この協議会の意向こそがマクベスの実質的な意思決定であり続けてきた。しかし現在は帝国の占領下にあり、協議会は<a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>開戦以来、一度も開かれていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ECONOMY ─ 産業・経済</h3>
+  <p class="lore-p">かつての主力であったレアメタル採掘は数世代の乱掘で衰え、占領前のマクベス経済はすでに「掘る星」から「作る星」へと軸足を移していた。廃坑に堆積した精錬滓や廃棄部品から金属を回収する「都市鉱山」再精錬、鉱山ロボットと重機の製造、そしてセティボス産<a href="../database/glossary.html#ember-gas">エンバーガス</a>の精製が三本柱であり、<a href="../database/glossary.html#macbeth-steel">「マクベス鋼」</a>の銘は星系の重工業界で今も品質保証の代名詞となっている。</p>
+  <p class="lore-p">占領後、これらの産業は根こそぎ帝国の軍需へ組み込まれた。共和国側の経済分析は、帝国の弾薬・機体生産の実に4割前後がマクベス圏に依存していると推計している。なお占領前の特産品としては、婚礼の儀式に用いる<a href="../database/glossary.html#wedding-customs">「ウェディング珪石」</a>の採掘と加工も名物であり、坑道の奥深くで採れる虹色の珪石は、占領下の現在も闇ルートで高値の取引が続いているという。</p>
+  <p class="lore-p">この星の金融を語る上で欠かせないのが、<a href="../database/glossary.html#osric-council">オズリック技術者協議会</a>が発行する現地通貨<a href="../database/glossary.html#cur-pearl">パール</a>である。マクベスではスペースドルよりパールの信用の方が高く、都市部でローンを組む際に重視されるのはパールの預金額とされる。占領により発行元の協議会は活動を停止しているが、住民たちはパールの預金記録を決して手放さない。パールを売り払うことは、協議会の復活を諦めることと同義だからである。実際、州外の金融市場でもパールの相場は下がるどころか僅かに上がり続けており、発行元が沈黙したまま信用だけで支えられるこの通貨は、<a href="../database/glossary.html#currency-exchange">「通貨の信用とは何か」</a>を語る経済学講義の定番の題材となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">マクベスの防衛は堅牢を極める。タイタニアの後方45度を保ち続ける特異軌道の恩恵で、インナーリムからの最短接近経路は常に<a href="../database/locations.html#sargasso">サルガッソー宙域</a>に遮られており、攻撃側は接近を察知される大迂回か、危険宙域の横断かの二択を強いられる。この「決して動かない盾」の存在は帝国にとって計り知れない戦略的優位であり、皮肉にも、帝国ですら手を出せない禁断の惑星<a href="../database/locations.html#titania">タイタニア</a>が、帝国最大の兵站拠点を守り続ける格好となっている。<a href="../database/sectors.html#sigma">セクターς</a>駐留艦隊との連携も完璧とされ、加えて他惑星より重力が強いため、特殊な航行技術を持たない部隊は地上戦を強いられる。地上部隊にとっては<a href="../database/military.html#landmaster">ランドマスター</a>や<a href="../database/military.html#walker">ウォーカー</a>の操縦技術が問われる戦場である。</p>
+  <p class="lore-p">補給物資は装甲列車網によって各地の基地へ輸送されており、この鉄路こそがマクベス兵站の大動脈である。<a href="../database/military.html#cdf">共和国軍</a>参謀本部は「列車を止めればマクベスが止まる」と分析しているが、路線そのものが要塞化されており、作戦立案は難航している。<span class="redacted">現在は幹線の進路切替ポイントを制圧し、武装列車を地下弾薬庫へ誘導・誘爆させる「デレール・プラン」が検討段階にある。実行には走行中の列車を追走しながら8基の切替装置を連続で制圧する必要があり、成功率の試算値は本記録への記載が見送られた</span>。</p>
+  <p class="lore-p">惑星中に張り巡らされた路線は占領後そのまま軍用へ転用され、物資の運搬と移動砲台を一編成で兼ねる武装列車が昼夜なく走り続けている。搭載火器は運搬中の物資を守り抜くことを前提に選定されており、鉄路との一体運用でなければ成立しない専用兵器が多数配備されている点にマクベス兵站の特異性がある。なお積み荷のうち大型ミサイル類は、全て対戦艦ミサイル<a href="../weapons/man-drill.html">「マン・ドリル」</a>であると判明している。</p>
+  <p class="lore-p" id="benjamin-1">その代表格が、武装列車に牽引されることを前提とした兵器「<a href="../weapons/odd-weapons.html#benjamin-1">ベンジャミンⅠ</a>」である。高速走行する列車と大気の存在を運用条件とする対空・対地兼用の兵装であり、風を受けて浮遊しながら舵を取る構造ゆえ、移動に要するエネルギーの全てを攻撃へ転用できると解析されている。戦闘力は同世代の帝国兵器でも上位に食い込むとみられる一方、「線路の敷かれた惑星地表」でなければ成立しない戦闘様式のため運用条件は極めて限られる。実戦で披露された事例はいまだ確認されておらず、帝国内の模擬戦闘の記録に影が確認できるのみである。限られた条件でのみ突出した性能を発揮する不釣り合いな設計思想から、設計者は帝国皇帝<a href="../database/characters.html#andorf">アンドルフ</a>本人と推定されているが、皇帝の自信作と目されるこの兵器は、運用環境の狭さゆえ共和国の脅威リストには分類されていない。</p>
+  <p class="lore-p" id="spinning-core">共和国側が警戒しているのはむしろ「スピニング・コア」である。都市部へ電力を供給していた動力炉のうち、廃炉となった第5動力炉を兵器転用した施設であり、ミサイル発射基地のエネルギー管理と対空迎撃システムの中枢として機能している。これを破壊できればマクベスから放たれる<a href="../database/military.html#man-drill">マン・ドリル</a>の発射数を激減させられると分析されているものの、第5動力炉が据えられているのは火山活動の特に激しい<a href="../database/glossary.html#lylat-mountains">ドナルベイン火山</a>とその山脈の地下である。危険と判断され廃棄された炉が、立地の険しさによって逆に戦略の要衝へ変わった格好である。実際、共和国最大の攻勢<a href="../database/glossary.html#donalbain-op">ドナルベイン攻略戦</a>はこの要塞の前に手痛い失敗を喫しており、再攻略の立案は難航を極めている。</p>
+  <p class="lore-p">路線網は多数の兵器製造工場どうしも結んでいる。完成した兵器はそのまま列車でマクベスを発ち、<a href="../database/sectors.html#sigma">セクターς</a>を経由して各地の戦線へ輸出されているとみられる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">占領前のマクベスには「炉端の誓い」という風習があった。新しく坑道に入る鉱夫は精錬所の炉の前で、先達から受け継いだツルハシを掲げて安全を誓う。帝国は集会を禁じたが、住民たちは今も家庭の竈の前でひそかにこの儀式を続けているという。</p>
+  <p class="lore-p">帝国の兵器工廠で製造された機体の装甲内側に、ごく稀に小さなイノシシの刻印が見つかることがある。共和国の情報部はこれを抵抗組織のサインと分析している。刻印のある機体は、なぜか決まって重要な局面で故障するらしい。</p>
+  <p class="lore-p">マクベスの空では、<a href="../database/locations.html#titania">タイタニア</a>は決して動かない。星々が季節とともに巡るなか、あの赤い輝きだけは常に同じ空域に座り続けており、鉱夫たちは古くからこれを方角の基準としてきた。「タイタニアの尻を追いかけて、三年でひと巡り」──酒場で歌われるこの古い戯れ歌は、この星の特異な軌道を、どんな天体力学の講義よりも簡潔に言い当てている。</p>
+  <p class="lore-p">占領の夜、帝国軍の旗が最初に掲げられたのは軍施設ではなく、ハムレット中央精錬所の第1炉の上だったと伝えられる。「この星の火は消えない」という鉱山組合の旧標語を知る者にとって、それが何を意味する示威だったのかは明白である。だが炉の火は、占領から今日まで一度も止まっていない──それを絶やさずにいるのが帝国の管理者なのか、それとも竈の前で誓いを続ける住民たちなのか、答えを知るのは坑道の闇だけである。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 240; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.15 + Math.random()*0.6).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(255,200,150,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body>
+</html>

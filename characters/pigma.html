@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIGMA DENGAR — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ee9944;--accent:#ffcc99;--border:rgba(238,153,68,0.32);--border-hi:rgba(238,153,68,0.7);--dim:#3a260e;--dim2:#1d1307; }
+    .p-title    { color: #fff4e8; text-shadow: 0 0 50px rgba(238,153,68,0.35); }
+    .p-tagline  { border-color: #ee9944; color: #ee9944; }
+    .terminal-hdr { color: #ffcc99; }
+    .terminal-hdr::before { background: #ffcc99; box-shadow: 0 0 8px #ffcc99; }
+    .dk { color: #ee9944; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-12 / PIGMA DENGAR — ピグマ・デンガー ]</div>
+    <div class="header-status"><span class="blink" style="color:#ffcc99;">●</span> HOSTILE — TRAITOR</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — PIGMA DENGAR — STAR WOLF — TRAITOR OF STAR FOX</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0012 — CLEARANCE: PARTIAL — SEE ALSO FILE FCH-450</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-12 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ピグマ・デンガー (PIGMA DENGAR)</div>
+        <h1 class="p-title">PIGMA DENGAR</h1>
+        <div class="p-tagline">THE PRICE OF EVERY- THING ── スターウルフ 隊員 ─ 反逆者</div>
+        <p class="p-short-desc">初代スターフォックスの創設メンバーにして、ジェームズを帝国に売った裏切り者。最古の相棒が、最悪の敵になった。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 12 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">PIGMA DENGAR / ピグマ・デンガー</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#zetoid">ゼートイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">55歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#papetoon">パペトゥーン</a> ─ テルルハイド</td></tr><tr><td class="dk">FAMILY</td><td class="dv">父: チョップス（故人）／ 母: ミンチー（行方不明）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">傭兵部隊スターウルフ</td></tr><tr><td class="dk">FORMER</td><td class="dv">初代スターフォックス / コーネリア科学省</td></tr><tr><td class="dk">CRIME</td><td class="dv">ベノム偵察作戦での反逆・売却</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 反逆者</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 82 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 82%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(238,153,68,0.55);">
+        <img src="" alt="PIGMA DENGAR" class="planet-img-detail planet-img-medium portrait" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR WOLF — TRAITOR</span>
+            <span class="tg-jp">スターウルフ ── 元スターフォックス</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">銭のためやでぇ、銭のため。<br>恨むんなら安い報酬を恨みなや。<span class="tg-note note">-交戦時の傍受通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">あいつの計算はいつも正しかった。ただ、値札を付けてはいけないものにまで値札を付けた<span class="lore-quote-src">― ペッピー・ヘアの証言記録より</span></span></p>
+  <p class="lore-p">ピグマ・デンガーは、<a href="../database/locations.html#papetoon">パペトゥーン</a> 出身のディールメーカー。優れた機械知識と理論構築力、そして商才を併せ持ち、その全てを自分の利益のためだけに使う男である。</p>
+  <p class="lore-p">初代<a href="../database/military.html#starfox">スターフォックス</a> の創設メンバーでありながら、報酬と引き換えにリーダーを敵に売った反逆者として、共和国の反逆者リストの最上位に名を連ねる。同時に、その名は星系最高クラスの機械技師の一人としてCDF技術部の資料にも残り続けている。二つの名簿から消せない男というのが、彼の現在の正確な肩書きである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ FAMILY</h3>
+  <p class="lore-p">デンガー家の出自には不明な点も多いが、いくつかの事実は判明している。先祖は惑星<a href="../database/locations.html#kew">キュー</a>の富裕層であり、希少元素の採掘業で一山あてた起業家だったと伝わる。だが往時の<a href="../database/locations.html#papetoon">パペトゥーン</a>へ大規模投資を行い、後の<a href="professor-hanger.html">プロフェッサー・ハンガー</a>の前世代にあたる有人型の大型採掘機を大量に設置した、まさにそのタイミングで鉱床の希少元素は枯渇。一族は投じた財産ごと辺境の星に取り残され、その名は星系の経済史から埋もれていった。荒野に打ち捨てられた当時の採掘機の一部が一族の見果てぬ夢の跡である。</p>
+  <p class="lore-p">転落の一途を転がり落ちたデンガー家が最終的に流れ着いたのは、パペトゥーンの田舎町テルルハイドだった。キャッスルロックの隣町にあたるこの町で、一家はジャンクから農業機械を組み立てて売る貧乏経営者になっていた。取引先には当時まだ悪徳詐欺業者そのものだった<a href="../corporations/diamond-cities.html">ダイヤモンドシティズ.inc</a>の前身も含まれていたとみられる。幼いピグマは何もない砂漠だけの大地で子供の頃から働きづめに両親を手伝っていた。</p>
+  <p class="lore-p">その家庭環境は本人の手記によれば劣悪を極めた。父チョップス・デンガーは酒浸りで暴力を振るい、母ミンチー・デンガーは「何も知らない素人を騙してポンコツの農業ロボットを売りつける」という、父に輪をかけて陰険な人物だった。最低の悪人同士だからこそ気が合った夫婦だと評する者もいる。売り上げの振るわない日、ピグマは両親からすら悪態と暴力を受けて怯えて過ごした。だがいつもより儲かった日だけは両親は手放しに彼を褒めたたえたのである。現在知られるピグマの人格の根幹がこの家庭環境に紐づいていることを疑う分析官はいない。</p>
+  <p class="lore-p">もっとも、幼少の日々が彼に与えたのは「金のためなら手段を択ばない性格」だけではなかった。少しでも儲けるため…すなわち両親に褒められたい一心で独学した機械工学の数々は、やがて彼に唯一無二の技術を授ける。星系でも最高クラスと評される機械技師ピグマ・デンガーの下地はこの砂漠の店先で作られたものである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴（前半生） ─ BIOGRAPHY</h3>
+  <p class="lore-p">生家はやがてピグマの代に移った。父は長年の飲酒がたたりアルコール中毒の末に他界。母は<a href="../database/glossary.html#arpeggio">アルペジオ</a>系のマフィアに詐欺まがいの取引を持ち掛けたことで連行され、そのまま行方不明となった。弱冠20歳のピグマは繰り上がりで家業の長になったのである。</p>
+  <p class="lore-p"><span class="redacted">この頃、隣町キャッスルロックに「マシンの価値を理解せずパーツを売りに出すジャンクショップ」と、その店番の子供がいることを偶然知る。以来ピグマは口八丁手八丁で高級な制御系パーツを格安で買い取り、転売の利益を得るようになった。すっかり行きつけと化したそのジャンクショップこそ、少年<a href="../database/characters.html#james">ジェームズ・マクラウド</a>の店である。最初は騙すも同然の買い叩きに満足していたが、純粋すぎる少年に思うところがあったのか、次第にパーツの目利きと処世術を気まぐれに教えるようになる。後年のジェームズの、のらりくらりとして風のように掴みどころのない話術の半分がピグマ仕込みの悪知恵であることを知る者は少ない</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">スライフォックス ─ SLY FOX</h3>
+  <p class="lore-p">それから数年後、パペトゥーンは史上空前の大凶作に見舞われた。かつて非常食として持ち込まれた<a href="../database/locations.html#corneria">コーネリア</a>産の蝗（さらに遡れば<a href="../database/glossary.html#bremen">ブレーメン開拓団</a>に由来するとみられる）が異常発生し、地上のあらゆる植物を食い尽くしたのである。猛威は5年にわたって収まらず惑星の植生は事実上壊滅した。農業機械は一切売れなくなりピグマは体重が半減するほど食い詰めた。<a href="../database/glossary.html#space-dollar">スペースドルやセグル</a>といった貨幣はこの星で価値を失い、物理的な物々交換だけが商いとして成り立つ。商売の面でもアイデンティティの面でも、彼は完膚なきまでに追い詰められていた。</p>
+  <p class="lore-p">転機は卸先だった<a href="../corporations/diamond-cities.html">ダイヤモンドシティズ.inc</a>の社長がこぼした愚痴である。</p>
+  <p class="lore-p">「かー！　こんな干からびそうなときに　な～にが物資供与募集だ　IGAの奴らめ！　こんなもん　ただの略奪を上品に言い換えただけじゃねぇか！　寧ろあいつらの持ち物を　根こそぎ全部奪ってやりたいくらいだ」。</p>
+  <p class="lore-p">この瞬間、ピグマの頭の中で商売の再起と<a href="../database/factions.html#iga">IGA</a>末端の無法者への対処、二つの問題を同時に解く妙案が組み上がった。IGAだけを標的にした襲撃隊を結成し各地で奪われた物資を取り返した上で「有料で返品」する名声と金が同時に手に入る事業である。金がほとんど飾りと化した今のパペトゥーンなら皆、物資さえ戻れば金は簡単に手放してくれる。そして残党が減れば金は価値を取り戻し集めた金を元手にキューでの再起も狙える。彼はさっそく心当たりのある人物への勧誘を始めた。</p>
+  <p class="lore-p"><span class="redacted">最初の仲間は親友でもあった元IGA脱走兵クロコ・バーンズである。<a href="../planets/setebos.html">セティボス</a>軌道上の接収基地を砲台化する計画（後の<a href="../planets/bolse.html">ボルス</a>の原型）の情報を漏らした容疑をかけられ、<a href="../database/glossary.html#muinshankle">ムィンシャンクル</a>送りの寸前に命からがらパペトゥーンへ亡命した男であり、IGAへの恨みは骨髄に達していた。提案は二つ返事で快諾された。テロ組織由来の武器知識に加え、その天性のムードメーカー気質が組織に必要だとピグマは見込んでおり、期待は最後まで裏切られなかった</span></p>
+  <p class="lore-p"><span class="redacted">難航したのは襲撃の「後始末係」である。リスクしかない損な役回りを受ける人材は集まらず、この一枠のためだけにパペトゥーン時間で半年を奔走した。ようやく見つけたのは誰がどう見ても堅気でないと一目で分かるならず者、バルチャ・ドドリゲスだった。人生のスリルを求めて指名手配のまま<a href="../database/locations.html#hactiva">ハクティバ圏</a>を転々としていたこの男はピグマの提案を3回聞き返し、役職と報酬に間違いがないと確かめてからようやく加わった。ピグマですら出自を知らぬ人物でどうやら別の名でヒットマンを本業にしていたらしい。その裏稼業の知識と人脈は後のピグマの交渉術の少なくない部分を育てている</span></p>
+  <p class="lore-p"><span class="redacted">最後に求めたのは襲撃隊の「顔」だった。誰が見ても悪人の3人組では、民から感謝や情は集まらない。この正義の賊を成立させるには、皆に愛され憧れを集めるヒーローの飾りが要る。思い当たったのは普段から話し相手になっていたあの少年である。廃棄されたロボットを組み直して武器を作り、身のこなしは風のように素早く、そして何より、しびれるように格好がいい。ピグマの求める「皆が憧れるヒーロー」の条件を少年は全て満たしていた。かくして夜盗団スライフォックスは結成される。IGAだけを標的とする賊の評判は想像以上で、その噂はテルルハイド、キャッスルロックから<a href="../database/glossary.html#academy-branches">クーバ・ペティ</a>、<a href="../database/glossary.html#state-adelaide">州都アデレード</a>の町々まで瞬く間に広まっていった</span></p>
+  <p class="lore-p"><span class="redacted">終幕は6年後、IGA総統の偽装船と知らずに行ったいつも通りの襲撃だった（経緯は<a href="../database/glossary.html#decoy-ship">IGA総統偽装船襲撃事件</a>の項を参照）。仲間を喪い拘束された軍法会議の席でピグマは咄嗟の虚偽申告によりメンバー全員の減刑を勝ち取っている。この時のピグマは間違いなく仲間の命の恩人だった</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">科学省時代 ─ SCIENCE MINISTRY</h3>
+  <p class="lore-p">軍法会議の後、Z・Z・ペパーの計らいでピグマも<a href="../database/glossary.html#academy-branches">士官学校第6分校</a>へ社会人学生として入学しメカニックとして頭角を現した。得意技は少々変わっている。言葉巧みに嘘の報告書を書いてきた過去を持つ男は、軍内の戦績の虚偽申告や新兵器の不備の偽装を書類の癖から見抜いてみせたのである。この歯に衣着せぬ精確な指摘はCDF内の「トンデモ兵器」を実戦に足る装備へ次々と変えていき、その評判はやがて思わぬ人物の耳に届くことになる。</p>
+  <p class="lore-p">科学省から長い休暇を得て当時「アンディー・ロス」の名でキャッスルロック郊外に隠棲していた<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a>である。分校に現れたアンドルフがまず行ったのは、自身の持つ時計を直せるかという課題だった。かつて<a href="../database/characters.html#five-elders">元老院</a>のシキ老が若き日の自分を見出す試験としたものと同じ課題である（<a href="andorf.html">アンドルフの項</a>を参照）。ピグマは5日間で時計を直した──という嘘をついた。実際には寸分同じ希少機種の時計を探し出し、外見では区別のつかない精度で元の傷を再現して渡したのである。アンドルフはひと目で嘘を見抜いた…見抜いた上で希少な機種を見つけ出しそこまでの再現をやり遂げた技術に驚嘆したのである。かつて3日で本物を直した男が5日で完璧な偽物を作る男を見出した瞬間である。</p>
+  <p class="lore-p">卒業後、ピグマはアンドルフの推薦により前歴不問の特例でコーネリア科学省へ引き抜かれ軍事分野の職員となった。技術を理解しない堅物揃いの官僚に同僚と共に苦労しながら賄賂や弱み握りまで駆使する情報戦で科学省の予算を確保し続けたと伝えられる。特筆すべきは<a href="../weapons/g-diffuser.html">G・ディフューザーシステム</a>で、アンドルフの基礎理論が「共和国のごく潰し」と酷評され塩漬けになりかけた際、「民間の工場に試させる」という異例の一手を進言し交渉をまとめたのがピグマである。白羽の矢が立った町工場こそ後の<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>となるデ・ポン航宙機工房だった。アーウィンを生む会社への最初の橋を架けたのが後の裏切り者だという皮肉はあまり語られることがない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">スターフォックスと裏切り ─ SERVICE &amp; BETRAYAL</h3>
+  <p class="lore-p"><a href="../database/characters.html#james">ジェームズ</a>が遊撃隊<a href="../database/military.html#starfox">スターフォックス</a>を結成しメカニックとして誘われた際、ピグマは最初、これを断っている。折れたのはジェームズのしつこい勧誘の末だった。参画後の貢献は本業に留まらず、<a href="../weapons/greatfox.html">グレートフォックス</a>の設計には「ピグマの堅実さ」として名を残し、隊の紋章をデザインしたのも彼である（<a href="../weapons/arwing.html">アーウィンの項</a>を参照）。</p>
+  <p class="lore-p">綺麗ごとを重んじる<a href="../database/characters.html#peppy">ペッピー</a>とは方向性の違いで幾度も喧嘩になった。だが綺麗ごとだけで解決できない現場を知り尽くした男の手腕は事件の解決に何度も貢献し、ペッピーも彼を認めている部分は多かったと伝えられる。ジェームズの無茶な作戦司令には不満をこぼすことも多かったが、それでも彼の作る装備と作戦立案がスターフォックスを先鋭であり続けさせた。教団<a href="../database/glossary.html#mu-cult">「ムー」</a>の移動要塞ムーラシアの征討作戦では、ペッピーと共に白兵戦へ加わり要塞壊滅の決定打への貢献で表彰されている。</p>
+  <p class="lore-p">そして<a href="../database/glossary.html#venom-recon">ベノム偵察作戦</a>において彼は帝国からの報酬と引き換えに編隊を罠へ導いた。<a href="../database/characters.html#peppy">ペッピー・ヘア</a> が持ち帰ったこの証言により、彼の名は英雄の隣から反逆者の筆頭へと書き換えられた。裏切りの理由には諸説あるが本人の口から伝えられた言葉は一つしかない。「金の切れ目が縁の切れ目やでぇ…あいつはとんだ甘ちゃんやねんな…」。彼が金に汚い守銭奴であることは誰もが知るところである。ただ、当時を知る者が口を揃える転機の夜がある。ベノム偵察作戦の少し前、ピグマは<a href="../database/characters.html#pepper">ペパー将軍</a>を個人的に訪ね、<a href="../database/glossary.html#andorf">アンドルフの追放</a>の理由を改めて問い質しているのである。隊にも無断の直訴だった。戻った彼を待っていたのはジェームズの叱責であり、2人は隊の歴史でも例のない激しい口論になった。その日以来、彼の様子は変わり始めたと伝えられる。<span class="redacted">変質の根はさらに深いとみられる。ムーラシア征討の叙勲でピグマが見たものは、テロリストを潰した自分に勲章が贈られ、星系を救い続けた男が国賊のままという欺瞞だった。続く<a href="../database/glossary.html#silent-nightmare">サイレント・ナイトメア事件</a>では遊撃士たちの名は記録から伏せられ、栄誉はウェンリー一人の名で語られている。そしてこの戦いのさなか、共和国に決別を告げた<a href="kellone.html">ケローン</a>が秘匿回線でピグマにだけ何事かを語りかけた交信の痕跡が残されている。内容は今も復号されていない。積年の思いに火を点けたものが何であったかを、公式記録は語れないままである</span></p>
+  <p class="lore-p">現在はスターウルフの隊員として、かつての仲間の息子と戦場で相見えている。操縦技術は年齢による衰えを見せず、特に「逃げ足」に関しては隊随一と評される。交戦中の通信は常に金の話に終始するが、<a href="../database/military.html#cdf">CDF</a> の分析官は一点の異常を指摘している──ジェームズの名を出された時だけ、彼の機動が乱れるのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">スターウルフ ─ STAR WOLF</h3>
+  <p class="lore-p">傭兵部隊スターウルフの結成は<a href="wolf.html">ウルフ・オドネル</a> の旗揚げとして知られるが、発案と根回しを担った裏方はピグマである。何度も勧誘を蹴るウルフを紆余曲折の末に頷かせ（経緯は<a href="wolf.html">ウルフの項</a>を参照）、持ち去った<a href="../weapons/arwing.html">アーウィン</a> 3号機を素体に主力機<a href="../weapons/wolfen.html">ウルフェンⅠ</a> を自ら開発し、皇帝<a href="../database/characters.html#andorf">アンドルフ</a> のしつこい依頼を「仕方なく」受ける形で<a href="../database/characters.html#andrew">アンドリュー</a> を入隊させて帝国からの計り知れないバックアップを確保した。CDFの分析官はこの一連の手際を短く評している。「スターウルフとは、ピグマ・デンガーの生涯最大のディールである」。</p>
+  <p class="lore-p">悪名を承知で言えば、隊を作って腕利きを担ぐことにかけて彼は星系随一の目利きである。夜盗スライフォックスの結成から数えてこれが二度目…かつてジェームズという「顔」を見出した男は、今はウルフという「牙」を担いでいる。本人がリーダーの座に興味を示した記録はどちらの隊にも存在しない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">裏切りの報酬額は今も不明である。帝国の経理記録から推定された金額を見た捜査官は、こう書き残した──「この金額で英雄を売れるなら、我々が彼を知らなかっただけだ。あるいは、金額の問題ではなかったかだ」。</p>
+  <p class="lore-p">夜盗時代の仲間クロコ・バーンズの墓には、毎年命日に高価な酒が差出人不明のまま届く──という話をペッピーは信じていない。「あいつならもっと安い酒にする」というのが、彼を最も長く知る男の見解である。</p>
+  <p class="lore-p">故郷<a href="../planets/papetoon.html">パペトゥーン</a>を語った記録はほとんど残っていない。同じ空の下で育ったジェームズが生涯「帰る場所」として故郷を語り続けたのに対し、ピグマは二度と帰らぬ場所としてしか故郷を語らなかった。あの星が「人生の交差点」と呼ばれる所以である。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

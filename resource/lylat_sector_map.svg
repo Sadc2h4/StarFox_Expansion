@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="'Yu Gothic UI','Meiryo','MS Gothic',sans-serif">
+  <defs>
+    <!-- hatch pattern for hazard regions -->
+    <pattern id="hatch" width="10" height="10" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="rgba(255,140,60,0.06)"/>
+      <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(255,150,70,0.35)" stroke-width="2"/>
+    </pattern>
+    <pattern id="hatch2" width="8" height="8" patternTransform="rotate(-30)" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="rgba(210,190,140,0.05)"/>
+      <line x1="0" y1="0" x2="0" y2="8" stroke="rgba(210,190,140,0.4)" stroke-width="1.4"/>
+    </pattern>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#0a1220"/>
+      <stop offset="100%" stop-color="#04070d"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ═══ background ═══ -->
+  <rect width="1600" height="1000" fill="url(#bgGrad)"/>
+  <g stroke="rgba(120,160,200,0.06)" fill="none">
+    <circle cx="180" cy="500" r="300"/><circle cx="180" cy="500" r="560"/>
+    <circle cx="180" cy="500" r="850"/><circle cx="180" cy="500" r="1150"/>
+    <circle cx="180" cy="500" r="1450"/>
+  </g>
+
+  <!-- ═══ SECTORS (color-coded regions) ═══ -->
+
+  <!-- α Lylat Prime -->
+  <circle cx="180" cy="500" r="120" fill="rgba(70,130,220,0.14)" stroke="rgba(110,170,255,0.5)" stroke-width="1.5"/>
+  <text x="180" y="368" fill="#7fb2ff" font-size="20" text-anchor="middle">α</text>
+
+  <!-- β Corneria -->
+  <circle cx="420" cy="420" r="80" fill="rgba(0,212,180,0.13)" stroke="rgba(0,230,200,0.55)" stroke-width="1.5"/>
+  <text x="420" y="330" fill="#3fe0c8" font-size="20" text-anchor="middle">β</text>
+
+  <!-- γ Katina / GW1 -->
+  <circle cx="520" cy="630" r="70" fill="rgba(90,200,120,0.13)" stroke="rgba(120,220,150,0.5)" stroke-width="1.5"/>
+  <text x="522" y="548" fill="#7ddc9a" font-size="20" text-anchor="middle">γ</text>
+
+  <!-- δ Great Wall asteroid arc -->
+  <path d="M 385 525 A 210 210 0 0 0 610 705" fill="none" stroke="url(#hatch2)" stroke-width="30"/>
+  <path d="M 385 525 A 210 210 0 0 0 610 705" fill="none" stroke="rgba(210,190,140,0.55)" stroke-width="1.2" stroke-dasharray="3 6"/>
+  <text x="428" y="595" fill="#d8c890" font-size="20">δ</text>
+
+  <!-- ε Area3 -->
+  <circle cx="655" cy="760" r="55" fill="rgba(110,140,255,0.13)" stroke="rgba(140,165,255,0.5)" stroke-width="1.5"/>
+  <text x="655" y="695" fill="#98a8ff" font-size="20" text-anchor="middle">ε</text>
+
+  <!-- ζ Starblade -->
+  <circle cx="650" cy="520" r="55" fill="rgba(140,150,240,0.12)" stroke="rgba(165,175,255,0.5)" stroke-width="1.5"/>
+  <text x="650" y="455" fill="#aeb6ff" font-size="20" text-anchor="middle">ζ</text>
+
+  <!-- θ Prospero -->
+  <circle cx="780" cy="270" r="70" fill="rgba(120,160,255,0.12)" stroke="rgba(150,185,255,0.5)" stroke-width="1.5"/>
+  <text x="780" y="188" fill="#9fbcff" font-size="20" text-anchor="middle">θ</text>
+
+  <!-- ι Oberon -->
+  <circle cx="950" cy="145" r="55" fill="rgba(170,136,238,0.13)" stroke="rgba(190,160,255,0.5)" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="950" y="80" fill="#c0a2ff" font-size="20" text-anchor="middle">ι</text>
+
+  <!-- ς Macbeth -->
+  <circle cx="770" cy="880" r="60" fill="rgba(238,153,68,0.12)" stroke="rgba(255,175,90,0.5)" stroke-width="1.5"/>
+  <text x="770" y="810" fill="#ffb066" font-size="20" text-anchor="middle">ς</text>
+
+  <!-- ο Solar (envelops μ ν ξ) -->
+  <circle cx="1010" cy="820" r="155" fill="rgba(255,140,64,0.08)" stroke="rgba(255,160,90,0.45)" stroke-width="1.5" stroke-dasharray="10 6"/>
+  <text x="1010" y="652" fill="#ffab70" font-size="20" text-anchor="middle">ο</text>
+  <!-- μ Aquas -->
+  <circle cx="915" cy="885" r="45" fill="rgba(51,187,238,0.14)" stroke="rgba(90,210,255,0.55)" stroke-width="1.2"/>
+  <text x="877" y="938" fill="#5fd0ff" font-size="18">μ</text>
+  <!-- ν Zoness -->
+  <circle cx="1105" cy="890" r="45" fill="rgba(136,204,51,0.13)" stroke="rgba(160,225,80,0.55)" stroke-width="1.2"/>
+  <text x="1140" y="945" fill="#a8dd55" font-size="18">ν</text>
+  <!-- ξ Fichina -->
+  <circle cx="955" cy="740" r="45" fill="rgba(136,204,255,0.13)" stroke="rgba(170,220,255,0.55)" stroke-width="1.2"/>
+  <text x="912" y="712" fill="#a8d4ff" font-size="18">ξ</text>
+
+  <!-- λ Fortuna -->
+  <circle cx="930" cy="555" r="55" fill="rgba(90,220,90,0.11)" stroke="rgba(120,240,120,0.5)" stroke-width="1.5"/>
+  <text x="930" y="490" fill="#8cf08c" font-size="20" text-anchor="middle">λ</text>
+
+  <!-- υ Sargasso belt (big hazard band) -->
+  <g transform="rotate(22 1130 420)">
+    <ellipse cx="1130" cy="420" rx="95" ry="300" fill="url(#hatch)" stroke="rgba(255,150,70,0.5)" stroke-width="1.5" stroke-dasharray="8 5"/>
+  </g>
+  <text x="1064" y="672" fill="#ffa060" font-size="20">υ</text>
+  <!-- χ Titania core -->
+  <circle cx="1130" cy="420" r="66" fill="rgba(255,100,80,0.10)" stroke="rgba(255,130,110,0.55)" stroke-width="1.2"/>
+  <text x="1078" y="376" fill="#ff9682" font-size="18">χ</text>
+  <!-- φ Trinculo corridor -->
+  <line x1="1010" y1="560" x2="1256" y2="290" stroke="rgba(120,255,230,0.65)" stroke-width="3" stroke-dasharray="14 7"/>
+  <text x="1226" y="336" fill="#7dffe6" font-size="18">φ</text>
+  <text x="1252" y="272" fill="rgba(125,255,230,0.8)" font-size="12">トリンキュロー回廊</text>
+
+  <!-- ψ Area6 defense ring -->
+  <circle cx="1390" cy="470" r="88" fill="rgba(255,85,102,0.07)" stroke="rgba(255,110,125,0.6)" stroke-width="2" stroke-dasharray="4 5"/>
+  <text x="1390" y="368" fill="#ff8090" font-size="20" text-anchor="middle">ψ</text>
+  <!-- Ω Venom -->
+  <circle cx="1390" cy="470" r="46" fill="rgba(200,60,120,0.13)" stroke="rgba(230,100,150,0.55)" stroke-width="1.2"/>
+  <text x="1428" y="516" fill="#e878a8" font-size="18">Ω</text>
+
+  <!-- ϻ Hactiva-Paranid twin system -->
+  <circle cx="1340" cy="830" r="110" fill="rgba(238,221,170,0.08)" stroke="rgba(245,230,190,0.45)" stroke-width="1.5"/>
+  <text x="1340" y="706" fill="#eedfa8" font-size="20" text-anchor="middle">ϻ</text>
+  <!-- ϝ Eladard -->
+  <circle cx="1252" cy="880" r="38" fill="rgba(255,170,51,0.13)" stroke="rgba(255,195,90,0.55)" stroke-width="1.2"/>
+  <text x="1212" y="920" fill="#ffc266" font-size="17">ϝ</text>
+  <!-- Ϛ Kew -->
+  <circle cx="1430" cy="880" r="38" fill="rgba(238,102,204,0.12)" stroke="rgba(255,140,225,0.55)" stroke-width="1.2"/>
+  <text x="1466" y="920" fill="#ff8ce0" font-size="17">Ϛ</text>
+  <!-- Ͱ Papetoon -->
+  <circle cx="1340" cy="748" r="38" fill="rgba(221,170,102,0.13)" stroke="rgba(235,190,130,0.55)" stroke-width="1.2"/>
+  <text x="1382" y="728" fill="#e6bc80" font-size="17">Ͱ</text>
+
+  <!-- Ϟ Grippia -->
+  <circle cx="1510" cy="640" r="45" fill="rgba(119,204,176,0.12)" stroke="rgba(150,225,200,0.5)" stroke-width="1.5"/>
+  <text x="1510" y="585" fill="#8fdcc2" font-size="20" text-anchor="middle">Ϟ</text>
+
+  <!-- ϸ Dogma + dark nebula -->
+  <circle cx="1500" cy="150" r="72" fill="rgba(120,20,35,0.22)" stroke="rgba(200,60,80,0.5)" stroke-width="1.5"/>
+  <circle cx="1500" cy="150" r="92" fill="none" stroke="rgba(80,15,25,0.8)" stroke-width="14"/>
+  <text x="1500" y="262" fill="#e05a70" font-size="20" text-anchor="middle">ϸ</text>
+  <!-- j signal source -->
+  <circle cx="1568" cy="70" r="26" fill="none" stroke="rgba(255,90,110,0.7)" stroke-width="1.2" stroke-dasharray="3 4"/>
+  <text x="1566" y="76" fill="#ff7a90" font-size="15" text-anchor="middle">j</text>
+  <path d="M 1552 86 l -14 14 M 1560 92 l -8 8" stroke="rgba(255,90,110,0.5)" stroke-width="1"/>
+
+  <!-- ═══ warp routes (β hub, schematic) ═══ -->
+  <g stroke="rgba(0,220,190,0.22)" stroke-width="1.6" stroke-dasharray="2 6" fill="none">
+    <line x1="420" y1="420" x2="760" y2="280"/>
+    <line x1="420" y1="420" x2="520" y2="620"/>
+    <line x1="420" y1="420" x2="650" y2="520"/>
+    <line x1="420" y1="420" x2="930" y2="555"/>
+    <line x1="420" y1="420" x2="770" y2="860"/>
+    <path d="M 420 420 C 700 560 880 620 1010 560"/>
+    <path d="M 1256 290 C 1300 340 1330 400 1348 424"/>
+    <path d="M 420 420 C 800 100 1150 640 1252 862"/>
+  </g>
+
+  <!-- ═══ CELESTIAL BODIES ═══ -->
+
+  <!-- stars (sun symbol: circle + rays) -->
+  <g>
+    <!-- Lylat Prime -->
+    <circle cx="180" cy="500" r="26" fill="#bcd8ff" stroke="#e8f2ff" stroke-width="2"/>
+    <g stroke="#9cc4ff" stroke-width="2">
+      <line x1="180" y1="458" x2="180" y2="440"/><line x1="180" y1="542" x2="180" y2="560"/>
+      <line x1="138" y1="500" x2="120" y2="500"/><line x1="222" y1="500" x2="240" y2="500"/>
+      <line x1="151" y1="471" x2="139" y2="459"/><line x1="209" y1="529" x2="221" y2="541"/>
+      <line x1="209" y1="471" x2="221" y2="459"/><line x1="151" y1="529" x2="139" y2="541"/>
+    </g>
+    <text x="180" y="600" fill="#cfe2ff" font-size="17" text-anchor="middle">ライラット・プライム</text>
+    <text x="180" y="620" fill="rgba(160,190,230,0.7)" font-size="11" text-anchor="middle">LYLAT PRIME (α星)</text>
+
+    <!-- Solar -->
+    <circle cx="1010" cy="820" r="17" fill="#ff9a4d" stroke="#ffc890" stroke-width="2"/>
+    <g stroke="#ffab60" stroke-width="1.6">
+      <line x1="1010" y1="795" x2="1010" y2="784"/><line x1="1010" y1="845" x2="1010" y2="856"/>
+      <line x1="985" y1="820" x2="974" y2="820"/><line x1="1035" y1="820" x2="1046" y2="820"/>
+    </g>
+    <text x="1010" y="800" fill="#ffd0a0" font-size="15" text-anchor="middle" dy="-16">ソーラ (β星)</text>
+
+    <!-- Hactiva & Paranid twin -->
+    <circle cx="1308" cy="832" r="12" fill="#f6efd2" stroke="#fffbe8" stroke-width="1.5"/>
+    <circle cx="1372" cy="832" r="12" fill="#efe6c2" stroke="#fff8dd" stroke-width="1.5"/>
+    <line x1="1320" y1="832" x2="1360" y2="832" stroke="rgba(245,235,200,0.5)" stroke-width="1" stroke-dasharray="2 3"/>
+    <text x="1340" y="866" fill="#f2e8c8" font-size="14" text-anchor="middle">ハクティバ / パラニド (γ・δ星)</text>
+
+    <!-- Dogma -->
+    <circle cx="1500" cy="150" r="13" fill="#8c1f2e" stroke="#d24054" stroke-width="2"/>
+    <text x="1500" y="188" fill="#e88b9a" font-size="14" text-anchor="middle">ドグマ・セントラル (ε星)</text>
+  </g>
+
+  <!-- planets: ● republic=teal, empire=red, union=amber, neutral=gray -->
+  <g font-size="14" text-anchor="middle">
+    <!-- Corneria -->
+    <circle cx="420" cy="420" r="12" fill="#37d0b2" stroke="#bafff0" stroke-width="2"/>
+    <text x="420" y="452" fill="#b8ffee">コーネリア ④</text>
+    <!-- Katina -->
+    <circle cx="520" cy="630" r="10" fill="#37d0b2" stroke="#9fefdd" stroke-width="1.5"/>
+    <text x="520" y="660" fill="#b0f2df">カタリナ ⑦</text>
+    <!-- Prospero (contested) -->
+    <circle cx="780" cy="270" r="11" fill="#37d0b2" stroke="#ff5566" stroke-width="3"/>
+    <text x="780" y="302" fill="#cfe0ff">プロスペロー ⑩</text>
+    <!-- Fortuna (neutral) -->
+    <circle cx="930" cy="555" r="10" fill="#9aa7b0" stroke="#cdd8de" stroke-width="1.5"/>
+    <text x="930" y="586" fill="#c8d4da">フォルトナ ⑤</text>
+    <!-- Macbeth (empire) -->
+    <circle cx="770" cy="880" r="10" fill="#ff5566" stroke="#ff98a4" stroke-width="1.5"/>
+    <text x="770" y="912" fill="#ffb9c2">マクベス ③</text>
+    <!-- Aquas -->
+    <circle cx="915" cy="885" r="9" fill="#37d0b2" stroke="#9fefdd" stroke-width="1.5"/>
+    <text x="915" y="912" fill="#a8ecf8">アクアス ⑫</text>
+    <!-- Zoness (empire) -->
+    <circle cx="1105" cy="890" r="9" fill="#ff5566" stroke="#ff98a4" stroke-width="1.5"/>
+    <text x="1105" y="917" fill="#ffb9c2">ゾネス ⑬</text>
+    <!-- Fichina -->
+    <circle cx="955" cy="740" r="9" fill="#37d0b2" stroke="#9fefdd" stroke-width="1.5"/>
+    <text x="955" y="768" fill="#c4e4ff">フィチナ ⑧</text>
+    <!-- Titania (forbidden) -->
+    <circle cx="1130" cy="420" r="10" fill="#b0642f" stroke="#e0a070" stroke-width="1.5"/>
+    <text x="1130" y="452" fill="#f0b98a">タイタニア ②</text>
+    <!-- Venom -->
+    <circle cx="1390" cy="470" r="12" fill="#ff5566" stroke="#ffd0d6" stroke-width="2"/>
+    <text x="1390" y="446" fill="#ffc4cc">ベノム ①</text>
+    <circle cx="1370" cy="452" r="3.5" fill="#ff8090"/>
+    <circle cx="1412" cy="486" r="3.5" fill="#ff8090"/>
+    <text x="1348" y="444" fill="rgba(255,150,165,0.85)" font-size="10" text-anchor="end">ゴモラ</text>
+    <text x="1424" y="498" fill="rgba(255,150,165,0.85)" font-size="10">ソドム</text>
+    <!-- Eladard -->
+    <circle cx="1252" cy="880" r="9" fill="#ffbb44" stroke="#ffe0a0" stroke-width="1.5"/>
+    <text x="1196" y="885" fill="#ffe0aa" text-anchor="end">エラダード ⑪</text>
+    <!-- Kew -->
+    <circle cx="1430" cy="880" r="9" fill="#ffbb44" stroke="#ffe0a0" stroke-width="1.5"/>
+    <text x="1448" y="885" fill="#ffd8f2" text-anchor="start">キュー ⑨</text>
+    <!-- Papetoon -->
+    <circle cx="1340" cy="748" r="9" fill="#37d0b2" stroke="#ffbb44" stroke-width="2.5"/>
+    <text x="1279" y="752" fill="#e8cfa8" text-anchor="end">パペトゥーン ⑭</text>
+    <!-- Grippia -->
+    <circle cx="1510" cy="640" r="9" fill="#9aa7b0" stroke="#a8e6cf" stroke-width="1.5"/>
+    <text x="1510" y="670" fill="#bfe8d8">グリッピア ⑮</text>
+  </g>
+
+  <!-- structures: ◆ -->
+  <g font-size="13" text-anchor="middle">
+    <!-- Area3 -->
+    <rect x="646" y="751" width="18" height="18" transform="rotate(45 655 760)" fill="none" stroke="#98a8ff" stroke-width="2.5"/>
+    <text x="655" y="793" fill="#b8c4ff">AREA3 環状ステーション</text>
+    <!-- Starblade fleet -->
+    <rect x="642" y="512" width="16" height="16" transform="rotate(45 650 520)" fill="none" stroke="#aeb6ff" stroke-width="2.5"/>
+    <circle cx="670" cy="508" r="2.5" fill="#aeb6ff"/><circle cx="676" cy="522" r="2.5" fill="#aeb6ff"/><circle cx="666" cy="534" r="2.5" fill="#aeb6ff"/>
+    <text x="650" y="558" fill="#c6ccff">艦隊スターブレード</text>
+    <!-- Oberon -->
+    <rect x="942" y="137" width="16" height="16" transform="rotate(45 950 145)" fill="none" stroke="#c0a2ff" stroke-width="2.5" stroke-dasharray="3 3"/>
+    <text x="950" y="180" fill="#cdb2ff">オベロンⅡ (廃棄)</text>
+    <!-- Area6 + Bolse on ψ ring -->
+    <rect x="1322" y="536" width="16" height="16" transform="rotate(45 1330 544)" fill="none" stroke="#ff8090" stroke-width="2.5"/>
+    <text x="1310" y="578" fill="#ffaab6">AREA6</text>
+    <circle cx="1462" cy="418" r="7" fill="none" stroke="#ff8090" stroke-width="2"/>
+    <circle cx="1462" cy="418" r="2.5" fill="#ff8090"/>
+    <text x="1492" y="404" fill="#ffaab6">ボルス</text>
+    <!-- Great Wall label -->
+    <text x="452" y="668" fill="rgba(216,200,144,0.9)" font-size="12" transform="rotate(40 452 668)">グレートウォール (第6惑星跡)</text>
+    <!-- Sargasso label -->
+    <text x="1178" y="580" fill="rgba(255,160,100,0.9)" font-size="13" transform="rotate(24 1178 580)">サルガッソー宙域</text>
+  </g>
+
+  <!-- ═══ title ═══ -->
+  <g>
+    <text x="40" y="58" fill="#e8fff8" font-size="30" font-weight="bold" letter-spacing="4">LYLAT SYSTEM ─ SCHEMATIC SECTOR MAP</text>
+    <text x="40" y="86" fill="#57c9b4" font-size="15" letter-spacing="6">ライラット星系 簡易セクター図 ── CDF参謀本部 戦術資料</text>
+    <line x1="40" y1="100" x2="740" y2="100" stroke="rgba(0,212,180,0.4)" stroke-width="1"/>
+  </g>
+
+  <!-- ═══ legend ═══ -->
+  <g font-size="13" fill="#bfe6dc">
+    <rect x="40" y="710" width="290" height="250" fill="rgba(4,14,12,0.82)" stroke="rgba(0,212,180,0.35)"/>
+    <text x="56" y="736" fill="#57c9b4" font-size="13" letter-spacing="3">LEGEND ─ 凡例</text>
+
+    <circle cx="66" cy="760" r="9" fill="#bcd8ff" stroke="#e8f2ff" stroke-width="1.5"/>
+    <text x="86" y="765">恒星</text>
+    <circle cx="160" cy="760" r="7" fill="#37d0b2"/>
+    <text x="176" y="765">惑星（共和国圏）</text>
+
+    <circle cx="66" cy="790" r="7" fill="#ff5566"/>
+    <text x="86" y="795">帝国圏・占領地</text>
+    <circle cx="196" cy="790" r="7" fill="#ffbb44"/>
+    <text x="212" y="795">通商連合圏</text>
+
+    <circle cx="66" cy="820" r="7" fill="#9aa7b0"/>
+    <text x="86" y="825">中立・無所属</text>
+    <circle cx="196" cy="820" r="7" fill="#37d0b2" stroke="#ff5566" stroke-width="2.5"/>
+    <text x="212" y="825">係争中</text>
+
+    <rect x="59" y="843" width="14" height="14" transform="rotate(45 66 850)" fill="none" stroke="#98a8ff" stroke-width="2"/>
+    <text x="86" y="855">軍事拠点・ステーション</text>
+
+    <line x1="56" y1="880" x2="76" y2="880" stroke="rgba(255,110,125,0.7)" stroke-width="2" stroke-dasharray="4 4"/>
+    <text x="86" y="885">防衛ライン</text>
+    <rect x="190" y="872" width="22" height="15" fill="url(#hatch)" stroke="rgba(255,150,70,0.5)" stroke-width="0.8"/>
+    <text x="220" y="885">危険領域</text>
+
+    <line x1="56" y1="910" x2="76" y2="910" stroke="rgba(0,220,190,0.5)" stroke-width="1.6" stroke-dasharray="2 5"/>
+    <text x="86" y="915">ワープドライブ航路（主要）</text>
+
+    <text x="56" y="944" fill="rgba(160,200,190,0.75)" font-size="11">円=セクター境界（ギリシャ文字=セクター名）</text>
+    <text x="56" y="960" fill="rgba(160,200,190,0.6)" font-size="10.5">※未観測セクター（η κ π ρ τ ϡ）は記載省略</text>
+  </g>
+
+  <!-- footer -->
+  <text x="1560" y="978" fill="rgba(120,160,150,0.55)" font-size="11" text-anchor="end">SOURCE: sector_info — GENERAL STAFF ARCHIVE / NOT TO SCALE</text>
+</svg>

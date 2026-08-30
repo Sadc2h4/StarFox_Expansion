@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BILLY SHEARS — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#7a8fd6;--accent:#aabef0;--border:rgba(122,143,214,0.32);--border-hi:rgba(170,190,240,0.7);--dim:#141a30;--dim2:#0a0d18; }
+    .p-title    { color: #eef2ff; text-shadow: 0 0 50px rgba(122,143,214,0.35); }
+    .p-tagline  { border-color: #7a8fd6; color: #7a8fd6; }
+    .terminal-hdr { color: #aabef0; }
+    .terminal-hdr::before { background: #aabef0; box-shadow: 0 0 8px #aabef0; }
+    .dk { color: #7a8fd6; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-33 / BILLY SHEARS — ビリー・シールズ ]</div>
+    <div class="header-status"><span class="blink" style="color:#aabef0;">●</span> ACTIVE — CIS-HQ TITANIA</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — BILLY SHEARS — CDF OFFICER — ARCHITECT OF OPERATION ECLIPSE — CIS-HQ TITANIA — COLONEL</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0033 — CLEARANCE: MILITARY — BACKGROUND: PARTIALLY UNVERIFIED</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-33 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ビリー・シールズ (BILLY SHEARS)</div>
+        <h1 class="p-title">BILLY SHEARS</h1>
+        <div class="p-tagline">THE QUIET ARCHITECT ── 日食作戦の立案者 / CIS-HQ タイタニア拠点</div>
+        <p class="p-short-desc">セクターαの「日食作戦」を考案し、魔術師ウェンリーの手腕を最もよく再現した士官の一人と評される。功績により大佐へ昇進し、タイタニアの秘密拠点で軍の機密情報を管理する立場へ抜擢された。礼節を重んじ気さくで誰からも信頼が篤いが、目元だけは笑っていないと言う者もいる。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 33 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">BILLY SHEARS / ビリー・シールズ</td></tr><tr><td class="dk">RACE</td><td class="dv">記録上は「コーネリア出身」のみ</td></tr><tr><td class="dk">AGE</td><td class="dv">非公表</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#corneria">コーネリア</a> — 下町の工場街</td></tr><tr><td class="dk">FAMILY</td><td class="dv">実家: シーモンキー培養液の製造工場（生物学教材） / 軍関係の縁戚なし</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#cdf">CDF</a> → <a href="../database/glossary.html#cis-hq">CIS-HQ</a> <a href="../database/locations.html#titania">タイタニア</a>拠点 機密情報管理者</td></tr><tr><td class="dk">RANK</td><td class="dv">大佐</td></tr><tr><td class="dk">KEY RECORD</td><td class="dv"><a href="../database/glossary.html#eclipse-op">日食作戦</a> 立案・指揮</td></tr><tr><td class="dk">HOBBIES</td><td class="dv">ヒヤシンスの水耕栽培 / シーモンキーの育成</td></tr><tr><td class="dk">EVALUATION</td><td class="dv">有能 — 上層部・部下双方の信頼厚し</td></tr><tr><td class="dk">NOTE</td><td class="dv warn">⚠ 前歴の空白 — 一部に「違和感」の所見</td></tr><tr><td class="dk">STATUS</td><td class="dv">現役 — 機密管理業務</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">TRUST RATING -- 91 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 91%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(122,143,214,0.55);">
+        <img src="" alt="BILLY SHEARS" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">CDF COLONEL — CIS-HQ TITANIA</span>
+            <span class="tg-jp">日食作戦の立案者 ── 穏やかな機密管理者</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">太陽は味方でも敵でもありません。ただ予報どおりに動くだけです。<br>それを知っている側が勝つのですよ。<span class="tg-note note">-日食作戦 事前説明会の記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">礼儀正しく、気さくで、有能だ。文句のつけようがない。文句のつけようがない人間というのが私は少し苦手なだけである<span class="lore-quote-src">― 参謀本部 ある高級士官の私的手記より</span></span></p>
+  <p class="lore-p">ビリー・シールズは軍部の中でも有能な士官として知られ、魔術師<a href="wenli.html">ニャン・ウェンリー</a>の手腕を最もよく再現できた人物の一人と評される。<a href="../database/glossary.html#eclipse-op">セクターαの日食作戦</a>を考案した人物であり、後にその功績が認められて軍の機密情報を管理する<a href="../database/glossary.html#cis-hq">CIS-HQ</a>の管理者の一人に抜擢されている。</p>
+  <p class="lore-p">性格は礼節を重んじつつ気さくで話しやすく、上層部からも部下からも信頼が篤い。先の戦争では数々の功績を挙げており、有能な士官として大いに期待されている。趣味はヒヤシンスの水耕栽培とシーモンキーの育成であり、執務室の窓辺には季節を問わず球根の瓶と小さな水槽が並んでいるという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ ORIGIN</h3>
+  <p class="lore-p">出自には謎が多い。<a href="../database/locations.html#corneria">コーネリア</a>出身であること以外の過去は全く明るみに出ていない。親戚に軍の関係者がいるわけでもなく、実家は生物学の教材であるシーモンキーの培養液を作る下町の小さな工場である。叩き上げでも名門でもない士官がここまでの信頼を集めた例は珍しく、人事部はそれを純粋に本人の能力の証と評価している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p">名を知らしめたのは<a href="../database/glossary.html#eclipse-op">日食作戦</a>である。帝国特殊部隊に占拠された<a href="../planets/lylat_prime.html">ブラグザ充填基地</a>を、大規模フレアの予報に全部隊を合わせ通信麻痺の「窓」の間に恒星側から強襲して奪還した。セクターαの常識を盾にした占拠側の裏をかき人質を一人も失わずに終えたこの作戦は、戦術教本に「環境そのものを戦力に数えた例」として収録されている。</p>
+  <p class="lore-p">この功績ののち大佐へ昇進し軍の機密情報を管理する立場へ抜擢された。現在の所属は<a href="../database/glossary.html#cis-hq">CIS-HQ</a>が<a href="../database/locations.html#titania">タイタニア</a>に置く秘密拠点であり、閲覧中の本データベースを含む機密資料の管理権限の一部はこの人物の決裁下にある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">評価 ─ ASSESSMENT</h3>
+  <p class="lore-p">ただし一部の者は違和感を口にする。どんな時も目元だけは笑っておらず、自身の考えを誰にも悟られないようにしているように見えるというのである。科学省の関係者の中には、<a href="fatman.html">ジェラルド・ファットマン</a>に近い不穏さを感じると言う者も少なくない。前歴の空白と合わせてこれらの所見は人事記録の備考欄に小さく残されている。<span class="redacted">なおタイタニア拠点の補給記録には、届け出の用途と量の合わない培養資材の搬入が断続的に記録されている。監査部は「私的な飼育趣味の範囲」と結論づけて照会を閉じた</span></p>
+  <p class="lore-p">不穏な噂に反して本人は非常に穏やかであり、本記事の筆者もその点について疑問は持たない。ヒヤシンスの瓶とシーモンキーの水槽に水を足す男の横顔は誰が見てもただの穏やかな士官である。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

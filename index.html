@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LYLAT SYSTEM EXPLORER — Star Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="planet.css">
+  <style>
+    /* ── 地図切り替えタブ（星系俯瞰図 / 戦略経路図） ── */
+    .map-mode {
+      position: fixed; top: 54px; right: 30px; z-index: 40;
+      margin: 0;
+    }
+    .map-mode button { background-color: rgba(4,17,14,0.82); }
+
+    /* ── 星系俯瞰図（SVG同心円投影） ── */
+    .sysmap-field {
+      position: fixed;
+      top: 44px; bottom: 32px; left: 22px; right: 22px;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 5;
+    }
+    .sysmap { max-width: 100%; max-height: 100%; display: block; }
+    .sysmap text {
+      font-family: 'NitalagoRuika', 'Share Tech Mono', 'Meiryo', monospace;
+      pointer-events: none;
+    }
+    .sysmap .sv-en { font-family: 'Share Tech Mono', monospace; letter-spacing: 0.14em; }
+    .sysmap a { cursor: pointer; }
+    .sysmap a:hover { filter: brightness(1.55) drop-shadow(0 0 6px rgba(0,255,238,0.55)); }
+    .sysmap a text { pointer-events: all; }
+
+    /* ── 俯瞰図 ズーム・パン操作 ── */
+    .sysmap.zoomed { cursor: grab; }
+    .sysmap.grabbing { cursor: grabbing; }
+    .sysmap-ctrl {
+      position: absolute; right: 12px; bottom: 12px;
+      display: flex; flex-direction: column; gap: 6px; z-index: 8;
+    }
+    .sysmap-ctrl button {
+      width: 36px; height: 36px;
+      background: rgba(4,17,14,0.85); color: #7adfcf;
+      border: 1px solid rgba(0,212,180,0.4);
+      font-family: 'Share Tech Mono', monospace; font-size: 17px;
+      cursor: pointer; line-height: 1;
+    }
+    .sysmap-ctrl button:hover { background: rgba(0,212,180,0.18); }
+    .sysmap-ctrl button.lg { font-size: 9px; letter-spacing: 0.08em; }
+    .sysmap-ctrl button.off { opacity: 0.45; }
+  </style>
+</head>
+<body>
+
+  <!-- Scanlines overlay -->
+  <div class="scanlines"></div>
+
+  <!-- HUD Frame Corners -->
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="hud-header">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="color:var(--accent);font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.25em;">LYLAT</span>
+      <span style="color:var(--dim);font-size:10px;letter-spacing:0.15em;">SYSTEM EXPLORER</span>
+    </div>
+    <div class="header-tag">[ LYLAT STAR MAP — INTERACTIVE DATABASE ]</div>
+    <div class="header-status">
+      <span class="blink" style="color:var(--good);">●</span>&nbsp;
+      SYSTEM ONLINE &nbsp;|&nbsp; v3.7.2
+    </div>
+  </header>
+
+  <!-- Side strips -->
+  <div class="side-l"><div class="vt">LYLAT-SYSTEM DATABASE — CLASSIFIED — CORNERIAN DEFENSE FORCE</div></div>
+  <div class="side-r"><div class="vt">PROTOCOL: 7.2 / IDR-0041 — ACCESS LEVEL: STAR FOX TEAM</div></div>
+
+  <!-- ===== VIEW TOGGLE ===== -->
+  <div class="map-mode loc-filter" id="mapMode">
+    <button class="active" data-view="system">星系俯瞰図 — SYSTEM CHART</button>
+    <button data-view="tactical">戦略経路図 — TACTICAL CHART</button>
+  </div>
+
+  <!-- ===== SYSTEM CHART（星系俯瞰図 / 同心円投影） ===== -->
+  <div class="map-view" id="viewSystem">
+    <div class="sysmap-field">
+      <svg class="sysmap" viewBox="0 0 1880 1050" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="svBg" cx="27.4%" cy="57.1%" r="85%">
+            <stop offset="0%" stop-color="#06231e"/>
+            <stop offset="55%" stop-color="#04120f"/>
+            <stop offset="100%" stop-color="#020a09"/>
+          </radialGradient>
+          <radialGradient id="svCore" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#cfeeff" stop-opacity="0.9"/>
+            <stop offset="30%" stop-color="#7ec8f0" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#4098d0" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="svSolar" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffd9a0" stop-opacity="0.85"/>
+            <stop offset="45%" stop-color="#ff9d40" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#ff8020" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="svDogma" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ff5548" stop-opacity="0.55"/>
+            <stop offset="55%" stop-color="#8a1a20" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#40060c" stop-opacity="0"/>
+          </radialGradient>
+          <pattern id="svHazard" width="9" height="9" patternTransform="rotate(-35)" patternUnits="userSpaceOnUse">
+            <rect width="9" height="9" fill="rgba(255,150,50,0.05)"/>
+            <line x1="0" y1="0" x2="0" y2="9" stroke="rgba(255,150,50,0.35)" stroke-width="1.4"/>
+          </pattern>
+          <pattern id="svRubble" width="10" height="10" patternTransform="rotate(20)" patternUnits="userSpaceOnUse">
+            <rect width="10" height="10" fill="rgba(140,170,165,0.05)"/>
+            <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(140,170,165,0.28)" stroke-width="1.2"/>
+          </pattern>
+          <pattern id="svContest" width="12" height="12" patternTransform="rotate(-45)" patternUnits="userSpaceOnUse">
+            <rect width="6" height="12" fill="rgba(64,217,168,0.30)"/>
+            <rect x="6" width="6" height="12" fill="rgba(255,91,91,0.30)"/>
+          </pattern>
+          <filter id="svBlob" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="24"/>
+          </filter>
+          <filter id="svGlow" x="-120%" y="-120%" width="340%" height="340%">
+            <feGaussianBlur stdDeviation="3.2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <path id="svArcSarg" d="M 276 994 A 435 435 0 0 0 677 977" fill="none"/>
+          <path id="svArcGw" d="M 283 778 A 251 251 0 0 0 604 806" fill="none"/>
+          <path id="svArcInner" d="M 232 421 A 290 290 0 0 1 410 314" fill="none"/>
+          <path id="svArcOuter" d="M 411 42 A 560 560 0 0 1 740 115" fill="none"/>
+        </defs>
+
+        <!-- 背景・グリッド（軌道環・放射線・星はJS生成で #svGrid / #svStars へ） -->
+        <rect x="0" y="0" width="1880" height="1050" fill="url(#svBg)"/>
+        <g id="svStars"></g>
+        <g id="svGrid"></g>
+
+        <!-- 勢力図オーバーレイ -->
+        <g filter="url(#svBlob)" style="mix-blend-mode:screen;">
+          <ellipse cx="460" cy="600" rx="250" ry="250" fill="#2e7dd4" opacity="0.20"/>
+          <ellipse cx="1081" cy="759" rx="55" ry="72" fill="#2e7dd4" opacity="0.18"/>
+          <circle cx="1278" cy="830" r="42" fill="#2e7dd4" opacity="0.19"/>
+          <ellipse cx="1221" cy="353" rx="105" ry="90" fill="#e03c3c" opacity="0.21"/>
+          <ellipse cx="923" cy="836" rx="55" ry="48" fill="#e03c3c" opacity="0.20"/>
+          <circle cx="1011" cy="685" r="30" fill="#e03c3c" opacity="0.20"/>
+          <ellipse cx="1362" cy="928" rx="120" ry="92" fill="#9a5bd0" opacity="0.21"/>
+        </g>
+
+        <!-- 領域ラベル -->
+        <text class="sv-en" font-size="14" fill="rgba(160,220,210,0.4)" letter-spacing="0.45em">
+          <textPath href="#svArcInner" startOffset="6%">INNER RIM ─ 内縁宙域</textPath>
+        </text>
+        <text class="sv-en" font-size="15" fill="rgba(160,220,210,0.38)" letter-spacing="0.5em">
+          <textPath href="#svArcOuter" startOffset="12%">OUTER RIM ─ 外縁宙域</textPath>
+        </text>
+        <text class="sv-en" x="1568" y="352" font-size="13" fill="rgba(200,150,150,0.42)" letter-spacing="0.4em" text-anchor="middle" transform="rotate(-40 1568 352)">THE FRONTIER</text>
+        <text class="sv-en" x="890" y="175" font-size="11" fill="rgba(140,170,165,0.28)" letter-spacing="0.35em" text-anchor="middle">OUT OF SECTOR</text>
+        <text class="sv-en" x="196" y="977" font-size="11" fill="rgba(140,170,165,0.28)" letter-spacing="0.35em" text-anchor="middle">OUT OF SECTOR</text>
+
+        <!-- グレートウォール（δ / 第6惑星跡 — コーネリア・カタリナ・プロスペローを囲む環） -->
+        <a href="database/locations.html#asteroid">
+          <path d="M 726 600 A 266 266 0 1 0 194 600 A 266 266 0 1 0 726 600 Z M 696 600 A 236 236 0 1 1 224 600 A 236 236 0 1 1 696 600 Z"
+                fill-rule="evenodd" fill="url(#svRubble)" stroke="rgba(140,170,165,0.35)" stroke-width="1" stroke-dasharray="5 4"/>
+          <g id="svGwDots"></g>
+          <text class="sv-en" font-size="11" fill="#9fc5bc" letter-spacing="0.22em">
+            <textPath href="#svArcGw" startOffset="3%">GREAT WALL ─ グレートウォール（δ）</textPath>
+          </text>
+          <title>グレートウォール — 第6惑星ステファノーの残骸で築かれた環状の最終防衛ライン（セクターδ）</title>
+        </a>
+
+        <!-- サルガッソー宙域（υ）— 内縁と外縁を分かつ環。トリンキュロー回廊のみが貫通 -->
+        <a href="planets/sargasso.html">
+          <path d="M 840 324 A 470 470 0 1 0 882 394 L 819 425 A 400 400 0 1 1 784 365 Z"
+                fill="url(#svHazard)" stroke="rgba(255,150,50,0.45)" stroke-width="1.2" stroke-dasharray="7 5"/>
+          <text class="sv-en" font-size="13" fill="#ffab5e" letter-spacing="0.3em">
+            <textPath href="#svArcSarg" startOffset="12%">SARGASSO REGION — サルガッソー宙域 (υ)</textPath>
+          </text>
+          <title>サルガッソー宙域 — 宇宙の墓場（特A級危険宙域 / セクターυ・φ・χ）。内縁と外縁を分断する環</title>
+        </a>
+
+        <!-- トリンキュロー回廊（φ） -->
+        <a href="database/glossary.html#trinculo">
+          <line x1="803" y1="394" x2="863" y2="358" stroke="#35e0c8" stroke-width="2.6" stroke-dasharray="9 5" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="835" y="332" font-size="11" fill="#8ff0e0" text-anchor="middle">トリンキュロー回廊 φ</text>
+          <title>トリンキュロー回廊 — サルガッソー唯一の安全な通過点（セクターφ）。回廊の支配権＝物流の支配権</title>
+        </a>
+
+        <!-- セクターπ 封印宙域（意図的な空白） -->
+        <g>
+          <path d="M 175 208 A 485 485 0 0 0 63 322 L 1 279 A 560 560 0 0 1 131 147 Z"
+                fill="rgba(0,0,0,0.55)" stroke="rgba(220,235,230,0.14)" stroke-width="1" stroke-dasharray="3 6"/>
+          <text class="sv-en" x="92" y="225" font-size="12" fill="rgba(220,235,230,0.35)" text-anchor="middle">π</text>
+          <text class="sv-jp" x="92" y="243" font-size="8.5" fill="rgba(220,235,230,0.30)" text-anchor="middle">██ 座標秘匿 — NO DATA ██</text>
+        </g>
+        <path d="M 295 495 L 130 287" stroke="rgba(160,190,185,0.25)" stroke-width="1.4" stroke-dasharray="2 8" fill="none"/>
+        <text class="sv-jp" x="250" y="430" font-size="8.5" fill="rgba(160,190,185,0.35)" text-anchor="middle" transform="rotate(-48 250 430)">旧航路 — 記録抹消</text>
+
+        <!-- ══ 9大ワープ航路 ══ -->
+        <!-- ④ コア・ワールド環状線（GWとサルガッソーの間を一周・フォルトナ宙域を内側へ迂回） -->
+        <path d="M 779 685 A 330 330 0 1 0 649 870 Q 665 743 779 685" fill="none" stroke="#35e0c8" stroke-width="2.4" opacity="0.6" stroke-linecap="round"/>
+        <!-- 環状線と各航路の接続点（◆） -->
+        <g fill="rgba(4,17,14,0.9)" stroke="#35e0c8" stroke-width="1.3">
+          <rect x="542.5" y="908.5" width="7" height="7" transform="rotate(45 546 912)"><title>コア・ワールド環状線 接続点 — グレートウォール航路</title></rect>
+          <rect x="613.5" y="308.5" width="7" height="7" transform="rotate(45 617 312)"><title>コア・ワールド環状線 接続点 — プロスペロー・ライン</title></rect>
+          <rect x="723.5" y="718.5" width="7" height="7" transform="rotate(45 727 722)"><title>コア・ワールド環状線 接続点 — フォルトナ・ライン</title></rect>
+        </g>
+        <!-- ⑤ 幹線（β→トリンキュロー回廊 / 5航路重畳） -->
+        <path d="M 308 513 Q 520 430 803 394" fill="none" stroke="#35e0c8" stroke-width="3.4" opacity="0.75" stroke-linecap="round"/>
+        <g fill="none" stroke="#35e0c8" stroke-width="2.2" opacity="0.72" stroke-linecap="round">
+          <path d="M 428 453 Q 480 428 545 432"/>
+          <path d="M 555 425 Q 590 370 617 312"/>
+          <path d="M 247 622 Q 235 665 233 702"/>
+          <path d="M 233 706 Q 421 830 586 817"/>
+          <path d="M 586 817 Q 578 878 546 912"/>
+          <path d="M 308 513 Q 270 555 252 594"/>
+          <path d="M 308 513 Q 430 425 505 458"/>
+          <path d="M 505 458 Q 695 565 745 792"/>
+          <path d="M 863 358 Q 1050 595 928 826"/>
+          <path d="M 928 836 Q 1120 902 1298 894"/>
+          <path d="M 863 358 C 1080 470 1180 660 1078 800"/>
+          <path d="M 863 358 C 1100 460 1290 680 1350 915"/>
+          <path d="M 863 358 C 1010 470 1180 700 1266 818"/>
+          <path d="M 1290 820 Q 1390 758 1474 700"/>
+          <path d="M 1498 686 Q 1592 664 1668 646"/>
+        </g>
+        <circle cx="428" cy="453" r="3" fill="#35e0c8"/>
+        <!-- 寸断・封鎖区間 -->
+        <g fill="none" stroke="#ff5b5b" stroke-width="2" stroke-dasharray="6 5" opacity="0.8">
+          <path d="M 863 358 Q 1000 320 1140 348"/>
+        </g>
+        <!-- 非メジャー航路（州営・私設）・宙域内接続 -->
+        <path d="M 1094 676 Q 1140 748 1078 799" fill="none" stroke="rgba(136,204,255,0.55)" stroke-width="1.8" stroke-dasharray="2 4"/>
+        <path d="M 1227 392 L 1426 856" fill="none" stroke="rgba(255,193,77,0.55)" stroke-width="1.8" stroke-dasharray="5 5"/>
+        <g fill="none" stroke="rgba(53,224,200,0.45)" stroke-width="1.4" stroke-dasharray="3 4">
+          <path d="M 1032 702 L 1064 795"/>
+          <path d="M 1286 842 Q 1296 870 1303 884"/>
+          <path d="M 1324 894 Q 1372 902 1414 886"/>
+          <path d="M 1416 890 Q 1370 920 1324 900"/>
+        </g>
+        <!-- 航路名 -->
+        <g class="sv-jp" fill="#57c8b6" font-size="9">
+          <text x="628" y="390" text-anchor="middle">トリンキュロー幹線（5航路重畳）</text>
+          <text x="505" y="415" text-anchor="end">プロスペロー・ライン</text>
+          <text x="300" y="690" text-anchor="start">グレートウォール航路</text>
+          <text x="340" y="908" text-anchor="middle" transform="rotate(15 340 908)">コア・ワールド環状線</text>
+          <text x="678" y="572" text-anchor="middle">フォルトナ・ライン</text>
+          <text x="975" y="598" text-anchor="middle" transform="rotate(83 975 598)">OF工業航路</text>
+          <text x="1062" y="515" text-anchor="middle" transform="rotate(70 1062 515)">ソーラシア・ライン</text>
+          <text x="1150" y="570" text-anchor="middle" transform="rotate(62 1150 570)">ハクティバ通商航路</text>
+          <text x="1155" y="672" text-anchor="middle" transform="rotate(55 1155 672)">フロンティア・ライン</text>
+          <text x="1000" y="318" text-anchor="middle" fill="#ff8a8a" font-size="8.5">軍事封鎖線</text>
+          <text x="1352" y="706" text-anchor="middle" transform="rotate(67 1352 706)" fill="#d8b880" font-size="8">通商連合 私設航路</text>
+          <text x="1116" y="742" text-anchor="middle" transform="rotate(-72 1116 742)" fill="#88bbdd" font-size="7.5">州営航路</text>
+        </g>
+
+        <!-- ══ 恒星ライラット・プライム（α） ══ -->
+        <a href="planets/lylat_prime.html">
+          <circle cx="460" cy="600" r="120" fill="url(#svCore)"/>
+          <circle cx="460" cy="600" r="110" fill="none" stroke="rgba(150,210,240,0.35)" stroke-width="1" stroke-dasharray="4 6"/>
+          <circle cx="460" cy="600" r="22" fill="#e8f6ff" filter="url(#svGlow)"/>
+          <path d="M 460 558 V 546 M 460 642 V 654 M 418 600 H 406 M 502 600 H 514" stroke="rgba(220,240,255,0.7)" stroke-width="1.6"/>
+          <text class="sv-en" x="460" y="472" font-size="14" fill="#9fd4f0" text-anchor="middle" opacity="0.85">α</text>
+          <text class="sv-jp" x="460" y="652" font-size="13.5" fill="#dff2ff" text-anchor="middle">ライラット・プライム</text>
+          <text class="sv-en" x="460" y="667" font-size="8" fill="#7fb8d8" text-anchor="middle">LYLAT PRIME（α星）— B2型 青色大型恒星</text>
+          <title>ライラット・プライム — 星系の全天体が従う青き巨星（セクターα）。灼熱のため全航路が恒星圏を迂回する</title>
+        </a>
+        <!-- ブラグザ・ソーラークリスタル充填基地 -->
+        <g>
+          <rect x="518" y="546" width="6" height="6" fill="none" stroke="#7adfcf" stroke-width="1.3" transform="rotate(45 521 549)"/>
+          <text class="sv-jp" x="530" y="553" font-size="8" fill="#8fc5ba" text-anchor="start">ブラグザ・ソーラークリスタル充填基地</text>
+          <title>ブラグザ・ソーラークリスタル充填基地 — セクターα内の数少ない恒久施設</title>
+        </g>
+
+        <!-- ══ 内縁宙域（グレートウォールの内側） ══ -->
+        <!-- β コーネリア -->
+        <a href="database/sectors.html#beta"><circle cx="308" cy="513" r="55" fill="rgba(60,140,255,0.05)" stroke="rgba(90,170,255,0.5)" stroke-width="1.2"/><text class="sv-en" x="308" y="446" font-size="14" fill="#8fc0ff" text-anchor="middle">β</text><title>セクターβ — 第4惑星宙域（9大航路が直接・間接に結ばれる星系交通の心臓部）</title></a>
+        <a href="planets/corneria.html">
+          <circle cx="308" cy="513" r="19" fill="none" stroke="rgba(0,255,238,0.55)" stroke-width="1" stroke-dasharray="3 3"/>
+          <circle cx="308" cy="513" r="12" fill="#40d9a8" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="308" y="549" font-size="14" fill="#eafff8" text-anchor="middle">コーネリア ④</text>
+          <text class="sv-en" x="308" y="563" font-size="8.5" fill="#79cbb9" text-anchor="middle">CORNERIA — 共和国首都</text>
+          <text class="sv-en" x="308" y="576" font-size="7.5" fill="#57b3a4" text-anchor="middle">WARP HUB / 9大航路の心臓</text>
+          <title>コーネリア — 共和国首都惑星（第4惑星 / セクターβ）</title>
+        </a>
+        <!-- θ プロスペロー（グレートウォール内側） -->
+        <a href="database/sectors.html#theta"><circle cx="555" cy="425" r="40" fill="url(#svContest)" fill-opacity="0.28" stroke="rgba(102,136,255,0.5)" stroke-width="1.2"/><text class="sv-en" x="555" y="346" font-size="13" fill="#9db4ff" text-anchor="middle">θ</text><title>セクターθ — 第10惑星宙域（星系人口の半数が集中）</title></a>
+        <a href="planets/prospero.html">
+          <circle cx="555" cy="425" r="11" fill="#40d9a8" filter="url(#svGlow)"/>
+          <path d="M 555 414 A 11 11 0 0 1 555 436" fill="#ff5b5b"/>
+          <text class="sv-jp" x="555" y="361" font-size="12.5" fill="#eafff8" text-anchor="middle">プロスペロー ⑩</text>
+          <text class="sv-en" x="555" y="374" font-size="8" fill="#ff8a8a" text-anchor="middle">PROSPERO — 市街地係争中</text>
+          <title>プロスペロー — 「ライラットの心臓」市街地係争中（第10惑星 / セクターθ）</title>
+        </a>
+        <!-- ζ スターブレード -->
+        <a href="planets/starblade.html">
+          <circle cx="245" cy="608" r="30" fill="none" stroke="rgba(64,217,168,0.35)" stroke-width="1" stroke-dasharray="4 3"/>
+          <rect x="238" y="601" width="14" height="14" fill="none" stroke="#40d9a8" stroke-width="1.8" transform="rotate(45 245 608)" filter="url(#svGlow)"/>
+          <text class="sv-en" x="215" y="577" font-size="12" fill="#7adfcf" text-anchor="middle">ζ</text>
+          <text class="sv-jp" x="245" y="652" font-size="10.5" fill="#c8f2e8" text-anchor="middle">艦隊スターブレード</text>
+          <title>宇宙艦隊スターブレード駐屯宙域 — CDF第1宇宙艦隊（セクターζ / 再編中）</title>
+        </a>
+        <!-- γ カタリナ（グレートウォール第1宙域 — 壁の上の抜け道） -->
+        <a href="database/sectors.html#gamma"><circle cx="233" cy="706" r="40" fill="rgba(64,217,168,0.04)" stroke="rgba(64,217,168,0.4)" stroke-width="1"/><text class="sv-en" x="192" y="668" font-size="13" fill="#7adfcf" text-anchor="middle">γ</text><title>セクターγ — 第7惑星宙域 / グレートウォール第1宙域（アステロイドの安全な抜け道）</title></a>
+        <a href="planets/katina.html">
+          <circle cx="233" cy="706" r="9.5" fill="#40d9a8" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="233" y="760" font-size="12.5" fill="#eafff8" text-anchor="middle">カタリナ ⑦</text>
+          <text class="sv-en" x="233" y="773" font-size="8" fill="#79cbb9" text-anchor="middle">KATINA</text>
+          <title>カタリナ — グレートウォールの要（第7惑星 / セクターγ）</title>
+        </a>
+        <!-- ε AREA3 -->
+        <a href="planets/area3.html">
+          <circle cx="586" cy="817" r="28" fill="none" stroke="rgba(64,217,168,0.35)" stroke-width="1" stroke-dasharray="4 3"/>
+          <rect x="578" y="809" width="16" height="16" fill="none" stroke="#40d9a8" stroke-width="1.8" transform="rotate(45 586 817)" filter="url(#svGlow)"/>
+          <text class="sv-en" x="622" y="792" font-size="12" fill="#7adfcf" text-anchor="middle">ε</text>
+          <text class="sv-jp" x="586" y="864" font-size="11" fill="#c8f2e8" text-anchor="middle">AREA3 環状ステーション</text>
+          <title>グレートウォール AREA3 — 全隕石の軌道を管理する「壁の頭脳」（セクターε）</title>
+        </a>
+
+        <!-- ══ 中間宙域（グレートウォール〜サルガッソー） ══ -->
+        <!-- λ フォルトナ -->
+        <a href="database/sectors.html#lambda"><circle cx="755" cy="806" r="38" fill="rgba(159,179,176,0.04)" stroke="rgba(140,200,150,0.4)" stroke-width="1"/><text class="sv-en" x="755" y="754" font-size="13" fill="#a8d8b0" text-anchor="middle">λ</text><title>セクターλ — 第5惑星宙域（スペースオベリスク点在）</title></a>
+        <a href="planets/fortuna.html">
+          <circle cx="755" cy="806" r="10" fill="#9fb3b0" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="755" y="857" font-size="12" fill="#eafff8" text-anchor="middle">フォルトナ ⑤</text>
+          <text class="sv-en" x="755" y="870" font-size="8" fill="#8fb8a8" text-anchor="middle">FORTUNA — 中立・保護区</text>
+          <title>フォルトナ — 原始生態系の密林惑星（第5惑星 / セクターλ / 現地名サウリア）</title>
+        </a>
+        <!-- ι オベロンⅡ -->
+        <a href="planets/oberon.html">
+          <circle cx="380" cy="301" r="26" fill="none" stroke="rgba(159,179,176,0.35)" stroke-width="1" stroke-dasharray="3 4"/>
+          <rect x="375" y="296" width="10" height="10" fill="none" stroke="#9fb3b0" stroke-width="1.4" stroke-dasharray="2 2" transform="rotate(45 380 301)"/>
+          <text class="sv-jp" x="380" y="345" font-size="10.5" fill="#a8c2bd" text-anchor="middle">オベロンⅡ（廃棄） ι</text>
+          <title>オベロンⅡ — 廃棄スペースコロニー（セクターι / 立入禁止）</title>
+        </a>
+
+        <!-- ══ サルガッソー環内 ══ -->
+        <!-- χ タイタニア -->
+        <a href="planets/titania.html">
+          <circle cx="869" cy="467" r="34" fill="none" stroke="rgba(255,150,50,0.5)" stroke-width="1" stroke-dasharray="4 3"/>
+          <circle cx="869" cy="467" r="10" fill="#d8a05a" filter="url(#svGlow)"/>
+          <text class="sv-en" x="837" y="425" font-size="12" fill="#ffab5e" text-anchor="middle">χ</text>
+          <text class="sv-jp" x="869" y="519" font-size="11.5" fill="#ffd9b0" text-anchor="middle">タイタニア ②</text>
+          <text class="sv-en" x="869" y="532" font-size="8" fill="#d0a070" text-anchor="middle">TITANIA — サルガッソーの核</text>
+          <title>タイタニア — 「禁断の惑星」サルガッソーの核（第2惑星 / セクターχ / 立入厳禁）</title>
+        </a>
+
+        <!-- ══ 外縁宙域（サルガッソーの外側） ══ -->
+        <!-- ς マクベス（タイタニアと公転同期 — サルガッソーの背後） -->
+        <a href="database/sectors.html#sigma"><circle cx="923" cy="836" r="30" fill="rgba(255,91,91,0.05)" stroke="rgba(255,110,110,0.45)" stroke-width="1"/><text class="sv-en" x="953" y="813" font-size="13" fill="#ff9d9d" text-anchor="middle">ς</text><title>セクターς — 第3惑星宙域。タイタニアと公転同期し常にサルガッソーの背後に位置する（帝国占領下）</title></a>
+        <a href="planets/macbeth.html">
+          <circle cx="923" cy="836" r="10" fill="#ff5b5b" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="923" y="788" font-size="12" fill="#ffe2e2" text-anchor="middle">マクベス ③</text>
+          <text class="sv-en" x="923" y="801" font-size="8" fill="#e09090" text-anchor="middle">MACBETH — 帝国占領下</text>
+          <title>マクベス — 「ライラットの鍛冶場」帝国軍占領下（第3惑星 / セクターς）。ソーラ近日点でソーラ圏に接近</title>
+        </a>
+        <!-- クロウディアス準惑星帯（ς-2〜6 — マクベスの後方に付いて回る隕鉄群「溶鉱炉宙域」） -->
+        <a href="database/glossary.html#claudius-belt">
+          <path d="M 868 866 A 58 58 0 0 0 978 866" fill="none" stroke="rgba(255,170,110,0.4)" stroke-width="1" stroke-dasharray="3 4"/>
+          <circle cx="881.7" cy="851.0" r="1.2" fill="#e0a070" opacity="0.75"/>
+          <circle cx="879.1" cy="857.8" r="2.5" fill="#e0a070" opacity="0.75"/>
+          <circle cx="877.6" cy="865.3" r="2.1" fill="#e0a070" opacity="0.75"/>
+          <circle cx="888.1" cy="864.4" r="1.6" fill="#e0a070" opacity="0.75"/>
+          <circle cx="888.0" cy="871.7" r="1.2" fill="#e0a070" opacity="0.75"/>
+          <circle cx="889.1" cy="879.3" r="2.5" fill="#e0a070" opacity="0.75"/>
+          <circle cx="898.9" cy="875.2" r="2.1" fill="#e0a070" opacity="0.75"/>
+          <circle cx="901.3" cy="882.1" r="1.6" fill="#e0a070" opacity="0.75"/>
+          <circle cx="905.0" cy="889.0" r="1.2" fill="#e0a070" opacity="0.75"/>
+          <circle cx="912.9" cy="881.9" r="2.5" fill="#e0a070" opacity="0.75"/>
+          <circle cx="917.6" cy="887.7" r="2.1" fill="#e0a070" opacity="0.75"/>
+          <circle cx="923.4" cy="893.0" r="1.6" fill="#e0a070" opacity="0.75"/>
+          <circle cx="928.7" cy="883.7" r="1.2" fill="#e0a070" opacity="0.75"/>
+          <circle cx="935.1" cy="887.6" r="2.5" fill="#e0a070" opacity="0.75"/>
+          <circle cx="937.8" cy="877.5" r="2.1" fill="#e0a070" opacity="0.75"/>
+          <circle cx="944.5" cy="880.0" r="1.6" fill="#e0a070" opacity="0.75"/>
+          <circle cx="951.9" cy="881.6" r="1.2" fill="#e0a070" opacity="0.75"/>
+          <circle cx="951.2" cy="871.1" r="2.5" fill="#e0a070" opacity="0.75"/>
+          <circle cx="958.5" cy="871.2" r="2.1" fill="#e0a070" opacity="0.75"/>
+          <circle cx="966.1" cy="870.2" r="1.6" fill="#e0a070" opacity="0.75"/>
+          <circle cx="962.0" cy="860.4" r="1.2" fill="#e0a070" opacity="0.75"/>
+          <circle cx="969.0" cy="858.0" r="2.5" fill="#e0a070" opacity="0.75"/>
+          <text class="sv-jp" x="923" y="905" font-size="8.5" fill="#f0c090" text-anchor="middle">クロウディアス準惑星帯</text>
+          <text class="sv-en" x="923" y="916" font-size="7" fill="#c89070" text-anchor="middle">CLAUDIUS BELT — 溶鉱炉宙域</text>
+          <title>クロウディアス準惑星帯 — マクベスの後方に付いて回る隕鉄と小型準惑星の群れ（セクターς-2〜6 / 帝国占領下）。赤熱するプラズマ雲の中を鉄塊が飛び交う「溶鉱炉宙域」</title>
+        </a>
+        <!-- タイタニア／マクベス 45度同期軌道の注記 -->
+        <g>
+          <path d="M 912 453 A 475 475 0 0 1 883 816" fill="none" stroke="rgba(255,150,150,0.28)" stroke-width="1" stroke-dasharray="2 6"/>
+          <text class="sv-jp" x="950" y="646" font-size="7.5" fill="rgba(255,170,170,0.55)" text-anchor="start">同期軌道 45°</text>
+        </g>
+        <!-- ο ソーラ恒星宙域 -->
+        <a href="database/sectors.html#omicron"><circle cx="1066" cy="729" r="95" fill="rgba(255,170,60,0.03)" stroke="rgba(255,170,60,0.45)" stroke-width="1.2" stroke-dasharray="6 5"/><text class="sv-en" x="1138" y="789" font-size="13" fill="#ffc78a" text-anchor="middle">ο</text><title>セクターο — ソーラ恒星宙域（μ〜ξの全宙域を包括）</title></a>
+        <a href="planets/solar.html">
+          <circle cx="1066" cy="729" r="34" fill="url(#svSolar)"/>
+          <circle cx="1066" cy="729" r="11" fill="#ffb054" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="1036" y="765" font-size="10.5" fill="#ffe0b8" text-anchor="end">ソーラ（β星）</text>
+          <title>ソーラ — 「第二の太陽」M3型 橙色小型恒星（セクターο）</title>
+        </a>
+        <a href="planets/fichina.html">
+          <circle cx="1091" cy="655" r="20" fill="rgba(136,204,255,0.05)" stroke="rgba(136,204,255,0.4)" stroke-width="1"/>
+          <circle cx="1091" cy="655" r="7" fill="#40d9a8" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="1094" y="627" font-size="10.5" fill="#d8ecff" text-anchor="middle">フィチナ ⑧ <tspan class="sv-en" font-size="8" fill="#88b8d8">ξ</tspan></text>
+          <title>フィチナ — 極寒の氷結惑星（第8惑星 / セクターξ）。メジャー航路未接続、州営航路のみが外部との接続手段</title>
+        </a>
+        <a href="planets/zoness.html">
+          <circle cx="1011" cy="685" r="18" fill="rgba(255,91,91,0.06)" stroke="rgba(255,110,110,0.45)" stroke-width="1"/>
+          <circle cx="1011" cy="685" r="7" fill="#ff5b5b" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="986" y="717" font-size="10.5" fill="#ffe2e2" text-anchor="end">ゾネス ⑬ <tspan class="sv-en" font-size="8" fill="#e09090">ν</tspan></text>
+          <title>ゾネス — 帝国占領下・汚染警報（第13惑星 / セクターν）。マクベス工業航路の近傍</title>
+        </a>
+        <a href="planets/aquas.html">
+          <circle cx="1071" cy="807" r="20" fill="rgba(64,180,255,0.05)" stroke="rgba(100,190,255,0.4)" stroke-width="1"/>
+          <circle cx="1071" cy="807" r="7" fill="#40d9a8" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="1071" y="845" font-size="10.5" fill="#d8f4ff" text-anchor="middle">アクアス ⑫ <tspan class="sv-en" font-size="8" fill="#88c8d8">μ</tspan></text>
+          <title>アクアス — 全海洋惑星・先住種族保護区（第12惑星 / セクターμ）。ゾネスと直接隣接</title>
+        </a>
+
+        <!-- ψ+Ω ベノム -->
+        <a href="database/sectors.html#psi"><circle cx="1221" cy="353" r="70" fill="rgba(255,91,91,0.04)" stroke="rgba(255,91,91,0.55)" stroke-width="1.4" stroke-dasharray="8 5"/><text class="sv-en" x="1156" y="295" font-size="13" fill="#ff9d9d" text-anchor="middle">ψ</text><title>セクターψ — ベノム帝国防衛艦隊駐屯宙域（スペースアマダ / 最終防衛ライン）</title></a>
+        <a href="planets/area6.html">
+          <rect x="1145" y="347" width="12" height="12" fill="none" stroke="#ff5b5b" stroke-width="1.8" transform="rotate(45 1151 353)" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="1138" y="381" font-size="9.5" fill="#ffb0b0" text-anchor="middle">AREA6</text>
+          <title>AREA6 — ベノム最終防衛ライン（接近＝交戦）</title>
+        </a>
+        <g>
+          <circle cx="1221" cy="283" r="5" fill="none" stroke="#ff5b5b" stroke-width="1.4"/>
+          <circle cx="1221" cy="283" r="1.8" fill="#ff5b5b"/>
+          <text class="sv-jp" x="1242" y="279" font-size="8.5" fill="#ffb0b0" text-anchor="start">ボルス</text>
+        </g>
+        <a href="planets/venom.html">
+          <circle cx="1221" cy="353" r="34" fill="rgba(255,91,91,0.05)" stroke="rgba(255,110,110,0.5)" stroke-width="1"/>
+          <circle cx="1221" cy="353" r="11" fill="#ff5b5b" filter="url(#svGlow)"/>
+          <circle cx="1205" cy="341" r="3.5" fill="#e0b0a0"/>
+          <circle cx="1235" cy="367" r="3" fill="#c0a8a0"/>
+          <text class="sv-en" x="1244" y="327" font-size="11" fill="#ff9d9d" text-anchor="start">Ω</text>
+          <text class="sv-jp" x="1192" y="333" font-size="7" fill="#e8c0b8" text-anchor="middle">ゴモラ</text>
+          <text class="sv-jp" x="1248" y="379" font-size="7" fill="#d0b8b0" text-anchor="middle">ソドム</text>
+          <text class="sv-jp" x="1221" y="443" font-size="13.5" fill="#ffe2e2" text-anchor="middle">ベノム ①</text>
+          <text class="sv-en" x="1221" y="457" font-size="8.5" fill="#e09090" text-anchor="middle">VENOM — 帝国首星</text>
+          <title>ベノム — 帝国の玉座「死の星」（第1惑星 / セクターΩ）</title>
+        </a>
+
+        <!-- ϻ ハクティバ／パラニド恒星宙域（ベノムよりさらに遠く — 戦争の傍観者） -->
+        <a href="database/sectors.html#san"><circle cx="1362" cy="928" r="100" fill="rgba(255,210,130,0.03)" stroke="rgba(230,190,255,0.4)" stroke-width="1.2" stroke-dasharray="6 5"/><text class="sv-en" x="1258" y="966" font-size="13" fill="#d8b8f0" text-anchor="middle">ϻ</text><title>セクターϻ — ハクティバ・パラニド恒星宙域（双子の太陽 / 異常力場）。二大勢力の争いを傍観する独立星系</title></a>
+        <a href="planets/hactiva.html">
+          <circle cx="1350" cy="922" r="8" fill="#fff0c8" filter="url(#svGlow)"/>
+          <circle cx="1374" cy="934" r="8" fill="#ffe8b0" filter="url(#svGlow)"/>
+          <line x1="1354" y1="924" x2="1370" y2="932" stroke="rgba(255,240,200,0.5)" stroke-width="1" stroke-dasharray="2 2"/>
+          <text class="sv-jp" x="1362" y="1030" font-size="11" fill="#f0e0ff" text-anchor="middle">ハクティバ／パラニド（γ・δ星）</text>
+          <title>ハクティバ／パラニド — 互いに回り合う「双子の太陽」（セクターϻ）</title>
+        </a>
+        <a href="planets/eladard.html">
+          <circle cx="1310" cy="896" r="24" fill="rgba(255,193,77,0.05)" stroke="rgba(255,193,77,0.4)" stroke-width="1"/>
+          <circle cx="1310" cy="896" r="8" fill="#ffc14d" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="1283" y="872" font-size="10.5" fill="#ffe8c0" text-anchor="end">エラダード ⑪ <tspan class="sv-en" font-size="8" fill="#d8b880">ϝ</tspan></text>
+          <title>エラダード — ハクティバ通商連合本拠地・星系最大の武器工場（第11惑星 / セクターϝ / 中立地帯）</title>
+        </a>
+        <a href="planets/kew.html">
+          <circle cx="1430" cy="880" r="24" fill="rgba(255,193,77,0.05)" stroke="rgba(255,193,77,0.4)" stroke-width="1"/>
+          <circle cx="1430" cy="880" r="8" fill="#ffc14d" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="1422" y="850" font-size="10.5" fill="#ffe8c0" text-anchor="end">キュー ⑨ <tspan class="sv-en" font-size="8" fill="#d8b880">Ϛ</tspan></text>
+          <title>キュー — 星系最大の歓楽都市惑星・通商連合首都アルピニア（第9惑星 / セクターϚ）。ベノムと私設航路で接続</title>
+        </a>
+        <!-- Ͱ パペトゥーン -->
+        <a href="planets/papetoon.html">
+          <circle cx="1278" cy="830" r="24" fill="rgba(64,217,168,0.04)" stroke="rgba(64,217,168,0.4)" stroke-width="1"/>
+          <circle cx="1278" cy="830" r="8" fill="#40d9a8" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="1271" y="793" font-size="10.5" fill="#d8fff2" text-anchor="end">パペトゥーン ⑭ <tspan class="sv-en" font-size="8" fill="#79cbb9">Ͱ</tspan></text>
+          <title>パペトゥーン — 辺境開拓惑星・英雄を輩出する星（第14惑星 / セクターͰ / 共和国実効統治）</title>
+        </a>
+
+        <!-- ══ 最外縁・最辺境 ══ -->
+        <!-- メテオベース（フロンティア・ライン中継基地） -->
+        <g>
+          <rect x="1476" y="682" width="10" height="10" fill="none" stroke="#40d9a8" stroke-width="1.6" transform="rotate(45 1481 687)" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="1481" y="716" font-size="8.5" fill="#a8d8cc" text-anchor="middle">メテオベース（中継基地）</text>
+          <title>メテオベース — フロンティア・ラインの中継基地。グリッピア経済の生命線</title>
+        </g>
+        <!-- ϫ セティボス -->
+        <a href="planets/setebos.html">
+          <circle cx="1457" cy="817" r="30" fill="rgba(255,166,120,0.04)" stroke="rgba(255,166,120,0.4)" stroke-width="1" stroke-dasharray="4 4"/>
+          <ellipse cx="1457" cy="817" rx="20" ry="6" fill="none" stroke="rgba(255,208,174,0.5)" stroke-width="1" transform="rotate(-18 1457 817)"/>
+          <circle cx="1457" cy="817" r="10" fill="#ffb088" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="1481" y="775" font-size="10.5" fill="#ffe0cc" text-anchor="end">セティボス ⑮ <tspan class="sv-en" font-size="8" fill="#d8a888">ϫ</tspan></text>
+          <title>セティボス — 星系唯一の巨大ガス惑星（第15惑星 / セクターϫ）。旧・独立星系連合本拠地、エンバーガス採掘空中都市群</title>
+        </a>
+        <!-- Ϟ グリッピア -->
+        <a href="planets/grippia.html">
+          <circle cx="1689" cy="643" r="26" fill="rgba(159,179,176,0.04)" stroke="rgba(159,179,176,0.4)" stroke-width="1"/>
+          <circle cx="1689" cy="643" r="8.5" fill="#9fb3b0" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="1689" y="692" font-size="11" fill="#e0ecea" text-anchor="middle">グリッピア ⑯ <tspan class="sv-en" font-size="8" fill="#98aca8">Ϟ</tspan></text>
+          <text class="sv-en" x="1689" y="705" font-size="7.5" fill="#98aca8" text-anchor="middle">GRIPPIA — 最外縁天体</text>
+          <title>グリッピア — 一企業が丸ごと保有する極寒の鉱山惑星（第16惑星 / セクターϞ）。フロンティア・ラインが経済の命綱</title>
+        </a>
+        <!-- ϸ ドグマ・セントラル -->
+        <a href="planets/dogma.html">
+          <circle cx="1610" cy="105" r="95" fill="url(#svDogma)"/>
+          <circle cx="1610" cy="105" r="48" fill="none" stroke="rgba(255,85,72,0.4)" stroke-width="1" stroke-dasharray="5 5"/>
+          <circle cx="1610" cy="105" r="9" fill="#c02828" filter="url(#svGlow)"/>
+          <text class="sv-jp" x="1610" y="184" font-size="11.5" fill="#ffb8b0" text-anchor="middle">ドグマ・セントラル（ε星） <tspan class="sv-en" font-size="8.5" fill="#d08880">ϸ</tspan></text>
+          <title>ドグマ・セントラル — 「深淵で開いた目」Mx7型 深紅小型恒星（セクターϸ / 観測不能）</title>
+        </a>
+        <a href="database/sectors.html#yot">
+          <circle cx="1770" cy="215" r="16" fill="none" stroke="rgba(200,160,160,0.4)" stroke-width="1" stroke-dasharray="2 4"/>
+          <path d="M 1650 140 Q 1712 170 1756 204" stroke="rgba(200,160,160,0.3)" stroke-width="1" stroke-dasharray="2 5" fill="none"/>
+          <text class="sv-en" x="1770" y="220" font-size="11" fill="#d8a8a8" text-anchor="middle">j</text>
+          <text class="sv-jp" x="1770" y="251" font-size="8.5" fill="#c09898" text-anchor="middle">コンタクト信号源</text>
+          <title>セクターj — 正体不明のコンタクト信号の発信源（可視光観測不能）</title>
+        </a>
+
+        <!-- ══ 9大航路の結節点・沿線施設 ══ -->
+        <!-- κ ペルディタ宇宙センター（幹線×環状線の6航路重複JCT） -->
+        <a href="database/sectors.html#kappa">
+          <ellipse cx="728" cy="404" rx="14" ry="9" fill="none" stroke="rgba(53,224,200,0.5)" stroke-width="1" stroke-dasharray="2 2" transform="rotate(-25 728 404)"/>
+          <ellipse cx="728" cy="404" rx="8" ry="14" fill="none" stroke="rgba(53,224,200,0.35)" stroke-width="1" stroke-dasharray="2 2" transform="rotate(20 728 404)"/>
+          <rect x="723" y="399" width="10" height="10" fill="rgba(4,17,14,0.9)" stroke="#35e0c8" stroke-width="1.6" transform="rotate(45 728 404)" filter="url(#svGlow)"/>
+          <text class="sv-en" x="710" y="390" font-size="10" fill="#7adfcf" text-anchor="end">κ</text>
+          <text class="sv-jp" x="714" y="429" font-size="8.5" fill="#a8e8dc" text-anchor="end">ペルディタ宇宙センター</text>
+          <title>ペルディタ宇宙センター（セクターκ） — 6航路が重複するライラット系最大の宇宙港。コア・ワールド環状線とトリンキュロー幹線の結節点</title>
+        </a>
+        <!-- グリーン・ビット（フォルトナ・ライン沿いの宇宙植物工場群） -->
+        <a href="database/locations.html#green-bit">
+          <g fill="rgba(120,220,140,0.7)">
+            <circle cx="712" cy="748" r="2.2"/><circle cx="722" cy="754" r="2.2"/><circle cx="716" cy="762" r="2.2"/><circle cx="726" cy="744" r="1.6"/>
+          </g>
+          <text class="sv-jp" x="704" y="738" font-size="8" fill="#a8dcb0" text-anchor="end">グリーン・ビット</text>
+          <title>宇宙植物工場群「グリーン・ビット」 — フォルトナ・ライン沿いの軌道植物工場群。星系の食糧生産を支える緑の環</title>
+        </a>
+        <!-- オービタル・ゲート（フロンティア・ラインの最果て・ドグマ延長頓挫の遺構） -->
+        <a href="database/locations.html#orbital-gate">
+          <path d="M 1689 615 L 1678 500" stroke="rgba(159,179,176,0.35)" stroke-width="1.2" stroke-dasharray="2 6" fill="none"/>
+          <rect x="1672" y="469" width="11" height="11" fill="none" stroke="rgba(200,220,215,0.6)" stroke-width="1.4" transform="rotate(45 1677.5 474.5)"/>
+          <text class="sv-jp" x="1677" y="455" font-size="8" fill="#b8ccc8" text-anchor="middle">オービタル・ゲート（無人）</text>
+          <title>空間跳躍ビーコン基地「オービタル・ゲート」 — ドグマ延長計画の頓挫で残された9大航路の最果て。現在は無人</title>
+        </a>
+        <!-- 文明開始点観測所（ブレーメンズ・ラインの終点） -->
+        <a href="database/glossary.html#route-bremens">
+          <circle cx="1409" cy="173" r="7" fill="none" stroke="rgba(200,220,235,0.45)" stroke-width="1" stroke-dasharray="2 2"/>
+          <text class="sv-jp" x="1422" y="170" font-size="7.5" fill="#c0d4e0" text-anchor="start">文明開始点観測所</text>
+          <title>「ライラット文明の開始点」観測所 — ブレーメンズ・ラインの終点。始祖の開拓団が青い灯台を初視認した点を見守る史跡観測所</title>
+        </a>
+
+        <!-- ══ 追加セクター群 ══ -->
+        <!-- ρ ロー（サルガッソー第4宙域）— 彗星回廊の南・トリンキュロー回廊出口の北西（超兵器のアクアス進路への先回り地点・π接続・τ近傍・帝国側からのアクセス性を考慮） -->
+        <a href="database/sectors.html#rho">
+          <circle cx="740" cy="195" r="17" fill="rgba(160,170,190,0.04)" stroke="rgba(175,185,205,0.38)" stroke-width="1" stroke-dasharray="3 4"/>
+          <g fill="rgba(185,195,210,0.45)">
+            <circle cx="732" cy="189" r="1.5"/><circle cx="747" cy="201" r="1.2"/><circle cx="736" cy="203" r="1.7"/><circle cx="749" cy="187" r="1.1"/>
+          </g>
+          <text class="sv-en" x="762" y="189" font-size="11" fill="#b8c2d4" text-anchor="start">ρ</text>
+          <text class="sv-jp" x="740" y="232" font-size="8" fill="#a8b2c4" text-anchor="middle">サルガッソー第4宙域</text>
+          <title>セクターρ ロー — 別名「サルガッソー第4宙域」。旧大戦の艦隊残骸が路肩に漂う地味な宙域。封印宙域πの哨戒起点であり、8年のうち1年だけトリンキュロー回廊の出口と接続する</title>
+        </a>
+        <!-- τ タウ（廃墟宙域） -->
+        <a href="database/sectors.html#tau">
+          <circle cx="952" cy="272" r="18" fill="rgba(200,120,120,0.04)" stroke="rgba(200,140,140,0.4)" stroke-width="1" stroke-dasharray="3 4"/>
+          <g fill="rgba(210,170,160,0.5)">
+            <circle cx="944" cy="266" r="1.4"/><circle cx="958" cy="278" r="1.8"/><circle cx="948" cy="280" r="1.1"/><circle cx="961" cy="264" r="1.3"/>
+          </g>
+          <path d="M 952 272 m -6 0 a 6 6 0 1 1 6 6" fill="none" stroke="rgba(170,210,230,0.5)" stroke-width="1" stroke-dasharray="1 2"/>
+          <text class="sv-en" x="975" y="266" font-size="11" fill="#d8a8a8" text-anchor="start">τ</text>
+          <text class="sv-jp" x="952" y="242" font-size="8" fill="#c9a5a0" text-anchor="middle">廃墟宙域 — 空間不安定</text>
+          <title>セクターτ タウ — 廃墟宙域。帝国の秘密兵器研究所跡と推測される残骸群。空間が不安定で「正体不明の渦」の目撃報告多数（ワープホール形成の可能性）</title>
+        </a>
+        <!-- ꟶ ダシテータス（ムィンシャンクル管理宙域） -->
+        <a href="database/sectors.html#dasitetas">
+          <circle cx="1519" cy="858" r="13" fill="rgba(255,91,91,0.05)" stroke="rgba(255,120,120,0.5)" stroke-width="1" stroke-dasharray="3 3"/>
+          <circle cx="1519" cy="858" r="3.5" fill="#c86060"/>
+          <text class="sv-en" x="1537" y="854" font-size="10" fill="#ff9d9d" text-anchor="start">ꟶ</text>
+          <text class="sv-jp" x="1501" y="880" font-size="7.5" fill="#e0a8a8" text-anchor="end">ムィンシャンクル刑務所</text>
+          <title>セクターꟶ ダシテータス — セティボスⅤ・ムィンシャンクル刑務所の専用管理宙域（無許可進入は迎撃対象）</title>
+        </a>
+        <!-- ϩ ホーリー（彗星回廊） -->
+        <a href="database/sectors.html#hori">
+          <path d="M 640 120 Q 860 215 1060 150" fill="none" stroke="rgba(160,200,255,0.35)" stroke-width="1.2" stroke-dasharray="6 6"/>
+          <circle cx="979" cy="170" r="4" fill="#cfe2ff" filter="url(#svGlow)"/>
+          <path d="M 979 170 L 945 180 M 979 170 L 950 192" stroke="rgba(200,225,255,0.45)" stroke-width="1"/>
+          <text class="sv-jp" x="856" y="240" font-size="9" fill="#a8c4e8" text-anchor="middle">彗星回廊 <tspan class="sv-en" font-size="8">ϩ</tspan></text>
+          <title>セクターϩ ホーリー — 周期彗星群の通り道。『どんな願いも叶える大彗星』伝承の原型「ホーリーの箒星」がまもなく回帰する</title>
+        </a>
+        <!-- ϧ ヘイ（入航の道） -->
+        <a href="database/sectors.html#khei">
+          <line x1="1409" y1="173" x2="1282" y2="301" stroke="rgba(200,220,235,0.35)" stroke-width="1.4" stroke-dasharray="2 7"/>
+          <rect x="1404" y="168" width="9" height="9" fill="none" stroke="rgba(220,235,245,0.55)" stroke-width="1.2" transform="rotate(45 1408.5 172.5)"/>
+          <text class="sv-jp" x="1370" y="221" font-size="9" fill="#c0d4e0" text-anchor="start">入航の道 <tspan class="sv-en" font-size="8">ϧ</tspan></text>
+          <title>セクターϧ ヘイ — 星系暦元年、入植船団が「青い灯台」を初視認した史跡回廊。巡礼「灯還り」は開戦により史上初の中止</title>
+        </a>
+        <!-- ⳡ ヌィー（宇宙生物回遊路） -->
+        <a href="database/sectors.html#nyi">
+          <path d="M 805 795 Q 888 788 968 762" fill="none" stroke="rgba(120,220,170,0.5)" stroke-width="1.6" stroke-dasharray="1 6" stroke-linecap="round"/>
+          <path d="M 812 810 Q 894 802 974 776" fill="none" stroke="rgba(120,220,170,0.3)" stroke-width="1.2" stroke-dasharray="1 6" stroke-linecap="round"/>
+          <text class="sv-jp" x="848" y="833" font-size="8.5" fill="#9adcb8" text-anchor="start">回遊路 <tspan class="sv-en" font-size="8">ⳡ</tspan></text>
+          <title>セクターⳡ ヌィー — 宇宙生物の回遊路（フォルトナ⇔ソーラ圏）。回遊期の燐光は「星系で最も美しい渋滞」</title>
+        </a>
+        <!-- ⳣ ヴァゥ（氷晶帯フロスト・リーフ） -->
+        <a href="database/sectors.html#vau">
+          <g fill="rgba(190,230,245,0.6)">
+            <circle cx="1563" cy="663" r="2.2"/><circle cx="1577" cy="655" r="1.6"/><circle cx="1591" cy="665" r="2.6"/><circle cx="1607" cy="656" r="1.8"/><circle cx="1621" cy="648" r="2.2"/>
+          </g>
+          <text class="sv-jp" x="1593" y="685" font-size="8.5" fill="#bfe0ee" text-anchor="middle">氷晶帯 <tspan class="sv-en" font-size="8">ⳣ</tspan></text>
+          <title>セクターⳣ ヴァゥ — 氷晶帯「フロスト・リーフ」。フロンティアの水と推進剤を賄う「浮かぶ水源」</title>
+        </a>
+        <!-- ϊ ヤー（静電の海）— 通商連合私設航路（ベノム—キュー）沿い -->
+        <a href="database/sectors.html#ya">
+          <ellipse cx="1305" cy="618" rx="30" ry="20" fill="rgba(255,220,120,0.04)" stroke="rgba(210,190,140,0.45)" stroke-width="1" stroke-dasharray="2 3"/>
+          <path d="M 1293 612 l 7 8 l -5 2 l 8 8" fill="none" stroke="rgba(255,225,150,0.6)" stroke-width="1.2"/>
+          <text class="sv-jp" x="1309" y="662" font-size="8.5" fill="#d8c8a0" text-anchor="middle">静電の海 <tspan class="sv-en" font-size="8">ϊ</tspan></text>
+          <title>セクターϊ ヤー — 恒常的な静電嵐のラジオデッドゾーン。「ヤーに入ったら口笛も吹くな」。通商連合の私設航路が縁をかすめる</title>
+        </a>
+        <!-- ’ ダシア（星系最小セクター） -->
+        <a href="database/sectors.html#dasia">
+          <circle cx="1362" cy="928" r="6" fill="none" stroke="rgba(230,190,255,0.7)" stroke-width="1" stroke-dasharray="2 2"/>
+          <text class="sv-jp" x="1376" y="918" font-size="7.5" fill="#d8c0f0" text-anchor="start">ダシア <tspan class="sv-en" font-size="8">’</tspan></text>
+          <title>セクター’ ダシア — 星系最小セクター。二恒星間の異常力場中心点を見張る観測ステーション「ピリオド」</title>
+        </a>
+
+        <!-- ══ タイトル ══ -->
+        <g>
+          <text x="40" y="76" font-family="'Orbitron',sans-serif" font-size="30" font-weight="700" fill="#ffffff" letter-spacing="0.12em">LYLAT SYSTEM ─ ORBITAL CHART</text>
+          <text class="sv-jp" x="40" y="103" font-size="13.5" fill="#7adfcf" letter-spacing="0.2em">ライラット星系 俯瞰星図 ── ライラット・プライム中心 同心円投影</text>
+          <text class="sv-en" x="40" y="126" font-size="10" fill="#57b3a4">[ L.C.3997 / 第2次ライラットウォーズ戦況 ── CDF参謀本部 戦術資料 ]</text>
+          <line x1="40" y1="140" x2="580" y2="140" stroke="rgba(0,212,180,0.4)" stroke-width="1"/>
+        </g>
+
+        <!-- ══ 凡例 ══ -->
+        <g id="svLegend" transform="translate(200,0)">
+          <rect x="1372" y="742" width="288" height="284" fill="rgba(3,14,12,0.82)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
+          <text class="sv-en" x="1388" y="768" font-size="11" fill="#7adfcf" letter-spacing="0.25em">LEGEND</text>
+          <line x1="1388" y1="778" x2="1644" y2="778" stroke="rgba(0,212,180,0.25)" stroke-width="1"/>
+          <circle cx="1396" cy="796" r="5.5" fill="#e8f6ff"/><text class="sv-jp" x="1408" y="800" font-size="9.5" fill="#c8e8e0">恒星</text>
+          <circle cx="1518" cy="796" r="5.5" fill="#40d9a8"/><text class="sv-jp" x="1530" y="800" font-size="9.5" fill="#c8e8e0">惑星（共和国圏）</text>
+          <circle cx="1396" cy="818" r="5.5" fill="#ff5b5b"/><text class="sv-jp" x="1408" y="822" font-size="9.5" fill="#c8e8e0">帝国圏・占領地</text>
+          <circle cx="1518" cy="818" r="5.5" fill="#ffc14d"/><text class="sv-jp" x="1530" y="822" font-size="9.5" fill="#c8e8e0">通商連合圏</text>
+          <circle cx="1396" cy="840" r="5.5" fill="#9fb3b0"/><text class="sv-jp" x="1408" y="844" font-size="9.5" fill="#c8e8e0">中立・無所属</text>
+          <rect x="1512" y="834" width="13" height="12" fill="url(#svContest)"/><text class="sv-jp" x="1530" y="844" font-size="9.5" fill="#c8e8e0">係争中</text>
+          <rect x="1391" y="857" width="11" height="11" fill="none" stroke="#40d9a8" stroke-width="1.5" transform="rotate(45 1396 862)"/><text class="sv-jp" x="1408" y="866" font-size="9.5" fill="#c8e8e0">軍事拠点・ステーション・中継基地</text>
+          <line x1="1388" y1="884" x2="1404" y2="884" stroke="#35e0c8" stroke-width="2.2"/><text class="sv-jp" x="1408" y="888" font-size="9.5" fill="#c8e8e0">9大ワープ航路</text>
+          <line x1="1388" y1="906" x2="1404" y2="906" stroke="#ff5b5b" stroke-width="2" stroke-dasharray="5 4"/><text class="sv-jp" x="1408" y="910" font-size="9.5" fill="#c8e8e0">寸断・軍事封鎖区間</text>
+          <line x1="1388" y1="928" x2="1404" y2="928" stroke="rgba(136,204,255,0.6)" stroke-width="1.6" stroke-dasharray="2 4"/><text class="sv-jp" x="1408" y="932" font-size="9.5" fill="#c8e8e0">非メジャー航路（州営・私設）・宙域内接続</text>
+          <rect x="1388" y="944" width="16" height="11" fill="url(#svHazard)" stroke="rgba(255,150,50,0.5)" stroke-width="0.8"/><text class="sv-jp" x="1408" y="954" font-size="9.5" fill="#c8e8e0">危険領域</text>
+          <rect x="1500" y="944" width="16" height="11" fill="url(#svRubble)" stroke="rgba(140,170,165,0.4)" stroke-width="0.8"/><text class="sv-jp" x="1520" y="954" font-size="9.5" fill="#c8e8e0">隕石防衛帯</text>
+          <circle cx="1395" cy="972" r="6.5" fill="none" stroke="rgba(122,223,207,0.6)" stroke-width="1"/><text class="sv-jp" x="1408" y="976" font-size="9.5" fill="#c8e8e0">円＝セクター境界（ギリシャ文字＝セクター名）</text>
+          <text class="sv-jp" x="1388" y="996" font-size="8.5" fill="#6fa89d">※ 未観測セクター（η・κ・ρ・τ・ϡ）は記載省略</text>
+          <text class="sv-jp" x="1388" y="1011" font-size="8.5" fill="#6fa89d">※ セクターπ（封印宙域）は星系法により座標秘匿</text>
+          <text class="sv-jp" x="1388" y="1022" font-size="8.5" fill="#6fa89d">※ 各天体・宙域を選択すると詳細記録へ接続</text>
+        </g>
+
+        <!-- 発行元ロゴ -->
+        <image href="resource/Space_dynamics_logp.png" x="26" y="942" width="150" height="83" opacity="0.9"/>
+        <!-- 出典 -->
+        <text class="sv-en" x="30" y="1038" font-size="9" fill="rgba(122,223,207,0.45)" text-anchor="start">SOURCE: CDF GENERAL STAFF ARCHIVE ── SCHEMATIC PROJECTION / NOT TO SCALE</text>
+      </svg>
+      <div class="sysmap-ctrl" id="sysmapCtrl">
+        <button type="button" data-act="in" title="拡大">＋</button>
+        <button type="button" data-act="out" title="縮小">－</button>
+        <button type="button" data-act="reset" title="全体表示に戻す">⟲</button>
+        <button type="button" data-act="legend" class="lg" title="凡例の表示/非表示">凡例</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TACTICAL CHART（戦略経路図 / 軍事作戦用） ===== -->
+  <div class="map-view" id="viewTactical" style="display:none;">
+  <!-- ===== STAR MAP ===== -->
+  <div class="map-field">
+    <div class="map-wrapper">
+
+      <!-- Background: Map_Buckground2.png with hex grid -->
+      <img src="UIイメージ/Map_Buckground2.png" class="map-bg-layer" alt="Lylat System Map">
+
+      <!-- Map title overlay -->
+      <div class="map-title-overlay">
+        <div class="mto-sub">LYLAT SYSTEM — SECTOR OVERVIEW</div>
+        <div class="mto-main">STELLAR NAVIGATION CHART</div>
+      </div>
+
+
+      <!-- ================================================
+           PLANET BUTTONS & MAP ELEMENTS
+           Generated by editor.html
+           ================================================ -->
+
+      <a class="map-planet" href="planets/katina.html"
+         style="left:12.11%;top:37.32%;--ps:2.2cqw;--pg:rgba(255,180,40,0.65);--pa:8s;--map-anim:map-float;--map-timing:ease-in-out;">
+        <img src="resource/LA_image/LS_P_7.png" class="map-planet-img" alt="GREAT WALL AREA1 / KATINA">
+        <div class="map-planet-label">
+          カタリナ
+          <span class="lbl-en">GREAT WALL AREA1 / KATINA</span>
+        </div>
+        <div class="map-planet-tip">
+          <span class="tip-name">カタリナ / GREAT WALL AREA1 / KATINA</span>
+          <span class="tip-sub">防衛拠点 -- サバンナ型惑星</span>
+        </div>
+      </a>
+
+      <a class="map-planet" href="planets/corneria.html"
+         style="left:8.3%;top:86.28%;--ps:7cqw;--pg:rgba(60,150,255,0.65);--pa:6.5s;--map-anim:map-float;--map-timing:ease-in-out;">
+        <img src="resource/LA_image/LS_P_4.png" class="map-planet-img" alt="CORNERIA">
+        <div class="map-planet-label">
+          コーネリア
+          <span class="lbl-en">CORNERIA</span>
+        </div>
+        <div class="map-planet-tip">
+          <span class="tip-name">コーネリア / CORNERIA</span>
+          <span class="tip-sub">首都惑星 -- E1型 地球型</span>
+        </div>
+      </a>
+
+      <div class="map-indicator" style="left:50.47%;top:83.47%;--ic:rgba(100,100,140,0.75);">
+        <div class="ind-dot"><div class="ind-ring"></div></div>
+        <div class="ind-label">OBERON</div>
+      </div>
+
+      <div class="gw-belt" aria-hidden="true">
+        <div class="gw-orbit-ring" style="left:-14.99%;top:121.82%;--gw-radius:52cqw;--gw-speed:900s;--gw-direction:normal;animation-duration:900s;animation-direction:normal;--gw-seg-a-size:7.8cqw;--gw-seg-b-size:10.76cqw;">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:0deg;--j:-0.28cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:8deg;--j:-0.12cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:16deg;--j:0.04cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:24deg;--j:0.2cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:32deg;--j:-0.22cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:40deg;--j:-0.06cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:48deg;--j:0.1cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:56deg;--j:0.26cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:64deg;--j:-0.16cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:72deg;--j:0cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:80deg;--j:0.16cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:88deg;--j:-0.26cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:96deg;--j:-0.1cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:104deg;--j:0.06cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:112deg;--j:0.22cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:120deg;--j:-0.2cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:128deg;--j:-0.04cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:136deg;--j:0.12cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:144deg;--j:0.28cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:152deg;--j:-0.14cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:160deg;--j:0.02cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:168deg;--j:0.18cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:176deg;--j:-0.24cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:184deg;--j:-0.08cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:192deg;--j:0.08cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:200deg;--j:0.24cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:208deg;--j:-0.18cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:216deg;--j:-0.02cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:224deg;--j:0.14cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:232deg;--j:-0.28cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:240deg;--j:-0.12cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:248deg;--j:0.04cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:256deg;--j:0.2cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:264deg;--j:-0.22cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:272deg;--j:-0.06cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:280deg;--j:0.1cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:288deg;--j:0.26cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:296deg;--j:-0.16cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:304deg;--j:0cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:312deg;--j:0.16cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:320deg;--j:-0.26cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:328deg;--j:-0.1cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:336deg;--j:0.06cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:344deg;--j:0.22cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:352deg;--j:-0.2cqw;--s:0.38;" alt="">
+        </div>
+      </div>
+
+      <div class="map-indicator" style="left:22.88%;top:60.31%;--ic:rgba(255,160,64,0.75);">
+        <div class="ind-dot"><div class="ind-ring"></div></div>
+        <div class="ind-label">GREAT WALL area2</div>
+      </div>
+
+      <div class="map-indicator" style="left:30.92%;top:89.75%;--ic:rgba(100,160,255,0.75);">
+        <img src="resource/LA_image/LS_F_5.png"
+             style="width:5.1cqw;height:auto;filter:drop-shadow(0 0 8px rgba(100,160,255,0.75));animation:map-float 18s ease-in-out infinite;display:block;margin:0 auto 4px;"
+             alt="GREAT WALL area3">
+        <div class="ind-label">GREAT WALL area3</div>
+      </div>
+
+      <div class="map-indicator" style="left:21.49%;top:15.33%;--ic:rgba(80,120,160,0.75);">
+        <img src="resource/LA_image/LS_F_2.png"
+             style="width:6.2cqw;height:auto;filter:drop-shadow(0 0 8px rgba(80,120,160,0.75));animation:map-float 18s ease-in-out infinite;display:block;margin:0 auto 4px;"
+             alt="SECTOR Y">
+        <div class="ind-label">SECTOR Y</div>
+      </div>
+
+      <a class="map-planet" href="planets/fortuna.html"
+         style="left:93.78%;top:90.96%;--ps:4.9cqw;--pg:rgba(136,238,68,0.65);--pa:8.5s;--map-anim:map-float;--map-timing:ease-in-out;">
+        <img src="resource/LA_image/LS_P_5.png" class="map-planet-img" alt="FORTUNA">
+        <div class="map-planet-label">
+          フォルトナ
+          <span class="lbl-en">FORTUNA</span>
+        </div>
+        <div class="map-planet-tip">
+          <span class="tip-name">フォルトナ / FORTUNA</span>
+          <span class="tip-sub">密林惑星 -- 原始生態系</span>
+        </div>
+      </a>
+
+      <a class="map-planet" href="planets/macbeth.html"
+         style="left:62.32%;top:40.58%;--ps:3cqw;--pg:rgba(255,119,68,0.65);--pa:7s;--map-anim:map-float;--map-timing:ease-in-out;">
+        <img src="resource/LA_image/LS_P_3.png" class="map-planet-img" alt="MACBETH">
+        <div class="map-planet-label">
+          マクベス
+          <span class="lbl-en">MACBETH</span>
+        </div>
+        <div class="map-planet-tip">
+          <span class="tip-name">マクベス / MACBETH</span>
+          <span class="tip-sub">鉱山惑星 -- ベノム帝国占領</span>
+        </div>
+      </a>
+
+      <a class="map-planet" href="planets/titania.html"
+         style="left:51.61%;top:49.13%;--ps:9.2cqw;--pg:rgba(255,110,30,0.65);--pa:9s;--map-anim:map-float;--map-timing:ease-in-out;">
+        <img src="resource/LA_image/LS_P_2.png" class="map-planet-img" alt="TITANIA">
+        <div class="map-planet-label">
+          タイタニア
+          <span class="lbl-en">TITANIA</span>
+        </div>
+        <div class="map-planet-tip">
+          <span class="tip-name">タイタニア / TITANIA</span>
+          <span class="tip-sub">禁断の惑星 -- E1型 磁気嵐</span>
+        </div>
+      </a>
+
+      <a class="map-planet" href="planets/sargasso.html"
+         style="left:52.34%;top:66.9%;--ps:4.4cqw;--pg:rgba(187,102,255,0.65);--pa:13s;--map-anim:map-float;--map-timing:ease-in-out;">
+        <img src="resource/LA_image/Sargasso.png" class="map-planet-img" alt="SARGASSO">
+        <div class="map-planet-label" style="color:#bb66ff;">
+          サルガッソー
+          <span class="lbl-en" style="color:#bb66ff;opacity:0.75;">SARGASSO</span>
+        </div>
+        <div class="map-planet-tip">
+          <span class="tip-name">サルガッソー / SARGASSO</span>
+          <span class="tip-sub" style="color:#bb66ff;">宇宙の墓場 -- 特A級危険宙域</span>
+        </div>
+      </a>
+
+      <a class="map-planet" href="planets/fichina.html"
+         style="left:43.64%;top:84.68%;--ps:4.4cqw;--pg:rgba(136,204,255,0.65);--pa:7.5s;--map-anim:map-float;--map-timing:ease-in-out;">
+        <img src="resource/LA_image/LS_P_6.png" class="map-planet-img" alt="FICHINA">
+        <div class="map-planet-label">
+          フィチナ
+          <span class="lbl-en">FICHINA</span>
+        </div>
+        <div class="map-planet-tip">
+          <span class="tip-name">フィチナ / FICHINA</span>
+          <span class="tip-sub">氷結惑星 -- 気候制御基地跡</span>
+        </div>
+      </a>
+
+      <div class="map-indicator" style="left:56.67%;top:88.25%;--ic:rgba(80,80,120,0.75);">
+        <div class="ind-dot"><div class="ind-ring"></div></div>
+        <div class="ind-label">SECTOR X</div>
+      </div>
+
+      <div class="map-indicator" style="left:34.07%;top:20.81%;--ic:rgba(40,140,200,0.75);">
+        <div class="ind-dot"><div class="ind-ring"></div></div>
+        <div class="ind-label">ZONESS</div>
+      </div>
+
+      <div class="map-indicator" style="left:56.49%;top:13.06%;--ic:rgba(255,82,82,0.75);">
+        <img src="resource/LA_image/LS_S_2.png"
+             style="width:5.3cqw;height:auto;filter:drop-shadow(0 0 8px rgba(255,82,82,0.75));animation:map-float 18s ease-in-out infinite;display:block;margin:0 auto 4px;"
+             alt="ソーラ">
+        <div class="ind-label">ソーラ</div>
+      </div>
+
+      <a class="map-planet" href="planets/prospero.html"
+         style="left:75.5%;top:68.37%;--ps:6cqw;--pg:rgba(102,136,255,0.65);--pa:10s;--map-anim:map-float;--map-timing:ease-in-out;">
+        <img src="resource/LA_image/LS_P_10_thumb.png" class="map-planet-img" alt="PROSPERO">
+        <div class="map-planet-label">
+          プロスペロー
+          <span class="lbl-en">PROSPERO</span>
+        </div>
+        <div class="map-planet-tip">
+          <span class="tip-name">プロスペロー / PROSPERO</span>
+          <span class="tip-sub">居住惑星 -- 星系最大人口</span>
+        </div>
+      </a>
+
+      <div class="map-indicator" style="left:87.08%;top:61.29%;--ic:rgba(100,80,80,0.75);">
+        <div class="ind-dot"><div class="ind-ring"></div></div>
+        <div class="ind-label">SECTOR Z</div>
+      </div>
+
+      <div class="map-indicator" style="left:78.58%;top:31.9%;--ic:rgba(255,140,40,0.75);">
+        <div class="ind-dot"><div class="ind-ring"></div></div>
+        <div class="ind-label">ORBITAL GATE</div>
+      </div>
+
+      <a class="map-planet" href="planets/venom.html"
+         style="left:90.17%;top:17.3%;--ps:11cqw;--pg:rgba(102,255,34,0.65);--pa:8s;--map-anim:map-float;--map-timing:ease-in-out;">
+        <img src="resource/LA_image/LS_P_1.png" class="map-planet-img" alt="VENOM">
+        <div class="map-planet-label">
+          ベノム
+          <span class="lbl-en">VENOM</span>
+        </div>
+        <div class="map-planet-tip">
+          <span class="tip-name">ベノム / VENOM</span>
+          <span class="tip-sub">帝国首星 -- E2型 死の惑星</span>
+        </div>
+      </a>
+
+      <div class="gw-belt" aria-hidden="true">
+        <div class="gw-orbit-ring" style="left:51.59%;top:47.53%;--gw-radius:3.7cqw;--gw-speed:50s;--gw-direction:normal;animation-duration:50s;animation-direction:normal;--gw-seg-a-size:1.6cqw;--gw-seg-b-size:2.21cqw;">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:0deg;--j:-0.63cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:8deg;--j:-0.27cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:16deg;--j:0.09cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:24deg;--j:0.45cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:32deg;--j:-0.49cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:40deg;--j:-0.14cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:48deg;--j:0.22cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:56deg;--j:0.58cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:64deg;--j:-0.36cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:72deg;--j:0cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:80deg;--j:0.36cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:88deg;--j:-0.58cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:96deg;--j:-0.22cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:104deg;--j:0.14cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:112deg;--j:0.49cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:120deg;--j:-0.45cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:128deg;--j:-0.09cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:136deg;--j:0.27cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:144deg;--j:0.63cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:152deg;--j:-0.32cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:160deg;--j:0.04cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:168deg;--j:0.4cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:176deg;--j:-0.54cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:184deg;--j:-0.18cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:192deg;--j:0.18cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:200deg;--j:0.54cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:208deg;--j:-0.4cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:216deg;--j:-0.04cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:224deg;--j:0.32cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:232deg;--j:-0.63cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:240deg;--j:-0.27cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:248deg;--j:0.09cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:256deg;--j:0.45cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:264deg;--j:-0.49cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:272deg;--j:-0.14cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:280deg;--j:0.22cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:288deg;--j:0.58cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:296deg;--j:-0.36cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:304deg;--j:0cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:312deg;--j:0.36cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:320deg;--j:-0.58cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:328deg;--j:-0.22cqw;--s:0.38;" alt="">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_1_1.png" style="--a:336deg;--j:0.14cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_1_2.png" style="--a:344deg;--j:0.49cqw;--s:0.4;" alt="">
+          <img class="gw-seg gw-seg-c" src="resource/LA_image/LS_F_1_3.png" style="--a:352deg;--j:-0.45cqw;--s:0.38;" alt="">
+        </div>
+      </div>
+
+      <div class="gw-belt" aria-hidden="true">
+        <div class="gw-orbit-ring gw-orient-upright" style="left:90.24%;top:17.97%;--gw-radius:10.7cqw;--gw-speed:200s;--gw-direction:reverse;animation-duration:200s;animation-direction:reverse;--gw-seg-a-size:7.2cqw;--gw-seg-b-size:9.94cqw;">
+          <img class="gw-seg gw-seg-a" src="resource/LA_image/LS_F_7.png" style="--a:0deg;--j:-0.63cqw;--s:0.94;" alt="">
+          <img class="gw-seg gw-seg-b" src="resource/LA_image/LS_F_8.png" style="--a:180deg;--j:-0.27cqw;--s:0.4;" alt="">
+        </div>
+      </div>
+    </div><!-- /map-wrapper -->
+  </div><!-- /map-field -->
+  </div><!-- /viewTactical -->
+
+  <!-- Footer -->
+  <div class="map-footer">
+    <div class="ft-item"><span class="ft-dot"></span>LYLAT SYSTEM ONLINE</div>
+    <div class="ft-item">
+      <span class="ft-dot" style="background:var(--good);box-shadow:0 0 6px var(--good);"></span>
+      CORNERIAN DEFENSE FORCE ACTIVE
+    </div>
+    <div class="ft-item" style="gap:14px;">
+      <a href="console.html" style="color:var(--accent);text-decoration:none;letter-spacing:0.15em;">▸ データベースコンソールへ戻る</a>
+    </div>
+    <div style="margin-left:auto;color:var(--primary);font-size:10px;letter-spacing:0.15em;">
+      ▸ 天体をクリックして詳細データを表示
+    </div>
+  </div>
+
+  <script>
+    /* ── 星系俯瞰図 / 戦略経路図 切り替え ── */
+    (function() {
+      const views = {
+        system: document.getElementById('viewSystem'),
+        tactical: document.getElementById('viewTactical')
+      };
+      document.querySelectorAll('#mapMode button').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#mapMode button').forEach((b) => b.classList.toggle('active', b === btn));
+          Object.keys(views).forEach((k) => { views[k].style.display = (k === btn.dataset.view) ? '' : 'none'; });
+        });
+      });
+    })();
+
+    /* ── 俯瞰図の装飾生成（同心円グリッド・放射線・星屑・隕石帯） ── */
+    (function() {
+      const NS = 'http://www.w3.org/2000/svg';
+      const CX = 460, CY = 600;
+      const mk = (name, attrs, parent) => {
+        const el = document.createElementNS(NS, name);
+        for (const k in attrs) el.setAttribute(k, attrs[k]);
+        parent.appendChild(el);
+        return el;
+      };
+
+      const grid = document.getElementById('svGrid');
+      if (grid) {
+        // 同心円（軌道環 — 各天体の実軌道に対応）
+        [110, 175, 251, 312, 360, 430, 520, 620, 800, 960, 1230, 1400].forEach((r) => {
+          mk('circle', { cx: CX, cy: CY, r: r, fill: 'none', stroke: 'rgba(0,212,180,0.09)', 'stroke-width': 1 }, grid);
+        });
+        // 放射線（30度刻み）
+        for (let a = 0; a < 360; a += 30) {
+          const rad = a * Math.PI / 180;
+          mk('line', {
+            x1: CX + 120 * Math.cos(rad), y1: CY - 120 * Math.sin(rad),
+            x2: CX + 1500 * Math.cos(rad), y2: CY - 1500 * Math.sin(rad),
+            stroke: 'rgba(0,212,180,0.05)', 'stroke-width': 1
+          }, grid);
+        }
+        // 座標グリッド文字（SW星図風）
+        const letters = 'ABCDEFGHIJKLMNOP';
+        for (let i = 0; i < 16; i++) {
+          mk('text', { x: 60 + i * 120, y: 20, 'font-size': 9, fill: 'rgba(122,223,207,0.28)', 'text-anchor': 'middle', 'font-family': "'Share Tech Mono',monospace" }, grid).textContent = letters[i];
+        }
+        for (let i = 1; i <= 8; i++) {
+          mk('text', { x: 14, y: i * 128 - 40, 'font-size': 9, fill: 'rgba(122,223,207,0.28)', 'text-anchor': 'middle', 'font-family': "'Share Tech Mono',monospace" }, grid).textContent = i;
+        }
+      }
+
+      // 星屑
+      const stars = document.getElementById('svStars');
+      if (stars) {
+        for (let i = 0; i < 240; i++) {
+          mk('circle', {
+            cx: (Math.random() * 1880).toFixed(1), cy: (Math.random() * 1050).toFixed(1),
+            r: (0.5 + Math.random() * 1.1).toFixed(2),
+            fill: '#ffffff', opacity: (0.08 + Math.random() * 0.5).toFixed(2)
+          }, stars);
+        }
+      }
+
+      // グレートウォール隕石（δ環 — 全周）
+      const gw = document.getElementById('svGwDots');
+      if (gw) {
+        for (let i = 0; i < 72; i++) {
+          const a = (i * 5 + ((i * 17) % 4)) * Math.PI / 180;
+          const r = 238 + ((i * 37) % 26);
+          mk('circle', {
+            cx: (CX + r * Math.cos(a)).toFixed(1), cy: (CY - r * Math.sin(a)).toFixed(1),
+            r: (1.3 + ((i * 13) % 5) * 0.45).toFixed(1),
+            fill: '#8fa8a0', opacity: 0.7
+          }, gw);
+        }
+      }
+    })();
+
+    /* ── 星系俯瞰図 ズーム・パン・凡例トグル ── */
+    (function() {
+      const svg = document.querySelector('#viewSystem .sysmap');
+      if (!svg) return;
+      const BASE = { x: 0, y: 0, w: 1880, h: 1050 };
+      let vb = { x: BASE.x, y: BASE.y, w: BASE.w, h: BASE.h };
+      let moved = false;
+
+      function apply() {
+        svg.setAttribute('viewBox', vb.x + ' ' + vb.y + ' ' + vb.w + ' ' + vb.h);
+        svg.classList.toggle('zoomed', vb.w < BASE.w - 0.5);
+      }
+      function clamp() {
+        vb.w = Math.min(BASE.w, Math.max(BASE.w / 8, vb.w));
+        vb.h = vb.w * BASE.h / BASE.w;
+        vb.x = Math.min(BASE.x + BASE.w - vb.w, Math.max(BASE.x, vb.x));
+        vb.y = Math.min(BASE.y + BASE.h - vb.h, Math.max(BASE.y, vb.y));
+      }
+      function svgPoint(evt) {
+        const pt = svg.createSVGPoint();
+        pt.x = evt.clientX; pt.y = evt.clientY;
+        const m = svg.getScreenCTM();
+        return m ? pt.matrixTransform(m.inverse()) : { x: vb.x + vb.w / 2, y: vb.y + vb.h / 2 };
+      }
+      function zoomAt(px, py, factor) {
+        vb.x = px - (px - vb.x) / factor;
+        vb.y = py - (py - vb.y) / factor;
+        vb.w = vb.w / factor;
+        clamp(); apply();
+      }
+
+      svg.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        const p = svgPoint(e);
+        zoomAt(p.x, p.y, e.deltaY < 0 ? 1.25 : 0.8);
+      }, { passive: false });
+
+      let dragging = false, origin = null, pid = null;
+      svg.addEventListener('pointerdown', function(e) {
+        if (e.button !== 0) return;
+        dragging = true; moved = false;
+        origin = svgPoint(e);
+        pid = e.pointerId;
+      });
+      svg.addEventListener('pointermove', function(e) {
+        if (!dragging) return;
+        const p = svgPoint(e);
+        const dx = p.x - origin.x, dy = p.y - origin.y;
+        if (!moved && Math.abs(dx) + Math.abs(dy) > 4) {
+          moved = true;
+          try { svg.setPointerCapture(pid); } catch (err) {}
+          svg.classList.add('grabbing');
+        }
+        if (moved) { vb.x -= dx; vb.y -= dy; clamp(); apply(); }
+      });
+      function endDrag() { dragging = false; svg.classList.remove('grabbing'); }
+      svg.addEventListener('pointerup', endDrag);
+      svg.addEventListener('pointercancel', endDrag);
+      svg.addEventListener('click', function(e) {
+        if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+      }, true);
+
+      const legend = document.getElementById('svLegend');
+      document.querySelectorAll('#sysmapCtrl button').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const act = btn.dataset.act;
+          if (act === 'in')  zoomAt(vb.x + vb.w / 2, vb.y + vb.h / 2, 1.35);
+          if (act === 'out') zoomAt(vb.x + vb.w / 2, vb.y + vb.h / 2, 1 / 1.35);
+          if (act === 'reset') { vb = { x: BASE.x, y: BASE.y, w: BASE.w, h: BASE.h }; apply(); }
+          if (act === 'legend' && legend) {
+            const hidden = legend.style.display === 'none';
+            legend.style.display = hidden ? '' : 'none';
+            btn.classList.toggle('off', hidden === false);
+          }
+        });
+      });
+    })();
+  </script>
+
+<script src="sector-tips.js"></script>
+</body>
+</html>
+
+

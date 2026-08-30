@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIYU LYNX — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#6aa8f0;--accent:#bcd8ff;--border:rgba(106,168,240,0.32);--border-hi:rgba(188,216,255,0.7);--dim:#101c30;--dim2:#080e18; }
+    .p-title    { color: #eef5ff; text-shadow: 0 0 50px rgba(106,168,240,0.35); }
+    .p-tagline  { border-color: #6aa8f0; color: #6aa8f0; }
+    .terminal-hdr { color: #bcd8ff; }
+    .terminal-hdr::before { background: #bcd8ff; box-shadow: 0 0 8px #bcd8ff; }
+    .dk { color: #6aa8f0; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-42 / MIYU LYNX — ミュウ・リンクス ]</div>
+    <div class="header-status">● ACTIVE — STAR FOX 2ND UNIT</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — MIYU LYNX — STAR FOX 2ND UNIT — INTERCEPTOR PILOT (UNREGISTERED)</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0042 — CLEARANCE: OPEN — PHOTO ON FILE: MISLEADING</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-42 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ミュウ・リンクス (MIYU LYNX)</div>
+        <h1 class="p-title">MIYU LYNX</h1>
+        <div class="p-tagline">OFFENSE OVER DEFENSE ── スターフォックス第2隊 迎撃パイロット</div>
+        <p class="p-short-desc">カタリナ出身のオオヤマネコ系バステトイドの女性。プロスペロー航空自警団の迎撃パイロットから、フェイ・スパニエルに続いて押しかける形でスターフォックス第2隊に加わった。「防衛より攻撃に向いている」と自ら公言する。証明写真からは小柄な女性を連想させるが実際は190を超える大柄であり、軍用ジャケット姿で男性に間違われるのが本人最大の悩みである。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 42 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">MIYU LYNX / ミュウ・リンクス</td></tr><tr><td class="dk">RACE</td><td class="dv">オオヤマネコ系<a href="../database/races.html#bastetoid">バステトイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">23歳</td></tr><tr><td class="dk">HEIGHT</td><td class="dv">192cm</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#katina">カタリナ</a>（首都ノラ・アネモス）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#starfox">スターフォックス</a> 第2隊（名簿外）/ 前職: <a href="../database/locations.html#prospero">プロスペロー</a>航空自警団 迎撃小隊</td></tr><tr><td class="dk">CRAFT</td><td class="dv">改造<a href="../weapons/cornerian-fighter.html">コーネリアファイター</a>「ブルーベル」（火器強化型）</td></tr><tr><td class="dk">GEAR</td><td class="dv">全装備 特注2Lサイズ</td></tr><tr><td class="dk">RELATION</td><td class="dv"><a href="fay.html">フェイ・スパニエル</a>（自警団の同僚・友人）</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">同行中 — グレートフォックス艦内（第2隊）</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 84 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 84%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(106,168,240,0.55);">
+        <img src="" alt="MIYU LYNX" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR FOX 2ND UNIT — INTERCEPTOR</span>
+            <span class="tg-jp">防衛より攻撃 ── 写真より大きい女</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">守るのは性に合わないんだ。先に落とせば守る必要もないだろ？<br>…え、写真？　あれ本人だよ。あ～ちょっと撮り方が悪かったんだ。<span class="tg-note note">-スターフォックス 入団面接記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">書類で会った人間は全員、本人に会うと一度黙る。まあ無理もない。<span class="lore-quote-src">― プロスペロー航空自警団 団長の談</span></span></p>
+  <p class="lore-p">ミュウ・リンクスは<a href="../database/military.html#starfox">スターフォックス</a>第2隊に籍を置く迎撃パイロットである。元は<a href="../database/locations.html#prospero">プロスペロー</a>の民間航空自警団の団員であり<a href="../database/locations.html#katina">カタリナ</a>出身のオオヤマネコ系<a href="../database/races.html#bastetoid">バステトイド</a>の女性で「防衛より攻撃に向いている」と自ら公言して憚らない。環状コロニー「オベロンⅢ」によって管理される農場地帯を守るために組織された自警団にあって、守るより先に落とすことを信条とするこの人物は明らかに異色であったが、迎撃小隊の撃墜数の半分近くを一人で稼いでいた以上団長も方針の違いを口にしたことはなかった。</p>
+  <p class="lore-p">本人にとって最大の悩みは自身の体格である。証明写真に写るのは目の大きな小柄な女性であり書類だけを見た者は例外なく華奢な人物を想像する。ところが実物は190を超える大柄で肩幅も広く軍用ジャケットを着ていると高い確率で男性に間違われる。装備も衣服も全て特注の2Lサイズであり写真と実物の落差はもはや自警団の名物になっている。初対面の相手が一度黙ってから「あの、写真の方は」と尋ねる場面を本人は数え切れないほど経験しており、「オレ本人だよ。撮り方が悪かっただけだっての」が定型の返答である。</p>
+  <p class="lore-p">気性はバステトイドらしく自由で率直であり縛られることを嫌う。規律には従うが納得しない命令には必ず一言を返し、その一言が的を射ているため上官が黙る。仲間の面倒見は良く格納庫で一番声が大きいのはたいてい彼女である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">生まれはカタリナの首都ノラ・アネモスである。<a href="../database/glossary.html#pioneer-ministry">開拓庁</a>に勤める両親の下で育ち、雨季の泥濘と乾季の砂嵐を子供の頃から知っている。カタリナの開拓庁にはバステトイドが多く規律を重んじる駐留軍との文化摩擦は日常の風景であった。彼女が軍ではなく民間の自警団を選んだ理由は本人曰く「命令されるのは嫌いだが、落とすのは好きだから」である。</p>
+  <p class="lore-p">士官学校第2分校の受験は一度で諦めている。文字はまるで筆記体と誤認するほど汚く、試験が塗りつぶし式の選択問題だったことで辛うじて学力試験は通ったが適性面接で「オレ、防衛より攻撃のほうが好きですね～」と正直に答え、面接官に「うちは防衛軍だ」と返されたのが理由であるという。以来プロスペローへ渡り航空自警団の迎撃小隊に志願した。民間の志願者で低軌道の哨戒を担う自警団は正規軍ほど採用に厳しくなく、面接記録には「体格・意欲ともに申し分なし。ただし写真は差し替え要」とだけ記されている。</p>
+  <p class="lore-p">同じ格納庫を使っていた整備士<a href="fay.html">フェイ・スパニエル</a>とはこの自警団で知り合った。囮役を好む速さ一辺倒のフェイと火力で押し切るミュウは飛び方が正反対であり、二人の模擬戦は交互に勝ち星を取り合う自警団の名物であった。フェイが<a href="../database/military.html#starfox">スターフォックス</a>へ押しかけた後も連絡は絶えておらずミュウは今も彼女を「リボン」と呼ぶ。</p>
+  <p class="lore-p">そして彼女もまた追いかけて押しかけた。フェイの合流から程なくして<a href="../weapons/greatfox.html">グレートフォックス</a>がプロスペローへ再び補給に降りた際、ブルーベルごと格納庫に乗り込み「リボンが世話になってるんだろ。もう一機いた方が楽だぜ」と言い放って居座ったのである。二度目の押しかけに艦の全員が既視感を覚え追い出す理由を今回も誰も思いつけなかった。常勤の隊員ではなく、<a href="fox.html">フォックス・マクラウド</a>が押しかけ組の扱いに困った末に設けた<a href="../database/military.html#starfox">第2隊</a>の一員として、欠員が出た際の代役と随伴機を務めている。自前の機体を持ち込むことが第2隊の条件でありブルーベルはその条件を満たす二機目の花となった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">乗機 ─ BLUEBELL</h3>
+  <p class="lore-p">乗機は量産機<a href="../weapons/cornerian-fighter.html">コーネリアファイター</a>を素体とする改造機「ブルーベル」である。フェイの<a href="fay.html">ゼラニューム</a>が装甲と火器を削って速度を得た機体であるなら、こちらは逆に火器を増設して正面火力を得た機体であり、青一色の塗装は「フェイが赤ならこっちは青だろ」という以上の理由を持たない。花の名は二人で揃えたものである。</p>
+  <p class="lore-p">ロックオン機構を持たない量産機の弱点を彼女は数で補わず距離で補う。敵が撃ってくる前に懐へ入り、外しようのない距離で撃つ。速度で劣る分を度胸で埋めるこの飛び方は自警団の教官を悩ませ続けており、教範に「真似をしないこと」と注記された唯一の団員である。ただ、この注記の存在がスターフォックスのメンバーたちの興味を惹きつけることになった。なにせ、彼らも同類の「真似を推奨されない操縦」の常習犯だからである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p"><a href="../database/glossary.html#corneria-defense">コーネリア防衛戦</a>以降、プロスペロー低軌道への帝国の小規模侵入は絶えていない。正規軍の<a href="../database/military.html#retriever">レトリーバー隊</a>が本土全域を受け持つ以上、農場地帯へ紛れ込む単機や偵察機を落とすのは自警団の仕事であり、ミュウの撃墜記録の大半は自警団時代のこの哨戒任務で積み上げられたものである。民間の記録であるため<a href="../database/military.html#cdf">CDF</a>の戦績には載らないがレトリーバー隊の整備班は自警団から届いていた撃墜報告の署名で彼女の名を覚えている。スターフォックス第2隊に移ってからの出撃は欠員の穴埋めと随伴が中心であり公式の戦績はフェイと同じく「随伴機」として処理されている。</p>
+  <p class="lore-p">合同哨戒でレトリーバー隊と並んだ際、隊長機<a href="../weapons/cornerian-fighter.html#gold-crest">ゴールド・クレスト</a>の隣にブルーベルが付いた記録が残っている。隊長の<a href="george.html">ジョージ・バロン</a>は民間機の随伴に露骨に不機嫌であったが、その日の撃墜が自警団側に一つ多かったことで通信は終始無言だったという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">写真と実物の落差については本人なりの分析があるあり、「カメラが小さいのがいけない」というのである。自警団の広報は撮り直しを申し出るたびに承諾しているが、撮り直した写真も例外なく小柄に写るため、現在では「写真がどう写ろうと本人はデカい、以上」と注記を付けて運用されている。</p>
+  <p class="lore-p">グレートフォックスの格納庫でスターフォックスメンバーやフェイと並んで撮られた写真が一枚残っている。写真の中で最も背が高いのは<a href="falco.html">ファルコ・ランバルディ</a>ではなくミュウであり、ファルコはこの写真の存在を認めていない。</p>
+  <p class="lore-p">フォックスと話をするときミュウは少し屈む必要がある。等身が一つ違うためであり本人に他意はないがフォックスには思うところがあったらしい。ある日の出撃前、露骨なまでに底の高いシークレットブーツを履いて格納庫に現れたフォックスをファルコが指差して笑い、笑い声が艦内放送に乗ったことで話は艦の全員に知れ渡った。ブーツはその日のうちに姿を消し、以来フォックスは「屈むな…俺が上を向けばいい話だろ」と言うようになったという。ミュウはこの件について「気にしてないって言ったのにね～」とだけ漏らしている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

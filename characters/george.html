@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEORGE BARON — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#f0c860;--accent:#ffe29a;--border:rgba(240,200,96,0.32);--border-hi:rgba(240,200,96,0.7);--dim:#2a2210;--dim2:#161008; }
+    .p-title    { color: #fff6dc; text-shadow: 0 0 50px rgba(240,200,96,0.35); }
+    .p-tagline  { border-color: #f0c860; color: #f0c860; }
+    .terminal-hdr { color: #ffe29a; }
+    .terminal-hdr::before { background: #ffe29a; box-shadow: 0 0 8px #ffe29a; }
+    .dk { color: #f0c860; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-39 / GEORGE BARON — ジョージ・バロン ]</div>
+    <div class="header-status">● ACTIVE — HOMELAND DEFENSE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — GEORGE BARON — 1ST SQUADRON — RETRIEVER UNIT LEADER</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0039 — CLEARANCE: OPEN — THE PRODIGY OF CORNERIA</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-39 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ジョージ・バロン (GEORGE BARON)</div>
+        <h1 class="p-title">GEORGE BARON</h1>
+        <div class="p-tagline">THE GOLDEN PRODIGY ── CDF第1飛行隊 レトリーバー隊長</div>
+        <p class="p-short-desc">本土防衛を司るCDF第1飛行隊「レトリーバー隊」の隊長。士官学校本校を首席で出て以来一度も負けたことのない神童であり、「ペパーの再来」と呼ばれる次期CDF長官の最有力候補。ただし中身は世間知らずのお坊ちゃまである。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 39 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">GEORGE BARON / ジョージ・バロン</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#anubisoid">アヌビソイド</a>（ゴールデンレトリーバー系）</td></tr><tr><td class="dk">AGE</td><td class="dv">26歳</td></tr><tr><td class="dk">HEIGHT</td><td class="dv">203cm</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#corneria">コーネリア</a>（コーネリアシティ中心街）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#cdf">CDF</a> 第1飛行隊</td></tr><tr><td class="dk">FAMILY</td><td class="dv">父・母: ともにCDF士官（<a href="../database/glossary.html#state-cordelia">コーディリア州</a>の旧貴族家系）</td></tr><tr><td class="dk">RANK</td><td class="dv">大尉 / 第1飛行隊「レトリーバー隊」隊長</td></tr><tr><td class="dk">SQUADRON</td><td class="dv"><a href="../database/military.html#retriever">レトリーバー隊</a></td></tr><tr><td class="dk">CRAFT</td><td class="dv"><a href="../weapons/cornerian-fighter.html#gold-crest">ゴールド・クレスト</a>（コーネリアファイター改修専用機）</td></tr><tr><td class="dk">ATTENDANT</td><td class="dv">クレア・オブシディアン（付き人 / 僚機<a href="../weapons/cornerian-fighter.html#shadow-blade">シャドウ・ブレード</a>）</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 本土防衛配備</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 94 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 94%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(240,200,96,0.55);">
+        <img src="" alt="GEORGE BARON" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">1ST SQUADRON — RETRIEVER UNIT LEADER</span>
+            <span class="tg-jp">CDF第1飛行隊 レトリーバー隊長</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">ジョージ、こんなところで拗ねてたのか？<br>はやく帰って隊長に謝るぞ。放置すると大変になるからな。<span class="tg-note note">-カタリナ合同演習 救難記録より（ビル・グレイの発言）-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">黙って指揮を執るか前線に出ていれば、あれほど格好のつく男はいない。<span class="lore-quote-src">― CDF総司令部 人事課の非公式所見</span></span></p>
+  <p class="lore-p">ジョージ・バロンはCDF第1飛行隊<a href="../database/military.html#retriever">「レトリーバー隊」</a>の隊長を務めるコーネリア防衛の要である。ゴールデンレトリーバー系の<a href="../database/races.html#anubisoid">アヌビソイド</a>で、200を超える長身と金色の長髪に精悍な顔立ちを備え、<a href="../database/glossary.html#academy-branches">士官学校本校</a>を首席で卒業して以来ただの一度も負けを記録せずに隊長まで昇進した。軍部の上層では「ペパーの再来」の呼び名で通っており、次期CDF長官の最有力候補として期待をかけられている。</p>
+  <p class="lore-p">その能力は分野を問わない。白兵戦ではキックボクシングを起点とした隙のない武術を長身から繰り出し、戦闘機を駆れば模擬戦の平均スコアが160を軽々と超える。指揮系統に回れば3個小隊を同時に統率して勝利へ導く。文武のどちらを切り取っても穴が見当たらないことが彼の評価の全てである。</p>
+  <p class="lore-p">ただし欠点がないわけではない。性格は典型的な世間知らずの「お坊ちゃま」であり、過去にはプライドが邪魔をして任務に失敗した記録もある。頭角を現してきた<a href="bill.html">ビル・グレイ</a>や<a href="../database/characters.html#fox">フォックス・マクラウド</a>に無礼な態度を取るなど問題行動も少なくないが、その根底にあるのは<a href="../database/locations.html#corneria">コーネリア</a>と<a href="../database/locations.html#prospero">プロスペロー</a>の民を守りたいという強い正義感である。緊急事態には即座に切り替えて素直に指示へ従うため、総じて幼稚ではあるが能力は圧倒的に高く話の通じない相手でもない。周囲の評は一言に集約される。「基本黙って指揮を執るか実戦に出ていれば格好いい人」。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ FAMILY</h3>
+  <p class="lore-p">バロン家は<a href="../database/glossary.html#state-cordelia">コーディリア州</a>の旧貴族に連なる家系であり、彼はコーネリアシティ中心街の屋敷に生まれた。両親はともに優秀なCDF士官である。なかなか子に恵まれなかった夫婦がようやく授かった一人息子であったため、彼は厳しい教育を受けながらも際限なく溺愛されて育った。優秀な軍人と我儘な子供という現在の二面性はこの幼少期に原因があると本人以外の全員が考えている。</p>
+  <p class="lore-p">通常であればここで放蕩に育ちろくでなしになるのが世の常である。彼がそうならなかったのは紳士文化を重んじる貴族出身の両親の教育によるところが大きい。そして両親それぞれの長所を最も完璧に組み合わせたような天性の才能は、彼を最強の軍人への道へ迷いなく邁進させた。</p>
+  <p class="lore-p">両親が唯一の気がかりとして語るのは彼に親友と呼べる相手がいなかったことである。飛び級で中央大学へ入った若き日の<a href="../database/characters.html#pepper">Z・Z・ペパー</a>が人生に虚無感を覚えたように、何もかもをそつなくこなしてしまう息子が燃え尽きることを<a href="pepper.html">将軍</a>自身も案じていたという。</p>
+  <p class="lore-p">だが本人の精神はそこまでの思索に至るほど成長していなかった。昼休みに窓際で佇む姿を誰もが「瞑想している」「ライラット星系の未来を案じている」と受け取っていたが、彼が考えていたのは夜のカレーの具材である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">かくして彼は特に悩みを抱えることのないまま能力だけに磨きをかけ、瞬く間に神童の伝説を盤石にして<a href="../database/military.html#cdf">コーネリア防衛軍</a>の第1飛行隊へ入隊した。本土防衛の最前列に立つ<a href="../database/military.html#retriever">レトリーバー隊</a>の隊長の座に就いたのは入隊からわずか数年後のことである。</p>
+  <p class="lore-p">彼の調子が狂い始めたのは<a href="bill.html">ビル・グレイ</a>が現れてからである。誰も敵のいなかったジョージの出鼻をくじきスコアも標的の撃破もさらっていく年下の隊長に、彼は生まれて初めて嫉妬の炎を燃やした。ビルが一般の家庭から腕っぷし一つで成り上がった家系の出であったことも彼のプライドを大いに傷つけたとみられる。泥臭い努力と研鑽で強くなったビル・グレイはまさに彼の対極の存在であった。</p>
+  <p class="lore-p">以来ジョージはビルへ執拗にSNSの通知を送りつけ、わざと仲間に絡んでは嫌味を言うなど中学生のような行動を取り始め、経歴と人物像の鍍金が剥がれ始める。だがそれは友のいなかった彼が初めて競う相手を見つけたことでもあった。稚拙な理由ではあるにせよ仲間とつるむようになったことで、彼は初めて他人と仲良く行動することを覚えたのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p"><a href="../database/locations.html#katina">カタリナ</a>前線基地で<a href="../database/military.html#bernard">バーナード隊</a>との合同演習が行われた際のジョージの態度は最悪であったと記録されている。敵意を剥き出しにしてわざと機体を擦れ擦れまで寄せる危険飛行は彼の操縦技術の高さを示すものであったが、一瞬の油断が命取りとなった。ビルばかりを見ていた彼は視界の横から迫る<a href="../weapons/cornerian-fighter.html">コーネリアファイター</a>に気付けず、そのまま衝突してカタリナの渓谷へ墜落したのである。</p>
+  <p class="lore-p">脱出には成功したものの、砕けたプライドの中で彼は人生で一度も味わったことのない捉えようのない感情に苛まれた。どれほど努力しても勝てない相手がいることを知ったのである。通常なら小学校へ上がる前に自然と学ぶことを、彼は大人になってから思い知った。墜落の原因は自身の危険飛行であり救難信号のボタンを押すことをためらっていたが、気付いたときには既に背後から声が響いていた。</p>
+  <p class="lore-p"><span class="lore-quote">ジョージ、こんなところで拗ねてたのか？　はやく帰って隊長に謝るぞ。放置すると大変になるからな。<span class="lore-quote-src">― 救難記録に残るビル・グレイの発言</span></span></p>
+  <p class="lore-p">声の主はビルだった。頭二つ分ほども背丈の違う相手の肩に何でもないように手をかけ、ビルは彼を岩場から引っ張り上げた。この日から二人は共和国を守る剣と盾として互いを認め合う仲となっている。今でも口は悪いがそれは信頼の証であると上層部は語る。</p>
+  <p class="lore-p">現在も<a href="../database/military.html#retriever">レトリーバー隊</a>を率いてコーネリアとプロスペローの空を守り続けている。<a href="../database/glossary.html#corneria-defense">コーネリア防衛戦</a>以降繰り返される本土侵攻を凌ぎ続けている盾の一枚が彼の隊であり、<a href="../database/glossary.html#unit-jade-knight">ジェイド・ナイト</a>の名を継ぐ空挺部隊の伝統に相応しい戦果を積み上げている。</p>
+</div>
+<div class="lore-section" id="claire">
+  <h3 class="lore-h">付き人 ─ CLAIRE OBSIDIAN</h3>
+  <p class="lore-p"><span class="lore-quote">影に目が浮いていると思ったら、あれは人だ。<span class="lore-quote-src">― 第1飛行隊 新任整備員の申し送り</span></span></p>
+  <p class="lore-p">ジョージの傍らにはいつも付き人のメイド、クレア・オブシディアンがいる。ボンベイ系の<a href="../database/races.html#bastetoid">バステトイド</a>の女性で、無口で目立たないが何より毛色がベンタブラックと形容されるほどの黒さである。衣服も装飾も全て黒で統一している上に肉球から歯茎に至るまで全てが黒いため、黄色い目だけが浮かんで見える。周囲からは「ジョージの影に目が浮いている」とまで言われる所以である。</p>
+  <p class="lore-p">身長は140cmほどしかないがジョージより年上である。いつも彼の影に隠れているのはこの身長差によるものだが、本人は隠密に好都合と考えているらしい。金色の髪をなびかせる長身の男の影に小柄な女性が闇に紛れるように付き従う光景はCDF内でもよく噂の種になる。</p>
+  <p class="lore-p">本人が寡黙なため多くは語られないが、両親によれば彼の鍍金が剥がれないようにするための付き人であり姉のような存在とのことである。彼がくだらない理由でビルやフォックスに突っかかった際にフォローへ入るのはいつも彼女である。なお彼女はゴールド・クレストの僚機<a href="../weapons/cornerian-fighter.html#shadow-blade">シャドウ・ブレード</a>の操縦者でもあり、影の仕事は地上に限らない。すれ違いざまに相手を切り伏せる黒一色の僚機の存在は、彼女の人となりと同じく軍内でもほとんど知られていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">実家は<a href="peppy.html">ペッピー・ヘア</a>の生家と1ブロックしか離れていない。子供の頃にボール遊びでヘア家の窓ガラスを割った際、家長エリーゼ・ヘア（ペッピーの祖母）に尻を百叩きにされて以来ヘア家の方角には一切近付かなくなったという。今なら問題になりそうな話であり、そうした折檻が当たり前だった最後の世代の逸話とも取れる。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

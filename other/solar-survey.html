@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BATTLE RECORD — SHADOW OF THE HEAT HAZE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#f08a3c;--accent:#ffc27a;--border:rgba(240,138,60,0.32);--border-hi:rgba(255,194,122,0.7);--dim:#2e1606;--dim2:#160a03; }
+    body { background:#0b0502; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ BATTLE RECORD 05 / 陽炎の影事件 — ソーラ調査作戦 ]</div>
+    <div class="header-status">● RECORD ARCHIVED — ACCESS RESTRICTED</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ BATTLE RECORD 05 / SHADOW OF THE HEAT HAZE ]</div>
+      <h1 class="codex-title">SHADOW OF THE HEAT HAZE</h1>
+      <p class="codex-p">ソーラ調査作戦 全記録 ── <a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>下、第二の太陽<a href="../planets/solar.html">ソーラ</a>の表面に映り込んだ正体不明の巨大な影を確かめるため、新生<a href="../database/military.html#starfox">スターフォックス</a>が恒星の表面へ降りた任務の記録である。艦隊も歩兵も永遠に立ち入れない場所で、遊撃隊は帝国の<a href="../weapons/bioweapon.html">バイオウェポン</a>の到達点と対峙した。本記録は<a href="../weapons/greatfox.html">グレートフォックス</a>の航行記録、ソーラ外周観測網の計測データ、そして交戦者の証言を突き合わせて再構成された。文中の会話は当事者の記憶と交信記録によるため、正確性より臨場感が優先されている点に留意されたい。なお本任務の結末は公開されておらず、本記録の閲覧には相応の権限を要する。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#prologue">序</a>
+      <a href="#arrow">白羽の矢</a>
+      <a href="#split">割れた隊</a>
+      <a href="#sea">煮えたぎる海</a>
+      <a href="#rings">金色の環</a>
+      <a href="#cookie">バカでかいクッキー</a>
+      <a href="#sangar">サンガー</a>
+      <a href="#disaster">天災</a>
+      <a href="#larva">幼体</a>
+      <a href="#gamble">一か八か</a>
+      <a href="#bombs">ありったけ</a>
+      <a href="#partner">相棒</a>
+      <a href="#pickup">迎え</a>
+      <a href="#epilogue">結 ─ 観測気球</a>
+      <a href="#aftermath">余話</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="../database/glossary.html#solar-survey">用語DB</a> / <a href="../planets/solar.html">ソーラ</a> / <a href="../weapons/bioweapon.html">バイオウェポン</a> / <a href="../database/military.html#supply-ring">スモールサプライ</a> / <a href="../database/glossary.html#eclipse-op">日食作戦</a></span>
+    </nav>
+
+    <article class="codex-entry" id="prologue">
+      <h2 class="codex-h">序 ─ 太陽の上の影 <span class="en">THE SHADOW ON THE SUN</span></h2>
+      <p class="codex-p">きっかけは一つの観測画像であった。ソーラ外周の観測ステーションが定時の太陽風予報のために撮影した表面画像に、プラズマの薄皮の下を高速で移動する巨大な影が映り込んでいたのである。影は一枚の画像だけに現れて次の撮影では消えており観測員は機器の誤作動として処理しかけた。だが翌日にも、その翌日にも影は別の場所に現れた。大きさは山ひとつ分に相当し動き方は溶岩の海を「泳ぐ」ものとしか形容できなかった。</p>
+      <p class="codex-p">報告を受けた<a href="../database/military.html#cdf">CDF</a>はこれを<a href="../database/glossary.html#silent-nightmare">sectorτ</a>で製造されたとみられる帝国の<a href="../weapons/bioweapon.html">バイオウェポン</a>と関連付けた。<a href="../planets/aquas.html">アクアス</a>の海に投入された海棲個体の解析が「極限環境への適応」を兵器の設計思想として示していた以上、恒星の表面に同種の個体が放たれている可能性を無視することはできなかったのである。CDFは正規艦隊での調査を最初から諦め遊撃隊への依頼という形で調査任務を公示したが応じる隊は一つもなかった。</p>
+      <p class="codex-p">これに関しては無理もない、安全距離を破って接近した最後の有人観測船<a href="../database/glossary.html#prominence-chaser">プロミネンス・チェイサー</a>は船殻の三分の一を飴のように変形させて帰ってきた。耐熱試験船として建造された専用船ですらそうであるならば、戦闘機で恒星の表面を飛ぶという依頼は調査ではなく葬式の予約である。公示は一週間のあいだ誰の目にも触れないまま傭兵管理課の掲示板に貼られ続けた。</p>
+    </article>
+
+    <article class="codex-entry" id="arrow">
+      <h2 class="codex-h">第1章 白羽の矢 ─ <span class="en">THE CHOSEN</span></h2>
+      <p class="codex-p">そこで白羽の矢が立てられた。開戦緒戦の<a href="../database/glossary.html#eclipse-op">日食作戦</a>で灼熱の<a href="../database/locations.html#alpha">セクターα</a>を艦船と残骸の影を縫って飛び抜け、帝国軍の旗艦ペルシカの内側へウォーカーで突入した隊がある。「太陽」の近くで成果を挙げた遊撃隊は星系にただ一つしかなく、CDFの将校がグレートフォックスに乗り込んで依頼を切り出したとき、その説明は要点を先に述べる軍人らしいものであった。<a href="../weapons/arwing.html">アーウィン</a>のバリアは3000℃まで耐えられる。最大展開すれば表面への出撃は理論上可能である。</p>
+      <p class="codex-p">説明が終わる前に<a href="../characters/falco.html">ファルコ・ランバルディ</a>が将校の胸ぐらを掴んでいた。「てめぇら馬鹿なのか！？　ソーラの表面に怪獣の影を探しにいけだと？」「なんか一つでもトラブルがあれば一瞬でチキンナゲットだ！　おれはこんなふざけた依頼はごめんだぜ」。将校の証言によれば、このとき彼が咄嗟に確認したのは自分の階級章ではなく脱出ポッドの位置であったという。</p>
+      <p class="codex-p">ファルコの言い分には理がある。セクターαで飛んだのはあくまで宙域であり恒星の表面ではない。影を作る艦船も残骸もソーラの表面には存在しない。<a href="../characters/peppy.html">ペッピー・ヘア</a>もこの依頼には反対した。参謀として彼が挙げた理由は簡潔「引き返す判断ができる場所ではない」だからである。一度降りればどれほど不利な戦況でも上がるまでは終わらないそれは遊撃隊が最も嫌う種類の任務であった。</p>
+    </article>
+
+    <article class="codex-entry" id="split">
+      <h2 class="codex-h">第2章 割れた隊 ─ <span class="en">THE SPLIT</span></h2>
+      <p class="codex-p">だが<a href="../characters/fox.html">フォックス・マクラウド</a>は違った。将校の胸ぐらから相棒の手を引き剥がした隊長はその手をそのまま相棒の肩に置いて言った。「もしかしてファルコ　びびってんのか？」「こんな面白そうな案件滅多にないもんだぜ」。挑発と提案を同時に行う隊長の癖はこの頃すでに完成していたとペッピーは後に語っている。</p>
+      <p class="codex-p"><a href="../characters/slippy.html">スリッピー・トード</a>が続いた。「木によじ登った子供を助ける仕事はダサいとか言ってたじゃん」「今回の案件こそ他の誰にもできない　最高の案件じゃないの？」。ファルコが以前に請けた民間依頼を蒸し返す物言いであり二人がかりの挑発に相棒は言葉に詰まった。隊の意見は真っ向から割れた。</p>
+      <p class="codex-p">お互い引かずの言い合いの末、最後に決め手となったのは意見ではなく機体であった。スリッピーはこの依頼のためにアーウィンのバリア展開系を丸ごと組み直す改造案を提示し、耐熱限界を一時的に6000℃にまで引き上げる代わりに他の全ての余裕を削り落とすと説明した。「僕の改造を信じてくれるなら行けるよね」という言葉にペッピーは沈黙で答え、ファルコは舌打ちで答えた。それが賛成の合図であったことを隊の誰もが知っている。提示額は記録に明示されていないがグレートフォックスの<a href="../database/military.html#starfox">80標準年ローン</a>が2年ほど繰り上がる大金であったとみられる。</p>
+    </article>
+
+    <article class="codex-entry" id="sea">
+      <h2 class="codex-h">第3章 煮えたぎる海 ─ <span class="en">THE BOILING SEA</span></h2>
+      <p class="codex-p">ソーラの表面はまさに灼熱地獄の様相であった。惑星と恒星の両方の性質を持つこの星では荒れ狂う磁力線が超高温のプロミネンスを作り出し、波打つプラズマの山からは対流する溶岩の層が弾幕となって吹き上げてくる。<a href="../planets/solar.html">プロミネンス・チェイサー</a>の航海日誌が「煮えたぎる海」と書いた光景は誇張ではなく寧ろ控えめであったのである。海は煮えているだけでなくコチラへ向かって撃ってくるのである。</p>
+      <p class="codex-p">耐熱装備で熱そのものは防げるが火炎弾の直撃は防ぎきれない。バリアの許容量は一発の直撃でほぼ使い切られ二発目を受ければ機体ごと溶ける。絶対に被弾が許されない状態が任務の間ずっと続き、ファルコは終始恨み節を吐き続けていたと交信記録は伝える。「暑い」「溶ける」「帰る」の三語を組み合わせた文が記録の大半を占めておりCDFの通信士はこれを「ソーラ語録」と呼んで整理した。</p>
+      <p class="codex-p">飛行そのものは4機とも見事であった。火柱の根元を読み、岩塊の弾道を予測し、プラズマの山の谷間を縫う。日食作戦で残骸の影を使った隊は、影のない海で今度は波そのものを盾にした。ペッピーは後方から火柱の周期を数え上げて全機へ通報し続け、その声だけは最初から最後まで一度も上ずらなかった。</p>
+    </article>
+
+    <article class="codex-entry" id="rings">
+      <h2 class="codex-h">第4章 金色の環 ─ <span class="en">THE GOLDEN RINGS</span></h2>
+      <p class="codex-p">ソーラの表面ではもう一つ面白いことが分かった。撃ち落とした火炎弾の残滓から金色の環が浮かび上がったのである。恒星としての膨大なエネルギーが火炎弾に付与された結果、エネルギーが<a href="../database/military.html#supply-ring">スモールサプライ</a>で取り出せる形式になって吹き出し続けていることが明らかになった。環を潜ればバリアが回復し機体の傷も塞がる。多少の被弾や回避不可能な灼熱のダメージは火炎弾を撃ち続けて環を潜り続ければある程度まで帳消しにできるのである。</p>
+      <p class="codex-p">スリッピーは大興奮であった。ブラグザライトを回収するはずのモジュールが恒星の火炎弾に反応するという事実は、ソーラそのものが将来有望なエネルギー源として利用できる可能性を示している。「すっごいよこの星、まるごと充電器だったんだ！」という交信は隊の中で唯一ソーラを気に入った人間の記録として残された。これに対してファルコの返答は「なら一人で住め、貸し切りのプールもあるぞ」である。</p>
+    </article>
+
+    <article class="codex-entry" id="cookie">
+      <h2 class="codex-h">第5章 クッキー ─ <span class="en">THE COOKIE</span></h2>
+      <p class="codex-p">そんなこんなで進んでいくと一際巨大な黒点に遭遇した。周囲のプラズマより温度の低い暗い領域が海に浮かぶ大陸のように広がり、外周観測網が影を捉えた座標と完全に一致していた。ファルコはこれを見るなり勝ち誇ったように怒鳴った。「ほら見ろ！　ただのバカでかいクッキーみたいなもんじゃねぇか！！　俺はもう帰るぜ！」。ペッピーも胸を撫でおろしている。「まあ、大怪獣が本当にいなくて安心したわい」。</p>
+      <p class="codex-p">スリッピーの観測機器が示す黒点の温度分布は確かに生物の体温分布に似た「まだら」を描いていた。だがそれは黒点の話である。異変は黒点ではなく隊の真下で動き始めていた。プラズマの海面が持ち上がり火柱とは違う形で盛り上がっていく。異変に最初に気づいたのは隊長であった。</p>
+      <p class="codex-p">「全機回避行動をしろ！　下からくるぞ！」</p>
+    </article>
+
+    <article class="codex-entry" id="sangar">
+      <h2 class="codex-h">第6章 サンガー ─ <span class="en">SANGAR</span></h2>
+      <p class="codex-p">ソーラのプラズマから飛び出したのは山ほどの大きさを誇る巨大なバイオウェポン、後に「サンガー」と同定される怪物であった。マグマに耐える外皮と鎌状の両腕を持ち、全身が赤熱して高熱を発するその姿はもはや生物と呼んでよいのかわからないものであった。跳び上がった巨体が海面へ戻ると同時にプロミネンスが四方へ噴き上がり4機は散開して火柱の間へ逃げ込んだ。</p>
+      <p class="codex-p">あまり現実離れした怪物に思わずファルコが言葉を漏らす。「…アンドルフの野郎　狂ってやがる…！」。恒星の表面で稼働する兵器を設計した者への評としてこれ以上に簡潔なものは記録に存在しない。</p>
+    </article>
+
+    <article class="codex-entry" id="disaster">
+      <h2 class="codex-h">第7章 天災 ─ <span class="en">THE DISASTER</span></h2>
+      <p class="codex-p">サンガーの討伐は難航を極めた。ただそこにいるだけで8000度近い体表からの凄まじい高熱によりアーウィンはダメージを受け続け、腕を一振りするだけでその高熱がプラズマをかき乱してプロミネンスを噴き上げさせる。そしてサンガーがソーラのプラズマに潜るだけで周囲は白く輝くほどの熱を帯び、地表からは数えきれない量の火炎弾が飛び出し始めるのであった。腕の一振りで火柱を呼び螺旋状の火炎と岩塊を吐く。後の解析官がこれを「兵器というより天災の記述」と評したのはこの章の証言によるものである。</p>
+      <p class="codex-p">4機は火炎弾を撃ち落として環を潜り、環を潜って火炎弾を撃ち落とした。第4章の発見がなければ隊はこの時点で全滅していたとスリッピーは分析している。回復しながら戦い続けられるという事実だけが天災を相手に時間を稼ぐ唯一の手段であった。</p>
+    </article>
+
+    <article class="codex-entry" id="larva">
+      <h2 class="codex-h">第8章 幼体 ─ <span class="en">THE LARVA</span></h2>
+      <p class="codex-p">そして恐るべき事実も同時に判明した。サンガーの体表を走る構造をスリッピーが解析したところ現在の姿は「幼体」に相当するものであり、成長すればこの強烈な熱量を維持できる機構を備えた上で他の宙域へ飛び立つ可能性があるというのである。「恒星の熱を身に纏ったまま惑星の軌道へ現れる怪物」冷や汗を垂らしながら分析結果を話すスリッピーの通信を聞いてフォックスはこの怪物を討伐する決意を固めた。調査任務はこの瞬間に討伐任務へ変わった。</p>
+      <p class="codex-p">「帰るって言ってたよな、ファルコ」</p>
+      <p class="codex-p">「…言ったが、こいつを置いて帰ったら次はコーネリアの空で会うんだろ。冗談じゃねえ」</p>
+      <p class="codex-p">恨み言の男が最初に翼を返したことはそのまま攻勢の合図となった。</p>
+    </article>
+
+    <article class="codex-entry" id="gamble">
+      <h2 class="codex-h">第9章 一か八か ─ <span class="en">THE GAMBLE</span></h2>
+      <p class="codex-p">アーウィンの光学ザッパーでは高熱によりサンガーにダメージを与えることができない。レーザーは体表の熱に散らされ当たっているのかどうかすら判別できなかった。だが火炎弾を破壊し続けるとスモールサプライが大量に発生して機体の傷を修復する。この事実に気づいたフォックスは一か八かの勝負に出た。サンガーが表面へ飛び出してスモールサプライの数が最大になる瞬間を見計らい、アーウィンを高速回転させながらサンガーの唯一の急所である胴体の傷へ突撃したのである。</p>
+      <p class="codex-p">まさか物理的な突撃を相手からされるなど想定していなかったのか、サンガーは驚きのあまり倒れ込んだ。そう、高熱に守られて一切の攻撃を通さないサンガーの身体は物理的な衝撃に弱かったのである。ソーラという流体とプラズマしか存在しない環境に適応したことが仇となった。固いものにぶつかるという経験をこの怪物は生まれてから一度もしたことがなかった。</p>
+      <p class="codex-p">突撃の代償は4号機の片翼であった。ローリングシールドの回転が衝撃の大半を受け流したものの、翼の先端は溶けて折れ機体は制御を失いかけ、環を潜って回復する余裕はもうない。倒れたサンガーはすぐさま腕を振り上げた。</p>
+    </article>
+
+    <article class="codex-entry" id="bombs">
+      <h2 class="codex-h">第10章 ありったけ ─ <span class="en">EVERYTHING HE HAD</span></h2>
+      <p class="codex-p">その瞬間、ファルコのありったけの<a href="../weapons/smart-bomb.html">スマートボム</a>が火を噴いた。至近距離での大爆発で胴体の傷が開き、胴体そのものが砕け散るとサンガーはそのまま黒くなって機能を停止した。赤熱していた体表から色が抜けていく様子をスリッピーは「真っ黒に燃え尽きた」と表現している。怪物は溶岩の海へ沈み周囲の火柱は嘘のように収まった。</p>
+      <p class="codex-p">見切り発車でぎりぎりだったフォックスはファルコに救われたのである。交信記録に残るファルコの投弾時の発言は記載を控える。要約すれば「二度とやるな」であり要約しなければ本記録の品位に関わる。</p>
+    </article>
+
+    <article class="codex-entry" id="partner">
+      <h2 class="codex-h">第11章 相棒 ─ <span class="en">PARTNER</span></h2>
+      <p class="codex-p">片翼を失ってふらつく4号機の中でフォックスは礼を言った。「助かったよファルコ　お前をチームに招いて本当に良かったと思ってるよ」。</p>
+      <p class="codex-p">ファルコはぶっきらぼうに返している。「ちっ…決着がつく前にお前が消えたら寝つきが悪くなんだろ…！　ハラハラさせやがって」。</p>
+      <p class="codex-p">CDFの賞金付き選抜模擬戦の決勝で隊長に敗れて以来二人の「決着」は隊の中で誰も触れない話題である。この日の交信は、その決着が両者にとってまだ生きていることを示す数少ない記録となった。ペッピーはこの会話を航行記録から削除しないよう<a href="../weapons/greatfox.html">ナウス</a>に指示している。</p>
+    </article>
+
+    <article class="codex-entry" id="pickup">
+      <h2 class="codex-h">第12章 迎え ─ <span class="en">THE PICKUP</span></h2>
+      <p class="codex-p">上空を見上げるとなんとグレートフォックスが回収に向かってきていた。安全距離のはるか内側へ母艦を入れる判断は誰の指示でもない。作戦遂行時にあらかじめ第2隊の<a href="../characters/fay.html">フェイ・スパニエル</a>と<a href="../characters/miyu.html">ミュウ・リンクス</a>がグレートフォックスと共にソーラの近傍にある帝国軍の「ブラグザ代替エネルギープラント前哨基地」と交戦しており、その帰りについでに寄ってきたというのである。</p>
+      <p class="codex-p">「ついで」の内容は艦の戦闘記録に詳しい。占領下のゾネスを足場に帝国が進めていた<a href="../database/glossary.html#blagza-base">ブラグザ</a>に類似する充填基地の建設現場を、第2隊の2機が基地の対空砲網を引き付けている間にグレートフォックスの主砲が黙らせたのである。「先輩たちが海で泳いでる間に、こっちは仕事を一つ片付けておきましたから」というミュウの交信を第1隊は誰も聞かなかったことにしている。片翼のアーウィンは母艦の格納庫へ滑り込み4機は太陽の上から生きて帰った。</p>
+    </article>
+
+    <article class="codex-entry" id="epilogue">
+      <h2 class="codex-h">結 ─ 観測気球 <span class="en">THE OBSERVATION BALLOONS</span></h2>
+      <p class="codex-p">ソーラから何とか離脱したスターフォックスであったがペッピーは内心に心残りを抱えていた。機能を停止したとはいえサンガーの体はまだ消滅せずにソーラの溶岩の海へ放置されている。そして第2隊が交戦した基地の他にも建造途中の施設が複数あるように見えたというのである。帝国が恒星の膝元に何を築こうとしているのかこの任務では確かめきれなかった。</p>
+      <p class="codex-p">念のためペッピーはソーラ宙域に観測気球を複数個放ち、何も起きないことを願ってグレートフォックスに帰還した。気球の観測データは今も外周観測網へ送られ続けている。任務後、当該宙域の接近制限は一段階引き上げられた。<span class="redacted">なお機能を停止したサンガーの残骸は溶岩の海の深部へ沈んだまま浮上しておらず観測気球の熱分布データは残骸の位置に一致する「まだら」をごく微弱ながら検出し続けている。CDFはこれを残熱と評価しているが生命体説を支持する研究者の見解は異なる</span>。</p>
+    </article>
+
+    <article class="codex-entry" id="aftermath">
+      <h2 class="codex-h">余話 ─ 陽炎の影 <span class="en">AFTERWORD — THE HEAT HAZE</span></h2>
+      <p class="codex-p">事件名の「陽炎の影」は、外周観測網の観測員たちが最初の画像に付けた仮の名である。プラズマの揺らぎが作る陽炎の中に見えた影であり正体が判明するまで彼らはそれを本気で陽炎の錯覚だと信じたがっていた。任務の結末が公開されていない現在も観測ステーションでは新人が最初の夜勤で必ず「影」の画像を見せられる。教官の決まり文句は「錯覚だと思うか？」である。</p>
+      <p class="codex-p">スリッピーの持ち帰った火炎弾のエネルギー計測データは<a href="../database/glossary.html#energy-revolutions">エネルギー革命</a>の研究者たちの間で静かな騒ぎになっている。恒星の火炎弾から回収可能な形式のエネルギーが取り出せるという事実は、ブラグザ・ソーラークリスタルに続く新たな革命の芽であるかもしれず、同時に帝国が「ソーラの膝元」に固執する理由の説明でもある。ソーラエンパイアカンパニーがこの計測データの閲覧を申請したことは記録されているが回答は記録されていない。</p>
+      <p class="codex-p">そしてファルコの「ソーラ語録」の交信記録はCDF航空学校で「教材にしてはいけない教材」の一つに数えられている。飛行技術の教材としてではない。任務を最後まで嫌がりながら最初に翼を返した男の記録として教官たちはこれを黙って聞かせるのだという。</p>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,194,122,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

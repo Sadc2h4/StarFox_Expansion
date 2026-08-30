@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GYROWING — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#5fb8a8;--accent:#a0dcd2;--border:rgba(95,184,168,0.32);--border-hi:rgba(160,220,210,0.7);--dim:#0f2a26;--dim2:#071512; }
+    .p-title    { color: #e8fbf7; text-shadow: 0 0 50px rgba(95,184,168,0.45); }
+    .p-tagline  { border-color: #5fb8a8; color: #5fb8a8; }
+    .terminal-hdr { color: #a0dcd2; }
+    .terminal-hdr::before { background: #a0dcd2; box-shadow: 0 0 8px #a0dcd2; }
+    .dk { color: #5fb8a8; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-36 / GYROWING — ジャイロウィング ]</div>
+    <div class="header-status"><span class="blink" style="color:#a0dcd2;">●</span> ACTIVE — STAR FOX TEAM</div>
+  </header>
+
+  <div class="side-l"><div class="vt">WEAPON FILE — GYROWING — LOW-SPEED RECON ROTORCRAFT — WITH TETHERED UNIT DIRECT-i — SPACE DYNAMICS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0036 — CLEARANCE: OPEN — STAR FOX TEAM SUPPORT CRAFT</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-36 / WEAPON FILE ]</div>
+        <div class="p-name-jp">ジャイロウィング (GYROWING)</div>
+        <h1 class="p-title">GYROWING</h1>
+        <div class="p-tagline">低速偵察用回転翼機 ─ 静かに忍び込む「吊り下げ屋」</div>
+        <p class="p-short-desc">スペース・ダイナミクス社が偵察・潜入用に開発した低速のホバー機。速さと火力を捨てる代わりに、その場で静止し、係留ケーブルで小型ロボ「ダイレクト-アイ」を下ろして施設の管制系へ潜り込む。ゾネス海上基地潜入作戦でその価値を証明した。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ WEAPON SCAN — FILE 36 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">GYROWING / ジャイロウィング</td></tr><tr><td class="dk">CLASS</td><td class="dv">低速偵察・潜入用回転翼機（ホバー機）</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv"><a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a></td></tr><tr><td class="dk">PROPULSION</td><td class="dv">ダクテッドファン4基 — 垂直離着陸 / 空中静止</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">小口径レーザー（自衛用） / 吊り下げ投下（爆薬・コンテナ）</td></tr><tr><td class="dk">PAYLOAD</td><td class="dv warn">係留式小型ロボ「ダイレクト-アイ」 — 管制系アクセス・施錠解除・小物搬送</td></tr><tr><td class="dk">CREW</td><td class="dv">1名</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../database/military.html#starfox">スターフォックス</a>（<a href="greatfox.html">グレートフォックス</a>搭載）</td></tr><tr><td class="dk">KEY RECORD</td><td class="dv"><a href="../database/glossary.html#zoness-recon">ゾネス海上基地潜入作戦</a></td></tr><tr><td class="dk">WEAKNESS</td><td class="dv warn">⚠ 低速・軽装甲 — 発見されれば逃げ場なし</td></tr><tr><td class="dk">STATUS</td><td class="dv">現役 — 任務限定運用</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">COMBAT RATING -- 22 / 100 （潜入適性は別評価）</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 22%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(95,184,168,0.5);">
+        <img src="" alt="GYROWING" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">RECON ROTORCRAFT — SPACE DYNAMICS</span>
+            <span class="tg-jp">低速偵察用回転翼機 ── 静止できる翼</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">速さを捨てた分、見つからないことだけは誰より上手くなったよ。<br>…見つかったら？　その時は…全力で逃げて！。<span class="tg-note note">-ゾネス潜入前 スリッピー・トードの機体説明より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">アーウィンは「扉を蹴破る」、ウォーカーは「扉から入る」ならば、ジャイロウィングは「鍵を借りてくる」に近いかな<span class="lore-quote-src">― SD社 試作機説明会でのスリッピー・トードの比喩</span></span></p>
+  <p class="lore-p">ジャイロウィング（Gyrowing）は<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>が偵察・潜入用途に開発した低速の回転翼機である。4基のダクテッドファンで垂直に離着陸し空中でその場に静止できることを最大の特徴とする。<a href="arwing.html">アーウィン</a>のように速くも強くもないが戦闘機には決してできない「止まって待つ」「影から影へ移る」「静かに物を下ろす」を可能にする機体であり、<a href="../database/military.html#starfox">スターフォックス</a>は<a href="walker.html">ウォーカー</a>と並ぶ作戦の選択肢として<a href="greatfox.html">グレートフォックス</a>に搭載している。</p>
+  <p class="lore-p">設計思想は明快、「見つからなければ撃たれない」要するに隠密専用の機体ということである。武装は自衛用の小口径レーザーのみで装甲も大した材質は使われていない。発見された時点で任務は失敗と見なされるため、パイロットに求められるのは繊細な操作と忍耐だとされる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機体 ─ AIRFRAME</h3>
+  <p class="lore-p">機体は小型で操縦席の下に係留ケーブルの巻き取り機構と吊り下げ用のフックを備える。ファンの推力を個別に制御することで前後左右へ滑るように移動でき、ロータリー音は大気中でも驚くほど小さい。速度は遅いが低空での安定性は極めて高く採掘櫓の合間や建造物の隙間といった戦闘機では近づけない場所へ潜り込める。</p>
+  <p class="lore-p">吊り下げ機構は小型ロボの展開だけでなく爆薬や物資コンテナの搬送にも使われる。目標の真上で静止して切り離す投下は精密で、ゾネスでは封鎖された安全弁の真上に「置く」ように爆薬を下ろしている。</p>
+</div>
+<div class="lore-section" id="direct-i">
+  <h3 class="lore-h">ダイレクト-アイ ─ DIRECT-i</h3>
+  <p class="lore-p">ジャイロウィングの真価は機体ではなく係留ケーブルの先に吊り下げられる小型ロボ「ダイレクト-アイ」にある。<a href="../characters/slippy.html">スリッピー・トード</a>の手による端末ロボである。接続口に取り付いて施設の管制系へ直接アクセスし、施錠の解除や装置の停止、記録の吸い上げなど様々な動作を行うことが可能。小さな把持腕で小物を運ぶこともでき機体の届かない通路の奥へ自ら潜り込める。</p>
+  <p class="lore-p">名は「直接（ダイレクト）目で見る（アイ）」に由来するとされる。センサーで眺めるのではなく相手の中枢へ手を突っ込んで中から見る。スリッピーが「鍵を借りてくる係」と呼んでいる理由はこの使用感によるものである。動作は遅く見つかれば基本的には一撃で壊れると思ってよい。だからこそ機体側の静粛性が必要でありジャイロウィングとダイレクト-アイは切り離せない一組として設計されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">運用 ─ OPERATIONS</h3>
+  <p class="lore-p"><a href="../database/military.html#cdf">CDF</a>内で最もよく知られる運用記録は<a href="../database/glossary.html#zoness-recon">ゾネス海上基地潜入作戦</a>である。アーウィンによる探照灯網の強行偵察で警戒が外縁へ引き寄せられた隙に<a href="../characters/fox.html">フォックス</a>はグレートフォックスで本機へ乗り換え、帝国の海上要塞と化した<a href="../database/glossary.html#city-juliet">ジュリエット</a>の石油採掘区画へ忍び込んだ。採掘櫓の影から影へ渡り、ダイレクト-アイが管制系から搬出記録を吸い上げて自然由来でない生体触媒の痕跡という最初の物証を持ち帰っている。帝国側の記録に残ったのは「探照灯の故障による小火」だけであった。</p>
+  <p class="lore-p">速度と火力を捨てた機体が戦闘機4機の強行偵察と同じだけの成果を誰にも気づかれずに挙げた。この一件はCDFの作戦立案に「潜入は戦闘機の仕事ではない」という当然の認識を改めて植え付け、ジャイロウィングは隊の装備表で「任務限定」の注記付きながら常備の座を得ている。</p>
+  <p class="lore-p"><span class="redacted">本機とダイレクト-アイが投入された作戦はもう一件ある。当該記録は別区分で封印されており、本ファイルでは触れない</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p"><a href="../characters/falco.html">ファルコ</a>は本機を「洗濯かご」と呼び一度も搭乗していない。「速さで負ける機体には乗らない」というのが本人の弁であるが、ゾネスで機体を選んだのがフォックスだったことについては「あいつの方が気が長いからな…」とだけ述べている。なお、<a href="../weapons/bluemarine.html">ブルーマリン</a>のことは「バスタブ」とけなしており、航空戦闘機以外に乗らないスタンスは筋金入りとみられる。</p>
+  <p class="lore-p">ダイレクト-アイには任務のたびにスリッピーが小さな傷の手入れをしており、整備記録には「本日も無事帰還」の一行が毎回添えられている。隊で最も小さな隊員の出撃記録である。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(160,220,210,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

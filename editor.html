@@ -1,0 +1,3197 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LYLAT Page Editor</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@700&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+    :root {
+      --bg: #06100e;
+      --panel: rgba(4, 18, 16, 0.96);
+      --line: rgba(0, 212, 180, 0.36);
+      --line-hi: rgba(0, 255, 238, 0.7);
+      --text: #9fd9d3;
+      --dim: #4b7872;
+      --primary: #00d4b4;
+      --accent: #00ffee;
+      --warn: #ffb15c;
+      --danger: #ff665c;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", "Yu Gothic UI", sans-serif;
+      overflow: hidden;
+    }
+
+    body {
+      display: grid;
+      grid-template-columns: 1fr 390px;
+      grid-template-rows: 46px 1fr;
+    }
+
+    body.mode-planets,
+    body.mode-codex {
+      grid-template-columns: 1fr;
+    }
+
+    header {
+      grid-column: 1 / 3;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(3, 12, 11, 0.98);
+      min-width: 0;
+    }
+
+    body.mode-planets header,
+    body.mode-codex header {
+      grid-column: 1;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .tab {
+      border: 1px solid rgba(0,212,180,0.24);
+      background: rgba(0,0,0,0.18);
+      color: var(--dim);
+      padding: 7px 12px;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      border-color: var(--line-hi);
+      background: rgba(0,255,238,0.12);
+      color: var(--accent);
+    }
+
+    .top-actions {
+      margin-left: auto;
+      display: none;
+      gap: 8px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    body.mode-index .top-actions.index-actions,
+    body.mode-planets .top-actions.planets-actions,
+    body.mode-codex .top-actions.codex-actions { display: flex; }
+
+    .status {
+      color: var(--dim);
+      font-size: 12px;
+      min-width: 150px;
+      text-align: right;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    button, select, input, textarea { font: inherit; }
+
+    button {
+      border: 1px solid var(--line);
+      background: rgba(0, 212, 180, 0.08);
+      color: var(--text);
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      border-color: var(--line-hi);
+      color: var(--accent);
+      background: rgba(0, 255, 238, 0.1);
+    }
+
+    button.danger {
+      border-color: rgba(255, 102, 92, 0.5);
+      color: #ffb8b3;
+    }
+
+    .workspace {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 22px;
+      overflow: hidden;
+    }
+
+    body.mode-planets .workspace,
+    body.mode-codex .workspace {
+      display: none;
+    }
+
+    .map-shell {
+      position: relative;
+      width: min(100%, calc((100vh - 76px) * (1607 / 805)));
+      aspect-ratio: 1607 / 805;
+      container-type: inline-size;
+      outline: 1px solid var(--line);
+      overflow: hidden;
+      background: #020807;
+      box-shadow: 0 0 24px rgba(0, 212, 180, 0.12);
+    }
+
+    .map-shell > .map-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      pointer-events: none;
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to right, rgba(0,255,238,0.16) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,255,238,0.16) 1px, transparent 1px);
+      background-size: 10% 10%;
+      opacity: 0.28;
+    }
+
+    .empty-map-note {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--dim);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      pointer-events: none;
+      text-align: center;
+      display: none;
+    }
+
+    body.mode-empty .empty-map-note { display: block; }
+
+    .marker {
+      position: absolute;
+      left: calc(var(--x) * 1%);
+      top: calc(var(--y) * 1%);
+      transform: translate(-50%, -50%);
+      min-width: 18px;
+      min-height: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: grab;
+      user-select: none;
+      z-index: 20;
+    }
+
+    .marker.dragging { cursor: grabbing; z-index: 50; }
+
+    .marker.selected::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border: 1px dashed var(--accent);
+      pointer-events: none;
+    }
+
+    .marker img {
+      width: calc(var(--size) * 1cqw);
+      max-width: 160px;
+      min-width: 10px;
+      display: block;
+      filter: drop-shadow(0 0 10px var(--color));
+      animation: floatMarker var(--speed) ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .marker[data-type="planet"] img,
+    .marker[data-type="nebula"] img {
+      width: calc(var(--size) * 0.84cqw);
+    }
+
+    .dot {
+      width: 0.72cqw;
+      height: 0.72cqw;
+      min-width: 5px;
+      min-height: 5px;
+      border-radius: 50%;
+      background: var(--color);
+      box-shadow: 0 0 10px var(--color);
+    }
+
+    .label {
+      margin-top: 4px;
+      color: var(--color);
+      font-size: clamp(6px, 0.72cqw, 10px);
+      letter-spacing: 0.12em;
+      text-shadow: 0 0 8px rgba(0,0,0,0.9);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .orbit-ring {
+      position: absolute;
+      left: calc(var(--x) * 1%);
+      top: calc(var(--y) * 1%);
+      width: 0;
+      height: 0;
+      pointer-events: none;
+      animation-name: ringSpin;
+      animation-duration: var(--speed);
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-direction: var(--direction);
+      z-index: 12;
+    }
+
+    .orbit-ring.orbit-upright {
+      animation: none;
+    }
+
+    .orbit-ring img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: calc(var(--seg-size) * 1cqw);
+      opacity: 0.9;
+      filter: drop-shadow(0 0 7px var(--color));
+      transform:
+        rotate(var(--a))
+        translateX(calc((var(--radius) * 1cqw) + var(--j, 0cqw)))
+        translate(-50%, -50%)
+        scale(var(--scale));
+      transform-origin: 0 0;
+    }
+
+    .orbit-ring.orbit-upright img {
+      animation-name: orbitUpright;
+      animation-duration: var(--speed);
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-direction: var(--direction);
+    }
+
+    .orbit-handle {
+      position: absolute;
+      left: calc(var(--x) * 1%);
+      top: calc(var(--y) * 1%);
+      width: 16px;
+      height: 16px;
+      transform: translate(-50%, -50%);
+      border: 1px solid var(--accent);
+      background: rgba(0,255,238,0.12);
+      cursor: grab;
+      z-index: 55;
+    }
+
+    .orbit-center-handle {
+      border-radius: 50%;
+      background: rgba(255,177,92,0.18);
+      border-color: var(--warn);
+    }
+
+    .orbit-handle.selected::after {
+      content: "";
+      position: absolute;
+      inset: -7px;
+      border: 1px dashed var(--accent);
+    }
+
+    aside {
+      border-left: 1px solid var(--line);
+      background: var(--panel);
+      display: none;
+      grid-template-rows: auto auto 1fr;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    body.mode-planets aside,
+    body.mode-codex aside {
+      grid-column: 1;
+      grid-template-rows: minmax(0, 1fr);
+      border-left: 0;
+      min-height: 0;
+    }
+
+    body.mode-index aside,
+    body.mode-planets aside,
+    body.mode-codex aside { display: grid; }
+
+    .mode-panel { display: none; overflow: hidden; grid-template-rows: auto auto 1fr; min-height: 0; }
+    body.mode-index .index-panel,
+    body.mode-planets .planets-panel { display: grid; }
+    body.mode-codex .codex-panel { display: grid; }
+
+    .index-panel {
+      grid-template-rows: auto minmax(0, 1fr) minmax(90px, 0.42fr);
+      min-height: 0;
+    }
+
+    .planets-panel {
+      grid-template-rows: auto minmax(0, 1fr);
+      min-height: 0;
+    }
+
+    .codex-panel {
+      grid-template-rows: auto minmax(0, 1fr);
+      min-height: 0;
+    }
+    .codex-entry-list { overflow-y: auto; padding: 12px; min-height: 0; }
+    .ce-card {
+      border: 1px solid rgba(0,212,180,0.28);
+      background: rgba(0, 20, 17, 0.55);
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+    .ce-head { display: flex; gap: 6px; margin-bottom: 6px; align-items: center; flex-wrap: wrap; }
+    .ce-head input[type="text"] { flex: 1; min-width: 110px; }
+    .ce-head label.ce-loc { display: flex; align-items: center; gap: 4px; color: var(--dim); font-size: 11px; white-space: nowrap; }
+    .ce-head button { padding: 4px 8px; }
+    .ce-card textarea { width: 100%; min-height: 150px; box-sizing: border-box; font-family: Consolas, monospace; font-size: 12px; }
+
+    .panel-block {
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    #editor {
+      min-height: 0;
+      overflow: auto;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .row label {
+      color: var(--dim);
+      font-size: 12px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(0,212,180,0.25);
+      background: rgba(0, 0, 0, 0.28);
+      color: var(--text);
+      padding: 6px;
+    }
+
+    input[type="color"] {
+      height: 34px;
+      padding: 2px;
+    }
+
+    textarea {
+      min-height: 74px;
+      resize: vertical;
+      line-height: 1.45;
+    }
+
+    .list {
+      overflow: auto;
+      padding: 8px;
+      min-height: 0;
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      padding: 7px 8px;
+      border: 1px solid rgba(0,212,180,0.18);
+      margin-bottom: 6px;
+      cursor: pointer;
+      background: rgba(0,0,0,0.16);
+    }
+
+    .item.active {
+      border-color: var(--line-hi);
+      background: rgba(0,255,238,0.08);
+    }
+
+    .item small {
+      display: block;
+      color: var(--dim);
+      margin-top: 2px;
+    }
+
+    .output {
+      height: 230px;
+      resize: none;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 11px;
+      line-height: 1.45;
+      white-space: pre;
+    }
+
+    .hint {
+      color: var(--dim);
+      font-size: 12px;
+      line-height: 1.5;
+      margin: 8px 0 0;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .planet-form-scroll {
+      overflow: auto;
+      padding: 18px;
+      min-height: 0;
+    }
+
+    .planet-form-scroll h2 {
+      margin: 10px 0 8px;
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+    }
+
+    .wide-row {
+      display: grid;
+      gap: 5px;
+      margin-bottom: 9px;
+    }
+
+    .wide-row label {
+      color: var(--dim);
+      font-size: 12px;
+    }
+
+    .planet-page-editor {
+      display: grid;
+      grid-template-columns: minmax(360px, 0.9fr) minmax(520px, 1.1fr);
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .planet-preview {
+      position: relative;
+      min-height: 0;
+      overflow: auto;
+      padding: 28px 30px;
+      border-right: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 70% 28%, rgba(0,255,238,0.12), transparent 34%),
+        radial-gradient(circle at 28% 72%, rgba(255,177,92,0.1), transparent 38%),
+        #030908;
+    }
+
+    .planet-preview-shell {
+      min-height: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 0.82fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .planet-preview h2,
+    .planet-preview p {
+      margin: 0;
+    }
+
+    .preview-index {
+      color: var(--warn);
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      margin-bottom: 10px;
+    }
+
+    .preview-name {
+      color: var(--accent);
+      font-size: clamp(24px, 3vw, 46px);
+      line-height: 1.05;
+      margin-bottom: 12px;
+      white-space: pre-line;
+    }
+
+    .preview-tagline {
+      color: var(--primary);
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+    }
+
+    .preview-desc {
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 48em;
+      opacity: 0.9;
+      white-space: pre-line;
+    }
+
+    .preview-visual {
+      position: relative;
+      min-height: 300px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(0,212,180,0.22);
+      background: rgba(0,0,0,0.22);
+      overflow: hidden;
+    }
+
+    .preview-visual img {
+      max-width: min(82%, 340px);
+      max-height: 360px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 28px var(--preview-glow, rgba(0,212,180,0.5)));
+      animation: previewFloat 7s ease-in-out infinite;
+    }
+
+    .preview-visual img[data-anim="none"] { animation: none; }
+    .preview-visual img[data-anim="bob"] { animation-name: bobMarker; }
+    .preview-visual img[data-anim="spin"] { animation-name: spinMarker; animation-timing-function: linear; }
+
+    .preview-tag {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      max-width: 70%;
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-align: right;
+      white-space: pre-line;
+    }
+
+    .preview-callout {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      max-width: 72%;
+      color: #b7fff7;
+      padding: 0;
+      font-family: 'M PLUS 1p', 'Yu Gothic UI', 'Meiryo', sans-serif;
+      font-size: clamp(22px, 2.18vw, 36px);
+      font-weight: 700;
+      line-height: 1.28;
+      letter-spacing: 0.02em;
+      text-shadow:
+        0 2px 0 rgba(0,0,0,0.95),
+        0 0 14px rgba(0,0,0,0.95),
+        0 0 18px rgba(0,255,238,0.45),
+        0 0 32px rgba(0,212,180,0.28);
+      white-space: pre-line;
+    }
+
+    .preview-callout .note {
+      display: block;
+      margin-top: 6px;
+      font-family: 'Share Tech Mono', 'Yu Gothic UI', 'Meiryo', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.08em;
+      color: rgba(210,255,250,0.88);
+    }
+
+    .preview-comm-window {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      width: clamp(170px, 22vw, 320px);
+      max-height: 280px;
+      display: none;
+      background:
+        linear-gradient(135deg, rgba(0,255,238,0.18), transparent 42%),
+        rgba(4, 12, 12, 0.9);
+      border: 1px solid var(--line-hi);
+      box-shadow:
+        0 0 0 1px rgba(0,255,238,0.08) inset,
+        0 0 22px rgba(0,255,238,0.18),
+        0 14px 34px rgba(0,0,0,0.52);
+      padding: 20px 8px 8px;
+      pointer-events: none;
+    }
+
+    .preview-comm-window::before {
+      content: 'COMMS VISUAL';
+      position: absolute;
+      top: 5px;
+      left: 8px;
+      color: var(--accent);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+    }
+
+    .preview-comm-window img {
+      display: none;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 248px;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
+    .preview-comm-window img.active,
+    .preview-comm-window img:first-of-type {
+      display: block;
+    }
+
+    .preview-scan {
+      margin-top: 22px;
+      border: 1px solid rgba(0,212,180,0.22);
+      background: rgba(0,0,0,0.22);
+      padding: 12px;
+    }
+
+    .preview-scan-row {
+      display: grid;
+      grid-template-columns: minmax(90px, 0.42fr) 1fr;
+      gap: 12px;
+      border-bottom: 1px solid rgba(0,212,180,0.12);
+      padding: 6px 0;
+      font-size: 12px;
+    }
+
+    .preview-scan-row:last-child { border-bottom: 0; }
+    .preview-scan-key { color: var(--dim); }
+    .preview-scan-value { color: var(--text); }
+
+    .planet-form-scroll {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+      gap: 0 18px;
+      align-content: start;
+    }
+
+    .planet-form-scroll h2,
+    .planet-form-scroll .wide-row {
+      min-width: 0;
+    }
+
+    .planet-form-scroll h2 {
+      grid-column: 1 / -1;
+      margin-top: 18px;
+      border-bottom: 1px solid rgba(0,212,180,0.18);
+      padding-bottom: 6px;
+    }
+
+    .planet-form-scroll h2:first-child {
+      margin-top: 0;
+    }
+
+    .planet-form-scroll .wide-row:has(#pfHeroTitle),
+    .planet-form-scroll .wide-row:has(#pfShortDesc),
+    .planet-form-scroll .wide-row:has(#pfScanRows),
+    .planet-form-scroll .wide-row:has(#pfLore) {
+      grid-column: 1 / -1;
+    }
+
+    .planet-form-scroll textarea {
+      min-height: 92px;
+    }
+
+    #pfLore,
+    #pfScanRows {
+      min-height: 220px !important;
+    }
+
+    @keyframes previewFloat {
+      0%,100% { transform: translateY(0); }
+      40% { transform: translateY(-9px); }
+      70% { transform: translateY(-5px); }
+    }
+
+    @media (max-width: 1180px) {
+      .planet-page-editor {
+        grid-template-columns: 1fr;
+        overflow: auto;
+      }
+
+      .planet-preview {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        min-height: 420px;
+      }
+
+      .planet-form-scroll {
+        overflow: visible;
+      }
+    }
+
+    .nudge-pad {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .nudge-pad button {
+      min-height: 30px;
+      padding: 4px;
+    }
+
+    .nudge-pad .up { grid-column: 2; }
+    .nudge-pad .left { grid-column: 1; }
+    .nudge-pad .right { grid-column: 3; }
+    .nudge-pad .down { grid-column: 2; }
+
+    @keyframes floatMarker {
+      0%,100% { transform: translateY(0); }
+      40% { transform: translateY(-4px); }
+      70% { transform: translateY(-2px); }
+    }
+
+    @keyframes bobMarker {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes spinMarker {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes ringSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+
+    @keyframes orbitUpright {
+      from {
+        transform:
+          rotate(var(--a))
+          translateX(calc((var(--radius) * 1cqw) + var(--j, 0cqw)))
+          rotate(calc(-1 * var(--a)))
+          translate(-50%, -50%)
+          scale(var(--scale));
+      }
+      to {
+        transform:
+          rotate(calc(var(--a) - 360deg))
+          translateX(calc((var(--radius) * 1cqw) + var(--j, 0cqw)))
+          rotate(calc(-1 * (var(--a) - 360deg)))
+          translate(-50%, -50%)
+          scale(var(--scale));
+      }
+    }
+
+    .marker img[data-anim="none"] { animation: none; }
+    .marker img[data-anim="float"] { animation-name: floatMarker; }
+    .marker img[data-anim="bob"] { animation-name: bobMarker; }
+    .marker img[data-anim="spin"] { animation-name: spinMarker; animation-timing-function: linear; }
+  </style>
+</head>
+<body class="mode-empty">
+  <header>
+    <h1>LYLAT PAGE EDITOR</h1>
+    <div class="tabs">
+      <button class="tab" id="indexTab">index.html編集</button>
+      <button class="tab" id="planetsTab">記事ページ編集</button>
+      <button class="tab" id="codexTab">codex編集</button>
+    </div>
+    <div class="top-actions index-actions">
+      <button id="loadIndexBtn">index.htmlを開く</button>
+      <button id="saveIndexBtn">index.htmlへ保存</button>
+      <button id="exportBtn">JSON出力</button>
+      <button id="importBtn">JSON読込</button>
+      <span class="status" id="statusText">未読込</span>
+    </div>
+    <div class="top-actions planets-actions">
+      <button id="openPlanetsDirBtn">記事フォルダを開く</button>
+      <button id="openPlanetFileBtn">HTMLを開く</button>
+      <select id="newPageTemplate" title="新規テンプレート種別">
+        <option value="planet">新規: 惑星/拠点</option>
+        <option value="character">新規: 人物</option>
+        <option value="weapon">新規: 兵器</option>
+      </select>
+      <button id="newPageBtn">テンプレ生成</button>
+      <button id="savePlanetBtn">保存</button>
+      <span class="status" id="planetStatusText">未読込</span>
+    </div>
+    <div class="top-actions codex-actions">
+      <button id="openCodexFileBtn">codex HTMLを開く</button>
+      <button id="saveCodexBtn">保存</button>
+      <span class="status" id="codexStatusText">未読込</span>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <div class="map-shell" id="map">
+      <img class="map-bg" src="UIイメージ/Map_Buckground2.png" alt="">
+      <div class="grid"></div>
+      <div id="markerLayer"></div>
+      <div class="empty-map-note">上部タブから編集モードを選択してください</div>
+    </div>
+  </main>
+
+  <aside>
+    <div class="mode-panel index-panel">
+      <section class="panel-block">
+        <div class="split">
+          <button id="addPlanetBtn">惑星を追加</button>
+          <button id="addIndicatorBtn">セクターを追加</button>
+        </div>
+        <div class="split" style="margin-top:8px;">
+          <button id="addNebulaBtn">星雲を追加</button>
+          <button id="addOrbitBtn">領域リングを追加</button>
+        </div>
+        <p class="hint">読み込みボタンで現在の index.html を指定すると、HTML内の配置を逆解析して表示します。</p>
+      </section>
+
+      <section class="panel-block" id="editor">
+        <div class="row">
+          <label for="typeInput">種別</label>
+          <select id="typeInput">
+            <option value="planet">惑星</option>
+            <option value="indicator">セクター/地点</option>
+            <option value="nebula">星雲/宙域</option>
+            <option value="orbit">領域リング</option>
+          </select>
+        </div>
+        <div class="row"><label for="nameInput">表示名</label><input id="nameInput"></div>
+        <div class="row"><label for="enInput">英字名</label><input id="enInput"></div>
+        <div class="row"><label for="hrefPageInput">遷移先ページ</label><select id="hrefPageInput"></select></div>
+        <div class="row"><label for="hrefInput">リンク直接指定</label><input id="hrefInput"></div>
+        <div class="row">
+          <label for="imageInput">画像</label>
+          <select id="imageInput"></select>
+        </div>
+        <div class="row">
+          <label for="imagePathInput">画像直接指定</label>
+          <input id="imagePathInput" placeholder="resource/LA_image/example.png">
+        </div>
+        <div class="wide-row" id="ringImagesRow">
+          <label for="ringImagesInput">リング画像（複数行または | 区切り）</label>
+          <textarea id="ringImagesInput"></textarea>
+        </div>
+        <div class="row"><label for="colorInput">イメージ色</label><input id="colorInput" type="color"></div>
+        <div class="split">
+          <div class="row" style="grid-template-columns:32px 1fr;"><label for="xInput">X</label><input id="xInput" type="number" step="0.1"></div>
+          <div class="row" style="grid-template-columns:32px 1fr;"><label for="yInput">Y</label><input id="yInput" type="number" step="0.1"></div>
+        </div>
+        <div class="nudge-pad" id="nudgePad">
+          <button type="button" class="up" data-nudge="0,-0.1">↑</button>
+          <button type="button" class="left" data-nudge="-0.1,0">←</button>
+          <button type="button" class="right" data-nudge="0.1,0">→</button>
+          <button type="button" class="down" data-nudge="0,0.1">↓</button>
+        </div>
+        <div class="split">
+          <div class="row" style="grid-template-columns:52px 1fr;"><label for="sizeInput">サイズ</label><input id="sizeInput" type="number" step="0.1"></div>
+          <div class="row" style="grid-template-columns:52px 1fr;"><label for="speedInput">速度</label><input id="speedInput" type="text"></div>
+        </div>
+        <div class="row" id="animationRow">
+          <label for="animationInput">アニメ</label>
+          <select id="animationInput">
+            <option value="float">上下ゆらぎ</option>
+            <option value="bob">上下移動</option>
+            <option value="spin">回転</option>
+            <option value="none">なし</option>
+          </select>
+        </div>
+        <div class="split" id="orbitNumberRow">
+          <div class="row" style="grid-template-columns:52px 1fr;"><label for="radiusInput">半径</label><input id="radiusInput" type="number" step="0.1"></div>
+          <div class="row" style="grid-template-columns:52px 1fr;"><label for="spreadInput">揺れ</label><input id="spreadInput" type="number" step="0.01"></div>
+        </div>
+        <div class="row" id="densityRow">
+          <label for="densityInput">リング数</label>
+          <input id="densityInput" type="number" min="1" max="180" step="1">
+        </div>
+        <div class="row" id="directionRow">
+          <label for="directionInput">回転方向</label>
+          <select id="directionInput">
+            <option value="normal">標準</option>
+            <option value="reverse">逆回転</option>
+          </select>
+        </div>
+        <div class="row" id="orientationRow">
+          <label for="orientationInput">素材向き</label>
+          <select id="orientationInput">
+            <option value="follow">軌道に追従</option>
+            <option value="upright">上下固定</option>
+          </select>
+        </div>
+        <div class="row"><label for="subInput">補足</label><input id="subInput"></div>
+        <div class="split">
+          <button id="duplicateBtn">複製</button>
+          <button id="deleteBtn" class="danger">削除</button>
+        </div>
+      </section>
+
+      <section class="list" id="itemList"></section>
+    </div>
+
+    <div class="mode-panel planets-panel">
+      <section class="panel-block">
+        <div class="row">
+          <label for="planetPageSelect">子ページ</label>
+          <select id="planetPageSelect"></select>
+        </div>
+        <div class="split">
+          <button id="loadSelectedPlanetBtn">選択ページを読込</button>
+          <button id="showPlanetHtmlBtn">HTML出力</button>
+        </div>
+        <p class="hint">planets / characters / weapons いずれのフォルダも開けます（同一構造のため共通編集可）。読込時に種別（惑星・人物・兵器）を自動判定します。</p>
+      </section>
+
+      <div class="planet-page-editor">
+        <section class="planet-preview" id="planetPreview">
+          <div class="planet-preview-shell">
+            <div>
+              <div class="preview-index" id="previewIndex">PLANET DATA</div>
+              <h2 class="preview-name" id="previewName">PLANET</h2>
+              <div class="preview-tagline" id="previewTagline">LYLAT SYSTEM EXPLORER</div>
+              <p class="preview-desc" id="previewDesc">子ページHTMLを読み込むと、ここに概要プレビューが表示されます。</p>
+              <div class="preview-scan" id="previewScan"></div>
+            </div>
+            <div class="preview-visual" id="previewVisual">
+              <img id="previewImage" src="" alt="">
+              <div class="preview-tag" id="previewVisualTag"></div>
+              <div class="preview-callout" id="previewCallout"></div>
+              <div class="preview-comm-window" id="previewCommWindow"><img id="previewCommImage" src="" alt=""></div>
+            </div>
+          </div>
+        </section>
+
+      <section class="planet-form-scroll">
+        <h2>基本情報</h2>
+        <div class="wide-row"><label for="pfTitle">title</label><input id="pfTitle"></div>
+        <div class="wide-row"><label for="pfHeaderTag">ヘッダータグ</label><input id="pfHeaderTag"></div>
+        <div class="wide-row"><label for="pfHeaderStatus">ステータス</label><input id="pfHeaderStatus"></div>
+        <div class="wide-row"><label for="pfSideLeft">左サイド文字</label><input id="pfSideLeft"></div>
+        <div class="wide-row"><label for="pfSideRight">右サイド文字</label><input id="pfSideRight"></div>
+
+        <h2>ヒーロー</h2>
+        <div class="wide-row"><label for="pfIndex">インデックス</label><input id="pfIndex"></div>
+        <div class="wide-row"><label for="pfName">表示名</label><input id="pfName"></div>
+        <div class="wide-row"><label for="pfHeroTitle">大見出し（改行可）</label><textarea id="pfHeroTitle"></textarea></div>
+        <div class="wide-row"><label for="pfTagline">タグライン</label><input id="pfTagline"></div>
+        <div class="wide-row"><label for="pfShortDesc">短文説明</label><textarea id="pfShortDesc"></textarea></div>
+
+        <h2>ビジュアル</h2>
+        <div class="wide-row"><label for="pfImage">惑星画像</label><input id="pfImage"></div>
+        <div class="wide-row">
+          <label for="pfImageSize">画像サイズ</label>
+          <select id="pfImageSize">
+            <option value="planet-img-small">small</option>
+            <option value="planet-img-medium">medium</option>
+            <option value="planet-img-large">large</option>
+          </select>
+        </div>
+        <div class="wide-row"><label for="pfGlow">グロー色</label><input id="pfGlow"></div>
+        <div class="wide-row">
+          <label for="pfVisualAnimation">アニメ</label>
+          <select id="pfVisualAnimation">
+            <option value="float">上下ゆらぎ</option>
+            <option value="bob">上下移動</option>
+            <option value="spin">回転</option>
+            <option value="none">なし</option>
+          </select>
+        </div>
+        <div class="wide-row"><label for="pfVisualSpeed">速度</label><input id="pfVisualSpeed" placeholder="7s"></div>
+        <div class="wide-row"><label for="pfTagTopEn">右上タグ EN</label><input id="pfTagTopEn"></div>
+        <div class="wide-row"><label for="pfTagTopJp">右上タグ JP</label><input id="pfTagTopJp"></div>
+        <div class="wide-row"><label for="pfTagBottomJp">左下タグ JP</label><textarea id="pfTagBottomJp"></textarea></div>
+        <div class="wide-row"><label for="pfCommImage">通信画像（1行1枚）</label><textarea id="pfCommImage" placeholder="../resource/LA_image/sample.png&#10;../resource/LA_image/sample2.png"></textarea></div>
+
+        <h2>スキャン表</h2>
+        <div class="wide-row"><label for="pfScanRows">KEY = VALUE（1行1項目）</label><textarea id="pfScanRows" style="min-height:150px;"></textarea></div>
+        <div class="wide-row"><label for="pfEnv">環境指数</label><input id="pfEnv" type="number" step="1"></div>
+
+        <h2>本文</h2>
+        <div class="wide-row"><label for="pfLore">## 見出し + 段落（空行=段落分け / 改行=そのまま改行として保存）</label><textarea id="pfLore" style="min-height:260px;"></textarea></div>
+        <div class="wide-row">
+          <label for="pfLinkTarget">関連リンク</label>
+          <div style="display:flex;gap:6px;flex:1;min-width:0;">
+            <select id="pfLinkTarget" style="flex:1;min-width:0;">
+              <optgroup label="ロケーション（一覧アンカー）">
+                <option value="../database/locations.html#corneria">コーネリア</option>
+                <option value="../database/locations.html#katina">カタリナ</option>
+                <option value="../database/locations.html#fichina">フィチナ</option>
+                <option value="../database/locations.html#fortuna">フォルトナ</option>
+                <option value="../database/locations.html#macbeth">マクベス</option>
+                <option value="../database/locations.html#prospero">プロスペロー</option>
+                <option value="../database/locations.html#sargasso">サルガッソー宙域</option>
+                <option value="../database/locations.html#titania">タイタニア</option>
+                <option value="../database/locations.html#venom">ベノム</option>
+                <option value="../database/locations.html#aquas">アクアス</option>
+                <option value="../database/locations.html#zoness">ゾネス</option>
+                <option value="../database/locations.html#solar">ソーラ</option>
+                <option value="../database/locations.html#area3">グレートウォールAREA3</option>
+                <option value="../database/locations.html#perdita">ペルディタ宇宙センター</option>
+                <option value="../database/locations.html#green-bit">グリーン・ビット</option>
+                <option value="../database/locations.html#meteo-base">メテオベース</option>
+                <option value="../database/locations.html#orbital-gate">オービタル・ゲート</option>
+                <option value="../planets/orbital-gate.html">オービタル・ゲート（詳細記事）</option>
+                <option value="../database/locations.html#starblade">宇宙艦隊スターブレード</option>
+                <option value="../database/locations.html#oberon">オベロンⅡ</option>
+                <option value="../database/locations.html#area6">AREA6</option>
+                <option value="../database/locations.html#eladard">エラダード</option>
+                <option value="../database/locations.html#kew">キュー</option>
+                <option value="../database/locations.html#papetoon">パペトゥーン</option>
+                <option value="../database/locations.html#grippia">グリッピア</option>
+                <option value="../database/locations.html#dogma-central">ドグマ・セントラル</option>
+                <option value="../database/locations.html#asteroid">アステロイド（第6惑星跡）</option>
+                <option value="../database/locations.html#lylat-prime">ライラット・プライム</option>
+                <option value="../database/locations.html#hactiva">ハクティバ／パラニド</option>
+              </optgroup>
+              <optgroup label="DATABASE: 恒星">
+                <option value="../database/locations.html#lylat-prime">ライラット・プライム</option>
+                <option value="../database/locations.html#solar">ソーラ（恒星DB）</option>
+                <option value="../database/locations.html#hactiva">ハクティバ</option>
+                <option value="../database/locations.html#paranid">パラニド</option>
+                <option value="../database/locations.html#dogma-central">ドグマ・セントラル（恒星DB）</option>
+              </optgroup>
+              <optgroup label="DATABASE: セクター">
+                <option value="../database/sectors.html#alpha">セクターα</option>
+                <option value="../database/sectors.html#beta">セクターβ</option>
+                <option value="../database/sectors.html#gamma">セクターγ</option>
+                <option value="../database/sectors.html#delta">セクターδ</option>
+                <option value="../database/sectors.html#epsilon">セクターε</option>
+                <option value="../database/sectors.html#zeta">セクターζ</option>
+                <option value="../database/sectors.html#theta">セクターθ</option>
+                <option value="../database/sectors.html#iota">セクターι</option>
+                <option value="../database/sectors.html#kappa">セクターκ（ペルディタ）</option>
+                <option value="../database/sectors.html#lambda">セクターλ</option>
+                <option value="../database/sectors.html#mu">セクターμ</option>
+                <option value="../database/sectors.html#nu">セクターν</option>
+                <option value="../database/sectors.html#xi">セクターξ</option>
+                <option value="../database/sectors.html#omicron">セクターο</option>
+                <option value="../database/sectors.html#rho">セクターρ（サルガッソー第4宙域）</option>
+                <option value="../database/sectors.html#sigma">セクターς</option>
+                <option value="../database/sectors.html#tau">セクターτ（廃墟宙域）</option>
+                <option value="../database/sectors.html#upsilon">セクターυ</option>
+                <option value="../database/sectors.html#phi">セクターφ</option>
+                <option value="../database/sectors.html#chi">セクターχ</option>
+                <option value="../database/sectors.html#psi">セクターψ</option>
+                <option value="../database/sectors.html#omega">セクターΩ</option>
+                <option value="../database/sectors.html#digamma">セクターϝ</option>
+                <option value="../database/sectors.html#stigma">セクターϚ</option>
+                <option value="../database/sectors.html#heta">セクターͰ</option>
+                <option value="../database/sectors.html#san">セクターϻ</option>
+                <option value="../database/sectors.html#koppa">セクターϞ</option>
+                <option value="../database/sectors.html#sho">セクターϸ</option>
+                <option value="../database/sectors.html#yot">セクターj</option>
+                <option value="../database/sectors.html#janja">セクターϫ（ジャンジャ）</option>
+                <option value="../database/sectors.html#lunate">セクターϾ（ルナート）</option>
+                <option value="../database/sectors.html#dasitetas">セクターꟶ（ダシテータス）</option>
+                <option value="../database/sectors.html#hori">セクターϩ（ホリ）</option>
+                <option value="../database/sectors.html#khei">セクターϧ（ヘイ）</option>
+                <option value="../database/sectors.html#nyi">セクターⳡ（ヌィー）</option>
+                <option value="../database/sectors.html#sampi">セクターϠ（サンピ）</option>
+                <option value="../database/sectors.html#vau">セクターⳣ（ヴァゥ）</option>
+                <option value="../database/sectors.html#ya">セクターϊ（ヤー）</option>
+                <option value="../database/sectors.html#gain">セクターƢ（ガイン）</option>
+                <option value="../database/sectors.html#dasia">セクター’（ダシア）</option>
+              </optgroup>
+              <optgroup label="DATABASE: 人種">
+                <option value="../database/races.html#anubisoid">アヌビソイド</option>
+                <option value="../database/races.html#alphoid">アルフォイド</option>
+                <option value="../database/races.html#bastetoid">バステトイド</option>
+                <option value="../database/races.html#kyusoid">キューソイド</option>
+                <option value="../database/races.html#holsoid">ホルソイド</option>
+                <option value="../database/races.html#zetoid">ゼートイド</option>
+                <option value="../database/races.html#heketoid">ヘケトイド</option>
+                <option value="../database/races.html#paranodian">パラノディアン</option>
+                <option value="../database/races.html#saurian">サウリアン（フォルトナ恐竜族）</option>
+                <option value="../database/races.html#ganesiosoid">ガネシオソイド（象型）</option>
+                <option value="../database/races.html#minosoid">ミノソイド（ウシ型）</option>
+                <option value="../database/races.html#kernunosoid">ケルヌノソイド（鹿型）</option>
+                <option value="../database/races.html#salmonoid">サーモノイド（鮭型・暫定）</option>
+                <option value="../database/races.html#sacrifoid">サクリフォイド</option>
+                <option value="../database/races.html#selenoid">セレノイド</option>
+                <option value="../database/races.html#minor-races">その他の人種</option>
+              </optgroup>
+              <optgroup label="フォルトナ: サウリアの部族">
+                <option value="../planets/fortuna.html#tribes">サウリアの部族たち（総覧）</option>
+                <option value="../planets/fortuna.html#tribe-asoka">アソーカ族</option>
+                <option value="../planets/fortuna.html#tribe-cloud">クラウド族</option>
+                <option value="../planets/fortuna.html#tribe-sontail">ソンテイル族</option>
+                <option value="../planets/fortuna.html#tribe-snowhorn">スノーホーン族</option>
+                <option value="../planets/fortuna.html#tribe-hight">ハイト族</option>
+                <option value="../planets/fortuna.html#tribe-lightfoot">ライトフット族</option>
+                <option value="../planets/fortuna.html#tribe-sharpclaw">シャープクロウ族</option>
+                <option value="../planets/fortuna.html#tribe-redeye">レッドアイ族</option>
+                <option value="../planets/fortuna.html#tribe-draconia">ドラコニア族</option>
+                <option value="../planets/fortuna.html#tribe-ostega">オステガ族</option>
+              </optgroup>
+              <optgroup label="DATABASE: 勢力">
+                <option value="../database/factions.html#cornerian-republic">コーネリア連合共和国</option>
+                <option value="../database/factions.html#venom-empire">ベノム帝国</option>
+                <option value="../database/factions.html#hactiva-union">ハクティバ通商連合</option>
+              </optgroup>
+              <optgroup label="DATABASE: 用語">
+                <option value="../database/glossary.html#great-regression">文明後退期</option>
+                <option value="../database/glossary.html#lylat-wars-1">第1次ライラットウォーズ</option>
+                <option value="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</option>
+                <option value="../database/glossary.html#stephano">ステファノーの戦い</option>
+                <option value="../database/military.html#nova-blaster">ギャラクティック・ノヴァ・ブラスター</option>
+                <option value="../database/military.html#great-wall">グレートウォール</option>
+                <option value="../database/glossary.html#warp-route">ワープドライブ航路</option>
+                <option value="../database/glossary.html#nine-routes">9大ワープ航路（総覧）</option>
+                <option value="../database/glossary.html#route-greatwall">①グレートウォール航路</option>
+                <option value="../database/glossary.html#route-prospero">②プロスペロー・ライン</option>
+                <option value="../database/glossary.html#route-fortuna">③フォルトナ・ライン</option>
+                <option value="../database/glossary.html#route-core-ring">④コア・ワールド環状線</option>
+                <option value="../database/glossary.html#route-trinculo">⑤トリンキュロー幹線</option>
+                <option value="../database/glossary.html#route-of">⑥OF工業航路</option>
+                <option value="../database/glossary.html#route-solasia">⑦ソーラシア・ライン</option>
+                <option value="../database/glossary.html#route-bremens">⑧ブレーメンズ・ライン</option>
+                <option value="../database/glossary.html#route-frontier">⑨フロンティア・ライン</option>
+                <option value="../database/glossary.html#out-of-sector">アウト・オブ・セクター</option>
+                <option value="../database/glossary.html#out-of-dimension">アウト・オブ・ディメンション</option>
+                <option value="../database/glossary.html#migratory-fauna">星間移動回遊生物</option>
+                <option value="../database/military.html#cdf">コーネリア防衛軍（CDF）</option>
+                <option value="../database/military.html#starfox">スターフォックス</option>
+                <option value="../database/military.html#starwolf">スターウルフ</option>
+                <option value="../database/military.html#retriever">レトリーバー隊</option>
+                <option value="../database/military.html#bernard">バーナード隊</option>
+                <option value="../database/military.html#cdf-ground">CDF地上軍</option>
+                <option value="../database/military.html#vorpal">ヴォーパル隊</option>
+                <option value="../database/glossary.html#imperial-divisions">帝国軍二十四師団</option>
+                <option value="../database/glossary.html#andorf">アンドルフ・ボウマン</option>
+                <option value="../database/military.html#atropolis">アトロポリス</option>
+                <option value="../database/military.html#space-armada">スペースアマダ</option>
+                <option value="../database/glossary.html#climate-control">クライメート・コントロール</option>
+                <option value="../database/military.html#polybius">ポリヴィアス</option>
+                <option value="../database/glossary.html#trinculo">トリンキュロー回廊</option>
+                <option value="../database/glossary.html#ngo-fever">ンゴ熱</option>
+                <option value="../database/glossary.html#iga-war">IGA戦役（独立星系連合戦役）</option>
+                <option value="../database/glossary.html#trinculo-recapture">トリンキュロー回廊奪還戦</option>
+                <option value="../database/glossary.html#decoy-ship">IGA総統偽装船襲撃事件</option>
+                <option value="../database/glossary.html#primavera-rescue">プリマヴェーラ号救難作戦 / 三つの灯</option>
+                <option value="../database/glossary.html#dark-messiah">ムーラシア征討 / ダークメシア事件（概要）</option>
+                <option value="../other/dark-messiah.html">ダークメシア事件 全記録（詳細記事）</option>
+                <option value="../database/glossary.html#venom-recon">ベノム偵察作戦 / 狐狩（概要）</option>
+                <option value="../other/fuchsjagd.html">狐狩 全記録（詳細記事）</option>
+                <option value="../database/glossary.html#katina-miracle">カタリナの奇跡 / ノラ・ラゴス防衛戦（概要）</option>
+                <option value="../other/katina-miracle.html">カタリナの奇跡 全記録（詳細記事）</option>
+                <option value="../database/glossary.html#solar-survey">陽炎の影事件 / ソーラ調査作戦（概要）</option>
+                <option value="../other/solar-survey.html">陽炎の影事件 全記録（詳細記事）</option>
+                <option value="../database/glossary.html#climate-recapture">クライメート・コントロール奪還戦 / ボノ盆地の戦い</option>
+                <option value="../database/glossary.html#eclipse-op">日食作戦 / セクターαの攻防</option>
+                <option value="../database/glossary.html#zoness-recon">ゾネス偵察 / 海上基地潜入作戦</option>
+                <option value="../database/glossary.html#nora-facil">ノラ・ファシルの戦い</option>
+                <option value="../database/glossary.html#zeta-tragedy">セクターζの惨劇 / 北十字防衛戦線</option>
+                <option value="../database/glossary.html#dark-goddess">プロスペロー防衛戦 / 闇の女神事件</option>
+                <option value="../database/glossary.html#prospero-front">テンペスト奪還戦</option>
+                <option value="../database/glossary.html#chrono-ares">刻の軍神作戦 / 最後の授業</option>
+                <option value="../database/glossary.html#hihyotsk-fall">ヒヒョーツク陥落 / 魔術師の黒星</option>
+                <option value="../database/glossary.html#wenli-last">ウェンリーの最後</option>
+                <option value="../database/glossary.html#silent-nightmare">サイレント・ナイトメア事件</option>
+                <option value="../database/glossary.html#demonseed-crisis">デモンシード・クライシス事件</option>
+                <option value="../database/glossary.html#donalbain-op">ドナルベイン攻略戦</option>
+                <option value="../database/glossary.html#arkham-incident">アーカムからの使者事件（鮭の極大遡上）</option>
+                <option value="../database/glossary.html#fortuna-campaign">フォルトナ戦役</option>
+                <option value="../database/glossary.html#corneria-defense">コーネリア防衛戦 / ジェームズの再来</option>
+                <option value="../database/glossary.html#star-dream">スター・ドリーム作戦</option>
+                <option value="../database/glossary.html#concord-declaration">『協和宣言』</option>
+                <option value="../database/glossary.html#moskma-three-days">モスクマの三日間</option>
+                <option value="../database/glossary.html#salvager">サルベージャー / スティールダイバー</option>
+                <option value="../database/glossary.html#cis-hq">CDF情報戦略本部（CIS-HQ）</option>
+                <option value="../database/glossary.html#annoying-dog">アンニュイング・ドッグ</option>
+                <option value="../database/glossary.html#irowl-incident">イロウルの気まぐれ事件 / CDFサイバー攻防戦</option>
+                <option value="../database/glossary.html#yaju-paisen">野獣パイセン</option>
+                <option value="../database/glossary.html#usohappyaku">810-USO800</option>
+                <option value="../database/glossary.html#tokyo-myaumyau">トーキョーミャウミャウ☆ラズベリーハート</option>
+                <option value="../database/glossary.html#mixed-city">サイズ混成都市の設計</option>
+                <option value="../database/glossary.html#size-class-housing">体格帯別住宅規格</option>
+                <option value="../database/glossary.html#cultured-meat">培養肉</option>
+                <option value="../database/glossary.html#military-service">兵役と志願制度</option>
+                <option value="../database/glossary.html#household-robots">家庭用ロボット</option>
+                <option value="../database/glossary.html#droids">ドロイドと五つの等級</option>
+                <option value="../database/glossary.html#cantina">酒場文化</option>
+                <option value="../database/glossary.html#somen">「こんなもん素麺みたいなもんだぜ」（ファルコの迷言）</option>
+                <option value="../database/glossary.html#tide-pool">「地元の潮溜まりさ帰るべ」</option>
+                <option value="../database/glossary.html#face-lick">「お顔をナメナメしてあげるわ」</option>
+                <option value="../database/glossary.html#veterans-care">傷痍軍人と義体</option>
+                <option value="../database/glossary.html#citizenship">市民権と移民局</option>
+                <option value="../database/glossary.html#space-burial">葬送と星葬</option>
+                <option value="../database/glossary.html#galactic-lottery">ライラット宝くじ</option>
+                <option value="../database/glossary.html#energy-roe">イクラ / 超高純度エネルギー卵</option>
+                <option value="../database/glossary.html#imperial-broadcast">帝国国営放送</option>
+                <option value="../database/glossary.html#cross-species-medicine">種族横断医療</option>
+                <option value="../database/glossary.html#vaif-stele">ヴァイフの碑文</option>
+                <option value="../database/glossary.html#dogas-stele">ドガスの碑文</option>
+                <option value="../database/glossary.html#greenpeace">環境活動団体グリーンピース</option>
+                <option value="../database/glossary.html#dogsled">ドッグスレッド 氷原を駆ける犬たち</option>
+                <option value="../database/glossary.html#gori-bachov">ゴリ・バチョフ像の広場</option>
+                <option value="../database/glossary.html#sycorax-ruins">シコラクス旧要塞跡地（セティボスⅣ）</option>
+                <option value="../database/glossary.html#muinshankle">ムィンシャンクル刑務所（セティボスⅤ）</option>
+                <option value="../database/glossary.html#majin-ame">魔人飴</option>
+                <option value="../database/glossary.html#titania-glass">タイタニアガラス</option>
+                <option value="../database/glossary.html#baculum">バキュラム鋼 / バキュラム装甲</option>
+                <option value="../database/glossary.html#kusakarugon">万能草刈機「クサカルゴン」</option>
+                <option value="../database/glossary.html#four-sisters">海の姉妹は四人だった（アクアスの民話）</option>
+                <option value="../database/glossary.html#solasian">ソーラシアン共同体 / ソーラ圏</option>
+                <option value="../database/glossary.html#return-alliance">ゾネス帰還同盟</option>
+                <option value="../database/glossary.html#bolz-duchy">ボルツ公国（ニューボルツ空中公国）</option>
+                <option value="../database/glossary.html#prominence-chaser">プロミネンス・チェイサー</option>
+                <option value="../other/fortuna-survey-1.html">フォルトナ調査記録1（FIELD RECORD 01）</option>
+                <option value="../database/glossary.html#academy-branches">士官学校と六つの分校</option>
+                <option value="../database/glossary.html#mu-cult">宇宙統一平和協会「ムー」</option>
+                <option value="../database/glossary.html#bowman-catalyst">ボウマン触媒</option>
+                <option value="../database/glossary.html#ai-revolution">ライラットのAI革命</option>
+                <option value="../database/glossary.html#memory-flower">記憶と送り花（メモリーフラワー）</option>
+                <option value="../database/glossary.html#flower-culture">ライラットの文化と花（フラワーマーカー）</option>
+                <option value="../database/glossary.html#krazoa">平和の神クラゾア（信仰）</option>
+                <option value="../database/glossary.html#hamlet-depot">ハムレット車両基地の逸話</option>
+                <option value="../database/glossary.html#osric-council">オズリック技術者協議会</option>
+                <option value="../database/glossary.html#fortinbras">フォーティンブラス商工会</option>
+                <option value="../database/glossary.html#corporate-fleet">企業警備艦隊</option>
+                <option value="../database/glossary.html#wild-blue-striker">ワイルド・ブルー・ストライカー</option>
+                <option value="../database/glossary.html#republic-states">共和国の州（総覧）</option>
+                <option value="../database/glossary.html#state-cordelia">コーディリア州</option>
+                <option value="../database/glossary.html#state-granbel">グランベル州</option>
+                <option value="../database/glossary.html#state-rosalind">ローザリンド州</option>
+                <option value="../database/glossary.html#state-aquas">アクアス州</option>
+                <option value="../database/glossary.html#state-fichina">フィチナ州</option>
+                <option value="../database/glossary.html#state-katina">カタリナ州</option>
+                <option value="../database/glossary.html#state-troilus">トロイラス州</option>
+                <option value="../database/glossary.html#state-tigerleaves">タイガーリーブス州</option>
+                <option value="../database/glossary.html#state-tempest">テンペスト州</option>
+                <option value="../database/glossary.html#state-adelaide">アデレード州</option>
+                <option value="../database/glossary.html#republic-council">全州代表評議会（評議会）</option>
+                <option value="../database/glossary.html#pioneer-ministry">惑星開拓省（開拓庁）</option>
+                <option value="../database/glossary.html#founding-geniuses">文明の礎をつくった天才たち</option>
+                <option value="../database/glossary.html#lylat-mountains">ライラット星系の山々</option>
+                <option value="../database/glossary.html#snow-mountain">スノーマウンテン（フォルトナ）</option>
+                <option value="../database/glossary.html#lylat-cities">ライラット星系の都市開発</option>
+                <option value="../database/glossary.html#city-corneria">コーネリア・ギャラクティック・シティ（コーネリアシティ）</option>
+                <option value="../database/glossary.html#city-tempest">テンペスト（星系副首都）</option>
+                <option value="../database/glossary.html#city-kinshasa">ノラ・キンシャサ（カタリナ）</option>
+                <option value="../database/glossary.html#city-hamlet">ハムレット（マクベス）</option>
+                <option value="../database/glossary.html#city-romeo">ロミオ（アクアス）</option>
+                <option value="../database/glossary.html#city-eterburg">サルクトエテルブルグ（フィチナ）</option>
+                <option value="../database/glossary.html#city-hvc001">HVC-001（エラダード）</option>
+                <option value="../database/glossary.html#city-juliet">ジュリエット（ゾネス）</option>
+                <option value="../database/glossary.html#city-alpinia">アルピニア（キュー）</option>
+                <option value="../database/glossary.html#city-megalodome">メガロドーム（セティボス）</option>
+                <option value="../database/glossary.html#red-moon">コーネリアの赤い月（ダリス）</option>
+                <option value="../database/glossary.html#racial-friction">差別と人種間の軋轢</option>
+                <option value="../database/glossary.html#dmg-001">完全栄養食 DMG-001（消しゴム）</option>
+                <option value="../database/glossary.html#umai-bone">うまいボーン</option>
+                <option value="../database/glossary.html#vending-war">ライラットの自販機戦争</option>
+                <option value="../database/glossary.html#corneria-cake">コーネリアケーキ</option>
+                <option value="../database/glossary.html#local-fruits">ご当地フルーツ</option>
+                <option value="../database/glossary.html#drink-falcon-slop">ファルコン・スロップ（自販機戦争）</option>
+                <option value="../database/glossary.html#drink-cool-water">クールウォーター（自販機戦争）</option>
+                <option value="../database/glossary.html#drink-madle-milk">マドルミルク（自販機戦争）</option>
+                <option value="../database/glossary.html#drink-briel-tea">ブリール・ティー（自販機戦争）</option>
+                <option value="../database/glossary.html#drink-corfia">コルフィア（自販機戦争）</option>
+                <option value="../database/glossary.html#lantern-return">巡礼「灯還り」</option>
+                <option value="../database/glossary.html#salmon-leave">サーモン休暇</option>
+                <option value="../database/glossary.html#lylat-taboo">ライラットの禁忌</option>
+                <option value="../database/glossary.html#collar-cage">首輪の檻</option>
+                <option value="../database/glossary.html#space-dollar">ライラット星系の通貨（スペースドル）</option>
+                <option value="../database/glossary.html#currency-exchange">両替と交渉</option>
+                <option value="../database/glossary.html#devils-hand">悪魔の手</option>
+                <option value="../database/glossary.html#overlord">オーバーロード</option>
+                <option value="../database/glossary.html#paranid-empire">パラニド神聖帝国</option>
+                <option value="../database/glossary.html#arpeggio">アルペジオ</option>
+                <option value="../characters/arpeggio.html">アルペジオ（一族ファイル）</option>
+                <option value="../database/glossary.html#mining-guild">マイニング・ギルド（グリッピア・ワークス / CGM）</option>
+                <option value="../database/glossary.html#bs-route-dev">B・S航路事業開発</option>
+                <option value="../database/races.html#native-aquan">ネイティブ・アクアン</option>
+                <option value="../database/glossary.html#cross-bout">クロスバウト</option>
+                <option value="../database/glossary.html#contact-signal">コンタクト信号</option>
+                <option value="../database/glossary.html#clearance-levels">監視区分 / 検閲レベル</option>
+                <option value="../database/glossary.html#standard-time">星系標準時間と惑星番号</option>
+                <option value="../database/glossary.html#basic-language">ベーシック標準語</option>
+                <option value="../database/glossary.html#gravity-gap">重力差 / 重力酔い</option>
+                <option value="../database/glossary.html#wall-river">壁の川（カタリナ）</option>
+                <option value="../database/glossary.html#ship-grades">艦船の等級</option>
+                <option value="../database/glossary.html#an-brella">宇宙野菜工場 アン・ブレラ</option>
+                <option value="../database/glossary.html#energy-revolutions">エネルギー革命</option>
+                <option value="../database/glossary.html#hitmens-alley">殺し屋横丁（K-6686-67）</option>
+                <option value="../database/glossary.html#lowerdog">港町ロウアードッグ</option>
+                <option value="../database/glossary.html#magnetic-index">磁場影響指数</option>
+                <option value="../database/glossary.html#blagza-base">ブラグザ・ソーラークリスタル充填基地</option>
+                <option value="../database/glossary.html#zoness-sea-base">ゾネス海上基地</option>
+                <option value="../database/glossary.html#garou-capitol">ガロウ連邦総督府</option>
+                <option value="../database/glossary.html#weapon-systems">兵装の系統（四大系統）</option>
+                <option value="../database/glossary.html#bonbon-maze">ボンボンメイズ / 空中植物迷宮</option>
+                <option value="../database/glossary.html#nividium">ニヴィディウム</option>
+                <option value="../database/glossary.html#manowar-stele">マノウォーの碑文 / ツインサン・パレスの秘宝</option>
+                <option value="../database/glossary.html#ys-control">Ys管制システム</option>
+                <option value="../database/glossary.html#purge-cannon">パージ・キャノン / 粛清砲</option>
+                <option value="../database/glossary.html#hair-mystery">頭髪の不思議</option>
+                <option value="../database/glossary.html#barber">ライラットの床屋 / 毛髪屋</option>
+                <option value="../database/glossary.html#harassment">ハラスメント（総覧）</option>
+                <option value="../database/glossary.html#galactic-culture">「ギャラクティック」文化</option>
+                <option value="../database/glossary.html#hara-size">デカハラ / チビハラ</option>
+                <option value="../database/glossary.html#hara-mofu">モフハラ</option>
+                <option value="../database/glossary.html#hara-shake">しゃけハラスメント</option>
+                <option value="../database/glossary.html#hara-gori">ごりハラ</option>
+                <option value="../database/glossary.html#hara-tech">テクハラ</option>
+                <option value="../database/glossary.html#cpv">コーネリア・ポリス・ヴァンガード（CPV）</option>
+                <option value="../database/glossary.html#keanos-tide">ケアノスの大潮</option>
+                <option value="../database/glossary.html#romeo-defense">シレーヌ海の決戦 / ロミオ防衛戦線</option>
+                <option value="../database/glossary.html#macbeth-steel">マクベス鋼</option>
+              </optgroup>
+              <optgroup label="人物（プロファイル）">
+                <option value="../database/characters.html#professor-hanger">プロフェッサー・ハンガー</option>
+                <option value="../database/characters.html#warp-djinn">ワープ魔人</option>
+                <option value="../database/characters.html#fox">フォックス・マクラウド</option>
+                <option value="../database/characters.html#falco">ファルコ・ランバルディ</option>
+                <option value="../database/characters.html#peppy">ペッピー・ヘア</option>
+                <option value="../database/characters.html#slippy">スリッピー・トード</option>
+                <option value="../database/characters.html#james">ジェームズ・マクラウド</option>
+                <option value="../database/characters.html#pepper">Z・Z・ペパー将軍</option>
+                <option value="../database/characters.html#bill">ビル・グレイ</option>
+                <option value="../database/characters.html#george">ジョージ・バロン</option>
+                <option value="../database/characters.html#claire">クレア・オブシディアン</option>
+                <option value="../database/characters.html#konya">コーニャ・マッカレル</option>
+                <option value="../database/characters.html#andorf">アンドルフ・ボウマン</option>
+                <option value="../database/characters.html#kellone">ミズローヌ・ケローン（ケローン大提督）</option>
+                <option value="../database/characters.html#wenli">ニャン・ウェンリー准将</option>
+                <option value="../database/characters.html#shears">ビリー・シールズ</option>
+                <option value="../characters/shears.html">ビリー・シールズ（詳細記事）</option>
+                <option value="../database/characters.html#kid-cobra">キッド・コブラ</option>
+                <option value="../characters/kid-cobra.html">キッド・コブラ（詳細記事）</option>
+                <option value="../database/characters.html#big-boss">アルペジオ / ビッグ・ボス（概要）</option>
+                <option value="../database/characters.html#fatman">ジェラルド・ファットマン</option>
+                <option value="../database/characters.html#wolf">ウルフ・オドネル</option>
+                <option value="../database/characters.html#leon">レオン・ポワルスキー</option>
+                <option value="../database/characters.html#pigma">ピグマ・デンガー</option>
+                <option value="../database/characters.html#andrew">アンドリュー・オイッコニー</option>
+                <option value="../database/characters.html#granga-pilot">グランガパイロット（概要）</option>
+                <option value="../characters/granga-pilot.html">グランガパイロット（個別記事）</option>
+                <option value="../database/characters.html#nahash">ナハシュ・ギルバスター将軍（概要）</option>
+                <option value="../characters/nahash.html">ナハシュ・ギルバスター将軍（個別記事）</option>
+                <option value="../database/characters.html#grimclaw">グリムクロウ提督（概要）</option>
+                <option value="../characters/grimclaw.html">グリムクロウ提督（個別記事）</option>
+                <option value="../database/characters.html#bowie">ボウイ・ストレイ（概要）</option>
+                <option value="../characters/bowie.html">ボウイ・ストレイ（個別記事）</option>
+                <option value="../database/characters.html#harding">ハーディング将軍（概要）</option>
+                <option value="../characters/harding.html">ハーディング将軍（個別記事）</option>
+                <option value="../database/characters.html#sadogashima">サドガシマ・ポンジュウロウ（概要）</option>
+                <option value="../characters/sadogashima.html">サドガシマ・ポンジュウロウ（個別記事）</option>
+                <option value="../database/characters.html#hvc-009">HVC-009（概要）</option>
+                <option value="../characters/hvc-009.html">HVC-009（個別記事）</option>
+                <option value="../database/characters.html#caiman">カイマン（概要）</option>
+                <option value="../characters/caiman.html">カイマン（個別記事）</option>
+                <option value="../database/characters.html#redford">バイソン・レッドフォード（概要）</option>
+                <option value="../characters/redford.html">バイソン・レッドフォード（個別記事）</option>
+                <option value="../database/characters.html#tesla-kober">テスラー・コバー（概要）</option>
+                <option value="../characters/tesla-kober.html">テスラー・コバー（個別記事）</option>
+                <option value="../database/characters.html#bear-noguchini">ベアー・ノウグッチーニ（概要）</option>
+                <option value="../characters/bear-noguchini.html">ベアー・ノウグッチーニ（個別記事）</option>
+                <option value="../database/characters.html#grippy">名門トード家（概要）</option>
+                <option value="../characters/toad-family.html">名門トード家（詳細記事）</option>
+                <option value="../database/characters.html#yaru">ヤル・デ・ポン</option>
+                <option value="../database/characters.html#cat">キャット・モンロー</option>
+                <option value="../database/characters.html#vixy">ヴィクシー・マクラウド</option>
+                <option value="../database/characters.html#krystal">仮称「クリスタル」</option>
+                <option value="../database/characters.html#tricky">トリッキー王子（概要）</option>
+                <option value="../characters/tricky.html">トリッキー王子（個別記事）</option>
+                <option value="../database/characters.html#scales">スケール将軍（概要）</option>
+                <option value="../characters/scales.html">スケール将軍（個別記事）</option>
+                <option value="../database/characters.html#drakor">ドラコー（概要）</option>
+                <option value="../characters/drakor.html">ドラコー（個別記事）</option>
+                <option value="../database/characters.html#panther">パンサー・カルロッソ</option>
+                <option value="../database/characters.html#amber">アンバー・シルフェイド</option>
+              </optgroup>
+              <optgroup label="軍事・兵器">
+                <option value="../database/military.html#arwing">アーウィン</option>
+                <option value="../database/military.html#walker">ウォーカー</option>
+                <option value="../weapons/walker.html">ウォーカー（詳細記事）</option>
+                <option value="../database/military.html#gyrowing">ジャイロウィング</option>
+                <option value="../weapons/gyrowing.html">ジャイロウィング（詳細記事）</option>
+                <option value="../database/military.html#landmaster">ランドマスター</option>
+                <option value="../weapons/landmaster.html">ランドマスター（詳細記事）</option>
+                <option value="../weapons/landmaster.html#gravmaster">グラヴマスター（換装計画）</option>
+                <option value="../database/military.html#bluemarine">ブルーマリン</option>
+                <option value="../weapons/bluemarine.html">ブルーマリン（詳細記事）</option>
+                <option value="../database/military.html#bullfrog">ブルフロッグ</option>
+                <option value="../weapons/bullfrog.html">ブルフロッグ（詳細記事）</option>
+                <option value="../database/military.html#greatfox">グレートフォックス</option>
+                <option value="../database/military.html#devil-joker">デビル・ジョーカー</option>
+                <option value="../database/military.html#protecam">プロテカム</option>
+                <option value="../weapons/greatfox.html">グレートフォックス（詳細記事）</option>
+                <option value="../database/military.html#wolfen">ウルフェン</option>
+                <option value="../weapons/wolfen.html">ウルフェン（詳細記事）</option>
+                <option value="../weapons/wolfen.html#wolfen2">ウルフェンⅡ（現行切り札）</option>
+                <option value="../database/military.html#hunter">ハンター</option>
+                <option value="../weapons/hunter.html">ハンター（詳細記事）</option>
+                <option value="../database/military.html#salmarine">サルマリン号</option>
+                <option value="../database/military.html#nova-blaster">ギャラクティック・ノヴァ・ブラスター</option>
+                <option value="../database/military.html#bioweapon">バイオウェポン</option>
+                <option value="../weapons/bioweapon.html">バイオウェポン（詳細記事）</option>
+                <option value="../weapons/bioweapon.html#bacoon">バクーン（海棲個体）</option>
+                <option value="../weapons/bioweapon.html#sangar">サンガー（恒星適応個体）</option>
+                <option value="../weapons/bioweapon.html#zoness-mutants">ゾネス変異生物群</option>
+                <option value="../database/military.html#bolse">防衛衛星ボルス</option>
+                <option value="../database/military.html#salresia">サルレシア</option>
+                <option value="../weapons/salresia.html">サルレシア（詳細記事）</option>
+                <option value="../database/military.html#vpr">ベノム・プラネット・リアクター（VPR基地）</option>
+                <option value="../weapons/vpr.html">VPR基地（詳細記事）</option>
+                <option value="../database/military.html#g-diffuser">G・ディフューザーシステム</option>
+                <option value="../database/military.html#polybius">ポリヴィアス</option>
+                <option value="../database/military.html#rainbow-delta">レインボー・Δ</option>
+                <option value="../weapons/rainbow-delta.html">レインボー・Δ（詳細記事）</option>
+                <option value="../database/military.html#black-rose">ブラック・ローズ</option>
+                <option value="../weapons/black-rose.html">ブラック・ローズ（詳細記事）</option>
+                <option value="../database/military.html#chastiefol">シャスティフォル</option>
+                <option value="../weapons/chastiefol.html">シャスティフォル（詳細記事）</option>
+                <option value="../database/military.html#cats-eye">キャッツ・アイ</option>
+                <option value="../weapons/cats-eye.html">キャッツ・アイ（詳細記事）</option>
+                <option value="../database/military.html#coffin-suit">コフィンスーツ</option>
+                <option value="../database/military.html#lw2-drones">LW2主力無人機（総覧）</option>
+                <option value="../weapons/lw2-drones.html">LW2主力無人機（詳細記事）</option>
+                <option value="../database/military.html#guinbee-line">グインビー戦艦系列（総覧）</option>
+                <option value="../weapons/guinbee-line.html">グインビー戦艦系列（詳細記事）</option>
+                <option value="../weapons/guinbee-line.html#guinbee">グインビー（巡洋艦）</option>
+                <option value="../weapons/guinbee-line.html#dorisbee">ドリスビー（バキュラム鋼戦艦）</option>
+                <option value="../weapons/guinbee-line.html#corbee">コルビー（主力戦艦）</option>
+                <option value="../weapons/guinbee-line.html#granbee">グランビー（巨大戦艦）</option>
+                <option value="../weapons/lw2-drones.html#chihuahua">チワワ（無人偵察機）</option>
+                <option value="../weapons/lw2-drones.html#dragon">ドラゴン系（帝国無人戦闘機）</option>
+                <option value="../database/military.html#sardes">サルデス（総称）</option>
+                <option value="../weapons/sardes.html">サルデス（詳細記事）</option>
+                <option value="../weapons/sardes.html#white">サルデス・白い機体</option>
+                <option value="../database/military.html#venom-cell">ベノム・セル（概要）</option>
+                <option value="../weapons/venom-cell.html">ベノム・セル（詳細記事）</option>
+                <option value="../database/military.html#granga">グランガ（概要）</option>
+                <option value="../weapons/granga.html">グランガ（詳細記事）</option>
+                <option value="../weapons/granga.html#snonga">スノンガ（後継機）</option>
+                <option value="../weapons/granga.html#destructor">ディストラクター（後継機）</option>
+                <option value="../database/military.html#attack-carrier">アタック・キャリアー（概要）</option>
+                <option value="../weapons/attack-carrier.html">アタック・キャリアー（詳細記事）</option>
+                <option value="../database/military.html#meteo-crusher">メテオクラッシャー（概要）</option>
+                <option value="../weapons/meteo-crusher.html">メテオクラッシャー（詳細記事）</option>
+                <option value="../database/military.html#blade-barrier">ブレードバリア（概要）</option>
+                <option value="../weapons/blade-barrier.html">ブレードバリア（詳細記事）</option>
+                <option value="../database/military.html#great-dish">グレートディッシュ（概要）</option>
+                <option value="../weapons/great-dish.html">グレートディッシュ（詳細記事）</option>
+                <option value="../database/military.html#brain-crusher">ブレイン・クラッシャーmk-Ⅳ（概要）</option>
+                <option value="../weapons/brain-crusher.html">ブレイン・クラッシャーmk-Ⅳ（詳細記事）</option>
+                <option value="../weapons/brain-crusher.html#death-baboon">デスバブーン（量産型）</option>
+                <option value="../database/military.html#odd-weapons">珍兵器総覧（概要）</option>
+                <option value="../weapons/odd-weapons.html">珍兵器総覧（詳細記事）</option>
+                <option value="../weapons/odd-weapons.html#benjamin-1">ベンジャミンⅠ</option>
+                <option value="../weapons/odd-weapons.html#sasquatch">流氷戦艦サスカッチ</option>
+                <option value="../weapons/odd-weapons.html#jura-moon">顔面隕石ジュラ・ムーン</option>
+                <option value="../weapons/odd-weapons.html#little-mouse">超弩級巨大戦車リトルマウス</option>
+                <option value="../weapons/odd-weapons.html#bushido-kong">ブシドー・コング</option>
+                <option value="../database/military.html#cornerian-fighter">コーネリアファイター（概要）</option>
+                <option value="../weapons/cornerian-fighter.html">コーネリアファイター（詳細記事）</option>
+                <option value="../database/military.html#smart-bomb">スマートボム（概要）</option>
+                <option value="../weapons/smart-bomb.html">スマートボム（詳細記事）</option>
+                <option value="../database/military.html#supply-ring">スモールサプライ（概要）</option>
+                <option value="../weapons/supply-ring.html">スモールサプライ / サプライリング（詳細記事）</option>
+                <option value="../database/military.html#man-drill">マン・ドリル（概要）</option>
+                <option value="../weapons/man-drill.html">マン・ドリル（詳細記事）</option>
+                <option value="../weapons/man-drill.html#dread-kong">ドレッド・コング系譜（マン・ドリル内）</option>
+                <option value="../database/military.html#great-commander">グレート・コマンダー（概要）</option>
+                <option value="../weapons/great-commander.html">グレート・コマンダー（詳細記事）</option>
+                <option value="../weapons/salvadora.html">サルバドーラ（詳細記事）</option>
+                <option value="../database/military.html#oh-and-mu">ओ&amp;मू / オー＆ムー（概要）</option>
+                <option value="../weapons/oh-and-mu.html">ओ&amp;मू / オー＆ムー（詳細記事）</option>
+                <option value="../database/military.html#goras">ゴラス（概要）</option>
+                <option value="../weapons/goras.html">ゴラス（詳細記事）</option>
+                <option value="../database/glossary.html#crystal-staff">クリスタル・スタッフ</option>
+                <option value="../weapons/odd-weapons.html#dancing-spider">ダンシング・スパイダー</option>
+                <option value="../weapons/odd-weapons.html#uncle-keaton">自走爆弾アンクル・キートン</option>
+              </optgroup>
+              <optgroup label="会社（独立記事）">
+                <option value="../database/corporations.html">企業データベース（一覧）</option>
+                <option value="../corporations/space-dynamics.html">スペース・ダイナミクス社</option>
+                <option value="../corporations/vector-prime.html">ベクター・プライム社</option>
+                <option value="../corporations/galactic-cybot.html">ギャラクティック・サイボット社</option>
+                <option value="../corporations/ys-sim.html">Ys・SIM社（イス・シム）</option>
+                <option value="../database/corporations.html#ys-sim">Ys・SIM社（概要）</option>
+                <option value="../corporations/grippia-works.html">グリッピア・ワークス社／CGM社</option>
+                <option value="../corporations/diamond-cities.html">ダイヤモンドシティズ.inc</option>
+                <option value="../corporations/butchermans.html">ブッチャーマンズ・ワークス</option>
+                <option value="../corporations/breadbasket.html">ブレッドバスケット・コンビナート</option>
+                <option value="../corporations/frostreef.html">フロストリーフ・ボトラーズ</option>
+                <option value="../corporations/pizza-cat.html">ピザ・キャット</option>
+                <option value="../corporations/ukiuki-bento.html">うっきうき弁当</option>
+                <option value="../database/corporations.html#ukiuki-bento">うっきうき弁当（概要）</option>
+                <option value="../corporations/shimarisuka.html">シマリスカ株式会社</option>
+                <option value="../database/corporations.html#shimarisuka">シマリスカ株式会社（概要）</option>
+                <option value="../corporations/pega-games.html">PEGA Games</option>
+                <option value="../database/corporations.html#pega-games">PEGA Games（概要）</option>
+                <option value="../corporations/nintendou.html">Nintendou</option>
+                <option value="../database/corporations.html#nintendou">Nintendou（概要）</option>
+                <option value="../corporations/hanamuko.html">ハナムコ</option>
+                <option value="../database/corporations.html#hanamuko">ハナムコ（概要）</option>
+                <option value="../corporations/kenami.html">KENAMI</option>
+                <option value="../corporations/kenami.html#poppin-music">ポッピンミュージック</option>
+                <option value="../database/corporations.html#kenami">KENAMI（概要）</option>
+                <option value="../corporations/q-brand.html">Q印良品</option>
+                <option value="../corporations/chiwawa-pharma.html">チーワワ合同製薬会社</option>
+                <option value="../corporations/tail-and-tailor.html">テイル＆テイラー社</option>
+                <option value="../corporations/scent-and-coat.html">セント＆コート社</option>
+                <option value="../corporations/awazon-primal.html">アワゾン・プライマル社（AWSP）</option>
+                <option value="../corporations/black-cargo.html">ブラックカーゴ社</option>
+                <option value="../corporations/white-fang.html">ホワイトファング急便</option>
+                <option value="../corporations/horain-zone.html">ホライン・ゾーン・コーポレーション</option>
+                <option value="../database/corporations.html#horain-zone">ホライン・ゾーン（概要）</option>
+                <option value="../corporations/emeraldas-bank.html">エメラルダス・星系銀行</option>
+                <option value="../corporations/solar-empire.html">ソーラエンパイアカンパニー</option>
+                <option value="../database/corporations.html#solar-empire">ソーラエンパイアカンパニー（概要）</option>
+                <option value="../corporations/britney-environmental.html">ブリトニー・エンバイロメンタル社</option>
+                <option value="../database/corporations.html#britney-environmental">ブリトニー・エンバイロメンタル社（概要）</option>
+                <option value="../corporations/rai-jing.html">RAI-JING &amp; HOO-JING コーポレーション</option>
+                <option value="../database/corporations.html#rai-jing">RAI-JING &amp; HOO-JING（概要）</option>
+              </optgroup>
+            </select>
+            <button type="button" id="pfInsertLinkBtn">挿入</button>
+            <button type="button" id="pfInsertRedactBtn" title="選択範囲を検閲（クリック開示）スパンにする">検閲</button>
+          </div>
+        </div>
+        <div class="wide-row"><span style="font-size:11px;opacity:0.75;">本文内で文字列を選択して「挿入」→ リンク化、「検閲」→ クリック開示の黒塗りになります。未選択なら雛形ごと挿入されます。</span></div>
+      </section>
+      </div>
+    </div>
+
+    <div class="mode-panel codex-panel">
+      <section class="panel-block">
+        <p class="hint">database/ 配下の一覧・記事ページ（locations / characters / glossary / sectors / races / factions / 会社記事）のエントリ単位で編集します。並べ替え・追加・削除に対応。<b>このタブはHTMLを直接編集するため、表示上の改行は &lt;br&gt; を使用</b>してください（テキストエリア内の改行はソース整形扱い）。<b>上部の目次（codex-index）は自動更新されない</b>ため、エントリを増減した場合は目次のHTMLを手動で調整してください。</p>
+        <div class="split">
+          <button id="codexAddEntryBtn">記事エントリ追加</button>
+          <button id="codexAddCardBtn">カードエントリ追加</button>
+        </div>
+      </section>
+      <section class="codex-entry-list" id="codexEntryList">
+        <p class="hint">「codex HTMLを開く」でファイルを読み込むと、ここにエントリ一覧が表示されます。</p>
+      </section>
+    </div>
+  </aside>
+
+  <dialog id="outputDialog">
+    <form method="dialog" style="width:min(980px,90vw);">
+      <h2 style="margin:0 0 10px;color:var(--accent);font-size:16px;">出力</h2>
+      <textarea id="outputText" class="output"></textarea>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px;">
+        <button type="button" id="copyOutputBtn">コピー</button>
+        <button>閉じる</button>
+      </div>
+    </form>
+  </dialog>
+
+  <input id="jsonFileInput" type="file" accept=".json,application/json" hidden>
+
+  <script>
+    const images = [
+      "", "resource/LA_image/LS_P_1.png", "resource/LA_image/LS_P_2.png", "resource/LA_image/LS_P_3.png",
+      "resource/LA_image/LS_P_4.png", "resource/LA_image/LS_P_5.png", "resource/LA_image/LS_P_6.png",
+      "resource/LA_image/LS_P_7.png", "resource/LA_image/LS_P_9.png", "resource/LA_image/LS_P_10.png",
+      "resource/LA_image/LS_P_10_thumb.png", "resource/LA_image/LS_P_11.png", "resource/LA_image/LS_P_12.png",
+      "resource/LA_image/LS_P_13.png", "resource/LA_image/LS_P_14.png", "resource/LA_image/LS_P_15.png",
+      "resource/LA_image/LS_P_16.png",
+      "resource/LA_image/Sargasso.png", "resource/LA_image/Sargasso_info.png", "resource/LA_image/Dogma_info.jpg",
+      "resource/LA_image/LS_F_1_1.png", "resource/LA_image/LS_F_1_2.png", "resource/LA_image/LS_F_1_3.png",
+      "resource/LA_image/LS_F_2.png", "resource/LA_image/LS_F_3.png", "resource/LA_image/LS_F_4.png",
+      "resource/LA_image/LS_F_5.png", "resource/LA_image/LS_F_6.png", "resource/LA_image/LS_F_7.png",
+      "resource/LA_image/LS_F_8.png", "resource/LA_image/LS_F_9.png",
+      "resource/LA_image/LS_S_1.png", "resource/LA_image/LS_S_2.png", "resource/LA_image/LS_S_3.png",
+      "resource/emblem/Corneria_emblem.png", "resource/emblem/Venom_emblem.png",
+      "resource/emblem/Haktiva_emblem.png", "resource/emblem/IGA_emblem.png",
+      "resource/emblem/Saurian_emblem.png", "resource/emblem/Garou_emblem.png"
+    ];
+
+    const knownPlanetPages = [
+      "planets/corneria.html", "planets/fichina.html", "planets/fortuna.html",
+      "planets/katina.html", "planets/macbeth.html", "planets/prospero.html",
+      "planets/sargasso.html", "planets/titania.html", "planets/venom.html"
+    ];
+
+    const state = {
+      selectedId: "",
+      indexHandle: null,
+      indexText: "",
+      items: [],
+      planetDirHandle: null,
+      planetHandle: null,
+      planetText: "",
+      planetFileName: "",
+      planetPages: [...knownPlanetPages]
+    };
+
+    const $ = (id) => document.getElementById(id);
+    const map = $("map");
+    const layer = $("markerLayer");
+    const pickerStore = {
+      dbName: "lylat-page-editor",
+      storeName: "file-system-handles",
+      keys: {
+        indexFile: "index-file",
+        planetDir: "planet-dir",
+        planetFile: "planet-file"
+      }
+    };
+
+    function openPickerDb() {
+      return new Promise((resolve, reject) => {
+        if (!window.indexedDB) {
+          reject(new Error("IndexedDB is not available"));
+          return;
+        }
+        const request = indexedDB.open(pickerStore.dbName, 1);
+        request.onupgradeneeded = () => {
+          request.result.createObjectStore(pickerStore.storeName);
+        };
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+      });
+    }
+
+    async function savePickerHandle(key, handle) {
+      try {
+        const db = await openPickerDb();
+        await new Promise((resolve, reject) => {
+          const tx = db.transaction(pickerStore.storeName, "readwrite");
+          tx.objectStore(pickerStore.storeName).put(handle, key);
+          tx.oncomplete = () => resolve();
+          tx.onerror = () => reject(tx.error);
+        });
+        db.close();
+      } catch (error) {
+        console.warn("Picker handle could not be saved.", error);
+      }
+    }
+
+    async function getPickerHandle(key) {
+      try {
+        const db = await openPickerDb();
+        return await new Promise((resolve, reject) => {
+          const tx = db.transaction(pickerStore.storeName, "readonly");
+          const request = tx.objectStore(pickerStore.storeName).get(key);
+          request.onsuccess = () => {
+            const result = request.result || null;
+            db.close();
+            resolve(result);
+          };
+          request.onerror = () => reject(request.error);
+        });
+      } catch (error) {
+        console.warn("Picker handle could not be loaded.", error);
+        return null;
+      }
+    }
+
+    async function withLastPickerLocation(options, key) {
+      const handle = await getPickerHandle(key);
+      return handle ? { ...options, startIn: handle } : options;
+    }
+
+    async function withFirstPickerLocation(options, keys) {
+      for (const key of keys) {
+        const handle = await getPickerHandle(key);
+        if (handle) return { ...options, startIn: handle };
+      }
+      return options;
+    }
+
+    function isPickerStartError(error) {
+      return error instanceof TypeError || error?.name === "NotFoundError" || error?.name === "SecurityError";
+    }
+
+    async function showOpenFilePickerRemembered(options, keys) {
+      try {
+        return await showOpenFilePicker(await withFirstPickerLocation(options, keys));
+      } catch (error) {
+        if (isPickerStartError(error)) return showOpenFilePicker(options);
+        throw error;
+      }
+    }
+
+    async function showDirectoryPickerRemembered(options, key) {
+      try {
+        return await showDirectoryPicker(await withLastPickerLocation(options, key));
+      } catch (error) {
+        if (isPickerStartError(error)) return showDirectoryPicker(options);
+        throw error;
+      }
+    }
+
+    const fields = {
+      type: $("typeInput"), name: $("nameInput"), en: $("enInput"), href: $("hrefInput"),
+      hrefPage: $("hrefPageInput"), image: $("imageInput"), ringImages: $("ringImagesInput"),
+      imagePath: $("imagePathInput"), color: $("colorInput"), x: $("xInput"), y: $("yInput"), size: $("sizeInput"),
+      speed: $("speedInput"), radius: $("radiusInput"), spread: $("spreadInput"),
+      animation: $("animationInput"), density: $("densityInput"),
+      direction: $("directionInput"), orientation: $("orientationInput"), sub: $("subInput")
+    };
+
+    const planetFields = {
+      title: $("pfTitle"), headerTag: $("pfHeaderTag"), headerStatus: $("pfHeaderStatus"),
+      sideLeft: $("pfSideLeft"), sideRight: $("pfSideRight"), index: $("pfIndex"),
+      name: $("pfName"), heroTitle: $("pfHeroTitle"), tagline: $("pfTagline"),
+      shortDesc: $("pfShortDesc"), image: $("pfImage"), imageSize: $("pfImageSize"),
+      glow: $("pfGlow"), visualAnimation: $("pfVisualAnimation"), visualSpeed: $("pfVisualSpeed"),
+      tagTopEn: $("pfTagTopEn"), tagTopJp: $("pfTagTopJp"),
+      tagBottomJp: $("pfTagBottomJp"), commImage: $("pfCommImage"), scanRows: $("pfScanRows"), env: $("pfEnv"),
+      lore: $("pfLore")
+    };
+
+    Object.values(planetFields).forEach((input) => {
+      input.addEventListener("input", updatePlanetPreview);
+    });
+
+    images.forEach((src) => {
+      const option = document.createElement("option");
+      option.value = src;
+      option.textContent = src || "(画像なし)";
+      fields.image.appendChild(option);
+    });
+
+    function ensureImageOption(src) {
+      const value = String(src || "").trim();
+      if (!value) return;
+      if ([...fields.image.options].some((option) => option.value === value)) return;
+      addOption(fields.image, value, value);
+    }
+
+    function populatePageSelects() {
+      const hrefSelect = fields.hrefPage;
+      hrefSelect.innerHTML = "";
+      addOption(hrefSelect, "", "(リンクなし / 直接指定)");
+      for (const page of state.planetPages) addOption(hrefSelect, page, page);
+
+      const pageSelect = $("planetPageSelect");
+      pageSelect.innerHTML = "";
+      for (const page of state.planetPages) addOption(pageSelect, page, page.replace(/^planets\//, ""));
+    }
+
+    function addOption(select, value, label) {
+      const option = document.createElement("option");
+      option.value = value;
+      option.textContent = label;
+      select.appendChild(option);
+    }
+
+    populatePageSelects();
+
+    $("indexTab").addEventListener("click", () => setMode("index"));
+    $("planetsTab").addEventListener("click", () => setMode("planets"));
+    $("codexTab").addEventListener("click", () => setMode("codex"));
+
+    function setMode(mode) {
+      document.body.className = mode === "index" ? "mode-index" : mode === "codex" ? "mode-codex" : "mode-planets";
+      $("indexTab").classList.toggle("active", mode === "index");
+      $("planetsTab").classList.toggle("active", mode === "planets");
+      $("codexTab").classList.toggle("active", mode === "codex");
+      render();
+      updatePlanetPreview();
+    }
+
+    function selectedItem() {
+      return state.items.find((item) => item.id === state.selectedId) || state.items[0] || null;
+    }
+
+    function colorToRgba(hex, alpha = 0.65) {
+      const value = normalizeHex(hex).replace("#", "");
+      const r = parseInt(value.slice(0, 2), 16);
+      const g = parseInt(value.slice(2, 4), 16);
+      const b = parseInt(value.slice(4, 6), 16);
+      return `rgba(${r},${g},${b},${alpha})`;
+    }
+
+    function rgbaToHex(value, fallback = "#00d4b4") {
+      const match = String(value || "").match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+      if (!match) return normalizeHex(value || fallback);
+      return "#" + [match[1], match[2], match[3]].map((n) => Number(n).toString(16).padStart(2, "0")).join("");
+    }
+
+    function normalizeHex(value) {
+      const raw = String(value || "").trim();
+      if (/^#[0-9a-f]{6}$/i.test(raw)) return raw;
+      if (/^#[0-9a-f]{3}$/i.test(raw)) return "#" + raw.slice(1).split("").map((c) => c + c).join("");
+      return "#00d4b4";
+    }
+
+    function makeId(prefix) {
+      return `${prefix}_${Math.random().toString(36).slice(2, 8)}`;
+    }
+
+    function render() {
+      layer.innerHTML = "";
+      if (!document.body.classList.contains("mode-index")) return;
+      for (const item of state.items) {
+        if (item.type === "orbit") renderOrbit(item);
+        else renderMarker(item);
+      }
+      renderList();
+      syncForm();
+      updateOutput();
+    }
+
+    function renderMarker(item) {
+      const el = document.createElement("div");
+      el.className = `marker ${item.id === state.selectedId ? "selected" : ""}`;
+      el.dataset.id = item.id;
+      el.dataset.type = item.type;
+      el.style.setProperty("--x", item.x);
+      el.style.setProperty("--y", item.y);
+      el.style.setProperty("--size", item.size || 1);
+      el.style.setProperty("--speed", item.speed || "8s");
+      el.style.setProperty("--color", item.color || "#00d4b4");
+
+      if (item.image) {
+        const img = document.createElement("img");
+        img.src = item.image;
+        img.alt = "";
+        img.dataset.anim = item.animation || defaultAnimation(item.type);
+        el.appendChild(img);
+      } else {
+        const dot = document.createElement("div");
+        dot.className = "dot";
+        el.appendChild(dot);
+      }
+
+      const label = document.createElement("div");
+      label.className = "label";
+      label.textContent = item.en || item.name;
+      el.appendChild(label);
+      addDrag(el, item);
+      layer.appendChild(el);
+    }
+
+    function renderOrbit(item) {
+      const ring = document.createElement("div");
+      ring.className = `orbit-ring ${item.orientation === "upright" ? "orbit-upright" : ""}`;
+      ring.dataset.id = item.id;
+      ring.style.setProperty("--x", item.x);
+      ring.style.setProperty("--y", item.y);
+      ring.style.setProperty("--speed", item.speed || "190s");
+      ring.style.setProperty("--direction", item.direction || "normal");
+      ring.style.setProperty("--color", item.color || "#d2be91");
+      const srcs = splitImages(item.image);
+      const count = clampInt(item.density || 45, 1, 180);
+      for (let i = 0; i < count; i++) {
+        const img = document.createElement("img");
+        img.src = srcs[i % srcs.length] || "resource/LA_image/LS_F_1_1.png";
+        img.alt = "";
+        img.style.setProperty("--a", `${(360 / count) * i}deg`);
+        img.style.setProperty("--j", `${fmt((((i * 37) % 29) - 14) * (item.spread || 0.045))}cqw`);
+        img.style.setProperty("--radius", item.radius || 52);
+        img.style.setProperty("--seg-size", i % 3 === 0 ? item.size || 4.7 : (item.size || 4.7) * 1.38);
+        img.style.setProperty("--scale", i % 3 === 0 ? 0.94 : 0.4);
+        ring.appendChild(img);
+      }
+      layer.appendChild(ring);
+
+      const centerHandle = document.createElement("div");
+      centerHandle.className = `orbit-handle orbit-center-handle ${item.id === state.selectedId ? "selected" : ""}`;
+      centerHandle.dataset.id = item.id;
+      centerHandle.title = "リング中心";
+      centerHandle.style.setProperty("--x", item.x);
+      centerHandle.style.setProperty("--y", item.y);
+      addDrag(centerHandle, item);
+      layer.appendChild(centerHandle);
+
+      const handle = document.createElement("div");
+      handle.className = `orbit-handle ${item.id === state.selectedId ? "selected" : ""}`;
+      handle.dataset.id = item.id;
+      handle.title = "リング外周";
+      handle.style.setProperty("--x", Number(item.x) + Number(item.radius || 52));
+      handle.style.setProperty("--y", item.y);
+      addOrbitDrag(handle, item);
+      layer.appendChild(handle);
+    }
+
+    function addDrag(el, item) {
+      el.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        state.selectedId = item.id;
+        el.setPointerCapture(event.pointerId);
+        el.classList.add("dragging");
+        refreshSelection();
+        syncForm();
+        updateOutput();
+      });
+      el.addEventListener("pointermove", (event) => {
+        if (!el.hasPointerCapture(event.pointerId)) return;
+        const point = pointerToMapPercent(event);
+        item.x = clamp(point.x, -80, 180);
+        item.y = clamp(point.y, -80, 180);
+        moveRenderedItem(item);
+        fields.x.value = item.x;
+        fields.y.value = item.y;
+        updateOutput();
+      });
+      el.addEventListener("pointerup", (event) => {
+        if (el.hasPointerCapture(event.pointerId)) el.releasePointerCapture(event.pointerId);
+        el.classList.remove("dragging");
+        render();
+      });
+    }
+
+    function moveRenderedItem(item) {
+      for (const el of layer.querySelectorAll(`[data-id="${CSS.escape(item.id)}"]`)) {
+        const x = item.type === "orbit" && el.classList.contains("orbit-handle") && !el.classList.contains("orbit-center-handle")
+          ? Number(item.x) + Number(item.radius || 52)
+          : item.x;
+        el.style.setProperty("--x", x);
+        el.style.setProperty("--y", item.y);
+      }
+    }
+
+    function addOrbitDrag(el, item) {
+      el.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        state.selectedId = item.id;
+        el.setPointerCapture(event.pointerId);
+        el.classList.add("dragging");
+        refreshSelection();
+        syncForm();
+        updateOutput();
+      });
+      el.addEventListener("pointermove", (event) => {
+        if (!el.hasPointerCapture(event.pointerId)) return;
+        const point = pointerToMapPercent(event);
+        const edgeX = clamp(point.x, -80, 180);
+        item.x = clamp(edgeX - Number(item.radius || 52), -120, 180);
+        item.y = clamp(point.y, -80, 180);
+        moveRenderedItem(item);
+        fields.x.value = item.x;
+        fields.y.value = item.y;
+        updateOutput();
+      });
+      el.addEventListener("pointerup", (event) => {
+        if (el.hasPointerCapture(event.pointerId)) el.releasePointerCapture(event.pointerId);
+        el.classList.remove("dragging");
+        render();
+      });
+    }
+
+    function pointerToMapPercent(event) {
+      const rect = map.getBoundingClientRect();
+      const width = map.clientWidth || rect.width;
+      const height = map.clientHeight || rect.height;
+      return {
+        x: ((event.clientX - rect.left - map.clientLeft) / width) * 100,
+        y: ((event.clientY - rect.top - map.clientTop) / height) * 100
+      };
+    }
+
+    function refreshSelection() {
+      for (const el of layer.querySelectorAll(".selected")) el.classList.remove("selected");
+      for (const el of layer.querySelectorAll(`[data-id="${CSS.escape(state.selectedId)}"]`)) el.classList.add("selected");
+      renderList();
+    }
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, Number(value.toFixed(2))));
+    }
+
+    function clampInt(value, min, max) {
+      const parsed = parseInt(value, 10);
+      if (!Number.isFinite(parsed)) return min;
+      return Math.max(min, Math.min(max, parsed));
+    }
+
+    function defaultAnimation(type) {
+      return type === "indicator" ? "spin" : "float";
+    }
+
+    function nudgeSelected(dx, dy) {
+      const item = selectedItem();
+      if (!item) return;
+      item.x = clamp(Number(item.x || 0) + dx, -120, 180);
+      item.y = clamp(Number(item.y || 0) + dy, -80, 180);
+      fields.x.value = item.x;
+      fields.y.value = item.y;
+      moveRenderedItem(item);
+      renderList();
+      updateOutput();
+    }
+
+    function renderList() {
+      const list = $("itemList");
+      list.innerHTML = "";
+      if (!state.items.length) {
+        list.innerHTML = `<p class="hint">index.htmlを開くか、上部ボタンから要素を追加してください。</p>`;
+        return;
+      }
+      for (const item of state.items) {
+        const row = document.createElement("div");
+        row.className = `item ${item.id === state.selectedId ? "active" : ""}`;
+        row.innerHTML = `<div>${escapeHtml(item.name || item.en || item.id)}<small>${item.type} / x:${item.x} y:${item.y}</small></div><span>${item.type === "orbit" ? "RING" : item.image ? "IMG" : "DOT"}</span>`;
+        row.addEventListener("click", () => {
+          state.selectedId = item.id;
+          render();
+        });
+        list.appendChild(row);
+      }
+    }
+
+    function syncForm() {
+      const item = selectedItem();
+      const disabled = !item;
+      Object.values(fields).forEach((field) => field.disabled = disabled);
+      $("duplicateBtn").disabled = disabled;
+      $("deleteBtn").disabled = disabled;
+      if (!item) return;
+      fields.type.value = item.type;
+      fields.name.value = item.name || "";
+      fields.en.value = item.en || "";
+      fields.href.value = item.href || "";
+      fields.hrefPage.value = state.planetPages.includes(item.href) ? item.href : "";
+      ensureImageOption(item.image);
+      fields.image.value = item.image || "";
+      fields.imagePath.value = item.image || "";
+      fields.ringImages.value = splitImages(item.image).join("\n");
+      fields.color.value = item.color || "#00d4b4";
+      fields.x.value = item.x;
+      fields.y.value = item.y;
+      fields.size.value = item.size || 1;
+      fields.speed.value = item.speed || "";
+      fields.radius.value = item.radius || "";
+      fields.spread.value = item.spread || "";
+      fields.animation.value = item.animation || defaultAnimation(item.type);
+      fields.density.value = item.density || 45;
+      fields.direction.value = item.direction || "normal";
+      fields.orientation.value = item.orientation || "follow";
+      fields.sub.value = item.sub || "";
+      const isOrbit = item.type === "orbit";
+      $("orbitNumberRow").style.display = isOrbit ? "grid" : "none";
+      $("densityRow").style.display = isOrbit ? "grid" : "none";
+      $("directionRow").style.display = isOrbit ? "grid" : "none";
+      $("orientationRow").style.display = isOrbit ? "grid" : "none";
+      $("ringImagesRow").style.display = isOrbit ? "grid" : "none";
+      $("animationRow").style.display = isOrbit ? "none" : "grid";
+    }
+
+    Object.entries(fields).forEach(([key, input]) => {
+      input.addEventListener("input", () => {
+        const item = selectedItem();
+        if (!item) return;
+        let value = input.value;
+        if (["x", "y", "size", "radius", "spread"].includes(key)) value = Number(value);
+        if (key === "density") value = clampInt(value, 1, 180);
+        if (key === "hrefPage") {
+          if (value) item.href = value;
+          fields.href.value = item.href || "";
+        } else if (key === "image") {
+          item.image = value;
+          fields.imagePath.value = value;
+        } else if (key === "imagePath") {
+          item.image = String(value || "").trim();
+          ensureImageOption(item.image);
+          fields.image.value = item.image;
+        } else if (key === "ringImages") {
+          item.image = splitImages(value).join("|");
+          fields.imagePath.value = item.image;
+        } else {
+          item[key] = value;
+        }
+        if (key === "type" && value === "orbit" && !item.radius) {
+          item.radius = 52;
+          item.spread = 0.045;
+          item.direction = "normal";
+          item.orientation = "follow";
+          item.image = "resource/LA_image/LS_F_1_1.png|resource/LA_image/LS_F_1_2.png|resource/LA_image/LS_F_1_3.png";
+          item.density = 45;
+        }
+        render();
+      });
+    });
+
+    $("nudgePad").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-nudge]");
+      if (!button) return;
+      const [dx, dy] = button.dataset.nudge.split(",").map(Number);
+      nudgeSelected(dx, dy);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!document.body.classList.contains("mode-index")) return;
+      if (!["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)) return;
+      if (/^(INPUT|TEXTAREA|SELECT|BUTTON)$/i.test(event.target.tagName)) return;
+      event.preventDefault();
+      const step = event.shiftKey ? 1 : 0.1;
+      const dx = event.key === "ArrowLeft" ? -step : event.key === "ArrowRight" ? step : 0;
+      const dy = event.key === "ArrowUp" ? -step : event.key === "ArrowDown" ? step : 0;
+      nudgeSelected(dx, dy);
+    });
+
+    $("addPlanetBtn").addEventListener("click", () => addItem("planet"));
+    $("addIndicatorBtn").addEventListener("click", () => addItem("indicator"));
+    $("addNebulaBtn").addEventListener("click", () => addItem("nebula"));
+    $("addOrbitBtn").addEventListener("click", () => addItem("orbit"));
+
+    function addItem(type) {
+      const item = {
+        id: makeId(type),
+        type,
+        name: type === "orbit" ? "NEW ORBIT" : "NEW POINT",
+        en: "",
+        href: "",
+        image: type === "planet" ? "resource/LA_image/LS_P_1.png" : "",
+        color: type === "orbit" ? "#d2be91" : "#00d4b4",
+        x: 50,
+        y: 50,
+        size: type === "orbit" ? 4.7 : 5,
+        speed: type === "orbit" ? "190s" : "8s",
+        radius: type === "orbit" ? 52 : "",
+        spread: type === "orbit" ? 0.045 : "",
+        animation: type === "orbit" ? "" : defaultAnimation(type),
+        density: type === "orbit" ? 45 : "",
+        direction: "normal",
+        orientation: type === "orbit" ? "follow" : "",
+        sub: ""
+      };
+      if (type === "orbit") item.image = "resource/LA_image/LS_F_1_1.png|resource/LA_image/LS_F_1_2.png|resource/LA_image/LS_F_1_3.png";
+      state.items.push(item);
+      state.selectedId = item.id;
+      render();
+    }
+
+    $("duplicateBtn").addEventListener("click", () => {
+      const item = selectedItem();
+      if (!item) return;
+      const copy = structuredClone(item);
+      copy.id = makeId(item.type);
+      copy.name = `${item.name} copy`;
+      copy.x = Number(copy.x) + 2;
+      copy.y = Number(copy.y) + 2;
+      state.items.push(copy);
+      state.selectedId = copy.id;
+      render();
+    });
+
+    $("deleteBtn").addEventListener("click", () => {
+      if (state.items.length <= 0) return;
+      state.items = state.items.filter((item) => item.id !== state.selectedId);
+      state.selectedId = state.items[0]?.id || "";
+      render();
+    });
+
+    $("exportBtn").addEventListener("click", () => showOutput(JSON.stringify(state.items, null, 2)));
+    $("importBtn").addEventListener("click", () => $("jsonFileInput").click());
+    $("jsonFileInput").addEventListener("change", async (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      state.items = JSON.parse(await file.text());
+      state.selectedId = state.items[0]?.id || "";
+      collectPagesFromItems();
+      render();
+    });
+
+    $("loadIndexBtn").addEventListener("click", async () => {
+      if (!window.showOpenFilePicker) {
+        setStatus("直接読込非対応");
+        showOutput("このブラウザでは直接のファイル読込に対応していません。JSON読込または生成HTMLコピーを使用してください。");
+        return;
+      }
+      try {
+        const [handle] = await showOpenFilePickerRemembered({
+          types: [{ description: "HTML", accept: { "text/html": [".html"] } }]
+        }, [pickerStore.keys.indexFile, pickerStore.keys.planetDir, pickerStore.keys.planetFile]);
+        await savePickerHandle(pickerStore.keys.indexFile, handle);
+        state.indexHandle = handle;
+        const file = await handle.getFile();
+        state.indexText = await file.text();
+        state.items = parseIndexItems(state.indexText);
+        state.selectedId = state.items[0]?.id || "";
+        collectPagesFromItems();
+        setStatus(`${file.name} 読込済み / ${state.items.length}件`);
+        render();
+      } catch (error) {
+        setStatus("読込キャンセル");
+      }
+    });
+
+    $("saveIndexBtn").addEventListener("click", async () => {
+      const block = generateMapBlock();
+      if (!state.indexHandle || !state.indexText) {
+        setStatus("未保存");
+        showOutput("まだ index.html は保存されていません。先に「index.htmlを開く」で index.html を選択してください。\n\n現在の生成HTML:\n\n" + block);
+        return;
+      }
+      const next = replaceMapBlock(state.indexText, block);
+      if (!next) {
+        setStatus("保存失敗");
+        showOutput("差し替え位置を見つけられませんでした。以下のHTMLを index.html のマップ要素部分へ貼り付けてください。\n\n" + block);
+        return;
+      }
+      try {
+        const writable = await state.indexHandle.createWritable();
+        await writable.write(next);
+        await writable.close();
+        const file = await state.indexHandle.getFile();
+        state.indexText = await file.text();
+        setStatus(`${file.name} 保存済み`);
+        showOutput(`${file.name} へ保存しました。`);
+      } catch (error) {
+        setStatus("保存失敗");
+        showOutput(`保存に失敗しました。\n${error.message || error}\n\n生成HTML:\n\n${block}`);
+      }
+    });
+
+    $("copyOutputBtn").addEventListener("click", async () => {
+      await navigator.clipboard.writeText($("outputText").value);
+    });
+
+    function updateOutput() {
+      $("outputText").value = generateMapBlock();
+    }
+
+    function showOutput(text) {
+      $("outputText").value = text;
+      $("outputDialog").showModal();
+    }
+
+    function setStatus(text) {
+      $("statusText").textContent = text;
+    }
+
+    function replaceMapBlock(html, block) {
+      const start = html.indexOf("      <!-- ================================================");
+      const end = html.indexOf("    </div><!-- /map-wrapper -->");
+      if (start === -1 || end === -1 || end <= start) return "";
+      return html.slice(0, start) + block + "\n" + html.slice(end);
+    }
+
+    function parseIndexItems(html) {
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const wrapper = doc.querySelector(".map-wrapper");
+      if (!wrapper) return [];
+      const items = [];
+      let orbitNo = 1;
+      for (const child of wrapper.children) {
+        if (child.matches("a.map-planet")) items.push(parsePlanetElement(child));
+        else if (child.matches("div.map-indicator")) items.push(parseIndicatorElement(child));
+        else if (child.matches("div.gw-belt")) {
+          const ring = child.querySelector(".gw-orbit-ring");
+          if (ring) items.push(parseOrbitElement(ring, orbitNo++));
+        }
+      }
+      return items;
+    }
+
+    function parsePlanetElement(el) {
+      const label = el.querySelector(".map-planet-label");
+      const en = label?.querySelector(".lbl-en")?.textContent.trim() || el.querySelector("img")?.alt?.trim() || "";
+      const name = directText(label).trim() || en || "PLANET";
+      const href = el.getAttribute("href") || "";
+      const image = el.querySelector("img")?.getAttribute("src") || "";
+      const sub = el.querySelector(".tip-sub")?.textContent.trim() || "";
+      const color = rgbaToHex(getStyleVar(el, "--pg"), "#00d4b4");
+      return {
+        id: idFromText(href || en || name, "planet"),
+        type: image.includes("Sargasso") || label?.getAttribute("style") ? "nebula" : "planet",
+        name, en, href, image, color,
+        x: readPercent(el, "left", 50),
+        y: readPercent(el, "top", 50),
+        size: readCqw(getStyleVar(el, "--ps"), 5),
+        speed: getStyleVar(el, "--pa") || "8s",
+        radius: "", spread: "",
+        animation: animationValue(getStyleVar(el, "--map-anim")) || "float",
+        density: "", direction: "normal", sub
+      };
+    }
+
+    function parseIndicatorElement(el) {
+      const img = el.querySelector("img");
+      const label = el.querySelector(".ind-label")?.textContent.trim() || "INDICATOR";
+      const imgStyle = img?.getAttribute("style") || "";
+      return {
+        id: idFromText(label, "indicator"),
+        type: "indicator",
+        name: label,
+        en: "",
+        href: "",
+        image: img?.getAttribute("src") || "",
+        color: rgbaToHex(getStyleVar(el, "--ic"), "#00d4b4"),
+        x: readPercent(el, "left", 50),
+        y: readPercent(el, "top", 50),
+        size: readCqw(readInlineStyle(imgStyle, "width"), 1),
+        speed: readAnimationDuration(imgStyle) || "",
+        radius: "", spread: "",
+        animation: readAnimationName(imgStyle) || "spin",
+        density: "", direction: "normal", sub: ""
+      };
+    }
+
+    function parseOrbitElement(ring, no) {
+      const srcs = [...new Set([...ring.querySelectorAll("img")].map((img) => img.getAttribute("src")).filter(Boolean))];
+      const first = ring.querySelector("img");
+      const j = readCqw(getStyleVar(first, "--j"), -0.63);
+      const spread = Math.abs(j / 14) || 0.045;
+      return {
+        id: `orbit_${no}`,
+        type: "orbit",
+        name: no === 1 ? "GREAT WALL" : `ORBIT ${no}`,
+        en: "",
+        href: "",
+        image: srcs.join("|") || "resource/LA_image/LS_F_1_1.png|resource/LA_image/LS_F_1_2.png|resource/LA_image/LS_F_1_3.png",
+        color: "#d2be91",
+        x: readPercent(ring, "left", -34),
+        y: readPercent(ring, "top", 50),
+        size: readCqw(getStyleVar(ring, "--gw-seg-a-size"), 4.7),
+        speed: readInlineStyle(ring.getAttribute("style") || "", "animation-duration") || "190s",
+        radius: readCqw(getStyleVar(ring, "--gw-radius"), 52),
+        spread,
+        animation: "",
+        density: ring.querySelectorAll("img").length || 45,
+        direction: readInlineStyle(ring.getAttribute("style") || "", "animation-direction") || "normal",
+        orientation: ring.classList.contains("gw-orient-upright") ? "upright" : "follow",
+        sub: ""
+      };
+    }
+
+    function directText(el) {
+      if (!el) return "";
+      return [...el.childNodes].filter((node) => node.nodeType === Node.TEXT_NODE).map((node) => node.textContent).join(" ");
+    }
+
+    function readPercent(el, prop, fallback) {
+      return readNumber(readInlineStyle(el.getAttribute("style") || "", prop), fallback);
+    }
+
+    function readCqw(value, fallback) {
+      return readNumber(value, fallback);
+    }
+
+    function readNumber(value, fallback) {
+      const match = String(value || "").match(/-?\d+(?:\.\d+)?/);
+      return match ? Number(match[0]) : fallback;
+    }
+
+    function getStyleVar(el, prop) {
+      if (!el) return "";
+      return readInlineStyle(el.getAttribute("style") || "", prop);
+    }
+
+    function readInlineStyle(style, prop) {
+      const parts = String(style || "").split(";");
+      for (const part of parts) {
+        const index = part.indexOf(":");
+        if (index === -1) continue;
+        const key = part.slice(0, index).trim();
+        if (key === prop) return part.slice(index + 1).trim();
+      }
+      return "";
+    }
+
+    function readAnimationDuration(style) {
+      const animation = readInlineStyle(style, "animation");
+      const match = animation.match(/(\d+(?:\.\d+)?m?s)/);
+      return match ? match[1] : "";
+    }
+
+    function readAnimationName(style) {
+      const animation = readInlineStyle(style, "animation");
+      if (!animation || animation === "none") return animation;
+      if (animation.includes("map-bob")) return "bob";
+      if (animation.includes("gw-station-spin") || animation.includes("map-spin")) return "spin";
+      if (animation.includes("map-float")) return "float";
+      return "";
+    }
+
+    function idFromText(value, prefix) {
+      const base = String(value || prefix)
+        .replace(/^.*\//, "")
+        .replace(/\.html$/i, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_+|_+$/g, "");
+      return base || makeId(prefix);
+    }
+
+    function collectPagesFromItems() {
+      const pages = new Set([...knownPlanetPages, ...state.planetPages]);
+      for (const item of state.items) {
+        if (/^planets\/.+\.html$/i.test(item.href || "")) pages.add(item.href);
+      }
+      state.planetPages = [...pages].sort();
+      populatePageSelects();
+    }
+
+    function generateMapBlock() {
+      const lines = [];
+      lines.push("      <!-- ================================================");
+      lines.push("           PLANET BUTTONS & MAP ELEMENTS");
+      lines.push("           Generated by editor.html");
+      lines.push("           ================================================ -->");
+      for (const item of state.items) {
+        lines.push("");
+        if (item.type === "orbit") lines.push(generateOrbitHtml(item));
+        else if (item.type === "planet" || item.type === "nebula") lines.push(generatePlanetHtml(item));
+        else lines.push(generateIndicatorHtml(item));
+      }
+      return lines.join("\n");
+    }
+
+    function generatePlanetHtml(item) {
+      const href = item.href || "#";
+      const color = colorToRgba(item.color, 0.65);
+      const labelColor = item.type === "nebula" ? ` style="color:${item.color};"` : "";
+      const enStyle = item.type === "nebula" ? ` style="color:${item.color};opacity:0.75;"` : "";
+      const anim = item.animation || defaultAnimation(item.type);
+      return `      <a class="map-planet" href="${escapeAttr(href)}"
+         style="left:${fmt(item.x)}%;top:${fmt(item.y)}%;--ps:${fmt(item.size)}cqw;--pg:${color};--pa:${escapeAttr(item.speed || "8s")};--map-anim:${escapeAttr(animationName(anim))};--map-timing:${anim === "spin" ? "linear" : "ease-in-out"};">
+        <img src="${escapeAttr(item.image)}" class="map-planet-img" alt="${escapeAttr(item.en || item.name)}">
+        <div class="map-planet-label"${labelColor}>
+          ${escapeHtml(item.name)}
+          <span class="lbl-en"${enStyle}>${escapeHtml(item.en || "")}</span>
+        </div>
+        <div class="map-planet-tip">
+          <span class="tip-name">${escapeHtml(item.name)}${item.en ? " / " + escapeHtml(item.en) : ""}</span>
+          <span class="tip-sub"${labelColor}>${escapeHtml(item.sub || "")}</span>
+        </div>
+      </a>`;
+    }
+
+    function generateIndicatorHtml(item) {
+      const color = colorToRgba(item.color, 0.75);
+      const anim = animationName(item.animation || defaultAnimation(item.type));
+      const imageHtml = item.image
+        ? `        <img src="${escapeAttr(item.image)}"
+             style="width:${fmt(item.size || 3)}cqw;height:auto;filter:drop-shadow(0 0 8px ${color});animation:${escapeAttr(anim)} ${escapeAttr(item.speed || "18s")} ${anim.includes("spin") ? "linear" : "ease-in-out"} infinite;display:block;margin:0 auto 4px;"
+             alt="${escapeAttr(item.name)}">\n`
+        : "        <div class=\"ind-dot\"><div class=\"ind-ring\"></div></div>\n";
+      return `      <div class="map-indicator" style="left:${fmt(item.x)}%;top:${fmt(item.y)}%;--ic:${color};">
+${imageHtml}        <div class="ind-label">${escapeHtml(item.name)}</div>
+      </div>`;
+    }
+
+    function generateOrbitHtml(item) {
+      const srcs = splitImages(item.image);
+      const parts = [];
+      const count = clampInt(item.density || 45, 1, 180);
+      const orientationClass = item.orientation === "upright" ? " gw-orient-upright" : "";
+      const direction = item.direction || "normal";
+      const speed = item.speed || "190s";
+      for (let i = 0; i < count; i++) {
+        const src = srcs[i % srcs.length] || "resource/LA_image/LS_F_1_1.png";
+        const cls = i % 3 === 0 ? "gw-seg-a" : i % 3 === 1 ? "gw-seg-b" : "gw-seg-c";
+        const j = (((i * 37) % 29) - 14);
+        const s = i % 3 === 0 ? 0.94 : i % 3 === 1 ? 0.4 : 0.38;
+        parts.push(`          <img class="gw-seg ${cls}" src="${escapeAttr(src)}" style="--a:${fmt((360 / count) * i)}deg;--j:${fmt(j * (item.spread || 0.045))}cqw;--s:${s};" alt="">`);
+      }
+      return `      <div class="gw-belt" aria-hidden="true">
+        <div class="gw-orbit-ring${orientationClass}" style="left:${fmt(item.x)}%;top:${fmt(item.y)}%;--gw-radius:${fmt(item.radius || 52)}cqw;--gw-speed:${escapeAttr(speed)};--gw-direction:${escapeAttr(direction)};animation-duration:${escapeAttr(speed)};animation-direction:${escapeAttr(direction)};--gw-seg-a-size:${fmt(item.size || 4.7)}cqw;--gw-seg-b-size:${fmt((item.size || 4.7) * 1.38)}cqw;">
+${parts.join("\n")}
+        </div>
+      </div>`;
+    }
+
+    function splitImages(value) {
+      return String(value || "")
+        .split(/\n|\|/)
+        .map((src) => src.trim())
+        .filter(Boolean);
+    }
+
+    function animationName(value) {
+      if (value === "none") return "none";
+      if (value === "bob") return "map-bob";
+      if (value === "spin") return "gw-station-spin";
+      return "map-float";
+    }
+
+    function animationValue(value) {
+      if (value === "none") return "none";
+      if (value === "map-bob") return "bob";
+      if (value === "gw-station-spin" || value === "map-spin") return "spin";
+      if (value === "map-float") return "float";
+      return value || "";
+    }
+
+    $("openPlanetsDirBtn").addEventListener("click", async () => {
+      if (!window.showDirectoryPicker) {
+        setPlanetStatus("フォルダ読込非対応");
+        return;
+      }
+      try {
+        state.planetDirHandle = await showDirectoryPickerRemembered({}, pickerStore.keys.planetDir);
+        await savePickerHandle(pickerStore.keys.planetDir, state.planetDirHandle);
+        state.planetDirName = state.planetDirHandle.name || "planets";
+        const pages = [];
+        for await (const [name, handle] of state.planetDirHandle.entries()) {
+          if (handle.kind === "file" && /\.html$/i.test(name)) pages.push(`${state.planetDirName}/${name}`);
+        }
+        state.planetPages = pages.sort();
+        populatePageSelects();
+        setPlanetStatus(`${state.planetDirName} 読込済み / ${pages.length}件`);
+      } catch (error) {
+        setPlanetStatus("フォルダ読込キャンセル");
+      }
+    });
+
+    $("openPlanetFileBtn").addEventListener("click", async () => {
+      if (!window.showOpenFilePicker) {
+        setPlanetStatus("直接読込非対応");
+        return;
+      }
+      try {
+        const [handle] = await showOpenFilePickerRemembered({
+          types: [{ description: "HTML", accept: { "text/html": [".html"] } }]
+        }, [pickerStore.keys.planetFile, pickerStore.keys.planetDir, pickerStore.keys.indexFile]);
+        await savePickerHandle(pickerStore.keys.planetFile, handle);
+        await loadPlanetHandle(handle);
+      } catch (error) {
+        setPlanetStatus("読込キャンセル");
+      }
+    });
+
+    $("loadSelectedPlanetBtn").addEventListener("click", async () => {
+      const page = $("planetPageSelect").value;
+      if (!page) return;
+      if (!state.planetDirHandle) {
+        setPlanetStatus("先にフォルダを開くかHTMLを開いてください");
+        return;
+      }
+      try {
+        const name = page.split("/").pop();
+        const handle = await state.planetDirHandle.getFileHandle(name);
+        await loadPlanetHandle(handle);
+      } catch (error) {
+        setPlanetStatus("選択ページ読込失敗");
+      }
+    });
+
+    async function loadPlanetHandle(handle) {
+      state.planetHandle = handle;
+      await savePickerHandle(pickerStore.keys.planetFile, handle);
+      const file = await handle.getFile();
+      state.planetFileName = file.name;
+      state.planetText = await file.text();
+      const parsed = parsePlanetPage(state.planetText);
+      fillPlanetForm(parsed);
+      const kind = detectPageKind(parsed.headerTag);
+      const path = `${state.planetDirName || "planets"}/${file.name}`;
+      if (!state.planetPages.includes(path)) {
+        state.planetPages.push(path);
+        state.planetPages.sort();
+        populatePageSelects();
+      }
+      $("planetPageSelect").value = path;
+      setPlanetStatus(`${file.name} 読込済み（種別: ${kind}）`);
+    }
+
+    function detectPageKind(headerTag) {
+      const tag = String(headerTag || "");
+      if (/\bPF-/.test(tag)) return "人物";
+      if (/\bWPN-/.test(tag)) return "兵器";
+      return "惑星/拠点";
+    }
+
+    $("savePlanetBtn").addEventListener("click", async () => {
+      const next = buildPlanetPage();
+      if (!state.planetHandle) {
+        if (window.showSaveFilePicker) {
+          try {
+            const handle = await window.showSaveFilePicker({
+              suggestedName: "new_page.html",
+              types: [{ description: "HTML", accept: { "text/html": [".html"] } }]
+            });
+            const writable = await handle.createWritable();
+            await writable.write(next);
+            await writable.close();
+            state.planetHandle = handle;
+            state.planetText = next;
+            setPlanetStatus((handle.name || "新規ページ") + " 保存済み（新規）");
+          } catch (error) {
+            setPlanetStatus("新規保存キャンセル");
+          }
+        } else {
+          showOutput("保存先が未指定です。生成HTMLをコピーして保存してください。\n\n" + next);
+        }
+        return;
+      }
+      try {
+        const writable = await state.planetHandle.createWritable();
+        await writable.write(next);
+        await writable.close();
+        const file = await state.planetHandle.getFile();
+        state.planetText = await file.text();
+        setPlanetStatus(`${file.name} 保存済み`);
+      } catch (error) {
+        setPlanetStatus("保存失敗");
+        showOutput(`保存に失敗しました。\n${error.message || error}\n\n生成HTML:\n\n${next}`);
+      }
+    });
+
+    $("showPlanetHtmlBtn").addEventListener("click", () => showOutput(buildPlanetPage()));
+
+    /* characters / weapons use the corporate-file layout:
+       file-layout class on <main> + file-visual.js slide gallery */
+    function fileLayoutTemplate() {
+      return defaultPlanetTemplate()
+        .replace('<main class="planet-main">', '<main class="planet-main file-layout">')
+        .replace('<script src="../redact.js"><\/script>', '<script src="../file-visual.js"><\/script><script src="../redact.js"><\/script>');
+    }
+
+    function characterTemplate() {
+      return fileLayoutTemplate()
+        .replace("<title>PLANET -- LYLAT SYSTEM EXPLORER</title>", "<title>CHARACTER -- LYLAT SYSTEM EXPLORER</title>")
+        .replace('<a href="../console.html" class="nav-back">◄ CONSOLE</a>', '<a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>')
+        .replace('<div class="terminal-hdr">PLANETARY SCAN</div>', '<div class="terminal-hdr">▌ PERSONNEL SCAN ▐</div>')
+        .replace('<div class="header-tag"></div>', '<div class="header-tag">[ PF-00 / NAME — 名前 ]</div>');
+    }
+
+    function weaponTemplate() {
+      return fileLayoutTemplate()
+        .replace("<title>PLANET -- LYLAT SYSTEM EXPLORER</title>", "<title>WEAPON -- LYLAT SYSTEM EXPLORER</title>")
+        .replace('<a href="../console.html" class="nav-back">◄ CONSOLE</a>', '<a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>')
+        .replace('<div class="terminal-hdr">PLANETARY SCAN</div>', '<div class="terminal-hdr">▌ TECHNICAL SCAN ▐</div>')
+        .replace('<div class="header-tag"></div>', '<div class="header-tag">[ WPN-00 / NAME — 名称 ]</div>');
+    }
+
+    $("newPageBtn").addEventListener("click", () => {
+      const type = $("newPageTemplate").value;
+      state.planetHandle = null;
+      state.planetText = type === "character" ? characterTemplate() : type === "weapon" ? weaponTemplate() : defaultPlanetTemplate();
+      fillPlanetForm(parsePlanetPage(state.planetText));
+      const label = type === "character" ? "人物" : type === "weapon" ? "兵器" : "惑星/拠点";
+      setPlanetStatus("新規テンプレート（" + label + "）— 保存で新規ファイル作成");
+    });
+
+    $("pfInsertRedactBtn").addEventListener("click", () => {
+      const ta = $("pfLore");
+      const start = ta.selectionStart ?? ta.value.length;
+      const end = ta.selectionEnd ?? ta.value.length;
+      const text = ta.value.slice(start, end) || "検閲対象の機密内容";
+      const span = '<span class="redacted">' + text + '</span>';
+      ta.value = ta.value.slice(0, start) + span + ta.value.slice(end);
+      ta.focus();
+      ta.selectionStart = start;
+      ta.selectionEnd = start + span.length;
+      updatePlanetPreview();
+    });
+
+    /* ══════════ DATABASE ENTRY EDITOR ══════════ */
+    const codexState = { handle: null, doc: null, fileName: "", entries: [] };
+
+    $("openCodexFileBtn").addEventListener("click", async () => {
+      if (!window.showOpenFilePicker) {
+        setCodexStatus("読込非対応ブラウザ");
+        return;
+      }
+      try {
+        const [handle] = await window.showOpenFilePicker({
+          types: [{ description: "HTML", accept: { "text/html": [".html"] } }]
+        });
+        codexState.handle = handle;
+        const file = await handle.getFile();
+        codexState.fileName = file.name;
+        const text = await file.text();
+        codexState.doc = new DOMParser().parseFromString(text, "text/html");
+        codexState.entries = [...codexState.doc.querySelectorAll(".codex-entry")].map((el) => ({
+          id: el.id || "",
+          type: el.dataset.type || "",
+          loc: /\bloc\b/.test(el.className),
+          html: el.innerHTML.trim()
+        }));
+        renderCodexList();
+        setCodexStatus(file.name + " 読込済み / " + codexState.entries.length + "エントリ");
+      } catch (error) {
+        setCodexStatus("読込キャンセル");
+      }
+    });
+
+    function setCodexStatus(text) {
+      $("codexStatusText").textContent = text;
+    }
+
+    function renderCodexList() {
+      const list = $("codexEntryList");
+      list.innerHTML = "";
+      if (!codexState.entries.length) {
+        list.innerHTML = '<p class="hint">エントリがありません。「記事エントリ追加」で作成できます。</p>';
+        return;
+      }
+      codexState.entries.forEach((entry, i) => {
+        const card = document.createElement("div");
+        card.className = "ce-card";
+        card.innerHTML =
+          '<div class="ce-head">' +
+            '<input type="text" data-k="id" placeholder="アンカーID（例: arwing）" value="' + escapeAttr(entry.id) + '">' +
+            '<input type="text" data-k="type" placeholder="data-type（例: weapon）" value="' + escapeAttr(entry.type) + '">' +
+            '<label class="ce-loc"><input type="checkbox" data-k="loc"' + (entry.loc ? " checked" : "") + '>カード型</label>' +
+            '<button type="button" data-act="up" title="上へ">▲</button>' +
+            '<button type="button" data-act="down" title="下へ">▼</button>' +
+            '<button type="button" data-act="del" title="削除">✕</button>' +
+          '</div>' +
+          '<textarea data-k="html"></textarea>';
+        card.querySelector('[data-k="html"]').value = entry.html;
+        card.querySelector('[data-k="id"]').addEventListener("input", (e) => { entry.id = e.target.value.trim(); });
+        card.querySelector('[data-k="type"]').addEventListener("input", (e) => { entry.type = e.target.value.trim(); });
+        card.querySelector('[data-k="loc"]').addEventListener("change", (e) => { entry.loc = e.target.checked; });
+        card.querySelector('[data-k="html"]').addEventListener("input", (e) => { entry.html = e.target.value; });
+        card.querySelector('[data-act="up"]').addEventListener("click", () => moveCodexEntry(i, -1));
+        card.querySelector('[data-act="down"]').addEventListener("click", () => moveCodexEntry(i, 1));
+        card.querySelector('[data-act="del"]').addEventListener("click", () => {
+          if (!confirm("このエントリを削除しますか？")) return;
+          codexState.entries.splice(i, 1);
+          renderCodexList();
+        });
+        list.appendChild(card);
+      });
+    }
+
+    function moveCodexEntry(index, delta) {
+      const target = index + delta;
+      if (target < 0 || target >= codexState.entries.length) return;
+      const item = codexState.entries.splice(index, 1)[0];
+      codexState.entries.splice(target, 0, item);
+      renderCodexList();
+    }
+
+    $("codexAddEntryBtn").addEventListener("click", () => {
+      codexState.entries.push({
+        id: "", type: "misc", loc: false,
+        html: '<h2 class="codex-h">見出し <span class="en">TITLE EN</span></h2>\n      <div class="codex-sub"><span class="loc-tag t-misc">現象・その他</span></div>\n      <p class="codex-p">本文をここに記載。</p>'
+      });
+      renderCodexList();
+      setCodexStatus("記事エントリを追加（未保存）");
+    });
+
+    $("codexAddCardBtn").addEventListener("click", () => {
+      codexState.entries.push({
+        id: "", type: "weapon", loc: true,
+        html: '<div class="loc-body">\n        <h2 class="codex-h">名称 <span class="en">NAME EN</span></h2>\n        <div class="codex-sub"><span class="loc-tag t-weapon">軍事・兵器</span> 補足情報</div>\n        <p class="codex-p">3〜4行の概要をここに記載。</p>\n        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../weapons/xxx.html">▶ 詳細記録を開く</a></div>\n      </div>\n      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>'
+      });
+      renderCodexList();
+      setCodexStatus("カードエントリを追加（未保存）");
+    });
+
+    $("saveCodexBtn").addEventListener("click", async () => {
+      if (!codexState.doc) {
+        setCodexStatus("先にcodex HTMLを開いてください");
+        return;
+      }
+      const doc = codexState.doc;
+      const main = doc.querySelector(".codex-main") || doc.body;
+      doc.querySelectorAll(".codex-entry").forEach((node) => node.remove());
+      for (const entry of codexState.entries) {
+        const art = doc.createElement("article");
+        art.className = "codex-entry" + (entry.loc ? " loc" : "");
+        if (entry.id) art.id = entry.id;
+        if (entry.type) art.setAttribute("data-type", entry.type);
+        art.innerHTML = entry.html;
+        main.appendChild(art);
+        main.appendChild(doc.createTextNode("\n\n    "));
+      }
+      const next = "<!DOCTYPE html>\n" + doc.documentElement.outerHTML;
+      try {
+        const writable = await codexState.handle.createWritable();
+        await writable.write(next);
+        await writable.close();
+        setCodexStatus(codexState.fileName + " 保存済み / " + codexState.entries.length + "エントリ");
+      } catch (error) {
+        setCodexStatus("保存失敗");
+        showOutput("保存に失敗しました。\n" + (error.message || error) + "\n\n生成HTML:\n\n" + next);
+      }
+    });
+
+    $("pfInsertLinkBtn").addEventListener("click", () => {
+      const ta = $("pfLore");
+      const select = $("pfLinkTarget");
+      const href = select.value;
+      if (!href) return;
+      const label = select.selectedOptions[0]?.textContent.trim() || "リンク";
+      const start = ta.selectionStart ?? ta.value.length;
+      const end = ta.selectionEnd ?? ta.value.length;
+      const text = ta.value.slice(start, end) || label;
+      const link = `<a href="${href}">${text}</a>`;
+      ta.value = ta.value.slice(0, start) + link + ta.value.slice(end);
+      ta.focus();
+      ta.selectionStart = start;
+      ta.selectionEnd = start + link.length;
+      updatePlanetPreview();
+    });
+
+    function setPlanetStatus(text) {
+      $("planetStatusText").textContent = text;
+    }
+
+    function parsePlanetPage(html) {
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const scanRows = [...doc.querySelectorAll(".dt tr")].map((tr) => {
+        const key = tr.querySelector(".dk")?.textContent.trim() || "";
+        const value = tr.querySelector(".dv")?.textContent.trim() || "";
+        return `${key} = ${value}`;
+      }).join("\n");
+      const lore = [...doc.querySelectorAll(".lore-section")].map((section) => {
+        const h = section.querySelector(".lore-h")?.textContent.trim() || "SECTION";
+        const ps = [...section.querySelectorAll(".lore-p")].map((p) => htmlFromNode(p).replace(/[ \t]*\n[ \t]*/g, " ").replace(/\s*<br>\s*/g, "\n").trim());
+        return `## ${h}\n${ps.join("\n\n")}`;
+      }).join("\n\n");
+      const img = doc.querySelector(".planet-img-detail");
+      return {
+        title: doc.querySelector("title")?.textContent || "",
+        headerTag: doc.querySelector(".header-tag")?.textContent.trim() || "",
+        headerStatus: doc.querySelector(".header-status")?.textContent.trim() || "",
+        sideLeft: doc.querySelector(".side-l .vt")?.textContent.trim() || "",
+        sideRight: doc.querySelector(".side-r .vt")?.textContent.trim() || "",
+        index: doc.querySelector(".p-index")?.textContent.trim() || "",
+        name: doc.querySelector(".p-name-jp")?.textContent.trim() || "",
+        heroTitle: (doc.querySelector(".p-title")?.innerHTML || "").replace(/<br\s*\/?>/gi, "\n").trim(),
+        tagline: doc.querySelector(".p-tagline")?.textContent.trim() || "",
+        shortDesc: (doc.querySelector(".p-short-desc")?.innerHTML || "").replace(/<br\s*\/?>/gi, "\n").replace(/[ \t]*\n[ \t]*/g, "\n").trim(),
+        image: img?.getAttribute("src") || "",
+        imageSize: [...(img?.classList || [])].find((cls) => /^planet-img-(small|medium|large)$/.test(cls)) || "planet-img-medium",
+        glow: getStyleVar(doc.querySelector(".planet-visual"), "--p-glow") || "",
+        visualAnimation: readAnimationName(img?.getAttribute("style") || "") || "float",
+        visualSpeed: readAnimationDuration(img?.getAttribute("style") || "") || "7s",
+        tagTopEn: doc.querySelector(".tagline-tr .tg-en")?.textContent.trim() || "",
+        tagTopJp: doc.querySelector(".tagline-tr .tg-jp")?.textContent.trim() || "",
+        tagBottomJp: readVisualCopy(doc.querySelector(".tagline-bl .tg-jp")),
+        commImage: [...doc.querySelectorAll(".comm-window img")]
+          .map((img) => img.getAttribute("src") || "")
+          .filter(Boolean)
+          .join("\n"),
+        scanRows,
+        env: readNumber(doc.querySelector(".env-bar-fill")?.getAttribute("style") || "", ""),
+        lore
+      };
+    }
+
+    function fillPlanetForm(data) {
+      for (const [key, input] of Object.entries(planetFields)) input.value = data[key] ?? "";
+      updatePlanetPreview();
+    }
+
+    function updatePlanetPreview() {
+      if (!$("previewName")) return;
+      $("previewIndex").textContent = planetFields.index.value || planetFields.headerTag.value || "PLANET DATA";
+      $("previewName").textContent = planetFields.heroTitle.value || planetFields.name.value || "PLANET";
+      $("previewTagline").textContent = planetFields.tagline.value || planetFields.headerStatus.value || "LYLAT SYSTEM EXPLORER";
+      $("previewDesc").textContent = planetFields.shortDesc.value || "子ページHTMLを読み込むと、ここに概要プレビューが表示されます。";
+      $("previewVisualTag").textContent = [planetFields.tagTopEn.value, planetFields.tagTopJp.value].filter(Boolean).join("\n");
+      $("previewCallout").innerHTML = formatVisualCopy(planetFields.tagBottomJp.value);
+      $("previewCallout").style.display = planetFields.tagBottomJp.value.trim() ? "block" : "none";
+      const commSrcs = splitImages(planetFields.commImage.value).map(normalizePreviewSrc);
+      $("previewCommWindow").innerHTML = commSrcs.map((src, index) => `<img class="${index === 0 ? "active" : ""}" src="${escapeAttr(src)}" alt="">`).join("");
+      $("previewCommWindow").style.display = commSrcs.length ? "block" : "none";
+
+      const visual = $("previewVisual");
+      visual.style.setProperty("--preview-glow", planetFields.glow.value || "rgba(0,212,180,0.5)");
+      const img = $("previewImage");
+      const src = normalizePreviewSrc(planetFields.image.value);
+      img.src = src;
+      img.style.display = src ? "block" : "none";
+      img.dataset.anim = planetFields.visualAnimation.value || "float";
+      img.style.animationDuration = planetFields.visualSpeed.value || "7s";
+      img.style.width = planetFields.imageSize.value === "planet-img-large" ? "82%" : planetFields.imageSize.value === "planet-img-small" ? "48%" : "64%";
+
+      const scan = $("previewScan");
+      scan.innerHTML = "";
+      const rows = planetFields.scanRows.value.split("\n").map((line) => line.trim()).filter(Boolean).slice(0, 8);
+      if (!rows.length) {
+        scan.innerHTML = `<div class="preview-scan-row"><span class="preview-scan-key">SCAN</span><span class="preview-scan-value">NO DATA</span></div>`;
+        return;
+      }
+      for (const line of rows) {
+        const [key, ...rest] = line.split("=");
+        const row = document.createElement("div");
+        row.className = "preview-scan-row";
+        row.innerHTML = `<span class="preview-scan-key">${escapeHtml((key || "").trim())}</span><span class="preview-scan-value">${escapeHtml(rest.join("=").trim())}</span>`;
+        scan.appendChild(row);
+      }
+    }
+
+    function normalizePreviewSrc(src) {
+      return String(src || "").trim().replace(/^\.\.\//, "");
+    }
+
+    function formatVisualCopy(value) {
+      const lines = String(value || "").split("\n").map((line) => line.trim()).filter(Boolean);
+      if (!lines.length) return "";
+      const last = lines[lines.length - 1];
+      const hasNote = /^[-‐ー－–—※]/.test(last);
+      const mainLines = hasNote ? lines.slice(0, -1) : lines;
+      const main = escapeHtml(mainLines.join("\n")).replace(/\n/g, "<br>");
+      const note = hasNote ? `<span class="tg-note note">${escapeHtml(last)}</span>` : "";
+      return main + note;
+    }
+
+    function readVisualCopy(el) {
+      if (!el) return "";
+      const note = el.querySelector(".tg-note")?.textContent.trim() || "";
+      const clone = el.cloneNode(true);
+      clone.querySelectorAll(".tg-note").forEach((node) => node.remove());
+      const main = clone.textContent.trim();
+      return [main, note].filter(Boolean).join("\n");
+    }
+
+    function buildPlanetPage() {
+      const base = state.planetText || defaultPlanetTemplate();
+      const doc = new DOMParser().parseFromString(base, "text/html");
+      setText(doc.querySelector("title"), planetFields.title.value);
+      setText(doc.querySelector(".header-tag"), planetFields.headerTag.value);
+      setText(doc.querySelector(".header-status"), planetFields.headerStatus.value);
+      setText(doc.querySelector(".side-l .vt"), planetFields.sideLeft.value);
+      setText(doc.querySelector(".side-r .vt"), planetFields.sideRight.value);
+      setText(doc.querySelector(".p-index"), planetFields.index.value);
+      setText(doc.querySelector(".p-name-jp"), planetFields.name.value);
+      setHtml(doc.querySelector(".p-title"), escapeHtml(planetFields.heroTitle.value).replace(/\n/g, "<br>"));
+      setText(doc.querySelector(".p-tagline"), planetFields.tagline.value);
+      setHtml(doc.querySelector(".p-short-desc"), escapeHtml(planetFields.shortDesc.value).replace(/\n/g, "<br>"));
+      const visual = doc.querySelector(".planet-visual");
+      if (visual) visual.style.setProperty("--p-glow", planetFields.glow.value);
+      const img = doc.querySelector(".planet-img-detail");
+      if (img) {
+        img.setAttribute("src", planetFields.image.value);
+        img.classList.remove("planet-img-small", "planet-img-medium", "planet-img-large");
+        img.classList.add(planetFields.imageSize.value);
+        const anim = planetFields.visualAnimation.value || "float";
+        if (anim === "none") img.style.animation = "none";
+        else img.style.animation = `${animationName(anim)} ${planetFields.visualSpeed.value || "7s"} ${anim === "spin" ? "linear" : "ease-in-out"} infinite`;
+      }
+      setText(doc.querySelector(".tagline-tr .tg-en"), planetFields.tagTopEn.value);
+      setText(doc.querySelector(".tagline-tr .tg-jp"), planetFields.tagTopJp.value);
+      setHtml(doc.querySelector(".tagline-bl .tg-jp"), formatVisualCopy(planetFields.tagBottomJp.value));
+      updateCommWindow(doc, planetFields.commImage.value);
+      ensureCommScript(doc);
+      ensureNoFlashGuard(doc);
+      ensurePageChrome(doc);
+      replaceScanRows(doc);
+      replaceLore(doc);
+      return "<!DOCTYPE html>\n" + doc.documentElement.outerHTML;
+    }
+
+    function ensurePageChrome(doc) {
+      const nebula = doc.querySelector(".bg-nebula");
+      if (nebula) nebula.classList.add("bg-space");
+      const hasRedact = [...doc.querySelectorAll("script")].some((node) => (node.getAttribute("src") || "").includes("redact.js"));
+      if (!hasRedact) {
+        const script = doc.createElement("script");
+        script.setAttribute("src", "../redact.js");
+        doc.body.appendChild(script);
+      }
+    }
+
+    function ensureNoFlashGuard(doc) {
+      const styles = [...doc.querySelectorAll("head style")];
+      if (styles.some((node) => node.textContent.includes("no-flash guard"))) return;
+      const guard = doc.createElement("style");
+      guard.textContent = "/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}";
+      const link = doc.querySelector('head link[rel="stylesheet"][href*="planet.css"]');
+      if (link && link.nextSibling) link.parentNode.insertBefore(guard, link.nextSibling);
+      else doc.head.appendChild(guard);
+    }
+
+    function updateCommWindow(doc, value) {
+      const visual = doc.querySelector(".planet-visual");
+      if (!visual) return;
+      let win = visual.querySelector(".comm-window");
+      if (!win) {
+        win = doc.createElement("div");
+        win.className = "comm-window";
+        win.innerHTML = '<button class="comm-close" type="button" aria-label="close">×</button>';
+        visual.appendChild(win);
+      }
+      let close = win.querySelector(".comm-close");
+      if (!close) {
+        close = doc.createElement("button");
+        close.className = "comm-close";
+        close.type = "button";
+        close.setAttribute("aria-label", "close");
+        close.textContent = "×";
+        win.prepend(close);
+      }
+      win.querySelectorAll("img").forEach((img) => img.remove());
+      for (const src of splitImages(value).map(normalizePlanetPageSrc)) {
+        const img = doc.createElement("img");
+        img.setAttribute("src", src);
+        img.setAttribute("alt", "comm visual");
+        win.appendChild(img);
+      }
+      const first = win.querySelector("img");
+      if (first) first.classList.add("active");
+    }
+
+    function ensureCommScript(doc) {
+      const scripts = [...doc.querySelectorAll("script")];
+      let script = scripts.find((node) => node.textContent.includes("comm-window"));
+      if (!script) {
+        script = doc.createElement("script");
+        doc.body.appendChild(script);
+      }
+      script.textContent = commScriptBody();
+    }
+
+    function commScriptBody() {
+      return `(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();`;
+    }
+
+    function normalizePlanetPageSrc(src) {
+      const value = String(src || "").trim();
+      if (!value) return "";
+      if (/^(?:[a-z]+:|data:|#|\/)/i.test(value) || value.startsWith("../")) return value;
+      if (/^(?:resource|LA_image|Comms_visual|UIイメージ)\//.test(value)) return `../${value}`;
+      return value;
+    }
+
+    function replaceScanRows(doc) {
+      const table = doc.querySelector(".dt");
+      if (!table) return;
+      table.innerHTML = "";
+      for (const line of planetFields.scanRows.value.split("\n")) {
+        if (!line.trim()) continue;
+        const [key, ...rest] = line.split("=");
+        const value = rest.join("=").trim();
+        const tr = doc.createElement("tr");
+        tr.innerHTML = `<td class="dk">${escapeHtml(key.trim())}</td><td class="dv">${escapeHtml(value)}</td>`;
+        table.appendChild(tr);
+      }
+      const env = Number(planetFields.env.value);
+      const fill = doc.querySelector(".env-bar-fill");
+      if (fill && Number.isFinite(env)) fill.style.width = `${env}%`;
+      const label = doc.querySelector(".env-bar-label");
+      if (label && Number.isFinite(env)) label.textContent = `ENVIRONMENT INDEX -- ${env} / 100`;
+    }
+
+    function replaceLore(doc) {
+      const lore = doc.querySelector(".planet-lore");
+      if (!lore) return;
+      lore.innerHTML = "";
+      const blocks = planetFields.lore.value.split(/^##\s+/m).map((b) => b.trim()).filter(Boolean);
+      for (const block of blocks) {
+        const [heading, ...bodyLines] = block.split("\n");
+        const section = doc.createElement("div");
+        section.className = "lore-section";
+        const h = doc.createElement("h3");
+        h.className = "lore-h";
+        h.textContent = heading.trim();
+        section.appendChild(h);
+        const paragraphs = bodyLines.join("\n").split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
+        for (const paragraph of paragraphs) {
+          const p = doc.createElement("p");
+          p.className = "lore-p";
+          p.innerHTML = paragraph.replace(/\n/g, "<br>");
+          section.appendChild(p);
+        }
+        lore.appendChild(section);
+      }
+    }
+
+    function setText(el, value) {
+      if (el) el.textContent = value;
+    }
+
+    function setHtml(el, value) {
+      if (el) el.innerHTML = value;
+    }
+
+    function htmlFromNode(node) {
+      return node.innerHTML.replace(/<br\s*\/?>/gi, "<br>");
+    }
+
+    function defaultPlanetTemplate() {
+      return `<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PLANET -- LYLAT SYSTEM EXPLORER</title><link rel="stylesheet" href="../planet.css"><style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style></head><body><div id="stars"></div><div class="bg-nebula bg-space"></div><div class="scanlines"></div><header class="hud-header"><a href="../console.html" class="nav-back">◄ CONSOLE</a><div class="header-tag"></div><div class="header-status"></div></header><div class="side-l"><div class="vt"></div></div><div class="side-r"><div class="vt"></div></div><main class="planet-main"><div class="col-l"><div class="planet-hero"><div class="p-index"></div><div class="p-name-jp"></div><h1 class="p-title"></h1><div class="p-tagline"></div><p class="p-short-desc"></p></div><div class="data-terminal"><div class="terminal-hdr">PLANETARY SCAN</div><table class="dt"></table><div class="env-bar-wrap"><div class="env-bar-label"></div><div class="env-bar-track"><div class="env-bar-fill"></div></div></div></div></div><div class="col-r"><div class="planet-visual"><img src="" alt="" class="planet-img-detail planet-img-medium"><div class="planet-hover-tagline tagline-tr"><div class="tg-inner"><span class="tg-en"></span><span class="tg-jp"></span></div></div><div class="planet-hover-tagline tagline-bl"><div class="tg-inner"><span class="tg-jp"></span></div></div><div class="comm-window"><button class="comm-close" type="button" aria-label="close">×</button><img src="" alt="comm visual"></div></div><div class="planet-lore"></div></div></main><script>${commScriptBody()}<\/script><script src="../redact.js"><\/script><script src="sector-tips.js"></script>
+</body></html>`;
+    }
+
+    function fmt(value) {
+      return Number(value || 0).toFixed(2).replace(/\.?0+$/, "");
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (ch) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+      }[ch]));
+    }
+
+    function escapeAttr(value) {
+      return escapeHtml(value).replace(/`/g, "&#096;");
+    }
+  </script>
+<script src="sector-tips.js"></script>
+</body>
+</html>

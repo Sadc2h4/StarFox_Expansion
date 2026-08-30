@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BULLFROG — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#55cc66;--accent:#99ee99;--border:rgba(85,204,102,0.32);--border-hi:rgba(85,204,102,0.7);--dim:#0f2a14;--dim2:#07150a; }
+    .p-title    { color: #e8ffe8; text-shadow: 0 0 50px rgba(85,204,102,0.35); }
+    .p-tagline  { border-color: #55cc66; color: #55cc66; }
+    .terminal-hdr { color: #99ee99; }
+    .terminal-hdr::before { background: #99ee99; box-shadow: 0 0 8px #99ee99; }
+    .dk { color: #55cc66; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-38 / BULLFROG — ブルフロッグ ]</div>
+    <div class="header-status"><span class="blink" style="color:#99ee99;">●</span> IN DEVELOPMENT — PRIVATE PROJECT</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — BULLFROG — ALL-DOMAIN FIGHTER PROJECT — SLIPPY TOAD DESIGN</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0038 — CLEARANCE: OPEN — PROJECTED DATA</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-38 / ARMORY FILE ]</div>
+        <div class="p-name-jp">ブルフロッグ (BULLFROG)</div>
+        <h1 class="p-title">BULLFROG</h1>
+        <div class="p-tagline">FROM ABYSS TO ORBIT ── 全領域対応戦闘機・開発計画</div>
+        <p class="p-short-desc">スリッピー・トードがブルーマリンの後継として開発中の全領域対応戦闘機。大気圏・宇宙・水中を持ち替えなしで戦う「絶対に落ちない機体」の計画である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PROJECTED SPEC — FILE 38 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">BULLFROG / ブルフロッグ</td></tr><tr><td class="dk">CLASS</td><td class="dv">全領域対応戦闘機（計画・単座）</td></tr><tr><td class="dk">DESIGNER</td><td class="dv">S・トード個人設計 / <a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a>非公式協力</td></tr><tr><td class="dk">PREDECESSOR</td><td class="dv"><a href="bluemarine.html">ブルーマリン</a> / <a href="arwing.html">アーウィン</a>（技術系譜）</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">大気圏内 / 宇宙空間 / 水中 — 三領域</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">高出力プラズマ砲（照準補正なし）/ <a href="smart-bomb.html">スマートボム</a>×3（全領域起爆規格）</td></tr><tr><td class="dk">DEFENSE</td><td class="dv">重装デフレクターシールド / 三重耐圧隔壁</td></tr><tr><td class="dk">STATUS</td><td class="dv warn">開発中 — 図面・試作部品・原寸モックアップ</td></tr><tr><td class="dk">COMPLETION</td><td class="dv">「あと5分」（設計者談）</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PROJECTED RATING -- 96 / 100 (SELF-REPORTED)</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(85,204,102,0.55);">
+        <img src="" alt="BULLFROG" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ALL-DOMAIN FIGHTER PROJECT</span>
+            <span class="tg-jp">全領域対応戦闘機 ブルフロッグ</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">狭い、暗い、怖いって言ったよね？<br>次のは全部直すから、覚悟しててよね！<span class="tg-note note">-S・トード 開発ノート表紙の走り書きより-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">言っとくが樽だからな、あれは。……まあ、沈まない樽ってことは認めてやるけどよ…<span class="lore-quote-src">― F・ランバルディ モックアップ見学時の談話より</span></span></p>
+  <p class="lore-p">ブルフロッグ（Bullfrog）は、<a href="../database/characters.html#slippy">スリッピー・トード</a> が小型戦闘潜航艇<a href="bluemarine.html">ブルーマリン</a> の後継として開発を進める全領域対応戦闘機の計画名である。大気圏内・宇宙・水中の三領域を持ち替えなしで戦い抜くことを目標に掲げており完成すれば星系初の真の万能戦闘機となる。</p>
+  <p class="lore-p">本記録は設計メモ・試作部品・原寸モックアップから構成される計画段階のファイルであり、性能値はすべて設計者の申告に基づく推定である。申告者の実績を踏まえ本データベースは推定値をそのまま掲載する方針を採った。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">設計思想 ─ CONCEPT</h3>
+  <p class="lore-p">出発点はブルーマリンへの三つの不満である。「水中でしか使えない」「水域まで母艦で運ばねばならない」「乗り換えのたびに隊列から戦闘機が一機消える」ブルフロッグはその全ての逆を張った。どこへでも自力で行き、どこでも戦い、誰の手も借りないのである。</p>
+  <p class="lore-p">そしてもう一つの出発点が僚機たちの悪態である。ブルーマリンに浴びせられた「暗い」「狭い」「怖い」「安全性」の四点（<a href="bluemarine.html">ブルーマリンの項</a>を参照）への回答として、設計は「先手必勝の絨毯爆撃」「圧倒的防御力」「三重の耐圧隔壁」を最優先に掲げている。機体案が丸みを帯びたずんぐりとしたフォルムへ行き着いたのは隔壁三重化の帰結であり初見の者はまず戦闘機と認識しない。</p>
+  <p class="lore-p">外見からわかる通り速度は最初から捨てている。設計メモの冒頭には「速い機体はパパの会社がもう作ってる。でも、落ちない機体はまだ誰も作ってない」とある。重量と冗長系に全てを振ったこの思想が、操縦実技歴代最低評価の設計者自身を最初の想定パイロットに置いていることと無関係でないのは言うまでもない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">計画機構 ─ MECHANISM</h3>
+  <p class="lore-p">機体構想は<a href="arwing.html">アーウィン</a> のG・ディフューザー技術とブルーマリンの水圧補正転用の合流点にある。同一の機関系で慣性制御と耐圧制御を連続的に切り替えることで、大気圏突入から深海潜航までを一つの操縦系で扱う。海面や大気圏界面といった領域の境界を減速なしで突っ切ることが設計目標に明記されている。</p>
+  <p class="lore-p">主兵装は照準補正を持たない高出力プラズマ砲である。ロックオン演算を丸ごと削った理由を設計者は「補正は外れた言い訳を覚えるだけだよ、ミスったらボムで何とかすればいいしね」と説明する。浮いた演算資源はすべて防御と装填の管制へ回され、一発の威力は標準的なツインレーザーを大きく上回る見込みという。</p>
+  <p class="lore-p">爆装は<a href="smart-bomb.html">スマートボム</a> 3発。水中でも真空でも同一弾で作動する全領域起爆規格の新型信管が計画の核であり「先手必勝の絨毯爆撃」教義を支える。防御側の三重耐圧隔壁は被弾前提の設計であり試作隔壁の耐圧試験では隔壁より先に試験機のほうが壊れたと伝えられる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">開発状況 ─ STATUS</h3>
+  <p class="lore-p">計画は図面と試作部品・原寸モックアップの段階にある。開発は完全な私費であり資金源は<a href="../database/locations.html#grippia">グリッピア</a> の警備ロボット受注の稼ぎと伝えられる。<a href="../corporations/space-dynamics.html">SD社</a> の関与は先代と同じく今回も非公式であり、社の部品倉庫の在庫が時折説明のつかない減り方をするだけである。</p>
+  <p class="lore-p">完成時期を尋ねられた設計者の回答は毎回「あと5分」である。ただし<a href="../characters/toad-family.html">トード家</a> の病を知る者はこの言葉を悲観していない。「あと5分」と言い続けた者が最後に何を持ってくるかを星系はブルーマリンで一度見ているからである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">命名について本人の説明は「僕が乗るんだから、次は"屈強"な"蛙"でしょ」の一言である。「青い魚」から「ガチムチの蛙」へ。アクアスの童謡から名を継いだ先代と同じく直感を重視した命名はいつものスリッピーらしさである。</p>
+  <p class="lore-p">原寸モックアップを最初に見たファルコの第一声は「はははっ 今度は樽か！」だった。スリッピーの返答は記録に残っている。「あのさ、樽は沈まないんだよ。知ってた？」</p>
+  <p class="lore-p">フォックスは計画に一つだけ条件を出している。「今度はちゃんと進水式をして確かめてから使った方がいいぜ。スリッピー本人が乗るなら猶更必要さ」。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

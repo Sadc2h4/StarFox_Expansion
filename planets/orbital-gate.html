@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORBITAL GATE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/locations.html" class="nav-back">◄ LOCATIONS</a>
+    <div class="header-tag">[ SECTOR-Ƣ / ORBITAL GATE — 空間跳躍ビーコン基地 ]</div>
+    <div class="header-status"><span style="color:#ffd166;">●</span> UNMANNED — 95% COMPLETE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">LYLAT SYSTEM — ORBITAL GATE SPACE-FOLD BEACON STATION — SECTOR GAIN — RUBICON SPACE — FRONTIER LINE TERMINUS</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: OGT-0001 — CLEARANCE: OPEN — OWNERSHIP: IN DISPUTE</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ SECTOR-Ƣ / RUBICON SPACE ]</div>
+        <div class="p-name-jp">オービタル・ゲート (ORBITAL GATE)</div>
+        <h1 class="p-title">THE DOOR<br>AT THE END<br>OF THE ROAD</h1>
+        <div class="p-tagline">空間跳躍ビーコン基地 ─ 9大航路の最果て・完成度95%</div>
+        <p class="p-short-desc">フロンティア・ラインの終点のさらに先、セクターƢに浮かぶ未完成の空間跳躍装置。ドグマ・セントラル近傍へ船を一足飛びに投げ渡すために建造され、完成の一歩手前で無人のまま止まっている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ STATION SCAN — SECTOR-Ƣ ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">ORBITAL GATE / オービタル・ゲート</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">民間施設（無人・未完成）</td></tr><tr><td class="dk">LOCATION</td><td class="dv"><a href="../database/sectors.html#gain">セクターƢ</a> — <a href="../database/glossary.html#rubicon">ルビコン・スペース</a>中腹</td></tr><tr><td class="dk">CLASS</td><td class="dv">空間跳躍ビーコン基地</td></tr><tr><td class="dk">FUNCTION</td><td class="dv">固定式空間跳躍装置 — 大型グラビトロン機関による射出</td></tr><tr><td class="dk">TARGET</td><td class="dv"><a href="dogma.html">ドグマ・セントラル</a>近傍 — 設定済み・未較正</td></tr><tr><td class="dk">COMPLETION</td><td class="dv">95% — 残工程は跳躍先の最終較正のみ</td></tr><tr><td class="dk">POWER</td><td class="dv">自動保守系のみ稼働</td></tr><tr><td class="dk">GARRISON</td><td class="dv">無人 — 差し押さえ封印 多数</td></tr><tr><td class="dk">OWNER</td><td class="dv">係争中 — メーテルリンク星間交通 破産管財</td></tr><tr><td class="dk">STATUS</td><td class="dv warn">休眠 — 装置は一度も起動していない</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">COMPLETION -- 95 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 95%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(120,200,255,0.5);">
+        <img src="../resource/LA_image/LS_F_6.png" alt="ORBITAL GATE" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">Sector Ƣ — SPACE-FOLD BEACON STATION</span>
+            <span class="tg-jp">空間跳躍ビーコン基地 ── 9大航路の最果て</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">終点だ 全員ここで折り返す<br>……扉の灯りに敬礼を忘れるなよ。<span class="tg-note note">-フロンティア・ライン 定期貨物船の船内放送より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">完成すれば星系有数の資産。未完成なら、ただの鉄屑<span class="lore-quote-src">― 破産管財レポート 資産査定欄より</span></span></p>
+  <p class="lore-p">オービタル・ゲート（Orbital Gate）は、<a href="../database/glossary.html#route-frontier">フロンティア・ライン</a>の終点のさらに先、<a href="../database/glossary.html#rubicon">ルビコン・スペース</a>中腹の<a href="../database/sectors.html#gain">セクターƢ</a>に浮かぶ大型ステーションである。ライラットε星<a href="dogma.html">ドグマ・セントラル</a>の近傍までワープドライブの到達圏を一挙に広げる空間跳躍装置として建造され、完成度95%と評価された時点で工事が止まった。以来無人のまま、9大航路の最果てに立ち続けている。</p>
+  <p class="lore-p">星系の航路図はこの施設を唯一「未成」の注記付きで記載する。ゲートの手前で途切れる点線は「ライラットの道の終わり」を示す記号として星系の誰もが知るものであり、フロンティア・ラインを終点まで走った船乗りは折り返しの前にこの灯りを一瞥する習わしを持つ。道の終わりに立つ扉は「ここから先へ進んではならない」と告げる星系で最も遠い道路標識であり、同時に、残る5%を埋めに来る誰かを待ち続ける止まり木でもある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">PROJECT ─ 計画と機構</h3>
+  <p class="lore-p">ワープドライブ航法で遠方へ道を通すには折り畳んだ空間から障害物を除いた<a href="../database/glossary.html#warp-route">航路</a>をビーコンで区画し続ける必要がある。だがドグマを覆う暗黒星雲の周辺では安全な中継点がどうしても確保できず、道を一区画ずつ伸ばす試みはことごとく失敗に終わった。<a href="../database/sectors.html#gain">セクターƢ</a>に点在する前哨基地群は、この挑戦の墓標である。</p>
+  <p class="lore-p">そこで最後に採られたのが発想の転換であった。道を伸ばすのではなく基地側に据えた大型のグラビトロン機関で空間をあらかじめ折り畳み、船を対岸へ一足飛びに投げ渡す。船体側の装備に一切頼らないこの跳躍装置がオービタル・ゲートであり、実現すれば星系の航行技術における数十年ぶりの飛躍になるはずであった。<a href="bolse.html">ボルス</a>の空間跳躍レーザーが光条を送り込む兵器であるのに対し、ゲートは船そのものを送り出す交通機関である。同じ技術系譜の平和利用として両者は教科書で対に並べられることが多い。</p>
+  <p class="lore-p">残る5%の工程は跳躍先を定める最終較正である。較正には対岸に応答局を置き跳躍座標との測位を突き合わせる作業が要る…つまり最後の仕上げにだけは、誰かが従来の航法でドグマ近傍まで渡る片道の遠征が必要だった。計画ではこの遠征と対岸への帰還用簡易ビーコンの設置が最終年度に予定されていたが、実施されないまま今日に至る。扉は完成の一歩手前で止まり、結局一度も開かれたことがないままとなったのであった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SPONSOR ─ 出資者</h3>
+  <p class="lore-p">計画の出資者は寝台客船の名門として知られたメーテルリンク星間交通である。青い鳥の社章を掲げる同社は、<a href="../database/glossary.html#route-bremens">ブレーメンズ・ライン</a>沿線にモーテルが立ち並んだ遺跡調査の全盛期を看板客船「青い鳥号」で支えた会社であり、辺境へ向かう旅路を売って財を成した。この計画へ同社を駆り立てたのは辺境ブームの斜陽である。主戦場だったブレーメンズ・ラインが衰退へ向かうなか、経営陣は星系最後の秘境ドグマへの直行便という次の看板を求め社運の全てをゲート建設に注ぎ込んだ。そして工事が最終盤へ差し掛かった頃、較正遠征の準備半ばで資金は尽き同社は客船から社屋まで全てを債権者に引き渡して倒産した。</p>
+  <p class="lore-p">フロンティアには星を丸ごと買った<a href="../database/characters.html#grippy">男</a>と、星の危機を遊園地ごと買い上げた<a href="../corporations/emeraldas-bank.html">銀行</a>の逸話が残る。扉を架けようとした会社の顛末は、その列に並ぶ三つ目の大きな買い物でありながら唯一の失敗譚として語られている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">PRESENT ─ 現況</h3>
+  <p class="lore-p">倒産処理は今も終わっていない。装置の資産価値を巡って債権者の主張が衝突し、査定のたびに冒頭の一文に要約される両極端の評価が並ぶためである。所有者の定まらないステーションは差し押さえの封印だけを増やしながら自動保守系の灯りを点し続けている。航路建設二社の合同組織<a href="../database/glossary.html#bs-route-dev">B・S航路事業開発</a>は係争の帰趨に関わらず外周ビーコンの保守だけを無償で続けており、担当者は理由を問われて「道具に罪はない」とだけ答えている。</p>
+  <p class="lore-p">興味深いことに軍の航路台帳でもこの施設は「未成」のまま抹消されていない。台帳から消せば済む話ではないのかと問われた台帳課の回答は、短い一文だけが記録に残っている。「この"道"はいつか必要になるだろう…おそらくだが」。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">管制室の主計器は電源を落とされていない。跳躍座標のレジスタには建造時に設定されたドグマ近傍の座標が保持されたままであり、点検に入った検査官は「誰もいない部屋の計器が、全て同じ方角を指している」光景を必ず日誌に書き残すという。</p>
+  <p class="lore-p">符合と呼ぶには皮肉な事実が一つある。扉が向くドグマの周辺宙域からは数年前から正体不明の<a href="../database/glossary.html#contact-signal">コンタクト信号</a>が届き続けており、発信源の観測は暗黒星雲に阻まれて進んでいない。もし本気で確かめようとする者が現れたなら、その最短の手段はこの扉の残る5%を埋めることになるだろうと、フロンティアの観測士たちは半ば冗談のように語り合っている。</p>
+  <p class="lore-p">管制室の壁には引き渡しの目録から漏れた社章が一枚残されている。星系の最果てでは今も一羽の青い鳥が翼を休めているのである。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body></html>

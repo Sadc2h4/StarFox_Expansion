@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BATTLE RECORD — THE MIRACLE OF KATINA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#d9a441;--accent:#f3d98a;--border:rgba(217,164,65,0.32);--border-hi:rgba(243,217,138,0.7);--dim:#2a1e08;--dim2:#150f04; }
+    body { background:#0a0803; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ BATTLE RECORD 04 / カタリナの奇跡 — ノラ・ラゴス防衛戦 ]</div>
+    <div class="header-status">● RECORD ARCHIVED</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ BATTLE RECORD 04 / THE MIRACLE OF KATINA ]</div>
+      <h1 class="codex-title">THE MIRACLE OF KATINA</h1>
+      <p class="codex-p">カタリナ防衛戦 全記録 ── <a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>下に壁の門番<a href="../planets/katina.html">カタリナ</a>の前線基地ノラ・ラゴスが帝国の拠点制圧兵器サルレシアの直撃を受け、基地全滅寸前から逆転した戦いの記録である。魔術師<a href="../characters/wenli.html">ニャン・ウェンリー</a>を失った直後の共和国で、これを退けたのは次の世代であった。<a href="../characters/bill.html">ビル・グレイ</a>中尉の第7飛行隊と、本土で<a href="corneria-defense.html">「ジェームズの再来」</a>を演じたばかりの新生<a href="../database/military.html#starfox">スターフォックス</a>である。本記録は駐留軍の戦闘詳報、<a href="../weapons/greatfox.html">グレートフォックス</a>の航行記録、そして交戦者の証言を突き合わせて再構成された。文中の会話は当事者の記憶と交信記録によるため、正確性より臨場感が優先されている点に留意されたい。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#prologue">序</a>
+      <a href="#two-dishes">二つの皿</a>
+      <a href="#signal">緊急信号</a>
+      <a href="#serpents">蛇</a>
+      <a href="#partner">相棒</a>
+      <a href="#drop">補給投下</a>
+      <a href="#bloom">花の開く時</a>
+      <a href="#petal">欠けた花弁</a>
+      <a href="#analysis">解析完了</a>
+      <a href="#rain">見境のない雨</a>
+      <a href="#purge">花弁を散らして</a>
+      <a href="#escape">逃走</a>
+      <a href="#iron-hill">鉄の丘</a>
+      <a href="#epilogue">結 ─ 二度目はもっと早く</a>
+      <a href="#aftermath">余話</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="../database/glossary.html#katina-miracle">用語DB</a> / <a href="../planets/katina.html">カタリナ</a> / <a href="../weapons/great-dish.html">グレートディッシュ</a> / <a href="../weapons/salresia.html">サルレシア</a> / <a href="../characters/granga-pilot.html">グランガパイロット</a></span>
+    </nav>
+
+    <article class="codex-entry" id="prologue">
+      <h2 class="codex-h">序 ─ 魔術師のいない壁 <span class="en">THE WALL WITHOUT ITS WIZARD</span></h2>
+      <p class="codex-p"><a href="../database/glossary.html#wenli-last">ニャン・ウェンリー准将の国葬</a>から間もない頃の記録である。カタリナが「落ちない星」であり続けた半世紀の背後には常にこの魔術師の防衛計画があったがその椅子が空いたのである。折しも帝国側でも<a href="../characters/kellone.html">ケローン大提督</a>が前線を離れており、両軍の頭脳が同時に欠けた奇妙な空白の中で戦争は若い世代の手に委ねられていた。</p>
+      <p class="codex-p">カタリナ前線基地群の中でも第1宙域の管制中枢を抱えるノラ・ラゴスは、<a href="../database/military.html#great-wall">グレートウォール</a>の要石である。ここが抜かれれば壁の門は開き次は<a href="../database/locations.html#corneria">コーネリア</a>である。守るのは<a href="../characters/bill.html">ビル・グレイ</a>中尉率いる第7飛行隊<a href="../database/military.html#bernard">「バーナード」「ドーベル」</a>と対空陣地の守備隊。<a href="../planets/starblade.html">スターブレード</a>艦隊は再編の只中にあり増援は一隻も期待できなかった。</p>
+    </article>
+
+    <article class="codex-entry" id="two-dishes">
+      <h2 class="codex-h">第1章 二つの皿 ─ <span class="en">TWO DISHES</span></h2>
+      <p class="codex-p">本戦に先立つ来襲がある。カタリナ上空に皿状の巨影が現れ補助基地一つが地殻ごと爆砕された夜である。影は一つだったのか二つだったのか、観測は錯綜した。基地の消滅と同時に観測所も沈黙したため報告は最後まで割れたまま残された。後の照合により、この夜に投入されていたのは地下要塞殺しの本体<a href="../weapons/great-dish.html">グレートディッシュ</a>と別系統ながら能力の近い拠点制圧兵器サルレシアの二つであったことが判明している。同系統の兵器を同時に飛ばして情報を錯綜させ本命である新兵器の弱点分析から共和国の目を逸らすことが帝国の狙いであった。</p>
+      <p class="codex-p">だが当時のカタリナはそれを知る余裕はなかった。駐留軍を騒がせた「皿」は一つの敵情報でしかなく基地を一夜で消し去る死の影であった。だからこそ数日後にノラ・ラゴスの空へ再び皿が現れたとき守備隊は全滅を覚悟したのである。よもやそれが本体の10分の1の規模の別物であることを知る者はその空に一人もいなかった。</p>
+    </article>
+
+    <article class="codex-entry" id="signal">
+      <h2 class="codex-h">第2章 緊急信号 ─ <span class="en">DISTRESS CALL</span></h2>
+      <p class="codex-p">最初に異変を捉えたのは<a href="../weapons/greatfox.html">グレートフォックス</a>の艦載ロボットの<a href="../weapons/greatfox.html">ナウス</a>である。カタリナ方面から届いた緊急信号は軍の暗号系で傭兵の艦へ宛てられたものではなかった。それを解析にかけたのが<a href="../characters/slippy.html">スリッピー・トード</a>である。発信元はノラ・ラゴス。対空砲火の密度と交信途絶の速度からスリッピーは基地中枢へ敵が迫りつつあることを割り出した。そして交戦中の部隊名を読み上げるとき彼の声は明らかに慌てていたと記録されている。「フォックス、第7飛行隊の隊長なんだけどさ、ビル・グレイじゃん！？。</p>
+      <p class="codex-p">第7飛行隊からの救助依頼はないことを<a href="../characters/peppy.html">ペッピー・ヘア</a>が指摘したのは事実確認であって反対ではなかったと後に本人が語っている。<a href="../characters/fox.html">情報に右往左往する隊のメンバーであったがリーダーのフォックス・マクラウド</a>の返答は簡潔であった。「たとえアイツが呼んでなくても答えは一つだろ？」。士官学校の同期が向こうの空で戦っている…それだけで遊撃隊の針路は決まった。<a href="../characters/pepper.html">ペパー将軍</a>への報告は事後に行われたという。</p>
+    </article>
+
+    <article class="codex-entry" id="serpents">
+      <h2 class="codex-h">第3章 地を這う蛇? ─ <span class="en">THE SERPENTS</span></h2>
+      <p class="codex-p">カタリナの大気圏を抜けた4機の<a href="../weapons/arwing.html">アーウィン</a>が最初に見たのは空の敵ではなく地表の異変であった。サバンナの地中を蛇状の機械が潜行し土煙の筋を引きながらノラ・ラゴスへ向かっているように見えたのである。もちろん所属は不明であり兵装らしいものは見当たらない。うち一本が浮上して砲火の射線を横切り、<a href="../characters/falco.html">ファルコ・ランバルディ</a>はこれを叩き落とした。</p>
+      <p class="codex-p">「なんだこりゃ?　こんなもんに構ってる暇はないってのによ…　さっさと急ごうぜ、フォックス」。ファルコの言葉どおり編隊は残る機影を放置して上昇したが、ただ一人ペッピーだけが大破した機体へ念のためのスキャンを走らせた。断面には兵器ではなく太いエネルギー導管に似た構造がみえ、ペッピーはそれに心当たりを感じつつ記録を念のためナウスに送信したのであった。この数分の手間が後に戦いを決めることになる。</p>
+    </article>
+
+    <article class="codex-entry" id="partner">
+      <h2 class="codex-h">第4章 相棒 ─ <span class="en">PARTNER</span></h2>
+      <p class="codex-p">到着したノラ・ラゴス上空は既に修羅場であった。帝国の侵攻部隊は無人機の群れに有人機を混ぜた混成編成で管制塔と基地中枢へ波状攻撃を繰り返している。バーナード隊とドーベル隊は数で押されて消耗しきり地上では対空陣地が最後の弾を数えていた。この陣地の一角に、後年<a href="../database/glossary.html#lylat-wars-2">sectorτ会戦</a>で武功を立てる<a href="../characters/konya.html">コーニャ・マッカレル</a>が配置されていたことは人物記録に詳しい。</p>
+      <p class="codex-p">「フォックス！？　お前が来てくれたんなら百人力だな！　ドーベル隊全機に告ぐ　遊撃隊スターフォックスの援軍が到着した！　壁はまだ落ちちゃいない！」</p>
+      <p class="codex-p">無線越しの第一声を、駐留軍の通信記録は防衛戦の緊張の中でただ一つの旧友の挨拶として残している。基地全滅寸前の空で声だけはいつもの調子であったとフォックスは後に語っている。「遅いな相棒。スコアはこっちが3機リード…おっと、たった今6機になったな」「おい、今のは誘爆でカウンターが誤作動してただろ！数え直せって」。士官学校の模擬戦から続く二人の張り合いはこの空でも止まらなかった。</p>
+      <p class="codex-p">「ビル、無事でよかったよ！」回線に割り込んだスリッピーには「お前もいるのか！　生きて帰ったら一杯奢ってやるよ」と返している。分校の親友トリオが揃ったのは三人が別々の道へ散って以来のことである。</p>
+      <p class="codex-p">会話の合間で出したビルの指示は簡潔であった。管制塔と中枢を守り切る…言われなくてもわかるものであったが、作戦に参加する全機に報告する立場になったという事実が彼の成長を感じさせた。旧友の機体<a href="../weapons/cornerian-fighter.html">ソニック・ポインター</a>とアーウィン4号機が並んで無人機の群れを迎撃し、バーナード隊が側面から食らいつき、ドーベル隊が地上の陣地を掩護する。通信記録には二人の撃墜数の読み上げが交互に残っている。「敵機撃墜！　35機目」「こっちは37機だ！」。数で押していた帝国の混成部隊は一本ずつ牙を抜かれ空の流れが共和国側へ傾き始めた。</p>
+    </article>
+
+    <article class="codex-entry" id="drop">
+      <h2 class="codex-h">第5章 補給投下 ─ <span class="en">THE DROP</span></h2>
+      <p class="codex-p">傾いた流れを繋ぎ止めたのは軌道上の艦による援護も忘れてはならない。メンバーの弾薬が底をついた瞬間、グレートフォックスから補給コンテナが投下される。指定座標との誤差は数メートル。着弾と同時に殻が割れ駐留軍規格の弾薬とアーウィン用の<a href="../weapons/smart-bomb.html">スマートボム</a>が転がり出た。これについて指示を出した者はいないが、ナウスは交信の弾切れ報告を拾って自ら判断していたものであり、それは手慣れた仕事であった。</p>
+      <p class="codex-p">「あの艦が噂に聞くグレートフォックスか？　気が利くな。うちの親父より援護が早いじゃないか」というビルの一言が戦闘詳報に残っている。補給部隊を率いる父ロバート・グレイへの息子なりの賛辞であったと基地の古参は解している。補給を受けた駐留軍機が息を吹き返し無人機の群れは目に見えて薄くなった。制空権はこちらのものになる。誰もがそう思った瞬間に高らかな笑い声と共に高空の雲が裂けた。</p>
+    </article>
+
+    <article class="codex-entry" id="bloom">
+      <h2 class="codex-h">第6章 花の開く時 ─ <span class="en">THE BLOOM</span></h2>
+      <p class="codex-p">雲を割って堂々と降下してきた巨影。数日前に補助基地を一夜で消し去った帝国の新兵器が戻ってきた…守備隊の誰もがそう信じて全滅を覚悟したことは第1章に記したとおりである。そして傍受された帝国側の交信は操縦席に座る男が誰であるかを守備隊に教えた。</p>
+      <p class="codex-p">「おのれぇ　このハエどもがぇ！　よくも私の作戦を邪魔してくれたなぁ！」「覚悟しろっ　皇帝に逆らうものは　死ぬのだぁ！」</p>
+      <p class="codex-p">コーネリア本土の防空部隊なら誰もが月初に聞き慣れたあの口上である。名物の<a href="../characters/granga-pilot.html">グランガパイロット</a>が、この日は臨時の大役として侵攻部隊の責任者としてサルレシアの操縦席に座っていた。混成部隊で基地を削り守備隊が空の勝利を確信した瞬間に切り札を降ろす。単純ではあるがこの男にしては出来すぎた段取りであった。</p>
+      <p class="codex-p">サルレシアは管制塔の真上に居座ると外殻を花弁のように割って開き、同時に地中から二本の蛇が首をもたげた。道中で放置したあの謎の潜行機である。二本は花の底部へ吸い込まれるように接続され、次の瞬間に基地全体を覆う球状のバリアが張られた。レーザーが弾かれ対空砲の光条が滑る。光学兵器の一切を無効化する障壁の内側からサルレシアは一方的に高出力のレーザー弾幕を展開し始めた。あの「蛇」は兵器ではなく、あらかじめ地中に埋設されていたエネルギー供給パイプだったのである。</p>
+      <p class="codex-p">サルレシアは<a href="../weapons/great-dish.html">グレートディッシュ</a>と同じ思想で作られた拠点制圧兵器である。目標の真上に居座り対抗手段を封じたうえで中枢を潰す。守備隊が抱いていた恐怖はこの瞬間に現実となったのである。</p>
+    </article>
+
+    <article class="codex-entry" id="petal">
+      <h2 class="codex-h">第7章 欠けた花弁 ─ <span class="en">THE MISSING PETAL</span></h2>
+      <p class="codex-p">戦略的勝利を確信し高らかに笑い声を無線で響かせるグランガパイロットだったが、一方的劣勢の戦いを続けるほどスターフォックスはやわではなかった。</p>
+      <p class="codex-p">花の底部で三本目の接続口が空のまま口を開けていることにスリッピーが気づいたのである。そして、その気づきと時を同じくしてナイスの解析結果がメンバーに共有され弱点の疑惑は確信に変わる。「フォックス、あのバリアは想定出力の6割しか出ていなみたいだよ」</p>
+      <p class="codex-p">阿吽の呼吸でその指摘の意味することを理解するチームメンバーたち。作戦の実行は迅速に手際よく行われた。「なるほどな、じゃあバリアが消えた瞬間に根元から切っちまえばいいわけだ」</p>
+      <p class="codex-p">そう、バリアは三本のパイプで完成する設計であった。出力が不足したバリアは定期的に減衰してしまう致命的弱点をさらしたのである。弱点が露呈してからものの1分で1本はファルコに叩き落とされた。傍受記録に残る操縦者の声は「あれ？　あれ？」の二語である。うろたえは障壁の出力にそのまま現れ半球の縁が目に見えて明滅し始めた。</p>
+    </article>
+
+    <article class="codex-entry" id="analysis">
+      <h2 class="codex-h">第8章 解析完了 ─ <span class="en">ANALYSIS COMPLETE</span></h2>
+      <p class="codex-p">その明滅もスリッピーは見逃さなかった。ペッピーが念のために残していた潜行機のスキャンデータと目の前の障壁の揺らぎを突き合わせる。パイプの接続部こそがサルレシアの急所であり、そこはすでに減衰したバリアの外側に露出し始めている。解析結果は全機の照準表示に転送された。「敵の弱点を表示したよ。接続部を狙って！」。</p>
+      <p class="codex-p">見事な反転攻勢である。アーウィン4機とソニック・ポインターが残された一本の接続部へ集中し、地上の対空陣地も残弾の全てを同じ場所へ注いだ。動力パイプは千切れ接続部は爆炎を上げて崩壊、障壁は音もなく消え花は丸裸となった。</p>
+    </article>
+
+    <article class="codex-entry" id="rain">
+      <h2 class="codex-h">第9章 見境のない雨 ─ <span class="en">THE INDISCRIMINATE RAIN</span></h2>
+      <p class="codex-p">「そ、そんな馬鹿な！　ぐぬぬぅ　まだだ　まだ落ちんぞぉ！」「こいつだけは使いたくなかったが…かくなる上は仕方ない！」</p>
+      <p class="codex-p">裸にされたサルレシアが選んだのはヤケクソとも言うべき全方向へのミサイル一斉射であった。操縦者の性格をよく表す判断である。誘導ミサイルの雨はもはや敵味方を区別せず、コーネリアファイターだけでなく周囲を飛んでいた帝国無人機の群れまでまとめて巻き込まれて半減した。守備隊の戦闘詳報はこの局面を「敵の自己撃墜」と記している。</p>
+      <p class="codex-p">そんな猛攻も旧式の誘導ミサイルはあっという間に飛び方の癖を読まれた。熱源を追う際に一拍遅れる挙動をペッピーが見抜き、囮の機動でミサイルをサルレシア自身の火線へ誘い込む。その隙にビルとフォックスが皿の縁を巡るレーザー発射装置を一基ずつ潰していった。最後の一基が沈黙したときサルレシアに残された武器はなかった。</p>
+      <p class="codex-p">「標的は狐どもだ！？　こっちに戻ってきてどうする！！」 戻ってきたミサイルが直撃したサルレシアは連鎖爆発で一気に半壊した。</p>
+    </article>
+
+    <article class="codex-entry" id="purge">
+      <h2 class="codex-h">第10章 花弁を散らして ─ <span class="en">SHEDDING PETALS</span></h2>
+      <p class="codex-p">負けを悟った操縦者は脱出モードへ移行した。サルレシアには破壊されたモジュールの誘爆を防ぐため、花弁を切り離す花のように余剰パーツを全てパージする機構が備わっている。逃走しながら外殻が次々に切り離され、身軽になった中枢部だけが加速して戦域を離れようとした。ここまでは設計どおりである。</p>
+      <p class="codex-p">問題は操縦者が脱出モードの操作系を上下左右反転の「玄人モード」に設定したまま忘れていたことにある。まさか、万全の準備をしたこの作戦で自身が逃走するなど夢にも思わなかったのだろう。上昇のつもりの操作は機首を下げ、右旋回のつもりの操作は左へ切れた。中枢部は見事なUターンを描いてサバンナへ突っ込み爆炎はどくろの形の雲を上げた。守備隊の記録に残る操縦者の最後の通信は、コーネリアの防空部隊が月に一度聞き慣れたあの言葉である。</p>
+      <p class="codex-p">「わ…わぁ…」「アンドルフ様ぁぁ！！　ごめんちゃい！！」</p>
+    </article>
+
+    <article class="codex-entry" id="escape">
+      <h2 class="codex-h">第11章 逃走 ─ <span class="en">THE GETAWAY</span></h2>
+      <p class="codex-p">爆発の直前に射出された操縦者は奇跡的に無傷であった。奇跡的に…というより本人の記録に照らせば平常運転である。ただし射出の衝撃で軍服は千切れ飛び、草原に降り立った男はハート柄の下着一枚の姿であった。駆けつけた<a href="../database/military.html#cdf">CDF</a>の地上部隊が包囲の輪を作る。男は周囲を見回し次の瞬間に全速力で走り出した。</p>
+      <p class="codex-p">戦闘詳報の該当欄は次のとおりである。「捕虜1名の確保を試みるも失敗。理由: 脱兎のごとき速さと突如発生した砂嵐による確保継続困難の判断」。追跡は偶然発生したサバンナの自然現象に阻まれて打ち切られ、男は数週間後に絆創膏一つで別の前線に復帰している。これについては彼の豪運によるものと誰もが認めるしかないものであった。</p>
+    </article>
+
+    <article class="codex-entry" id="iron-hill">
+      <h2 class="codex-h">第12章 鉄の丘 ─ <span class="en">THE IRON HILL</span></h2>
+      <p class="codex-p">パージされた花弁のうち最大の一枚はノラ・ラゴスと第3植民都市<a href="../database/glossary.html#city-kinshasa">ノラ・キンシャサ</a>の中間地点となる草原へ落ちた。撤去に数十年を要すると試算されたこの残骸を、入植者たちは<a href="../planets/katina.html">「鉄の丘」</a>と呼び細やかな名物とした。雨季には植物が覆い乾季には観光客が登る。通り道の町に過ぎなかったノラ・キンシャサはこの一枚の「花弁」により大発展し運命を変えた。</p>
+      <p class="codex-p">鉄の丘の裾には最初の落書きが残っている。筆者はビル・グレイであるとされ、「二度目はもっと早く落とす」と殴り書きで書かれている。基地の新兵は着任初日にこれを見せられ、士官学校のお約束として定着したのだった。</p>
+    </article>
+
+    <article class="codex-entry" id="epilogue">
+      <h2 class="codex-h">結 ─ 二度目はもっと早く <span class="en">NEXT TIME, FASTER</span></h2>
+      <p class="codex-p">開戦以来劣勢が続いていた共和国にとって、この勝利は久々に明るい報せであった。基地を消す巨大兵器が「落とせるもの」だと星系中が知り士気は目に見えて回復した。新生スターフォックスの名はこの一戦で本土の外へ広まり、軍の公式記録が隊の初陣と数えるのもこのカタリナである。若い隊長は旧友の空を守り旧友は壁を守り抜いた。それは魔術師のいない壁が初めて自力で立った日でもあった。</p>
+      <p class="codex-p">だが本記録は次の一節を添えなければならない。帝国は同型機の喪失を試験段階の許容損耗として処理し秘蔵の本体には傷一つ付いていない。守備隊が落としたのは、地表に夜を作るあの影の10分の1の写しに過ぎなかった。<span class="redacted">セクターτ会戦の鹵獲データ照合により、グレートディッシュ本体が5日後にカタリナへ来襲することが高確度で判明している。今度は補助基地ではなくノラ・ラゴスの都市そのものが目標である</span></p>
+      <p class="codex-p">「同じ危機が迫っている」と信じている者はもうカタリナにいない。それでも壁の門番たちの合言葉は変わらない。「壁はまだ落ちちゃいない」。次の未曽有の戦いに備えカタリナは新たな歩みを始めたばかりである。</p>
+    </article>
+
+    <article class="codex-entry" id="aftermath">
+      <h2 class="codex-h">余話 ─ 帝都の赤っ恥 <span class="en">AFTERWORD — A RED FACE IN THE CAPITAL</span></h2>
+      <p class="codex-p">この作戦の立案者については開戦後の亡命将校の証言が一致している。バリア展開機能を追加したサルレシアで拠点を制圧してみせると、帝都の将校たちを前に息巻いていた人物がいたという。皇帝の甥<a href="../characters/andrew.html">アンドリュー・オイッコニー</a>である。二つの戦略兵器を同時に飛ばして観測を錯綜させる前段の手口は参謀部の案であったが、切り札のサルレシアに本土の名物搭乗員を乗せ、勝利を確信した瞬間に降ろすという段取りは彼の発案であったとされる。段取りだけを見れば悪くなかったと証言者は公平に付け加えている。</p>
+      <p class="codex-p">結果は本記録の記すとおりである。操縦者がハート柄の下着一枚で草原を走る報告書が帝都に届いた日、息巻いていた彼の席は空であった。以後しばらく彼は「フラワーマン」という渾名を付けられ陰で笑われたといい、この屈辱がのちの<a href="../database/glossary.html#fortuna-campaign">フォルトナ戦役</a>で「カタリナとフィチナに続き」と本人の口から漏れる恨み節の一つ目に数えられていると思われる。</p>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(243,217,138,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

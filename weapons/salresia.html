@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SALRESIA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#c86ab0;--accent:#f0b4dc;--border:rgba(200,106,176,0.32);--border-hi:rgba(240,180,220,0.7);--dim:#2e1028;--dim2:#170814; }
+    .p-title    { color: #fbeaf6; text-shadow: 0 0 50px rgba(200,106,176,0.45); }
+    .p-tagline  { border-color: #c86ab0; color: #c86ab0; }
+    .terminal-hdr { color: #f0b4dc; }
+    .terminal-hdr::before { background: #f0b4dc; box-shadow: 0 0 8px #f0b4dc; }
+    .dk { color: #c86ab0; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-35 / SALRESIA — サルレシア ]</div>
+    <div class="header-status"><span class="blink" style="color:#f0b4dc;">●</span> HOSTILE — VARIANTS ACTIVE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">WEAPON FILE — SALRESIA — FLOWER-CLASS FLYING FORTRESS — BASE SUPPRESSION / CARRIER — VENOM EMPIRE</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0035 — CLASSIFICATION: HOSTILE WEAPON — SEE ALSO WPN-0023 / BLS-0009</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-35 / WEAPON FILE ]</div>
+        <div class="p-name-jp">サルレシア (SALRESIA)</div>
+        <h1 class="p-title">THE IRON<br>FLOWER</h1>
+        <div class="p-tagline">拠点制圧兵器 ─ 花の形をした飛行要塞</div>
+        <p class="p-short-desc">帝国軍の拠点制圧兵器として開発された飛行要塞。移動時は球状、展開時は5方向へ開く花の姿をとる。無人攻撃機リボーの群れで消耗戦を強い、地中のエネルギー供給パイプと接続すれば光学兵器を完封するバリアを張る。派手な外見ゆえに「本業は陽動と見せしめ」とも評され、海上型シーレシア・宇宙型デスレシアの派生機を持つ。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ WEAPON SCAN — FILE 35 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">SALRESIA / サルレシア</td></tr><tr><td class="dk">CLASS</td><td class="dv">拠点制圧兵器・飛行要塞（運用実態は空母）</td></tr><tr><td class="dk">LINEAGE</td><td class="dv"><a href="../planets/area6.html">リトル・ボルス</a>と同根 — 祖は植物工場<a href="../planets/oberon.html">初代オベロン</a></td></tr><tr><td class="dk">FORMS</td><td class="dv">球状防御形態 ⇄ 5方向展開の攻撃形態「花」</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">ルーペレーザー砲×5（太陽光集積） / 旧式熱源誘導ミサイル（中枢格納） / 無人攻撃機「リボー」群</td></tr><tr><td class="dk">OPTION</td><td class="dv warn">⚠ 接続ジャック×3 — エネルギー供給パイプ接続で光学兵器完封バリア</td></tr><tr><td class="dk">SCALE</td><td class="dv"><a href="great-dish.html">グレートディッシュ</a>の約10分の1</td></tr><tr><td class="dk">VARIANTS</td><td class="dv">海上要塞シーレシア（<a href="../database/locations.html#aquas">アクアス</a>） / 宇宙要塞デスレシア（<a href="../database/locations.html#zoness">ゾネス</a>宙域）</td></tr><tr><td class="dk">LOSS RECORD</td><td class="dv">1機 — <a href="../database/glossary.html#katina-miracle">カタリナの奇跡</a>（操縦: <a href="../characters/granga-pilot.html">グランガパイロット</a>）</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性 — 派生機が各戦域で稼働中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING -- 72 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 72%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(200,106,176,0.5);">
+        <img src="" alt="SALRESIA" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">THE IRON FLOWER</span>
+            <span class="tg-jp">空に咲く鉄の花 ── 拠点制圧兵器サルレシア</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">皿が開いた…花だ、花みたいに開いてやがる！<br>レーザーが通らない！　繰り返す、レーザーが通らない！<span class="tg-note note">-ノラ・ラゴス対空陣地 通信記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">花を落とすなら茎を切れ。花弁をいくら撃っても散るだけである<span class="lore-quote-src">― CDF技術部 カタリナ戦訓まとめより</span></span></p>
+  <p class="lore-p">サルレシア（Salresia）は<a href="../database/factions.html#venom-empire">ベノム帝国</a>が拠点制圧兵器として開発した飛行要塞である。開発は<a href="../planets/bolse.html">ボルス</a>の子機<a href="../planets/area6.html">「リトル・ボルス」</a>と同根の技術体系に属し、さかのぼると植物工場である初代<a href="../planets/oberon.html">オベロン</a>（オベロンⅠ）や<a href="../database/glossary.html#an-brella">アン・ブレラ</a>に行き着く。形状がなんとなく似ているのはこの理由によるものである。</p>
+  <p class="lore-p">この戦艦の特徴は花のような派手な外見にある。拠点制圧はおまけであり、本来の用途は陽動や見せしめによる破壊工作ではないかとまで言われている。この疑惑を確信に変えたのは後述の運用方法である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">形態と兵装 ─ FORMS &amp; ARMAMENT</h3>
+  <p class="lore-p">移動中は球状の防御形態をとり、地上に展開する際は5方向に開くことでまさに「花」と形容される攻撃形態へ変化する。主兵装は太陽光を集積して利用するルーペレーザー砲5門と、中枢部の内部に格納された旧式の熱源誘導ミサイルである。そして艦載された無人攻撃機「リボー」の群れがこれに加わる。</p>
+  <p class="lore-p">単体の兵装は貧弱であるが、これはサルレシアがあくまで空母の立ち位置にあることに由来しており、大量に放たれたハエ型の無人戦闘機リボーを駆使して消耗戦に持ち込むのがセオリーとされている。花は自らの砲で敵を落とすのではなく、群がる羽虫に守備隊の弾と集中力を使い切らせるのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">追加兵装 ─ THE BARRIER</h3>
+  <p class="lore-p">サルレシアには追加兵装が可能である。艦の基部にはエネルギー供給パイプとの接続ジャックが3基用意されており、あらかじめ地中に埋設したパイプと接続することで共和国の主力である光学兵器を完封するバリアを展開できる。バリアの内側からは一方的に攻撃が行える。サルレシア自身が使うレーザーは太陽光を集積したものであり、このバリアと関係なく発射できることが相性の良さに拍車をかけている。</p>
+  <p class="lore-p">裏を返せば弱点もこの構造に集中している。バリアは3本のパイプが揃って初めて完成し、接続部はバリアの外側に露出する。<a href="../database/glossary.html#katina-miracle">カタリナの奇跡</a>で守備隊が「花」を落とせたのは地中を進むパイプの1本を戦闘前に叩き落としていたことと、残る接続部へ攻撃を集中したことによる。以後の共和国軍では「花弁を撃つな。茎を切れ」が合言葉となっている。</p>
+  <p class="lore-p">もう一つの特徴は破壊されたモジュールの誘爆を防ぐため、花弁を切り離す花のように余剰パーツを全てパージする機構である。カタリナで落とされた機体もこの機構を作動させており、パージされた最大の花弁は第3植民都市<a href="../database/glossary.html#city-kinshasa">ノラ・キンシャサ</a>近郊の草原に落ちて<a href="../planets/katina.html">「鉄の丘」</a>と呼ばれている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">派生機 ─ VARIANTS</h3>
+  <p class="lore-p">現時点では惑星の空中を移動する空中要塞としてのサルレシアが最も知られているが、派生機がいくつか報告されている。</p>
+  <p class="lore-p"><a href="../database/locations.html#aquas">アクアス</a>の海上で戦闘となった海上要塞「シーレシア」は直系の派生機であり、海の中に隠れながら高出力レーザーを放つ難敵として知られる。追加兵装は思い切って全てレーザーに回されており、余計な装備がない分だけ厄介さが増しているとの報告もある。カラーリングは青系であり、海上からは保護色となって見つかりにくい。アクアスの海上戦で多重潮汐の最も激しい<a href="../database/glossary.html#keanos-tide">ケアノスの大潮</a>の日を選んでこの要塞を操り、駐屯海軍のラブラドール隊と<a href="../database/glossary.html#romeo-defense">死闘</a>を繰り広げたのは帝国の哨戒兵<a href="../characters/caiman.html">カイマン</a>である。</p>
+  <p class="lore-p">宇宙戦闘に特化した宇宙要塞「デスレシア」は全身を鏡で覆った擬態戦艦である。暗い宇宙空間で鏡張りの戦艦が来るとどこにいるかを目視で確認することは最早不可能であり、レーダーや探知機を活用した高度な戦闘技術が求められる。注意すべき敵としてマークされており、現在は<a href="../database/locations.html#zoness">ゾネス</a>宙域に配備されているという報告があり交戦時の注意喚起が出されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴と余話 ─ SERVICE &amp; ARCHIVES</h3>
+  <p class="lore-p">実戦記録で最も知られるのはカタリナである。帝国は秘蔵の<a href="great-dish.html">グレートディッシュ</a>と並べてサルレシアを同時に飛ばし、二つの「皿」で観測を錯綜させて本体の弱点分析から共和国の目を逸らした。数日後に単独でノラ・ラゴスへ現れた1機は守備隊と<a href="../database/military.html#starfox">スターフォックス</a>に落とされている。帝国はこの損失を試験段階の許容損耗として処理したとみられ、前述の「陽動と見せしめが本業」という評価はこの運用から生まれた。</p>
+  <p class="lore-p">なおこの機体の操縦席に座っていたのは本土の名物<a href="../characters/granga-pilot.html">グランガパイロット</a>である。脱出モードの操作反転を忘れてUターン墜落した顛末は<a href="../other/katina-miracle.html">戦闘記録</a>に詳しい。花の名を冠する兵器の最期がどくろの形の雲であったことを、基地の古参は「花言葉にしては物騒だ」と評している。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(240,180,220,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

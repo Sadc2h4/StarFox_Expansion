@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAJ. AMBER SYLPHADE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#d0e0f0;--accent:#f0f8ff;--border:rgba(208,224,240,0.32);--border-hi:rgba(208,224,240,0.7);--dim:#26303c;--dim2:#12181e; }
+    .p-title    { color: #ffffff; text-shadow: 0 0 50px rgba(208,224,240,0.45); }
+    .p-tagline  { border-color: #d0e0f0; color: #d0e0f0; }
+    .terminal-hdr { color: #f0f8ff; }
+    .terminal-hdr::before { background: #f0f8ff; box-shadow: 0 0 8px #f0f8ff; }
+    .dk { color: #d0e0f0; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-20 / MAJ. AMBER SYLPHADE — アンバー・シルフェイド ]</div>
+    <div class="header-status"><span class="blink" style="color:#f0f8ff;">●</span> ACTIVE — SPECIAL OPERATIONS</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — MAJ. AMBER SYLPHADE — VORPAL SQUADRON LEADER — WHITE ONE</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0020 — CLEARANCE: RESTRICTED — CORNERIA'S WHITE BLADE</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-20 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">アンバー・シルフェイド (MAJ. AMBER SYLPHADE)</div>
+        <h1 class="p-title">AMBER SYLPHADE</h1>
+        <div class="p-tagline">CORNERIA'S WHITE BLADE ── ヴォーパル隊 隊長 兼 戦闘員</div>
+        <p class="p-short-desc">異例の若さと速さで昇進した共和国軍の天才指揮官。緊急時にのみ抜かれる白い刃「ヴォーパル隊」を率い、いままさにカタリナの空の下にいる。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 20 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">AMBER SYLPHADE / アンバー・シルフェイド</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#selenoid">セレノイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">非公開（20代半ばと推定）</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#fichina">フィチナ</a>（第二都市サルクトエテルブルグ）</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#cdf">CDF</a> 特殊戦闘部隊<a href="../database/military.html#vorpal">ヴォーパル隊</a></td></tr><tr><td class="dk">RANK</td><td class="dv">少佐 / 隊長 兼 奇襲戦闘員</td></tr><tr><td class="dk">CODENAME</td><td class="dv">白の1（WHITE ONE）</td></tr><tr><td class="dk">FORMER</td><td class="dv">フィチナ州秘密警察</td></tr><tr><td class="dk">CRAFT</td><td class="dv"><a href="../weapons/chastiefol.html">シャスティフォル</a></td></tr><tr><td class="dk">STATUS</td><td class="dv warn">現役 — カタリナ緊急展開中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">COMBAT RATING -- 93 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 93%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(208,224,240,0.55);">
+        <img src="" alt="MAJ. AMBER SYLPHADE" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">VORPAL SQUADRON — WHITE ONE</span>
+            <span class="tg-jp">ヴォーパル隊 隊長 ── コーネリアの白い刃</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">回収するのは情報が先、感傷は最後。復唱しなくていい、実行して。<span class="tg-note note">-カタリナ合同作戦会議 音声記録より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">敵に回したくない部隊を一つ挙げろと言われたら、全員が同じ名前を書く<span class="lore-quote-src">― CDF士官学校 戦術教程の脚注より</span></span></p>
+  <p class="lore-p">アンバー・シルフェイドは、共和国軍内で異例の若さと速さで少佐まで昇進し頭角を現した天才指揮官。軍の緊急時にのみ出撃する「コーネリアの白い刃」──特殊戦闘部隊<a href="../database/military.html#vorpal">ヴォーパル隊</a>の隊長にして、自ら最前線に立つ奇襲戦闘員でもある。</p>
+  <p class="lore-p">その手腕は、直接指揮・訓練する部隊の徹底した冷静さと冷徹さによって最小の犠牲で敵に最大の痛手を負わせる作戦設計に始まり、わざと取り逃がした敵を餌に本陣へ反転攻勢を仕掛け、敵勢力を舞台ごと壊滅させるという苛烈さにまで及ぶ。敵勢力のみならず友軍からも「絶対に敵に回したくない部隊」として語り草になっている所以である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴 ─ BIOGRAPHY</h3>
+  <p class="lore-p">出身は<a href="../database/locations.html#fichina">フィチナ</a>の第二都市サルクトエテルブルグ。ボイラー修理を生業とする家庭に育った。生活に不可欠な稼業ゆえ暮らしに不自由はなく、周囲と異なる姿の一家を隣人たちが気に留めることもなかったが、学校では一人だけ異なる姿の彼女にちょっかいをかける者が絶えず、それに苦悩する日々が続いたという。そして何より──1年のほぼ全てが冬に閉ざされる極寒の街で、そのまま平穏に生き続ける運命を受け入れることが、彼女にはできなかった。炉に灯る赤い炎のような野心と渇望を、常にその胸に秘めていたようである。</p>
+  <p class="lore-p">共和国軍にスカウトされる以前は、フィチナ州で街の治安と謀反を取り締まる秘密警察の職員だった。学校帰りの公園で、決まった時間にウォッカを呷る黒ずくめの男に興味を持ち、話しかけるようになったのが接触の始まり──とされるが、詳しい経緯は<span class="redacted">州公安記録もろとも封印されており、本人も一切語らない</span>。その鮮やかな仕事ぶりは軍部のみならず惑星外にも届いており、彼女の前には執行対象者のほか、腕試しに来た賞金稼ぎや殺し屋が山ほど現れたという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">戦歴・記録 ─ SERVICE</h3>
+  <p class="lore-p">現スターウルフ構成員<a href="../database/characters.html#leon">レオン・ポワルスキー</a>とは、秘密警察時代からの好敵手である。フリーランス時代のレオンとは幾度も刃を交えたとされるが、決着は今もついていない。互いの手の内を最もよく知る両者が再び同じ空域に立つ事態を、情報部は「最悪の想定」の一つとして扱っている。</p>
+  <p class="lore-p">セクターτ会戦の鹵獲データ照合により、5日後に迫った帝国軍のカタリナ奇襲が発覚。ヴォーパル隊は<a href="../database/locations.html#katina">カタリナ</a>へ緊急招集され、<a href="../database/characters.html#bill">ビル・グレイ中尉</a>の駐留軍および当直の戦闘員を交えて、過去のデータベースから巨大戦艦<a href="../weapons/great-dish.html">グレートディッシュ</a>と奇襲降下部隊への対策を練る作戦会議が続いている。その手腕をもって敵本隊に大打撃を与えること、そして敵艦から可能な限り情報を奪取し<a href="../database/factions.html#venom-empire">ベノム帝国</a>の次の戦略を暴くこと──それが彼女とヴォーパル隊、カタリナ駐屯軍の任務である。</p>
+  <p class="lore-p">白く長い髪に隠れて見えないが、<span class="redacted">後頭部から脊椎に沿って12基の神経接続プラグが埋め込まれている。コーネリア軍が秘密裏に進める、<a href="../database/locations.html#fortuna">フォルトナ</a>に眠る神秘の力『スピリット』を用いた兵器計画──その被検体である</span>。体には戦闘で負った生々しい傷跡も残る。整形手術できれいに消せるらしいが、本人は「誰にも奪えない勲章」として、あえて残しているという。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">地元サルクトエテルブルグでは、純白の毛並みと真紅の瞳から「雪見大福ちゃん」という愛称で呼ばれていたらしい。身内以外からその愛称で呼ばれることを本人は嫌っており、彼女の下につく隊の中ではもっぱら禁句とされている。着任初日の新兵がうっかり口にした場合に何が起きるのかは、記録が残っていないため不明である。</p>
+  <p class="lore-p">秘密警察時代の「師」にあたる黒ずくめの男については、氏名・所属とも一切の記録が存在しない。ただ、彼女が今も任務明けに決まった時間、ウォッカを一杯だけ呷るのは──その男の習慣の名残だと言われている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

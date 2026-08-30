@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAMES McCLOUD — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#c0c8d8;--accent:#e8ecf4;--border:rgba(192,200,216,0.32);--border-hi:rgba(192,200,216,0.7);--dim:#2a2e3a;--dim2:#15171d; }
+    .p-title    { color: #f4f6ff; text-shadow: 0 0 50px rgba(192,200,216,0.35); }
+    .p-tagline  { border-color: #c0c8d8; color: #c0c8d8; }
+    .terminal-hdr { color: #e8ecf4; }
+    .terminal-hdr::before { background: #e8ecf4; box-shadow: 0 0 8px #e8ecf4; }
+    .dk { color: #c0c8d8; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-05 / JAMES McCLOUD — ジェームズ・マクラウド ]</div>
+    <div class="header-status"><span class="blink" style="color:#e8ecf4;">●</span> MIA — RECORD SEALED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — JAMES McCLOUD — STAR FOX FOUNDER — MISSING IN ACTION</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0005 — CLEARANCE: PARTIAL — SEE ALSO FILE FCH-450</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-05 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">ジェームズ・マクラウド (JAMES McCLOUD)</div>
+        <h1 class="p-title">JAMES McCLOUD</h1>
+        <div class="p-tagline">THE FOX WHO NEVER LANDED ── スターフォックス創始者 ─ 行方不明</div>
+        <p class="p-short-desc">CDF最精鋭のエースから民間へ転じ、雇われ遊撃隊スターフォックスを創設した伝説の傭兵。ベノム偵察作戦で僚機の裏切りに遭い、消息を絶った。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 05 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">JAMES McCLOUD / ジェームズ・マクラウド</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#anubisoid">アヌビソイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">42歳（消息時） / 現在46歳相当</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../database/locations.html#papetoon">パペトゥーン</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../database/military.html#starfox">スターフォックス</a>（創始者・初代リーダー）</td></tr><tr><td class="dk">FORMER</td><td class="dv">CDFエースパイロット</td></tr><tr><td class="dk">FAMILY</td><td class="dv">父: トム（行方不明） / 母: メアリー / 妻: <a href="../database/characters.html#vixy">ヴィクシー</a>（故人） / 子: <a href="../database/characters.html#fox">フォックス</a></td></tr><tr><td class="dk">STATUS</td><td class="dv warn">行方不明 — 死亡認定は未処理</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING (RECORDED) -- 99 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 99%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(192,200,216,0.55);">
+        <img src="" alt="JAMES McCLOUD" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR FOX FOUNDER — MIA</span>
+            <span class="tg-jp">初代リーダー ── 帰還セズ</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">この機体は、乗り手に噓をつかない。<span class="tg-note note">-アーウィン初飛行テスト後の第一声-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">速く飛ぶ奴なら山ほど見た。だがあいつは、正しく飛ぶ男だった<span class="lore-quote-src">― Z・Z・ペパー将軍の追想より</span></span></p>
+  <p class="lore-p">ジェームズ・マクラウドは、雇われ遊撃隊<a href="../database/military.html#starfox">スターフォックス</a> の創始者にして初代リーダー。<a href="../database/locations.html#papetoon">パペトゥーン</a> の貧しい家庭に生まれ、<a href="../database/military.html#cdf">コーネリア防衛軍</a> の中でも最精鋭とされるコーネリア防衛隊のエースパイロットという輝かしい経歴を持ちながら、民間へ転身した異色の人物である。</p>
+  <p class="lore-p">彼を知る者は口を揃えて言う──幼少期の彼が最も嫌悪していたものは「略奪」と「支配」だったと。その男の前半生に略奪者の顔があったことは、長く軍の機密であり続けた。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ FAMILY</h3>
+  <p class="lore-p">マクラウド家はかつて、コーディリア王国の騎士団<a href="../planets/starblade.html">「ジェイド・ナイト」</a>へ代々空挺部隊員を送り出した武門の家系である。だがその誇りは祖父の代に潰えた。当主がギャンブルで家財と名声を失い、一族はコーディリア州の街に埋もれたのである。ジェームズの父トム・マクラウドはその末の生まれで、定職に就けず日雇いの現場を渡り歩きながら、一山当てる夢だけは手放さない男だったと伝えられる。</p>
+  <p class="lore-p">転機は建設現場に流れた一つの噂である。「星系の最果て<a href="../database/locations.html#papetoon">パペトゥーン</a>の地下に超古代文明の遺跡を発見、探索クルーを募集中」。トムはそれが法螺だと内心気づいていながら、借金をして着の身着のまま単身渡航した。行き着いた「遺跡」は旧希少元素採掘プラントの廃材置き場であり、仕事の実態は廃材から微量の希少元素を掻き集める薄給労働だった。この求人詐欺の顛末については<a href="../corporations/diamond-cities.html">ダイヤモンドシティズ.inc</a>の項に詳しい。</p>
+  <p class="lore-p">それでも、この星には出会いがあった。支給される栄養食のあまりの劣悪さから労働者たちが通いつめた町の食事処で、トムは農家の娘メアリー（ジェームズの母）に一目惚れする。彼の語るコーネリアの都会話は薄っぺらいものだったが、辺境しか知らない娘が夢中になるには十分な「夢」があった。ほどなく二人は結婚し、雇い主も仲間たちも祝福したという。やがて生まれた息子にトムは、自分と妻の夢を託したとっておきの名前を付けた。星系の未曽有の危機を救った英雄であり、かつての先祖の同僚でもある<a href="../database/glossary.html#stephano">ジェームズ・バートン</a>の名である。</p>
+  <p class="lore-p">幸せな時間は長く続かなかった。ジェームズが生まれて数年後のある日、トムは忽然と姿を消す。町ぐるみの捜索はパペトゥーン時間の1年で打ち切られ、賊か猛獣に襲われたのだろうと皆が諦めた後も、メアリーだけは夫を探し続けた。行方も理由も、今日まで不明のままである。かくしてマクラウド家では二代続けて、父親が息子の記憶の中にいない。ジェームズにとって「ジェームズ」という名は、顔も知らない父が残した、たった一つの親子の繋がりである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴（前半生） ─ BIOGRAPHY</h3>
+  <p class="lore-p">生家は野菜栽培とジャンクショップで細々と生計をつなぐ貧しい家庭だった。物心ついた時には父は家族を置いて行方不明になっており、母と二人で家を切り盛りした。当時のパペトゥーンは共和国の統治外、分離主義勢力『独立星系連合（IGA）』の勢力圏であり、治安は最悪。安らぎの時間は、拾ったスクラップを改造した武器を身に着けて荒野を走り回ることだったという。</p>
+  <p class="lore-p"><span class="redacted">17歳のとき、母に秘密でIGAのみを標的とした夜盗グループ『スライフォックス』を結成。これこそが後のスターフォックスの礎である。発案者はジャンクショップの顧客だった若き日のピグマ・デンガー。メンバーはリーダーのジェームズ、メカニック兼交渉役のピグマ、重火器担当のクロコ・バーンズ、斥候・後始末担当のバルチャ・ドドリゲスの4名。当時のパペトゥーンは惑星史上最悪の大飢饉にあり、生活のために手を染めざるを得なかったとされる。この二足の草鞋の生活は約6年続いた</span></p>
+  <p class="lore-p"><span class="redacted">23歳のとき、いつも通り襲撃したIGA商船は、あろうことかパペトゥーンへ逃亡してきたIGA総統の偽装船だった。襲撃の混乱の中で総統は緊急信号を誤発信し、追跡していたコーネリア精鋭部隊の集中砲火を招く。総統は爆風により死亡。ジェームズはクロコが身を挺して庇ったことで一命を取り留めたが、爆風で両足と左手を失う重傷を負った。以後の彼は失った手足をサイバネティクス義肢へ置き換えて生きることになる。星系最高と謳われた操縦技術は、その半分が鋼の手足によるものである</span></p>
+  <p class="lore-p"><span class="redacted">スライフォックスはIGA関係部隊と誤認されて拘束され、軍法会議にかけられた。絶体絶命の中、ピグマは咄嗟に『IGA総統の居場所を突き止め信号を送ったのは自分たちだ』という虚偽の申告を行い、当時の部隊長がこれに興味を示したことで、夜盗の件も含め3か月の拘留処分にまで減刑された。この減刑には、情状酌量を訴えた若き士官候補生ペッピー・ヘアの発言も影響したとされる。減刑を取り計らった部隊長の名は──Z・Z・ペパー、後のCDF総司令である。一連の顛末は機密記録FCH-450（<a href="../database/glossary.html#decoy-ship">IGA総統偽装船襲撃事件</a>）に封じられている</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">経歴（転身） ─ BIOGRAPHY</h3>
+  <p class="lore-p">重傷から回復したジェームズは、当時まだ発展途上だったサイバネティクス義足を装着することになり、彼の代名詞だった「風と見まごう走り」は二度と戻らなかった。母の悲しみと失望を正面から受け止めた彼は、過去の稼業から完全に足を洗い、堅実に農業に励む生活を選ぶ。この時期に町の酒場で意気投合したのが、看板娘だった<a href="../database/characters.html#vixy">ヴィクシー</a>──後の妻であり、フォックスの母となる女性である。奇妙な縁だが、彼女を巡る恋敵は、後に帝国皇帝となる若き日の<a href="../database/characters.html#andorf">アンドルフ・ボウマン</a> その人だった。</p>
+  <p class="lore-p">5年後、パペトゥーンのニジョー盆地に共和国士官学校が建設されると同時に、ジェームズ宛てに一通の通達が届く。送り主はかつて減刑を取り計らった<a href="../database/characters.html#pepper">Z・Z・ペパー</a>。添付された特例権限により、正規の学力を持たない彼の入学は二つ返事で許可され、技能選考で圧倒的な成績を叩き出した彼はCDFパイロット候補へ進んだ。士官学校で模範士官を務めていた<a href="../database/characters.html#peppy">ペッピー・ヘア</a> と再会し、無二の親友となったのもこの時期である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">スターフォックス創設と失踪 ─ SERVICE</h3>
+  <p class="lore-p">CDFのエースとして名を馳せたジェームズだったが、軍部の官僚主義に募る懸念から、緊急時に迅速に行動できる機動力と救援力を備えた独立部隊を構想。猛反対するペッピーを熱意で押し切って共に軍を退き、旧知の<a href="../database/characters.html#pigma">ピグマ・デンガー</a> をメカニックに迎えて、雇われ遊撃隊<a href="../database/military.html#starfox">スターフォックス</a> を結成した。<a href="../corporations/space-dynamics.html">スペース・ダイナミクス社</a> のアーウィン初飛行テストを務め、「この機体は、乗り手に噓をつかない」の言葉を残したのもこの頃である。</p>
+  <p class="lore-p">そして運命の<a href="../database/glossary.html#venom-recon">ベノム偵察作戦</a>──編隊は僚機ピグマの裏切りによって帝国の罠に落ちた。ジェームズは自らを囮にペッピーを離脱させ、そのまま消息を絶つ。乗機も遺体も発見されておらず、死亡認定は現在も処理されていない。認定書類は毎年更新期限を迎え、毎年、誰かの手で「保留」の判が押され続けている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">撃墜報告のない戦域で、時折「見慣れない旧式アーウィン」の目撃情報が上がる。追跡すると必ず見失い、記録には残らない。パイロットたちはそれを幽霊とは呼ばず、こう呼ぶ──「先導機」と。</p>
+  <p class="lore-p">彼のサングラスは伊達ではなく、夜盗時代の閃光弾の後遺症を隠すためだったという説がある。真偽を知るのは本人と、おそらくペッピーだけである。</p>
+  <p class="lore-p">パペトゥーンの牧場跡には、幼い息子と並んで押した大小二つの手形の壁が今も残る。義肢の男が手形に使ったのは、最後まで生身のまま残された右手である（<a href="../planets/papetoon.html">パペトゥーンの項</a>を参照）。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+</body></html>

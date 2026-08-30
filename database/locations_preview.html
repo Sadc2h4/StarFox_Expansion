@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOCATION DATABASE [PREVIEW] — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#ffcc66;--accent:#ffe6a8;--border:rgba(255,204,102,0.32);--border-hi:rgba(255,230,168,0.7);--dim:#403010;--dim2:#201806; --bg:#000000; --bg2:#060606; }
+    /* 背景: 星空写真 space_gb.jpg を全面に敷く（星雲グラデーション廃止） */
+    .bg-nebula {
+      background: url('../resource/space_gb.jpg') center / cover no-repeat #000;
+    }
+    /* 減光オーバーレイ: 星空写真の賑やかさを抑え本文の可読性を保つ（数値で濃さを調整） */
+    .bg-nebula::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+    /* 手続き生成の星は写真に置換したため停止 */
+    #stars { display: none; }
+
+    /* ═══ LOCATION ORBITAL VIEW (preview) ═══ */
+
+    .gls-main {
+      position: fixed;
+      top: 44px; bottom: 0; left: 22px; right: 22px;
+      z-index: 5;
+      display: flex; flex-direction: column;
+      padding: 18px clamp(16px, 4vw, 60px) 12px;
+      overflow: hidden;
+    }
+    .gls-main .codex-hero { margin-bottom: 10px; }
+
+    .gls-main .loc-filter { display: none; margin-bottom: 10px; }
+    .gls-main .loc-filter.open { display: flex; }
+
+    @media (max-height: 880px) {
+      .gls-main { padding-top: 12px; }
+      .gls-main .codex-hero { margin-bottom: 6px; }
+      .gls-main .codex-hero .codex-p { display: none; }
+      .gls-main .codex-title { font-size: 24px; margin: 2px 0 4px; }
+    }
+    @media (max-height: 740px) {
+      .gls-main .codex-hero .p-index { display: none; }
+      .gls-main .codex-title { font-size: 20px; margin: 0 0 4px; }
+      .gls-ctrl { margin-bottom: 6px; }
+      .gls-scrub { padding-top: 8px; }
+      .gls-status { padding-top: 6px; }
+    }
+
+    .gls-ctrl {
+      flex: 0 0 auto;
+      display: flex; align-items: center; gap: 10px;
+      padding: 0 6px;
+      margin-bottom: 6px;
+    }
+
+    /* ── orbital stage ──
+       overflow は開放し、リング等のはみ出しを許容する。
+       文字系レイヤー（ヒーロー・パネル等）は z-index で惑星より上に置く */
+    .orb-stage {
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 120px;
+    }
+    .gls-main .codex-hero,
+    .gls-ctrl, .gls-main .loc-filter,
+    .loc-panel, .gls-scrub, .gls-status {
+      position: relative;
+      z-index: 55;
+    }
+    .orb {
+      position: absolute;
+      left: 50%; top: 52%;
+      width: clamp(170px, 36vh, 360px);
+      height: clamp(170px, 36vh, 360px);
+      margin: 0;
+      transition: transform 0.55s cubic-bezier(0.22, 0.9, 0.3, 1),
+                  opacity 0.45s, filter 0.45s;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .orb.is-active { cursor: default; }
+    .orb[hidden] { display: none; }
+    /* 琥珀色ハロー・オフ・トライアル: 惑星画像の背後の発光を消した状態 */
+    .orb img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+
+    /* 未スキャン天体プレースホルダー（画像が用意されるまでの仮表示） */
+    .orb-noimg {
+      position: relative;
+      width: 72%; height: 72%;
+      border-radius: 50%;
+      border: 1px dashed rgba(255,204,102,0.55);
+      background:
+        radial-gradient(circle at 38% 32%, rgba(255,230,168,0.10) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(255,204,102,0.05) 40%, rgba(6,10,8,0.4) 100%);
+      box-shadow: 0 0 24px rgba(255,204,102,0.12), inset 0 0 30px rgba(255,204,102,0.08);
+    }
+    /* 経線・緯線（ワイヤーフレーム球） */
+    .orb-noimg::before, .orb-noimg::after {
+      content: '';
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(255,204,102,0.28);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .orb-noimg::before { width: 46%; height: 100%; }
+    .orb-noimg::after  { width: 100%; height: 38%; }
+    .orb-noimg .lat {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 78%; height: 78%;
+      border: 1px solid rgba(255,204,102,0.16);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    /* 周回する走査リング */
+    .orb-noimg .ring {
+      position: absolute; left: 50%; top: 50%;
+      width: 116%; height: 116%;
+      transform: translate(-50%, -50%);
+      border: 1px dashed rgba(255,230,168,0.4);
+      border-radius: 50%;
+      animation: orb-scan 14s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes orb-scan { to { transform: translate(-50%, -50%) rotate(360deg); } }
+    .orb-noimg .cap {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 9px; letter-spacing: 0.3em; line-height: 2;
+      color: rgba(255,230,168,0.75);
+      text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(255,204,102,0.5);
+    }
+    /* 照準レティクル（四隅） */
+    .orb-noimg .rt {
+      position: absolute; width: 14px; height: 14px;
+      border-color: rgba(255,230,168,0.6); border-style: solid;
+      pointer-events: none;
+    }
+    .orb-noimg .rt.tl { top: 4%;  left: 4%;  border-width: 1px 0 0 1px; }
+    .orb-noimg .rt.tr { top: 4%;  right: 4%; border-width: 1px 1px 0 0; }
+    .orb-noimg .rt.bl { bottom: 4%; left: 4%;  border-width: 0 0 1px 1px; }
+    .orb-noimg .rt.br { bottom: 4%; right: 4%; border-width: 0 1px 1px 0; }
+
+    /* ── prev / next chevrons ── */
+    .gls-nav {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 54px;
+      z-index: 60;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .gls-nav .chev {
+      width: 30px; height: 30px;
+      background: var(--accent);
+      clip-path: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 42% 50%);
+      filter: drop-shadow(0 0 10px rgba(255,230,168,0.55));
+      transition: transform 0.18s ease;
+    }
+    .gls-nav.prev .chev { transform: scaleX(-1); }
+    .gls-nav:hover { opacity: 1; }
+    .gls-nav.next:hover .chev { transform: translateX(3px); }
+    .gls-nav.prev:hover .chev { transform: scaleX(-1) translateX(3px); }
+    .gls-nav:disabled { opacity: 0.12; cursor: default; }
+    .gls-nav:disabled .chev { transform: none; filter: none; background: var(--dim); }
+    .gls-nav.prev:disabled .chev { transform: scaleX(-1); }
+    .gls-nav.prev { left: 4px; }
+    .gls-nav.next { right: 4px; }
+
+    /* ── info panel: 八角形レコードパネル（低め） ── */
+    .loc-panel {
+      position: relative;
+      flex: 0 0 clamp(190px, 31vh, 290px);
+      margin-top: 4px;
+    }
+    .gcard-frame,
+    .gcard-inner {
+      --cut: 30px;
+      clip-path: polygon(
+        var(--cut) 0, calc(100% - var(--cut)) 0,
+        100% var(--cut), 100% calc(100% - var(--cut)),
+        calc(100% - var(--cut)) 100%, var(--cut) 100%,
+        0 calc(100% - var(--cut)), 0 var(--cut)
+      );
+    }
+    .gcard-frame {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(160deg, rgba(255,230,168,0.85), rgba(160,120,50,0.55) 40%, rgba(255,230,168,0.75));
+      box-shadow: 0 0 30px rgba(255,204,102,0.22);
+    }
+    .gcard-inner {
+      position: absolute; inset: 2px;
+      --cut: 29px;
+      background:
+        repeating-linear-gradient(-55deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 5px),
+        radial-gradient(ellipse 120% 90% at 50% 0%, rgba(60,44,10,0.55) 0%, rgba(16,12,4,0.96) 70%),
+        #0c0904;
+    }
+    .loc-panel .seg {
+      position: absolute;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(255,230,168,0.8), 0 0 34px rgba(255,230,168,0.35);
+      pointer-events: none;
+    }
+    .loc-panel .seg.h { height: 4px; }
+    .loc-panel .seg.v { width: 4px; }
+    .seg.s1 { top: -1px; left: 9%;  width: 13%; }
+    .seg.s2 { top: -1px; right: 12%; width: 16%; }
+    .seg.s3 { bottom: -1px; left: 24%; width: 10%; }
+    .seg.s4 { bottom: -1px; right: 8%;  width: 10%; }
+    .seg.s5 { left: -1px; top: 30%; height: 26%; }
+    .seg.s6 { right: -1px; top: 44%; height: 18%; }
+    .gcard-label {
+      position: absolute;
+      top: 9px; left: 44px;
+      font-size: 9px; letter-spacing: 0.3em;
+      color: rgba(255,230,168,0.75);
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .gcard-body {
+      position: absolute;
+      inset: 24px 26px 22px 32px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 8px 20px 16px 10px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--dim) transparent;
+    }
+    .gcard-body::-webkit-scrollbar { width: 4px; }
+    .gcard-body::-webkit-scrollbar-thumb { background: var(--dim); }
+
+    /* 記事は素の codex-entry のまま（枠はパネルが提供） */
+    .gcard-body .codex-entry {
+      border: none; background: none;
+      padding: 0; margin: 0;
+      display: none;
+    }
+    /* 旧リスト表示用の :target ハイライト（シアン発光枠）はパネル内では無効化 */
+    .gcard-body .codex-entry:target {
+      border: none;
+      box-shadow: none;
+    }
+    .gcard-body .codex-entry.is-active { display: block; }
+    .gcard-body .codex-h { font-size: 16px; margin-bottom: 4px; }
+    .gcard-body .codex-sub { margin-bottom: 10px; }
+
+    /* ── scrub bar ── */
+    .gls-scrub {
+      flex: 0 0 auto;
+      padding: 10px 6px 0;
+      cursor: pointer;
+      touch-action: none;
+    }
+    .gls-scrub-track { position: relative; height: 14px; display: flex; align-items: center; }
+    .gls-scrub-track::before {
+      content: '';
+      position: absolute; left: 0; right: 0; top: 50%;
+      height: 2px; transform: translateY(-50%);
+      background: var(--dim);
+    }
+    .gls-scrub .tick {
+      position: absolute; top: 50%;
+      width: 2px; height: 7px;
+      transform: translate(-50%, -50%);
+      background: rgba(255,204,102,0.4);
+      transition: background 0.2s, height 0.2s;
+    }
+    .gls-scrub .tick.current {
+      height: 13px;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(255,230,168,0.7);
+    }
+    .gls-scrub-thumb {
+      position: absolute; top: 50%;
+      width: 46px; height: 12px;
+      transform: translate(0, -50%);
+      background: rgba(40,30,8,0.9);
+      border: 1px solid var(--border-hi);
+      box-shadow: 0 0 10px rgba(255,230,168,0.35);
+      cursor: grab;
+      transition: left 0.35s cubic-bezier(0.22, 0.9, 0.3, 1);
+    }
+    .gls-scrub-thumb::after {
+      content: '///';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 8px; letter-spacing: 2px; color: var(--accent);
+      opacity: 0.8;
+    }
+    .gls-scrub.dragging .gls-scrub-thumb {
+      transition: none; cursor: grabbing;
+      border-color: var(--accent);
+      box-shadow: 0 0 16px rgba(255,230,168,0.6);
+    }
+    .gls-scrub:hover .gls-scrub-thumb { border-color: var(--accent); }
+
+    /* ── status bar ── */
+    .gls-status {
+      flex: 0 0 auto;
+      display: flex; align-items: center; gap: 16px;
+      padding: 8px 6px 0;
+      font-size: 10.5px; letter-spacing: 0.2em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+    .gls-status .rec-no { color: var(--accent); }
+    .gls-status .rec-name {
+      color: var(--text-bright);
+      letter-spacing: 0.12em;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      flex: 1 1 auto; min-width: 0;
+    }
+    .gls-status .keys { opacity: 0.55; font-size: 9px; }
+    .gls-index-btn {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.25em;
+      color: var(--text); text-transform: uppercase;
+      border: 1px solid var(--border);
+      background: rgba(20,15,4,0.5);
+      padding: 4px 14px; cursor: pointer;
+      transition: all 0.18s;
+    }
+    .gls-index-btn:hover { color: var(--accent); border-color: var(--border-hi); }
+
+    /* ── index overlay ── */
+    .gls-index-overlay {
+      position: absolute; inset: 0;
+      z-index: 80;
+      display: none;
+      align-items: center; justify-content: center;
+      background: rgba(8,6,2,0.88);
+      backdrop-filter: blur(2px);
+    }
+    .gls-index-overlay.open { display: flex; }
+    .gls-index-panel {
+      max-width: 760px; max-height: 80%;
+      overflow-y: auto;
+      border: 1px solid var(--border-hi);
+      background: rgba(18,14,4,0.97);
+      box-shadow: 0 0 40px rgba(255,230,168,0.15);
+      padding: 22px 28px;
+    }
+    .gls-index-panel h3 {
+      font-size: 11px; letter-spacing: 0.3em; color: var(--accent);
+      margin-bottom: 14px; text-transform: uppercase;
+    }
+    .gls-index-list { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+    .gls-index-list a {
+      color: var(--accent); text-decoration: none;
+      font-size: 11px; letter-spacing: 0.1em;
+      border-bottom: 1px dotted rgba(255,230,168,0.4);
+    }
+    .gls-index-list a:hover { color: #fff; border-bottom-style: solid; }
+    .gls-index-list a.current { color: #fff; border-bottom: 1px solid var(--accent); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ CIS-HQ / LOCATION DATABASE — ロケーションデータベース ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="gls-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ 01 / LOCATION DATABASE — LAYOUT PREVIEW ]</div>
+      <h1 class="codex-title">LOCATIONS OF THE LYLAT SYSTEM</h1>
+      <p class="codex-p">ライラット星系に存在する惑星・恒星・宙域・軍事拠点、および星系を五つに大別する「領域」に関する観測記録の総覧。惑星はライラット星系第1惑星から昇順に収録している。各記録の詳細は「▶ 詳細記事」から閲覧できる。</p>
+    </div>
+
+    <div class="gls-ctrl">
+      <button class="gls-index-btn" id="glsFilterBtn">◈ Filter: ALL</button>
+      <button class="gls-index-btn" id="glsIndexBtn">◈ Index</button>
+    </div>
+
+    <div class="loc-filter" id="locFilter">
+      <button class="active" data-type="all">ALL</button>
+      <button data-type="planet">惑星</button>
+      <button data-type="star">恒星</button>
+      <button data-type="sector">セクター</button>
+      <button data-type="region">領域</button>
+      <button data-type="misc">その他</button>
+    </div>
+
+    <div class="orb-stage" id="orbStage">
+      <button class="gls-nav prev" id="glsPrev" aria-label="前の記録"><span class="chev"></span></button>
+      <button class="gls-nav next" id="glsNext" aria-label="次の記録"><span class="chev"></span></button>
+
+      <div class="gls-index-overlay" id="glsIndexOverlay">
+        <div class="gls-index-panel">
+          <h3>◈ RECORD INDEX</h3>
+          <div class="gls-index-list" id="glsIndexList"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loc-panel">
+      <div class="gcard-frame"></div>
+      <div class="gcard-inner"></div>
+      <i class="seg h s1"></i><i class="seg h s2"></i><i class="seg h s3"></i><i class="seg h s4"></i>
+      <i class="seg v s5"></i><i class="seg v s6"></i>
+      <div class="gcard-label">RECORD // LOCATION</div>
+      <div class="gcard-body" id="panelBody">
+
+        <article class="codex-entry loc" id="venom" data-type="planet">
+          <div class="loc-body">
+            <h2 class="codex-h">ベノム <span class="en">VENOM — 第1惑星</span></h2>
+            <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#omega">セクターΩ</a> / <a href="factions.html#venom-empire">ベノム帝国</a> 本星</div>
+            <p class="codex-p">星系最初の入植地にして、現在は帝国の玉座となった「死の星」。センサーを狂わせる特殊鉱物とバイオウェポンの生体組織が地表を覆い、観測そのものを拒む。第2次ライラットウォーズの最終目的地。</p>
+            <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/venom.html">▶ 詳細記事を開く</a></div>
+          </div>
+          <div class="loc-thumb"><img src="../resource/LA_image/LS_P_1.png" alt="Venom"></div>
+        </article>
+
+        <article class="codex-entry loc" id="titania" data-type="planet" data-orb-scale="1.6">
+          <div class="loc-body">
+            <h2 class="codex-h">タイタニア <span class="en">TITANIA — 第2惑星</span></h2>
+            <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#chi">セクターχ</a> / 無所属 — 立入厳禁</div>
+            <p class="codex-p">自転軸が97度倒れた「禁断の惑星」。異常磁場が艦船の残骸を引き寄せ、サルガッソーの核として機能する。砂の下には滅びた先住文明の遺構と暴走する古代兵器が眠り、地下には少数のティターニアンが暮らす。</p>
+            <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/titania.html">▶ 詳細記事を開く</a></div>
+          </div>
+          <div class="loc-thumb"><img src="../resource/LA_image/LS_P_2.png" alt="Titania" style="transform:scale(1.8);"></div>
+        </article>
+
+        <article class="codex-entry loc" id="corneria" data-type="planet">
+          <div class="loc-body">
+            <h2 class="codex-h">コーネリア <span class="en">CORNERIA — 第4惑星</span></h2>
+            <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#beta">セクターβ</a> / <a href="factions.html#cornerian-republic">共和国</a> 首都惑星</div>
+            <p class="codex-p">ライラット星系の政治・軍事・経済の中枢にして「最後の砦」。理想的な気候と肥沃な大地を持ち、CDF総司令部が置かれる。この星が陥落すれば、星系の指揮系統と補給網は同時に崩壊する。</p>
+            <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/corneria.html">▶ 詳細記事を開く</a></div>
+          </div>
+          <div class="loc-thumb"><img src="../resource/LA_image/LS_P_4.png" alt="Corneria" style="transform:scale(0.89);"></div>
+        </article>
+
+        <article class="codex-entry loc" id="asteroid" data-type="sector">
+          <div class="loc-body">
+            <h2 class="codex-h">アステロイド <span class="en">ASTEROID BELT — 第6惑星跡</span></h2>
+            <div class="codex-sub"><span class="loc-tag t-sector">セクター</span> <a href="sectors.html#gamma">セクターγ</a>〜<a href="sectors.html#delta">δ</a> / <a href="military.html#great-wall">グレートウォール</a>構成体</div>
+            <p class="codex-p">かつてここに、ライラット星系第6惑星ステファノーがあった。<a href="glossary.html#stephano">グランベルの超兵器</a>によって砕かれた星の残骸は、今は共和国の手で最終防衛ライン「グレートウォール」として再生され、コーネリアの空を守り続けている。</p>
+            <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="glossary.html#stephano">▶ ステファノーの戦い</a>　<a class="rec-btn" href="../planets/greatwall.html">▶ グレートウォール</a></div>
+          </div>
+          <div class="loc-thumb"><img src="../resource/LA_image/LS_F_1_3.png" alt="Asteroid Belt"></div>
+        </article>
+
+        <article class="codex-entry loc" id="solar" data-type="star">
+          <div class="loc-body">
+            <h2 class="codex-h">ソーラ <span class="en">SOLAR — ライラットβ星</span></h2>
+            <div class="codex-sub"><span class="loc-tag t-star">恒星</span> M3型 橙色小型恒星（特異組成） / <a href="sectors.html#omicron">セクターο</a></div>
+            <p class="codex-p">惑星密集エリアを公転する「第二の太陽」。プラズマの表面下を液体岩石が対流する、恒星と惑星の中間というべき特異な星。アクアス・ゾネス・フィチナはこの星を巡り、星系の暦と神話はこの星とともにある。</p>
+            <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/solar.html">▶ 詳細記事を開く</a></div>
+          </div>
+          <div class="loc-thumb"><img src="../resource/LA_image/LS_S_2.png" alt="Solar" style="transform:scale(0.89);"></div>
+        </article>
+
+        <article class="codex-entry loc" id="inner-rim" data-type="region">
+          <div class="loc-body">
+            <h2 class="codex-h">インナー・リム <span class="en">INNER RIM — 星系内側領域</span></h2>
+            <div class="codex-sub"><span class="loc-tag t-region">領域</span> 星系内側 / コアワールド構成領域</div>
+            <p class="codex-p">インナー・リム（Inner Rim）は星系の内側に位置する領域の総称。地理的には<a href="#sargasso">サルガッソー宙域</a>から、惑星や星雲が存在しない空白領域<a href="sectors.html#alpha">セクターα</a>までを指す。惑星<a href="#venom">ベノム</a>が放棄されて以降、星系文明の中心として発展した<a href="#corneria">コーネリア</a>を軸に星系の最重要施設が集中しており、所属する国や州の数は星系最多に上る。</p>
+            <p class="codex-p">星系内のすべての主要航路はインナー・リムを通過するよう設計されており、この領域に含まれる惑星では現在も積極的な植民地開発が続いている。<a href="#corneria">コーネリア</a>、カタリナ、プロスペロー、フォルトナが含まれ、フォルトナを除く各惑星は<a href="factions.html#cornerian-republic">コーネリア連合共和国</a>の領地となっている。ディープ・コアと合わせて「コアワールド」と呼ばれることも多い。</p>
+          </div>
+          <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+        </article>
+
+        <article class="codex-entry loc" id="sargasso" data-type="sector">
+          <div class="loc-body">
+            <h2 class="codex-h">サルガッソー宙域 <span class="en">SARGASSO REGION — 宇宙の墓場</span></h2>
+            <div class="codex-sub"><span class="loc-tag t-sector">セクター</span> <a href="sectors.html#upsilon">セクターυ</a>・<a href="sectors.html#phi">φ</a>・<a href="sectors.html#chi">χ</a> / 特A級危険宙域</div>
+            <p class="codex-p">タイタニアの異常磁場が星系中の残骸を集めた、天文学的規模のデブリの海。インナーリムとアウターリムを分断する「巨大な壁」であり、安全な通過点は<a href="glossary.html#trinculo">トリンキュロー回廊</a>のみ。両軍が恐れて近づかない。</p>
+            <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/sargasso.html">▶ 詳細記事を開く</a></div>
+          </div>
+          <div class="loc-thumb"><img src="../resource/LA_image/Sargasso_thumb.png" alt="Sargasso"></div>
+        </article>
+
+        <article class="codex-entry loc" id="area3" data-type="misc">
+          <div class="loc-body">
+            <h2 class="codex-h">グレートウォール AREA3 <span class="en">GREAT WALL AREA3 — 環状宇宙ステーション</span></h2>
+            <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="sectors.html#epsilon">セクターε</a> / <a href="military.html#cdf">CDF</a> 軍事拠点</div>
+            <p class="codex-p">直径210kmの環状ステーション。<a href="military.html#great-wall">グレートウォール</a>全隕石の軌道を管理する「壁の頭脳」にして、都市戦・艦隊戦の模擬演習が行われる共和国軍実戦訓練の総本山。</p>
+            <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/area3.html">▶ 詳細記事を開く</a></div>
+          </div>
+          <div class="loc-thumb"><img src="../resource/LA_image/LS_F_5.png" alt="Area3"></div>
+        </article>
+
+        <article class="codex-entry loc" id="area6" data-type="misc">
+          <div class="loc-body">
+            <h2 class="codex-h">AREA6 <span class="en">AREA6 — ベノム最終防衛ライン</span></h2>
+            <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="sectors.html#psi">セクターψ</a> / <span style="color:var(--danger);">帝国軍 — 接近＝交戦</span></div>
+            <p class="codex-p">ベノム惑星圏を球殻状に包む帝国の絶対防衛圏。「宇宙最強」の<a href="military.html#space-armada">スペースアマダ</a>艦隊と防衛衛星ボルスが、本星への全ての道を塞ぐ。戦争を終わらせるには、いつか誰かがこの壁を抜けねばならない。</p>
+            <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/area6.html">▶ 詳細記事を開く</a></div>
+          </div>
+          <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="gls-scrub" id="glsScrub">
+      <div class="gls-scrub-track" id="glsScrubTrack">
+        <div class="gls-scrub-thumb" id="glsScrubThumb"></div>
+      </div>
+    </div>
+
+    <div class="gls-status">
+      <span class="rec-no" id="glsCounter">REC 001 / 009</span>
+      <span class="rec-name" id="glsName"></span>
+      <span class="keys">◄ ► KEYS / CLICK ORBIT OBJECT</span>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px':'1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+
+    (function() {
+      const stage   = document.getElementById('orbStage');
+      const body    = document.getElementById('panelBody');
+      const filter  = document.getElementById('locFilter');
+      if (!stage || !body || !filter) return;
+
+      /* ── 素の <article> から軌道オブジェクトを生成 ──
+         記事追加は article を置くだけでよい（loc-thumb の画像が軌道に上がる） */
+      const pairs = [];   // { orb, art }
+      Array.from(body.querySelectorAll('article.codex-entry')).forEach((art) => {
+        const orb = document.createElement('div');
+        orb.className = 'orb';
+        const thumb = art.querySelector('.loc-thumb');
+        const img = thumb && thumb.querySelector('img');
+        if (img) {
+          orb.appendChild(img);           // 縮尺補正の inline style ごと移設
+          // 軌道表示専用の縮尺補正（縦長画像の見切れ対策など）:
+          // article に data-orb-scale="1.3" を付けるとサムネ用補正を上書きする
+          if (art.dataset.orbScale) img.style.transform = 'scale(' + art.dataset.orbScale + ')';
+        } else {
+          orb.innerHTML =
+            '<div class="orb-noimg"><span class="lat"></span><span class="ring"></span>' +
+            '<span class="rt tl"></span><span class="rt tr"></span><span class="rt bl"></span><span class="rt br"></span>' +
+            '<span class="cap">NO VISUAL<br>AWAITING SCAN</span></div>';
+        }
+        if (thumb) thumb.remove();
+        stage.appendChild(orb);
+        pairs.push({ orb, art });
+      });
+
+      const prevBtn = document.getElementById('glsPrev');
+      const nextBtn = document.getElementById('glsNext');
+      const counter = document.getElementById('glsCounter');
+      const nameEl  = document.getElementById('glsName');
+      const idxBtn  = document.getElementById('glsIndexBtn');
+      const idxOverlay = document.getElementById('glsIndexOverlay');
+      const idxList = document.getElementById('glsIndexList');
+
+      let deck = pairs.slice();
+      let cur = 0;
+
+      const titleOf = (p) => {
+        const h = p.art.querySelector('.codex-h');
+        const clone = h.cloneNode(true);
+        const en = clone.querySelector('.en'); if (en) en.remove();
+        return clone.textContent.trim();
+      };
+
+      /* ── 軌道配置: 中央から離れるほど弧を描いて沈み、縮小・減光する ── */
+      function layout() {
+        const spacing = Math.max(180, Math.min(300, stage.clientWidth * 0.19));
+        deck.forEach((p, i) => {
+          const n = i - cur;
+          const cl = Math.max(-4, Math.min(4, n));
+          const ax = Math.abs(cl);
+          const x = cl * spacing * (1 - 0.07 * ax);
+          const y = -Math.pow(ax, 1.35) * 26;                   // 軌道の湾曲（両脇が持ち上がる）
+          const sc = n === 0 ? 1.22 : 1 / (1 + 0.42 * ax);   // 選択中は一回り拡大
+          p.orb.style.transform =
+            `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${sc.toFixed(3)})`;
+          p.orb.style.opacity = Math.abs(n) > 3 ? '0' : (n === 0 ? '1' : String(0.8 - 0.16 * ax));
+          p.orb.style.zIndex = 40 - ax;
+          p.orb.style.filter = n === 0 ? '' : `brightness(${(0.8 - 0.13 * ax).toFixed(2)}) saturate(0.65)`;
+          p.orb.style.pointerEvents = Math.abs(n) > 3 ? 'none' : '';
+          p.orb.classList.toggle('is-active', n === 0);
+          p.art.classList.toggle('is-active', n === 0);
+        });
+        prevBtn.disabled = cur <= 0;
+        nextBtn.disabled = cur >= deck.length - 1;
+        counter.textContent =
+          'REC ' + String(cur + 1).padStart(3, '0') + ' / ' + String(deck.length).padStart(3, '0');
+        nameEl.textContent = deck.length ? titleOf(deck[cur]) : '—';
+        buildIndex();
+        syncScrub();
+      }
+
+      function go(i) {
+        if (!deck.length) return;
+        const before = cur;
+        cur = Math.max(0, Math.min(deck.length - 1, i));
+        layout();
+        if (cur !== before) body.scrollTop = 0;
+      }
+
+      /* ── filter ── */
+      const filterBtn = document.getElementById('glsFilterBtn');
+      function applyFilter(type) {
+        filter.querySelectorAll('button').forEach(b => {
+          b.classList.toggle('active', b.dataset.type === type);
+          if (b.dataset.type === type) filterBtn.textContent = '◈ Filter: ' + b.textContent;
+        });
+        const keepId = deck[cur] ? deck[cur].art.id : null;
+        deck = pairs.filter(p => {
+          const ok = (type === 'all' || p.art.dataset.type === type);
+          p.orb.hidden = !ok;
+          if (!ok) p.art.classList.remove('is-active');
+          return ok;
+        });
+        const keepIdx = deck.findIndex(p => p.art.id === keepId);
+        cur = keepIdx >= 0 ? keepIdx : 0;
+        layout();
+      }
+      filter.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        applyFilter(btn.dataset.type);
+        filter.classList.remove('open');
+      });
+      filterBtn.addEventListener('click', () => filter.classList.toggle('open'));
+
+      /* ── navigation ── */
+      prevBtn.addEventListener('click', () => go(cur - 1));
+      nextBtn.addEventListener('click', () => go(cur + 1));
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); go(cur - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
+        if (e.key === 'Escape') idxOverlay.classList.remove('open');
+      });
+      pairs.forEach(p => p.orb.addEventListener('click', () => {
+        if (!p.orb.classList.contains('is-active')) go(deck.indexOf(p));
+      }));
+
+      /* horizontal wheel → record switch */
+      let wheelLock = 0;
+      stage.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+        e.preventDefault();
+        const now = Date.now();
+        if (now - wheelLock < 450) return;
+        wheelLock = now;
+        go(cur + (e.deltaX > 0 ? 1 : -1));
+      }, { passive: false });
+
+      /* touch swipe */
+      let touchX = null, touchY = null;
+      stage.addEventListener('touchstart', (e) => {
+        touchX = e.touches[0].clientX; touchY = e.touches[0].clientY;
+      }, { passive: true });
+      stage.addEventListener('touchend', (e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        const dy = e.changedTouches[0].clientY - touchY;
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          go(cur + (dx < 0 ? 1 : -1));
+        }
+        touchX = touchY = null;
+      }, { passive: true });
+
+      /* ── deep link ── */
+      function openHash(hash) {
+        if (!hash || hash === '#') return false;
+        if (hash.startsWith('#type-')) { applyFilter(hash.slice(6)); return true; }
+        let target;
+        try { target = document.getElementById(decodeURIComponent(hash.slice(1))); }
+        catch (err) { target = document.getElementById(hash.slice(1)); }
+        if (!target) return false;
+        const art = target.closest('article.codex-entry');
+        if (!art) return false;
+        let idx = deck.findIndex(p => p.art === art);
+        if (idx < 0) {
+          applyFilter('all');
+          idx = deck.findIndex(p => p.art === art);
+          if (idx < 0) return false;
+        }
+        go(idx);
+        if (target !== art && !target.classList.contains('codex-entry')) {
+          body.scrollTop = Math.max(0, target.offsetTop - 12);
+        }
+        return true;
+      }
+      window.addEventListener('hashchange', () => openHash(location.hash));
+
+      body.addEventListener('click', (e) => {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+        e.preventDefault();
+        if (openHash(a.getAttribute('href'))) {
+          history.replaceState(null, '', a.getAttribute('href'));
+        }
+      });
+
+      /* ── scrub bar ── */
+      const scrub      = document.getElementById('glsScrub');
+      const scrubTrack = document.getElementById('glsScrubTrack');
+      const scrubThumb = document.getElementById('glsScrubThumb');
+
+      function rebuildTicks() {
+        scrubTrack.querySelectorAll('.tick').forEach(t => t.remove());
+        const tw = scrubTrack.clientWidth, thw = scrubThumb.offsetWidth;
+        deck.forEach((p, i) => {
+          const t = document.createElement('i');
+          t.className = 'tick' + (i === cur ? ' current' : '');
+          const frac = deck.length > 1 ? i / (deck.length - 1) : 0;
+          t.style.left = (thw / 2 + frac * (tw - thw)) + 'px';
+          scrubTrack.appendChild(t);
+        });
+      }
+      function syncScrub() {
+        const tw = scrubTrack.clientWidth, thw = scrubThumb.offsetWidth;
+        const frac = deck.length > 1 ? cur / (deck.length - 1) : 0;
+        scrubThumb.style.left = (frac * (tw - thw)) + 'px';
+        rebuildTicks();
+      }
+      function scrubIndexFromX(clientX) {
+        const r = scrubTrack.getBoundingClientRect();
+        const thw = scrubThumb.offsetWidth;
+        const frac = (clientX - r.left - thw / 2) / Math.max(1, r.width - thw);
+        return Math.round(Math.max(0, Math.min(1, frac)) * (deck.length - 1));
+      }
+      let scrubbing = false;
+      scrub.addEventListener('pointerdown', (e) => {
+        if (!deck.length) return;
+        scrubbing = true;
+        scrub.classList.add('dragging');
+        scrub.setPointerCapture(e.pointerId);
+        go(scrubIndexFromX(e.clientX));
+      });
+      let scrubRaf = false;
+      scrub.addEventListener('pointermove', (e) => {
+        if (!scrubbing || scrubRaf) return;
+        scrubRaf = true;
+        const x = e.clientX;
+        requestAnimationFrame(() => {
+          scrubRaf = false;
+          const i = scrubIndexFromX(x);
+          if (i !== cur) go(i);
+        });
+      });
+      const endScrub = (e) => {
+        if (!scrubbing) return;
+        scrubbing = false;
+        scrub.classList.remove('dragging');
+        go(scrubIndexFromX(e.clientX));
+      };
+      scrub.addEventListener('pointerup', endScrub);
+      scrub.addEventListener('pointercancel', () => {
+        scrubbing = false;
+        scrub.classList.remove('dragging');
+      });
+
+      /* ── index overlay ── */
+      function buildIndex() {
+        idxList.innerHTML = '';
+        deck.forEach((p, i) => {
+          const a = document.createElement('a');
+          a.href = '#' + p.art.id;
+          a.textContent = titleOf(p);
+          if (i === cur) a.className = 'current';
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            idxOverlay.classList.remove('open');
+            go(i);
+            history.replaceState(null, '', a.getAttribute('href'));
+          });
+          idxList.appendChild(a);
+        });
+      }
+      idxBtn.addEventListener('click', () => idxOverlay.classList.toggle('open'));
+      idxOverlay.addEventListener('click', (e) => {
+        if (e.target === idxOverlay) idxOverlay.classList.remove('open');
+      });
+
+      window.addEventListener('resize', layout);
+
+      /* デフォルト選択はコーネリア（ハッシュ指定があればそちらを優先） */
+      const defIdx = deck.findIndex(p => p.art.id === 'corneria');
+      if (defIdx >= 0) cur = defIdx;
+      layout();
+      openHash(location.hash);
+    })();
+  </script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

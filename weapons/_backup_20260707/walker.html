@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WALKER — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#7dd87d;--accent:#b5f0b5;--border:rgba(125,216,125,0.32);--border-hi:rgba(125,216,125,0.7);--dim:#143a14;--dim2:#0a1d0a; }
+    .p-title    { color: #eeffee; text-shadow: 0 0 50px rgba(125,216,125,0.35); }
+    .p-tagline  { border-color: #7dd87d; color: #7dd87d; }
+    .terminal-hdr { color: #b5f0b5; }
+    .terminal-hdr::before { background: #b5f0b5; box-shadow: 0 0 8px #b5f0b5; }
+    .dk { color: #7dd87d; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../codex/glossary.html#type-weapon" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-02 / WALKER — ウォーカー ]</div>
+    <div class="header-status">● IN SERVICE — STAR FOX</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — WALKER — ARWING TRANSFORMATION MODULE — GROUND MODE</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0002 — CLEARANCE: OPEN — VARIABLE FRAME</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-02 / ARMORY FILE ]</div>
+        <div class="p-name-jp">ウォーカー (WALKER)</div>
+        <h1 class="p-title">THE BIRD<br>THAT LEARNED<br>TO WALK</h1>
+        <div class="p-tagline">アーウィン可変二足歩行形態</div>
+        <p class="p-short-desc">アーウィンが変形する二足歩行形態。翼を脚に変え、戦闘機では踏み込めない施設内部や地表の懐へ潜り込む「歩く戦闘機」。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 02 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">WALKER / ウォーカー</td></tr><tr><td class="dk">CLASS</td><td class="dv">可変二足歩行形態（アーウィン用）</td></tr><tr><td class="dk">MANUFACTURER</td><td class="dv"><a href="../codex/space-dynamics.html">スペース・ダイナミクス社</a></td></tr><tr><td class="dk">HEIGHT</td><td class="dv">歩行時 全高 約9sm</td></tr><tr><td class="dk">MAX SPEED</td><td class="dv">歩行 92km/h / ホバー滑走 240km/h</td></tr><tr><td class="dk">POWERPLANT</td><td class="dv">NTD-FX壱型（脚部出力転換）</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">シングルレーザー（機首連動）</td></tr><tr><td class="dk">EQUIPMENT</td><td class="dv">Gディフューザー脚部バランサー / 壁面グリップ</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../codex/glossary.html#starfox">スターフォックス</a></td></tr><tr><td class="dk">STATUS</td><td class="dv ok">現役 — 変形機構搭載機のみ</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">VERSATILITY RATING -- 88 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 88%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(125,216,125,0.55);">
+        <img src="" alt="WALKER" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ARWING GROUND MODE</span>
+            <span class="tg-jp">可変二足歩行形態 ウォーカー</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">翼をたたんだ鳥が、獲物の巣に歩いて入っていく。<span class="tg-note note">-CDF機甲科 変形機構評価試験の所見より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">飛べない場所を作れば戦闘機は止められる──その常識が、歩き出した<span class="lore-quote-src">― 帝国軍 鹵獲機解析報告の冒頭より</span></span></p>
+  <p class="lore-p">ウォーカー（Walker）は、<a href="arwing.html">アーウィン</a> の変形機構によって展開される二足歩行形態である。主翼ユニットが脚部に転換し、機首が首状に持ち上がる鳥脚型のシルエットから、部隊内では「メカニカル・チキン」の愛称でも呼ばれる。呼んだ者は<a href="../codex/characters.html#falco">ファルコ</a> に撃たれる、というのがお約束である。</p>
+  <p class="lore-p">対空砲火の網、狭隘な施設内部、ジャミングで計器の死んだ地下──戦闘機が本来立ち入れない戦場へ「歩いて」侵入できることが最大の価値であり、全領域戦闘機の名を文字通り完成させた形態と言える。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MECHANISM ─ 機構</h3>
+  <p class="lore-p">変形の要は、Gディフューザーの出力を揚力から姿勢制御へ振り向ける転換機構にある。二本脚という本来不安定極まりない構造を、ディフューザーの反発場が常時支え続けることで、砲撃の反動下でも転倒しない異常な安定性を実現した。</p>
+  <p class="lore-p">原型は<a href="../codex/space-dynamics.html">スペース・ダイナミクス社</a> が社内公募で没になった「歩行作業機」の試作フレームであり、これを発掘して戦闘用に蘇らせたのが主任技師ベルツィーノと、その息子<a href="../codex/characters.html#slippy">スリッピー・トード</a> である。親子二代の「もったいない精神」の産物というのが、開発秘話の実態らしい。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 運用史</h3>
+  <p class="lore-p">実戦初投入は<a href="../codex/locations.html#fichina">フィチナ</a> 地下施設の掃討作戦とされる。航空支援不可能と報告された縦坑を、ウォーカー形態のアーウィンが「降りて」制圧した戦例は、<a href="../codex/glossary.html#cdf">CDF</a> の教範に「第三の選択肢」として掲載された。</p>
+  <p class="lore-p">以後、<a href="../codex/locations.html#prospero">プロスペロー</a> の市街区画や<a href="../codex/locations.html#macbeth">マクベス</a> の工廠内部など、精密な制圧が求められる戦域で運用実績を重ねている。変形機構は整備負荷が大きく、搭載はスターフォックス機など少数に留まる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">歩行時の足音は意図的に消音されていない。スリッピーいわく「地面を歩く9メートルの機械が無音だと、味方の歩兵が心臓に悪い」。以来、あの規則正しい足音は地上部隊にとって「援軍の音」になっている。</p>
+  <p class="lore-p">ヤル・デ・ポン社長は変形機構を長らく「重量の無駄」と公言していたが、フィチナ戦のログを見た後、設計室の壁の没案コーナーから歩行作業機の図面をそっと外したという。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

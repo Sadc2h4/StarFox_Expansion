@@ -1,0 +1,19 @@
+Generate one image with image_gen.
+
+Subject: a faction emblem for a sci-fi military database. The faction is the "Garou Federation", a rigid isolationist nation-state that has sealed itself off from the galaxy for 500 years. The emblem must look like a strict, machine-made official insignia: clean vector-like geometry, perfectly regular shapes, cold and inorganic — the exact opposite of a hand-drawn tribal mark.
+
+Design:
+- The core motif is a large bold letter "G" built from thick geometric strokes with angular, machined cut corners (stencil-like breaks are welcome), like the letterforms in the attached reference emblems.
+- The emblem as a whole should evoke a massive sealed GATE / vault door seen from the front: the "G" sits at the center of a gate-like frame made of straight bars, angular panels and rivet-like dots arranged with strict symmetry.
+- Integrate a CHAIN motif representing the nation's isolation: a run of simple geometric chain links crossing in front of the gate or wrapping along its frame, drawn in the same flat pictogram style. The chain must read clearly as a chain but stay simple and iconic.
+- Add only a few small inorganic accent symbols (squares, notches, tick marks) placed with mechanical regularity. No organic shapes, no leaves, no claws, no brush strokes.
+- Overall silhouette should read as a roughly square-to-circular emblem, centered, filling about 85% of the square canvas, strictly symmetric left-right.
+
+Color and texture (very important, follow the attached reference emblems):
+- SINGLE flat color only: a strong yellow (around #E8B800, a deep signal yellow). No gradients, no secondary colors, no outlines in other colors.
+- The entire yellow fill must carry the same fine horizontal scanline noise as the attached reference emblems: thin darker horizontal lines across the fill, with slightly ragged left/right stroke edges caused by the scanlines. This texture is what unifies all faction emblems.
+- Follow the clean pictogram treatment of the attached references (do NOT copy their shapes, only the flat-fill + scanline texture treatment and the overall level of geometric cleanliness).
+
+Background: pure flat magenta #FF00FF over the whole background, for chroma keying. The emblem itself must contain no magenta.
+No text besides the "G" letterform itself, no watermark, no border, no UI elements.
+Square image.

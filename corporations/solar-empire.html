@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOLAR EMPIRE COMPANY — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#3fc2e0;--accent:#8ee3ff;--border:rgba(63,194,224,0.32);--border-hi:rgba(142,227,255,0.7);--dim:#0f3340;--dim2:#08181f; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/corporations.html" class="nav-back">◄ CORPORATE DB</a>
+    <div class="header-tag">[ CIS-HQ / CORPORATION — ソーラエンパイアカンパニー ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CIS-HQ / CORPORATE FILE 24 ]</div>
+      <h1 class="codex-title">SOLAR EMPIRE COMPANY</h1>
+      <p class="codex-p">ソーラエンパイアカンパニー ── 「生きて帰る船をつくりたい」。セイレーン諸島の漁船から恒星探査船まで、浪漫のない船だけを作り続けるアクアスの造船所。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#overview">概要</a>
+      <a href="#founding">創業</a>
+      <a href="#turning">転機</a>
+      <a href="#chaser">恒星探査</a>
+      <a href="#archives">記録余話</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="../database/corporations.html">企業DB</a> / <a href="hanamuko.html">ハナムコ</a> / <a href="../database/glossary.html#prominence-chaser">プロミネンス・チェイサー</a></span>
+    </nav>
+
+    <article class="codex-entry" id="overview">
+      <h2 class="codex-h">概要 <span class="en">OVERVIEW</span></h2>
+      <p class="codex-p">ソーラエンパイアカンパニーは、<a href="../database/locations.html#aquas">アクアス</a>に本社を置く造船・艦船建造企業である。手がけるのは漁船、海上戦艦、そして<a href="../database/locations.html#fichina">フィチナ</a>の氷下海での漁に使う潜水艦。水に浮かぶ船と水に潜る船を専門としてきた「船の会社」であり、近年は恒星探査船の建造で宇宙へも進出している。</p>
+      <p class="codex-p">「ソーラの帝国」を名乗る大仰な社名に反して、この会社の作る船は堅実一辺倒で、浪漫や面白みのない代物ばかりである。外見も必要以上の装飾を付けない地味なものばかりだが、それは経営理念の根底にある「生きて帰る船をつくりたい」という信念によるものが大きい。荒れる海に親戚を送り出し続けた漁師の子が立てた会社である。船とは冒険の翼ではなく、必ず港へ戻るための道具でなければならない。この頑固さこそが同社の看板であり、旧タッドー圏の海の男たちが同社の船を選び続ける理由でもある。</p>
+    </article>
+
+    <article class="codex-entry" id="founding">
+      <h2 class="codex-h">創業 <span class="en">FOUNDING</span></h2>
+      <p class="codex-p">創業者エイハブ・ケロイチロウは、<a href="../planets/aquas.html">シレーヌ海</a>のセイレーン諸島で代々漁を営む<a href="../database/races.html#heketoid">ヘケトイド</a>の家系に生まれた。潮位差で一日に二度海面下へ沈む環礁群を漁場とするこの海域は、アクアスでも指折りの難所として知られる。粗悪な船で漁に出ては時化のたびに生死の境をさまよう親戚たちを見かねた彼は、単身<a href="../database/locations.html#corneria">コーネリア</a>へ渡り、独学で船の建造を学んで帰ってきた。これが同社の始まりである。</p>
+      <p class="codex-p">このとき彼がコーネリアで学んだのは、旧5国家の艦隊を統合した<a href="../database/military.html#starblade">スターブレード</a>の造船技術だった。統合艦隊の造船体系には、5国の一角である旧タッドー共和国の海洋艦技術の系譜が流れ込んでいる。すなわちアクアスの技術は巡り巡って、一人の漁師の子の手で母星の海へ帰ってきたことになる。</p>
+    </article>
+
+    <article class="codex-entry" id="turning">
+      <h2 class="codex-h">転機 <span class="en">TURNING POINT</span></h2>
+      <p class="codex-p">当初の同社は、海に浮かぶ船だけを作っていた。転機は共同事業者の提案である。フィチナの<a href="../database/glossary.html#salvager">潜水艦漁</a>の様子を見学することになったエイハブは、氷の下という逃げ場のない海で稼働する船の建造需要と、そこで徹底されていた「絶対に浮上する船」の思想に強い感銘を受けた。この見学で得た知見が、同社が水上船の造船所から艦船メーカーへ乗り出す直接のきっかけとなった。</p>
+      <p class="codex-p">以来、同社の漁業潜水艦はスティールダイバーたちの標準装備であり続けている。氷下海で浮上不能に陥った同社製の船は記録上一隻も存在しない、というのが会社の最も誇る数字である。</p>
+    </article>
+
+    <article class="codex-entry" id="chaser">
+      <h2 class="codex-h">恒星探査 <span class="en">STELLAR EXPEDITION</span></h2>
+      <p class="codex-p">同社の名を星系に知らしめたのが、恒星探査船<a href="../database/glossary.html#prominence-chaser">プロミネンス・チェイサー</a>である。船殻素材の超高温耐久試験のために作られた試作機を、そのまま探査船へ改装して実戦投入した低予算の船だったが、安全距離を破って<a href="../database/locations.html#solar">ソーラ</a>へ接近した最後の有人観測船として恒星観測史に名を残した。船殻の三分の一が飴のように変形しながらも、乗員全員を連れて帰還している。詳細は用語集の該当項に譲るが、「生きて帰る船」の理念は太陽の膝元でも破られなかったわけである。</p>
+      <p class="codex-p">実のところ「ソーラエンパイア」の社名は、創業期のエイハブが「いつかソーラまで届く船を作る」と大言壮語したことに由来する、身の丈に合わない看板だった。地味な漁船を数十年作り続けた末に、会社は本当に太陽を追う船を建造した。社名が船に追いつくまでの話として、アクアスの商業史でよく引かれる逸話である。</p>
+    </article>
+
+    <article class="codex-entry" id="archives">
+      <h2 class="codex-h">記録余話 <span class="en">ARCHIVES</span></h2>
+      <p class="codex-p">同社の潜水艦には、創業期から自社製の高性能ソナーが標準装備されている。後年、とあるゲーム会社の技術者がこのソナーを遊びで改造し、光の点を曲げて球を打ち合う装置を組み上げた。その会社を買収した<a href="hanamuko.html">ハナムコ</a>がこの装置を製品化したものこそ、星系の人々に「電子ゲーム」という言葉を教えた最初のホッケーゲームである。堅実一辺倒の会社の備品が遊びの殿堂の起点になったというこの因縁について、同社は公式には一度もコメントしていない。ただし造船所の休憩室には、今も初代の筐体が一台だけ置かれているという。</p>
+      <p class="codex-p">同社の進水式には祝辞がない。代わりに乗組員となる全員の名を読み上げ、社長が一言だけ添えるのが習わしである。「全員で帰ってきてください。修理は無料です」。</p>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../sector-tips.js"></script>
+</body></html>

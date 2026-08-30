@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LW2 COMBAT DRONES — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#9db4c4;--accent:#c4dcec;--border:rgba(157,180,196,0.32);--border-hi:rgba(196,220,236,0.7);--dim:#26323a;--dim2:#131a1e; }
+    .p-title    { color: #eef6fa; text-shadow: 0 0 50px rgba(157,180,196,0.4); }
+    .p-tagline  { border-color: #9db4c4; color: #9db4c4; }
+    .terminal-hdr { color: #c4dcec; }
+    .terminal-hdr::before { background: #c4dcec; box-shadow: 0 0 8px #c4dcec; }
+    .dk { color: #9db4c4; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-16 / LW2 COMBAT DRONES — LW2主力無人機 ]</div>
+    <div class="header-status"><span class="blink" style="color:#c4dcec;">●</span> ACTIVE — MASS PRODUCTION</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — LW2 COMBAT DRONES — UNMANNED FORCES OF BOTH ARMIES — SURVEY RECORD</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0016 — CLASSIFICATION: GENERAL SURVEY — PRIMARY FOUNDRY: ELADARD</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-16 / ARMORY FILE ]</div>
+        <div class="p-name-jp">LW2主力無人機 (LW2 COMBAT DRONES)</div>
+        <h1 class="p-title">WINGS<br>WITHOUT<br>PILOTS</h1>
+        <div class="p-tagline">兵器総覧 ─ 両軍の無人機戦力</div>
+        <p class="p-short-desc">第2次ライラットウォーズの空を数で埋める無人機たち。共和国の門番から帝国の主力機まで、その多くが同じ星の工廠で生まれている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 16 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">LW2 COMBAT DRONES / 無人機総覧</td></tr><tr><td class="dk">CATEGORY</td><td class="dv">兵器総覧（無人機・戦闘ドロイド）</td></tr><tr><td class="dk">OPERATORS</td><td class="dv">コーネリア共和国<a href="../database/military.html#cdf">CDF</a> / ベノム帝国</td></tr><tr><td class="dk">REPUBLIC LINE</td><td class="dv">チワワ / ハウンド / ピットブル</td></tr><tr><td class="dk">IMPERIAL LINE</td><td class="dv">ドラゴン系 / ガルーダ系 / ベノムファイター / クルード</td></tr><tr><td class="dk">DEFENSE LINE</td><td class="dv">キラービー / トランザム（マクベス直営）</td></tr><tr><td class="dk">MAIN FOUNDRY</td><td class="dv warn">エラダード軌道工廠（公然の秘密）</td></tr><tr><td class="dk">CONTROL</td><td class="dv">ポリヴィアス系管制AI</td></tr><tr><td class="dk">STATUS</td><td class="dv warn">戦時量産中 — 配備数は増加の一途</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">UNMANNED SORTIE RATIO -- 64 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 64%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(157,180,196,0.5);">
+        <img src="" alt="LW2 COMBAT DRONES" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">MASS-PRODUCED — BOTH SIDES</span>
+            <span class="tg-jp">無人機総覧 ── 数で戦況を動かす翼</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">また同じ機影か。何機落としても、明日には同じ顔で還ってくる。<span class="tg-note note">-カタリナ防空隊 戦闘後報告の余白書き込みより-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">英雄の名は歴史に残る。だがその英雄の周りを飛んでいた千の翼に、名前はない<span class="lore-quote-src">― CDF戦術教範「無人機運用」序文より</span></span></p>
+  <p class="lore-p"><a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>は、過去のいかなる戦争にも増して無人機が投入された戦争である。作戦機に占める無人機の割合は開戦以来一貫して増え続けており、いまや両軍のどの戦域を切り取っても、空と宙域の過半は搭乗員のいない機体が飛んでいる。本ファイルは両軍の主力無人機を横断的に記録する総覧である。</p>
+  <p class="lore-p">共和国軍では、長年の慣習であった有人機至上主義がようやく薄まりつつある。エースの技量に依存する伝統的な航空戦思想に代わり、無人機と管制の連携を重視する運用が主流となり始めており、その転換を支えているのが<a href="../database/glossary.html#ai-revolution">ポリヴィアスを頂点とする管制AI群</a>である。対する帝国軍は人材の配分に気を配ることで知られる。都市部の襲撃や拠点の強襲など戦略上の要所には強力な有人機を配備し、哨戒・偵察・力押しに頼る場面はもっぱら多様な無人機と戦闘ドロイドで穴を埋める編成である。</p>
+  <p class="lore-p">そして敵味方を問わず、これら無人機の製造の多くが工業惑星<a href="../database/locations.html#eladard">エラダード</a>で行われていることは、星系の公然の秘密である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">共和国軍 ─ REPUBLIC ARSENAL</h3>
+  <p class="lore-p" id="chihuahua"><strong>無人偵察機「チワワ」</strong>──共和国無人機の代名詞であり、共和国の惑星圏に無数に駐留する門番である。小型・安価・長時間滞空を旨とし、単機の性能よりも「常にそこにいる」ことで敵の接近をあぶり出す。共和国の無人機に犬種の名を与える慣行は、このチワワの制式登録に始まったとされる。番犬に始まった系譜としては、出来すぎた命名である。</p>
+  <p class="lore-p" id="hound"><strong>支援射撃機「ハウンド」</strong>──艦隊戦で援護射撃を担う無人機。艦隊の隊列に紛れて火線を重ね、損害を恐れず前に出ることで有人艦の盾と牙を兼ねる。猟犬の名のとおり、単独ではなく群れで追い立てる運用が基本である。</p>
+  <p class="lore-p" id="pitbull"><strong>移動砲台「ピットブル」</strong>──惑星地上戦で敵機へ対空砲を放つ無人の移動砲台。装甲車両並みの足回りに対空火器を載せた無骨な機体で、撤退戦では最後まで陣地に残り吠え続ける。原型は帝国の陸上戦車<a href="granga.html#destructor">ディストラクター</a>の鹵獲機体であり、その性能をコピー・改良する形で開発された。ハウンドとピットブルはいずれの戦場でも使用されており、前線将兵にとって最も見慣れた「戦友」となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">帝国軍 ─ IMPERIAL ARSENAL</h3>
+  <p class="lore-p" id="dragon"><strong>無人戦闘機「ドラゴン」系</strong>──第2次ライラットウォーズにおける帝国無人機の主力である。惑星圏の空中戦と宇宙空間の戦闘を同一機体でこなし、パーツは規格化された単純なもので容易に量産が可能。なにより低コストで大量に造れるため編隊を組みやすく、数で圧殺する帝国流の力押しに最も適した機体となっている。現行型は改良型の「ドラゴンⅡ」で、設計から製造までを帝国外へ完全に委ねた数少ない系列でもある。</p>
+  <p class="lore-p" id="garuda"><strong>作業機転用系列「ガルーダ」系</strong>──ドラゴン系と並んで設計ごと外注されている無人機系列。輸送・設営用の作業機を武装転用した出自を持ち、資材ごと前線へ突入させる運用も確認されている。占領下のマクベス戦線をはじめ、地上侵攻の後方で最も数を目にする機体である。</p>
+  <p class="lore-p" id="venom-fighter"><strong>主力機「ベノムファイター」</strong>──<span id="crude"></span>帝国が設計を手放さない無人機系列の筆頭。僚機の<strong>「クルード」</strong>とともに艦隊戦との相性が良く、侵攻作戦の斥候から攻撃まで幅広く投入され、あらゆる戦域で目撃されている。設計は帝国内製のまま、製造の一部をエラダードへ委託する折衷の運用が取られている。</p>
+  <p class="lore-p" id="killer-bee"><strong>防衛機「キラービー」／「トランザム」</strong>──<span id="transam"></span>防衛用途を前提とした無人機。この2系列のみは製造をエラダードへ回さず、<a href="../database/locations.html#macbeth">マクベス</a>で直接手がけられている。理由は明快で、通商連合がいつか裏切った際に、その連合製の兵器で応戦する事態を避けるためである。帝国の発注書は、蜜月と警戒が同居する両者の関係を何より雄弁に語っている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">供給網 ─ SUPPLY LINE</h3>
+  <p class="lore-p">帝国の無人機がエラダードへ流れた経緯は、皇帝<a href="../database/characters.html#andorf">アンドルフ</a>の設計嗜好に根ざしている。自ら主力兵器の設計を手がける皇帝の筆は大規模な可変機構や人型機体へと走り、無人機や哨戒機の図面には初めから気乗りしない様子がにじみ出ていた。これを見かねた<a href="../database/characters.html#pigma">ピグマ・デンガー</a>の進言により、現在は小規模無人機のおよそ6割が外注に切り替えられている。</p>
+  <p class="lore-p">一方の共和国も、増え続ける消耗を国内工廠だけでは賄いきれず、無人機の相当数を同じ星に発注している。エラダードの第1衛星では共和国向け、第2衛星では帝国向けの生産ラインが稼働し、両衛星の間で部品が融通されることもあるという。撃ち合う両軍の無人機が部品単位では「兄弟」であるという皮肉は、この戦争の構造そのものである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">チワワの初披露式典は、別の意味で星系の記憶に残っている。デモ操作を買って出た技術防衛省の長官が、誰の目にも明らかなほど端末に触り慣れておらず、起動だけに数分を費やす様子が中継されたのである。映像は星系ネットで大いに炎上し、「無人機は無人で飛ぶ。長官が触らなければだが」という書き込みが今も引用され続けている。</p>
+  <p class="lore-p">チワワとドラゴンについては、基本構造の流用がかねて指摘されている。曰く「上下を逆にして塗装を変えただけ」。両機の設計系譜がどこで交差したのか公式の説明はないが、製造元の顔ぶれを見れば、答えの見当は誰にでもつく。</p>
+  <p class="lore-p">なお、両軍の無人機の残骸から、同じ意匠の小さな花の刻印が見つかることがある。<a href="../planets/eladard.html">エラダード</a>の工廠に潜む匿名の職人「<a href="../database/glossary.html#flower-culture">フラワーマーカー</a>」の仕業である。撃墜した敵機の翼に自機と同じ花を見つけた、というパイロットの述懐は両軍に残されている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

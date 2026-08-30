@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KID COBRA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff5566;--accent:#ffaab4;--border:rgba(255,85,102,0.32);--border-hi:rgba(255,85,102,0.7);--dim:#3a1016;--dim2:#1d080b; }
+    .p-title    { color: #fff0f2; text-shadow: 0 0 50px rgba(255,85,102,0.35); }
+    .p-tagline  { border-color: #ff5566; color: #ff5566; }
+    .terminal-hdr { color: #ffaab4; }
+    .terminal-hdr::before { background: #ffaab4; box-shadow: 0 0 8px #ffaab4; }
+    .dk { color: #ff5566; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-34 / KID COBRA — キッド・コブラ ]</div>
+    <div class="header-status"><span class="blink" style="color:#ffaab4;">●</span> NEUTRAL — CONTRACT KILLER</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — KID COBRA — FREELANCE — EXTREME CAUTION</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0034 — CLEARANCE: OPEN — HITMEN'S ALLEY RANK 1</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-34 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">キッド・コブラ (KID COBRA)</div>
+        <h1 class="p-title">KID COBRA</h1>
+        <div class="p-tagline">DEATH FOR HIRE ── 星系最恐の殺し屋</div>
+        <p class="p-short-desc">左腕の念弾バスターと牙の毒で知られる星系最恐の殺し屋。その正体はコーネリアシティに住む敏腕営業マンである。客を選ばず金額分だけ確実に働くが、無用な殺しを嫌う義理堅い仕事人でもある。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 34 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">KID COBRA / キッド・コブラ（通称 ─ 本名不明）</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../database/races.html#apophisoid">アポフィソイド</a>（全身改造により外見は<a href="../database/races.html#paranodian">パラノディアン</a>近似）</td></tr><tr><td class="dk">AGE</td><td class="dv">不明</td></tr><tr><td class="dk">RESIDENCE</td><td class="dv">表: コーネリアシティ・ダウンタウン ─ 仕事場: <a href="../database/glossary.html#hitmens-alley">殺し屋横丁（K-6686-67）</a></td></tr><tr><td class="dk">COVER</td><td class="dv">貿易会社<a href="../corporations/rai-jing.html">RAI-JINGコーポレーション</a> 営業部</td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">フリーランス</td></tr><tr><td class="dk">PARTNER</td><td class="dv">ローリィ・ポリーナ（<a href="../database/races.html#minor-races">モーフォイド</a>）</td></tr><tr><td class="dk">CRAFT</td><td class="dv">快速船〈トータス号〉</td></tr><tr><td class="dk">SIGNATURE</td><td class="dv">左腕の念弾バスター / 毒牙</td></tr><tr><td class="dk">BODY</td><td class="dv">全身<a href="../database/military.html#cybernetics">サイバネティック</a></td></tr><tr><td class="dk">STATUS</td><td class="dv bad">中立 — 極めて危険</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT LEVEL -- 96 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,85,102,0.55);">
+        <img src="" alt="KID COBRA" class="planet-img-detail planet-img-medium portrait" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">FREELANCE HITMAN</span>
+            <span class="tg-jp">殺し屋横丁 番付首位 ── 左腕に死神を飼う男</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">安心しな、仕事以外じゃ撃たねえ。……で、あんたは仕事かい？<span class="tg-note note">-アルピニアのバーでの目撃証言より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">人物 ─ PROFILE</h3>
+  <p class="lore-p"><span class="lore-quote">奴に狙われたと知った時にできる最善の行動は、遺書の推敲である<span class="lore-quote-src">― CDF諜報部 脅威評価より</span></span></p>
+  <p class="lore-p">キッド・コブラは現在の星系で最も恐れられるフリーランスの殺し屋である。<a href="../database/glossary.html#hitmens-alley">殺し屋横丁（K-6686-67）</a>の番付首位に据えられて以来その座は一度も揺らがず、請けた仕事を落とした記録は一件も存在しない。客が誰であろうと金さえ支払われれば引き受ける流儀であり、<a href="../database/military.html#cdf">CDF</a>諜報部は彼を「所属を持たない単独の軍事力」として勢力図の欄外に記載している。</p>
+  <p class="lore-p">一方でその人物像は、皆が恐れる肩書に反する好人物である。一匹狼ながら義理と友情を重んじ、無用な殺人を嫌う。裏社会では礼儀と契約に忠実な「最後の紳士」と呼ばれ、彼への値切りと裏切りだけは星系のどんな命知らずも試そうとしない。以下に記す経歴と素性は、様々な憶測の中からCDF諜報部が10年の歳月を費やして確定させた情報である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">出自 ─ ORIGINS</h3>
+  <p class="lore-p">彼は幼少期、<a href="../database/factions.html#iga">独立星系連合</a>に属するドロイドの攻撃で両親を殺されている。その直前に<a href="../database/glossary.html#bolz-duchy">ボルツ公国</a>の軍に匿われて難を逃れた彼は、公国の出身でないにもかかわらず「拾い子」として<a href="../database/races.html#holsoid">ホルソイド</a>の伝統に従い育てられたようである。一族に伝わる格闘術を叩き込まれ、より高度な戦士となるべく、金に糸目をつけない献身のもとで手足を機械化した現在の姿へ改造されたと思われる。</p>
+  <p class="lore-p">当時の公国は既に財政が傾きかけていた。それでも拾い子への出費を惜しまなかった放漫ぶりは、官僚のどんぶり勘定と言えばそれまでだが、だらしなさではなくホルソイド系住民の誇りと詩吟の美学が生んだ気前の良さと評すべきものである。その姿勢が一人の孤児を戦禍から救い出し戦う力を与えたのだとすれば、この国は消える前に残した置き土産が、公国の項に数えられる二つよりもう一つ多かったことになる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">表の顔 ─ THE SALESMAN</h3>
+  <p class="lore-p">そして現在の彼は、なんと普段は<a href="../database/glossary.html#city-corneria">コーネリアシティ</a>のダウンタウンに住んでいる。貿易会社<a href="../corporations/rai-jing.html">RAI-JINGコーポレーション</a>の営業マンとして働き、完全に社会へ溶け込んでいるのである。全身の改造により外見はアポフィソイドというより長身のパラノディアンに近い体型となっており、人工皮膚と鱗によるカモフラージュは完璧で、外見から過去の彼を看破することはほぼ不可能と思われる。</p>
+  <p class="lore-p">改造の影響でエネルギー消費が激しく、サイバネティクス装備の効率も悪い。そのため営業の外回り中は喫茶店で充電しながら寛ぎ、美味い昼食の店を検索しては食べ歩いて食レポをメモに残すなど勤務態度は下の下とされる。それでも首にならないのは驚異的な営業成績によるものであり、サボりにサボった男が契約だけは勝ち取ってくる理由は、人当たりの良さと清々しいまでのクールさによる誤魔化しのうまさと推測される。上司は首にしたくてもできないのである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">二つの人生 ─ TWO LIVES</h3>
+  <p class="lore-p">彼の発見を困難にしていたのは外見の変化だけではない。営業マンとしての彼は「仕事人としての記憶を意図的に封印した状態」である。仕事を請ける際は必ず助手のローリィ・ポリーナへ引継ぎ記憶を渡し、仕事が終われば不要な記憶を全て消去して完全な一般人に戻る。そして標的が現れれば記憶をインプットして本来の自分を思い出し、「バカンス休暇」と称して惑星<a href="../database/locations.html#kew">キュー</a>へ向かうのである。</p>
+  <p class="lore-p">実質、一つの身体で二人分の人生を送っているに等しい。仕事の鮮やかさも相まって、CDF諜報部がこの秘密を確定情報として本記録へ記載できるまでに10年の歳月を要した。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">流儀と裏稼業 ─ CREED &amp; TRADE</h3>
+  <p class="lore-p">信条は明快である。「できれば殺さずに済むように投降してほしい」。本人がそう口にしており、信条を曲げねば果たせない仕事と判断すれば、あっさりと諦めるのである。実際CDFの調査が及ぶ範囲では、標的がおとなしく投降した場合や幼い子供だった場合、ポリーナと二人で工夫し時にはコネまで使い、依頼人から再び狙われないよう協力してやっていたことが分かっている。それでも星系最強の殺し屋であり続ける理由は単純で、相手が投降などせず向かってきたことが殆どだったからである。一方で悪党相手や自衛のためなら殺しも辞さない。信条に反する外道を目の当たりにして激怒した時、血も涙もない悪党を前にした時は「地獄が寝ぐら、悪魔が友の本物の殺人蛇」の顔を見せ、一切の容赦をしない。</p>
+  <p class="lore-p">鮮やかな殺し屋稼業の名声に隠れて忘れられがちだが、本来の彼の裏稼業は「コソどろ」である。標的は高嶺の花たる財宝や希少な美術品に限られ、難攻不落の警備を己の才覚と装備のみで潜り抜けて盗み取ることに生き甲斐を見出しているとみられる。現在請けている帝国側からの暗殺依頼にも、この怪盗じみた稼業が一枚噛んでいる可能性が指摘される。<a href="kellone.html">ケローン大提督</a>が「フィチナの山々」と題して飾る絵画を盗もうとして正面から交戦となり、その後紆余曲折あって意気投合し依頼へ漕ぎ着けたと思われる。傍受記録からは、この一件以来ケローンとは芸術の理解者として友人のような間柄になっていると推測される。</p>
+  <p class="lore-p">直近の諜報では、共和国軍の<a href="shears.html">ビリー・シールズ大佐</a>の命を狙って活動しているとの情報が入っている。<span class="redacted">なお本人事データベースを含む機密資料の管理決裁者は、当のシールズ大佐その人である。本記録の標的欄と管理者欄が同一人物を指す異例の事態を受けCIS-HQは大佐の警護等級を引き上げたが、大佐本人は「番付一位に狙われるとは出世したものだ」とだけ述べたと記録されている。</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">身体能力と装備 ─ ARMAMENT</h3>
+  <p class="lore-p">サイボーグとはいえ機械ではなく、あくまで人間の範疇の存在である。それでも握力500kgというゴリラ系人種並みの膂力、100メートル走5秒台の脚力、正拳突きで強化金属の鉄板を打ち抜く破壊力と、超人的な肉体と精神力を併せ持つ。そもそも後付けの手足を完璧に制御して使いこなしている時点で、それ自体が驚異の能力の範疇に入る。もっとも真の実力を見せるまでは相手に叩きのめされていることが多く、彼と正面からぶつかり合って生き残った者は数えるほどしかいないようである。</p>
+  <p class="lore-p">左腕の銃は特殊な改造による「念弾」を放つ銃である。弾倉を必要とせず、強力な精神力を直接撃ち出す武器と考えられている。製作者は不明だが、最初から彼の身体に組み込まれていたわけではなく、過去に<a href="../database/glossary.html#stephano">惑星ステファノー</a>の鉄砲鍛冶が作った謎の多い銃であるらしい。どのような経緯で彼の手に渡ったかは依然不明である。<span class="redacted">CDF技術部はこの銃について、フォルトナに眠るとされる未解明の技術体系との関連を疑う所見を添えている。詳細は上位区分の管轄につき本記録には記載しない。</span></p>
+  <p class="lore-p">アポフィソイド特有の毒牙を戦術へ交えることは<a href="../database/glossary.html#venom-etiquette">毒のエチケット</a>の項に記録されたとおりであり、裏社会では「左腕をかわしても牙が残る」と恐れられている。また無類の葉巻好きとして知られ、どんな時も口から手放さない。ヘビースモーカーであることに加え、葉巻に偽装した時限爆弾や酸素カプセルなど様々な道具を持ち歩いているためでもある。最近はポリーナに指摘されたのか、電子タバコやシガレット菓子になっている場合もあるという。</p>
+  <p class="lore-p">移動と作戦の足は快速船〈トータス号〉である。本人と同じく二つの姿を使い分ける高性能船であり、通常時は異常に頑丈な車にしか見えないが、機密コードを入力することで本来の稼業に使用する高速船へ可変する。助手のポリーナも乗りこなすことが可能であり、実質二人の共用機となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">助手 ─ ROLLY POLLINA</h3>
+  <p class="lore-p">助手のローリィ・ポリーナは元々、依頼人不明の人物保護依頼の対象となっていた子供である。正体には諸説あり、過去にとある勢力が抱えていた戦士の一族の末裔とする説が根強い。だらしないキッドの私生活の面倒を見て、トータス号の運転を任され、何より仕事へ戻るための引継ぎ記憶の管理を一手に任されている。彼女がどれほど信頼されているかが窺えよう。</p>
+  <p class="lore-p">種族はアルマジロ型の希少人種<a href="../database/races.html#minor-races">モーフォイド</a>である。丸くなることでライフル弾すら防ぐその装甲は、助手として連れ歩く実利の一つにもなっているようである。キッドへ好意を抱いているとみられるが、未成年であることに加え特殊な種族であることから、後述の「守備範囲」の完全な圏外なようである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">余話 ─ ARCHIVES</h3>
+  <p class="lore-p">かなりの女好きで手も早い。本記録の筆者が確認できる範囲でも、星系のかなり上位に入るタラシである。ただし相手は概ね20代のグラマーな<a href="../database/races.html#anubisoid">アヌビソイド</a>または<a href="../database/races.html#bastetoid">バステトイド</a>に限られ、未成年や種族的に厳しい相手といった「守備範囲」の外には決して手を付けない。女性には基本的に優しく特に美女に弱いが、敵対者や悪党とあらば例え女性でも容赦しない切り替えの早さを持つ。子供に対しては優しく気のいい一面を見せ、子供の側からもよく好かれている。</p>
+  <p class="lore-p">過去に依頼で<a href="../database/glossary.html#gori-bachov">ゴリ・バチョフ</a>州知事を暗殺対象として対峙したことがある。その崇高な人物像を知ると依頼をその場で放棄し、代わりに腕相撲の勝負を挑んだという逸話が残る。フィチナ最強の腕力と謳われた州知事に惜敗したものの、後年になりゴリ本人は「あれはわざと負けてくれたのさ、彼は男前だからね」と笑いながら語っている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+    (function() {
+      const vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+      }, { once: true });
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

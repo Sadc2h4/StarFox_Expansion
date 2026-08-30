@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SARUMARINE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#aacc33;--accent:#ddee88;--border:rgba(170,204,51,0.32);--border-hi:rgba(170,204,51,0.7);--dim:#2c3a0e;--dim2:#161d07; }
+    .p-title    { color: #f6ffe0; text-shadow: 0 0 50px rgba(170,204,51,0.35); }
+    .p-tagline  { border-color: #aacc33; color: #aacc33; }
+    .terminal-hdr { color: #ddee88; }
+    .terminal-hdr::before { background: #ddee88; box-shadow: 0 0 8px #ddee88; }
+    .dk { color: #aacc33; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/military.html" class="nav-back">◄ ARMORY DB</a>
+    <div class="header-tag">[ WPN-25 / SARUMARINE — サルマリン号 ]</div>
+    <div class="header-status"><span class="blink" style="color:#ddee88;">●</span> HOSTILE — OUTLAW FLEET</div>
+  </header>
+
+  <div class="side-l"><div class="vt">ARMORY FILE — SARUMARINE — ARMED SUBMARINE — ZONESS OUTLAW FLEET</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: WPN-0025 — CLEARANCE: OPEN — SUCCESSOR VESSEL ACTIVE</div></div>
+
+  <main class="planet-main file-layout">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ WPN-25 / ARMORY FILE ]</div>
+        <div class="p-name-jp">サルマリン号 (SARUMARINE)</div>
+        <h1 class="p-title">SARUMARINE</h1>
+        <div class="p-tagline">THE SHAMELESS TRAWLER ── 敵性武装潜水艦 ─ 改造漁船</div>
+        <p class="p-short-desc">ゾネスの毒の海を荒らした武装潜水艦。フィチナの氷下海漁船を無数の改造で万能戦闘艦へ変えた異形の船であり、撃沈された現在も後継艦の活動により記録の更新が続いている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ TECHNICAL SCAN — FILE 25 ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">SARUMARINE / サルマリン号</td></tr><tr><td class="dk">CLASS</td><td class="dv">武装潜水艦（改造漁船・敵性）</td></tr><tr><td class="dk">ORIGIN</td><td class="dv"><a href="../database/locations.html#fichina">フィチナ</a>氷下海の潜水漁船（船齢不明）</td></tr><tr><td class="dk">ARMAMENT</td><td class="dv">大型砲塔 / 魚雷 / 子機艦船（スマートボム仕込み砲弾）</td></tr><tr><td class="dk">EQUIPMENT</td><td class="dv">耐深海圧特殊装甲 / 光学兵装遮蔽バリア / 採掘ドリル / 補給用クレーン</td></tr><tr><td class="dk">CREW</td><td class="dv">船長以下5名（確認数）</td></tr><tr><td class="dk">OPERATOR</td><td class="dv"><a href="../database/locations.html#zoness">ゾネス</a>占拠下の無法者集団</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">轟沈 — 後継艦「イエロー・サルマリン」活動中</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">THREAT RATING -- 72 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 72%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(170,204,51,0.55);">
+        <img src="" alt="SARUMARINE" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">OUTLAW FLEET — ARMED SUBMARINE</span>
+            <span class="tg-jp">敵性武装潜水艦 サルマリン号</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">深く潜りゃあ　軍も税も追ってこねぇ。<br>つまり海の底は俺たちの国ってわけだ！<span class="tg-note note">-傍受された艦内放送より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">概要 ─ OVERVIEW</h3>
+  <p class="lore-p"><span class="lore-quote">「船ってのはなあ、沈まなけりゃ勝ちなんだよ」<span class="lore-quote-src">― 船長の口癖（乗組員の供述より）</span></span></p>
+  <p class="lore-p">サルマリン号（Sarumarine）は、<a href="../database/locations.html#zoness">ゾネス</a>の毒の海を根城とした武装潜水艦である。本来は<a href="../database/locations.html#fichina">フィチナ</a>の氷下海で使われる潜水漁船だったが、度重なる無茶な改造を経て、不格好ながらも様々な機能と兵装を備える「万能戦闘艦」と化していた。<a href="../database/glossary.html#salvager">サルベージ</a>作業はもちろん、潜航による隠密活動から異分子の排除まで幅広い用途で応用力を発揮し、ゾネスを占拠する無法者たちの間でも指折りの武力として名を馳せていたという。</p>
+  <p class="lore-p">初代サルマリン号は既に存在しない。<a href="../database/military.html#starfox">スターフォックス</a>の<a href="../database/glossary.html#zoness-recon">強行偵察</a>との交戦で撃沈され、毒の海に沈んでいる。轟沈した船の記録がなぜ現役の脅威データベースに残っているのか。その理由については、記録余話の項に譲る。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">機構 ─ MECHANISM</h3>
+  <p class="lore-p"><a href="../database/glossary.html#cis-hq">CDF情報戦略本部</a>の調査によれば、船体の装甲にはフィチナの深海圧から船を守る装備に由来する特殊加工が施されており、さらに自前で追加したとみられる光学兵装遮蔽バリアまで搭載されていた。このバリアはレーザーを完全に無効化するという、共和国側の主兵装を明らかに意識した「メタ防御」であり、直接交戦時の異様な粘り強さの正体となっていた。一方で爆雷をはじめとする実体弾攻撃には相応の効果が確認されており、対抗手段が皆無というわけではない。</p>
+  <p class="lore-p">サルベージ船としての本来の機能も強化が続けられ、深海探査もドリルによる海底掘削もお手の物という、ただの戦闘艦とは一味違う文字どおりの万能艦であった。並走する子機の艦船には、着弾と同時に凄まじい爆発を起こす<a href="smart-bomb.html">スマートボム</a>仕込みの砲弾が搭載されており、正面から立ち向かうには、この砲弾を回収あるいは撃ち落とした上で、仕込まれたスマートボムの敵味方識別IDを瞬時に書き換え、そのまま撃ち手へお返しするという高度な戦術が求められたと分析されている。子機や兵装を破壊されても、備え付けの補給用クレーンで即座に引き上げて修理できる継戦能力を誇ったが、裏を返せばこのクレーンこそがサルマリンの急所だったと結論付けられている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">乗組員 ─ CREW</h3>
+  <p class="lore-p">確認できただけで5名の乗組員が搭乗していた。いずれもフィチナの氷下海で漁師をしていた経歴を持つならず者であり、かつて共和国の体制に武装蜂起で抗った<a href="../database/glossary.html#moskma-three-days">「モスクマの三日間」</a>の一派の末裔とみられている。船長はフィチナ出身の<a href="../database/races.html#alphoid">アルフォイド</a>の男で、共和国への融和を拒み続けたサルジーナヤ民の流れを汲み、<a href="../database/factions.html#venom-empire">帝国</a>の勃興に新たな活路を見出してその勢力へ与するに至った。</p>
+  <p class="lore-p">厚かましいことに、船長はフィチナの漁師免許を失効させず律儀に更新し続けており、ゾネスでの稼業が立ち行かなくなればすぐに帰郷して元の漁師へ戻れるよう手配していたようである。「フィチナの漁師は氷床よりも面の皮が厚い」という言い回しを、そのまま人の形にしたような人物と評される。</p>
+  <p class="lore-p">ゾネスを好き放題に乱開発してヘドロの海へ変えたことについては、憧れのリゾートを台無しにしたという最低限の自覚はあったらしい。ただし日和見がちな部下が優柔不断な返答をしかけると、すかさず帝国の優れたエネルギー資源開発を褒めそやして牽制していたことが記録されており、悪事と分かった上で続ける確信犯、すなわちその反共和国精神は筋金入りだったとみられている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">記録余話 ─ ARCHIVES</h3>
+  <p class="lore-p">冒頭の疑問に答えよう。撃沈された船の記録が残り続けているのは、この潜水艦の後継とみられる船「イエロー・サルマリン」が、現在も悪事の限りを尽くしているためである。船長は相変わらず同じ男のようだが、船体は1.3倍に巨大化し、引き連れる部下は7人へ増え、装備は異様なほど高級なものに一新されている。何者かがこの男に出資しているとみられ、<a href="../database/military.html#cdf">CDF</a>は金の出どころを探る調査を継続している。</p>
+  <p class="lore-p">なお撃沈時に回収された会話履歴の顛末と、それを聞いた避難民たちの反応については、<a href="../planets/zoness.html">ゾネス</a>の惑星記録に詳しい。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../file-visual.js"></script>
+  <script src="../redact.js"></script>
+  <script src="../sector-tips.js"></script>
+</body></html>

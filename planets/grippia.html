@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRIPPIA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#77ccb0;--accent:#aaeedd;--border:rgba(119,204,176,0.32);--border-hi:rgba(170,238,221,0.7);--dim:#123a30;--dim2:#091d18; }
+    .p-title    { color: #eafff8; text-shadow: 0 0 50px rgba(119,204,176,0.3); }
+    .p-tagline  { border-color: #77ccb0; color: #77ccb0; }
+    .terminal-hdr { color: #aaeedd; }
+    .terminal-hdr::before { background: #aaeedd; box-shadow: 0 0 8px #aaeedd; }
+    .dk { color: #77ccb0; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../database/locations.html" class="nav-back">◄ LOCATIONS</a>
+    <div class="header-tag">[ 20 / GRIPPIA — グリッピア ]</div>
+    <div class="header-status">● SECTOR-Ϟ — CORPORATE WORLD</div>
+  </header>
+
+  <div class="side-l"><div class="vt">LYLAT SYSTEM — GRIPPIA — CGM CORPORATE PROPERTY — SECTOR-KOPPA — OUTERMOST FRONTIER</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: GRP-0020 — CLASSIFICATION: PRIVATE TERRITORY — ACCESS BY PERMIT</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ 20 / LYLAT SYSTEM — SECTOR-Ϟ ]</div>
+        <div class="p-name-jp">グリッピア (GRIPPIA)</div>
+        <h1 class="p-title">THE PLANET<br>OWNED BY<br>A COMPANY</h1>
+        <div class="p-tagline">企業保有惑星 ─ 星系最外縁の私有地</div>
+        <p class="p-short-desc">ライラット星系最外縁に浮かぶ「一企業が丸ごと保有する惑星」。実業家グリッピー・トード率いるグリッピア・ワークス社が所有し、子会社CGM社が宙域ごと管理する、星系で最も静かな辺境。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PLANETARY SCAN — SECTOR-Ϟ ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">GRIPPIA / グリッピア</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">アウター・リム最外縁</td></tr><tr><td class="dk">LOCATION</td><td class="dv">LYLAT 16th — SectorϞ</td></tr><tr><td class="dk">PLANET TYPE</td><td class="dv">E0型 岩石惑星</td></tr><tr><td class="dk">MOONS</td><td class="dv">3（採掘衛星）</td></tr><tr><td class="dk">PRIMARY STAR</td><td class="dv">ライラット・プライム（最外縁軌道）</td></tr><tr><td class="dk">AVG TEMP</td><td class="dv warn">-120°C ～ -40°C</td></tr><tr><td class="dk">DAY / YEAR</td><td class="dv">147.6H（約6日）/ 33,672D（約92年）</td></tr><tr><td class="dk">FACTION</td><td class="dv">グリッピア・ワークス社（管理: 子会社CGM社）</td></tr><tr><td class="dk">CAPITAL</td><td class="dv">社宅都市 グリッピア・ワークス</td></tr><tr><td class="dk">RESIDENT RACES</td><td class="dv">社員のみ（審査制）</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">ENVIRONMENT INDEX -- 24 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 24%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(119,204,176,0.6);">
+        <img src="../resource/LA_image/LS_P_16.png" alt="Grippia" class="planet-img-detail planet-img-small" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">Outermost Rim — CORPORATE WORLD</span>
+            <span class="tg-jp">グリッピア・ワークス社私有惑星 ── 入星許可制</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">あーきこえっか？　ワシが　グリッピー・ザ・大社長だあョ<br>チミのお仕事はぁ　そのプロテカムで　基地を守ることだあよョ<span class="tg-note note">-新人研修 グリッピー社長からの教育講習より抜粋-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「良い金属は静かな場所で育んだあョ。だからー ワシは星系の端っこを買ったのネン」<span class="lore-quote-src">― グリッピア・ワークス社 グリッピー・トード会長、株主総会での発言より</span></span></p>
+  <p class="lore-p">グリッピア（Grippia）は、<a href="../database/sectors.html#koppa">セクターϞ</a>に位置するライラット星系第16惑星。星系最外縁の「真の辺境」に属する極寒の岩石惑星である。この星の特異性はその所有形態にある。惑星は<a href="../database/races.html#heketoid">ヘケトイド</a>の実業家<a href="../database/characters.html#grippy">グリッピー・トード</a>が創業した<a href="../corporations/grippia-works.html">グリッピア・ワークス社</a>の私有地であり、星の名も彼にちなむ。そして採掘・精錬・宙域管理の実務は、同社の採掘部門子会社<a href="../database/glossary.html#mining-guild">コーネリア特殊金属株式会社（CGM社）</a>が一手に担っているのである。</p>
+  <p class="lore-p">「一企業が一惑星と一宙域を私有する」という前例のない形態は<a href="../database/factions.html#cornerian-republic">共和国</a>議会でもたびたび議題に上っているが、CGM社製特殊合金と希少元素<a href="../database/glossary.html#nividium">ニヴィディウム</a>の供給網への依存を背景に現状は黙認が続いている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GENESIS ─ 形成史</h3>
+  <p class="lore-p">星系最外縁に岩石惑星が座っているという事実そのものが、グリッピアをめぐる最大の謎である。主星から遠く隔たった低温領域では惑星の材料に大量の氷が含まれるのが通例であり、本来この位置に生まれるべきは氷とガスを厚くまとった星である。ところがグリッピアは氷をほとんど持たない、乾いた岩と金属の塊として観測される。惑星科学の主流な解釈は、この星が現在の場所で生まれたのではなく、はるか内側で形成された後に外へ弾き飛ばされたとするものである。</p>
+  <p class="lore-p">弾き飛ばされる以前のグリッピアが何であったかについては、さらに踏み込んだ説が唱えられている。この星の組成は、惑星の核を構成する物質の比率にきわめて近い。星系形成期の激しい衝突の渦中で、十分に分化を終えた原始惑星が砕かれ、その核に近い部分だけが塊として残った。それがグリッピアの正体であるとする見方である。外殻を剥ぎ取られた<a href="../database/locations.html#eladard">エラダード</a>が「マントルを失った星」であるとすれば、グリッピアは「核だけになった星」にあたる。星系でも稀な高純度の重金属鉱脈が地殻の浅い位置を走っている理由は、この出自から無理なく説明される。</p>
+  <p class="lore-p">外縁へ放り出された後のグリッピアは、急速に冷えていった。内部の熱は早々に尽き、地質活動は完全に停止している。この星では火山も地震も観測されず、地殻はおよそ数十億年にわたって同じ形を保ち続けてきたとみられる。147.6標準時間という異様に遅い自転もまた、散乱を受けた際に角運動量の大半を失った結果と解析されている。同時に捕らえられた3つの衛星はいずれも同じ破砕に由来する破片である可能性が高く、それらが現在まとめて採掘衛星として稼働している状況は、かつてひとつの天体であったものを改めて掘り返しているに等しい。</p>
+  <p class="lore-p">グリッピー・トードがこの星を買い取った判断は、当時こそ無謀と嘲られたものの、材料工学の見地からはむしろ的確であった。地質活動の絶えた星には、精錬を乱す微細な振動が存在しない。極低温は結晶の成長を穏やかに保ち、希薄な大気は不純物の混入を防ぐ。星系でも例外的な純度の合金がこの辺境からのみ産出される背景には、鉱脈の質のみならず「動かない星」という環境そのものがある。良い金属は静かな場所で育つという創業者の弁は、少なくとも惑星科学の裏付けを得ている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">主星<a href="../database/locations.html#lylat-prime">ライラット・プライム</a>の光もここまで届けば弱々しく、地表は常に薄明の中にある。平均気温は氷点下100度を下回り、大気は希薄。しかしこの「静かで冷たい」環境こそが、超高純度特殊金属の精錬に理想的なのだという。地殻にはニヴィディウムを含む星系でも稀な重金属鉱脈が走り、3つの衛星も採掘場として稼働している。</p>
+  <p class="lore-p">居住区は完全密閉型の企業都市「グリッピア・ワークス」のみ。工場、社宅、社立学校、社営墓地──生活の全てが社有施設で完結する。都市の中心には創業以来灯り続ける精錬炉「第一炉」があり、社員たちはこれを町の心臓と呼ぶ。</p>
+  <p class="lore-p">自転周期は147.6標準時間、およそ6日をかけて一度回る。公転周期にいたっては33,672日、約92年に及び、社員の大半は在職中に一度も現地の「新年」を迎えることがない。もっとも企業都市の生活は完全に<a href="../database/glossary.html#standard-time">標準時</a>で運用されており、6日周期の昼夜が業務に影響することはない。窓を持たない工区で働く者にとって、外が昼であるか夜であるかは掲示板の表示でしか分からないためである。社員の間では在職期間を「何回の日の出を見たか」で数える言い回しが定着しており、1800回を数えればおおよそ勤続30年にあたる。退職者へ贈られる記念品にその数字が刻まれるのは、この星ならではの習わしである。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">グリッピアの発見は比較的新しく、当初は「遠すぎて採算の合わない鉱脈」として放置されていた。これを惑星ごと買い取るという前代未聞の手段で獲得したのが、コーネリア出身の実業家<a href="../database/characters.html#grippy">グリッピー・トード</a>──<a href="../corporations/space-dynamics.html">スペースダイナミクス社</a>お抱えエンジニア、ベルツィーノ・トードの弟である。幼少期から金属加工に異常なまでの熱意と執着を注いできた彼は、私財を投じてこの星を手に入れ、グリッピア・ワークス社を設立。採掘と精錬の実務部門として子会社<a href="../corporations/grippia-works.html">CGM社（コーネリア特殊金属株式会社）</a>を興した。周囲は無謀と嘲ったが、CGM製特殊合金はやがて艦艇装甲の標準素材となり、「星系の果ての賭け」は星系有数の優良資産へと化けた。</p>
+  <p class="lore-p">この星の経営を盤石にしている要因は、特殊合金だけではない。グリッピアから産出する鉱石には、かつて<a href="../database/locations.html#papetoon">パペトゥーン</a>で掘り尽くされたあの希少元素<a href="../database/glossary.html#nividium">ニヴィディウム</a>が大量に含まれていたのである。星系の精密機械を支えるこの元素は、今日流通量の9割がグリッピア産によって占められている。わずか十数年で枯れた鉱床のために星系全土が戦争へ傾いた歴史を思えば、その供給を一企業が握っているという事実の重みは計り知れない。「核だけになった星」という出自が、二度目の熱狂の舞台を最外縁に用意したことになる。</p>
+  <p class="lore-p">当然ながら、あらゆる方面から声がかかる。採掘許可の申請、共同事業の打診、政府を経由した働きかけ、果ては犯罪組織からの脅迫まで、届く問い合わせの種類に不足はない。しかし社はそのことごとくを突っぱね続けてきた。理由は会長自身が明快に語っている。「ワシ、勝ち馬に乗ることしか考えない輩はぁー キライなのネン」</p>
+  <p class="lore-p"><a href="../database/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>の勃発は、この静かな企業惑星の価値を一変させた。CGM合金は今や戦略物資であり、共和国・<a href="../database/factions.html#venom-empire">帝国</a>双方がこの星の生産能力に熱い視線を注いでいる。CGM社は「弊社は金属を売る会社であり、戦争を売る会社ではない」との声明を貫いているが、その中立がいつまで許されるかは誰にも分からない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">住民は全員がCGM社の社員とその家族であり、入星には採用審査か招聘状が必要となる。人種構成は不問採用の社風を反映して多彩で、鉱山技術に長けた<a href="../database/races.html#zetoid">ゼートイド</a>、計算業務を担う<a href="../database/races.html#kyusoid">キューソイド</a>の比率が高い。差別を禁じる就業規則は星系のどの法律よりも厳格に運用されているという。</p>
+  <p class="lore-p">「国ではなく会社」という統治は独特の文化を生んでいる。選挙はないが人事評価があり、税金はないが査定がある。息苦しさを指摘する声もあるが、辺境で職と安全と暖房が保証される生活を、住民の多くは悪くない取引と考えている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">防衛はCGM社の<a href="../database/glossary.html#corporate-fleet">企業警備艦隊</a>と、地上を巡回する自動警備ロボット群が担う。艦隊の装備は当然ながら自社製最高級合金の艦体を持ち、「中小国の正規軍より硬い」と評される。なお警備ロボットの設計・保守は、グリッピー会長が可愛がる甥の若きエンジニア──<a href="../database/characters.html#slippy">スリッピー・トード</a>との個人契約によるものである（あくまで個人事業主としての契約であり、彼の所属する<a href="../database/military.html#starfox">傭兵部隊</a>とは無関係、というのが同社の公式見解である）。</p>
+  <p class="lore-p">実際に強硬手段へ出る無法者も後を絶たないものの、その末路は宙域に漂う残骸が雄弁に語っている。自動警備ロボット群の装甲は星系最高の硬度を誇り、標準兵装ですら小国の艦隊を上回る火力を備える。正面から押し通ろうとして引き返せた者は、ほとんど記録に残っていない。</p>
+  <p class="lore-p">では隠密に忍び込む者や、警備ロボットを掌握できる腕利きのハッカーが現れた場合はどうなるか。その答えが、鉱床そのものに仕掛けられた罠である。<a href="../database/characters.html#slippy">スリッピー・トード</a>の手がける万能汎用監視カメラ<a href="../database/military.html#protecam">「プロテカム」</a>がそれにあたる。監視カメラという品目名はあくまで特許の説明欄に記された名目にすぎず、その実態は超高性能迎撃兵器（カメラ付き）と呼ぶのが正確である。</p>
+  <p class="lore-p">プロテカムは一基あたりの性能が突出しているわけではない。複数機を角度を違えて配置し、互いの死角を守らせる運用によって初めて真価を発揮する設計であり、その分だけ操作する側には高度な技術が要求される。鉱床の防衛はこの星で最も基礎的な業務であり、新人研修は例外なくこの内容を通過する。会長自ら講習に登場し「チミのお仕事はぁ　そのプロテカムで　基地を守ることだあよョ」と語りかけるのが、入社初日の恒例となっている。</p>
+  <p class="lore-p">星系最外縁という位置は侵攻の優先度を下げており、開戦以来この宙域で本格的な戦闘は発生していない。ただし共和国軍情報部は、帝国がCGM社への接触を試みた形跡を複数確認している。この星が帝国側に付けば艦艇装甲の供給網が根本から崩れるため、<a href="../database/military.html#cdf">CDF</a>はグリッピアを「戦火から最も遠く、戦略から最も近い星」と位置付けて注視を続けている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">グリッピア・ワークスの社立学校では、卒業生に小さな合金板が贈られる。板には「どこで働いてもいい。だが、どこにいても良い仕事をしろ」という創業者の言葉が刻まれており、星系各地のCGM出身技術者は今もこの板を工具箱に忍ばせているという。</p>
+  <p class="lore-p">警備ロボット群の設計を甥に任せている件について、<a href="../database/characters.html#grippy">グリッピー会長</a>は株主から幾度となく説明を求められてきた。会長の答えはいつも変わらない。-「あの子は壊すのが上手だあョ、壊し方を知っとる者が一番硬いものを作るのネン。」　実際、<a href="../database/characters.html#slippy">スリッピー・トード</a>の納めた警備ロボットは他社製品の倍近い耐久試験値を記録しており、総会での追及は毎回この数字の前で立ち消えになる。</p>
+  <p class="lore-p">もっとも、納品のたびに現地試験へ立ち会う叔父と甥の様子は、社内で一種の名物と化している。試験場に並んだ二人はまず仕様の議論を始め、やがて設計そのものの作り直しを言い出し、予定の3倍の時間をかけて誰も発注していない改良型を完成させる。第一炉の管理主任はこれを「トード家の病気」と呼ぶ。付き合わされる整備班は毎度疲れ果てるものの、立ち会いを辞退した者は今のところ一人もいない。出来上がる機械が、いつも文句なしに良いからである。</p>
+  <p class="lore-p">この星の鉱床が陥落寸前まで追い込まれた事件が、過去に一度だけ存在する。攻め手は<a href="../database/characters.html#pigma">ピグマ・デンガー</a>であった。グリッピアへのアクセス経路を知り尽くした土地勘、天才メカニックとしてのハッキング技術、そして自ら仕上げた凶悪な襲撃メカ<a href="../database/military.html#devil-joker">「デビル・ジョーカー」</a>。この三つが揃った襲撃は、迎え撃つスリッピー一行を降参の一歩手前まで追い詰めている。</p>
+  <p class="lore-p">遠隔操作ロボットを挟んだ両者の激闘は3日間に及んだ。<a href="../database/military.html#protecam">プロテカム</a>と襲撃メカの撃ち合いに始まり、やがて互いのロボットの操作権限を奪い合う泥仕合へ移り、サイバー戦のあらゆる要素が詰め込まれた戦いであったと語り継がれている。決着はスリッピーの辛勝であった。ピグマがうっかりデビル・ジョーカーの自爆ボタンを押してしまったためである。</p>
+  <p class="lore-p">後の調査により、この自爆ボタンはピグマ自身の設計によるものではなく、<a href="../database/characters.html#andorf">アンドルフ</a>が悪戯で組み込んだ仕様であったと判明している。事実を知らされたピグマはショックのあまり気を失い、以来この星へ二度と現れていない。</p>
+  <p class="lore-p">なお、この攻防の一部始終は社員の一人によって撮影され、動画として公開された。再生数は数億回に達し、星系の記録を塗り替える空前絶後の反響を呼んでいる。これをきっかけに、コーネリアではプロテカムを競技用へ転用したスポーツの需要が生まれることになるのだが、それはまた別の話である。</p>
+  <p class="lore-p">最外縁の空が澄んだ夜、グリッピアからは<a href="../database/locations.html#dogma-central">ドグマ・セントラル</a>の暗黒星雲がかすかに観測できる。数年前から話題の<a href="../database/glossary.html#contact-signal">コンタクト信号</a>について、社の観測部門が独自に受信記録を保有しているという噂があるが、同社は「業務に関係のない観測データについては回答しない」との姿勢を崩していない。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+<script src="../lore-tabs.js"></script>
+</body></html>

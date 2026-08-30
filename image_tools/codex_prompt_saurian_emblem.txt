@@ -1,0 +1,17 @@
+Generate one image with image_gen.
+
+Subject: a faction emblem for a sci-fi military database. The faction is the "Saurian Alliance", a tribal alliance of intelligent dinosaur tribes living deep in a jungle planet. The emblem must look like it was painted by the tribes themselves: a rough, hand-painted mural / petroglyph / cave-painting style, NOT a clean geometric pictogram.
+
+Design:
+- The core motif is a large letter "S", drawn as a single bold primitive brush stroke, like pigment painted on a rock wall with a finger or a crude brush. Uneven stroke width, slightly wobbly edges, small paint gaps and splatters are welcome.
+- Around or integrated with the "S", add a few primitive tribal accents in the same style: e.g. small claw marks, a simple spear or fern-leaf mark, small dots arranged like a ritual pattern. Keep the accents modest so the "S" clearly dominates.
+- Overall silhouette should read as a roughly circular emblem, centered, filling about 85% of the square canvas.
+
+Color and texture (very important, follow the two attached reference emblems):
+- SINGLE flat color only: a deep jungle leaf green (around #2E7D46). No gradients, no secondary colors, no outlines in other colors.
+- The entire green fill must carry the same fine horizontal scanline noise as the attached reference emblems: thin darker horizontal lines across the fill, with slightly ragged left/right stroke edges caused by the scanlines. This texture is what unifies all faction emblems.
+- The first reference shows the standard clean pictogram style with the scanline texture (do NOT copy its shapes, only the texture treatment). The second reference shows a rougher, distressed treatment (closer to the desired hand-made feel).
+
+Background: pure flat magenta #FF00FF over the whole background, for chroma keying. The emblem itself must contain no magenta.
+No text besides the "S" letterform itself, no watermark, no border, no UI elements.
+Square image.
