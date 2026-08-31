@@ -1619,3 +1619,92 @@ button.sf-card {
 /* 隣接セレクタの chapter 余白(+34px)が隠れた兄弟にも反応するため、
    タブ表示中は各セクションの余白を固定値へ置き換える */
 .planet-lore.tabs-active .lore-section { margin-top: 0; margin-bottom: 30px; }
+
+
+/* ================================================================
+   MOBILE LAYOUT (phones / narrow windows)
+   - Header: keep one line (back button + ellipsized title).
+   - Side strips: hidden to reclaim width.
+   - Planet pages (.planet-main without .file-layout): the fixed
+     420px/1fr two-column grid collapses into ONE scrolling column
+     (hero -> data terminal -> visual -> lore), mirroring the
+     file-layout behaviour so the article is actually readable.
+   - Codex pages: reclaim the 22px side margins.
+   Nothing here touches desktop rendering (min-width guard).
+   ================================================================ */
+@media (max-width: 760px) {
+
+  /* -- shared chrome -- */
+  .side-l, .side-r { display: none; }
+
+  .hud-header { padding: 0 10px; gap: 10px; }
+  .header-status { display: none; }
+  .header-tag {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+  .nav-back {
+    flex: 0 0 auto;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 5px 8px;
+    white-space: nowrap;
+  }
+
+  /* -- main containers reclaim the side-strip margins -- */
+  .planet-main { left: 0; right: 0; }
+  .codex-main  { left: 0; right: 0; padding: 22px 14px 60px; }
+
+  /* -- planet detail pages: single scrolling column -- */
+  .planet-main:not(.file-layout) {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 18px 14px 60px;
+  }
+  .planet-main:not(.file-layout)::-webkit-scrollbar { width: 4px; }
+  .planet-main:not(.file-layout)::-webkit-scrollbar-thumb { background: var(--dim); }
+
+  /* unwrap the two columns: children become flex items in DOM order
+     (hero -> terminal -> visual [-> toggle] -> lore) */
+  .planet-main:not(.file-layout) .col-l,
+  .planet-main:not(.file-layout) .col-r { display: contents; }
+
+  .planet-main:not(.file-layout) .planet-hero { flex: 0 0 auto; }
+
+  /* spec table: no inner scrolling, show every row */
+  .planet-main:not(.file-layout) .data-terminal {
+    flex: 0 0 auto;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .planet-main:not(.file-layout) .planet-visual {
+    flex: 0 0 auto;
+    height: 36vh;
+    margin-bottom: 0;
+  }
+  .planet-main:not(.file-layout) .planet-visual.scene-wide { height: 30vh; }
+  .planet-main:not(.file-layout) .planet-visual.has-toggle.collapsed { height: 0; }
+
+  /* lore: no inner scrolling, flows with the page */
+  .planet-main:not(.file-layout) .planet-lore {
+    flex: 0 0 auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  /* lore tab bar can wrap to two rows */
+  .lore-tabbar { flex-wrap: wrap; }
+  .lore-tab { flex: 1 1 40%; }
+}
