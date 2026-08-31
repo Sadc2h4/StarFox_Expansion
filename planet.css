@@ -1,0 +1,1720 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@700&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+/* Custom description font (resource/CustomFont) */
+@font-face {
+  font-family: 'NitalagoRuika';
+  src: url('resource/CustomFont/NitalagoRuika-06.TTF') format('truetype');
+  font-display: swap;
+}
+
+/* ================================================================
+   LYLAT SYSTEM EXPLORER — Shared Stylesheet
+   ================================================================ */
+
+:root {
+  --bg:          #060e0c;
+  --bg2:         #0c1814;
+  --primary:     #00d4b4;
+  --accent:      #00ffee;
+  --dim:         #1a4a40;
+  --dim2:        #0d2a25;
+  --text:        #7ecdc4;
+  --text-bright: #cdf0ec;
+  --danger:      #ff4b3e;
+  --warn:        #ff8c40;
+  --good:        #44ff88;
+  --border:      rgba(0, 212, 180, 0.35);
+  --border-hi:   rgba(0, 255, 238, 0.7);
+  --panel:       rgba(0, 40, 35, 0.6);
+  --panel-hi:    rgba(0, 60, 55, 0.8);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ── Stars ── */
+#stars {
+  position: fixed; top: 0; left: 0;
+  width: 1px; height: 1px;
+  z-index: 0; pointer-events: none;
+}
+
+.bg-nebula {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background:
+    radial-gradient(ellipse 60% 60% at 25% 55%, rgba(0,25,45,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 80% 15%, rgba(0,15,40,0.35) 0%, transparent 55%),
+    var(--bg);
+  z-index: 1; pointer-events: none;
+}
+
+/* NOTE: .bg-space class on pages is intentionally inert —
+   the space photo is applied only inside .planet-visual (see below). */
+
+/* Scanlines */
+.scanlines {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    to bottom, transparent 0, transparent 3px,
+    rgba(0,0,0,0.10) 3px, rgba(0,0,0,0.10) 4px
+  );
+  z-index: 2; pointer-events: none;
+}
+
+/* ── HUD Frame (corners) ── */
+.hud-frame {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 30; pointer-events: none;
+}
+.hud-frame .c { position: absolute; width: 28px; height: 28px; }
+.hud-frame .tl { top: 8px;    left: 8px;    border-top: 2px solid var(--primary); border-left: 2px solid var(--primary); }
+.hud-frame .tr { top: 8px;    right: 8px;   border-top: 2px solid var(--primary); border-right: 2px solid var(--primary); }
+.hud-frame .bl { bottom: 8px; left: 8px;    border-bottom: 2px solid var(--primary); border-left: 2px solid var(--primary); }
+.hud-frame .br { bottom: 8px; right: 8px;   border-bottom: 2px solid var(--primary); border-right: 2px solid var(--primary); }
+
+/* ── Header ── */
+.hud-header {
+  position: fixed; top: 0; left: 0; width: 100%; height: 44px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(6,14,12,0.95);
+  z-index: 25;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+}
+
+.nav-back {
+  color: var(--primary); text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px; letter-spacing: 0.2em;
+  padding: 5px 12px; border: 1px solid var(--border);
+  background-color: rgba(4,17,14,0.5);
+  background-image:
+    linear-gradient(var(--primary) 0 0), linear-gradient(var(--primary) 0 0),
+    linear-gradient(var(--primary) 0 0), linear-gradient(var(--primary) 0 0),
+    linear-gradient(var(--primary) 0 0), linear-gradient(var(--primary) 0 0),
+    linear-gradient(var(--primary) 0 0), linear-gradient(var(--primary) 0 0);
+  background-repeat: no-repeat;
+  background-position: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%;
+  background-size: 8px 2px, 2px 8px, 8px 2px, 2px 8px, 8px 2px, 2px 8px, 8px 2px, 2px 8px;
+  transition: all 0.2s;
+}
+.nav-back:hover {
+  color: var(--accent); border-color: var(--border-hi);
+  background-color: rgba(0,255,238,0.08);
+  box-shadow: 0 0 12px rgba(0,255,238,0.2);
+}
+
+.header-tag { color: var(--accent); font-size: 13px; letter-spacing: 0.25em; }
+.header-status { color: var(--text); font-size: 10px; letter-spacing: 0.15em; }
+
+/* ── Side Strips ── */
+.side-l, .side-r {
+  position: fixed; top: 44px; bottom: 0; width: 22px;
+  z-index: 20; display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.side-l { left: 0; border-right: 1px solid var(--border); }
+.side-r { right: 0; border-left: 1px solid var(--border); }
+.vt {
+  writing-mode: vertical-rl; text-orientation: mixed;
+  font-size: 8px; letter-spacing: 0.12em; color: var(--dim); opacity: 0.7;
+}
+
+/* ── Animations ── */
+.blink { animation: blink 1.4s step-end infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  40%     { transform: translateY(-9px); }
+  70%     { transform: translateY(-5px); }
+}
+
+@keyframes map-bob {
+  0%,100% { transform: translateY(0px); }
+  50%     { transform: translateY(-10px); }
+}
+
+@keyframes float-large {
+  0%,100% { transform: translateY(0px) rotate(0deg); }
+  40%     { transform: translateY(-12px) rotate(0.4deg); }
+  70%     { transform: translateY(-6px) rotate(-0.2deg); }
+}
+
+@keyframes glow-pulse {
+  0%,100% { opacity: 0.55; }
+  50%     { opacity: 1; }
+}
+
+@keyframes ring-pulse {
+  0%   { transform: translate(-50%,-50%) scale(0.5); opacity: 0.8; }
+  100% { transform: translate(-50%,-50%) scale(2.8); opacity: 0; }
+}
+
+@keyframes comm-noise-in {
+  0%   { opacity: 0; transform: translateX(-14px) skewX(-12deg); filter: blur(5px) brightness(1.8); clip-path: inset(0 82% 0 0); }
+  12%  { opacity: 1; transform: translateX(9px) skewX(10deg);  filter: blur(1px) brightness(2.4); clip-path: inset(0 0 68% 0); }
+  23%  { opacity: 0.35; transform: translateX(-7px) skewX(-8deg); filter: blur(3px) brightness(1.5); clip-path: inset(58% 0 0 0); }
+  35%  { opacity: 1; transform: translateX(5px) skewX(6deg);   filter: blur(0) brightness(2.1); clip-path: inset(0 0 0 42%); }
+  48%  { opacity: 0.65; transform: translateX(-3px) skewX(-4deg); filter: blur(2px) brightness(1.7); clip-path: inset(24% 0 38% 0); }
+  62%  { opacity: 1; transform: translateX(2px) skewX(2deg);   filter: blur(0) brightness(1.35); clip-path: inset(0); }
+  76%  { opacity: 0.82; transform: translateX(-1px); filter: brightness(1.8); }
+  100% { opacity: 1; transform: translateX(0) skewX(0); filter: none; clip-path: inset(0); }
+}
+
+@keyframes comm-window-in {
+  0%   { opacity: 0; transform: translateY(12px) scale(0.92); filter: blur(6px) brightness(2.2); clip-path: inset(0 100% 0 0); }
+  16%  { opacity: 1; transform: translateY(-4px) scale(1.02); filter: blur(1px) brightness(2.8); clip-path: inset(0 0 72% 0); }
+  31%  { opacity: 0.45; transform: translateX(-8px) scale(0.98); filter: blur(3px) brightness(1.7); clip-path: inset(46% 0 0 0); }
+  48%  { opacity: 1; transform: translateX(5px) scale(1); filter: blur(0) brightness(2.1); clip-path: inset(0 0 0 38%); }
+  66%  { opacity: 0.72; transform: translateX(-2px); filter: brightness(1.6); clip-path: inset(18% 0 30% 0); }
+  100% { opacity: 1; transform: translate(0) scale(1); filter: none; clip-path: inset(0); }
+}
+
+
+/* ================================================================
+   PLANET DETAIL PAGE LAYOUT
+   ================================================================ */
+
+.planet-main {
+  position: fixed;
+  top: 44px; bottom: 0; left: 22px; right: 22px;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* Left column */
+.col-l {
+  display: flex; flex-direction: column; gap: 14px;
+  padding: 22px 18px 16px 16px;
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* Right column */
+.col-r {
+  display: flex; flex-direction: column;
+  padding: 18px 18px 16px 20px;
+  overflow: hidden;
+}
+
+/* ── Planet Hero Text ── */
+.planet-hero { flex: 0 0 auto; }
+
+.p-index  { font-size: 10px; letter-spacing: 0.4em; color: var(--primary); margin-bottom: 6px; }
+.p-name-jp { font-size: 13px; letter-spacing: 0.3em; color: var(--text); margin-bottom: 4px; }
+.p-title {
+  font-family: 'Orbitron', 'Arial Black', Impact, sans-serif;
+  font-size: clamp(30px, 3.5vw, 58px);
+  font-weight: 900; color: #ffffff; line-height: 1.05;
+  letter-spacing: 0.03em;
+  text-shadow: 0 0 40px rgba(0,212,180,0.25);
+  margin-bottom: 12px;
+}
+.p-tagline {
+  font-size: 11px; letter-spacing: 0.25em; color: var(--primary);
+  border-left: 3px solid var(--primary); padding-left: 10px;
+  margin-bottom: 8px;
+}
+.p-short-desc {
+  font-family: 'NitalagoRuika', 'Share Tech Mono', 'Yu Gothic UI', 'Meiryo', monospace;
+  font-size: 13px; line-height: 1.75; color: var(--text);
+  border-left: 1px solid var(--dim); padding-left: 10px;
+  margin-bottom: 4px;
+}
+
+/* ── Data Terminal ── */
+.data-terminal {
+  flex: 0 1 auto;
+  min-height: 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.data-terminal::-webkit-scrollbar { width: 3px; }
+.data-terminal::-webkit-scrollbar-thumb { background: var(--dim); }
+.terminal-hdr {
+  background: rgba(0,212,180,0.12);
+  border-bottom: 1px solid var(--border);
+  padding: 6px 12px;
+  font-size: 9px; letter-spacing: 0.25em; color: var(--accent);
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+}
+.terminal-hdr::before {
+  content: ''; display: inline-block;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+.dt { width: 100%; border-collapse: collapse; }
+.dt td {
+  padding: 4px 12px; border-bottom: 1px solid rgba(0,212,180,0.07);
+  vertical-align: top; font-size: 10px;
+}
+.dt tr:last-child td { border-bottom: none; }
+.dk {
+  color: var(--primary); letter-spacing: 0.12em;
+  text-transform: uppercase; width: 42%; white-space: nowrap;
+  font-size: 9px;
+}
+.dv { color: var(--text-bright); }
+.dv.bad  { color: var(--danger); }
+.dv.warn { color: var(--warn); }
+.dv.ok   { color: var(--good); }
+
+/* Infobox group divider rows (key cell filled, value cell empty) */
+.dt tr:has(td.dv:empty) td {
+  border-bottom: 1px solid var(--border);
+  padding-top: 9px; padding-bottom: 3px;
+}
+.dt tr:has(td.dv:empty) td.dk {
+  color: var(--accent); letter-spacing: 0.22em; font-size: 9.5px;
+}
+
+/* ── Env Index Bar ── */
+.env-bar-wrap {
+  padding: 4px 12px 8px;
+  border-top: 1px solid rgba(0,212,180,0.07);
+}
+.env-bar-label { font-size: 8px; letter-spacing: 0.2em; color: var(--primary); margin-bottom: 4px; text-transform: uppercase; }
+.env-bar-track { width: 100%; height: 4px; background: var(--dim2); border-radius: 2px; overflow: hidden; }
+.env-bar-fill  { height: 100%; border-radius: 2px; background: linear-gradient(to right, var(--danger), var(--warn), var(--good)); }
+
+
+/* ================================================================
+   PLANET VISUAL AREA (detail pages)
+   Combines LA_P_buck.png background + transparent planet PNG
+   ================================================================ */
+
+.planet-visual {
+  position: relative;
+  flex: 0 0 auto;
+  container-type: inline-size; /* lets .comm-window scale with this panel */
+  height: 48vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+/* space photo background layer (visual area only) */
+.planet-visual::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url('resource/space_gb.jpg') center / cover no-repeat;
+  opacity: 0.9;
+  z-index: 0;
+}
+
+/* --- Planet image size variants --- */
+.planet-img-detail {
+  position: relative;
+  z-index: 2;
+  object-fit: contain;
+  /* individual size set via .planet-img-large/medium/small */
+}
+
+.planet-img-xlarge {
+  /* ringed worlds (Titania / Prospero): larger canvas so the sphere reads big */
+  width:  min(540px, 92cqw);
+  animation: float-large 8s ease-in-out infinite;
+}
+.planet-img-large  {
+  width:  min(400px, 52vw);
+  animation: float-large 7s ease-in-out infinite;
+}
+.planet-img-medium-plus {
+  width:  min(300px, 40cqw);
+  animation: float 7s ease-in-out infinite;
+}
+.planet-img-medium {
+  width:  min(260px, 34vw);
+  animation: float 7s ease-in-out infinite;
+}
+.planet-img-small  {
+  width:  min(170px, 22vw);
+  animation: float 7s ease-in-out infinite;
+}
+.planet-img-xhuge {
+  /* gas giant (Setebos): taller than the panel, top/bottom intentionally clipped */
+  height: 56vh;
+  width: auto;
+  max-width: 96cqw;
+  animation: float 9s ease-in-out infinite;
+}
+
+/* Planet glow (set per-page via --p-glow variable) */
+.planet-img-detail {
+  filter: drop-shadow(0 0 28px var(--p-glow, rgba(0,212,180,0.5)));
+}
+
+/* ── Hover taglines (top-right / bottom-left) ── */
+/* Hidden initially, shown on first mouseenter via JS (.shown class) */
+.planet-hover-tagline {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s;
+  pointer-events: none;
+  z-index: 10;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.planet-visual:hover .planet-hover-tagline,
+.planet-hover-tagline.shown {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tagline-tr {
+  top: 10px; right: 10px;
+  text-align: right;
+}
+
+.tagline-bl {
+  bottom: 10px; left: 10px;
+  max-width: 74%;
+}
+
+.tg-inner {
+  display: inline-block;
+  background: rgba(4, 10, 10, 0.88);
+  border: 1px solid var(--border-hi);
+  padding: 5px 10px;
+  line-height: 1.55;
+}
+
+/* Corner accent lines on tg-inner */
+.tg-inner::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, var(--border-hi), transparent);
+  margin-bottom: 4px;
+}
+
+.tg-en {
+  display: block;
+  font-size: 9px; letter-spacing: 0.25em;
+  color: var(--accent); text-transform: uppercase;
+}
+.tg-jp {
+  display: block;
+  font-size: 10.5px; color: var(--text-bright);
+  line-height: 1.6;
+}
+
+.tagline-bl .tg-inner {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.tagline-bl .tg-inner::before,
+.tagline-bl .tg-inner::after {
+  display: none;
+}
+
+.tagline-bl .tg-jp {
+  font-family: 'M PLUS 1p', 'Yu Gothic UI', 'Meiryo', sans-serif;
+  font-size: clamp(21px, 2.18vw, 36px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.28;
+  color: #b7fff7;
+  text-shadow:
+    0 2px 0 rgba(0,0,0,0.95),
+    0 0 14px rgba(0,0,0,0.95),
+    0 0 18px rgba(0,255,238,0.45),
+    0 0 32px rgba(0,212,180,0.28);
+}
+
+.planet-visual:hover .tagline-bl .tg-jp,
+.tagline-bl.shown .tg-jp {
+  animation: comm-noise-in 0.74s steps(2, end) both;
+}
+
+.tagline-bl .tg-note {
+  display: block;
+  margin-top: 6px;
+  font-family: 'Share Tech Mono', 'Yu Gothic UI', 'Meiryo', monospace;
+  font-size: clamp(10px, 0.72vw, 13px);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  color: rgba(210,255,250,0.88);
+}
+
+.comm-window {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  right: auto;
+  bottom: auto;
+  z-index: 12;
+  width: clamp(150px, 24vw, 380px);      /* fallback */
+  /* scales with .planet-visual width, but never taller than the panel allows */
+  width: clamp(96px, min(34cqw, 46vh), 380px);
+  max-height: min(62%, 340px);           /* 62% of the 48vh visual panel */
+  display: none;
+  background:
+    linear-gradient(135deg, rgba(0,255,238,0.18), transparent 42%),
+    rgba(4, 12, 12, 0.9);
+  border: 1px solid var(--border-hi);
+  box-shadow:
+    0 0 0 1px rgba(0,255,238,0.08) inset,
+    0 0 22px rgba(0,255,238,0.18),
+    0 14px 34px rgba(0,0,0,0.52);
+  padding: 20px 8px 8px;
+  pointer-events: auto;
+  cursor: move;
+}
+
+.comm-window.pos-br,
+.comm-window.pos-bl,
+.comm-window.pos-tr,
+.comm-window.pos-tl {
+  left: 16px;
+  top: 16px;
+  right: auto;
+  bottom: auto;
+  transform: none;
+}
+
+.comm-window.shown {
+  display: block;
+  animation: comm-window-in 0.72s steps(2, end) both;
+}
+
+.comm-window.switching img.active {
+  animation: comm-noise-in 0.62s steps(2, end) both;
+}
+
+.comm-window::before {
+  content: 'COMMS VISUAL';
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  color: var(--accent);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+}
+
+.comm-window::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(0,255,238,0.08) 3px, rgba(0,255,238,0.08) 4px);
+  pointer-events: none;
+}
+
+.comm-close {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(0,255,238,0.45);
+  background: rgba(0,0,0,0.42);
+  color: var(--accent);
+  font-size: 13px;
+  line-height: 15px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.comm-close:hover {
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(0,255,238,0.3);
+}
+
+.comm-window img {
+  display: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(29.8vh - 30px); /* keep in sync: 62% of .planet-visual height (48vh) minus padding */
+  margin: 0 auto;
+  object-fit: contain;
+  filter: saturate(1.08) contrast(1.06);
+}
+
+.comm-window img.active,
+.comm-window:not(.comm-ready) img:first-of-type {
+  display: block;
+}
+
+/* ── Responsive shrink for low-res displays / small windows ──
+   The mini window scales down faster than the panel so it stops
+   colliding with the hover taglines. */
+@media (max-width: 1600px), (max-height: 900px) {
+  .comm-window {
+    width: clamp(90px, min(28cqw, 40vh), 300px);
+    max-height: min(54%, 280px);
+  }
+  .comm-window img { max-height: calc(25.9vh - 28px); } /* 54% of 48vh */
+}
+
+@media (max-width: 1280px), (max-height: 740px) {
+  .comm-window {
+    width: clamp(82px, min(24cqw, 34vh), 240px);
+    max-height: min(46%, 210px);
+    padding: 16px 6px 6px;
+  }
+  .comm-window img { max-height: calc(22vh - 22px); } /* 46% of 48vh */
+  .comm-window::before { font-size: 7px; letter-spacing: 0.14em; }
+  .comm-close { width: 15px; height: 15px; font-size: 11px; line-height: 12px; }
+  /* the big bottom-left copy also gets tighter so the two stop overlapping */
+  .tagline-bl .tg-jp { font-size: clamp(15px, 2.18vw, 36px); }
+}
+
+/* ── Lore Section ── */
+.planet-lore {
+  flex: 1 1 auto; overflow-y: auto; padding-right: 6px;
+}
+.planet-lore::-webkit-scrollbar { width: 3px; }
+.planet-lore::-webkit-scrollbar-thumb { background: var(--dim); }
+
+.lore-section { margin-bottom: 18px; }
+/* extra breathing room before each chapter divider (readability for long articles) */
+.lore-section + .lore-section { margin-top: 34px; }
+/* file-layout (personnel files) uses boxed sections — keep original spacing */
+.file-layout .lore-section + .lore-section { margin-top: 0; }
+.lore-h {
+  font-size: 10px; letter-spacing: 0.3em; color: var(--primary);
+  text-transform: uppercase; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.lore-h::before { content: '▌'; }
+/* section divider: thin rule ending in a slanted accent slab + tick slashes
+   (design ref: resource/セクションバー_L.png — colors follow each page theme) */
+.lore-h::after {
+  content: '';
+  flex: 1;
+  height: 10px;
+  background:
+    /* thin rule: brightens toward the ornament and connects into the slab */
+    linear-gradient(to right, var(--border), var(--accent)) left center / calc(100% - 76px) 1px no-repeat,
+    /* main slab: slanted bar with margins wide enough for full diagonal cuts */
+    linear-gradient(115deg, transparent 0 8px, var(--accent) 8px calc(100% - 8px), transparent calc(100% - 8px) 100%) right 35px center / 56px 10px no-repeat,
+    /* tick slashes: drawn individually so every cut stays diagonal */
+    linear-gradient(115deg, transparent 0 4px, var(--accent) 4px 9px, transparent 9px 100%) right 22px center / 14px 10px no-repeat,
+    linear-gradient(115deg, transparent 0 4px, var(--accent) 4px 9px, transparent 9px 100%) right 11px center / 14px 10px no-repeat,
+    linear-gradient(115deg, transparent 0 4px, var(--accent) 4px 9px, transparent 9px 100%) right 0 center / 14px 10px no-repeat;
+}
+
+.lore-p {
+  font-family: 'NitalagoRuika', 'Share Tech Mono', 'Yu Gothic UI', 'Meiryo', monospace;
+  font-size: 14.5px; line-height: 1.9; color: var(--text);
+  text-align: justify;
+  /* faint horizontal "transmission noise" lines cut through the glyphs */
+  -webkit-mask-image: repeating-linear-gradient(0deg, #000 0px, #000 3px, rgba(0,0,0,0.78) 3px, rgba(0,0,0,0.78) 4px);
+  mask-image: repeating-linear-gradient(0deg, #000 0px, #000 3px, rgba(0,0,0,0.78) 3px, rgba(0,0,0,0.78) 4px);
+}
+.lore-p + .lore-p { margin-top: 10px; }
+
+/* ── Redacted / classified text ──
+   <span class="redacted">hidden text</span> renders as a black censor bar.
+   Clicking toggles .revealed (handled by redact.js). */
+.redacted {
+  position: relative;
+  cursor: pointer;
+  color: transparent;
+  background:
+    repeating-linear-gradient(135deg, rgba(255,75,62,0.16) 0 6px, transparent 6px 12px),
+    #05080a;
+  border: 1px solid rgba(255,75,62,0.35);
+  border-radius: 1px;
+  padding: 0 4px;
+  margin: 0 1px;
+  user-select: none;
+  text-shadow: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+/* floating「検閲済み」label — created and positioned by redact.js.
+   (a CSS ::before can't be kept centered on the censor bar once the
+   inline span wraps across multiple lines) */
+.redact-tag {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color: rgba(255,120,110,0.85);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 3;
+}
+.redacted:hover {
+  border-color: var(--danger);
+  box-shadow: 0 0 10px rgba(255,75,62,0.25);
+}
+/* links inside a censored span must stay hidden until revealed
+   (anchor color rules would otherwise override the transparent text) */
+.redacted:not(.revealed) a,
+.redacted:not(.revealed) a:hover {
+  color: transparent;
+  border-bottom-color: transparent;
+  text-shadow: none;
+}
+.redacted.revealed {
+  color: #ffd7d2;
+  background: rgba(255,75,62,0.10);
+  border-color: rgba(255,75,62,0.55);
+  user-select: text;
+  cursor: pointer;
+  white-space: normal;
+  /* inline-safe reveal: opacity only — transform/clip-path breaks
+     multi-line inline fragments and collapses them to one line */
+  animation: redact-reveal 0.45s steps(3, end);
+}
+@keyframes redact-reveal {
+  0%   { opacity: 0.15; }
+  40%  { opacity: 0.9; }
+  60%  { opacity: 0.35; }
+  100% { opacity: 1; }
+}
+
+/* classified section label */
+.badge-classified {
+  color: var(--danger); border-color: var(--danger);
+  background: rgba(255,75,62,0.12);
+  letter-spacing: 0.25em;
+}
+
+/* Badges */
+.badge {
+  display: inline-block; font-size: 9px; letter-spacing: 0.15em;
+  padding: 2px 8px; border: 1px solid;
+  text-transform: uppercase; vertical-align: middle;
+}
+.badge-danger { color: var(--danger); border-color: var(--danger); background: rgba(255,75,62,0.1); }
+.badge-warn   { color: var(--warn);   border-color: var(--warn);   background: rgba(255,140,64,0.1); }
+.badge-ok     { color: var(--good);   border-color: var(--good);   background: rgba(68,255,136,0.1); }
+
+/* ── In-text cross-reference links (Wikipedia style) ── */
+.lore-p a, .dv a, .codex-p a, .codex-sub a, .codex-h a, .lore-link {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(0,255,238,0.55);
+  transition: color 0.18s, border-color 0.18s, text-shadow 0.18s;
+}
+.lore-p a:hover, .dv a:hover, .codex-p a:hover, .codex-sub a:hover, .codex-h a:hover, .lore-link:hover {
+  color: #ffffff;
+  border-bottom: 1px solid var(--accent);
+  text-shadow: 0 0 10px rgba(0,255,238,0.55);
+}
+
+/* ================================================================
+   CODEX / DATABASE ARTICLE PAGES (database/*.html)
+   Single scrolling column that reuses the planet page look.
+   ================================================================ */
+
+.codex-main {
+  position: fixed;
+  top: 44px; bottom: 0; left: 22px; right: 22px;
+  overflow-y: auto;
+  z-index: 5;
+  padding: 26px clamp(16px, 6vw, 90px) 60px;
+}
+.codex-main::-webkit-scrollbar { width: 4px; }
+.codex-main::-webkit-scrollbar-thumb { background: var(--dim); }
+
+.codex-hero { margin-bottom: 26px; }
+.codex-title {
+  font-family: 'Orbitron', 'Arial Black', Impact, sans-serif;
+  font-size: clamp(26px, 3vw, 44px);
+  font-weight: 900; color: #fff; letter-spacing: 0.05em;
+  text-shadow: 0 0 40px rgba(0,212,180,0.3);
+  margin: 4px 0 10px;
+}
+
+/* Entry card: one article per term */
+.codex-entry {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  padding: 14px 18px 16px;
+  margin-bottom: 18px;
+  scroll-margin-top: 16px; /* anchor jump offset */
+}
+.codex-entry:target {
+  border-color: var(--border-hi);
+  box-shadow: 0 0 18px rgba(0,255,238,0.18);
+}
+.codex-h {
+  font-size: 15px; letter-spacing: 0.18em; color: var(--text-bright);
+  margin-bottom: 2px;
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+}
+.codex-h::before { content: '▌'; color: var(--primary); }
+.codex-h .en { font-size: 10px; letter-spacing: 0.3em; color: var(--primary); text-transform: uppercase; }
+.codex-sub {
+  font-size: 9.5px; letter-spacing: 0.2em; color: var(--primary);
+  margin-bottom: 10px; text-transform: uppercase;
+}
+.codex-p {
+  font-family: 'NitalagoRuika', 'Share Tech Mono', 'Yu Gothic UI', 'Meiryo', monospace;
+  font-size: 14px; line-height: 1.85; color: var(--text);
+  text-align: justify;
+  -webkit-mask-image: repeating-linear-gradient(0deg, #000 0px, #000 3px, rgba(0,0,0,0.78) 3px, rgba(0,0,0,0.78) 4px);
+  mask-image: repeating-linear-gradient(0deg, #000 0px, #000 3px, rgba(0,0,0,0.78) 3px, rgba(0,0,0,0.78) 4px);
+}
+.codex-p + .codex-p { margin-top: 8px; }
+
+/* ── Boxed sub-entries: 1項目=1枠の下位リスト表示 ──
+   9大ワープ航路・共和国の州・星系の山々・サウリアの部族など、
+   一つの記事/セクション内に複数の解説対象が並ぶ場合に使用する。
+   codex ページ（.codex-p）と lore ページ（.lore-p）の双方で使える。 */
+.sub-entry {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  background: rgba(255,255,255,0.025);
+  padding: 10px 14px 12px;
+  margin-top: 12px;
+  scroll-margin-top: 16px; /* anchor jump offset */
+}
+.sub-entry:target {
+  border-color: var(--border-hi);
+  box-shadow: 0 0 14px rgba(0,255,238,0.14);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.sub-entry-h {
+  font-size: 13.5px; letter-spacing: 0.12em; color: var(--text-bright);
+  display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap;
+  padding-bottom: 6px; margin-bottom: 8px;
+  border-bottom: 1px dashed var(--border);
+}
+.sub-entry-h .num { font-size: 11px; color: var(--accent); letter-spacing: 0.1em; }
+.sub-entry-h .en  { font-size: 9px; letter-spacing: 0.28em; color: var(--primary); text-transform: uppercase; }
+.sub-entry .codex-p + .codex-p,
+.sub-entry .lore-p + .lore-p { margin-top: 8px; }
+
+/* ── Location / character list cards (image on the right) ── */
+.codex-entry.loc { display: flex; gap: 18px; align-items: stretch; }
+.loc-body { flex: 1 1 auto; min-width: 0; }
+.loc-thumb {
+  flex: 0 0 auto;
+  width: clamp(96px, 12vw, 150px);
+  align-self: center;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--border);
+  background: radial-gradient(circle at 50% 45%, rgba(0,60,55,0.5) 0%, rgba(2,10,9,0.95) 75%);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.loc-thumb img {
+  width: 86%; height: 86%;
+  object-fit: contain;
+  image-rendering: auto;
+  filter: drop-shadow(0 0 12px rgba(0,212,180,0.35));
+}
+.loc-thumb img.pixel { image-rendering: pixelated; width: 86%; height: auto; }
+.loc-thumb .noimg {
+  font-size: 8px; letter-spacing: 0.25em; color: var(--dim);
+  text-align: center; line-height: 1.8;
+}
+/* type tag chip */
+.loc-tag {
+  display: inline-block;
+  font-size: 9px; letter-spacing: 0.25em;
+  border: 1px solid var(--border-hi);
+  color: var(--accent);
+  padding: 1px 8px; margin-right: 6px;
+  vertical-align: middle; text-transform: uppercase;
+}
+.loc-tag.t-planet { color: #7dffb0; border-color: rgba(125,255,176,0.6); }
+.loc-tag.t-star   { color: #ffcc66; border-color: rgba(255,204,102,0.6); }
+.loc-tag.t-sector { color: #76c8ff; border-color: rgba(118,200,255,0.6); }
+.loc-tag.t-culture { color: #f2a6ff; border-color: rgba(242,166,255,0.6); }
+.loc-tag.t-region { color: #ff9a76; border-color: rgba(255,154,118,0.6); }
+.loc-tag.t-misc   { color: #b9a8ff; border-color: rgba(185,168,255,0.6); }
+.loc-tag.t-history { color: #ffd166; border-color: rgba(255,209,102,0.6); }
+.loc-tag.t-weapon  { color: #ff7a7a; border-color: rgba(255,122,122,0.6); }
+.loc-tag.t-org     { color: #8fd0ff; border-color: rgba(143,208,255,0.6); }
+.loc-tag.t-tech    { color: #5ef2d6; border-color: rgba(94,242,214,0.6); }
+.loc-tag.t-craft   { color: #ff7a7a; border-color: rgba(255,122,122,0.6); }
+.loc-tag.t-vessel  { color: #ffe066; border-color: rgba(255,224,102,0.6); }
+.loc-tag.t-facility { color: #c9a0ff; border-color: rgba(201,160,255,0.6); }
+/* filter buttons */
+.loc-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.loc-filter button {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 5px 16px; cursor: pointer;
+  background-color: rgba(4,17,14,0.5);
+  background-image:
+    linear-gradient(var(--primary) 0 0), linear-gradient(var(--primary) 0 0),
+    linear-gradient(var(--primary) 0 0), linear-gradient(var(--primary) 0 0),
+    linear-gradient(var(--primary) 0 0), linear-gradient(var(--primary) 0 0),
+    linear-gradient(var(--primary) 0 0), linear-gradient(var(--primary) 0 0);
+  background-repeat: no-repeat;
+  background-position: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%;
+  background-size: 7px 2px, 2px 7px, 7px 2px, 2px 7px, 7px 2px, 2px 7px, 7px 2px, 2px 7px;
+  transition: all 0.18s;
+}
+.loc-filter button:hover { color: var(--accent); border-color: var(--border-hi); background-color: rgba(0,255,238,0.06); }
+.loc-filter button.active {
+  color: #041210; background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 12px rgba(0,212,180,0.4);
+}
+
+/* ── "open record" transition buttons on codex list cards ──
+   <a class="rec-btn" href="...">▶ 詳細記録を開く</a> */
+a.rec-btn {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 9px 20px;
+  border: 1px solid var(--border);
+  background-color: rgba(4,17,14,0.7);
+  background-image:
+    linear-gradient(var(--primary) 0 0), linear-gradient(var(--primary) 0 0),
+    linear-gradient(var(--primary) 0 0), linear-gradient(var(--primary) 0 0),
+    linear-gradient(var(--primary) 0 0), linear-gradient(var(--primary) 0 0),
+    linear-gradient(var(--primary) 0 0), linear-gradient(var(--primary) 0 0);
+  background-repeat: no-repeat;
+  background-position: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%;
+  background-size: 9px 2px, 2px 9px, 9px 2px, 2px 9px, 9px 2px, 2px 9px, 9px 2px, 2px 9px;
+  color: var(--accent);
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  text-transform: none;
+  transition: background 0.18s, box-shadow 0.18s, color 0.18s;
+}
+a.rec-btn + a.rec-btn { margin-left: 10px; }
+a.rec-btn:hover {
+  background-color: rgba(0,255,238,0.14);
+  color: #ffffff;
+  border-color: var(--border-hi);
+  box-shadow: 0 0 14px rgba(0,255,238,0.28);
+  text-shadow: none;
+}
+
+/* Small index nav at the top of a codex page */
+.codex-index {
+  display: flex; flex-wrap: wrap; gap: 6px 10px;
+  border: 1px dashed var(--border);
+  padding: 10px 14px; margin-bottom: 22px;
+  font-size: 10.5px; letter-spacing: 0.1em;
+}
+.codex-index a {
+  color: var(--accent); text-decoration: none;
+  border-bottom: 1px dotted rgba(0,255,238,0.4);
+}
+.codex-index a:hover { color: #fff; border-bottom-style: solid; }
+
+/* Lore opening quote (Wookieepedia-style epigraph) */
+.lore-quote {
+  display: block; font-style: italic; color: var(--accent);
+  padding: 2px 0 2px 12px; border-left: 2px solid var(--border-hi);
+  margin-bottom: 4px;
+}
+.lore-quote-src {
+  display: block; margin-top: 4px; font-size: 11px; font-style: normal;
+  letter-spacing: 0.08em; color: var(--primary); opacity: 0.85; text-align: right;
+}
+
+
+/* ================================================================
+   FILE LAYOUT (characters / weapons detail pages)
+   Corporate-file style (cf. database/space-dynamics.html):
+   full-width hero → data terminal + visual side by side →
+   full-width lore sections.
+   Uses the same building blocks as the planet layout so that
+   editor.html keeps reading/writing these pages unchanged —
+   activated by <main class="planet-main file-layout">.
+   ================================================================ */
+
+.planet-main.file-layout {
+  display: grid;
+  grid-template-columns: minmax(340px, 5fr) minmax(320px, 6fr);
+  grid-template-areas:
+    "hero     hero"
+    "terminal visual"
+    "lore     lore";
+  grid-auto-rows: max-content; /* rows size to their tallest item (spec table or visual) */
+  gap: 20px 26px;
+  align-content: start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 26px clamp(16px, 5vw, 80px) 60px;
+}
+.planet-main.file-layout::-webkit-scrollbar { width: 4px; }
+.planet-main.file-layout::-webkit-scrollbar-thumb { background: var(--dim); }
+
+/* unwrap the two planet-page columns: their children become grid items */
+.file-layout .col-l,
+.file-layout .col-r { display: contents; }
+
+/* ── hero: full width, codex style ── */
+.file-layout .planet-hero { grid-area: hero; }
+.file-layout .p-index { margin-bottom: 10px; }
+.file-layout .p-title {
+  font-size: clamp(26px, 3.2vw, 46px);
+  margin-bottom: 10px;
+}
+.file-layout .p-tagline { margin-bottom: 12px; }
+.file-layout .p-short-desc {
+  border-left: none; padding-left: 0;
+  font-size: 14px; line-height: 1.9;
+  max-width: 76em;
+}
+
+/* ── dossier row: data terminal (left) + visual (right) ── */
+.file-layout .data-terminal {
+  grid-area: terminal;
+  align-self: start; /* end at the table, don't stretch to the visual */
+  /* grow with the table: the base rule's min-height:0 lets the grid row collapse to the
+     visual's height and long spec tables spill into the lore. max-content forces the row
+     to honour the table's full height. */
+  height: auto;
+  min-height: max-content;
+  max-height: none;
+  overflow: visible;
+}
+.file-layout .dt td { font-size: 11px; padding: 6px 14px; }
+.file-layout .dk { font-size: 10px; }
+
+.file-layout .planet-visual {
+  grid-area: visual;
+  align-self: stretch;
+  height: auto;
+  min-height: clamp(280px, 38vh, 440px);
+  margin-bottom: 0;
+  padding: 26px 22px 40px; /* bottom room for the slide dots */
+}
+/* the comm popup is folded into the slide gallery on file pages */
+.file-layout .comm-window { display: none !important; }
+
+/* slide gallery (built by file-visual.js) */
+.file-layout .visual-slide:not(.active) { display: none !important; }
+.file-layout .visual-slide.from-comm {
+  position: relative; z-index: 2;
+  width: auto; max-width: 88%; max-height: 34vh;
+  object-fit: contain;
+  filter: saturate(1.08) contrast(1.06);
+}
+.visual-dots {
+  position: absolute;
+  left: 0; right: 0; bottom: 12px;
+  display: flex; justify-content: center; gap: 10px;
+  z-index: 6;
+}
+.visual-dots button {
+  width: 10px; height: 10px;
+  padding: 0; border-radius: 50%;
+  border: 1px solid var(--border-hi);
+  background: rgba(255,255,255,0.14);
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s;
+}
+.visual-dots button:hover { background: rgba(255,255,255,0.4); }
+.visual-dots button.active {
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
+}
+.visual-noimg {
+  position: relative; z-index: 2;
+  border: 1px dashed var(--border);
+  color: var(--primary);
+  font-size: 10px; letter-spacing: 0.3em; text-align: center;
+  line-height: 1.9;
+  padding: 26px 34px;
+  text-transform: uppercase;
+}
+
+/* keep the big hover copy inside the smaller panel */
+.file-layout .tagline-bl .tg-jp { font-size: clamp(13px, 1.5vw, 22px); }
+
+/* ── lore: full width, boxed like codex entries ── */
+.file-layout .planet-lore {
+  grid-area: lore;
+  overflow: visible;
+  padding-right: 0;
+}
+.file-layout .lore-section {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  padding: 14px 18px 16px;
+  margin-bottom: 18px;
+}
+.file-layout .lore-h { font-size: 12.5px; letter-spacing: 0.24em; }
+
+@media (max-width: 900px) {
+  .planet-main.file-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas: "hero" "terminal" "visual" "lore";
+  }
+}
+
+
+/* ================================================================
+   INDEX / STAR MAP PAGE
+   ================================================================ */
+
+/* Full-screen map background */
+.map-bg-img {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+  object-fit: cover; object-position: center;
+}
+
+/* Map field (below header, above footer) */
+.map-field {
+  position: fixed;
+  top: 44px; bottom: 32px;
+  left: 22px; right: 22px;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 5;
+}
+
+/* Wrapper maintains Map_Buckground2 aspect ratio 1607:805 */
+.map-wrapper {
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 1607 / 805;
+  max-width: 100%;
+  max-height: 100%;
+  width: min(100%, calc((100vh - 76px) * (1607 / 805)));
+  overflow: hidden; /* clips asteroid arms that pass off the left edge */
+}
+
+/* Background image fills the wrapper */
+.map-bg-layer {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+/* ── Map Planet Button ── */
+.map-planet {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center;
+  cursor: pointer; z-index: 20;
+  text-decoration: none;
+}
+
+.map-planet-img {
+  width: calc(var(--ps, 72px) * 0.84);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px var(--pg, rgba(0,212,180,0.5)));
+  transition: filter 0.2s, transform 0.18s;
+  animation: var(--map-anim, map-float) var(--pa, 7s) var(--map-timing, ease-in-out) infinite;
+}
+
+.map-planet:hover .map-planet-img {
+  filter: drop-shadow(0 0 22px var(--pg)) brightness(1.25);
+  transform: scale(1.15) translateY(-4px);
+}
+
+/* Planet name label */
+.map-planet-label {
+  margin-top: 5px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(7px, 0.84cqw, 10px); letter-spacing: 0.15em;
+  color: rgba(130, 255, 238, 0.98);
+  text-align: center; white-space: nowrap;
+  text-shadow:
+    0 0 2px rgba(0,0,0,0.95),
+    0 0 8px rgba(0,212,180,0.85),
+    0 0 18px rgba(0,212,180,0.45);
+  transition: color 0.2s;
+  line-height: 1.4;
+}
+.map-planet-label .lbl-en {
+  display: block; font-size: clamp(6px, 0.76cqw, 9px); color: rgba(235,255,252,0.95); opacity: 0.92;
+}
+
+.map-planet:hover .map-planet-label { color: var(--accent); }
+
+/* Tooltip (appears on hover) */
+.map-planet-tip {
+  position: absolute;
+  bottom: calc(100% + 6px); left: 50%;
+  transform: translateX(-50%);
+  background: rgba(4,10,10,0.96);
+  border: 1px solid var(--border-hi);
+  padding: 6px 12px; white-space: nowrap;
+  pointer-events: none; opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 50; text-align: center;
+}
+.map-planet:hover .map-planet-tip { opacity: 1; }
+.tip-name { display: block; font-size: 12px; color: #fff; margin-bottom: 2px; }
+.tip-sub  { display: block; font-size: 9px; color: var(--primary); letter-spacing: 0.18em; }
+
+/* Non-linked indicator (no page) */
+.map-indicator {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center;
+  cursor: default; z-index: 19;
+}
+.ind-dot {
+  width: clamp(6px, 0.82cqw, 10px); height: clamp(6px, 0.82cqw, 10px); border-radius: 50%;
+  background: var(--ic, var(--dim));
+  box-shadow:
+    0 0 3px rgba(255,255,255,0.8),
+    0 0 10px var(--ic, var(--dim)),
+    0 0 18px var(--ic, var(--dim));
+  position: relative;
+}
+.ind-ring {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(14px, 1.9cqw, 22px); height: clamp(14px, 1.9cqw, 22px); border-radius: 50%;
+  border: 1px solid rgba(235,255,252,0.72);
+  box-shadow: 0 0 10px var(--ic, var(--dim));
+  animation: ring-pulse 2.5s ease-out infinite; opacity: 0.45;
+}
+.map-indicator:hover .ind-ring { opacity: 0.9; }
+.ind-label {
+  margin-top: 4px; font-size: clamp(7px, 0.78cqw, 10px); letter-spacing: 0.12em;
+  color: rgba(235,255,252,0.92); white-space: nowrap;
+  text-shadow:
+    0 0 2px rgba(0,0,0,0.95),
+    0 0 8px var(--ic, rgba(0,212,180,0.75)),
+    0 0 18px rgba(0,212,180,0.38);
+}
+.map-indicator:hover .ind-label { color: #fff; }
+
+/* Map title overlay */
+.map-title-overlay {
+  position: absolute; top: 14px; left: 50%;
+  transform: translateX(-50%);
+  text-align: center; pointer-events: none; z-index: 25;
+}
+.mto-sub  { font-size: clamp(7px, 0.84cqw, 10px); letter-spacing: 0.35em; color: var(--primary); margin-bottom: 4px; }
+.mto-main {
+  font-family: 'Orbitron', sans-serif; font-size: clamp(14px, 2.2cqw, 26px);
+  font-weight: 700; color: #fff; letter-spacing: 0.15em;
+  text-shadow: 0 0 30px rgba(0,212,180,0.5);
+}
+
+/* Footer status bar */
+.map-footer {
+  position: fixed; bottom: 0; left: 0; width: 100%; height: 32px;
+  border-top: 1px solid var(--border);
+  background: rgba(6,14,12,0.92);
+  z-index: 25;
+  display: flex; align-items: center;
+  padding: 0 28px; gap: 24px;
+  font-size: 9px; letter-spacing: 0.15em; color: var(--dim);
+}
+.ft-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--primary); box-shadow: 0 0 6px var(--primary);
+  display: inline-block; margin-right: 6px;
+}
+.ft-item { display: flex; align-items: center; }
+
+/* ================================================================
+   GREAT WALL ASTEROID BELT
+   Oversized orbital ring. The center sits off to the right, so the
+   clipped map only shows the left edge of a much larger circular path.
+   ================================================================ */
+
+.gw-belt {
+  position: absolute;
+  inset: -8% 0 -8% 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 8;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.gw-orbit-ring {
+  --gw-radius: 52cqw;
+  --gw-speed: 190s;
+  --gw-direction: normal;
+  position: absolute;
+  left: -34%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  animation: gw-ring-orbit 190s linear infinite;
+}
+
+.gw-orbit-ring.gw-orient-upright {
+  animation: none;
+}
+
+.gw-seg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: auto;
+  display: block;
+  opacity: 0.9;
+  filter:
+    drop-shadow(0 0 5px rgba(210,190,145,0.5))
+    drop-shadow(0 0 14px rgba(80,150,170,0.25));
+  transform:
+    rotate(var(--a))
+    translateX(calc(var(--gw-radius) + var(--j, 0cqw)))
+    translate(-50%, -50%)
+    scale(var(--s, 1));
+  transform-origin: 0 0;
+}
+
+.gw-orbit-ring.gw-orient-upright .gw-seg {
+  animation-name: gw-seg-orbit-upright;
+  animation-duration: var(--gw-speed);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: var(--gw-direction);
+}
+
+.gw-seg-a { width: var(--gw-seg-a-size, 4.7cqw); }
+.gw-seg-b,
+.gw-seg-c { width: var(--gw-seg-b-size, 6.5cqw); }
+
+@keyframes gw-ring-orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@keyframes gw-seg-orbit-upright {
+  from {
+    transform:
+      rotate(var(--a))
+      translateX(calc(var(--gw-radius) + var(--j, 0cqw)))
+      rotate(calc(-1 * var(--a)))
+      translate(-50%, -50%)
+      scale(var(--s, 1));
+  }
+  to {
+    transform:
+      rotate(calc(var(--a) - 360deg))
+      translateX(calc(var(--gw-radius) + var(--j, 0cqw)))
+      rotate(calc(-1 * (var(--a) - 360deg)))
+      translate(-50%, -50%)
+      scale(var(--s, 1));
+  }
+}
+
+@keyframes map-float {
+  0%,100% { transform: translateY(0px); }
+  40%     { transform: translateY(-4px); }
+  70%     { transform: translateY(-2px); }
+}
+
+/* Area 3 ring station spin */
+@keyframes gw-station-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ================================================================
+   SF BRACKET CARD — 公式サイト風ナビゲーションカード
+   構成: 角丸の細枠＋左右の縦バー装飾（resource/ボタン枠画像_L.png を
+   マスクとして使用し、右側は scaleX(-1) で反転）／内側の暗色パネル
+   バリエーション: .hero（大型・下線付き） / .thumb系 / .slim（一行）
+   配色はページ毎の --primary / --accent / --border を継承する
+   （--sf-frame を定義すると枠色だけ個別に上書きできる）
+   ================================================================ */
+
+.sf-card {
+  position: relative;
+  display: block;
+  padding: 7px 12px;
+  text-decoration: none;
+  color: var(--text-bright);
+  cursor: pointer;
+  border: 1px solid var(--sf-frame, var(--primary));
+  border-radius: 10px;
+  transition: filter 0.18s ease, border-color 0.18s ease;
+}
+button.sf-card {
+  background: none;
+  width: 100%;
+  font: inherit;
+  text-align: left;
+}
+
+/* 左右の縦バー装飾（右側は左右反転）
+   マスク元画像: resource/ボタン枠画像_L.png (18x314)
+   file:// 閲覧時に外部参照の mask-image がCORSでブロックされるため
+   data URI として埋め込んでいる。画像を差し替える際は再エンコードが必要 */
+.sf-card::before,
+.sf-card::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: calc(100% + 4px);
+  transform: translateY(-50%);
+  background: var(--sf-frame, var(--primary));
+  -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAE6CAYAAAAbRgK4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAXEUAAFxFAbktYiwAAAGHaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyI+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj48dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCjw/eHBhY2tldCBlbmQ9J3cnPz4slJgLAAALAElEQVR4Xu2cX2wcxR3Hv7/f7O7t3dlnO+QCTgg1oSAaWtFKUdUi1ASphbQqrVTJfkCoCCrIQ1VR0ZeqL7Yf+tQWqfBS8pJQhER9tKpU1FIJlKAK0RZQJEqillQQGojjGHzxn/u3uzO/Puzu+W79Z8+uBSbdjzTy3e7Md38zO/Pd8e7eEFIQEUpu64SIBAA4uWOzfPxCEwBNAO1qb1ooyaaE4kjOoPIxRhRHMQFQZyQxKzYkEZF2o8YCl1AmAFjCW/Q6HfGxkYgQCbyNKs9ilt8/+4ZqYGjjbRRH0zg9RN7Zadpjl6h8rtYu37MQoqp4zjQ13YCrrlKzhaIV70sVisfSJZSpcXqImm7ApVxO1RerKr9UVXG+VKFOPGearlZ95M1r9m3DXk33VjURoXERRlQt3y5Rw/LZKJd0zbDfuNybUNxn4oYeAWCZktieMoZbdLkVHgQAWERorXQGFXobVb6EMjUwROeiQtfoppT/1dIXn/7DH9tC8YfViBsYAHAaKNaKJvhwgbRhe2525nMgvjrOu64QANSKNV7CW1Qr1jjfrEo+b6uav5ifnn7vDjCG43zrCu3CrBRHiqaBIdrpeDxfarJtswp84WB+4cuwuLd+NIVRcwugcRpoWD4rXXQWFgAR14c2nwYtD9V1hRC1U6kkSs+5pPS8bftLpk+0D0uVQdKK860rNIYKt85fsj9oejYABFYfN91+3cizAXOps3yXEBFJPCQQVW1aX8g5btNSuilsPFG6KY5nKWhN0KZ7iIxNjNljlbFQVISISI68ftQiInn30d/uPvOL408pw7aXc4J83la+bRgmANgs2wgRSWWy4r1dHWKMjzOOHrEOyglrzluy8MODB6DlWQDf6DOwd9lLXqOxpGyXDUQEtNzaDAC3PfCt/saFag6TkwYXhuUluiN49qlnv48P509A8BkAcAbyCwsLOcVG2V4r0BC0m6AttOdwrn5msrIEAGWccfHAgT9hqfUzeLqPDQBAnHmlDEvOcwKdK7IBdbcvA0BlrKIBoP+Rr980e+rUP+HLYdJS7zgmNXjJsQJtuZZwq2ZikXqcgQ+Oj1sA0H//7fcuXpw5hXxxD3k6sEhZsO0LADQEXt70eb6tVL3mOHm7LWS3hYCTuOr+rzzWMvo4WBUc24EEwXtKqb8oy1oEoEBwPGuBhBzPsrWOC3cJvXlevbHQ8h70jSi0PONr+Ud+YPCMJ9rWYmoQGAiQd7S/o7BUcxyt64EJx5jIYluoGjRu1oocIbzF+cKLylbv+oEvAq4D1A+IQASX3YCrtQGrGVDU/AIIcm0hA4IBAWDEnw0UhAgAhRkEqM+V22fJdiks0sGKsWYICA+5MVYIbZYrW0gELAKKEkRAWkAUph5hkAHIAIj/RrMm0gBpmPb+mWTZLjg82cnUcyBtOOxuIiAIhKK/IpDoe49sZWNvDdtRSKKTFI/URPNyj82dHhExQRhDVp60qpFhm3TdJggD4OXLEUdqq6WNsNH8a5IJpcPJcd+ZNsLWRRSaWIdk4nq1PJVany2MaIu4ooU+Mj/qkcyP0tmGQkkPyvxoBf/PQiK9+chH7Ec9RPUJ9KPeG3uL2IZCSQ/K/GgFmVA6DGFAGDAcnjJRkX54KjfgR7FpxP0gSbx/fZiFECYOk4k/x5H1Ru85U8iE0mFDgjCZMHF0w261nrAOq0QUXy31hmxu+UYUR5fczI+SbEehrZsfdfYV6eg/obpE9zhXkNj+CZwf9cqVLJScE/VuHN1sXURp86P1Xz9ZZgsj2iKuaKEUP+r18UFqRESEzmfWHTu6tmd+lM42FEp60Pb3o2x+tC2FUvxoA/OjrSHzo3S2oVDSgzI/WkEmlE7mR+lkQulkfpROJpROqlDvfpRibD3fP+rauQoUHyiFVKFeyYTSyYTS6U2ICL5yV3plx8+tUoWSD3zZ+KsOmNWE4qOsjKCT5E0WSEcBMaseDQCC+dpK4eTL8N1EO0XC11AJnW8rrgkrIihiUkxiMYtFQhYRWeE2wAgBEG25ZJRLbHKiClE7ddSGQZ1Vg0QvZgOx19FykMv0J76vWrWIsP7tNgtUvVuNCOC12ohEuiLcAGtHFCPSfZqNt+qZTReK6Fe51SJdo2r/A13zI51IG4FFopefRSAmHFvhJSt6JtIjy/Mjiira+T1OPbB1bZTcsFmuaKF4thFPbTq/9zgTwZZGxJHaamkjbDT/mmRC6Wzn/9cyP1qL7SiU+VEamVA6mR+lkwmlk/lROplQOpkfpZMJpZP5UTqZUDqZH6WTCaWz/HsRofA3I0kv2rwfqeW+QLRGF1gMX+mP15UAwO3fiYgCQ4GjV/45dsseWSWizZEJpcOWMWBjiKK72PHvRTYKWwZkG4CEcmGv1AVAADY2i0RrxsT9pZoovgwHbMRX2gh0AyQaoLnw51DkGUJ7Vao02LPQCCyyNJNjwsECBmkDKXYuJpUGw0IhcsYRADshJg+IB6ABkJsssBYMT16EDwORAJAvGqLrDDAYCvU+SHiH5u+UPDyZ0+QwyAJhP0husgQFZaLZSg/w3NN/X7hLjzxYCHAPG1wCSQDQbgg+r3TvVyU+fPhwrlKp6Oozr06x4ttB9A4YzAY7CNgHoq7H8bUiGzY5gRHT9Sjo+eefb58Z7/jfzmK472voc55SAwVuaY+V5QBQBADXeDuN7bNpFpWBEdO5igw/8cQT7eWZRITw0xPvfvW7d/+gofAT3lGqmZwFOBYCbtBiwbMct2C5Nc0INOAH7Qc6/GazyfcdG3eBcImwq//8o+ILB348/8377vkll/vvlKJzAQVHN3w2N1+3cyHvG61hOyCyYKIlngDw4w8/3AKAgydCsYt3/rwuIvTcgSP1W+/+9qvoz92GnPViy2uo06fPDyx5yij4Hki1YLcrA2tqakqNjY01RYQOnYAVP386+M4x1+/T9sF7R2feP3fue6Ub9vpcd/yWXBpSi24TQA4dD1F5um/auu/YuDuBCXrpjsmgvQLayEjQ2qmbF5vaNv35xR1zc62Zy9Mlf15rbjVdKAWw5cVCKw1DhEZR4f0YlQlADp07nnvp+vubX/rPb/Jz9fNFksHWXkfzC48evwhmF4+/TADA4+PjbXMblSk1jgm6hDI9h6PttdZGZUrNqctFEt0aiJ/8GVxGEMRZQBKtvwYA4yI8AUjnIptPy2M2/g0Y1XCDmnDf4E4amPOtV5585tdo+HfhV6+EEXWuCDdJZIhIJonMJJGZAGSAXOPbJbI9MnmbA++DuppbWmwgn38ZgR8XXd+ziUhew0OBVnOUGxw2l1tsoBo5NViUHXuH/4piYT7Ou65QjNu0THCN6197a8nzqFQDdnk79+w4hVLx93GeVKFDOKmabsBllM382SbvHmw0bf/9Qn7v3mBwuPy7ON+6QiJCJ3FIn9/7SPMkDumBG11z195HWo28tgAgf+31L8R51xVCtLQjEcktqNgAUEHFGshdZbVykv/sdTe0z26qUAWV8OgXqtZreCgoo2xarlqcqXv1GcwU43ypQnlUBQA+8ByDaGHF+mI12Dc85NcLTjPOlyq0D0NGRKg4UjQTAMWLlQKA0sVlY2uXWIP9GBUAKKNsJgA5iUP6CzcOB/t2D7X6bta9RxSzC7Pto+/HqOzHqLyGh9qDbeXoj4jX8u0cd4hWQI2rN4tZPkNjHjYjFG0TREMo3tZz1To5hJPqAI5an3rnWPolPblU6LhIeynRcREeF+FRmWp71oqwk8RVTNJZLWy2akkRAPgvi+tMBQcPJQkAAAAASUVORK5CYII=');
+  mask-image: url('data:image/png;base64,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');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  pointer-events: none;
+}
+.sf-card::before { left: -5px; }
+.sf-card::after  { right: -5px; transform: translateY(-50%) scaleX(-1); }
+
+/* 内側パネル: 暗色＋斜めヘアライン */
+.sf-inner {
+  position: relative;
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: 96px;
+  padding: 18px 56px 18px 28px;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(-55deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 5px),
+    rgba(4, 17, 14, 0.82);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+}
+
+/* サムネイル: 右側に敷き、左へフェード */
+.sf-thumb {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 62%;
+  background-size: cover;
+  background-position: center;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 55%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 55%);
+  opacity: 0.88;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+.sf-thumb.contain {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right 10% center;
+}
+.sf-thumb.pixel { image-rendering: pixelated; }
+
+.sf-label { position: relative; z-index: 1; text-align: left; }
+.sf-catch {
+  display: block;
+  font-family: 'NitalagoRuika', 'M PLUS 1p', 'Yu Gothic UI', sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+.sf-title {
+  display: block;
+  font-family: 'NitalagoRuika', 'M PLUS 1p', 'Yu Gothic UI', sans-serif;
+  font-weight: 700;
+  font-size: clamp(18px, 2vw, 25px);
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  color: #ffffff;
+}
+.sf-en {
+  display: block;
+  margin-top: 6px;
+  font-size: 9.5px;
+  letter-spacing: 0.28em;
+  color: var(--primary);
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* 見出し下のアクセント線（両端に角マーク） */
+.sf-rule {
+  display: block;
+  position: relative;
+  margin-top: 12px;
+  width: min(420px, 70%);
+  height: 2px;
+  background: linear-gradient(to right, var(--primary), rgba(0,0,0,0) 92%);
+  opacity: 0.75;
+}
+.sf-rule::before, .sf-rule::after {
+  content: '';
+  position: absolute; top: -1px;
+  width: 4px; height: 4px;
+  background: var(--primary);
+}
+.sf-rule::before { left: 0; }
+.sf-rule::after  { right: 10%; }
+
+/* 矢印チェブロン */
+.sf-arrow {
+  position: absolute; z-index: 1;
+  right: 18px; top: 50%;
+  width: 13px; height: 13px;
+  transform: translateY(-50%);
+  background: var(--accent);
+  clip-path: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 42% 50%);
+  transition: transform 0.18s ease;
+}
+
+/* ── バリエーション ── */
+.sf-card.hero .sf-inner {
+  min-height: 158px;
+  padding: 28px 64px;
+}
+.sf-card.hero .sf-title { font-size: clamp(23px, 3vw, 36px); }
+.sf-card.hero .sf-arrow { top: auto; bottom: 18px; transform: none; }
+
+.sf-card.slim .sf-inner {
+  min-height: 58px;
+  padding: 14px 48px 14px 24px;
+}
+.sf-card.slim .sf-title { font-size: clamp(15px, 1.5vw, 19px); letter-spacing: 0.14em; }
+
+.sf-card.locked { cursor: not-allowed; opacity: 0.55; border-color: rgba(255,140,64,0.5); }
+.sf-card.locked::before,
+.sf-card.locked::after { background: var(--warn); }
+.sf-card.locked .sf-arrow { background: var(--warn); }
+
+/* ── ホバー ── */
+@media (hover: hover) and (pointer: fine) {
+  .sf-card:hover { filter: brightness(1.18) drop-shadow(0 0 4px var(--border-hi)); border-color: var(--border-hi); }
+  .sf-card:hover .sf-thumb { opacity: 1; }
+  .sf-card:hover .sf-arrow { transform: translateY(-50%) translateX(3px); }
+  .sf-card.hero:hover .sf-arrow { transform: translateX(3px); }
+  .sf-card.locked:hover { filter: none; }
+  .sf-card.locked:hover .sf-arrow { transform: translateY(-50%); }
+}
+
+
+/* ================================================================
+   VISUAL PANEL COLLAPSE TOGGLE
+   Pull tab injected below .planet-visual by visual-toggle.js.
+   Inherits each page's theme via --primary / --border overrides.
+   ================================================================ */
+.planet-visual.has-toggle {
+  margin-bottom: 0;
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Wide landscape scene panels (debris fields, nebulae, asteroid belts).
+   Height/border must live here — inline styles would beat the collapsed rule. */
+.planet-visual.scene-wide {
+  height: 40vh;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--dim2, #060408);
+}
+.planet-visual.has-toggle.collapsed {
+  height: 0;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+.planet-visual.has-toggle.collapsed .planet-hover-tagline,
+.planet-visual.has-toggle.collapsed .comm-window {
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+.visual-toggle {
+  flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 4px 0 5px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border);
+  border-top: none;
+  color: var(--primary);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 0.3em; text-indent: 0.3em;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+.visual-toggle:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-hi);
+  color: var(--accent);
+}
+.visual-toggle .vt-arrow { font-size: 8px; line-height: 1; }
+
+
+/* ================================================================
+   LORE TABS (built by lore-tabs.js)
+   惑星ビジュアル直下のタブバー。.lore-section を大分類ごとに切り替え
+   表示する。lore-tabs.js を読み込まないページには一切影響しない。
+   ================================================================ */
+.lore-tabbar {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 7px;
+  margin: 0 6px 14px 0;
+}
+.lore-tab {
+  flex: 1 1 0;
+  appearance: none;
+  font-family: 'Share Tech Mono', 'Yu Gothic UI', 'Meiryo', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-indent: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary);
+  /* 斜めヘアライン（.sf-inner と同じフィルター）＋うっすら上光 */
+  background:
+    repeating-linear-gradient(-55deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 5px),
+    linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0) 60%),
+    rgba(4, 17, 14, 0.5);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  padding: 8px 2px 7px;
+  cursor: pointer;
+  /* 左上はHUDフレームと同じ斜めカット */
+  clip-path: polygon(9px 0, 100% 0, 100% 100%, 0 100%, 0 9px);
+  transition: color 0.18s, border-color 0.18s, background 0.18s, text-shadow 0.18s;
+}
+.lore-tab:hover {
+  color: var(--accent);
+  border-color: var(--border-hi);
+  background:
+    repeating-linear-gradient(-55deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 5px),
+    linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01) 60%),
+    rgba(4, 17, 14, 0.5);
+}
+.lore-tab.active {
+  color: #ffffff;
+  border-color: var(--border-hi);
+  border-bottom-color: var(--accent);
+  background:
+    repeating-linear-gradient(-55deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 5px),
+    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 70%),
+    rgba(4, 17, 14, 0.5);
+  text-shadow: 0 0 10px var(--accent);
+}
+
+/* タブ表示中は非選択セクションを隠す */
+.planet-lore.tabs-active .lore-section.tab-hidden { display: none; }
+/* 隣接セレクタの chapter 余白(+34px)が隠れた兄弟にも反応するため、
+   タブ表示中は各セクションの余白を固定値へ置き換える */
+.planet-lore.tabs-active .lore-section { margin-top: 0; margin-bottom: 30px; }
+
+
+/* ================================================================
+   MOBILE LAYOUT (phones / narrow windows)
+   - Header: keep one line (back button + ellipsized title).
+   - Side strips: hidden to reclaim width.
+   - Planet pages (.planet-main without .file-layout): the fixed
+     420px/1fr two-column grid collapses into ONE scrolling column
+     (hero -> data terminal -> visual -> lore), mirroring the
+     file-layout behaviour so the article is actually readable.
+   - Codex pages: reclaim the 22px side margins.
+   Nothing here touches desktop rendering (min-width guard).
+   ================================================================ */
+@media (max-width: 760px) {
+
+  /* -- shared chrome -- */
+  .side-l, .side-r { display: none; }
+
+  .hud-header { padding: 0 10px; gap: 10px; }
+  .header-status { display: none; }
+  .header-tag {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+  .nav-back {
+    flex: 0 0 auto;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 5px 8px;
+    white-space: nowrap;
+  }
+
+  /* -- main containers reclaim the side-strip margins -- */
+  .planet-main { left: 0; right: 0; }
+  .codex-main  { left: 0; right: 0; padding: 22px 14px 60px; }
+
+  /* -- planet detail pages: single scrolling column -- */
+  .planet-main:not(.file-layout) {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 18px 14px 60px;
+  }
+  .planet-main:not(.file-layout)::-webkit-scrollbar { width: 4px; }
+  .planet-main:not(.file-layout)::-webkit-scrollbar-thumb { background: var(--dim); }
+
+  /* unwrap the two columns: children become flex items in DOM order
+     (hero -> terminal -> visual [-> toggle] -> lore) */
+  .planet-main:not(.file-layout) .col-l,
+  .planet-main:not(.file-layout) .col-r { display: contents; }
+
+  .planet-main:not(.file-layout) .planet-hero { flex: 0 0 auto; }
+
+  /* spec table: no inner scrolling, show every row */
+  .planet-main:not(.file-layout) .data-terminal {
+    flex: 0 0 auto;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .planet-main:not(.file-layout) .planet-visual {
+    flex: 0 0 auto;
+    height: 36vh;
+    margin-bottom: 0;
+  }
+  .planet-main:not(.file-layout) .planet-visual.scene-wide { height: 30vh; }
+  .planet-main:not(.file-layout) .planet-visual.has-toggle.collapsed { height: 0; }
+
+  /* lore: no inner scrolling, flows with the page */
+  .planet-main:not(.file-layout) .planet-lore {
+    flex: 0 0 auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  /* lore tab bar can wrap to two rows */
+  .lore-tabbar { flex-wrap: wrap; }
+  .lore-tab { flex: 1 1 40%; }
+}
+
+/* star map page (index.html) — phone tweaks: reclaim side margins,
+   drop the second status lamp and the mouse-oriented click hint so the
+   console link stays on one 32px line. */
+@media (max-width: 760px) {
+  .map-field { left: 6px; right: 6px; }
+  .map-footer { padding: 0 12px; gap: 14px; }
+  .map-footer .ft-item:nth-child(2) { display: none; }
+  .map-footer > :last-child { display: none; }
+}
