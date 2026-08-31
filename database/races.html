@@ -85,6 +85,36 @@
       .race-panel { width: 92px; height: 340px; }
     }
 
+    /* ── ギャラリー左右送り矢印（グロッサリーの chev と同型） ── */
+    .race-gallery { position: relative; }
+    .rg-nav {
+      position: absolute; top: 0; bottom: 0;
+      width: 54px; z-index: 6;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer;
+      opacity: 0.7; transition: opacity 0.2s;
+    }
+    .rg-nav .chev {
+      width: 30px; height: 30px;
+      background: var(--accent);
+      clip-path: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 42% 50%);
+      filter: drop-shadow(0 0 10px rgba(187,255,187,0.55));
+      transition: transform 0.18s ease;
+    }
+    .rg-nav.prev .chev { transform: scaleX(-1); }
+    .rg-nav:hover { opacity: 1; }
+    .rg-nav.next:hover .chev { transform: translateX(3px); }
+    .rg-nav.prev:hover .chev { transform: scaleX(-1) translateX(3px); }
+    .rg-nav.disabled { opacity: 0.12; cursor: default; }
+    .rg-nav.prev { left: -6px; }
+    .rg-nav.next { right: -6px; }
+    @media (max-width: 760px) {
+      .rg-nav { width: 40px; }
+      .rg-nav .chev { width: 24px; height: 24px; }
+      .rg-nav.prev { left: -4px; }
+      .rg-nav.next { right: -4px; }
+    }
+
     /* ── 説明カード（オーバーレイ） ── */
     .race-ov {
       position: fixed; inset: 0; z-index: 60;
@@ -205,6 +235,8 @@
 
     <section class="race-gallery" id="raceGallery" aria-label="人種ギャラリー">
       <div class="race-scale"><span>◄ 主要人種</span><span>グレーゾーン ►</span></div>
+      <button class="rg-nav prev" id="rgPrev" type="button" aria-label="左へスクロール"><span class="chev"></span></button>
+      <button class="rg-nav next" id="rgNext" type="button" aria-label="右へスクロール"><span class="chev"></span></button>
       <div class="race-row">
         <button class="race-panel" style="--h:0" data-race="anubisoid" title="アヌビソイド"><img src="../resource/Race_image/00_anubisoid.png" alt="アヌビソイド"><span class="rp-name">アヌビソイド</span></button>
         <button class="race-panel" style="--h:16" data-race="alphoid" title="アルフォイド"><img src="../resource/Race_image/01_alphoid.png" alt="アルフォイド"><span class="rp-name">アルフォイド</span></button>
@@ -497,11 +529,28 @@
         else if (e.key === 'ArrowLeft') openCard((cur - 1 + panels.length) % panels.length);
         else if (e.key === 'ArrowRight') openCard((cur + 1) % panels.length);
       });
+      /* ── ギャラリーの左右送り矢印 ── */
+      var rgRow = document.querySelector('.race-row');
+      var rgPrev = document.getElementById('rgPrev');
+      var rgNext = document.getElementById('rgNext');
+      function rgStep() { return Math.max(rgRow.clientWidth * 0.7, 160); }
+      function rgUpdate() {
+        var max = rgRow.scrollWidth - rgRow.clientWidth - 1;
+        rgPrev.classList.toggle('disabled', rgRow.scrollLeft <= 0);
+        rgNext.classList.toggle('disabled', rgRow.scrollLeft >= max);
+      }
+      rgPrev.addEventListener('click', function() { rgRow.scrollBy({ left: -rgStep(), behavior: 'smooth' }); });
+      rgNext.addEventListener('click', function() { rgRow.scrollBy({ left: rgStep(), behavior: 'smooth' }); });
+      rgRow.addEventListener('scroll', rgUpdate, { passive: true });
+      window.addEventListener('resize', rgUpdate);
+      cardBtn.addEventListener('click', rgUpdate);
+      rgUpdate();
       /* アンカー付きで開かれた場合はギャラリー＋該当カードを開く（縦積み保存時も同様） */
       function openFromHash() {
         var i = hashToIndex(location.hash);
         if (i < 0) return false;
         setMode('gallery', false);
+        rgUpdate();
         openCard(i);
         return true;
       }
