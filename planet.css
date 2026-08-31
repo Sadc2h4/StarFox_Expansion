@@ -1708,3 +1708,13 @@ button.sf-card {
   .lore-tabbar { flex-wrap: wrap; }
   .lore-tab { flex: 1 1 40%; }
 }
+
+/* star map page (index.html) — phone tweaks: reclaim side margins,
+   drop the second status lamp and the mouse-oriented click hint so the
+   console link stays on one 32px line. */
+@media (max-width: 760px) {
+  .map-field { left: 6px; right: 6px; }
+  .map-footer { padding: 0 12px; gap: 14px; }
+  .map-footer .ft-item:nth-child(2) { display: none; }
+  .map-footer > :last-child { display: none; }
+}
