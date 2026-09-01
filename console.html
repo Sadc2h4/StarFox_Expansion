@@ -58,6 +58,46 @@
     .db-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; }
     .db-grid .wide { grid-column: 1 / -1; }
 
+    /* ── 遊撃隊依頼ルートへの直行タイル（ヘッダー右上の臨時配置コーナー） ──
+       角を斜めに落としたHUD枠は clip-path の2層重ねで作る */
+    .sf-mission-corner {
+      --mcp: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
+      position: relative;
+      margin-left: auto; align-self: flex-start; flex: 0 0 auto;
+      width: 200px; height: 118px;
+      display: block; text-decoration: none;
+      filter: drop-shadow(0 0 10px rgba(0, 255, 238, 0.22));
+      transition: filter 0.2s, transform 0.2s;
+    }
+    .sf-mission-corner:hover {
+      filter: drop-shadow(0 0 18px rgba(0, 255, 238, 0.55));
+      transform: translateY(-2px);
+    }
+    .sf-mission-corner .mc-frame {
+      position: absolute; inset: 0;
+      clip-path: var(--mcp);
+      background: rgba(64, 220, 255, 0.75);
+    }
+    .sf-mission-corner .mc-in {
+      position: absolute; inset: 2px;
+      clip-path: var(--mcp);
+      background: linear-gradient(160deg, #062231 0%, #03101a 100%);
+      display: flex; flex-direction: column; align-items: center;
+      padding: 8px 12px 10px;
+    }
+    .sf-mission-corner .mc-title {
+      align-self: flex-end;
+      font-size: 11px; letter-spacing: 0.14em;
+      color: #9feaff; white-space: nowrap;
+    }
+    .sf-mission-corner .mc-in img {
+      flex: 1 1 auto; min-height: 0;
+      width: 76%; object-fit: contain;
+      margin-top: 2px;
+      filter: drop-shadow(0 0 8px rgba(64, 220, 255, 0.4));
+    }
+    @media (max-width: 760px) { .sf-mission-corner { display: none; } }
+
     .db-foot {
       margin-top: 22px;
       display: flex; justify-content: space-between; align-items: center;
@@ -94,6 +134,13 @@
           <div class="db-title">CORNERIA INFORMATION STRATEGY<br>HEADQUARTERS DATABASE</div>
           <div class="db-sub">コーネリア情報戦略本部 統合データベース ── 臨時閲覧端末</div>
         </div>
+        <a class="sf-mission-corner" href="index.html#routes" title="遊撃隊依頼ルート — MISSION ROUTES を開く">
+          <span class="mc-frame"></span>
+          <span class="mc-in">
+            <span class="mc-title">遊撃隊への依頼内容</span>
+            <img src="resource/StarFox_logo.png" alt="STAR FOX">
+          </span>
+        </a>
       </div>
       <div class="db-flavor" id="flavor">閲覧するデータベースを選択してください。</div>
 

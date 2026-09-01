@@ -180,6 +180,27 @@
       .race-card .rc-fig { display: none; }
       .race-card .rc-nav.prev { left: 4px; } .race-card .rc-nav.next { right: 4px; }
     }
+
+    /* ═══ スマホ対応（760px以下・glossary.html と同パターン） ═══
+       説明カードは全画面表示に切り替える。PC版の中央固定はアドレスバーの
+       伸縮で vh と実表示域がずれて✕が見切れるため、ヘッダー（44px・
+       z-index 25）の下に直接固定する */
+    @media (max-width: 760px) {
+      .race-ov { align-items: flex-start; }
+      .race-card {
+        width: 100vw;
+        height: calc(100% - 44px);
+        height: calc(100dvh - 44px);
+        margin-top: 44px;
+      }
+      .race-card .rc-close {
+        top: 8px; right: 10px;
+        width: 34px; height: 34px;
+        font-size: 16px;
+        background: rgba(0, 0, 0, 0.7);
+      }
+      .race-card .rc-body { inset: 40px 14px 16px 16px; }
+    }
   </style>
 </head>
 <body>
@@ -304,7 +325,7 @@
       <div class="codex-sub">体高の目安: 200cm超 — 200〜230cm級が多い（<a href="glossary.html#size-class-housing">体格帯別住宅規格</a>を参照）</div>
       <p class="codex-p">鳥型人種と称され、<a href="#bastetoid">バステトイド</a>と同様に自由を好む性質から様々な惑星・地域で生活している人種。ただし自由奔放で軽薄さも併せ持つバステトイドと異なり、ホルソイドは誇りや義理を何よりも重んじ腕っぷしも強い。短気で細かいことを気にしない者が多く、怒らせると大変なことになると言われる。鳥類系の代謝の速さから星系で最も酒に強い人種とされ、コーネリアの港町<a href="glossary.html#lowerdog">ロウアードッグ</a>の酒場「カース・マルツゥ社交クラブ」が「酔い潰れる前に殴り合える人種」の街で生まれたのは偶然ではない。星系で最も人気の格闘技<a href="glossary.html#cross-bout">クロスバウト</a>の宇宙チャンピオンもこの人種が最多である。</p>
       <p class="codex-p">遥か昔に外宇宙からオーバーテクノロジーを受信したのはこのホルソイドであり、<a href="glossary.html#paranid-empire">パラニド神聖帝国</a>では爬虫類人種を従えて神のように崇められていたと記録されている。遺構の壁画に描かれた翼と嘴の意匠は一貫しており、<a href="../planets/hactiva.html">「神々の門」</a>の向こうから「天の知恵」を持って訪れたという神話とも符合するが、現時点では証拠が何も残されておらず仮説の一つに過ぎないとされる。近年ではセティボスの大気圏に空中国家<a href="glossary.html#bolz-duchy">ボルツ公国</a>を築いた国民の大半もこの人種であり、誇りと詩吟の美学が生む気前の良さは公国の気風として記録されている。</p>
-      <p class="codex-p">2mを優に超える体格は<a href="glossary.html#size-class-housing">L帯</a>の住宅規格の基準であり、M帯基準の艦内で常に前屈みになる艦長や小型種街区で挟まって救助される事故は都市の風物詩となっている。額をなめる<a href="glossary.html#face-lick">古い作法</a>はこの人種には喧嘩を売るサインとなり、葬送は高所へ遺骨を置く風葬の伝統を持つ。一部の種族は紫外線を視認できることが確認されており他の人種と知覚できる色が異なることでトラブルになったりする場合がある。スターフォックスの<a href="../characters/falco.html">ファルコ・ランバルディ</a>は「飛んで殴る」家庭に育った教科書のようなホルソイドであり、フクロウ系の<a href="../characters/bowie.html">ロー・ジャスティン</a>もこの人種である。新興宗教<a href="glossary.html#mu-cult">ムー</a>の教祖「オー・ムー」がホルソイドの双子であったことはこの人種の歴史の影の側に数えられる。</p>
+      <p class="codex-p">2mを優に超える体格は<a href="glossary.html#size-class-housing">L帯</a>の住宅規格の基準であり、M帯基準の艦内で常に前屈みになる艦長や小型種街区で挟まって救助される事故は都市の風物詩となっている。額をなめる<a href="glossary.html#face-lick">古い作法</a>はこの人種には喧嘩を売るサインとなり、葬送は高所へ遺骨を置く風葬の伝統を持つ。一部の種族は紫外線を視認できることが確認されており他の人種と知覚できる色が異なることでトラブルになったりする場合がある。スターフォックスの<a href="../characters/falco.html">ファルコ・ランバルディ</a>は「飛んで殴る」家庭に育った教科書のようなホルソイドであり、ブルーボンバーズの<a href="../characters/bowie.html">ロー・ジャスティン</a>もフクロウ系に属するこの人種である。新興宗教<a href="glossary.html#mu-cult">ムー</a>の教祖「オー・ムー」がホルソイドの双子であったことはこの人種の歴史の影の側に数えられる。</p>
     </article>
 
     <article class="codex-entry" id="zetoid">
@@ -522,6 +543,22 @@
       document.getElementById('rcClose').addEventListener('click', closeCard);
       document.getElementById('rcPrev').addEventListener('click', function() { openCard((cur - 1 + panels.length) % panels.length); });
       document.getElementById('rcNext').addEventListener('click', function() { openCard((cur + 1) % panels.length); });
+      /* 説明カード表示中は左右フリックで前後の人種へ移動できる（縦スクロールとは
+         dx>60 かつ dx>1.5dy の閾値で区別する。glossary.html と同パターン） */
+      var rcCard = ov.querySelector('.race-card');
+      var rcTouchX = null, rcTouchY = null;
+      rcCard.addEventListener('touchstart', function(e) {
+        rcTouchX = e.touches[0].clientX; rcTouchY = e.touches[0].clientY;
+      }, { passive: true });
+      rcCard.addEventListener('touchend', function(e) {
+        if (rcTouchX === null) return;
+        var dx = e.changedTouches[0].clientX - rcTouchX;
+        var dy = e.changedTouches[0].clientY - rcTouchY;
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          openCard(dx < 0 ? (cur + 1) % panels.length : (cur - 1 + panels.length) % panels.length);
+        }
+        rcTouchX = rcTouchY = null;
+      }, { passive: true });
       ov.addEventListener('click', function(e) { if (e.target === ov) closeCard(); });
       document.addEventListener('keydown', function(e) {
         if (!ov.classList.contains('open')) return;

@@ -558,3 +558,34 @@
 }
 .blk-close:hover { color: #fff; border-color: var(--border-hi); }
 .mode-block.blk-open .blk-close { display: flex; }
+
+/* ═══ スマホ対応（760px以下・glossary.html と同パターン） ═══
+   記録オーバーレイは全画面表示に切り替え、✕ボタンは画面右上へ直接固定する。
+   PC版の✕は「画面中央からカード半分ぶん戻る」座標計算で置いているが、
+   スマホはアドレスバーの伸縮で vh と実表示域がずれて上に見切れるため、
+   ビューポート基準の計算を介さない配置にする */
+@media (max-width: 760px) {
+  .gls-main { left: 0; right: 0; padding: 14px 10px 10px; }
+
+  /* ヘッダー（44px・z-index 25）は .gls-main（z-index 5）より上のため、
+     オーバーレイと✕はヘッダーの下側に収めて重なりを避ける */
+  .mode-block.blk-open .gcard.blk-active {
+    left: 0; top: 44px;
+    transform: none;
+    width: 100vw !important;
+    height: calc(100% - 44px);
+    height: calc(100dvh - 44px);
+  }
+  .mode-block.blk-open .gcard.blk-active .gcard-frame { --cut: 24px; }
+  .mode-block.blk-open .gcard.blk-active .gcard-inner { --cut: 23px; }
+  .mode-block.blk-open .gcard.blk-active .gcard-body {
+    inset: 40px 12px 14px 18px;
+  }
+  .blk-close {
+    top: 52px;
+    right: 10px;
+    width: 34px; height: 34px;
+    font-size: 16px;
+    background: rgba(6, 6, 6, 0.92);
+  }
+}

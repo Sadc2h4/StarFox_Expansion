@@ -162,7 +162,9 @@
   }, { passive: true });
   stage.addEventListener('touchend', (e) => {
     if (touchX === null) return;
-    if (inListMode() || inBlockMode()) { touchX = touchY = null; return; }
+    /* 記録オーバーレイ表示中は左右フリックで前後の記録へ移動できる */
+    const blkOpen = mainEl.classList.contains('blk-open');
+    if (inListMode() || (inBlockMode() && !blkOpen)) { touchX = touchY = null; return; }
     const dx = e.changedTouches[0].clientX - touchX;
     const dy = e.changedTouches[0].clientY - touchY;
     if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {

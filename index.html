@@ -50,6 +50,270 @@
     .sysmap-ctrl button:hover { background: rgba(0,212,180,0.18); }
     .sysmap-ctrl button.lg { font-size: 9px; letter-spacing: 0.08em; }
     .sysmap-ctrl button.off { opacity: 0.45; }
+
+    /* ── 遊撃隊依頼ルート（OPERATION SHEET 風） ──
+       1993年の作戦指令書を模した左下コーネリア→右上ベノムの経路図。
+       コース切替でルート帯・経由地・依頼情報を描き替える */
+    .routes-field {
+      position: fixed;
+      top: 44px; bottom: 32px; left: 22px; right: 22px;
+      z-index: 5;
+    }
+    /* 上部の帯（タイトル＋スタンプ。地図の上に重ねる） */
+    .op-band {
+      position: absolute; top: 0; left: 0; right: 0; height: 52px;
+      display: flex; align-items: center; gap: 20px;
+      padding: 0 16px;
+      background: rgba(2, 10, 9, 0.88);
+      border-bottom: 1px solid var(--border);
+      z-index: 6;
+    }
+    .op-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 21px; font-weight: 900;
+      letter-spacing: 0.12em; color: #fff; line-height: 1;
+    }
+    .op-title .jp {
+      display: block;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px; font-weight: 400; letter-spacing: 0.3em;
+      color: var(--primary); margin-top: 4px;
+    }
+    .op-stamp {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+      color: #ff5b5b; border: 2px solid #ff5b5b;
+      padding: 2px 12px; transform: rotate(-4deg);
+      opacity: 0.85; white-space: nowrap;
+    }
+    /* 帯の下の情報列（作戦コード表記／コース情報／コースタブ） */
+    .op-sub {
+      position: absolute; top: 52px; left: 0;
+      display: flex; align-items: flex-start; gap: 10px;
+      z-index: 6;
+    }
+    .op-course {
+      padding: 8px 18px 9px;
+      background: rgba(2, 10, 9, 0.82);
+      border: 1px solid var(--border); border-top: none;
+      font-family: 'Share Tech Mono', monospace; letter-spacing: 0.1em;
+    }
+    .opc-name { color: #fff; font-size: 14px; white-space: nowrap; }
+    .opc-name .opc-code { margin-left: 16px; color: var(--primary); font-size: 12px; }
+    .opc-stars {
+      margin-top: 5px; font-size: 12px; letter-spacing: 2px;
+      color: #ff7d6e; text-shadow: 0 0 8px rgba(255,91,91,0.5);
+    }
+    .opc-reward { margin-top: 4px; font-size: 12px; letter-spacing: 0.12em; color: #ffd27a; }
+    .op-tabs { display: flex; gap: 8px; padding-top: 8px; }
+    .op-tabs button {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px; letter-spacing: 0.18em;
+      color: var(--text); text-transform: uppercase;
+      border: 1px solid var(--border);
+      background: rgba(4,17,14,0.82);
+      padding: 5px 14px; cursor: pointer;
+      transition: all 0.18s;
+    }
+    .op-tabs button:hover { color: var(--accent); border-color: var(--border-hi); }
+    .op-tabs button.active {
+      color: #ffb0a8; border-color: rgba(255,91,91,0.75);
+      background: rgba(90,14,14,0.45);
+      box-shadow: 0 0 12px rgba(255,91,91,0.25);
+    }
+    .op-map {
+      position: absolute; inset: 0;
+      display: flex;
+      padding-top: 56px;   /* 上部の帯のぶん地図を下げる */
+      background: radial-gradient(circle at 30% 75%, #07231d 0%, #041210 55%, #02090a 100%);
+    }
+    .op-map svg { max-width: 100%; max-height: 100%; margin: auto; display: block; }
+    .op-map svg text {
+      font-family: 'NitalagoRuika', 'Share Tech Mono', 'Meiryo', monospace;
+      pointer-events: none;
+    }
+    .op-map svg .op-en { font-family: 'Share Tech Mono', monospace; letter-spacing: 0.14em; }
+    .op-map svg a:hover { filter: brightness(1.5) drop-shadow(0 0 6px rgba(255,150,120,0.6)); }
+    .op-corner {
+      padding: 8px 16px 9px;
+      background: rgba(2, 10, 9, 0.82);
+      border: 1px solid var(--border); border-top: none; border-left: none;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.2em; line-height: 1.75;
+      color: #ff9d8a; pointer-events: none;
+      text-transform: uppercase;
+    }
+    /* 右下のロゴ */
+    .op-logo {
+      position: absolute; right: 20px; bottom: 16px;
+      width: 140px; height: auto;
+      opacity: 0.85; pointer-events: none; z-index: 6;
+    }
+    /* 経由・作戦概要（左上の折りたたみパネル）
+       普段は見出しバーのみで地図を隠さない。ホバー中だけ展開し、
+       見出しクリックで開いたまま固定（もう一度クリックで解除） */
+    .op-brief {
+      position: absolute; left: 0; top: 130px; z-index: 6;
+      max-width: min(500px, 46%);
+      background: rgba(2, 10, 9, 0.86);
+      border: 1px solid var(--border); border-left: none;
+      font-size: 12px; line-height: 1.7; color: var(--text);
+      /* 畳んでいる間は緩やかなグローで存在を知らせる（展開中は停止） */
+      animation: obGlow 3.2s ease-in-out infinite;
+    }
+    .op-brief.open { animation: none; box-shadow: 0 0 14px rgba(0, 255, 238, 0.15); }
+    @keyframes obGlow {
+      0%, 100% { box-shadow: 0 0 4px rgba(0, 255, 238, 0.10); border-color: var(--border); }
+      50%      { box-shadow: 0 0 20px rgba(0, 255, 238, 0.45); border-color: rgba(0, 255, 238, 0.65); }
+    }
+    .op-brief .ob-head {
+      cursor: pointer;
+      padding: 6px 16px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px; letter-spacing: 0.22em;
+      color: var(--primary);
+      user-select: none;
+      white-space: nowrap;
+    }
+    .op-brief:not(.open) .ob-head { animation: obGlowText 3.2s ease-in-out infinite; }
+    @keyframes obGlowText {
+      0%, 100% { color: var(--primary); text-shadow: none; }
+      50%      { color: var(--accent); text-shadow: 0 0 10px rgba(0, 255, 238, 0.6); }
+    }
+    .op-brief .ob-head:hover { color: var(--accent); }
+    .op-brief .ob-body {
+      display: none; padding: 0 16px 10px;
+      max-height: 46vh; overflow-y: auto;
+      scrollbar-width: thin; scrollbar-color: var(--dim) transparent;
+    }
+    .op-brief.open .ob-body { display: block; }
+    .op-brief.open .ob-head { color: var(--accent); }
+    .op-brief.pinned .ob-head::after {
+      content: '  [固定中]';
+      color: #ffd27a; letter-spacing: 0.1em;
+    }
+    .op-brief .op-route-line {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px; letter-spacing: 0.08em;
+      color: var(--primary); margin-bottom: 5px;
+    }
+    .op-brief .op-route-line a { color: var(--accent); text-decoration: none; }
+    .op-brief .op-route-line a:hover { color: #fff; }
+    .op-brief .op-route-line .arw { color: #ff7d6e; margin: 0 6px; }
+
+    /* ── ミッションカード（経由地ホバーの小窓・HUDフレーム） ──
+       斜めカットの多角形は clip-path を重ねて作る（枠線が clip で消えるため
+       「外線→暗色→内線→パネル」の4層を同じ多角形で少しずつ内側に敷く）。
+       表示時は ocBoot でフリッカー、表示中は走査線とスイープでノイズを出す */
+    .op-card {
+      --ocp: polygon(0 20%, 9% 0, 85% 0, 100% 11%, 100% 86%, 92% 100%, 8% 100%, 0 88%);
+      position: absolute; z-index: 20;
+      width: 380px;
+      pointer-events: none;
+      filter: drop-shadow(0 0 12px rgba(64,220,255,0.30));
+      animation: ocBoot 0.38s ease-out;
+    }
+    .op-card[hidden] { display: none; }
+    .oc-l { position: absolute; clip-path: var(--ocp); pointer-events: none; }
+    .oc-l.l1 { inset: 0;   background: rgba(64,220,255,0.85); }
+    .oc-l.l2 { inset: 2px; background: #02101a; }
+    .oc-l.l3 { inset: 5px; background: rgba(64,220,255,0.70); }
+    .oc-l.l4 { inset: 8px; background: linear-gradient(160deg, rgba(4,22,32,0.97) 0%, rgba(2,10,16,0.97) 100%); }
+    /* 内縁のアクセントバー（明るいシアンの短いセグメント） */
+    .oc-seg { position: absolute; background: #7fe9ff; box-shadow: 0 0 10px rgba(64,220,255,0.8); pointer-events: none; }
+    .oc-seg.s1 { left: 9px; top: 34%; width: 3px; height: 20%; }
+    .oc-seg.s2 { right: 9px; top: 48%; width: 3px; height: 14%; }
+    .oc-seg.s3 { bottom: 9px; left: 22%; height: 3px; width: 17%; }
+    .oc-seg.s4 { top: 9px; left: 32%; height: 3px; width: 13%; }
+    /* 上辺のハザードストライプ（斜線の飾り） */
+    .oc-hazard {
+      position: absolute; top: 8px; right: 13%;
+      width: 62px; height: 9px; pointer-events: none;
+      background: repeating-linear-gradient(-55deg,
+        rgba(127,233,255,0.9) 0 5px, transparent 5px 11px);
+    }
+    /* ノード側へ伸びるコネクタ線（カードが右に出た時は左辺から） */
+    .oc-tail {
+      position: absolute; left: -30px; top: 58%;
+      width: 30px; height: 2px;
+      background: rgba(64,220,255,0.8);
+      pointer-events: none;
+    }
+    .oc-tail::before {
+      content: ''; position: absolute; left: -7px; top: -3px;
+      width: 8px; height: 8px; border-radius: 50%;
+      border: 2px solid rgba(64,220,255,0.9);
+      background: rgba(2,16,26,0.9);
+    }
+    .op-card.flip .oc-tail { left: auto; right: -30px; }
+    .op-card.flip .oc-tail::before { left: auto; right: -7px; }
+    /* 走査線＋輝線スイープ（デジタル端末のノイズ感） */
+    .oc-noise {
+      position: absolute; inset: 8px;
+      clip-path: var(--ocp);
+      pointer-events: none; overflow: hidden;
+      background: repeating-linear-gradient(0deg,
+        rgba(120,240,255,0.05) 0 1px, transparent 1px 3px);
+      animation: ocScan 5s linear infinite;
+      mix-blend-mode: screen;
+    }
+    .oc-noise::before {
+      content: ''; position: absolute; left: 0; right: 0; top: -30%;
+      height: 34px;
+      background: linear-gradient(180deg, transparent 0%,
+        rgba(140,255,255,0.12) 50%, transparent 100%);
+      animation: ocSweep 2.6s linear infinite;
+    }
+    @keyframes ocScan { from { background-position: 0 0; } to { background-position: 0 96px; } }
+    @keyframes ocSweep { from { top: -14%; } to { top: 112%; } }
+    @keyframes ocBoot {
+      0%   { opacity: 0;    transform: translateX(7px) skewX(3deg); filter: brightness(2.4) drop-shadow(0 0 12px rgba(64,220,255,0.3)); }
+      10%  { opacity: 0.9; }
+      16%  { opacity: 0.2;  transform: translateX(-5px); }
+      28%  { opacity: 1;    transform: none; }
+      40%  { opacity: 0.55; filter: brightness(1.7) drop-shadow(0 0 12px rgba(64,220,255,0.3)); }
+      52%  { opacity: 1; }
+      100% { opacity: 1;    transform: none; filter: drop-shadow(0 0 12px rgba(64,220,255,0.30)); }
+    }
+    .op-card-in { position: relative; padding: 26px 30px 24px 40px; }
+    .oc-no {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px; letter-spacing: 0.25em; color: #7fe9ff;
+    }
+    .oc-title {
+      font-size: 14.5px; font-weight: 700; color: #fff;
+      line-height: 1.45; margin: 3px 0 7px;
+    }
+    .oc-meta {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10.5px; letter-spacing: 0.08em; color: rgba(127,233,255,0.75);
+      margin-bottom: 7px;
+    }
+    .oc-meta b { color: #fff; font-weight: 400; }
+    .oc-meta b.oc-stars {
+      color: #ff7d6e; letter-spacing: 2px;
+      text-shadow: 0 0 8px rgba(255,91,91,0.5);
+    }
+    .oc-cap {
+      font-size: 10px; letter-spacing: 0.2em; color: rgba(127,233,255,0.75);
+      border-top: 1px dashed rgba(64,220,255,0.35); padding-top: 6px; margin-bottom: 2px;
+    }
+    .oc-desc { font-size: 11.5px; line-height: 1.72; color: var(--text); }
+    /* 低い画面用の圧縮表示（カードが地図枠より背が高くなる時にJSが付与） */
+    .op-card.compact { width: 330px; }
+    .op-card.compact .op-card-in { padding: 20px 22px 18px 32px; }
+    .op-card.compact .oc-desc { font-size: 10.5px; line-height: 1.6; }
+    .op-card.compact .oc-title { font-size: 13px; }
+    @media (max-width: 760px) {
+      .routes-field { left: 0; right: 0; }
+      .op-title { font-size: 15px; }
+      .op-stamp { display: none; }
+      .op-sub { flex-wrap: wrap; }
+      .op-corner { display: none; }
+      .op-logo { width: 90px; }
+      .op-brief { font-size: 11px; max-width: 100%; max-height: 42%; overflow-y: auto; }
+    }
   </style>
 </head>
 <body>
@@ -65,7 +329,8 @@
 
   <!-- Header -->
   <header class="hud-header">
-    <div style="display:flex;align-items:center;gap:12px;">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <a href="console.html" class="nav-back">◄ CONSOLE</a>
       <span style="color:var(--accent);font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.25em;">LYLAT</span>
       <span style="color:var(--dim);font-size:10px;letter-spacing:0.15em;">SYSTEM EXPLORER</span>
     </div>
@@ -83,7 +348,8 @@
   <!-- ===== VIEW TOGGLE ===== -->
   <div class="map-mode loc-filter" id="mapMode">
     <button class="active" data-view="system">星系俯瞰図 — SYSTEM CHART</button>
-    <button data-view="tactical">戦略経路図 — TACTICAL CHART</button>
+    <!-- 旧・戦略経路図（viewTactical）はボタンのみ撤去。本体は下に残置（2026-09-01） -->
+    <button data-view="routes">遊撃隊依頼ルート — MISSION ROUTES</button>
   </div>
 
   <!-- ===== SYSTEM CHART（星系俯瞰図 / 同心円投影） ===== -->
@@ -963,15 +1229,76 @@
   </div><!-- /map-field -->
   </div><!-- /viewTactical -->
 
+  <!-- ===== MISSION ROUTES（遊撃隊依頼ルート / CDF依頼コース） ===== -->
+  <div class="map-view" id="viewRoutes" style="display:none;">
+    <div class="routes-field">
+      <div class="op-map">
+        <svg id="opSvg" viewBox="0 0 1800 860" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="opBand" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0%" stop-color="#8b1717"/>
+              <stop offset="55%" stop-color="#c62b22"/>
+              <stop offset="100%" stop-color="#ff4a38"/>
+            </linearGradient>
+          </defs>
+          <g id="opStarsBg"></g>
+          <g id="opLayer"></g>
+        </svg>
+        <div class="op-band">
+          <div class="op-title">OPERATION SHEET<span class="jp">◈ 作戦指令書 — CDF 遊撃隊依頼コース</span></div>
+          <div class="op-stamp">★ TOP SECRET ★</div>
+        </div>
+        <div class="op-sub">
+          <div class="op-corner">THE LYLAT SYSTEM<br>OPERATION CODE <span id="opCodeSub">—</span><br>CORNERIA DEFENSE FORCE</div>
+          <div class="op-course">
+            <div class="opc-name"><span id="opName">—</span><span class="opc-code" id="opCode">—</span></div>
+            <div class="opc-stars" id="opStars">—</div>
+            <div class="opc-reward" id="opReward">—</div>
+          </div>
+          <div class="op-tabs" id="opTabs">
+            <button class="active" data-course="0">コース 1</button>
+            <button data-course="1">コース 2</button>
+            <button data-course="2">コース 3</button>
+            <button data-course="3">コース 4</button>
+            <button data-course="4">コース 5</button>
+            <button data-course="5">コース 6</button>
+          </div>
+        </div>
+        <img class="op-logo" src="resource/Space_dynamics_logp.png" alt="SPACE DYNAMICS">
+        <div class="op-card" id="opCard" hidden>
+          <i class="oc-l l1"></i><i class="oc-l l2"></i><i class="oc-l l3"></i><i class="oc-l l4"></i>
+          <div class="oc-hazard"></div>
+          <i class="oc-seg s1"></i><i class="oc-seg s2"></i><i class="oc-seg s3"></i><i class="oc-seg s4"></i>
+          <div class="oc-tail"></div>
+          <div class="oc-noise"></div>
+          <div class="op-card-in">
+            <div class="oc-no" id="ocNo">MISSION No.----</div>
+            <div class="oc-title" id="ocTitle">—</div>
+            <div class="oc-meta">
+              <span>Rating：<b class="oc-stars" id="ocStars">—</b></span>
+              <span>Point：<b id="ocPoint">—</b></span>
+            </div>
+            <div class="oc-cap">概要：</div>
+            <div class="oc-desc" id="ocDesc">—</div>
+          </div>
+        </div>
+        <div class="op-brief" id="opBrief">
+          <div class="ob-head" id="opBriefToggle" title="ホバーで展開 / クリックで固定">▸ 経由・作戦概要 — BRIEFING</div>
+          <div class="ob-body">
+            <div class="op-route-line" id="opRouteLine"></div>
+            <div id="opBriefText"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /viewRoutes -->
+
   <!-- Footer -->
   <div class="map-footer">
     <div class="ft-item"><span class="ft-dot"></span>LYLAT SYSTEM ONLINE</div>
     <div class="ft-item">
       <span class="ft-dot" style="background:var(--good);box-shadow:0 0 6px var(--good);"></span>
       CORNERIAN DEFENSE FORCE ACTIVE
-    </div>
-    <div class="ft-item" style="gap:14px;">
-      <a href="console.html" style="color:var(--accent);text-decoration:none;letter-spacing:0.15em;">▸ データベースコンソールへ戻る</a>
     </div>
     <div style="margin-left:auto;color:var(--primary);font-size:10px;letter-spacing:0.15em;">
       ▸ 天体をクリックして詳細データを表示
@@ -983,7 +1310,8 @@
     (function() {
       const views = {
         system: document.getElementById('viewSystem'),
-        tactical: document.getElementById('viewTactical')
+        tactical: document.getElementById('viewTactical'),
+        routes: document.getElementById('viewRoutes')
       };
       document.querySelectorAll('#mapMode button').forEach((btn) => {
         btn.addEventListener('click', () => {
@@ -991,6 +1319,11 @@
           Object.keys(views).forEach((k) => { views[k].style.display = (k === btn.dataset.view) ? '' : 'none'; });
         });
       });
+      /* console.html の「遊撃隊への依頼内容」タイル等から #routes で直行できる */
+      if (location.hash === '#routes') {
+        const rb = document.querySelector('#mapMode button[data-view="routes"]');
+        if (rb) rb.click();
+      }
     })();
 
     /* ── 俯瞰図の装飾生成（同心円グリッド・放射線・星屑・隕石帯） ── */
@@ -1132,6 +1465,461 @@
           }
         });
       });
+    })();
+
+    /* ── 遊撃隊依頼ルート（OPERATION SHEET）描画 ──
+       コースの定義（経由地・依頼情報）は下の COURSES を編集する。
+       bend:true の点はルート帯の曲がりのみに使われ経由地としては表示されない */
+    (function() {
+      const svg = document.getElementById('opSvg');
+      if (!svg) return;
+      const NS = 'http://www.w3.org/2000/svg';
+      const layer = document.getElementById('opLayer');
+      const starsBg = document.getElementById('opStarsBg');
+      const mk = (name, attrs, parent) => {
+        const el = document.createElementNS(NS, name);
+        for (const k in attrs) el.setAttribute(k, attrs[k]);
+        parent.appendChild(el);
+        return el;
+      };
+
+      /* 星屑 */
+      for (let i = 0; i < 200; i++) {
+        mk('circle', {
+          cx: (Math.random() * 1800).toFixed(1), cy: (Math.random() * 860).toFixed(1),
+          r: (0.5 + Math.random() * 1.1).toFixed(2),
+          fill: '#ffffff', opacity: (0.08 + Math.random() * 0.45).toFixed(2)
+        }, starsBg);
+      }
+
+      /* 経由地は bend を除き最大8を目安とする変動制。
+         m: ミッションカード（ホバー小窓）の内容。未設定の経由地は「策定中」表示になる。
+
+         ── ミッション番号の採番規則（2026-09-01 棚卸し・改訂2） ──
+         区分1桁 ＋ 天体番号2桁 ＋ ミッション番号1桁（各天体・宙域とも1〜4の4枠）
+         区分: 0=恒星  1=惑星  2=セクター  3=施設・艦隊
+         例外: ベノム・プラネット・リアクター基地の破壊 ＝ 0001
+         恒星番号: 01=ソーラ  02=双子太陽
+         惑星番号: 正典の惑星番号（ベノム01／タイタニア02／マクベス03／コーネリア04／
+                   フォルトナ05／カタリナ07／フィチナ08／キュー09／プロスペロー10／
+                   エラダード11／アクアス12／ゾネス13…。06=旧ステファノーは欠番）
+         セクター番号: ギリシャ文字の並び＝α01 β02 γ03 δ04 ε05 ζ06 η07（将来用の
+                   欠番・予約）θ08 ι09 κ10 λ11 μ12 ν13 ξ14 ο15 π16 ρ17 σ18
+                   τ19 υ20 φ21 χ22 ψ23 Ω24。以降はロケーションDBの順
+                   （ϝ25 Ϛ26 Ͱ27…）＝セクターアイコン LF_S_xx の番号と同一
+                   （2026-09-01 アイコンも07を欠番にして全体を振り直し済み）
+         施設・艦隊番号（通し・追加時はこの表に追記）:
+           01=スターブレード  02=防衛衛星ボルス  03=エリア3  04=エリア6
+           05=ペルディタ宇宙センター  06=キュートス関門（スペースアマダ第2区画＝ψ-2）
+           07=グリーン・ビット  08=サルバドーラ（スペースアマダ第3区画）
+           09=オベロンⅡ（廃棄コロニー・セクターι）
+         ※グレートウォール絡みの依頼は宙域側で採番する
+           （第1宙域=γ2031〜／第2宙域=δ2041〜／第3宙域=ε2051〜） */
+      const CORNERIA = { x: 165, y: 710, jp: 'コーネリア', en: 'CORNERIA', href: 'planets/corneria.html', img: 'resource/LA_image/LS_P_4.png', s: 156 };
+      const VENOM    = { x: 1610, y: 135, jp: 'ベノム', en: 'VENOM', href: 'planets/venom.html', img: 'resource/LA_image/LS_P_1.png', s: 210,
+        m: {
+          no: '0001',
+          title: 'ベノム・プラネット・リアクター基地の破壊',
+          rate: '★★★★★★',
+          point: '惑星ベノム',
+          desc: '惑星ベノムの座標9719.0739に位置するベノム・プラネット・リアクター基地（VPN基地）の破壊任務である。対象となるVPN基地は惑星ベノムおよびスペースアマダの物理的動力源であり、破壊すればベノム帝国の現存軍備の7割を無力化できる。本作戦の実行にはスペースアマダの猛攻を回避したうえで、ベノム本星の浸食性生体組織の猛攻を掻い潜り基地に到達する必要がある。本作戦の完遂は第2次ライラットウォーズの終結に最も直結する最重要ミッションである。'
+        } };
+
+      const COURSES = [
+        {
+          code: 'No.3751', name: '共和国軍支援ルート', stars: '★★★☆☆☆', cls: 'CLASS C', reward: '600,000 SD',
+          brief: 'コーネリア連合共和国軍の駐屯する各惑星を巡り、各地の危機的戦況を打開する救援作戦に特化したルート。本作戦の骨子は各惑星の共和国軍の主要基地を救援することで余力を作り出し、スターブレード艦隊に残存兵力を集結させることで帝国の防衛艦隊「スペースアマダ」の強行突破から、帝国首都「アトロポリス」の陥落を狙うことである。本作戦は「共和国軍基地の損傷率が40%以下であること」、「防衛衛星ボルスの哨戒網を無力化すること」の2点がそろって初めて成立し、どちらか一つでも欠ければスペースアマダの突破は不可能となる点に注意が必要となる。作戦の全工程において共和国軍の救援と援軍が並走するため任務における多少の負傷は即時に対応可能である。',
+          pts: [
+            Object.assign({}, CORNERIA, { m: {
+              no: '1041', title: 'コーネリアシティ侵攻部隊の撃退', rate: '★☆☆☆☆', point: '惑星コーネリア',
+              desc: '星系首都に突入した帝国軍の陸上強襲部隊の撃退任務を行う。コーネリアシティ第3区画は行政区としての機能を有する人口密集地帯であり、既に先行投入されたレトリーバー隊による避難誘導は完了している。都市部に残された破壊工作部隊の排除と、ビル群を倒して回る二足歩行型拠点制圧兵器「グランガ」の破壊、または排除し都市の被害を食い止めるミッションとなる。'
+            } }),
+            { x: 395, y: 645, oy: -95, jp: 'グレートウォール', en: 'GREAT WALL', href: 'planets/greatwall.html', img: 'resource/LA_image/LS_F_1_3.png', s: 112, m: {
+              no: '2041', title: 'アステロイド破壊工作機の排除', rate: '★★☆☆☆', point: 'グレートウォール第2宙域',
+              desc: '惑星コーネリアを守る小惑星帯グレートウォールに風穴を開ける工作部隊の影が確認された。星間掘削艇「メテオクラッシャー」の使用の痕跡が見られ、現地では穴を開けられた隕石や、その破壊跡となる破片が散乱しているようである。表だっての大規模な侵攻は確認されていないが、隕石の影に隠れた無人攻撃機も相当数配備されているようであるため奇襲に注意をすることを推奨する。'
+            } },
+            { x: 620, y: 690, oy: 55, jp: 'カタリナ', en: 'KATINA', href: 'planets/katina.html', img: 'resource/LA_image/LS_P_7.png', s: 110, m: {
+              no: '1071', title: 'ノラ・アネモス前線基地の救援', rate: '★★★★☆', point: '惑星カタリナ',
+              desc: '「カタリナの奇跡」にて記憶に新しいカタリナ最大の都市ノラ・アネモスの前線基地にて、これまでで最大規模の超巨大強襲戦艦「グレートディッシュ」による攻撃が想定される。これはセクターτでの哨戒戦で明らかになった話であるが、既にカタリナ惑星宙域であるセクターγに向けて小惑星規模の機影が観測されており、襲撃の実行は確実と判定されている。現地のドーベル隊、バーナード隊と共同戦線を張り、このグレートディッシュによる前線基地破壊を食い止めるのが本作戦の任務となる。'
+            } },
+            { x: 845, y: 578, oy: -95, jp: 'スターブレード', en: 'STARBLADE FLEET', href: 'planets/starblade.html', img: 'resource/LA_image/LS_F_13.png', s: 120, m: {
+              no: '3011', title: '帝国偽装艦船の識別と破壊', rate: '★★☆☆☆', point: 'スターブレード艦隊',
+              desc: '現在、「北十字の悪夢」により半壊している星系統合艦隊「スターブレード」の中に内通者が紛れているという報告が挙げられており、艦隊修復のための物資が到着前に破壊されるなどの問題が発生している。本作戦は艦隊内にまぎれた帝国軍の偽装艦船を特定し、速やかに対象を破壊することが目的となる。なお、エリア3からシバ隊の救援が既に駆けつけており偽装戦艦のめぼしはついているという。遊撃隊チームにはその戦艦内に白兵での潜入を行い、艦の乗組員および首謀者の確保を行ってほしい。'
+            } },
+            { x: 1015, y: 430, oy: -95, jp: 'アクアス', en: 'AQUAS', href: 'planets/aquas.html', img: 'resource/LA_image/LS_P_12.png', s: 108, m: {
+              no: '1121', title: '海底に配備されたバイオウェポンの排除', rate: '★★★☆☆', point: '惑星アクアス',
+              desc: '海洋惑星アクアスに駐屯するラブラドール隊が海底に潜むバイオウェポンからの攻撃を受けているとの知らせが入っている。先の調査によりアースラ山脈に配備されていた帝国のバイオウェポン「バクーン」は排除済みであるが、未知のバイオウェポンが新規で配備された可能性が高い。対象の潜むエリアは深海7000mの海底であり航空戦力は一切使用できないため、本作戦の受注は海中戦闘の手段を持つ遊撃隊に限られる。'
+            } },
+            { x: 1180, y: 515, oy: 90, jp: 'フィチナ', en: 'FICHINA', href: 'planets/fichina.html', img: 'resource/LA_image/LS_P_6.png', s: 106, m: {
+              no: '1081', title: 'サルブルス山脈の帝国残党基地の破壊', rate: '★★★☆☆', point: '惑星フィチナ',
+              desc: '氷雪惑星フィチナに駐屯するハスキー隊が交戦中の帝国軍残党との交戦の補助および、残党の討伐または撤退を行うのが本任務となる。帝国軍残党はサルブルス山脈の一角に防衛戦線をはり、現在はブリザードの周期の都合上戦線が膠着状態となっている。山脈の中腹には帝国軍の軍事要塞が確認されているため、それらの破壊も任務に含まれる。現地では現在猛烈なブリザードが吹き荒れており視界は最悪の状態が予想される。交戦の際は対寒冷地向けの兵装を整えることを推奨する。'
+            } },
+            { x: 1355, y: 318, oy: -105, jp: '防衛衛星ボルス', en: 'BOLSE', href: 'planets/bolse.html', img: 'resource/LA_image/LS_F_8.png', s: 112, m: {
+              no: '3021', title: '艦隊船団突入の援護および陽動', rate: '★★★★☆', point: '防衛衛星ボルス',
+              desc: 'ベノム帝国の最終防衛ラインとなるスペースアマダ第6区画、通称エリア6に共和国の残存艦隊で正面から突入する作戦である。この作戦は遊撃隊により防衛衛星ボルスから放たれるパージ・キャノンを封じることが絶対条件となる。あくまでも艦隊戦で共和国の旗艦コーディリアがアトロポリスに到着するまでの8分間、ボルスからの攻撃照準を共和国艦隊に向けさせない作戦であるため、ボルスの破壊ができなくても問題はない。'
+            } },
+            Object.assign({}, VENOM, { m: {
+              no: '1011', title: '帝国首都強襲作戦', rate: '★★★★☆', point: 'アトロポリス',
+              desc: '共和国全軍と共に帝国首都の陥落を狙う電撃作戦である。首都は圧倒的防御を誇るバリアが展開されているが、旗艦コーディリアの搭載する主砲により小型艦船を通り抜けられる穴を開けることが可能である。遊撃隊は突入部隊と共に首都の要塞機能を制御するメインコントロールタワー6基を破壊し、首都を陥落させるための戦闘を行ってもらうことが本作戦の趣旨となる。なお、帝国首都は帝国所属の民間人が多数含まれるため、作戦はあくまでも「陥落」を目標とする。'
+            } })
+          ]
+        },
+        {
+          code: 'No.3752', name: '激戦区救援ルート', stars: '★★★★★★', cls: 'CLASS S', reward: '3,500,000 SD',
+          brief: '帝国との鍔迫り合いが続く最前線を渡り歩き、各地の激戦区を支援する星系屈指の危険ルートである。要となるのは帝国最大の軍事拠点である惑星マクベスのミサイル基地を無力化し、防衛網どうしがぶつかり合う混戦の一瞬の隙を突いて突入作戦を敢行する点にある。どの作戦よりも厳しい戦闘が続くことは確定している。だが成功すれば戦況は圧倒的に共和国側へ傾くと予想され、最終作戦である惑星ベノム本星への突入もこのルートが最も成功確率が高いと見込まれている。最難関の任務の連続につき、危険度クラスと報酬は依頼全体で最高位に設定されている。',
+          pts: [
+            Object.assign({}, CORNERIA, { m: {
+              no: '1042', title: 'コーネリア侵攻部隊の敗走機追跡', rate: '★☆☆☆☆', point: '惑星コーネリア',
+              desc: '星系首都を強襲した帝国軍の無人強襲部隊の撃退任務を行う。コーネリアシティ第7区画沿岸で撃退された無人強襲機の指揮を執っていた指揮官および、搭乗機である母艦アタックキャリアが逃走したとの報告が入っている。アタックキャリアは無人強襲部隊の補給も兼ねており、逃走を許せば次期強襲部隊の足掛かりにされる可能性が高いため、優先度を高めての依頼となる。'
+            } }),
+            { x: 400, y: 620, oy: -95, jp: 'セクターδ', en: 'SECTOR δ', href: 'database/locations.html#delta', tip: 'SECTOR DELTA', img: 'resource/LA_image/LF_S_04_delta.png', s: 116, m: {
+              no: '2042', title: 'セクターδ艦隊戦の援護', rate: '★★★☆☆', point: 'セクターδ',
+              desc: '帝国軍第9師団の艦隊および戦闘機群がセクターδに突如ワープアウトしてきた。共和国はスターブレードの残存艦隊を招集し応戦しているが戦況は劣勢である。どこから帝国艦隊がワープアウトしてきたかの情報は不明であるが、グレートウォール内のエネルギーの渦と因果関係がある可能性がある。本依頼はセクターδでの艦隊戦の援護を目的とする。帝国軍は無人戦闘機サルデスを多数配備しており、マークされている強力な機体も含まれているため注意を怠らないこと。'
+            } },
+            { x: 620, y: 715, oy: 40, jp: 'エリア3', en: 'AREA 3', href: 'planets/area3.html', img: 'resource/LA_image/LS_F_5.png', s: 102, m: {
+              no: '3031', title: '環状ステーション エリア3の防衛', rate: '★★★☆☆', point: 'グレートウォール第3宙域',
+              desc: 'グレートウォール第3宙域の環状宇宙ステーション「エリア3」が宙域と内部、双方の大規模な攻勢により陥落寸前となっている。敵機の編隊を指揮しているのは哨戒兵カイマンと同一人物とみられ、破壊不可能であるドリスビー艦をうまく使い優位に宇宙戦闘を行っているとみられる。この襲撃にはスターウルフのアンドリュー・オイッコニーと参謀のピグマ・デンガーが関わっているとみられ、交戦時はスターウルフ機との交戦も予想される。'
+            } },
+            { x: 850, y: 540, oy: -90, jp: 'セクターφ', en: 'TRINCULO CORRIDOR', href: 'database/locations.html#phi', tip: 'SECTOR PHI', img: 'resource/LA_image/LF_S_21_phi.png', s: 116, m: {
+              no: '2211', title: 'トリンキュロー回廊奪還作戦', rate: '★★★★☆', point: 'セクターφ',
+              desc: '現在、星系のインナーリムとアウターリムを繋ぐ唯一の架け橋となっているトリンキュロー回廊が帝国軍の即席の要塞により通行を封鎖された。トリンキュロー回廊の封鎖はコーネリアとソーラ圏の惑星の連携が寸断されたも同義であり、早期の奪還が急務となる。本宙域での外縁部に作られた要塞は即席とはいいつつ、その規模はメテオベースに迫るものになりつつある。警護している帝国軍の数が異様に少ないことから、本宙域でなにか強力な兵器が稼働している可能性が高い点に注意されたし。'
+            } },
+            { x: 1010, y: 468, oy: -95, jp: 'セクターς', en: 'SECTOR ς — MOLTEN ZONE', href: 'database/locations.html#sigma', tip: 'SECTOR SIGMA', img: 'resource/LA_image/LF_S_18_sigma.png', s: 116, m: {
+              no: '2181', title: '溶鉱炉宙域の突破および航路確保', rate: '★★★★☆', point: 'セクターς',
+              desc: '惑星マクベスのミサイル基地からの対艦船ミサイル「マン・ドリル」を封じるための下準備となる作戦。この作戦は大きな対マクベス戦線の前半であり、こちらは惑星に潜入するための足掛かりを得るための戦いとなる。対象となるセクターςは「溶鉱炉宙域」の異名を持つ星系屈指の危険地帯である。潜入時は押し寄せる隕鉄や、高火力の無人兵器を押し返せるほどの兵装を準備しておく必要がある他、高温の星間ガス帯に触れないように移動する精密な機体コントロールが求められる。'
+            } },
+            { x: 1190, y: 548, oy: 70, jp: 'マクベス', en: 'MACBETH', href: 'planets/macbeth.html', img: 'resource/LA_image/LS_P_3.png', s: 106, m: {
+              no: '1031', title: 'マクベス第3ミサイル発射基地の無力化', rate: '★★★★☆', point: '惑星マクベス',
+              desc: '侵入経路の確保が完了したらマクベスに配備されるミサイル基地のうち、最も稼働率の高い第3基地の無力化を行う作戦に移行する。惑星マクベスは高重力環境のため航空戦力が使用できず、地上戦で成果を上げられる装備が必須となる戦線である。ミサイル基地の破壊プランは2つ提示されており、物資補給に使われる装甲列車を破壊して機能不全にする方法、ミサイル基地に装甲列車を正面衝突させ物理的に破壊する方法である。後者は「デレールプラン」として共和国参謀本部で何度も卓上に上がりつつ、実施可能な部隊がいないとして白紙に戻った難関作戦である。'
+            } },
+            { x: 1345, y: 290, oy: -95, jp: 'エリア6', en: 'AREA 6', href: 'planets/area6.html', img: 'resource/LA_image/LS_F_7.png', s: 112, m: {
+              no: '3041', title: 'エリア6の強行突破作戦', rate: '★★★★★', point: 'スペースアマダ第6区画',
+              desc: 'ベノム帝国の最終防衛ラインとなるスペースアマダ第6区画、通称エリア6の哨戒網を少数の遊撃隊で一気に突破する電撃作戦である。帝国軍最強の大艦隊と正面から闘うのはマクベスからの狙撃を阻止したことで到達が可能になるスターブレード艦隊であり、遊撃隊側はその混乱に乗じて帝国の中枢である惑星ベノムに突入するのが趣旨となる。この作戦ではスターブレード艦隊の損傷率が少ない状態であることが必須となり、防衛衛星ボルスからのパージ・キャノンによる犠牲を織り込んだうえでの強襲作戦となる。'
+            } },
+            Object.assign({}, VENOM, { m: {
+              no: '0001', title: 'ベノム・プラネット・リアクター基地の破壊', rate: '★★★★★★', point: '惑星ベノム',
+              desc: '惑星ベノムの座標9719.0739に位置するベノム・プラネット・リアクター基地（VPN基地）の破壊任務である。対象となるVPN基地は惑星ベノムおよびスペースアマダの物理的動力源であり、破壊すればベノム帝国の現存軍備の7割を無力化できる。本作戦の実行にはスペースアマダの猛攻を回避したうえで、ベノム本星の浸食性生体組織の猛攻を掻い潜り基地に到達する必要がある。本作戦の完遂は第2次ライラットウォーズの終結に最も直結する最重要ミッションである。'
+            } })
+          ]
+        },
+        {
+          code: 'No.3753', name: '外星系迂回ルート', stars: '★★★★☆☆', cls: 'CLASS B', reward: '1,200,000 SD',
+          brief: 'ハクティバ通商連合の治める外星系を経由して帝国の背面へ回り込む大規模な迂回ルートである。突入口には最終防衛ラインのエリア6ではなく、通商連合と帝国の貿易船が行き交う警備最薄の関門「スペースアマダ第2区画＝キュートス関門」を使う。ペルディタ宇宙センターからOF航路とハクティバ通商航路を乗り継ぐ行程は長大だが、大艦隊との正面衝突を避けたまま帝国首都の目前まで到達できる。ただし中立圏での任務に共和国の威光と援助は届かないため、全行程が遊撃隊単独の仕事となる。偽装が最後まで保たれれば、一発の砲火も無い戦争終結すら視野に入る隠密ルートである。',
+          pts: [
+            Object.assign({}, CORNERIA, { m: {
+              no: '1041', title: 'コーネリアシティ侵攻部隊の撃退', rate: '★☆☆☆☆', point: '惑星コーネリア',
+              desc: '星系首都に突入した帝国軍の陸上強襲部隊の撃退任務を行う。コーネリアシティ第3区画は行政区としての機能を有する人口密集地帯であり、既に先行投入されたレトリーバー隊による避難誘導は完了している。都市部に残された破壊工作部隊の排除と、ビル群を倒して回る二足歩行型拠点制圧兵器「グランガ」の破壊、または排除し都市の被害を食い止めるミッションとなる。'
+            } }),
+            { x: 430, y: 688, oy: -100, jp: 'ペルディタ宇宙センター', en: 'PERDITA — SECTOR κ', href: 'database/locations.html#kappa', tip: 'SECTOR KAPPA', img: 'resource/LA_image/LF_S_10_kappa.png', s: 116, m: {
+              no: '3051', title: 'ペルディタ宇宙センターの漂流物除去', rate: '★★☆☆☆', point: 'ペルディタ宇宙センター',
+              desc: 'オズリック・フォーティンブラス工業航路（OF航路）へ乗り継ぐ拠点となるペルディタ宇宙センター周辺の漂流物除去任務である。トリンキュロー回廊で進む帝国要塞の建設が航路の流れを乱し、行き場を失った廃材や残骸がセンターの外周へ漂着し続けている。ライラット系最大の宇宙港も掃除が済むまでは発着枠を開けられない。地味な依頼に見えるが、本ルートの成否はここでOF航路に乗れるかどうかに懸かっている。'
+            } },
+            { x: 660, y: 655, oy: 50, jp: 'マクベス', en: 'MACBETH — SECTOR ς', href: 'planets/macbeth.html', img: 'resource/LA_image/LS_P_3.png', s: 106, m: {
+              no: '2182', title: '狙撃下のグレートフォックス護衛', rate: '★★★★☆', point: 'セクターς',
+              desc: 'OF航路でセクターςを通過する母艦グレートフォックスを護衛する任務である。マクベスのミサイル基地は航路を横切る大型艦を対艦船ミサイル「マン・ドリル」で狙撃してくるため、発射の兆候を検知した端から迎撃または進路妨害を行う必要がある。撃ち落とせない場合は母艦の盾となる覚悟も求められる。護衛対象を失った時点で本ルートの継続は不可能となる。'
+            } },
+            { x: 880, y: 618, oy: -95, jp: 'エラダード', en: 'ELADARD', href: 'planets/eladard.html', img: 'resource/LA_image/LS_P_11.png', s: 104, m: {
+              no: '1111', title: 'ブレード工場プラットフォームの破壊', rate: '★★★★☆', point: '惑星エラダード',
+              desc: 'エラダード軌道上で秘密裏に稼働を始めたバキュラム鋼のブレード工場プラットフォームを破壊する任務である。量産不能とされてきたバキュラム鋼の生産体制が整えば戦況は取り返しがつかなくなるため、本格稼働前の破壊が絶対条件となる。ただし武器商人の星への攻撃に共和国は一切関与できない。本任務はあくまで一遊撃隊の独断として遂行され、拿捕されても救援と身元の保証は無いものと心得られたし。'
+            } },
+            { x: 1030, y: 468, oy: -90, jp: 'キュー', en: 'KEW', href: 'planets/kew.html', img: 'resource/LA_image/LS_P_9.png', s: 104, m: {
+              no: '1091', title: 'IGA残党占拠施設の制圧', rate: '★★★☆☆', point: '惑星キュー',
+              desc: '惑星キューの大型複合施設を占拠した独立星系連合残党によるテロ事件の制圧任務である。犯行グループは施設の管制を掌握し、館内の作業ドロイドと無人機を武装化して立てこもっている。艦載火器は使用できないため、施設内での白兵戦と無人機の各個撃破が中心となる。人質と施設への被害を抑えるため、突入は現地自警団との連携のもとで行われる。'
+            } },
+            { x: 1170, y: 545, oy: 72, jp: 'セクターϊ', en: 'SECTOR YA — STATIC SEA', href: 'database/locations.html#ya', tip: 'SECTOR YA', img: 'resource/LA_image/LF_S_44_ya.png', s: 116, m: {
+              no: '2441', title: '静電の海の横断', rate: '★★★★☆', point: 'セクターϊ',
+              desc: '恒常的な静電嵐に覆われたセクターϊ、通称「静電の海」を横断する任務である。嵐の内部では通信と計器の全てが機能を失い、目視のみの航行を強いられる。加えて艦船の電力を主食とするスペースアメーバの大群と、高エネルギーの束でできた星雲が航路を阻む。電力を奪われれば漂流は避けられないため、停止せず一息に駆け抜ける操縦技術が求められる。'
+            } },
+            { x: 1380, y: 338, oy: -105, jp: 'キュートス関門', en: 'CETUS GATE — SECTOR ψ-2', href: 'database/locations.html#psi', tip: 'SECTOR PSI', img: 'resource/LA_image/LF_S_23_psi.png', s: 116, m: {
+              no: '3061', title: 'キュートス関門の偽装通過', rate: '★★★★★', point: 'スペースアマダ第2区画',
+              desc: '通商連合と帝国の貿易船が行き交うスペースアマダ第2区画、通称キュートス関門を偽装のまま通過する潜入任務である。貨物船に偽装した母艦グレートフォックスを検問に通し、帝国に最後まで気取られないことが唯一の成功条件となる。警戒網の警報さえ作動しなければ交戦の必要はなく、必要な場合は音もなく検問要員を無力化することも許可される。警報が作動した時点で本ルートの全作戦は中止となる。'
+            } },
+            Object.assign({}, VENOM, { m: {
+              no: '1012', title: '帝国首都潜入とアンドルフ捕縛', rate: '★★★★★', point: 'アトロポリス',
+              desc: 'キュートス関門を抜けた貨物船の列に紛れたまま帝国首都へ入港し、皇帝アンドルフの身柄を確保する潜入作戦である。首都の防御機構は健在のままとなるため、発覚した時点で脱出の手段は無いに等しい。帝国軍基地内部の経路情報は受注時に別途開示される。皇帝の確保はこの戦争を法廷で終わらせる唯一の道であり、成功すれば一発の砲火も無いまま第2次ライラットウォーズが終結する可能性がある。'
+            } })
+          ]
+        },
+        {
+          code: 'No.3754', name: '回遊路奇襲ルート', stars: '★★★★★☆', cls: 'CLASS A', reward: '2,000,000 SD',
+          brief: 'フォルトナとソーラ圏を結ぶ発光生物の回遊路セクターⳡを活用した大規模な奇襲ルートである。最大の特徴は通常使用できない迂回路によってトリンキュロー回廊を経由せずにアウターリムへ移動できる点にあり、敵の哨戒が機能しない方角から接近するためセクターςを経由せずマクベスへ直接降下できる。かつてドナルベイン攻略戦で試みられ帝国の情報操作に敗れた奇襲路の再演であり、今度こそ標的を誤ることは許されない。敵の虚を突いたまま帝国軍のミサイル基地と兵器工場を一手に停止させることに成功すれば、共和国の大攻勢が可能となる。',
+          pts: [
+            Object.assign({}, CORNERIA, { m: {
+              no: '1043', title: '沿岸管制ステーションの奪還', rate: '★★☆☆☆', point: '惑星コーネリア',
+              desc: '共和国の参謀会の開催地が敵軍へ漏洩していた形跡が確認された。コーネリアシティ沿岸地区の管制ステーションが帝国軍の降下部隊に占拠されており、ステーションの奪還と取り残された要人の救護を目的とする。人質の安全を最優先とするため艦載火器の使用は制限される。開催地を漏らした経路の調査は別部門が担当するため深追いは不要である。'
+            } }),
+            { x: 410, y: 658, oy: -95, jp: 'グリーン・ビット', en: 'GREEN BIT', href: 'database/locations.html#green-bit', img: 'resource/LA_image/LS_F_11.png', s: 104, m: {
+              no: '3071', title: '占領部隊からの人質奪還', rate: '★★★☆☆', point: 'グリーン・ビット',
+              desc: '宇宙植物工場群グリーン・ビットを占領した帝国軍部隊により、サウリアン同盟および共和国の研究関係者が捕縛され立てこもり事件へ発展している。本依頼にはサウリアン同盟からの正式な救助要請が含まれており、同盟との友好関係のためにも人質の無事な奪還を最優先とする。工場区画は破損すれば生態系ごと失われるため、砲撃に頼らない制圧手段を用意されたし。'
+            } },
+            { x: 600, y: 705, oy: 40, jp: 'フォルトナ', en: 'FORTUNA', href: 'planets/fortuna.html', img: 'resource/LA_image/LS_P_5.png', s: 106, m: {
+              no: '1051', title: 'トアルシアン大渓谷の兵器掃討', rate: '★★★☆☆', point: '惑星フォルトナ',
+              desc: 'トアルシアン大渓谷にオイッコニーが築いた要塞の跡地で不審な動きが観測された。シャープクロウ族の一派が放置された有人兵器を改修し、クラウドシティへの侵攻を企てているとみられる。現地で稼働する兵器の全てを破壊し侵略の芽を摘むのが目的となる。渓谷の地形は複雑であり、待ち伏せを前提とした慎重な進入が求められる。'
+            } },
+            { x: 830, y: 552, oy: -90, jp: 'セクターⳡ', en: 'SECTOR NYI — MIGRATION LANE', href: 'database/locations.html#nyi', tip: 'SECTOR NYI', img: 'resource/LA_image/LF_S_41_nyi.png', s: 116, m: {
+              no: '2411', title: '回遊路の隠密突破', rate: '★★★★☆', point: 'セクターⳡ',
+              desc: 'クラウドシティの死守を前提として、サウリアン同盟の「星読み」の協力の下でセクターⳡを突破する任務である。この宙域は発光生物の回遊路であると同時に、サルガッソーを安全に迂回できる数少ない経由ルートでもある。ただし普段はライラット・プライムの強力な磁力線が飛び交う危険地帯であり、通行できるのは磁気の静まる僅かな期間に限られる。回遊生物はアーウィン程度の機体には一切動じない。その動きをつぶさに観察し、群れが避ける高エネルギーの在り処を読みながら突破されたし。'
+            } },
+            { x: 1020, y: 408, oy: -95, jp: 'ソーラ', en: 'SOLAR', href: 'planets/solar.html', img: 'resource/LA_image/LS_S_2.png', s: 110, m: {
+              no: '0011', title: 'ソーラ表面の巨大生物掃討', rate: '★★★★★', point: '恒星ソーラ',
+              desc: 'ソーラの表面で巨大生物の移動痕が確認された。先の調査作戦で撃破したはずのバイオウェポン「サンガー」が復活したか、あるいは新たな個体が活動を始めたとみられる。今度こそソーラに巣くう怪物の息の根を止めるのが目的となる。表面温度は6000℃に達するため耐熱装甲は必須であり、装備の冷却限界がそのまま作戦の制限時間となる。'
+            } },
+            { x: 1185, y: 498, oy: 75, jp: 'マクベス', en: 'MACBETH — DONALBAIN', href: 'planets/macbeth.html', img: 'resource/LA_image/LS_P_3.png', s: 106, m: {
+              no: '1032', title: 'スピニング・コアの撃破', rate: '★★★★★', point: '惑星マクベス',
+              desc: '敵の虚を突いた奇襲によって、ドナルベイン火山の地下に据えられた「スピニング・コア」を撃破する本ルートの本命任務である。スピニング・コアは廃炉となった第5動力炉を兵器転用した施設であり、ミサイル発射基地のエネルギー管理と対空迎撃システムの中枢として機能している。破壊すればマン・ドリルの発射数を激減させられると分析されている。高重力に加えて狭い坑道を抜ける必要があるため参戦は対地戦力に限られ、溶岩の溢れる灼熱の火山地帯を進むためソーラと同様に耐熱装備が必須となる。'
+            } },
+            { x: 1340, y: 298, oy: -100, jp: 'サルバドーラ', en: 'SALVADORA — SECTOR ψ-3', href: 'weapons/salvadora.html', img: 'resource/LA_image/LS_F_14.png', s: 112, m: {
+              no: '3081', title: 'スペースアマダ第3区画の強襲', rate: '★★★★★', point: 'スペースアマダ第3区画',
+              desc: 'マクベスの全兵器工場の停止に成功した場合にのみ発動する、共和国残存艦隊によるスペースアマダ第3区画への奇襲作戦である。帝国の兵器供給を全て断ったうえで、サウリアン同盟の援護による防衛衛星ボルスへの陽動を並行させることが必須条件となる。第3区画では帝国最大の艦船「サルバドーラ」とグランビーの大群による猛攻が予想され、敵兵力を半減させてなお難航を極めるとみられる。遊撃隊は艦隊の矢面に立ち、サルバドーラの主砲射線から旗艦を守り抜かれたし。'
+            } },
+            Object.assign({}, VENOM, { m: {
+              no: '1011', title: '帝国首都強襲作戦', rate: '★★★★☆', point: 'アトロポリス',
+              desc: '共和国全軍と共に帝国首都の陥落を狙う電撃作戦である。首都は圧倒的防御を誇るバリアが展開されているが、旗艦コーディリアの搭載する主砲により小型艦船を通り抜けられる穴を開けることが可能である。遊撃隊は突入部隊と共に首都の要塞機能を制御するメインコントロールタワー6基を破壊し、首都を陥落させるための戦闘を行ってもらうことが本作戦の趣旨となる。なお、帝国首都は帝国所属の民間人が多数含まれるため、作戦はあくまでも「陥落」を目標とする。'
+            } })
+          ]
+        },
+        {
+          code: 'No.3755', name: 'サルガッソー強行ルート', stars: '★★★★★☆', cls: 'CLASS A', reward: '2,800,000 SD',
+          brief: '前代未聞となる宇宙の墓場「サルガッソー」を正面から横断する強行ルートである。帝国と共和国が幾度も試みては墓場の仲間入りを果たしてきた無謀の極みだが、本作戦は有用な情報に基づいて真剣に立案されたものである。カタリナの補給基地でオベロンⅡの現在位置を特定し、同コロニーに残された軌道管制プログラム「フォーストラス」を艦船へ組み込んだうえで、残骸の密度が最も薄い領域を悪魔の手に捕まる前に駆け抜ける。墓場の内側は悪魔の手に加えて宇宙海賊とサルベージャーの巣窟であり、あらゆる危険が同居している。それでも突破に成功すれば、警戒の手薄なソーラ圏の惑星の救援が可能となる。',
+          pts: [
+            Object.assign({}, CORNERIA, { m: {
+              no: '1044', title: 'マクベス鋼の奪還', rate: '★★★☆☆', point: '惑星コーネリア',
+              desc: 'セクターζへ向けて用意されたマクベス鋼の在庫資材が、帝国の強襲部隊に奪取されたことが確認された。この資材は北十字で半壊したスターブレード艦隊の修繕のために集められた残存分であり、失われた場合の被害は艦隊の喪失と同義である。帝国軍の部隊からマクベス鋼を奪還したうえで実行部隊を撃破するのが目的となる。輸送中の資材を傷つけないよう火器の選定には注意されたし。'
+            } }),
+            { x: 430, y: 638, oy: -100, jp: 'カタリナ', en: 'KATINA', href: 'planets/katina.html', img: 'resource/LA_image/LS_P_7.png', s: 110, m: {
+              no: '1072', title: '密林の未確認生命体の調査と撃退', rate: '★★★☆☆', point: '惑星カタリナ',
+              desc: '雨季のカタリナに広がるシダとキノコの密林で、未確認生命体による被害が確認された。当初は軽微な被害だったが、今や民間人だけでなく前線基地の隊員も襲撃されており見過ごせない規模となっている。新種のバイオウェポンの可能性が高いため、ウォーカー形態などによる地表調査と撃退を並行して行うのが目的である。なおカタリナ管制塔はスターウルフのレオン・ポワルスキーの活動を確認しており、作戦遂行時には交戦が予想される。'
+            } },
+            { x: 640, y: 672, oy: 48, jp: 'オベロンⅡ', en: 'OBERON II', href: 'planets/oberon.html', img: 'resource/LA_image/LS_F_9.png', s: 100, m: {
+              no: '3091', title: '廃棄コロニーの潜入調査', rate: '★★★★☆', point: 'オベロンⅡ',
+              desc: 'カタリナで座標データを入手できた場合にのみ実行可能となる潜入任務である。廃棄コロニー・オベロンⅡからはかねてより正体不明の通信が発せられており、軌道管制プログラム「フォーストラス」の回収と併せてその調査を行う。この宙域では多数の艦船の行方不明事件が起きており、空間が不安定である可能性が高いため白兵での潜入が推奨される。無人のはずのコロニーで何と出会っても、任務の完遂を最優先とされたし。'
+            } },
+            { x: 858, y: 538, oy: -95, jp: 'サルガッソー', en: 'SARGASSO — SECTOR υ', href: 'planets/sargasso.html', img: 'resource/LA_image/Sargasso_thumb.png', s: 116, m: {
+              no: '2201', title: '宇宙の墓場の横断', rate: '★★★★★★', point: 'サルガッソー',
+              desc: 'オベロンⅡで入手した「フォーストラス」の組み込みが必須となる。悪魔の手に捕まることなくサルガッソーへ突入し、脱出することを目的とする。内部では悪魔の手と呼ばれる現象があらゆる物体を見境なく機体へ群がらせるため、突入から脱出まで常に何かに追われ続ける状態となる。要求される操縦技術は全ミッションの中でも最高であり、本ルート最難関の工程となる可能性が高い。'
+            } },
+            { x: 1032, y: 452, oy: -85, jp: 'アクアス', en: 'AQUAS', href: 'planets/aquas.html', img: 'resource/LA_image/LS_P_12.png', s: 108, m: {
+              no: '1122', title: '海上要塞シーレシアの撃破', rate: '★★★★★', point: '惑星アクアス',
+              desc: 'シレーヌ海の荒波に紛れて活動する海上要塞シーレシアの撃破を目的とする。シーレシアが出現するのはアクアスの海が最も荒れるケアノスの大潮の時期であり、波は小山ほどの規模に達する。ロミオ防衛戦線では駐屯のラブラドール隊が撃退に至らず引き分けており、今戦は遊撃隊との連携が勝敗を分けると分析されている。嵐の中での戦闘となるため相応の機体コントロールが求められる。'
+            } },
+            { x: 1170, y: 518, oy: 68, jp: 'ゾネス', en: 'ZONESS', href: 'planets/zoness.html', img: 'resource/LA_image/LS_P_13.png', s: 106, m: {
+              no: '1131', title: '海上城塞都市ジュリエットの奪還', rate: '★★★★☆', point: '惑星ゾネス',
+              desc: '帝国に占拠された海上城塞都市ジュリエットの奪還作戦である。城塞都市の名は伊達ではなく、ゾネスの海上基地として機能する同都市は戦艦と同等の戦力を保有している。海中からもバイオウェポンが多数襲いかかると予想されるため、遊撃隊はオールレンジ攻撃での応戦と、混乱に乗じた潜入部隊の二方向へ分かれて作戦を遂行する必要がある。旧タッドー副首都の景観を損なわないため、市街区画への誤射は厳に慎まれたし。'
+            } },
+            { x: 1352, y: 308, oy: -105, jp: '防衛衛星ボルス', en: 'BOLSE', href: 'planets/bolse.html', img: 'resource/LA_image/LS_F_8.png', s: 112, m: {
+              no: '3022', title: '防衛衛星ボルスの機能停止', rate: '★★★★★', point: '防衛衛星ボルス',
+              desc: 'アクアスとゾネスを解放できた場合、スペースアマダ第1区画への突入時に両星からの援軍が得られる。本作戦ではボルスの機能停止または破壊が必要となるため、弱点となる放熱板とリアクターを破壊し、緊急放熱時に露出するボルス・コアを叩くこととなる。ボルスへの攻勢にはスターウルフが介入する公算が高く、単に弱点を突くだけでは済まない任務になるとみられる。'
+            } },
+            Object.assign({}, VENOM, { m: {
+              no: '1013', title: '電力供給路の遮断と首都総攻撃', rate: '★★★★★', point: 'アトロポリス',
+              desc: '「フォーストラス」を確保している場合、ベノム本星とアトロポリスを繋ぐ電力供給路へ鹵獲した隕石を誘導し、首都を一時的に無力化できる可能性がある。軌道計算プログラムがあって初めて成立する離れ業であり、通常の作戦では不可能な芸当だが実践の価値は高い。敵を無力化しボルスを沈黙させた状態で、共和国残存艦隊の一斉攻撃によりアトロポリスを陥落させるのが本作戦の趣旨となる。'
+            } })
+          ]
+        },
+        {
+          code: 'No.3756', name: '副首都解放ルート', stars: '★★★★★☆', cls: 'CLASS A', reward: '2,200,000 SD',
+          brief: '帝国に占領されたままの副首都プロスペローを解放し、その勢いのままベノムへ迫る反攻ルートである。軍事基地化された環オベロンⅢの哨戒網が最大の障害となるが、廃棄コロニー・オベロンⅡに残された管制情報を用いればこれを無効化できると分析されている。解放に成功すれば5航路の重畳するトリンキュロー剣先が共和国の手に戻り、アウターリムの全戦線への補給が一挙に息を吹き返す。政治的にも戦略的にも意味の大きい、共和国反攻の象徴となるべきルートである。',
+          pts: [
+            Object.assign({}, CORNERIA, { m: {
+              no: '1042', title: 'コーネリア侵攻部隊の敗走機追跡', rate: '★☆☆☆☆', point: '惑星コーネリア',
+              desc: '星系首都を強襲した帝国軍の無人強襲部隊の撃退任務を行う。コーネリアシティ第7区画沿岸で撃退された無人強襲機の指揮を執っていた指揮官および、搭乗機である母艦アタックキャリアが逃走したとの報告が入っている。アタックキャリアは無人強襲部隊の補給も兼ねており、逃走を許せば次期強襲部隊の足掛かりにされる可能性が高いため、優先度を高めての依頼となる。'
+            } }),
+            { x: 400, y: 632, oy: -95, jp: 'エリア3', en: 'AREA 3', href: 'planets/area3.html', img: 'resource/LA_image/LS_F_5.png', s: 100, m: {
+              no: '3032', title: '接続口検問の確保', rate: '★★☆☆☆', point: 'グレートウォール第3宙域',
+              desc: 'プロスペロー・ラインがグレートウォールを跨ぐ接続口の検問管制を確保する任務である。検問業務の最中、エリア3の管制からプロスペローの危機と、環オベロンⅢが帝国の軍事基地として運用されている事実が知らされる。管制の記録には環と同系統の管制を持つ廃棄コロニー・オベロンⅡの情報が残されており、これを入手できればオベロンⅢの哨戒網を無効化する糸口となる。まずは帝国の工作船から検問を守り抜き、情報の受け渡しを完了されたし。'
+            } },
+            { x: 612, y: 698, oy: 48, jp: 'オベロンⅡ', en: 'OBERON II', href: 'planets/oberon.html', img: 'resource/LA_image/LS_F_9.png', s: 104, m: {
+              no: '3092', title: '廃棄コロニーの白兵潜入', rate: '★★★★☆', point: 'オベロンⅡ',
+              desc: 'エリア3で得た情報を基に、廃棄コロニー・オベロンⅡへ白兵で潜入する調査任務である。目的はオベロンⅢの哨戒網を無効化する管制情報の回収と、コロニー内で確認された遭難者の救出である。無人のはずの内部では人語を解する6体の「花」の存在が報告されており、接触の際は敵意のないことを示して交流を図られたし。彼らの協力が得られるかどうかで任務の成否は大きく変わるとみられる。'
+            } },
+            { x: 850, y: 558, oy: -95, jp: 'プロスペロー', en: 'PROSPERO', href: 'planets/prospero.html', img: 'resource/LA_image/LS_P_10.png', s: 110, m: {
+              no: '1101', title: '副首都解放戦', rate: '★★★★★', point: '惑星プロスペロー',
+              desc: 'オベロンⅢの哨戒を無効化し次第、占領軍司令部への攻勢を開始する副首都解放の本命任務である。プロスペローは星系最大の人口を抱えるため市街への流れ弾は一切許されず、攻撃は司令部と軍事施設への精密打撃に限定される。なお占領軍の戦力には正体不明の超大型兵器の反応が確認されており、交戦する場合は市街から離れた副首都のテンペストタワー周辺が戦場になると予測されている。最悪の事態に備え、超兵器級の脅威との交戦準備を怠らないこと。'
+            } },
+            { x: 1020, y: 448, oy: -85, jp: 'セクターφ', en: 'TRINCULO CORRIDOR', href: 'database/locations.html#phi', tip: 'SECTOR PHI', img: 'resource/LA_image/LF_S_21_phi.png', s: 110, m: {
+              no: '2212', title: '回廊の隠密通過', rate: '★★★☆☆', point: 'セクターφ',
+              desc: 'トリンキュロー回廊に築かれた帝国要塞の監視網を縫い、増援と補給の船団を通す隠密通過任務である。要塞の攻略そのものは別途の作戦に委ねられており、本任務では交戦を避けることが最優先となる。なお通過の最中、先行して単独調査に当たっていた共和国軍のビル・グレイがタイタニアへ墜落したとの緊急信号が確認される。船団を送り届け次第、本ルートはそのまま救出作戦へ移行する。'
+            } },
+            { x: 1178, y: 528, oy: 76, jp: 'タイタニア', en: 'TITANIA', href: 'planets/titania.html', img: 'resource/LA_image/LS_P_2.png', s: 106, m: {
+              no: '1021', title: 'ビル・グレイの救出', rate: '★★★★☆', point: '惑星タイタニア',
+              desc: 'タイタニアに墜落したビル・グレイの救出作戦である。共和国からの公式任務ではなく、依頼書に記録の残らない救出行となる。鉄の雨と暴走古代兵器の猛攻を掻い潜り、磁場で計器の狂う地表から生存者を回収しなければならない。なお墜落地点の付近では出自不明のビーコン装置の反応が確認されており、回収できれば後の作戦に活用できる可能性がある。'
+            } },
+            { x: 1355, y: 318, oy: -100, jp: 'スペースアマダ', en: 'SECTOR ψ', href: 'database/locations.html#psi', tip: 'SECTOR PSI', img: 'resource/LA_image/LF_S_23_psi.png', s: 110, m: {
+              no: '2231', title: '陽動ビーコンによる突入支援', rate: '★★★★★', point: 'スペースアマダ第5区画',
+              desc: 'タイタニアで回収された出自不明の陽動ビーコンを用い、スペースアマダ第5区画へ艦隊の注意を引き付けたうえで突入路を開く作戦である。ビーコンの発する信号は帝国艦隊の哨戒網を強く刺激すると解析されているが、その出自も起動後の挙動も誰にも保証できない。陽動が破られた場合は帝国最強の大艦隊を相手取る撤退戦となり、生還そのものが任務の成否となる。'
+            } },
+            Object.assign({}, VENOM, { m: {
+              no: '1011', title: '帝国首都強襲作戦', rate: '★★★★☆', point: 'アトロポリス',
+              desc: '共和国全軍と共に帝国首都の陥落を狙う電撃作戦である。首都は圧倒的防御を誇るバリアが展開されているが、旗艦コーディリアの搭載する主砲により小型艦船を通り抜けられる穴を開けることが可能である。遊撃隊は突入部隊と共に首都の要塞機能を制御するメインコントロールタワー6基を破壊し、首都を陥落させるための戦闘を行ってもらうことが本作戦の趣旨となる。なお、帝国首都は帝国所属の民間人が多数含まれるため、作戦はあくまでも「陥落」を目標とする。'
+            } })
+          ]
+        }
+      ];
+
+      /* ── ミッションカード（ホバー小窓） ── */
+      const mapBox = document.querySelector('#viewRoutes .op-map');
+      const card = document.getElementById('opCard');
+      function showCard(p, aEl) {
+        const m = p.m || {
+          no: '----', title: '（依頼詳細 策定中）', rate: '', point: p.jp,
+          desc: 'この経由地の依頼詳細は現在CDF依頼管理局で策定中である。'
+        };
+        document.getElementById('ocNo').textContent = 'MISSION No.' + m.no;
+        document.getElementById('ocTitle').textContent = m.title;
+        document.getElementById('ocStars').textContent = m.rate || '——';
+        document.getElementById('ocPoint').textContent = m.point;
+        document.getElementById('ocDesc').textContent = m.desc;
+        card.hidden = false;
+        const mb = mapBox.getBoundingClientRect();
+        const nb = aEl.getBoundingClientRect();
+        /* 低い画面では圧縮表示に切り替えてから寸法を測り、地図枠の中に収める */
+        card.classList.remove('compact');
+        let cw = card.offsetWidth, ch = card.offsetHeight;
+        if (ch > mb.height - 66) {
+          card.classList.add('compact');
+          cw = card.offsetWidth; ch = card.offsetHeight;
+        }
+        let flip = false;
+        let x = nb.right - mb.left + 36;
+        let y = nb.top - mb.top - 8;
+        if (x + cw > mb.width - 10) { x = nb.left - mb.left - cw - 36; flip = true; }
+        if (x < 10) x = 10;
+        /* 上は帯（52px）の下・下は枠内に収める */
+        y = Math.max(58, Math.min(y, mb.height - ch - 8));
+        card.classList.toggle('flip', flip);
+        card.style.left = x + 'px';
+        card.style.top = y + 'px';
+        /* 表示のたびに起動フリッカーを再生する */
+        card.style.animation = 'none';
+        void card.offsetWidth;
+        card.style.animation = '';
+      }
+      function hideCard() { card.hidden = true; }
+
+      /* Catmull-Rom → 3次ベジェの滑らかなパス */
+      function spline(pts) {
+        if (pts.length < 2) return '';
+        let d = 'M' + pts[0].x + ' ' + pts[0].y;
+        for (let i = 0; i < pts.length - 1; i++) {
+          const p0 = pts[Math.max(0, i - 1)], p1 = pts[i];
+          const p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
+          d += ' C' + (p1.x + (p2.x - p0.x) / 6).toFixed(1) + ' ' + (p1.y + (p2.y - p0.y) / 6).toFixed(1) +
+               ' ' + (p2.x - (p3.x - p1.x) / 6).toFixed(1) + ' ' + (p2.y - (p3.y - p1.y) / 6).toFixed(1) +
+               ' ' + p2.x + ' ' + p2.y;
+        }
+        return d;
+      }
+
+      function draw(idx) {
+        const c = COURSES[idx];
+        hideCard();
+        while (layer.firstChild) layer.removeChild(layer.firstChild);
+
+        /* ── ルート帯: 発着点の手前で切り、終端に矢頭を付ける ── */
+        const pts = c.pts;
+        const first = pts[0], second = pts[1];
+        const last = pts[pts.length - 1], beforeLast = pts[pts.length - 2];
+        const sd = Math.hypot(second.x - first.x, second.y - first.y);
+        const fr = (first.s || 32) / 2 + 10;
+        const start = { x: first.x + (second.x - first.x) / sd * fr,
+                        y: first.y + (second.y - first.y) / sd * fr };
+        const ed = Math.hypot(last.x - beforeLast.x, last.y - beforeLast.y);
+        const ux = (last.x - beforeLast.x) / ed, uy = (last.y - beforeLast.y) / ed;
+        const lr = (last.s || 32) / 2;
+        const bandEnd  = { x: last.x - ux * (lr + 78), y: last.y - uy * (lr + 78) };
+        const arrowTip = { x: last.x - ux * (lr + 12), y: last.y - uy * (lr + 12) };
+        const band = [start].concat(pts.slice(1, -1), [bandEnd]);
+        const d = spline(band);
+        mk('path', { d: d, fill: 'none', stroke: 'url(#opBand)', 'stroke-width': 46,
+                     'stroke-linecap': 'round', opacity: 0.92 }, layer);
+        const px = -uy, py = ux;   /* 進行方向の法線 */
+        mk('polygon', {
+          points: arrowTip.x.toFixed(1) + ',' + arrowTip.y.toFixed(1) + ' ' +
+                  (bandEnd.x + px * 54).toFixed(1) + ',' + (bandEnd.y + py * 54).toFixed(1) + ' ' +
+                  (bandEnd.x - px * 54).toFixed(1) + ',' + (bandEnd.y - py * 54).toFixed(1),
+          fill: 'url(#opBand)', opacity: 0.92
+        }, layer);
+
+        /* ── 経由地ノードとラベル ──
+           ルート帯は (x, y) を通り、ノードの表示だけ ox / oy でずらせる
+           （参考誌のように帯の脇へ天体を置くための仕組み。発着点は帯の上に置く） */
+        pts.forEach((p) => {
+          if (p.bend) return;
+          const nx = p.x + (p.ox || 0), ny = p.y + (p.oy || 0);
+          const a = mk('a', { href: p.href }, layer);
+          if (p.tip) mk('title', {}, a).textContent = p.tip;
+          if (p.img) {
+            mk('image', { href: p.img, x: nx - p.s / 2, y: ny - p.s / 2,
+                          width: p.s, height: p.s,
+                          preserveAspectRatio: 'xMidYMid meet' }, a);
+          } else {
+            mk('polygon', {
+              points: nx + ',' + (ny - 22) + ' ' + (nx + 22) + ',' + ny + ' ' +
+                      nx + ',' + (ny + 22) + ' ' + (nx - 22) + ',' + ny,
+              fill: 'rgba(12,3,3,0.85)', stroke: '#ff8a75', 'stroke-width': 2.5
+            }, a);
+            mk('circle', { cx: nx, cy: ny, r: 4.5, fill: '#ffd2c5' }, a);
+          }
+          const r = (p.s ? p.s / 2 : 24) + 8;
+          /* 上側へ逃したノードはラベルもアイコンの上に置き、帯との重なりを避ける */
+          const up = (p.oy || 0) < 0;
+          const t1 = mk('text', {
+            x: nx, y: up ? ny - r - 30 : ny + r + 26,
+            'font-size': 20, fill: '#ffffff',
+            'text-anchor': 'middle',
+            style: 'paint-order:stroke;stroke:rgba(2,6,6,0.8);stroke-width:4px;'
+          }, a);
+          t1.textContent = p.jp;
+          const t2 = mk('text', {
+            x: nx, y: up ? ny - r - 11 : ny + r + 45,
+            'font-size': 11.5, fill: '#ff9d8a',
+            'text-anchor': 'middle', 'class': 'op-en',
+            style: 'paint-order:stroke;stroke:rgba(2,6,6,0.8);stroke-width:3px;'
+          }, a);
+          t2.textContent = p.en;
+          a.addEventListener('mouseenter', () => showCard(p, a));
+          a.addEventListener('mouseleave', hideCard);
+        });
+
+        /* ── 依頼情報の書き替え ── */
+        document.getElementById('opName').textContent = c.name;
+        document.getElementById('opCode').textContent = c.code;
+        document.getElementById('opCodeSub').textContent = c.code;
+        document.getElementById('opStars').textContent = c.stars + '　' + c.cls;
+        document.getElementById('opReward').textContent = c.reward;
+        const line = document.getElementById('opRouteLine');
+        line.textContent = '経由: ';
+        pts.filter((p) => !p.bend).forEach((p, i) => {
+          if (i > 0) {
+            const s = document.createElement('span');
+            s.className = 'arw'; s.textContent = '▶';
+            line.appendChild(s);
+          }
+          const a = document.createElement('a');
+          a.href = p.href; a.textContent = p.jp;
+          if (p.tip) a.title = p.tip;
+          line.appendChild(a);
+        });
+        document.getElementById('opBriefText').textContent = c.brief;
+      }
+
+      document.querySelectorAll('#opTabs button').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#opTabs button').forEach((b) => b.classList.toggle('active', b === btn));
+          draw(Number(btn.dataset.course));
+        });
+      });
+      /* 経由・作戦概要: ホバーで展開・見出しクリックで固定/解除 */
+      const briefEl = document.getElementById('opBrief');
+      briefEl.addEventListener('mouseenter', () => briefEl.classList.add('open'));
+      briefEl.addEventListener('mouseleave', () => {
+        if (!briefEl.classList.contains('pinned')) briefEl.classList.remove('open');
+      });
+      document.getElementById('opBriefToggle').addEventListener('click', () => {
+        const pinned = briefEl.classList.toggle('pinned');
+        briefEl.classList.toggle('open', pinned || briefEl.matches(':hover'));
+      });
+      draw(0);
     })();
   </script>
 
