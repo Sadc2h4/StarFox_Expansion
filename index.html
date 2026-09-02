@@ -305,14 +305,76 @@
     .op-card.compact .op-card-in { padding: 20px 22px 18px 32px; }
     .op-card.compact .oc-desc { font-size: 10.5px; line-height: 1.6; }
     .op-card.compact .oc-title { font-size: 13px; }
-    @media (max-width: 760px) {
-      .routes-field { left: 0; right: 0; }
-      .op-title { font-size: 15px; }
+    /* ── 経由地リスト（スマホ用の縦並びミッションカード。PCでは非表示） ── */
+    .op-list { display: none; }
+    .ol-card {
+      margin: 10px 0; padding: 10px 12px 12px;
+      background: rgba(2, 10, 9, 0.82);
+      border: 1px solid var(--border); border-left: 3px solid #ff5b5b;
+    }
+    .ol-card.is-target { border-color: rgba(64,220,255,0.7); box-shadow: 0 0 14px rgba(64,220,255,0.25); }
+    .ol-head { display: flex; align-items: center; gap: 10px; }
+    .ol-img { width: 44px; height: 44px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 0 6px rgba(255,150,120,0.35)); }
+    .ol-no { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #ff9d8a; }
+    .ol-place { font-size: 14px; font-weight: 700; color: #fff; margin-top: 2px; }
+    .ol-place .en { font-family: 'Share Tech Mono', monospace; font-size: 9px; font-weight: 400; letter-spacing: 0.2em; color: var(--primary); margin-left: 8px; }
+    .ol-title { margin-top: 8px; font-size: 13px; font-weight: 700; color: #7de9ff; }
+    .ol-meta { font-family: 'Share Tech Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; color: #ffd27a; margin-top: 4px; }
+    .ol-meta b { color: #ff7d6e; letter-spacing: 2px; margin-right: 12px; }
+    .ol-desc { font-size: 11.5px; line-height: 1.72; color: var(--text); margin-top: 6px; }
+    .ol-link {
+      display: inline-block; margin-top: 8px;
+      font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.18em;
+      color: var(--accent); text-decoration: none;
+      border: 1px solid var(--border); padding: 4px 10px;
+    }
+    /* ── スマホ（760px以下）・横持ち低画面: 地図主体をやめ、縦スクロールの指令書に切り替える ── */
+    @media (max-width: 760px), (max-height: 480px) {
+      .map-mode {
+        top: 44px; left: 0; right: 0; justify-content: center; gap: 6px; margin: 0;
+        padding: 5px 8px; flex-wrap: nowrap;
+        background: rgba(2, 10, 9, 0.92); border-bottom: 1px solid var(--border);
+      }
+      .map-mode button { font-size: 9px; letter-spacing: 0.1em; padding: 4px 8px; white-space: nowrap; }
+      .sysmap-field { top: 76px; left: 4px; right: 4px; }
+      .routes-field {
+        top: 76px; bottom: 32px; left: 0; right: 0;
+        overflow-y: auto; -webkit-overflow-scrolling: touch;
+        background: radial-gradient(circle at 30% 20%, #07231d 0%, #041210 55%, #02090a 100%);
+      }
+      .op-map { position: static; display: flex; flex-direction: column; padding: 0; background: none; }
+      .op-band { order: 1; }
+      .op-sub { order: 2; }
+      .op-map svg { order: 3; }
+      .op-brief { order: 4; }
+      .op-band { position: static; height: auto; padding: 10px 12px; gap: 10px; }
+      .op-title { font-size: 16px; }
+      .op-title .jp { font-size: 8px; letter-spacing: 0.2em; white-space: normal; }
       .op-stamp { display: none; }
-      .op-sub { flex-wrap: wrap; }
+      .op-sub { position: static; display: block; }
       .op-corner { display: none; }
-      .op-logo { width: 90px; }
-      .op-brief { font-size: 11px; max-width: 100%; max-height: 42%; overflow-y: auto; }
+      .op-tabs { padding: 8px 10px 6px; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+      .op-tabs::-webkit-scrollbar { display: none; }
+      .op-tabs button { flex: 0 0 auto; white-space: nowrap; padding: 5px 10px; }
+      .op-course { border: none; border-bottom: 1px solid var(--border); padding: 6px 12px 9px; }
+      .opc-name { white-space: normal; font-size: 13px; line-height: 1.5; }
+      .opc-name .opc-code { margin-left: 10px; }
+      .op-map svg { width: 100%; height: auto; max-height: 62vh; margin: 0; display: block; }
+      .op-brief {
+        position: static; max-width: none; animation: none; box-shadow: none;
+        border: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        font-size: 11.5px;
+      }
+      .op-brief .ob-head { display: none; }
+      .op-brief .ob-body { display: block; max-height: none; padding: 8px 12px 10px; }
+      .op-brief .op-route-line { line-height: 1.9; }
+      .op-card { display: none !important; }
+      .op-logo { position: static; display: block; width: 100px; margin: 6px auto 16px; }
+      .op-list { display: block; padding: 2px 10px 6px; }
+      .op-list .ol-cap {
+        font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 0.24em;
+        color: var(--primary); padding: 10px 2px 2px;
+      }
     }
   </style>
 </head>
@@ -1264,7 +1326,6 @@
             <button data-course="5">コース 6</button>
           </div>
         </div>
-        <img class="op-logo" src="resource/Space_dynamics_logp.png" alt="SPACE DYNAMICS">
         <div class="op-card" id="opCard" hidden>
           <i class="oc-l l1"></i><i class="oc-l l2"></i><i class="oc-l l3"></i><i class="oc-l l4"></i>
           <div class="oc-hazard"></div>
@@ -1290,6 +1351,8 @@
           </div>
         </div>
       </div>
+      <div class="op-list" id="opList"></div>
+      <img class="op-logo" src="resource/Space_dynamics_logp.png" alt="SPACE DYNAMICS">
     </div>
   </div><!-- /viewRoutes -->
 
@@ -1795,6 +1858,58 @@
         card.style.animation = '';
       }
       function hideCard() { card.hidden = true; }
+      /* スマホ幅（縦スクロール指令書レイアウト）かどうか。CSS のメディアクエリと同じ条件 */
+      const mobileMq = window.matchMedia('(max-width: 760px), (max-height: 480px)');
+      const listBox = document.getElementById('opList');
+      /* 経由地リスト（スマホ用）: 地図のホバーカードと同じ内容を縦に並べる */
+      function renderList(c) {
+        while (listBox.firstChild) listBox.removeChild(listBox.firstChild);
+        const cap = document.createElement('div');
+        cap.className = 'ol-cap';
+        cap.textContent = '▌ MISSION LIST — 経由地ごとの依頼内容';
+        listBox.appendChild(cap);
+        c.pts.filter((p) => !p.bend).forEach((p, i) => {
+          const m = p.m || {
+            no: '----', title: '（依頼詳細 策定中）', rate: '', point: p.jp,
+            desc: 'この経由地の依頼詳細は現在CDF依頼管理局で策定中である。'
+          };
+          const el = document.createElement('div');
+          el.className = 'ol-card'; el.id = 'olc-' + i;
+          const head = document.createElement('div'); head.className = 'ol-head';
+          if (p.img) {
+            const img = document.createElement('img');
+            img.className = 'ol-img'; img.src = p.img; img.alt = p.en; img.loading = 'lazy';
+            head.appendChild(img);
+          }
+          const hb = document.createElement('div');
+          const no = document.createElement('div'); no.className = 'ol-no';
+          no.textContent = (i + 1) + ' / ' + 'MISSION No.' + m.no;
+          const place = document.createElement('div'); place.className = 'ol-place';
+          place.textContent = p.jp;
+          const en = document.createElement('span'); en.className = 'en'; en.textContent = p.en;
+          place.appendChild(en);
+          hb.appendChild(no); hb.appendChild(place); head.appendChild(hb);
+          el.appendChild(head);
+          const title = document.createElement('div'); title.className = 'ol-title'; title.textContent = m.title;
+          const meta = document.createElement('div'); meta.className = 'ol-meta';
+          const rate = document.createElement('b'); rate.textContent = m.rate || '——';
+          meta.appendChild(rate); meta.appendChild(document.createTextNode('Point：' + m.point));
+          const desc = document.createElement('div'); desc.className = 'ol-desc'; desc.textContent = m.desc;
+          const link = document.createElement('a'); link.className = 'ol-link'; link.href = p.href;
+          link.textContent = '▶ 天体データを開く';
+          if (p.tip) link.title = p.tip;
+          el.appendChild(title); el.appendChild(meta); el.appendChild(desc); el.appendChild(link);
+          listBox.appendChild(el);
+        });
+      }
+      /* スマホでは地図の経由地をタップすると（惑星ページへ飛ばず）該当カードへスクロールする */
+      function jumpToCard(i) {
+        const el = document.getElementById('olc-' + i);
+        if (!el) return;
+        listBox.querySelectorAll('.ol-card.is-target').forEach((x) => x.classList.remove('is-target'));
+        el.classList.add('is-target');
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
 
       /* Catmull-Rom → 3次ベジェの滑らかなパス */
       function spline(pts) {
@@ -1843,10 +1958,18 @@
         /* ── 経由地ノードとラベル ──
            ルート帯は (x, y) を通り、ノードの表示だけ ox / oy でずらせる
            （参考誌のように帯の脇へ天体を置くための仕組み。発着点は帯の上に置く） */
+        let nodeIdx = -1;
         pts.forEach((p) => {
           if (p.bend) return;
+          nodeIdx += 1;
+          const listIdx = nodeIdx;
           const nx = p.x + (p.ox || 0), ny = p.y + (p.oy || 0);
           const a = mk('a', { href: p.href }, layer);
+          a.addEventListener('click', (e) => {
+            if (!mobileMq.matches) return;
+            e.preventDefault();
+            jumpToCard(listIdx);
+          });
           if (p.tip) mk('title', {}, a).textContent = p.tip;
           if (p.img) {
             mk('image', { href: p.img, x: nx - p.s / 2, y: ny - p.s / 2,
@@ -1901,12 +2024,14 @@
           line.appendChild(a);
         });
         document.getElementById('opBriefText').textContent = c.brief;
+        renderList(c);
       }
 
       document.querySelectorAll('#opTabs button').forEach((btn) => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('#opTabs button').forEach((b) => b.classList.toggle('active', b === btn));
           draw(Number(btn.dataset.course));
+          if (mobileMq.matches) document.querySelector('#viewRoutes .routes-field').scrollTop = 0;
         });
       });
       /* 経由・作戦概要: ホバーで展開・見出しクリックで固定/解除 */

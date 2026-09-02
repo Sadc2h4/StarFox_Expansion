@@ -851,6 +851,7 @@ html, body {
 .loc-tag.t-star   { color: #ffcc66; border-color: rgba(255,204,102,0.6); }
 .loc-tag.t-sector { color: #76c8ff; border-color: rgba(118,200,255,0.6); }
 .loc-tag.t-culture { color: #f2a6ff; border-color: rgba(242,166,255,0.6); }
+.loc-tag.t-quote   { color: #ff9ec2; border-color: rgba(255,158,194,0.6); }
 .loc-tag.t-region { color: #ff9a76; border-color: rgba(255,154,118,0.6); }
 .loc-tag.t-misc   { color: #b9a8ff; border-color: rgba(185,168,255,0.6); }
 .loc-tag.t-history { color: #ffd166; border-color: rgba(255,209,102,0.6); }

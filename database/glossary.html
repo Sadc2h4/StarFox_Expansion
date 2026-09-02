@@ -421,7 +421,7 @@
        タイルは共通アイコン resource/File_icon.png の data URI を mask にして
        CSS側で着色する（file:// では外部参照maskがCORSで失敗するため埋め込み必須）。
        塗り色は記事タグのテーマカラー（planet.css の .loc-tag 系と同色）を
-       帯ごとの --blk-c で指定する。色を変えたい場合は下の bt-* 6行を書き換える */
+       帯ごとの --blk-c で指定する。色を変えたい場合は下の bt-* 7行を書き換える */
     .disp-btn.d-block { --icon: url('data:image/png;base64,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'); }
 
     .mode-block .gls-nav,
@@ -454,6 +454,7 @@
     .blk-group { --blk-c: var(--primary); }
     .blk-group.bt-history { --blk-c: #ffd166; }
     .blk-group.bt-culture { --blk-c: #f2a6ff; }
+    .blk-group.bt-quote   { --blk-c: #ff9ec2; }
     .blk-group.bt-org     { --blk-c: #8fd0ff; }
     .blk-group.bt-region  { --blk-c: #ff9a76; }
     .blk-group.bt-tech    { --blk-c: #5ef2d6; }
@@ -636,6 +637,7 @@
       <button class="active" data-type="all">ALL</button>
       <button data-type="history">歴史・事件</button>
       <button data-type="culture">文化・生活</button>
+      <button data-type="quote">迷言・名言</button>
       <button data-type="org">組織・勢力</button>
       <button data-type="region">領域・場所</button>
       <button data-type="tech">技術</button>
@@ -647,7 +649,7 @@
          新規記事の追加方法: この下の <div id="glsTrack"> の中に、従来どおり
          <article class="codex-entry" id="..." data-type="..."> を置くだけでよい。
          カードの枠組み（八角形フレーム等）は読み込み時にスクリプトが自動生成する。
-         並び順＝DOM順。data-type: history / culture / org / region / tech / misc
+         並び順＝DOM順。data-type: history / culture / quote / org / region / tech / misc
          ═══════════════════════════════════════════════════════════ -->
     <div class="gls-stage" id="glsStage">
       <div class="gls-track" id="glsTrack">
@@ -756,7 +758,7 @@
     <article class="codex-entry" id="decoy-ship" data-type="history">
       <h2 class="codex-h">IGA総統偽装船襲撃事件 <span class="en">THE IGA DECOY SHIP INCIDENT</span></h2>
       <div class="codex-sub"><span class="loc-tag t-history">歴史・事件</span> <a href="#iga-war">IGA戦役</a> 終局 — 宇宙歴3975</div>
-      <p class="codex-p">宇宙歴3975年、<a href="#iga-war">IGA戦役</a>の終局に惑星<a href="locations.html#papetoon">パペトゥーン</a>圏で起きた、<a href="factions.html#iga">独立星系連合</a>総統の死をもって記憶される事件である。<a href="#sycorax-ruins">セティボスⅣの最終決戦</a>で基地の自爆装置を起動し味方の全てを見捨てて逃走した総統は、ありふれた商船に偽装した脱出船で連合勢力圏の末端パペトゥーンへの潜伏を図った。だがその偽装船を「いつもの獲物」として襲撃した者たちがいた。現地の夜盗である。拘束の混乱の中で総統自身が誤って起動した緊急信号は、足取りを見失っていた追跡部隊への最後の道標となった。位置を探知したコーネリア精鋭部隊の集中砲火により総統は爆風に呑まれて死亡。頭を失った連合はそのまま瓦解し、十五年に及んだ戦役は事実上この日に終わっている。</p>
+      <p class="codex-p">宇宙歴3975年、<a href="#iga-war">IGA戦役</a>の終局に惑星<a href="locations.html#papetoon">パペトゥーン</a>圏で起きた、<a href="factions.html#iga">独立星系連合</a>総統の死をもって記憶される事件である。<a href="#sycorax-ruins">セティボスⅣの最終決戦</a>で基地の自爆装置を起動し味方の全てを見捨てて逃走した総統は、ありふれた商船に偽装した脱出船で連合勢力圏の末端パペトゥーンへの潜伏を図った。総統自身も特殊な細胞変異による擬態能力で外見を作り替え、一介の商人になりすまして船に乗り込んでいる（この能力については<a href="#off-the-scale">シコラクス白兵戦の項</a>を参照）。だがその偽装船を「いつもの獲物」として襲撃した者たちがいた。現地の夜盗である。拘束の混乱の中で総統自身が誤って起動した緊急信号は、足取りを見失っていた追跡部隊への最後の道標となった。位置を探知したコーネリア精鋭部隊の集中砲火により総統は爆風に呑まれて死亡。頭を失った連合はそのまま瓦解し、十五年に及んだ戦役は事実上この日に終わっている。</p>
       <p class="codex-p">公式記録がこの結末に与えた分類は「作戦によらぬ偶発的接触」という素っ気ないものである。共和国の艦隊も諜報網も、最後まで総統の逃走経路を掴んではいなかった。舞台を整えたのは連合の統治がパペトゥーンにもたらした飢饉と無法、そしてその中から生まれた夜盗たちである。圧政が生んだ夜盗が圧政の頭に引導を渡したこの構図は、史家が戦役の総括に用いる定番の締め句になっている。もっとも当の夜盗たちについて、公開記録は「地元の武装集団」の一句しか与えていない。彼らが何者であったかは長く軍の機密であり続けた。</p>
       <p class="codex-p"><span class="redacted">機密記録FCH-450によれば、偽装船を襲撃したのは夜盗団『スライフォックス』である。惑星史上最悪の大飢饉のさなかIGAのみを標的とする襲撃を6年間続けた4人組であり、リーダーは23歳の<a href="../characters/james.html">ジェームズ・マクラウド</a>。発案者にして交渉役は<a href="../characters/pigma.html">ピグマ・デンガー</a>（同29歳）、重火器担当はクロコ・バーンズ、斥候と後始末はバルチャ・ドドリゲスが担った。襲撃そのものは手慣れた仕事だったが、直後に降り注いだ集中砲火は彼らの想定の外にあった。クロコ・バーンズは身を挺してリーダーを庇い死亡。ジェームズは一命を取り留めたものの、爆風で両足と左手を失う重傷を負った</span></p>
       <p class="codex-p"><span class="redacted">生き残った面々は現場でIGA関係部隊と誤認され拘束の後に軍法会議へかけられた。絶体絶命の席でピグマは「総統の居場所を突き止め信号を送ったのは自分たちだ」という咄嗟の虚偽申告を行う。これに強い興味を示したのが追跡部隊すなわち精鋭部隊<a href="#unit-sword">「ソード」</a>を率いていた部隊長<a href="../characters/pepper.html">Z・Z・ペパー</a>（当時43歳）である。さらに傍聴席の士官候補生<a href="../characters/peppy.html">ペッピー・ヘア</a>（同18歳）が異例の発言を許され、押収された6年分の襲撃記録を根拠に情状酌量を訴えた。「彼の射撃記録には、一度も『人』が含まれていません！」。判決は夜盗行為の一切を含めて3か月の拘留、戦時の軍法会議として破格の軽さであり、これを取り計らったのはペパーその人である。彼が虚偽申告をどこまで信じていたかを示す記録は残っていない。ただ調書の余白には部隊長の筆跡で短い書き込みが一つだけある。「彼らの腕は本物だ。確認する必要がある」</span></p>
@@ -2147,9 +2149,9 @@
       <p class="codex-p">なおこの戦いが宇宙空間にもかかわらず甲板で行われたことについては指摘が入ることが多い。プレアデスの甲板にはデッキで寛ぐスペースやプールが用意されており、艦船の疑似環境の範囲内で決闘が行われたものと思われる。ワープのたびに船体が大きく傾く癖があり、足場の悪さは両者に平等であった。白兵戦で押し負けたフォックスはショックが大きかったのか、その日は終始不機嫌であり<a href="characters.html#pepper">ペパー将軍</a>からの通信もすぐに切って寝てしまったとのことである。翌朝の船内新聞は一面に「本日のショーは中止」とだけ載せた。</p>
     </article>
 
-    <article class="codex-entry" id="somen" data-type="culture">
+    <article class="codex-entry" id="somen" data-type="quote">
       <h2 class="codex-h">「こんなもん素麺みたいなもんだぜ」 <span class="en">OVERCOOKED NOODLES — ファルコの迷言</span></h2>
-      <div class="codex-sub"><span class="loc-tag t-culture">文化・生活</span> <a href="characters.html#falco">ファルコ・ランバルディ</a>の比喩表現集 — 星系一のエースの星系一の語彙</div>
+      <div class="codex-sub"><span class="loc-tag t-quote">迷言・名言</span> <a href="characters.html#falco">ファルコ・ランバルディ</a>の比喩表現集 — 星系一のエースの星系一の語彙</div>
       <p class="codex-p"><a href="characters.html#falco">ファルコ・ランバルディ</a>は<a href="military.html#starfox">スターフォックス</a>で最も空中戦が強いエースパイロットであるが、その口の悪さは時に迷言を生み出すことがある。彼の比喩表現は的外れなことが多々あり、その単語選びに独特のセンスを見出す者もいるという。潜水艦<a href="military.html#bluemarine">ブルーマリン</a>を見た際は「バスタブ」と評し、後継機は「樽」と言い放った。<a href="#zoness-recon">ゾネス偵察</a>では<a href="characters.html#slippy">スリッピー・トード</a>に対して「お前　海でも泳げるのか？」と口にし、<a href="races.html#alphoid">アルフォイド</a>であった<a href="../weapons/meteo-crusher.html">メテオクラッシャー</a>の操縦者相手には「サルの言うことを信用するのか！？」と歯に衣着せぬ発言を連発している。</p>
       <p class="codex-p">そして最も有名なのは、豪華客船<a href="#lylat-cruise">プレアデス</a>の頭上で繰り広げられた艦隊戦の砲火を前にして放ったこの迷言である。</p>
       <p class="codex-p">「ヘッ　こんな攻撃、素麺みたいなもんだぜ！」</p>
@@ -2157,22 +2159,87 @@
       <p class="codex-p">さらに言えば食事で素麺を出すと不機嫌になるため、スリッピーは素麺を食べにくくなったと不満を漏らしているという。<a href="../weapons/greatfox.html">グレートフォックス</a>の献立からは夏場の定番であったはずの素麺が姿を消し、艦載AI<a href="characters.html#naus">ナウス</a>は「乗員の精神衛生上の配慮」として一切の説明を拒んでいる。</p>
     </article>
 
-    <article class="codex-entry" id="tide-pool" data-type="culture">
+    <article class="codex-entry" id="tide-pool" data-type="quote">
       <h2 class="codex-h">「地元の潮溜まりさ帰るべ」 <span class="en">BACK TO MY TIDE POOL — 上京者の決まり文句</span></h2>
-      <div class="codex-sub"><span class="loc-tag t-culture">文化・生活</span> 都市の大きさに負けた者の合言葉</div>
+      <div class="codex-sub"><span class="loc-tag t-quote">迷言・名言</span> 都市の大きさに負けた者の合言葉</div>
       <p class="codex-p"><a href="locations.html#aquas">アクアス</a>の田舎から<a href="locations.html#corneria">コーネリア</a>へ上京してきた者が口から漏らすお約束の言葉である。星系首都<a href="#city-corneria">コーネリア・ギャラクティック・シティ</a>は街と言っても延べ83,000kmという大陸規模の都市を形成しており、発着便を間違えてシティの端に着いたはいいが宿泊予定のホテルが3,000km離れた位置にあった、というような事案が常に起こっている。史上最悪の記録は20,000kmであり、これは惑星の反対側に着いたに等しい。人の数も車の数も人種の多様さも全てにおいて圧倒されてしまった者はみなこの台詞が出てしまうのである。</p>
       <p class="codex-p">言葉の主がアクアスの民であるのは偶然ではない。一日に二度海面下へ沈む環礁の潮溜まりで育った者にとって、故郷の「街」は歩いて一周できる岩礁の上にある。潮が引けば見渡せる範囲が世界の全てであり、そこから一足飛びに83,000kmの都市へ降り立った衝撃は他の惑星の上京者の比ではない。<a href="#basic-language">アクアス訛り</a>特有の「さ」と「べ」がそのまま残ったこの一言は、上京者の心細さを表す言い回しとして星系標準語の慣用句にまで昇格しており、今ではアクアス出身でない者も都市の大きさに負けた時にこれを口にする。<a href="locations.html#katina">カタリナ</a>から来た者が言えば「潮溜まりなどあの星にはない」と突っ込まれるのが定番の流れである。</p>
       <p class="codex-p">上京者を迎える側にもこの言葉は浸透している。コーネリア国際ターミナルの案内所には「潮溜まり相談窓口」の通称で呼ばれる上京者支援の窓口が置かれており、降り立った場所と目的地の距離を確認して顔色を失った旅行者に、配車サービスの手配と温かい飲み物を提供している。窓口の職員によれば最も多い相談は道案内でも宿の手配でもなく、「本当に帰ってもいいか」の確認であるという。職員の答えは決まって「帰ってもいいが、まずはホテルまで行ってみよう」である。</p>
       <p class="codex-p">なおこの言葉を最も有名にしたのは<a href="military.html#cdf">CDF</a>の新兵募集ポスターである。都市の全景を背にした新兵が「地元の潮溜まりさ帰るべ」と呟く一枚は、その下に「帰る前に、守ってみないか」の一文を添えて州駐留軍の募集事務所に長く貼られていた。上京者の弱音を志願の動機に転じたこのポスターは、<a href="#state-aquas">アクアス州</a>からの志願者を一時的に倍増させた実績を持つ。ただし志願の翌日に本当に潮溜まりへ帰った者の数は公表されていない。</p>
     </article>
 
-    <article class="codex-entry" id="face-lick" data-type="culture">
+    <article class="codex-entry" id="face-lick" data-type="quote">
       <h2 class="codex-h">「お顔をナメナメしてあげるわ」 <span class="en">FACE-LICKING — キャットの迷言</span></h2>
-      <div class="codex-sub"><span class="loc-tag t-culture">文化・生活</span> 古い作法と、それを口にした運び屋</div>
+      <div class="codex-sub"><span class="loc-tag t-quote">迷言・名言</span> 古い作法と、それを口にした運び屋</div>
       <p class="codex-p"><a href="#zoness-recon">ゾネス偵察作戦</a>の実行時、通信で発言された迷言に近い感謝の言葉である。発言者は運び屋<a href="../characters/cat.html">キャット・モンロー</a>であり、援護に入った<a href="../characters/falco.html">ファルコ・ランバルディ</a>への礼として放たれたこの一言は作戦の交信記録に残り、<a href="#somen">素麺</a>の一件と並んで<a href="military.html#starfox">スターフォックス</a>内で繰り返し擦られる音声データの一つになった。礼を言われた側が礼の内容に固まったまま数秒返答できなかったことも記録されている。</p>
       <p class="codex-p">一応の出典はある。<a href="races.html#anubisoid">アヌビソイド</a>や<a href="races.html#bastetoid">バステトイド</a>系の人種には古い作法として、親愛を示す方法に相手の額をなめるというものがある。時代が流れた現在は衛生観念の問題などから廃れており、使用するのは70を超える老人のみとなっている。若い運び屋がなぜこの作法に言及したのかは意見が分かれるところであるが、星系では比較的田舎である<a href="locations.html#zoness">ゾネス</a>出身という部分に理由を求めるのが自然という意見も多い。古い作法は都会より田舎で長く生き残り、祖父母に額をなめられて育った子はそれを親愛の言葉として覚える。本人が本気だったのか冗談だったのかは、本人が答えないので分かっていない。</p>
       <p class="codex-p">この作法は人種を跨いだ瞬間に意味が変わる。犬系猫系の人種では親愛を示す作法であるが、<a href="races.html#selenoid">セレノイド</a>には服従のサインと受け取られ、<a href="races.html#holsoid">ホルソイド</a>に至っては喧嘩を売るサインとなる。<a href="races.html#heketoid">ヘケトイド</a>の中には皮膚から<a href="#venom-etiquette">毒</a>を分泌する種族の者も存在するため、額をなめた瞬間に毒で卒倒するという悲劇も十分に想定に入る。みだりに使うとひどい目に遭う可能性が高いことを忘れてはならない。星系の礼儀作法の教本がこの作法を「相手の人種と年齢と体質を全て確認してから行う挨拶」と定義しているのは、それが事実上「行うな」の意味だからである。</p>
       <p class="codex-p">交信記録が出回って以降、この一言は「相手の出方が分からない礼」の代名詞として星系ネットに定着した。感謝しているのか脅しているのか判別がつかない言い回しに対して「ナメナメ案件」と評する用法が広まり、通商連合の商人が契約書の曖昧な条項をこう呼ぶ例まで報告されている。なお当のファルコは後日この件について問われ、「額はなめられていない」とだけ答えている。なめられなかったことを安堵したのか惜しんだのかは、こちらも本人が答えないので分かっていない。</p>
+    </article>
+
+    <article class="codex-entry" id="shut-up-old-man" data-type="quote">
+      <h2 class="codex-h">「年寄りは黙ってろよ～」 <span class="en">SHUT UP, OLD MAN — スリッピーの常套句</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-quote">迷言・名言</span> 反抗期の伝家の宝刀と、言われる側の事情</div>
+      <p class="codex-p"><a href="military.html#starfox">スターフォックス</a>の整備士<a href="characters.html#slippy">スリッピー・トード</a>が年長の<a href="characters.html#peppy">ペッピー・ヘア</a>に茶化されたり窘められたりした際に苦し紛れに言い返す常套句である。出どころは遊撃隊ではなく実家の<a href="../characters/toad-family.html">トード家</a>にある。父ベルツィーノと整備ドックの取り合いになるたびに口をついた言葉であり、技術論でいい感じに丸め込まれそうになった時の反撃の一言として反抗期のスリッピーが編み出した「伝家の宝刀」であった。もっとも効力を発揮するのは拙い言葉の言い合いに限られ、この手の応酬は父を相手にことごとく敗北に終わっていたと本人も認めている。</p>
+      <p class="codex-p">その宝刀がそのまま遊撃隊の年長者へ向けられているわけだが、言われる側の事情は世間の想像と少し異なる。ペッピーの一人称が古風な「ワシ」であるのは礼節にうるさい旧家に育った者の口癖に過ぎず、老獪と呼べるほどの年齢ではない。宇宙歴3998年現在で40歳を過ぎたばかりであり、「年寄り」なのはあくまで平均年齢の低いスターフォックスの中での話に過ぎない。<a href="military.html#cdf">CDF</a>の将校団に混ざれば中堅にも届かない年齢である。</p>
+      <p class="codex-p">家族構成もこの言葉に皮肉な彩りを添えている。ペッピーには一人娘のルーシーがいるが息子はおらず、娘はこの種の悪態を父につくような性格ではない淑やかな人物である。遊撃隊では<a href="characters.html#james">ジェームズ・マクラウド</a>に代わって<a href="characters.html#fox">フォックス</a>の後見を務め息子のように思っている彼にとって、その親友であるスリッピーもまた同じ枠に収まっているのかもしれない。反抗期の息子に口答えされる経験は家では得られなかったものであり、宝刀を抜かれるたびに彼が見せる呆れ顔には迷惑と満更でもなさが同居していると隊員は証言している。</p>
+      <p class="codex-p">なお言い合いの戦績は実家時代から変わっていない。宝刀は「若造は黙って手を動かせ」の一言で毎回鞘に戻されており、勝ち星は今のところ一つも記録されていないという。</p>
+    </article>
+
+    <article class="codex-entry" id="off-the-scale" data-type="quote">
+      <h2 class="codex-h">「あの男を"人間"という物差しで測っていたが　あの男は完全に常軌を逸している…！」 <span class="en">OFF THE SCALE — IGA総統の絶叫</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-quote">迷言・名言</span> 全盛期のペパーを測り損ねた男の言葉 — 宇宙歴3975</div>
+      <p class="codex-p"><a href="#iga-war">IGA戦役</a>の最終局面、<a href="#sycorax-ruins">セティボスⅣのシコラクス要塞</a>で<a href="factions.html#iga">独立星系連合</a>の総統が発した言葉である。共和国軍の突入部隊は精鋭部隊<a href="#unit-sword">ソード</a>を含めても35人に過ぎず、対する連合の守備兵力は500人。火器の数に至っては100倍近い開きがあった。要塞での迎撃戦は15分で片が付くと総統も幹部陣も高をくくっていたのである。</p>
+      <p class="codex-p">彼らが甘く見積もっていたのはソードの戦闘力と、当時43歳で全盛期にあった<a href="characters.html#pepper">Z・Z・ペパー</a>の恐ろしさであった。若い頃より落ち着きを備えていたとはいえ一度「スイッチ」が入れば誰にも止められない暴力装置であることは健在であった。技と知識を得たその強さは一人で100人分と評される人間離れの領域に達していた。15分の見積もりは自軍が壊滅するまでの時間にすぐさま置き換わる。味方を銃撃の盾にしながら火炎放射器で応戦していた総統は一瞬の隙を突かれて頭を鷲掴みにされ、手にしていた高圧バーナーを自身の顔面に躊躇なく浴びせられた。顔の半分が溶け落ちた総統が言葉も常識も通じない敵を前に絞り出したのがこの一言である。迷えば次の瞬間に殺されると即座に理解した彼は要塞の自爆装置を起動し、特殊な細胞変異によって外見を作り替える擬態能力で民間人に紛れ<a href="#decoy-ship">パペトゥーンへの逃走</a>を図った。希少混血として激しい差別を受けた出自がこの能力と精神性に影を落としていたとされるが、本名も本来の人種も本人が忘れかけていたと伝わる。</p>
+      <p class="codex-p">ペパー自身はこの時期のことを聞かれるのを嫌っており、当時のソード隊員も引退して散り散りになっているため詳細を聞き出せる機会はまずない。本人にとっても蒸し返されたくない黒歴史なのかもしれない。</p>
+      <p class="codex-p">なおこの言葉は発した本人にそっくりそのまま返る特大のブーメランでもある。この総統が就任してからの連合では仲間内の密告が相次ぎ、少しでも意に背く気配のある者は調査もなしに<a href="#muinshankle">ムィンシャンクル刑務所</a>で拷問の末になぶり殺しにされていた。保有する兵器も<a class="apx-lock" href="../classified/gigarilla.html">超兵器</a>を筆頭に核弾頭ミサイルと致死性の高いウイルスの数々を揃えており、常軌を逸した行いにかけてはこの男の方が数枚上手であったと言わざるを得ない。</p>
+    </article>
+
+    <article class="codex-entry" id="pigma-lament" data-type="quote">
+      <h2 class="codex-h">「こ…こんなん夢や…幻や…　…わ、わての賞金が…」 <span class="en">IT'S ALL A DREAM — ピグマの辞世の一句</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-quote">迷言・名言</span> 勝利を確信した男が1分間だけ理解を拒んだ言葉</div>
+      <p class="codex-p">惑星<a href="../planets/grippia.html">グリッピア</a>の鉱床を舞台に繰り広げられた<a href="military.html#protecam">プロテカム</a>と<a href="military.html#devil-joker">デビル・ジョーカー</a>の攻防戦において、まさかの自爆装置の誤爆により敗北した<a href="characters.html#pigma">ピグマ・デンガー</a>が漏らした言葉である。本人は無事であるにもかかわらず「辞世の一句」と呼ばれているのは、愛機と賞金が同時に爆発四散したためである。賞金とは<a href="#nividium">ニヴィディウム</a>鉱床を掌握した暁に<a href="factions.html#venom-empire">帝国</a>から支払われる手筈になっていた多額の報奨金であり、機体もろとも宙に消えた。遠隔操作を挟んだ3日間の熾烈なバトルの詳細は惑星グリッピアの項を参照されたし。</p>
+      <p class="codex-p">この戦いは<a href="military.html#starfox">スターフォックス</a>の新旧メカニックが技術で正面からぶつかった一戦であり、双方の背後に強力な資本と頭脳が控えていた点まで含めて互角の勝負であった。戦略では<a href="characters.html#slippy">スリッピー</a>のプロテカムが上回っていたもののデビル・ジョーカーの万能性と圧倒的な兵装には一歩遅れを取っていた。結果としてスリッピーは星系最高の技術者に間接的な稽古をつけてもらう形となっている。</p>
+      <p class="codex-p">勝敗を決めたのはプロテカムの攻撃ではない。<a href="../characters/andorf.html">アンドルフ</a>が悪戯で組み込んだとみられる「自爆スイッチ」である。なぜこのような仕様を仕込んだのかは想像のしようもない。だが<a href="../planets/bolse.html">ボルス</a>の主砲より強力な「小惑星破壊砲」を積んだ無人兵器が野生化すれば手に負えなくなることは目に見えていたため、有事の際の後始末のためであった可能性も否めない。</p>
+      <p class="codex-p">理由はともかく、この誤爆によってピグマは9割方勝てるはずのタイミングで勝機を逃している。愛機が勝手に爆発四散した瞬間から1分ほどは状況を理解できず、その沈黙の末に絞り出されたのがこの一句であった。「勝利を確信した時が一番の隙になる」という戒めとして、スリッピーはこの戦いを三重の意味で忘れないようにしているという。技術者としての教訓、裏切り者に稽古をつけられた借り、そして一部始終が数億回再生された恥の三つである。なおピグマは後日このスイッチの出所を知らされてショックのあまり気を失い、以来グリッピアへ二度と現れていない。</p>
+    </article>
+
+    <article class="codex-entry" id="unexpected-scale" data-type="quote">
+      <h2 class="codex-h">「おいおい嘘だろ…これは流石に予想してなかった事態だ」 <span class="en">NOT WHAT THE PHOTO SAID — フォックスが飲み込んだ一言</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-quote">迷言・名言</span> 証明写真と実物の落差が生んだ、隊長の見苦しい抵抗</div>
+      <p class="codex-p"><a href="characters.html#fay">フェイ・スパニエル</a>から証明写真を予め共有されていた<a href="characters.html#fox">フォックス・マクラウド</a>が、初めて<a href="characters.html#miyu">ミュウ・リンクス</a>と対面で面接した際に口から出かかった言葉である。実際には声にならず、隊長の顔に浮かんだ表情だけがその場の全員に読み取られた。写真に写っていたのは目の大きな小柄な猫系人種の少女のような人物であった。ところが<a href="../weapons/greatfox.html">グレートフォックス</a>の格納庫にブルーベルごと乗り込んできた実物は、その全部が想像の2倍ほどのスケールで機体から降りてきたのである。面接と呼べるものはこの時点で終わっていた。</p>
+      <p class="codex-p">初対面のミュウは前かがみになってフォックスの頭を撫でた。本人はこれを「悪い癖だった」と後に語っている。もとから身長が高くないことを気にしていたフォックスであったが、隊には<a href="characters.html#falco">ファルコ</a>くらいしか背の高いクルーがいなかったため忘れかけていた諸々をこの一件で全て思い出してしまったという。ミュウが話す際に少し屈む必要があることもそのたびに本人が気にしていないと繰り返すことも、忘れかけていた諸々のうちである。</p>
+      <p class="codex-p">その後の抵抗は見苦しいものであった。露骨に底の高いブーツを履いて格納庫に現れ、艦内放送に乗った笑い声でその日のうちに履くのをやめたことは<a href="../characters/miyu.html">ミュウの項</a>に記録されているとおりである。だが抵抗はそれで終わらなかった。縦に長い帽子をかぶり果ては並んで写る位置を調整する遠近法まで持ち出して身長差をごまかそうとする数々の試みは恰好の笑いの種となり、ファルコと<a href="characters.html#slippy">スリッピー</a>はこぞってちょっかいをかけたという。</p>
+      <p class="codex-p">写真と実物の落差はもともとプロスペローの自警団の名物であり、フェイが写真を共有した時点で落差のことも一言添えていたと自警団の関係者は証言している。添え書きを読み飛ばしたのか信じなかったのかは隊長本人が答えないため分かっていない。なお現在のフォックスは「屈むな…俺が上を向けばいい話だろ」を口癖にしており、隊内ではこの言葉が飲み込まれた一言の続きとして扱われている。</p>
+    </article>
+
+    <article class="codex-entry" id="gomenchai" data-type="quote">
+      <h2 class="codex-h">「アンドルフ様ぁぁ！！　ごめんちゃい！！」 <span class="en">SORRY, LORD ANDORF! — グランガパイロットの退場台詞</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-quote">迷言・名言</span> 月初の風物詩と、永遠に解けない語尾の謎</div>
+      <p class="codex-p">最早名物となりつつある<a href="characters.html#granga-pilot">グランガのパイロット</a>の断末魔の台詞である。断末魔と記したがこの台詞を吐いた後にも1か月後には当然の権利のように侵攻部隊の先陣を切って現れるため、正確には「お約束の退場台詞」と表現した方が正しいかもしれない。突撃時の口上「皇帝に逆らうものは 死ぬのだぁ！」からおよそ5分後に爆発音と共に届くのが通例であり、<a href="locations.html#corneria">コーネリア</a>の防衛軍でこの一言を聞き覚えていない者はいない。</p>
+      <p class="codex-p">あまりに有名になりすぎて誰も気にしていないのだが、なぜ「ごめんなさい」ではなく「ごめんちゃい」なのかは永遠の謎である。初期の頃は発言の途中で爆発に呑まれて通信が途絶し、その影響で末尾が切れて妙な響きに聞こえていたと解釈されていた。ところが何度撃墜されても寸分違わずこの台詞になるのだから、通信途絶説は早々に棄却されている。以後は幼児語が抜けていない説、皇帝を前にすると改まって舌が回らなくなる説、三等帝国民の出身地の訛りであるとする説などが管制の雑談で提出されては消えており、定説は今日まで存在しない。本人に直接尋ねる機会は毎月あるはずなのだが、接触した者は全員が撃墜する側に回るため誰も聞けていない。</p>
+      <p class="codex-p">この台詞が星系に広く知られるようになったのは<a href="#katina-miracle">カタリナの奇跡</a>の交信記録が公開されて以降である。防衛戦の緊迫した記録の末尾に律儀に収められたこの一言は、記録を聞いた市民に「帝国にもこういう人がいる」という奇妙な安堵を与えたと言われる。<a href="military.html#cdf">CDF</a>の管制では月初が近づくと「そろそろ謝りに来る頃だ」が合図として定着しており、実際に翌月の月初に彼が現れなかった記録は一度もない。</p>
+      <p class="codex-p">一抹の謎を残しつつ、今日も懲りない彼は<a href="#city-corneria">コーネリアシティ</a>へ突撃を続けている。搭乗機は毎回変わるが台詞だけは変わらず、防衛軍の新兵教育では「敵の退場台詞を聞き終えるまで警戒を解かないこと」の教材として実際の交信記録が使われているという。謝られる側の皇帝がこの台詞をどう受け止めているのかについては、帝国側の記録が一切公開されていないため今のところ知る術がない。</p>
+    </article>
+
+    <article class="codex-entry" id="sit-and-talk" data-type="quote">
+      <h2 class="codex-h">「これは…ちょっと座って話し合った方が良さそうだな」 <span class="en">LET'S SIT AND TALK — 上半身を失った魔人の提案</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-quote">迷言・名言</span> 寝ぼけた巨人と、身に覚えのない借金の取り立て</div>
+      <p class="codex-p"><a href="characters.html#fox">フォックス・マクラウド</a>が<a href="../other/fortuna-survey-1.html">フォルトナ調査</a>の後半を行った際にしょうもない誤解から<a href="characters.html#warp-djinn">ワープ魔人</a>との戦闘に発展し、自慢の手足と顔まで吹き飛ばされてしまった魔人が口にした台詞である。この誤解というものが本当にしょうもないとしか言いようがない。寝ぼけた魔人が半分夢うつつのまま、以前からの顔なじみであるサーブルという人物にした借金を取り立てるべくフォックスをサーブルと勘違いして挑みかかってきたのである。当然サーブルなる人物など知る由もないフォックスにとっては言いがかりも甚だしい話であったが、魔人の方は半分寝た状態で立ち上がり戦いを挑んでくるのだから止めようにも止められなかった。「ぶっとばして目を覚まさせないとダメなもんかと思ったよ」とはフォックスの談である。</p>
+      <p class="codex-p">とはいえ「場末のスナックで管を巻いているおじさん」と評されつつも、一応は巨石でできた身体を持つ魔人である。振り下ろす腕は地鳴りが起きる規模の威力を持ち、寝ぼけて壁にぶつかっただけで落石を起こす衝撃波が出るほどであった。ただし<a href="characters.html#andrew">オイッコニー</a>の操る巨大兵器との戦闘で山ほどもある拳を避けることに慣れてしまったフォックスの敵ではなかった。避けた先から<a href="#crystal-staff">クリスタル・スタッフ</a>の光で引火させられた<a href="#bomb-spore">ボムの胞子</a>によって身体のパーツは順に砕かれていく。腕を負傷した程度では怯まなかった魔人も、両手と顔と上半身が破壊されたあたりでようやく目が覚めた。</p>
+      <p class="codex-p">「う～ん…」という寝起きの唸り声に続いて出たのがこの一言である。文字どおり「座って話す」くらいしかできない状態で発せられた提案であり、そもそも寝ぼけて殴りかかってこなければ済んだ話なのである。サーブルが何者であるのかは今も記録に残っていない。</p>
+      <p class="codex-p">なお謝罪の後、粉々になった魔人の身体はすぐに再生した。<a href="characters.html#warp-djinn">魔人の項</a>にあるとおり何から何まで謎に包まれた存在であり、上半身を失った状態で会話が成立していた事実も謎の一つに数えられている。</p>
+    </article>
+
+    <article class="codex-entry" id="wolf-envy" data-type="quote">
+      <h2 class="codex-h">「ウルフは果敢に戦っているようだ…　うらやましい」 <span class="en">ENVY — 某遊撃士の独白</span></h2>
+      <div class="codex-sub"><span class="loc-tag t-quote">迷言・名言</span> 傍受記録より — 発言者名は本項では伏せる</div>
+      <p class="codex-p">あの　なんでも引き裂きそうなツメ　鋭いキバ<br>
+      理性を忘れたかのような　ワイルドな体術<br>
+      ヤツに狙われた獲物は、ズタズタにされるのだろう<br>
+      興奮なんかしていない　していないぞ…<br>
+      クク…　ク…　クク……</p>
+      <p class="codex-p">…だそうである。ここでとやかくは語るまい。</p>
     </article>
 
     <article class="codex-entry" id="warp-drive" data-type="tech">
@@ -3300,6 +3367,7 @@
       [
         { type: 'history', label: 'HISTORY — 歴史・事件' },
         { type: 'culture', label: 'CULTURE — 文化・生活' },
+        { type: 'quote',   label: 'QUOTES — 迷言・名言' },
         { type: 'org',     label: 'ORG — 組織・勢力' },
         { type: 'region',  label: 'REGION — 領域・場所' },
         { type: 'tech',    label: 'TECH — 技術' },
