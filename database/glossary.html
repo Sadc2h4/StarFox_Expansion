@@ -2204,7 +2204,7 @@
     </article>
 
     <article class="codex-entry" id="off-the-scale" data-type="quote">
-      <h2 class="codex-h">「あの男を"人間"という物差しで測っていたが　あの男は完全に常軌を逸している…！」 <span class="en">OFF THE SCALE — IGA総統の絶叫</span></h2>
+      <h2 class="codex-h">「奴を"人間"という物差しで測っていたが　あの男は完全に常軌を逸している…！」 <span class="en">OFF THE SCALE — IGA総統の絶叫</span></h2>
       <div class="codex-sub"><span class="loc-tag t-quote">迷言・名言</span> 全盛期のペパーを測り損ねた男の言葉 — 宇宙歴3975</div>
       <p class="codex-p"><a href="#iga-war">IGA戦役</a>の最終局面、<a href="#sycorax-ruins">セティボスⅣのシコラクス要塞</a>で<a href="factions.html#iga">独立星系連合</a>の総統が発した言葉である。共和国軍の突入部隊は精鋭部隊<a href="#unit-sword">ソード</a>を含めても35人に過ぎず、対する連合の守備兵力は500人。火器の数に至っては100倍近い開きがあった。要塞での迎撃戦は15分で片が付くと総統も幹部陣も高をくくっていたのである。</p>
       <p class="codex-p">彼らが甘く見積もっていたのはソードの戦闘力と、当時43歳で全盛期にあった<a href="characters.html#pepper">Z・Z・ペパー</a>の恐ろしさであった。若い頃より落ち着きを備えていたとはいえ一度「スイッチ」が入れば誰にも止められない暴力装置であることは健在であった。技と知識を得たその強さは一人で100人分と評される人間離れの領域に達していた。15分の見積もりは自軍が壊滅するまでの時間にすぐさま置き換わる。味方を銃撃の盾にしながら火炎放射器で応戦していた総統は一瞬の隙を突かれて頭を鷲掴みにされ、手にしていた高圧バーナーを自身の顔面に躊躇なく浴びせられた。顔の半分が溶け落ちた総統が言葉も常識も通じない敵を前に絞り出したのがこの一言である。迷えば次の瞬間に殺されると即座に理解した彼は要塞の自爆装置を起動し、特殊な細胞変異によって外見を作り替える擬態能力で民間人に紛れ<a href="#decoy-ship">パペトゥーンへの逃走</a>を図った。希少混血として激しい差別を受けた出自がこの能力と精神性に影を落としていたとされるが、本名も本来の人種も本人が忘れかけていたと伝わる。</p>
@@ -3505,7 +3505,8 @@
          ユーザーが明示的に選んだモードは localStorage の保存値が優先される */
       let savedMode = 'block';
       try { savedMode = localStorage.getItem('glsDispMode') || 'block'; } catch (e) {}
-      if (savedMode === 'list' || savedMode === 'block') setMode(savedMode);
+      if (savedMode !== 'card' && savedMode !== 'list') savedMode = 'block';
+      setMode(savedMode);   // 保存値が 'card' でも必ず適用し、ボタンの点灯と表示を一致させる
 
       window.addEventListener('resize', () => layout(false));
 
