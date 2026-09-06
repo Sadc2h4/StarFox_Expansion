@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FICHINA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#88ccff;--accent:#aaddff;--border:rgba(136,204,255,0.32);--border-hi:rgba(170,221,255,0.7);--dim:#0d2035;--dim2:#06101c; }
+    .p-title { color:#eef8ff; text-shadow: 0 0 50px rgba(100,180,255,0.35); }
+    .p-tagline { border-color:#88ccff; color:#88ccff; }
+    body { background:#040709; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(5,15,30,0.65) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(0,10,25,0.45) 0%,transparent 55%),
+      #040709; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(136,204,255,0.32);">
+    <a href="../index.html" class="nav-back" style="color:#88ccff;border-color:rgba(136,204,255,0.3);">◄ LYLAT MAP</a>
+    <div class="header-tag">[ 08 / FICHINA — フィチナ ]</div>
+    <div class="header-status"><span class="blink" style="color:#88ccff;">●</span> SECTOR-δ — ICE WORLD</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(136,204,255,0.3);"><div class="vt" style="color:#0d2035;">LYLAT SYSTEM — FICHINA — FROZEN FRONTIER — SECTOR-DELTA — CLIMATE CONTROL BASE</div></div>
+  <div class="side-r" style="border-color:rgba(136,204,255,0.3);"><div class="vt" style="color:#0d2035;">DATABASE RECORD: FCH-0008 — CLASSIFICATION: STRATEGIC — FORMER CORNERIAN FACILITY</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(136,204,255,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#88ccff;">[ 08 / LYLAT SYSTEM — SECTOR-δ ]</div>
+        <div class="p-name-jp" style="color:#6699bb;">フィチナ (FICHINA)</div>
+        <h1 class="p-title">THE FROZEN<br>FRONTIER</h1>
+        <div class="p-tagline">極寒氷結惑星 ─ 気候制御基地跡</div>
+        <p class="p-short-desc" style="border-color:#0d2035;">かつてライラット星系全体の気候を制御していた凍てつく惑星。ベノム帝国軍に占領され、星系規模の気候崩壊の脅威に晒された。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(136,204,255,0.3);background:rgba(5,15,28,0.65);">
+        <div class="terminal-hdr" style="color:#88ccff;background:rgba(136,204,255,0.1);border-color:rgba(136,204,255,0.3);">
+          <span style="background:#88ccff;box-shadow:0 0 8px #88ccff;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-δ ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#88ccff;">DESIGNATION</td><td class="dv">FICHINA / フィチナ</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">PLANET TYPE</td><td class="dv">E1型 / ICE WORLD</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">MOONS</td><td class="dv">0</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">PRIMARY STAR</td><td class="dv">ライラット・プライム</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">AVG TEMP</td><td class="dv bad">−80°C ～ −20°C</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">DAY / YEAR</td><td class="dv">36H / 520D</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">LOCATION</td><td class="dv">LYLAT — Sectorδ</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">FACTION</td><td class="dv bad">ベノム帝国軍（占領中）</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">FACILITY</td><td class="dv bad">⚠ CLIMATE CTRL SEIZED</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(136,204,255,0.1);">
+          <div class="env-bar-label" style="color:#88ccff;">ENVIRONMENT INDEX ── 30 / 100</div>
+          <div class="env-bar-track" style="background:#06101c;"><div class="env-bar-fill" style="width:30%;background:linear-gradient(to right,var(--danger),#5588aa,#88ccff);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(100,180,255,0.65);">
+        <img src="../resource/LA_image/LS_P_6.png" alt="Fichina" class="planet-img-detail planet-img-medium"
+          style="filter:drop-shadow(0 0 28px rgba(100,180,255,0.65)) hue-rotate(170deg);">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ICE WORLD — CLIMATE CONTROL</span>
+            <span class="tg-jp">極寒氷結惑星 ── 気候制御基地跡</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">かつて星系の気候制御装置が稼働していた極寒の氷結惑星。</span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+      <div class="lore-section">
+        <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+        <p class="lore-p"><span class="lore-quote">「ここでは寒さは敵ではない。計器を疑い始めた自分の心が敵だ」<span class="lore-quote-src">― フィチナ観測所 越冬隊員の日誌より</span></span></p>
+        <p class="lore-p">フィチナ（Fichina）は、ライラット星系外縁部セクターδに位置する極寒の氷結惑星である。地表の約90%が幾層もの雪氷に覆われており、本来は無人のテラフォーミング候補地に過ぎなかったが、コーネリア連合が星系規模の気候制御装置「クライメート・コントロール」の運用拠点を建設したことで、一躍戦略上の要地となった。</p>
+        <p class="lore-p">ベノム軍の侵攻によって装置が掌握された際には星系全体が気候崩壊の危機に瀕したが、スターフォックス部隊の決死の作戦により装置は破壊され、危機は回避された。現在も地下施設には帝国軍の残存部隊が潜伏しており、完全制圧には至っていない。<br><span class="badge badge-warn" style="margin-top:6px;display:inline-block;">⚠ 一部占領継続中</span></p>
+      </div>
+      <div class="lore-section">
+        <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+        <p class="lore-p">地表は全面が氷雪に覆われ、気温はマイナス80℃からマイナス20℃の間で推移する。猛烈な吹雪が常時観測され、視界がほぼゼロとなる状況も頻発する。航行機器への影響は限定的だが、地上での活動には特殊な耐寒装備が不可欠である。</p>
+        <p class="lore-p">地下には古代の地熱利用施設の遺構が残されており、一部は現在も稼働していると見られる。氷殻の下には液体の水の層が存在する可能性が指摘されており、将来的な資源・生命探査の対象として注目されている。駐留施設の多くは、地下温泉の熱を利用した防寒構造を採用している。</p>
+      </div>
+      <div class="lore-section">
+        <h3 class="lore-h">HISTORY ─ 歴史</h3>
+        <p class="lore-p">当初は星系辺境の観測拠点に過ぎなかったが、テラフォーミングの有力候補地として調査が進む過程で、惑星間の気候バランスを自動調整する超大型施設「クライメート・コントロール」の建設地に選定された。装置の完成後、フィチナはライラット全域の気候を陰で支える「見えざる生命線」となった。</p>
+        <p class="lore-p">開戦後、コーネリア防衛軍の前線基地はアンドルフ軍の奇襲によって陥落し、装置は敵の手に落ちた。気候制御を人質に取られた共和国は装置の奪還ではなく破壊を選択し、この決断がもたらした気候変動の爪痕は、現在も外縁惑星の各地に残っている。</p>
+      </div>
+      <div class="lore-section">
+        <h3 class="lore-h">CLIMATE CONTROL ─ 気候制御施設</h3>
+        <p class="lore-p">「クライメート・コントロール」はライラット星系内の惑星間気候バランスを自動調整していた超大型施設であり、稼働時には周辺宙域の大気循環まで最適化していたと記録されている。施設は作戦により破壊されたが、その技術的遺産は星系全体にとって計り知れない価値を持ち、回収されたデータの解析が現在も続けられている。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">施設：作戦破壊済み</span></p>
+        <p class="lore-p">フィチナにおいては、気候制御の維持と前線機能の維持が不可分の関係にある。制御が機能している間は補給路・滑走路・居住区のすべてが保たれるが、それを失えば環境そのものが軍事活動を阻む敵となる。「環境そのものが兵站を左右する」というこの惑星の特性は、星系戦略の教本に必ず引用される。</p>
+      </div>
+      <div class="lore-section">
+        <h3 class="lore-h">MILITARY ─ 軍事</h3>
+        <p class="lore-p">フィチナの戦略的価値は領土ではなく「制御権」にある。気候制御権の喪失は局地的な基地の陥落にとどまらず、補給路の凍結、通信網の停止、ひいては他惑星の異常気象まで連鎖しかねない。このためフィチナは「敵に奪われると戦場そのものを書き換えられる惑星」として、常時監視対象に指定されている。</p>
+      </div>
+      <div class="lore-section">
+        <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+        <p class="lore-p">初期の星図資料では、この惑星は一時「フォーチュナー（Fortuna）」の名称で記録されており、第5惑星との混同が長く続いた。記録の整理により現在の「フィチナ」表記が確定したが、古い航路図を信じた輸送船が誤って密林惑星へ向かってしまう事故は、つい近年まで後を絶たなかったという。</p>
+        <p class="lore-p">越冬隊員の間では、ブリザードの夜に氷原の下から規則的な打撃音が聞こえるという話が語り継がれている。地熱施設の遺構が今も何かを動かし続けているのか、それとも氷の下の海に何かが棲んでいるのか──確かめに行った者は、まだいない。</p>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 300; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.15 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(200,230,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+</body>
+</html>

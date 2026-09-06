@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROSPERO — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#3366ff;--accent:#6688ff;--border:rgba(51,102,255,0.35);--border-hi:rgba(102,136,255,0.7);--dim:#0a1540;--dim2:#050c20; }
+    .p-title { color:#e8f0ff; text-shadow: 0 0 50px rgba(51,102,255,0.35); }
+    .p-tagline { border-color:#3366ff; color:#6688ff; }
+    body { background:#040608; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(5,10,30,0.65) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(0,5,25,0.45) 0%,transparent 55%),
+      #040608; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(51,102,255,0.35);">
+    <a href="../index.html" class="nav-back" style="color:#6688ff;border-color:rgba(51,102,255,0.3);">◄ LYLAT MAP</a>
+    <div class="header-tag">[ 07 / PROSPERO — プロスペロー ]</div>
+    <div class="header-status"><span class="blink" style="color:#6688ff;">●</span> SECTOR-ρ — CIVILIAN ZONE</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(51,102,255,0.3);"><div class="vt" style="color:#0a1540;">LYLAT SYSTEM — PROSPERO — RESIDENTIAL SUPPLY WORLD — SECTOR-RHO — CORNERIAN CIVILIAN</div></div>
+  <div class="side-r" style="border-color:rgba(51,102,255,0.3);"><div class="vt" style="color:#0a1540;">DATABASE RECORD: PSP-0007 — CLASSIFICATION: CIVILIAN — MAX POPULATION DENSITY</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(51,102,255,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#6688ff;">[ 07 / LYLAT SYSTEM — SECTOR-ρ ]</div>
+        <div class="p-name-jp" style="color:#8899cc;">プロスペロー (PROSPERO)</div>
+        <h1 class="p-title">CITY IN<br>THE<br>STARS</h1>
+        <div class="p-tagline">星系最大人口密度 ─ 居住・補給惑星</div>
+        <p class="p-short-desc" style="border-color:#0a1540;">ライラット星系で最大の人口を擁する居住惑星。首都コーネリアへの補給と住民居住区の役割を担う、平和と繁栄の象徴。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(51,102,255,0.3);background:rgba(5,12,30,0.65);">
+        <div class="terminal-hdr" style="color:#6688ff;background:rgba(51,102,255,0.1);border-color:rgba(51,102,255,0.3);">
+          <span style="background:#6688ff;box-shadow:0 0 8px #6688ff;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-ρ ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#6688ff;">DESIGNATION</td><td class="dv">PROSPERO / プロスペロー</td></tr>
+          <tr><td class="dk" style="color:#6688ff;">PLANET TYPE</td><td class="dv">E1型 / URBAN WORLD</td></tr>
+          <tr><td class="dk" style="color:#6688ff;">MOONS</td><td class="dv">なし</td></tr>
+          <tr><td class="dk" style="color:#6688ff;">PRIMARY STAR</td><td class="dv ok">85 ── EXCELLENT</td></tr>
+          <tr><td class="dk" style="color:#6688ff;">AVG TEMP</td><td class="dv ok">+15°C ～ +25°C</td></tr>
+          <tr><td class="dk" style="color:#6688ff;">DAY / YEAR</td><td class="dv">22H / 410D</td></tr>
+          <tr><td class="dk" style="color:#6688ff;">LOCATION</td><td class="dv">LYLAT 7th — Sectorρ</td></tr>
+          <tr><td class="dk" style="color:#6688ff;">FACTION</td><td class="dv ok">コーネリア連合共和国</td></tr>
+          <tr><td class="dk" style="color:#6688ff;">THREAT</td><td class="dv bad">⚠ UNDER OCCUPATION</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(51,102,255,0.1);">
+          <div class="env-bar-label" style="color:#6688ff;">ENVIRONMENT INDEX ── 85 / 100</div>
+          <div class="env-bar-track" style="background:#050c20;"><div class="env-bar-fill" style="width:85%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(40,80,255,0.65);">
+        <img src="../LA_image/LS_P_7.png" alt="Prospero" class="planet-img-detail planet-img-large">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">URBAN WORLD — MAX POPULATION</span>
+            <span class="tg-jp">星系最大人口密度 ── 居住・補給惑星</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">星系最大の人口密度を誇る居住・補給惑星。現在は敵に占領。</span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#6688ff;">BACKGROUND</h3>
+          <p class="lore-p">ライラット星系第7惑星。穏やかな気候を保ち続ける環境の良さから、コーネリアに注ぐ文明の拠点となった重要な惑星。首都惑星コーネリアへの物資供給と星系住民の居住区の役割を果たしており、惑星圏は星系で最大の人口密度を誇る。</p>
+          <p class="lore-p">惑星全体が平野と浅瀬で構成されており、危険な生命体も存在しない。開発の容易さから惑星全体に衛星都市が建設されてきた。本来は非戦闘地域であり、いかなる武力行為も禁じられていたが、アンドルフ軍はその原則を反故にし、住民の多くを人質に取っている現状にある。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 民間人人質あり</span></p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#6688ff;">ENVIRONMENT &amp; GEOGRAPHY</h3>
+          <p class="lore-p">穏やかな気候と豊かな平野・浅瀬が広がる居住最適惑星。惑星全体に渡って整備された都市インフラと交通網が敷設されており、コーネリアとの定期連絡も盛んだった。深海を持たない浅瀬の海洋は透明度が高く、惑星の夜景は都市の明かりで美しく輝く。</p>
+          <p class="lore-p">侵攻を受けた現在、市街地は戦場と化しており、一般市民の安全確保が最優先課題となっている。この惑星の住民救助と物資供給を死守することは、コーネリア都市防衛に匹敵する重要任務。敵の集中する市街地での戦闘は民間人への被害を最小限に抑えることが鍵となる。</p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#6688ff;">STRATEGIC IMPORTANCE</h3>
+          <p class="lore-p">プロスペローからコーネリアへの物資パイプラインが遮断されると、首都惑星の防衛能力に深刻な影響を与える。ベノム帝国軍による占領継続は星系全体の補給バランスを崩す可能性があり、早期解放が求められる。<br><span class="badge badge-warn" style="margin-top:6px;display:inline-block;">PRIORITY: LIBERATION</span></p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#6688ff;">EXPANDED LORE</h3>
+          <p class="lore-p">拡張解釈では、プロスペローはコーネリアの外郭都市圏として機能する「第二の生活中枢」とされる。首都ほど政治的ではないが、人口・物流・市民インフラの密度では星系内でも突出しており、戦争が住民生活へ直接流れ込む象徴的な世界である。</p>
+          <p class="lore-p">この惑星が占領されると、コーネリアは軍事的に包囲されるだけでなく、難民・食料・医療・輸送の全てで圧迫される。プロスペロー解放は敵拠点の排除ではなく、星系社会そのものを崩壊から引き戻す民生作戦でもある。<br><span class="badge badge-ok" style="margin-top:6px;display:inline-block;">CIVILIAN HEART</span></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 280; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(180,200,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+</body>
+</html>

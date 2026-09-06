@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PERSONNEL DATABASE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#7dd87d;--accent:#b5f0b5;--border:rgba(125,216,125,0.32);--border-hi:rgba(181,240,181,0.7);--dim:#143a14;--dim2:#0a1d0a; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../index.html" class="nav-back">◄ LYLAT MAP</a>
+    <div class="header-tag">[ CODEX / PERSONNEL DATABASE — 人物データベース ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CODEX 06 / PERSONNEL DATABASE ]</div>
+      <h1 class="codex-title">PERSONNEL OF THE LYLAT SYSTEM</h1>
+      <p class="codex-p">第2次ライラットウォーズに関わる主要人物のプロファイル記録。友軍・敵性・民間を問わず、戦術上参照価値のある人物を収録している。各記録の詳細は「▶ プロファイルを開く」から閲覧できる。一部の経歴には検閲が含まれる。</p>
+    </div>
+
+    <div class="loc-filter" id="locFilter">
+      <button class="active" data-type="all">ALL</button>
+      <button data-type="sf">スターフォックス</button>
+      <button data-type="rep">共和国</button>
+      <button data-type="emp">帝国・スターウルフ</button>
+      <button data-type="civ">民間</button>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#fox">フォックス</a><a href="#falco">ファルコ</a><a href="#peppy">ペッピー</a><a href="#slippy">スリッピー</a><a href="#james">ジェームズ</a><a href="#pepper">ペパー将軍</a><a href="#bill">ビル・グレイ</a><a href="#konya">コーニャ</a><a href="#andorf">アンドルフ</a><a href="#wolf">ウルフ</a><a href="#leon">レオン</a><a href="#pigma">ピグマ</a><a href="#andrew">アンドリュー</a><a href="#grippy">グリッピー</a><a href="#yaru">ヤル・デ・ポン</a><a href="#cat">キャット</a><a href="#vixy">ヴィクシー</a><a href="#krystal">クリスタル</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="locations.html">ロケーション</a> / <a href="races.html">人種</a> / <a href="factions.html">勢力</a> / <a href="glossary.html">用語</a></span>
+    </nav>
+
+    <!-- ═══ スターフォックス ═══ -->
+
+    <article class="codex-entry loc" id="fox" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">フォックス・マクラウド <span class="en">FOX McCLOUD</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> <a href="races.html#anubisoid">アヌビソイド</a> / 雇われ遊撃隊<a href="glossary.html#starfox">スターフォックス</a> 2代目リーダー</div>
+        <p class="codex-p">消息を絶った英雄ジェームズ・マクラウドの一人息子にして、父の部隊を受け継いだ若きリーダー。士官学校を主席目前で自主退学し、傭兵の道を選んだ。操縦技術は既に「父を超えた」と評する者も多い。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/fox.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><img class="pixel" src="../resource/BGM/Character/1451.png" alt="Fox McCloud"></div>
+    </article>
+
+    <article class="codex-entry loc" id="falco" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">ファルコ・ランバルディ <span class="en">FALCO LOMBARDI</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> <a href="races.html#holsoid">ホルソイド</a> / スターフォックス 一番機</div>
+        <p class="codex-p">元・宇宙暴走族「フリーバード」の頭を張った荒くれ者にして、隊随一の操縦センスを持つエースパイロット。口は悪く協調性は皆無だが、その翼を頼らずに済んだ作戦は一度もない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/falco.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="peppy" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">ペッピー・ヘア <span class="en">PEPPY HARE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> <a href="races.html#selenoid">セレノイド</a> / スターフォックス 参謀・教育係</div>
+        <p class="codex-p">初代スターフォックスの生き残りにしてジェームズの無二の親友。ベノム偵察作戦から単身生還し、裏切りの真実とともにフォックスを育て上げた。隊の頭脳であり、良心であり続けている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/peppy.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="slippy" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">スリッピー・トード <span class="en">SLIPPY TOAD</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> <a href="races.html#heketoid">ヘケトイド</a> / スターフォックス メカニック</div>
+        <p class="codex-p">スペダイ主任設計技師ベルツィーノ・トードの息子で、フォックスの士官学校からの親友。操縦の腕はさておき、敵兵器のシールド解析と整備の腕は星系屈指。叔父グリッピーの惑星の警備も個人受注している。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/slippy.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="james" data-type="sf">
+      <div class="loc-body">
+        <h2 class="codex-h">ジェームズ・マクラウド <span class="en">JAMES McCLOUD — MIA</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">スターフォックス</span> <a href="races.html#anubisoid">アヌビソイド</a> / スターフォックス創始者・初代リーダー — <span style="color:var(--danger);">行方不明</span></div>
+        <p class="codex-p">CDF最精鋭のエースから民間へ転じ、雇われ遊撃隊スターフォックスを創設した伝説の傭兵。ベノム偵察作戦で僚機の裏切りに遭い消息不明。その前半生の記録には、今も厚い検閲がかかっている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/james.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ 共和国 ═══ -->
+
+    <article class="codex-entry loc" id="pepper" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">Z・Z・ペパー将軍 <span class="en">GENERAL Z.Z. PEPPER</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#anubisoid">アヌビソイド</a> / <a href="glossary.html#cdf">コーネリア防衛軍</a> 総司令官</div>
+        <p class="codex-p">星系全域の防衛作戦を統括するCDFの最高指揮官。かつてアンドルフの助命とジェームズの減刑、二つの temperance を選んだ男であり、この戦争の因果の多くは彼の決断に遡る。それを誰より知るのは本人である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/pepper.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="bill" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">ビル・グレイ <span class="en">BILL GREY</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#anubisoid">アヌビソイド</a> / <a href="locations.html#katina">カタリナ</a>駐留軍 飛行隊長</div>
+        <p class="codex-p">カタリナ前線基地の第7飛行隊を率いる若き隊長で、フォックスの士官学校時代の親友。「カタリナの奇跡」の立役者の一人であり、その部隊「ブルドッグ」「ハスキー」の名は帝国軍にも知れ渡る。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/bill.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="konya" data-type="rep">
+      <div class="loc-body">
+        <h2 class="codex-h">コーニャ・マッカレル <span class="en">SGT. KONYA MACKEREL</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">共和国</span> <a href="races.html#bastetoid">バステトイド</a> / カタリナ前線基地 防衛隊 軍曹</div>
+        <p class="codex-p">カタリナ基地防衛隊に配属されたばかりの新任軍曹。開拓民の家に生まれ、故郷の空を守るために軍門を叩いた。目下、参謀本部から臨時付与された閲覧権限で、部隊の仲間とともに軍事情報プロファイルを読み込んでいる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/konya.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ 帝国・スターウルフ ═══ -->
+
+    <article class="codex-entry loc" id="andorf" data-type="emp">
+      <div class="loc-body">
+        <h2 class="codex-h">アンドルフ・ボウマン <span class="en">DR. ANDORF BOWMAN</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">帝国</span> <a href="races.html#alphoid">アルフォイド</a> / <a href="factions.html#venom-empire">ベノム帝国</a> 皇帝 — <span style="color:var(--danger);">最重要敵性人物</span></div>
+        <p class="codex-p">星系随一の天才科学者にして、コーネリア科学省長官から流刑囚へ、そして帝国の皇帝へと転じた男。その頭脳は今も星系最高であり、それこそが最大の脅威である。全ての始まりは、一件の爆発事故だった。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/andorf.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="wolf" data-type="emp">
+      <div class="loc-body">
+        <h2 class="codex-h">ウルフ・オドネル <span class="en">WOLF O'DONNELL</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">スターウルフ</span> <a href="races.html#anubisoid">アヌビソイド</a> / 傭兵部隊スターウルフ リーダー</div>
+        <p class="codex-p">帝国に雇われた精鋭傭兵部隊スターウルフを率いる隻眼の狼。スターフォックスへの異常な執着で知られるが、その戦いぶりには奇妙な「作法」があり、単なる殺し屋と呼ぶことを嫌う者も多い。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/wolf.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><img class="pixel" src="../resource/BGM/Character/ウルフ.png" alt="Wolf O'Donnell"></div>
+    </article>
+
+    <article class="codex-entry loc" id="leon" data-type="emp">
+      <div class="loc-body">
+        <h2 class="codex-h">レオン・ポワルスキー <span class="en">LEON POWALSKI</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">スターウルフ</span> <a href="races.html#paranodian">パラノディアン</a> / スターウルフ 隊員</div>
+        <p class="codex-p">静かな口調と残忍な戦法のギャップで恐れられる、スターウルフの二番機。かつては裏社会の「掃除屋」だったとされ、その経歴の大半は闇の中。ウルフにだけは奇妙な忠誠を示す。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/leon.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><img class="pixel" src="../resource/BGM/Character/レオン.png" alt="Leon Powalski"></div>
+    </article>
+
+    <article class="codex-entry loc" id="pigma" data-type="emp">
+      <div class="loc-body">
+        <h2 class="codex-h">ピグマ・デンガー <span class="en">PIGMA DENGAR — TRAITOR</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">スターウルフ</span> <a href="races.html#zetoid">ゼートイド</a> / スターウルフ 隊員 — <span style="color:var(--danger);">反逆者</span></div>
+        <p class="codex-p">初代スターフォックスの創設メンバーにして、ベノム偵察作戦でジェームズを帝国に売った裏切り者。若き日のジェームズと組んだ最古の相棒が、最悪の敵になった。動機は今も金だけだと、本人は笑う。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/pigma.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><img class="pixel" src="../resource/BGM/Character/ピグマ.png" alt="Pigma Dengar"></div>
+    </article>
+
+    <article class="codex-entry loc" id="andrew" data-type="emp">
+      <div class="loc-body">
+        <h2 class="codex-h">アンドリュー・オイッコニー <span class="en">ANDREW OIKONNY</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">スターウルフ</span> <a href="races.html#alphoid">アルフォイド</a> / スターウルフ 隊員 — アンドルフの甥</div>
+        <p class="codex-p">皇帝アンドルフの甥という血筋だけでスターウルフに座る、隊の問題児。腕は隊で最も未熟だが、伯父への心酔は本物であり、それゆえに一番危うい。本人だけが自分を次期皇帝と信じている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/andrew.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><img class="pixel" src="../resource/BGM/Character/アンドリュー.png" alt="Andrew Oikonny"></div>
+    </article>
+
+    <!-- ═══ 民間 ═══ -->
+
+    <article class="codex-entry loc" id="grippy" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">グリッピー・トード <span class="en">GRIPPY TOAD</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">民間</span> <a href="races.html#heketoid">ヘケトイド</a> / <a href="glossary.html#cgm">グリッピア・ワークス社</a> 会長</div>
+        <p class="codex-p">金属加工への異常な熱意ひとつで惑星を丸ごと買った実業家。スペダイ主任技師ベルツィーノの弟で、スリッピーの叔父。星系最外縁の<a href="locations.html#grippia">グリッピア</a>は、彼の名を戴く「会社であり星」である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/grippy.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="yaru" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">ヤル・デ・ポン <span class="en">YARU DE PON</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">民間</span> <a href="races.html#anubisoid">アヌビソイド</a> / <a href="space-dynamics.html">スペース・ダイナミクス社</a> 社長</div>
+        <p class="codex-p">Gディフューザーシステムの発明者にして、アーウィンの生みの親。技師のまま社長になった変わり者で、今も週の半分は設計室にいる。「操縦できない機体はない。乗り手が育っていないだけだ」が持論。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/yaru.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="cat" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">キャット・モンロー <span class="en">CAT MONROE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">民間</span> <a href="races.html#bastetoid">バステトイド</a> / フリーの運び屋・パイロット</div>
+        <p class="codex-p">星系中を根城にする凄腕の運び屋。ファルコとは暴走族時代からの腐れ縁で、戦場に呼ばれてもいないのに現れては、貸しを一つ増やして去っていく。所属を聞かれると「風」と答える。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/cat.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="vixy" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">ヴィクシー・マクラウド <span class="en">VIXY McCLOUD — DECEASED</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">民間</span> <a href="races.html#anubisoid">アヌビソイド</a> / 故人 — フォックスの母</div>
+        <p class="codex-p">パペトゥーンの酒場の看板娘としてジェームズと出会い、フォックスを産み育てた女性。その死は「車両事故」として処理されているが、当時の捜査資料は現在も封印されたままである。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/vixy.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="krystal" data-type="civ">
+      <div class="loc-body">
+        <h2 class="codex-h">仮称「クリスタル」 <span class="en">CODENAME: KRYSTAL</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">民間</span> <a href="races.html#anubisoid">アヌビソイド</a>（狐系・推定） / 身元不明 — <span style="color:var(--danger);">拘束状態・機密</span></div>
+        <p class="codex-p"><a href="locations.html#fortuna">フォルトナ</a>の神殿最奥で、水晶状の鉱石に閉じ込められた状態のまま発見された青い体毛の女性。本名は不明で、「クリスタル」は発見状況から付けられた仮称。回収された武器「万能杖」の解析結果が待たれる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../characters/krystal.html">▶ プロファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+
+    (function() {
+      const filter = document.getElementById('locFilter');
+      if (!filter) return;
+      filter.addEventListener('click', function(event) {
+        const btn = event.target.closest('button');
+        if (!btn) return;
+        filter.querySelectorAll('button').forEach((b) => b.classList.toggle('active', b === btn));
+        const type = btn.dataset.type;
+        document.querySelectorAll('.codex-entry.loc').forEach((card) => {
+          card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+        });
+      });
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

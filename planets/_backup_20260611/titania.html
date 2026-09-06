@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITANIA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary: #ff8844; --accent: #ffaa66; --border: rgba(255,136,68,0.35); --border-hi: rgba(255,170,102,0.7); --dim: #3d1a00; --dim2: #1e0d00; }
+    .planet-img { --glow: rgba(255,100,30,0.55); }
+    .p-title { color: #fff0e0; text-shadow: 0 0 50px rgba(255,100,30,0.3); }
+    .p-tagline { border-color: #ff8844; color: #ff8844; }
+    body { background: #0a0804; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 50%, rgba(30,15,0,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(25,10,0,0.4) 0%, transparent 55%),
+      #0a0804; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header" style="border-color:rgba(255,136,68,0.35);">
+    <a href="../index.html" class="nav-back" style="color:#ff8844;border-color:rgba(255,136,68,0.3);">◄ LYLAT MAP</a>
+    <div class="header-tag">[ 03 / TITANIA — タイタニア ]</div>
+    <div class="header-status"><span class="blink" style="color:var(--warn);">●</span> SECTOR-χ — DANGER</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(255,136,68,0.3);"><div class="vt" style="color:#3d1a00;">LYLAT SYSTEM — TITANIA — FORBIDDEN ZONE — SECTOR-CHI — MAGNETIC STORM WARNING ACTIVE</div></div>
+  <div class="side-r" style="border-color:rgba(255,136,68,0.3);"><div class="vt" style="color:#3d1a00;">DATABASE RECORD: TTN-0003 — CLASSIFICATION: RESTRICTED — SARGASSO BOUNDARY ACTIVE</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(255,136,68,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#ff8844;">[ 03 / LYLAT SYSTEM — SECTOR-χ ]</div>
+        <div class="p-name-jp" style="color:#cc8855;">タイタニア (TITANIA)</div>
+        <h1 class="p-title">THE FORBIDDEN<br>ANCIENT<br>WORLD</h1>
+        <div class="p-tagline">禁断の惑星 ─ 強磁場異常宙域</div>
+        <p class="p-short-desc" style="border-color:#3d1a00;">太古の文明の痕跡が眠る禁断の惑星。強烈な磁場が機械を狂わせ、暴走する古代兵器と磁気嵐が常に危機をもたらす。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(255,136,68,0.3);background:rgba(30,10,0,0.6);">
+        <div class="terminal-hdr" style="color:#ff8844;background:rgba(255,136,68,0.1);border-color:rgba(255,136,68,0.3);">
+          <span style="background:#ff8844;box-shadow:0 0 8px #ff8844;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-χ ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#ff8844;">DESIGNATION</td><td class="dv">TITANIA / タイタニア</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">PLANET TYPE</td><td class="dv">E1型 / TERRESTRIAL</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">MOONS</td><td class="dv warn">2 ＋ リング</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">PRIMARY STAR</td><td class="dv warn">22 ── SURVIVAL ONLY</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">AVG TEMP</td><td class="dv warn">−60°C ～ +65°C</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">DAY / YEAR</td><td class="dv">72H / 242D</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">LOCATION</td><td class="dv">LYLAT 2nd — Sectorχ</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">FACTION</td><td class="dv">なし（無主）</td></tr>
+          <tr><td class="dk" style="color:#ff8844;">STATUS</td><td class="dv bad">⚠ SARGASSO ADJACENT</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(255,136,68,0.1);">
+          <div class="env-bar-label" style="color:#ff8844;">ENVIRONMENT INDEX ── 22 / 100</div>
+          <div class="env-bar-track" style="background:#1e0d00;"><div class="env-bar-fill" style="width:22%;background:linear-gradient(to right,var(--danger),var(--warn));"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,110,30,0.65);">
+        <img src="../LA_image/LS_P_2.png" alt="Titania" class="planet-img-detail planet-img-large">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">FORBIDDEN WORLD — MAGNETIC STORM</span>
+            <span class="tg-jp">禁断の惑星 ── 強磁場異常宙域</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">機械を狂わせる磁場と暴走兵器が支配する、禁断の磁気嵐惑星。</span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#ff8844;">BACKGROUND</h3>
+          <p class="lore-p">ライラット星系第2惑星。移民たちがこの星を発見する以前から発達した文明があったとされるが、現在は痕跡をとどめるのみ。豊富な地下資源をめぐって過去に幾度も争いが起きたが、機械を狂わせる強烈な磁場、暴走する古代兵器、絶えない砂嵐が侵入者を拒み続け、今では「禁断の惑星」として誰も近寄らない無人の星となった。</p>
+          <p class="lore-p">初期の記録では「生物が存在せず濃い霧に包まれた、原料鉱床に富む宝の惑星」として登録されており、かつてはアンドルフ軍の大規模守備隊が展開した占領地でもあった。後の詳細調査では、巨大なイオン嵐が赤い塵を惑星規模で巻き上げる現象が確認され、さらに古代文明の遺跡群と、それを守り続ける古代防衛機構「ゴラス（Goras）」の存在も明らかとなった。資源惑星としての現代的価値と、封印された古代技術世界としての歴史的価値が同居する複合的な惑星として位置づけられている。</p>
+          <p class="lore-p">コーネリア連合軍がこの孤立を利用し、秘密裏に建造した地下要塞に機密情報を保管しているという噂もあるが、真偽は定かではない。惑星圏自体が危険宙域『サルガッソー』となっており、近辺で撃墜された船や残骸はことごとくサルガッソーに引き寄せられてしまう。<br><span class="badge badge-warn" style="margin-top:6px;display:inline-block;">禁断の惑星</span></p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#ff8844;">ENVIRONMENT &amp; GEOGRAPHY</h3>
+          <p class="lore-p">昼の領域は灼熱の砂漠、夜の領域は霧が立ち込める極寒の大地となっており、荒涼とした地形が地表の大部分を占める。惑星形成初期に巨大隕鉄と衝突したことで自転軸が97度横転しており、常に昼の地域と夜の地域が明確に存在するという特異な環境を形成している。</p>
+          <p class="lore-p">地表は多量の酸化鉄を含み、わずかに存在する海もこの酸化鉄の影響で赤褐色を呈する。嵐の時間帯には磁力によって舞い上げられた残骸・岩石・海水が降り注ぐ極限環境となる。地下には少数の爬虫類人種「ティターニアン」がコロニーを作り生活しているが、外界との交流は一切ない。</p>
+          <p class="lore-p">地表各所には古代都市の石造基盤や寺院状の構造物、地下防衛回路の遺構が散在している。在来の大型生物はほぼ確認されていないが、古代防衛機構「ゴラス」だけは例外であり、長い眠りを経てもなお機能し続けている。これらの遺構は、過去にこの惑星に高度な文明が繁栄していたことを示す証拠として調査対象となっている。</p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#ff8844;">SARGASSO WARNING</h3>
+          <p class="lore-p">タイタニアの強磁場により惑星周囲には無数の宇宙船残骸と隕鉄が密集する危険宙域「サルガッソー」が形成されている。先を急ぐ場合でも、緊急時にはこの惑星や周辺宙域を経由する必要が生じる可能性がある。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ APPROACH WITH EXTREME CAUTION</span></p>
+          <p class="lore-p">軍事的な観点では、タイタニアは単なる採掘地ではない。この惑星を制する者は資源の採掘と古代技術の発掘を同時に握ることになる。アンドルフ側には原材料の補給地として、コーネリア側には「敵が古代兵器を手に入れる前に封鎖すべき惑星」として位置づけられており、大規模な移民よりも軍事監視・限定作戦による管理が優先される宙域となっている。<span class="badge badge-warn" style="margin-top:6px;display:inline-block;">⚠ STRATEGIC RESOURCE ZONE</span></p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#ff8844;">EXPANDED LORE</h3>
+          <p class="lore-p">拡張解釈では、タイタニアはライラット星系の古代史を封じ込めた隔離惑星として扱われる。磁気嵐とサルガッソーは単なる自然災害ではなく、過去の文明圏が意図的に作り上げた封鎖機構、あるいは失敗した防衛システムの残骸である可能性がある。</p>
+          <p class="lore-p">古代兵器ゴラスや地下遺跡は、資源採掘の障害であると同時に、ライラット以前の文明が何を恐れていたのかを示す警告でもある。タイタニアを発掘することは、資源を得る行為ではなく、星系そのものの封印を解く行為に近い。<br><span class="badge badge-warn" style="margin-top:6px;display:inline-block;">SEALED HISTORY</span></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.75).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(255,220,180,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+</body>
+</html>

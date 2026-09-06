@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VENOM — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary: #44ff00; --accent: #88ff44; --border: rgba(68,255,0,0.3); --border-hi: rgba(136,255,68,0.7); --dim: #1a3300; --dim2: #0a1a00; }
+    .planet-img { --glow: rgba(68,255,0,0.6); }
+    .p-title { color: #f0ffe0; text-shadow: 0 0 50px rgba(68,255,0,0.3); }
+    .p-tagline { border-color: #44ff00; color: #44ff00; }
+    body { background: #040a04; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 50%, rgba(0,30,0,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(0,25,0,0.4) 0%, transparent 55%),
+      #040a04; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header" style="border-color:rgba(68,255,0,0.3);">
+    <a href="../index.html" class="nav-back" style="color:#44ff00;border-color:rgba(68,255,0,0.3);">◄ LYLAT MAP</a>
+    <div class="header-tag">[ 09 / VENOM — ベノム ]</div>
+    <div class="header-status"><span class="blink" style="color:var(--danger);">●</span> SECTOR-Ω — EXTREME DANGER</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(68,255,0,0.3);"><div class="vt" style="color:#1a3300;">LYLAT SYSTEM — VENOM — VENOM EMPIRE FORTRESS WORLD — SECTOR-OMEGA — RESTRICTED</div></div>
+  <div class="side-r" style="border-color:rgba(68,255,0,0.3);"><div class="vt" style="color:#1a3300;">DATABASE RECORD: VNM-0001 — CLASSIFICATION: TOP SECRET — WARNING: LETHAL ENVIRONMENT</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(68,255,0,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#44ff00;">[ 09 / LYLAT SYSTEM — SECTOR-Ω ]</div>
+        <div class="p-name-jp" style="color:#7ecf7e;">ベノム (VENOM)</div>
+        <h1 class="p-title">THE EMPIRE'S<br>DEAD<br>HEART</h1>
+        <div class="p-tagline">ベノム帝国 首都要塞惑星 ─ 環境指数 0</div>
+        <p class="p-short-desc" style="border-color:#1a3300;">致命的環境に包まれた帝国の総本拠。アンドルフが支配する難攻不落の要塞惑星。全ミッションの最終目的地。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(68,255,0,0.3);background:rgba(0,30,0,0.6);">
+        <div class="terminal-hdr" style="color:#44ff00;background:rgba(68,255,0,0.1);border-color:rgba(68,255,0,0.3);">
+          <span style="background:#44ff00;box-shadow:0 0 8px #44ff00;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-Ω ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#44ff00;">DESIGNATION</td><td class="dv">VENOM / ベノム</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">PLANET TYPE</td><td class="dv">E2型 / HOSTILE TERRESTRIAL</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">MOONS</td><td class="dv bad">0</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">PRIMARY STAR</td><td class="dv bad">0 ── LETHAL</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">AVG TEMP</td><td class="dv bad">+220°C ～ +450°C</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">DAY / YEAR</td><td class="dv">26H / 56D</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">LOCATION</td><td class="dv">LYLAT 1st — SectorΩ</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">FACTION</td><td class="dv bad">ベノム帝国軍</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">STATUS</td><td class="dv bad">⚠⚠ FORTRESS WORLD</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(68,255,0,0.1);">
+          <div class="env-bar-label" style="color:#44ff00;">ENVIRONMENT INDEX ── 0 / 100</div>
+          <div class="env-bar-track" style="background:#0a1a00;"><div class="env-bar-fill" style="width:3%;background:var(--danger);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(50,220,0,0.7);">
+        <img src="../LA_image/LS_P_1.png" alt="Venom" class="planet-img-detail planet-img-large">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">EMPIRE FORTRESS — E2 HOSTILE WORLD</span>
+            <span class="tg-jp">ベノム帝国 首都要塞惑星</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">帝国の総本拠。致命的な環境に守られた難攻不落の要塞惑星。</span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#44ff00;">BACKGROUND</h3>
+          <p class="lore-p">遥か昔、別の惑星系からライラット星系へと移り住む開拓団が初めてたどりついたとされる辺境の惑星。先駆者たちが入植した直後は自然豊かな環境だったものの、度重なる環境汚染と天変地異により生命を寄せ付けない死の星と化した。</p>
+          <p class="lore-p">本来は滅んだ元の母星ではない新天地として「"元の"私ではない」を意味する『Be not me』という名だったが、長い歴史の中で風化し、現在の惨状からベノムと呼ばれるようになったとされる。アンドルフが追放されたのもこの惑星であり、帰還後は超巨大要塞『アトロポリス』を建設、究極兵器『プラネット・デバスター』の建設も進められている。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">FINAL OBJECTIVE</span></p>
+          <p class="lore-p">初期の記録によれば、ベノムはかつて「常緑惑星（Evergreen Planet）」と呼ばれ、コーネリアに次ぐ美しさを誇った世界として記録されている。アンドルフがコーネリアを追放された後にこの惑星を根拠地として選定し、豊かな自然環境を軍事国家の基盤へと作り変えた。原住民は高度な文明を有しておらず、アンドルフ軍の軍需機構に半強制的に組み込まれていった。かつて星系随一の美しさを誇った惑星が、外部の意志によって現在の姿へと再構成されるに至った経緯が、ベノムの歴史的背景を形成している。</p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#44ff00;">ENVIRONMENT &amp; GEOGRAPHY</h3>
+          <p class="lore-p">地表は重度の環境汚染により再生不可能なレベルにまで荒廃。膨大な温室効果ガスの影響で地表温度は400℃を超え、大気圏にはバリア全開の戦艦ですら数時間で融解する濃硝酸の嵐が吹き荒れている。</p>
+          <p class="lore-p">宇宙から観測できる地表の大部分はザイオング光子ポリマー合金の人工外殻のみ。その内部ではバイオウェポンの細胞が増殖し生体組織を形成しており、本来の地表は生物の体内のような様相を呈している。多数のジャミング装置と時空乱流により電波・可視光による観測も困難な状況。</p>
+          <p class="lore-p">かつての常緑世界を形成していた植生や水循環は大規模工業化と化学汚染によって根底から崩壊しており、往時の面影は地表のいかなる場所にも残されていない。自然地形と軍事施設が見分けのつかないほど融合しており、基地・発着路・要塞・兵器工場が地表の大部分を覆っている。</p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#44ff00;">STRATEGIC VALUE</h3>
+          <p class="lore-p">この惑星は全てのミッションの最終目的地。ベノム腹心の部下ですら内部への侵入は許されておらず、最終防衛ラインより内側は完全自動兵器が常時稼働している。侵攻の手掛かりは拿捕した敵艦の航行データのみ。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ EXTREME CAUTION</span></p>
+          <p class="lore-p">ベノムはアンドルフ軍にとって単なる軍事拠点ではなく、反コーネリア秩序の思想的中枢として位置づけられている。兵器の集積地というより、ライラット星系を再設計するための実験国家そのものとして機能してきた経緯がある。この惑星を攻略することは軍事的制圧にとどまらず、敵政治体制の中枢を同時に解体することを意味している。</p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#44ff00;">EXPANDED LORE</h3>
+          <p class="lore-p">拡張解釈では、ベノムはアンドルフの追放先ではなく、彼の思想が惑星規模で実装された実験国家とされる。自然環境は軍需工場へ、原住社会は兵站機構へ、地形は要塞外殻へと置き換えられ、惑星そのものが反コーネリア秩序の象徴へ変質した。</p>
+          <p class="lore-p">このためベノムの攻略は、敵首都を落とす作戦であると同時に、星系を作り替える思想を停止させる作戦でもある。アンドルフが構築した生体兵器、重工業、情報封鎖、環境汚染は一つの統治システムとして結びついており、司令中枢の破壊後も復興には長期の隔離と除染が必要になる。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">IDEOLOGICAL FORTRESS</span></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.15 + Math.random()*0.6).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(200,255,180,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+</body>
+</html>

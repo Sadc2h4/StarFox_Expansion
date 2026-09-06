@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORTUNA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#44ff00;--accent:#88ff44;--border:rgba(68,255,0,0.32);--border-hi:rgba(136,255,68,0.7);--dim:#0d2200;--dim2:#061200; }
+    .p-title { color:#f0ffe0; text-shadow: 0 0 50px rgba(68,255,0,0.25); }
+    .p-tagline { border-color:#44ff00; color:#44ff00; }
+    body { background:#050a04; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(5,25,0,0.65) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(0,20,0,0.4) 0%,transparent 55%),
+      #050a04; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(68,255,0,0.32);">
+    <a href="../console.html" class="nav-back" style="color:#44ff00;border-color:rgba(68,255,0,0.3);">◄ CONSOLE</a>
+    <div class="header-tag">[ 05 / FORTUNA — フォルトナ ]</div>
+    <div class="header-status"><span class="blink" style="color:#44ff00;">●</span> SECTOR-λ — UNCHARTED</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(68,255,0,0.3);"><div class="vt" style="color:#0d2200;">LYLAT SYSTEM — FORTUNA — PRIMAL JUNGLE WORLD — SECTOR-LAMBDA — ANCIENT ECOSYSTEM</div></div>
+  <div class="side-r" style="border-color:rgba(68,255,0,0.3);"><div class="vt" style="color:#0d2200;">DATABASE RECORD: FTN-0005 — CLASSIFICATION: ANOMALY — TEMPORAL STASIS SUSPECTED</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(68,255,0,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#44ff00;">[ 05 / LYLAT SYSTEM — SECTOR-λ ]</div>
+        <div class="p-name-jp" style="color:#66cc33;">フォルトナ (FORTUNA)</div>
+        <h1 class="p-title">THE LIVING<br>PRIMAL<br>WORLD</h1>
+        <div class="p-tagline">原始密林惑星 ─ 数十億年の生態系</div>
+        <p class="p-short-desc" style="border-color:#0d2200;">太古の生態系が時を止めたまま存在し続ける神秘の惑星。巨大植物と恐竜型生物が支配する原始の密林が全土を覆う。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(68,255,0,0.3);background:rgba(5,20,0,0.65);">
+        <div class="terminal-hdr" style="color:#44ff00;background:rgba(68,255,0,0.1);border-color:rgba(68,255,0,0.3);">
+          <span style="background:#44ff00;box-shadow:0 0 8px #44ff00;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-λ ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#44ff00;">DESIGNATION</td><td class="dv">FORTUNA / フォルトナ（現地名: サウリア）</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">PLANET TYPE</td><td class="dv">密林型 / JUNGLE WORLD</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">MOONS</td><td class="dv">―</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">PRIMARY STAR</td><td class="dv">ライラット・プライム</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">AVG TEMP</td><td class="dv ok">+22°C ～ +48°C</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">DAY / YEAR</td><td class="dv">30H / 480D</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">LOCATION</td><td class="dv">LYLAT 5th — Sectorλ</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">FACTION</td><td class="dv">中立 / NEUTRAL</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">CAPITAL</td><td class="dv">聖地 クアン・アタ・ラチュ（全部族共通）</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">ANOMALY</td><td class="dv warn">⚠ TEMPORAL STASIS</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(68,255,0,0.1);">
+          <div class="env-bar-label" style="color:#44ff00;">ENVIRONMENT INDEX ── 62 / 100</div>
+          <div class="env-bar-track" style="background:#061200;"><div class="env-bar-fill" style="width:62%;background:linear-gradient(to right,var(--warn),#aaff00,#44ff00);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(50,200,20,0.6);">
+        <img src="../resource/LA_image/LS_P_5.png" alt="Fortuna" class="planet-img-detail planet-img-medium-plus">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">JUNGLE WORLD — TEMPORAL STASIS</span>
+            <span class="tg-jp">原始密林惑星 ── 数十億年の生態系</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">数十億年の原始生態系が封じ込められた神秘の密林惑星。</span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「森が、こちらを見ている。調査は中止する。繰り返す、調査は中止する」<span class="lore-quote-src">― 第3次生態調査団 最終通信記録より</span></span></p>
+  <p class="lore-p">フォルトナ（Fortuna）は、<a href="../codex/sectors.html#lambda">セクターλ</a>に位置するライラット星系第5惑星。誕生から数十億年を経た今なお原始の生態系が維持され続けている密林の惑星であり、地上は意思を持つかのような原始の森と恐竜が跋扈し、あらゆる文明の定着を拒み続けている。<br>
+星系の公式記録上の名は「フォルトナ」だが、この星に住む知性ある恐竜族たちは自らの星を「サウリア」と呼ぶ。ひとつの惑星、ふたつの名前──外から名付けた者と、そこに生きてきた者の呼び名である。</p>
+  <p class="lore-p">太古のライラット星系の生態系が時を止めたように残る理由は、現在も解明されていない。フォルトナ惑星圏に点在する謎の建造物「スペースオベリスク」が原因ではないかと言われているが、真偽は明らかになっていない。<br><span class="badge badge-warn" style="margin-top:6px;display:inline-block;">⚠ 生態系保護区域 — 着陸制限</span><span class="badge badge-classified" style="margin-top:6px;margin-left:6px;display:inline-block;">▮ 本記事は一部検閲済み</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">地表の大部分は多層構造の大密林に覆われ、樹冠の高さは場所によって500メートルを超える。赤道帯には巨大な汽水湖群が広がり、極地方にすら耐寒性の樹林が根を張るという、惑星規模の「森の帝国」が形成されている。大気は酸素濃度が高く、標準的な防護装備なしでも呼吸可能だが、未知の胞子や病原体のリスクから生身での長期活動は推奨されていない。</p>
+  <p class="lore-p">特筆すべきは<a href="../codex/sectors.html#lambda">周回宙域</a>に点在するスペースオベリスクである。謎の生物の顔や上半身を模した巨大構造物が惑星を取り囲むように配置されており、建造者も目的も一切不明。オベリスクの放つ微弱なエネルギーに引き寄せられるように、宙域には宇宙生物が多数生息しており、航行の際は天体よりもまず「生き物」に注意が必要とされる。中でも巨大宇宙怪獣『スペースドドラ』はこの宙域にねぐらを構えていることが確認されており、惑星域を飛行する際は細心の注意が必要である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">入植時代、フォルトナは「豊穣（Fortuna）」の名を与えられ、農業惑星としての開発が幾度も試みられた。しかし開拓団は例外なく撤退している。伐採した森は数週間で再生し、建設した拠点は恐竜の群れに踏み潰された。やがて人々はこの星を開発対象から外し、「星系最大の自然保護区」として扱うようになった。</p>
+  <p class="lore-p"><a href="../codex/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>勃発直後、<a href="../codex/factions.html#venom-empire">ベノム帝国軍</a>はこの星の恐竜を侵略用生体兵器に改造・調教するための施設を建設した。だが施設は程なくして通信を絶ち、増援部隊が発見したのは森に呑み込まれた廃墟だけだった。部隊は全滅と断定され、計画は頓挫した。帝国がこの星への再進出を試みた記録は、以後確認されていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">機械文明は存在しないが、この星は決して「無人の星」ではない。既知の人種はただの一人も確認されていない代わりに、地上には独自の言語と部族社会を持つ知性ある恐竜族が暮らしている。統治権を握るのは草食のアソーカ族と翼を持つクラウド族の2部族だが、好戦的なシャープクロウ族やレッドアイ族をはじめ部族間の対立はいまだ多く、実態としては各部族の集落が点在するのみである。彼らこそが「サウリア」の名の主であり、学者たちはこの部族社会を「時を止めることを選んだ文明」と呼ぶ。恐竜族の間には星の各地に眠る「精霊（スピリット）」への信仰が根付いており、聖地とされる古代遺跡群への立ち入りは部族の掟で固く禁じられている。</p>
+  <p class="lore-p">唯一の例外が、記録上この星の「代表地」として登録されている聖地クアン・アタ・ラチュである。対立を続ける各部族も、この聖地だけは例外なく共に崇めており、聖地を巡る争いだけは数千年の記録の中に一度も見当たらない。</p>
+  <p class="lore-p">また密林の奥地には<a href="../codex/races.html#paranodian">パラノディアン</a>の派生民族とされる部族が原始的な生活を営んでおり、彼らは滅亡した<a href="../codex/glossary.html#paranid-empire">パラニド神聖帝国</a>の数少ない生き残りの末裔と考えられている。恐竜族と彼らの間には緩やかな共存関係があるというが、いずれも外部との接触を拒み、この星は外界との通信すら難しいため、研究はほとんど進んでいない。一部の人類学者は、彼らが「あえて」文明を捨てた──神聖帝国を滅ぼした何かから逃れるために──という説を唱えているが、これを確かめた者はいない。</p>
+  <p class="lore-p">なお、この星では他星で流通する星系共通通貨SD（スペースドル）は一切通用せず、取引には「スカラベ」と呼ばれる緑の光沢が美しい昆虫が、そのまま通貨として用いられる。加えてフォルトナには星間法も一切適用されないため、取引で詐欺に遭っても訴える手段は存在しない。交易を試みる者は、その全てを自己責任で行うことになる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">フォルトナそのものに恒久的な軍事拠点は存在しない。しかし<a href="../codex/sectors.html#lambda">セクターλ</a>は星系中央部と外縁部を結ぶ航路の分岐点に近く、哨戒任務や補給の中継点として両軍の艦艇が通過することは多い。<a href="../codex/military.html#cdf">コーネリア防衛軍</a>はかつて雪線の高地に前哨基地を維持しており、この基地を巡って<a href="../codex/military.html#starfox">スターフォックス</a>と傭兵部隊スターウルフが交戦した記録が残っている。</p>
+  <p class="lore-p">帝国の生体兵器化計画が全滅に終わった事実は、両軍にこの星への「不干渉」を暗黙の了解として根付かせた。現在、フォルトナ地上への降下作戦はコーネリア軍規において「最終手段」に分類されている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">CLASSIFIED ─ 機密記録</h3>
+  <p class="lore-p"><span class="badge badge-classified">▮ 最重要軍事機密 — QAL文書</span><br>
+  以下の記録は、<a href="../codex/characters.html#andrew">アンドリュー・オイッコニー</a>が私設軍隊をフォルトナに駐屯させるなどの不穏な動きを察知した<a href="../codex/characters.html#fox">フォックス・マクラウド</a>が、単独降下作戦の際に持ち帰った情報の分析結果である。帝国軍に渡った場合『スピリット』の悪用を招く恐れがあるため、本記録は星系最高度の機密指定下に置かれている。臨時閲覧権限での開示範囲には制限がある。</p>
+  <p class="lore-p"><span class="redacted">聖地の名「クアン・アタ・ラチュ」とは、サウリアで信仰される平和の神『クラゾア』の真の名である。長い年月による風化で本来の意味は失われ、現在は聖地の名にのみ残されている</span>。</p>
+  <p class="lore-p"><span class="redacted">クラゾアの実体は、ライラットに現在の文明が芽生えるはるか以前にフォルトナへ降り立った、邪悪なエイリアン種族と推定される。フォルトナ宙域を取り囲むスペースオベリスクはこの種族が作り出した増幅装置であり、増幅されるのは『スピリット』──魔法としか形容しようのない、常識を超えた神秘の力である。クラゾアは星系の星々からスピリットを集め、全盛期の力を取り戻そうとしている</span>。</p>
+  <p class="lore-p"><span class="redacted">そして、これを止めるためにフォルトナへ降り立ったのが竜の一族「カメリアン」である。カメリアンは<a href="../codex/glossary.html#paranid-empire">パラニド神聖帝国</a>で栄えた竜の一族の一派であり、太古の昔、二つの太陽の間から出現したクラゾアと激戦を繰り広げた存在にして、現在のサウリアに生きる全部族の始祖にあたる</span>。</p>
+  <p class="lore-p">また同作戦では、<span class="redacted">神殿最奥の用途不明の制御装置に拘束された身元不明の女性が発見されている。装置の解除手段は確立できず、彼女が携えていた武器「万能杖」のみが回収された</span>。詳細は人物記録 <a href="../characters/krystal.html">PF-18（仮称「クリスタル」）</a>を参照のこと。</p>
+  <p class="lore-p">なお本記録は、オイッコニーの私設軍隊を壊滅させたフォックスが偶然たどり着いたクラゾア神殿で得た情報を、過去に<a href="../codex/locations.html#venom">ベノム</a>・<a href="../codex/locations.html#corneria">コーネリア</a>・<a href="../codex/locations.html#aquas">アクアス</a>の古代遺跡で発見された遺物の解析結果、および現地アソーカ族の王族に伝わる言い伝えと突き合わせて導き出された「推論」である。裏付けはまだ存在しない──存在しないままであることを、祈る者もいる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">スペースオベリスクの一体をコーネリア科学技術省が曳航・回収しようとした際、宙域全体の宇宙生物が一斉に作業艦隊へ殺到するという事件が起きた。艦隊が曳航を放棄した途端、生物たちは何事もなかったかのように散っていったという。以来、オベリスクには「触れてはならない」という但し書きが付いている。</p>
+  <p class="lore-p">古い船乗りたちはフォルトナを「星系で一番幸運な星」と呼ぶ。誰のものにもならず、どの戦争にも呑まれず、数十億年前と同じ朝を迎え続けているからだ。その名が示す通り、幸運（Fortuna）はこの星自身のためにあったのかもしれない。</p>
+  <p class="lore-p">名前が<a href="../codex/locations.html#fichina">フィチナ（Fichina）</a>に似ていることは、この星を巡る事故の最大の原因である。フィチナ行きの船舶が航路端末で誤ってフォルトナを選択し、宇宙生物のひしめく危険宙域へ迷い込む事例は後を絶たない。純白の氷結惑星に着くはずが、目の前に広がるのは緑の密林と、ゆっくりと首をもたげるスペースドドラの影──コーネリア航行局はこの誤選択を防ぐため、両星の航路コードの再割り当てと出発前の二重確認を義務化している。</p>
+  <p class="lore-p"><a href="../codex/characters.html#fox">フォックス・マクラウド</a>から土産にスカラベを一匹もらった<a href="../codex/characters.html#slippy">スリッピー・トード</a>は、その緑の光沢に魅了されて飼育に熱中。母艦グレートフォックス内に専用の育成スペースを作ろうとして<a href="../codex/characters.html#falco">ファルコ</a>と大喧嘩になった、という顛末が同艦の航行日誌に記録されている。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 250; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.15 + Math.random()*0.65).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(180,255,150,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+</body>
+</html>

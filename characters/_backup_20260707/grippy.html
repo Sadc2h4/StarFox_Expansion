@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRIPPY TOAD — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#77ccb0;--accent:#aaeedd;--border:rgba(119,204,176,0.32);--border-hi:rgba(119,204,176,0.7);--dim:#123a30;--dim2:#091d18; }
+    .p-title    { color: #eafff8; text-shadow: 0 0 50px rgba(119,204,176,0.35); }
+    .p-tagline  { border-color: #77ccb0; color: #77ccb0; }
+    .terminal-hdr { color: #aaeedd; }
+    .terminal-hdr::before { background: #aaeedd; box-shadow: 0 0 8px #aaeedd; }
+    .dk { color: #77ccb0; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../codex/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-14 / GRIPPY TOAD — グリッピー・トード ]</div>
+    <div class="header-status">● CIVILIAN — CORPORATE</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — GRIPPY TOAD — GRIPPIA WORKS CHAIRMAN — CIVILIAN</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0014 — CLEARANCE: OPEN — STRATEGIC SUPPLIER</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-14 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">グリッピー・トード (GRIPPY TOAD)</div>
+        <h1 class="p-title">THE MAN WHO<br>BOUGHT A<br>PLANET</h1>
+        <div class="p-tagline">グリッピア・ワークス社 会長</div>
+        <p class="p-short-desc">金属加工への異常な熱意ひとつで惑星を丸ごと買った実業家。トード家の「熱中したら止まらない血」が、特殊金属に向かった結果である。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 14 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">GRIPPY TOAD / グリッピー・トード</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../codex/races.html#heketoid">ヘケトイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">58歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../codex/locations.html#corneria">コーネリア</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv"><a href="../codex/glossary.html#cgm">グリッピア・ワークス社</a>（会長）</td></tr><tr><td class="dk">FAMILY</td><td class="dv">兄: ベルツィーノ / 甥: <a href="../codex/characters.html#slippy">スリッピー</a></td></tr><tr><td class="dk">ASSET</td><td class="dv"><a href="../codex/locations.html#grippia">惑星グリッピア</a>（私有）</td></tr><tr><td class="dk">STATUS</td><td class="dv ok">民間 — 戦略的重要人物</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">INDUSTRY RATING -- 93 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 93%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(119,204,176,0.55);">
+        <img src="" alt="GRIPPY TOAD" class="planet-img-detail planet-img-medium" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">GRIPPIA WORKS — CHAIRMAN</span>
+            <span class="tg-jp">惑星を買った男</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">いい金属はね、育てるんだよ。星ごと。<span class="tg-note note">-業界誌インタビューより-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">PROFILE ─ 人物</h3>
+  <p class="lore-p"><span class="lore-quote">兄は空を飛ぶ機械に夢中になった。わたしは、それを作る金属に夢中になった。トード家はそういう家系だ<span class="lore-quote-src">― 本人の講演録より</span></span></p>
+  <p class="lore-p">グリッピー・トードは、<a href="../codex/locations.html#corneria">コーネリア</a> 出身の<a href="../codex/races.html#heketoid">ヘケトイド</a> の実業家。<a href="../codex/space-dynamics.html">スペース・ダイナミクス社</a> お抱えエンジニアであるベルツィーノ・トードの弟であり、<a href="../codex/glossary.html#starfox">スターフォックス</a> のメカニック<a href="../codex/characters.html#slippy">スリッピー・トード</a> は甥にあたる。何かに熱中すると止まらないトード家の血筋は、彼の場合「金属加工」に向いた。</p>
+  <p class="lore-p">特殊金属への異常なまでの熱意と執着は、やがて彼に前代未聞の買い物をさせることになる──惑星、丸ごと一つ。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">BIOGRAPHY ─ 経歴</h3>
+  <p class="lore-p">若くして金属加工業で身を立て、堅実な経営と常識外れの研究投資で財を築いた。星系最外縁で「採算の合わない鉱脈」とされていた無名の惑星に一目惚れし、私財を投じて惑星ごと購入。<a href="../codex/glossary.html#cgm">グリッピア・ワークス社</a> を設立し、星には自らの名が付けられた──<a href="../codex/locations.html#grippia">グリッピア</a> である。</p>
+  <p class="lore-p">採掘・精錬の実務部門として子会社CGM社（コーネリア特殊金属株式会社）を興し、同社の特殊合金は今や艦艇装甲の標準素材として星系全体が依存する戦略物資となっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SERVICE ─ 事業と現在</h3>
+  <p class="lore-p">戦時下の現在、彼の合金は共和国防衛の生命線であり、帝国からの接触工作の標的でもある。本人は「うちは金属を売る会社であって、戦争を売る会社ではない」の一点張りで、両陣営の政治工作を老練にいなし続けている。</p>
+  <p class="lore-p">惑星の警備については、甥のスリッピーが設計する自動警備ロボットを個人契約で導入している。「身内贔屓では」との株主の問いへの回答は明快だった──「良いものを作る者から買う。それがたまたま甥だった」。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">兄ベルツィーノとは今も月に一度、通信で「金属と機体のどちらが偉いか」を論争する。決着は数十年ついていないが、アーウィンの装甲にCGM合金が使われている時点で「引き分け以上」というのが業界の見方である。</p>
+  <p class="lore-p">グリッピアの社立学校の卒業生に贈られる合金板の言葉「どこで働いてもいい。だが、どこにいても良い仕事をしろ」は彼自身の言葉である。会長室の壁には、その第一号──歪んで文字も拙い試作品──が今も掛かっている。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

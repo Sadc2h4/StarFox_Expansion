@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORTUNA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#44ff00;--accent:#88ff44;--border:rgba(68,255,0,0.32);--border-hi:rgba(136,255,68,0.7);--dim:#0d2200;--dim2:#061200; }
+    .p-title { color:#f0ffe0; text-shadow: 0 0 50px rgba(68,255,0,0.25); }
+    .p-tagline { border-color:#44ff00; color:#44ff00; }
+    body { background:#050a04; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(5,25,0,0.65) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(0,20,0,0.4) 0%,transparent 55%),
+      #050a04; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(68,255,0,0.32);">
+    <a href="../index.html" class="nav-back" style="color:#44ff00;border-color:rgba(68,255,0,0.3);">◄ LYLAT MAP</a>
+    <div class="header-tag">[ 05 / FORTUNA — フォーチュナー ]</div>
+    <div class="header-status"><span class="blink" style="color:#44ff00;">●</span> SECTOR-μ — UNCHARTED</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(68,255,0,0.3);"><div class="vt" style="color:#0d2200;">LYLAT SYSTEM — FORTUNA — PRIMAL JUNGLE WORLD — SECTOR-MU — ANCIENT ECOSYSTEM</div></div>
+  <div class="side-r" style="border-color:rgba(68,255,0,0.3);"><div class="vt" style="color:#0d2200;">DATABASE RECORD: FTN-0005 — CLASSIFICATION: ANOMALY — TEMPORAL STASIS SUSPECTED</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(68,255,0,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#44ff00;">[ 05 / LYLAT SYSTEM — SECTOR-μ ]</div>
+        <div class="p-name-jp" style="color:#66cc33;">フォーチュナー (FORTUNA)</div>
+        <h1 class="p-title">THE LIVING<br>PRIMAL<br>WORLD</h1>
+        <div class="p-tagline">原始密林惑星 ─ 数十億年の生態系</div>
+        <p class="p-short-desc" style="border-color:#0d2200;">太古の生態系が時を止めたまま存在し続ける神秘の惑星。巨大植物と恐竜型生物が支配する原始の密林が全土を覆う。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(68,255,0,0.3);background:rgba(5,20,0,0.65);">
+        <div class="terminal-hdr" style="color:#44ff00;background:rgba(68,255,0,0.1);border-color:rgba(68,255,0,0.3);">
+          <span style="background:#44ff00;box-shadow:0 0 8px #44ff00;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-μ ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#44ff00;">DESIGNATION</td><td class="dv">FORTUNA / フォーチュナー</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">PLANET TYPE</td><td class="dv">密林型 / JUNGLE WORLD</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">MOONS</td><td class="dv">―</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">PRIMARY STAR</td><td class="dv warn">62 ── PRIMAL HAZARD</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">AVG TEMP</td><td class="dv ok">+22°C ～ +48°C</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">DAY / YEAR</td><td class="dv">30H / 480D</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">LOCATION</td><td class="dv">LYLAT 5th — Sectorμ</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">FACTION</td><td class="dv">中立 / NEUTRAL</td></tr>
+          <tr><td class="dk" style="color:#44ff00;">ANOMALY</td><td class="dv warn">⚠ TEMPORAL STASIS</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(68,255,0,0.1);">
+          <div class="env-bar-label" style="color:#44ff00;">ENVIRONMENT INDEX ── 62 / 100</div>
+          <div class="env-bar-track" style="background:#061200;"><div class="env-bar-fill" style="width:62%;background:linear-gradient(to right,var(--warn),#aaff00,#44ff00);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(50,200,20,0.6);">
+        <img src="../LA_image/LS_P_5.png" alt="Fortuna" class="planet-img-detail planet-img-small">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">JUNGLE WORLD — TEMPORAL STASIS</span>
+            <span class="tg-jp">原始密林惑星 ── 数十億年の生態系</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">数十億年の原始生態系が封じ込められた神秘の密林惑星。</span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#44ff00;">BACKGROUND</h3>
+          <p class="lore-p">誕生より数十億年が経過した今なお原始の生態系が維持され続けた密林惑星。太古のライラット星系の生態系が時を止めたように残り続けているため、地上は意思を持つ原始の森と恐竜が跋扈しており、文明の発達を一切拒んでいる。</p>
+          <p class="lore-p">この状態が維持されているか原因は不明。惑星圏に存在する謎の古代構造物が関係しているとも言われているが、真偽は明らかになっていない。戦争勃発直後は恐竜を侵略型兵器に改造・調教する施設が建設されたが、部隊はあえなく全滅し計画はとん挫した。<br><span class="badge badge-warn" style="margin-top:6px;display:inline-block;">⚠ ANOMALY ZONE</span></p>
+          <p class="lore-p">アサルト期には軌道上でオイッコニー残党とコーネリア艦隊が交戦し、その戦闘中に「アパロイド」と呼ばれる未知の脅威の存在が初めて確認された。フォーチュナーの軌道宙域は旧戦争の余波と新たな脅威が同時に顕在化した地点として記録されている。</p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#44ff00;">ENVIRONMENT &amp; GEOGRAPHY</h3>
+          <p class="lore-p">惑星全体が数十メートルを超える巨大植物に覆われた密林地帯。大気は酸素濃度が高く、生物の巨大化を促進する環境が長期間維持されてきた結果、現在の恐竜型生物のような巨大生命体が繁栄している。</p>
+          <p class="lore-p">地表への日光到達量は限られており、林床は常に薄暗く高温多湿な環境が続く。外来の機械文明は生態系の強烈な「拒絶反応」に晒されるとも言われており、無人機や精密機器のトラブルが多発することが調査隊の報告から明らかになっている。</p>
+          <p class="lore-p">この惑星の豊富な生態系は軍事勢力にとって「生物資源の宝庫」として映りやすく、アンドルフ軍は原始生物群を改造・調教して生体兵器に転用することを試みた。しかし圧倒的な生態系の反発によって計画は頓挫しており、外来文明による容易な制圧は困難な環境となっている。文明施設の密度が低いぶん、惑星の環境そのものが大きな戦術条件として機能する。</p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#44ff00;">ANCIENT STRUCTURES</h3>
+          <p class="lore-p">惑星軌道上および地表の複数箇所に謎の古代構造物が確認されている。これらの構造物が惑星の生態系を凍結させているとする仮説が有力視されているが、解析は進んでいない。構造物に接触した調査者は方向感覚を失うという報告もあり、精神的影響を及ぼす可能性も排除できない。</p>
+          <p class="lore-p">軍事的観点から見ると、フォーチュナーの価値は工業力や鉱物資源よりも「生態支配」と「辺境航路の確保」にある。大規模な艦隊の常駐には適さないが、生体兵器の実験場・反乱勢力の潜伏宙域・機動会戦空間として活用されやすい地域でもある。</p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#44ff00;">EXPANDED LORE</h3>
+          <p class="lore-p">拡張解釈では、フォーチュナーは「未開の自然」ではなく、外部文明を取り込まずに自己保存を続ける生態系として扱われる。恐竜型生物、巨大植物、古代構造物は別々の要素ではなく、惑星規模の防衛機構の一部である可能性がある。</p>
+          <p class="lore-p">この見方に立つと、アンドルフ軍の生体兵器計画が失敗した理由は単なる戦術的敗北ではない。惑星そのものが侵入者の技術体系を拒絶し、外来勢力の研究施設や補給線をゆっくり分解していく「生きた要塞」として機能したためだと解釈できる。<br><span class="badge badge-warn" style="margin-top:6px;display:inline-block;">EXPANDED CANON MIX</span></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 250; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.15 + Math.random()*0.65).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(180,255,150,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+</body>
+</html>

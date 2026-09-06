@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOCATION DATABASE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#ffcc66;--accent:#ffe6a8;--border:rgba(255,204,102,0.32);--border-hi:rgba(255,230,168,0.7);--dim:#403010;--dim2:#201806; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ CODEX / LOCATION DATABASE — ロケーションデータベース ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CODEX 01 / LOCATION DATABASE ]</div>
+      <h1 class="codex-title">LOCATIONS OF THE LYLAT SYSTEM</h1>
+      <p class="codex-p">ライラット星系に存在する惑星・恒星・宙域・軍事拠点、および星系を五つに大別する「領域」に関する観測記録の総覧。惑星はライラット星系第1惑星から昇順に収録している。第6惑星ステファノーは<a href="glossary.html#stephano">ステファノーの戦い</a>で消滅したため欠番であり、その残骸から成るアステロイド帯を「第6惑星跡」として例外的に収録する。各記録の詳細は「▶ 詳細記事」から閲覧できる。</p>
+    </div>
+
+    <div class="loc-filter" id="locFilter">
+      <button class="active" data-type="all">ALL</button>
+      <button data-type="planet">惑星</button>
+      <button data-type="star">恒星</button>
+      <button data-type="sector">セクター</button>
+      <button data-type="region">領域</button>
+      <button data-type="misc">その他</button>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#venom">ベノム</a><a href="#titania">タイタニア</a><a href="#macbeth">マクベス</a><a href="#corneria">コーネリア</a><a href="#fortuna">フォルトナ</a><a href="#asteroid">アステロイド</a><a href="#katina">カタリナ</a><a href="#fichina">フィチナ</a><a href="#kew">キュー</a><a href="#prospero">プロスペロー</a><a href="#eladard">エラダード</a><a href="#aquas">アクアス</a><a href="#zoness">ゾネス</a><a href="#papetoon">パペトゥーン</a><a href="#setebos">セティボス</a><a href="#grippia">グリッピア</a><a href="#lylat-prime">ライラット・プライム</a><a href="#solar">ソーラ</a><a href="#hactiva">ハクティバ／パラニド</a><a href="#dogma-central">ドグマ</a><a href="#deep-core">ディープ・コア</a><a href="#inner-rim">インナー・リム</a><a href="#outer-rim">アウター・リム</a><a href="#frontier">フロンティア</a><a href="#rubicon">ルビコン・スペース</a><a href="#sargasso">サルガッソー</a><a href="#area3">AREA3</a><a href="#starblade">スターブレード</a><a href="#oberon">オベロンⅡ</a><a href="#area6">AREA6</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="sectors.html">セクター</a> / <a href="races.html">人種</a> / <a href="factions.html">勢力</a> / <a href="characters.html">人物</a> / <a href="glossary.html">用語</a> / <a href="military.html">軍事</a> / <a href="corporations.html">企業</a></span>
+    </nav>
+
+    <!-- ═══ 惑星（昇順） ═══ -->
+
+    <article class="codex-entry loc" id="venom" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">ベノム <span class="en">VENOM — 第1惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#omega">セクターΩ</a> / <a href="factions.html#venom-empire">ベノム帝国</a> 本星</div>
+        <p class="codex-p">星系最初の入植地にして、現在は帝国の玉座となった「死の星」。センサーを狂わせる特殊鉱物とバイオウェポンの生体組織が地表を覆い、観測そのものを拒む。第2次ライラットウォーズの最終目的地。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/venom.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_1.png" alt="Venom"></div>
+    </article>
+
+    <article class="codex-entry loc" id="titania" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">タイタニア <span class="en">TITANIA — 第2惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#chi">セクターχ</a> / 無所属 — 立入厳禁</div>
+        <p class="codex-p">自転軸が97度倒れた「禁断の惑星」。異常磁場が艦船の残骸を引き寄せ、サルガッソーの核として機能する。砂の下には滅びた先住文明の遺構と暴走する古代兵器が眠り、地下には少数のティターニアンが暮らす。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/titania.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_2.png" alt="Titania" style="transform:scale(1.8);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="macbeth" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">マクベス <span class="en">MACBETH — 第3惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#sigma">セクターς</a> / <span style="color:var(--danger);">帝国軍占領下</span></div>
+        <p class="codex-p">「ライラットの鍛冶場」と呼ばれた鉱山・工業惑星。ゼートイドの技術力を狙った帝国軍に開戦劈頭で占領され、現在は帝国最大級の兵站拠点と化している。装甲列車網がこの星の大動脈である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/macbeth.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_3.png" alt="Macbeth" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="corneria" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">コーネリア <span class="en">CORNERIA — 第4惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#beta">セクターβ</a> / <a href="factions.html#cornerian-republic">共和国</a> 首都惑星</div>
+        <p class="codex-p">ライラット星系の政治・軍事・経済の中枢にして「最後の砦」。理想的な気候と肥沃な大地を持ち、CDF総司令部が置かれる。この星が陥落すれば、星系の指揮系統と補給網は同時に崩壊する。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/corneria.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_4.png" alt="Corneria" style="transform:scale(0.89);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="fortuna" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">フォルトナ <span class="en">FORTUNA — 第5惑星（現地名: サウリア）</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#lambda">セクターλ</a> / 中立 — 生態系保護区域</div>
+        <p class="codex-p">数十億年前の原始生態系が時を止めたまま続く密林の惑星。知性ある恐竜族はこの星を「サウリア」と呼ぶ。帝国の生体兵器化計画すら森に呑まれて消えた、あらゆる文明を拒む星。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/fortuna.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_5.png" alt="Fortuna" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="asteroid" data-type="sector">
+      <div class="loc-body">
+        <h2 class="codex-h">アステロイド <span class="en">ASTEROID BELT — 第6惑星跡</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-sector">セクター</span> <a href="sectors.html#gamma">セクターγ</a>〜<a href="sectors.html#delta">δ</a> / <a href="military.html#great-wall">グレートウォール</a>構成体</div>
+        <p class="codex-p">かつてここに、ライラット星系第6惑星ステファノーがあった。<a href="glossary.html#stephano">グランベルの超兵器</a>によって砕かれた星の残骸は、今は共和国の手で最終防衛ライン「グレートウォール」として再生され、コーネリアの空を守り続けている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="glossary.html#stephano">▶ ステファノーの戦い</a>　<a class="rec-btn" href="../planets/greatwall.html">▶ グレートウォール</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_1_3.png" alt="Asteroid Belt"></div>
+    </article>
+
+    <article class="codex-entry loc" id="katina" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">カタリナ <span class="en">KATINA — 第7惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#gamma">セクターγ</a> / 共和国 — グレートウォール第1宙域</div>
+        <p class="codex-p">サバンナの広がる「第二のホームタウン」にして、グレートウォールの要を担う防衛戦略の最重要拠点。入植団と駐留軍が半々で暮らし、ビル・グレイ隊長率いる飛行隊の名は帝国軍にも知れ渡る。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/katina.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_7.png" alt="Katina" style="transform:scale(0.88);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="fichina" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">フィチナ <span class="en">FICHINA — 第8惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#xi">セクターξ</a> / 共和国フィチナ州 — <span style="color:var(--danger);">検閲多数</span></div>
+        <p class="codex-p">ソーラを巡る極寒の氷結惑星。旧サルジーナヤ連邦の母星であり、気候制御装置<a href="military.html#climate-control">クライメート・コントロール</a>の「気候の傘」の下に都市が息づく。この星に関する記録には、なぜか検閲の跡が多い。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/fichina.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_6.png" alt="Fichina" style="transform:scale(0.88);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="kew" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">キュー <span class="en">KEW — 第9惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#stigma">セクターϚ</a> / <a href="factions.html#hactiva-union">ハクティバ通商連合</a>・<a href="glossary.html#arpeggio">アルペジオ</a></div>
+        <p class="codex-p">古代<a href="glossary.html#paranid-empire">パラニド神聖帝国</a>の廃都の上に築かれた、星系最大の歓楽都市惑星。通商連合の首都アルピニアでは全てが商品であり、全てに値札が付く。「買えないものは沈黙と過去だけ」。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/kew.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_9.png" alt="Kew" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="prospero" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">プロスペロー <span class="en">PROSPERO — 第10惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#theta">セクターθ</a> / 共和国 — <span style="color:var(--danger);">市街地係争中</span></div>
+        <p class="codex-p">星系総人口の半数が集中する「ライラットの心臓」。恒久非戦闘地域の協定を帝国に反故にされ、膨大な民間人が人質となっている。この星の戦いは軍事作戦であると同時に、星系最大の人命救助作戦である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/prospero.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_10_thumb.png" alt="Prospero" style="transform:scale(1.23);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="eladard" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">エラダード <span class="en">ELADARD — 第11惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#digamma">セクターϝ</a> / <a href="factions.html#hactiva-union">ハクティバ通商連合</a> 本拠地 — 中立地帯</div>
+        <p class="codex-p">両軍が指定する「中立地」の実態は、星系最大の武器工場。共和国も帝国も、この星からの武器供与なしには戦線を維持できない。エラダードの工廠が止まる時、戦争そのものが止まると言われる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/eladard.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_11.png" alt="Eladard" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="aquas" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">アクアス <span class="en">AQUAS — 第12惑星（旧名: アリエル）</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#mu">セクターμ</a> / 共和国アクアス州 — 先住種族保護区</div>
+        <p class="codex-p">ソーラを巡る全海洋惑星。旧タッドー共和国の故地であり、先住種族<a href="races.html#native-aquan">ネイテッブ・アクアン</a>の聖域として惑星圏全体が保護区に指定されている。入るのに許可がいる、星系でも珍しい星。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/aquas.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_12.png" alt="Aquas" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="zoness" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">ゾネス <span class="en">ZONESS — 第13惑星（旧名: ウンブリエル）</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#nu">セクターν</a> / <span style="color:var(--danger);">帝国軍占領下 — 汚染警報</span></div>
+        <p class="codex-p">かつて「ライラットの宝石」と呼ばれた海洋リゾート。帝国の占領と廃棄物投棄によりエメラルドの海は毒の海と化し、変異生物が徘徊する。共和国はこの星の奪還を「海の救助」と位置付けている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/zoness.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_13.png" alt="Zoness" style="transform:scale(0.88);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="papetoon" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">パペトゥーン <span class="en">PAPETOON — 第14惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#heta">セクターͰ</a> / 共和国（実効統治）</div>
+        <p class="codex-p">「ライラット系で最も田舎」と称される辺境開拓惑星。賊の跋扈する荒野に士官学校が建ち、いつしか英雄を輩出する星と呼ばれるようになった。<a href="characters.html#james">ジェームズ・マクラウド</a>の故郷。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/papetoon.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_14.png" alt="Papetoon" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="setebos" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">セティボス <span class="en">SETEBOS — 第15惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#janja">セクターϫ</a> / <a href="factions.html#hactiva-union">通商連合</a>採掘圏 — 旧<a href="factions.html#iga">独立星系連合</a>本拠地</div>
+        <p class="codex-p">ライラット星系唯一の巨大ガス惑星。ハクティバ・パラニド星系の最外縁を周回し、大気高層の「ハビタブルベルト」には<a href="glossary.html#ember-gas">エンバーガス</a>採掘の空中都市が立ち並ぶ。かつて<a href="factions.html#iga">独立星系連合（IGA）</a>が本拠を置き、静寂の辺境から突如戦火の中心地となった数奇な星。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/setebos.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_15.png" alt="Setebos" style="transform:scale(0.87);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="grippia" data-type="planet">
+      <div class="loc-body">
+        <h2 class="codex-h">グリッピア <span class="en">GRIPPIA — 第16惑星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">惑星</span> <a href="sectors.html#koppa">セクターϞ</a> / <a href="glossary.html#cgm">グリッピア・ワークス社</a> 私有</div>
+        <p class="codex-p">星系最外縁に浮かぶ「一企業が丸ごと保有する惑星」。実業家<a href="characters.html#grippy">グリッピー・トード</a>が私財で買い取った極寒の鉱山惑星で、子会社CGM社の特殊合金は星系全体が依存する戦略物資となっている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/grippia.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_P_16.png" alt="Grippia" style="transform:scale(0.88);"></div>
+    </article>
+
+    <!-- ═══ 恒星 ═══ -->
+
+    <article class="codex-entry loc" id="lylat-prime" data-type="star">
+      <div class="loc-body">
+        <h2 class="codex-h">ライラット・プライム <span class="en">LYLAT PRIME — ライラットα星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">恒星</span> B2型 青色大型恒星 / <a href="sectors.html#alpha">セクターα</a></div>
+        <p class="codex-p">星系の全天体の中心に君臨する青き巨星。極大質量でありながら想定寿命をはるかに超えて40億年以上輝き続ける、星系最大の謎。その強大な熱量ゆえに、惑星たちは皆この星から距離を置いて回る。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/lylat_prime.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_S_1.png" alt="Lylat Prime" style="transform:scale(0.89);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="solar" data-type="star">
+      <div class="loc-body">
+        <h2 class="codex-h">ソーラ <span class="en">SOLAR — ライラットβ星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">恒星</span> M3型 橙色小型恒星（特異組成） / <a href="sectors.html#omicron">セクターο</a></div>
+        <p class="codex-p">惑星密集エリアを公転する「第二の太陽」。プラズマの表面下を液体岩石が対流する、恒星と惑星の中間というべき特異な星。アクアス・ゾネス・フィチナはこの星を巡り、星系の暦と神話はこの星とともにある。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/solar.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_S_2.png" alt="Solar" style="transform:scale(0.89);"></div>
+    </article>
+
+    <article class="codex-entry loc" id="hactiva" data-type="star">
+      <div class="loc-body">
+        <h2 class="codex-h"><span id="paranid"></span>ハクティバ ／ パラニド <span class="en">HACTIVA &amp; PARANID — ライラットγ星／δ星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">恒星</span> F1型／F2型 白色中型恒星 — 双子の太陽 / <a href="sectors.html#san">セクターϻ</a></div>
+        <p class="codex-p">互いに狭い軌道で回り合う「双子の太陽」。その独立星系にはエラダード・キュー・パペトゥーンが属し、内惑星群とは異なる文化圏を形成する。二星間の異常な力場にはワームホール形成の報告もある。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/hactiva.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_S_3.png" alt="Hactiva and Paranid"></div>
+    </article>
+
+    <article class="codex-entry loc" id="dogma-central" data-type="star">
+      <div class="loc-body">
+        <h2 class="codex-h">ドグマ・セントラル <span class="en">DOGMA CENTRAL — ライラットε星</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">恒星</span> Mx7型 深紅小型恒星 / <a href="sectors.html#sho">セクターϸ</a>・<a href="sectors.html#yot">j</a> — <span style="color:var(--danger);">観測不能</span></div>
+        <p class="codex-p">星系最外縁、暗黒星雲の奥で鈍く光る「深淵で開いた目」。到達手段は事実上存在しない。数年前からこの宙域で観測される正体不明の<a href="glossary.html#contact-signal">コンタクト信号</a>は、今も応答されないまま続いている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/dogma.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/Dogma_info.jpg" alt="Dogma Central" style="width:100%;height:100%;object-fit:cover;"></div>
+    </article>
+
+    <!-- ═══ 領域（星系五大区分） ═══ -->
+
+    <article class="codex-entry loc" id="deep-core" data-type="region">
+      <div class="loc-body">
+        <h2 class="codex-h">ディープ・コア <span class="en">DEEP CORE — 星系最内縁領域</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">領域</span> 星系最内縁 / <a href="sectors.html#alpha">セクターα</a>一帯</div>
+        <p class="codex-p">ディープ・コア（Deep Core）は星系最内縁、主星<a href="#lylat-prime">ライラット・プライム</a>を中心に広がる広大な空白領域を指す。極大質量のB2型恒星ライラット・プライムが放出する莫大な光と熱により天然の天体はほぼ存在せず、唯一の例外は<a href="sectors.html#alpha">セクターα</a>外縁部、領域の境目に位置する星雲のみである。</p>
+        <p class="codex-p">近年まで戦略的重要度は低く見積もられており、星図に含まれないことすらあった。しかし<a href="military.html#g-diffuser">G・デフューザーシステム</a>のエネルギー補給基地が建設されて以降は基地の領有権を巡る政治的争いの舞台として登場することが多くなり、<a href="glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>勃発後は<a href="factions.html#venom-empire">ベノム帝国軍</a>との直接の戦いの舞台になることも増えている。</p>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="inner-rim" data-type="region">
+      <div class="loc-body">
+        <h2 class="codex-h">インナー・リム <span class="en">INNER RIM — 星系内側領域</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">領域</span> 星系内側 / コアワールド構成領域</div>
+        <p class="codex-p">インナー・リム（Inner Rim）は星系の内側に位置する領域の総称。地理的には<a href="#sargasso">サルガッソー宙域</a>から、惑星や星雲が存在しない空白領域<a href="sectors.html#alpha">セクターα</a>までを指す。惑星<a href="#venom">ベノム</a>が放棄されて以降、星系文明の中心として発展した<a href="#corneria">コーネリア</a>を軸に星系の最重要施設が集中しており、所属する国や州の数は星系最多に上る。</p>
+        <p class="codex-p">星系内のすべての主要航路はインナー・リムを通過するよう設計されており、この領域に含まれる惑星では現在も積極的な植民地開発が続いている。<a href="#corneria">コーネリア</a>、<a href="#katina">カタリナ</a>、<a href="#prospero">プロスペロー</a>、<a href="#fortuna">フォルトナ</a>が含まれ、フォルトナを除く各惑星は<a href="factions.html#cornerian-republic">コーネリア連合共和国</a>の領地となっている。ディープ・コアと合わせて「コアワールド」と呼ばれることも多い。</p>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="outer-rim" data-type="region">
+      <div class="loc-body">
+        <h2 class="codex-h">アウター・リム <span class="en">OUTER RIM — 星系外側領域</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">領域</span> 星系外側 / 磁場影響指数40圏内</div>
+        <p class="codex-p">アウター・リム（Outer Rim）は星系の外側に位置する領域の総称。地理的には第2惑星<a href="#titania">タイタニア</a>の<a href="#sargasso">サルガッソー宙域</a>より外側から、ライラット・プライムの磁場影響指数が40以下になる辺りまでを指す。</p>
+        <p class="codex-p"><a href="glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>以前は、地理的なアクセスのしづらさや<a href="glossary.html#warp-route">ワープドライブ航路</a>の整備不足により各惑星が独立した文明を形成していたが、<a href="glossary.html#trinculo">トリンキュロー回廊</a>の開通とともにインナー・リムとの直接航行が可能となり、惑星同士の交流が行われるようになった。ライラットβ星<a href="#solar">ソーラ</a>を巡る独立星系（<a href="#aquas">アクアス</a>、<a href="#zoness">ゾネス</a>、<a href="#fichina">フィチナ</a>）が含まれるほか、<a href="#macbeth">マクベス</a>、<a href="#venom">ベノム</a>が含まれる。</p>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="frontier" data-type="region">
+      <div class="loc-body">
+        <h2 class="codex-h">フロンティア <span class="en">FRONTIER — 星系外縁領域</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">領域</span> 星系外縁部 / 磁場影響指数10圏内 — <span style="color:var(--danger);">治安警報</span></div>
+        <p class="codex-p">フロンティア（Frontier）はアウター・リムのさらに外縁部、ライラット・プライムの磁場影響指数が10以下になる辺りまでを指す領域。惑星<a href="#venom">ベノム</a>より外側には広大な「凪」の領域が続き、その先にあるライラットγ星・δ星の<a href="#hactiva">ハクティバ・パラニド星系</a>と、そこに存在する独立星系が含まれる。凪の領域は巨大ガス惑星<a href="#setebos">セティボス</a>の形成に起因するとされ、航行の安全を確保するため、星系の東西南北の凪領域は現在それぞれ<a href="sectors.html#chima">セクターϭ</a>、<a href="sectors.html#shei">セクターϣ</a>、<a href="sectors.html#fei">セクターⲋ</a>、<a href="sectors.html#ngii">セクターⳟ</a>と呼ばれ、星系内の各勢力が持ち回りで管理している。</p>
+        <p class="codex-p">アウター・リムからフロンティアまでは物理的に0.4天文単位という広大な隔たりが存在するため、ベノムを発った移民団のうちコーネリア側へ向かった一団とは別のグループがこの地で文明を興しており、ワープドライブの<a href="glossary.html#warp-route">フロンティア・ライン航路</a>が確立されるまで、アウター・リムより内側とフロンティアの交流はほとんどなかったとされる。中央政府の影響が及ばないことに加え、戦争が立て続けに起きたことで軍事需要が発生したことも重なり、この領域では度々<a href="factions.html#iga">分離勢力</a>が誕生している。賞金稼ぎや密輸業者、犯罪カルテルやシンジケートの温床にもなっており、その治安は現在においても劣悪と言わざるを得ない。<a href="#kew">キュー</a>、<a href="#eladard">エラダード</a>、<a href="#papetoon">パペトゥーン</a>、<a href="#setebos">セティボス</a>が含まれ、星系最外縁ルビコン・スペースへの足掛かりとしてメテオ・ベースが置かれている。</p>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="rubicon" data-type="region">
+      <div class="loc-body">
+        <h2 class="codex-h">ルビコン・スペース <span class="en">RUBICON SPACE — 星系最外縁領域</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">領域</span> 星系最外縁 / 実質空白領域</div>
+        <p class="codex-p">ルビコン・スペース（Rubicon Space）は星系の最外縁、地理的には<a href="#hactiva">ハクティバ圏</a>とその外側を巡る外縁天体群よりもさらに外側を指す。ここまで星系の遠くとなると文明はほぼ存在せず、採掘目的の業者も寄り付かない真の辺境である。奥にはライラットε星<a href="#dogma-central">ドグマ・セントラル</a>と、それが引き連れる暗黒星雲が周回しており、赤黒く輝くのが観測できる。航行者は孤絶した宙域の雰囲気も相まって強い孤独感に苛まれることが多く、ドグマの鈍い光が精神への影響を増幅するとの研究報告も挙げられている。</p>
+        <p class="codex-p">この領域は近年まで観測基地が1か所あるのみの実質空白領域だったが、ごく最近になって発見された惑星を採掘企業が丸ごと買い取り<a href="#grippia">『グリッピア』</a>と命名。星系の歴史で初めて、ルビコン・スペースに属する惑星と都市の登録が行われた。</p>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ セクター宙域 ═══ -->
+
+    <article class="codex-entry loc" id="sargasso" data-type="sector">
+      <div class="loc-body">
+        <h2 class="codex-h">サルガッソー宙域 <span class="en">SARGASSO REGION — 宇宙の墓場</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-sector">セクター</span> <a href="sectors.html#upsilon">セクターυ</a>・<a href="sectors.html#phi">φ</a>・<a href="sectors.html#chi">χ</a> / 特A級危険宙域</div>
+        <p class="codex-p">タイタニアの異常磁場が星系中の残骸を集めた、天文学的規模のデブリの海。インナーリムとアウターリムを分断する「巨大な壁」であり、安全な通過点は<a href="glossary.html#trinculo">トリンキュロー回廊</a>のみ。両軍が恐れて近づかない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/sargasso.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/Sargasso_thumb.png" alt="Sargasso"></div>
+    </article>
+
+    <!-- ═══ その他（軍事拠点・施設） ═══ -->
+
+    <article class="codex-entry loc" id="area3" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">グレートウォール AREA3 <span class="en">GREAT WALL AREA3 — 環状宇宙ステーション</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="sectors.html#epsilon">セクターε</a> / <a href="military.html#cdf">CDF</a> 軍事拠点</div>
+        <p class="codex-p">直径210kmの環状ステーション。<a href="military.html#great-wall">グレートウォール</a>全隕石の軌道を管理する「壁の頭脳」にして、都市戦・艦隊戦の模擬演習が行われる共和国軍実戦訓練の総本山。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/area3.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_5.png" alt="Area3"></div>
+    </article>
+
+    <article class="codex-entry loc" id="starblade" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">宇宙艦隊スターブレード <span class="en">FLEET STARBLADE — 駐屯宙域</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="sectors.html#zeta">セクターζ</a> / <a href="military.html#cdf">CDF</a> 第1宇宙艦隊 — <span style="color:var(--danger);">再編中</span></div>
+        <p class="codex-p">「共和国の刃」の名を持つ主力艦隊とその泊地。旧5国家の艦隊を統合した共和国統合の象徴だったが、帝国軍の奇襲「セクターζの惨劇」で主力の過半を喪失。現在稼働率4割で再建が進む。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/starblade.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="oberon" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">オベロンⅡ <span class="en">OBERON II — 廃棄スペースコロニー</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="sectors.html#iota">セクターι</a> / 管理放棄 — <span style="color:var(--danger);">立入禁止</span></div>
+        <p class="codex-p">理想の居住環境を追った実験コロニーの成れの果て。公式人口ゼロのはずのこの宙域では、調査船や戦闘機の失踪が今も続く。無人の街に季節が巡り、誰も見ていない桜が咲いているという。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/oberon.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_9.png" alt="Oberon II"></div>
+    </article>
+
+    <article class="codex-entry loc" id="area6" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">AREA6 <span class="en">AREA6 — ベノム最終防衛ライン</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="sectors.html#psi">セクターψ</a> / <span style="color:var(--danger);">帝国軍 — 接近＝交戦</span></div>
+        <p class="codex-p">ベノム惑星圏を球殻状に包む帝国の絶対防衛圏。「宇宙最強」の<a href="military.html#space-armada">スペースアマダ</a>艦隊と防衛衛星ボルスが、本星への全ての道を塞ぐ。戦争を終わらせるには、いつか誰かがこの壁を抜けねばならない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/area6.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="bolse" data-type="misc">
+      <div class="loc-body">
+        <h2 class="codex-h">防衛衛星ボルス <span class="en">BOLSE — 動かない旗艦</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-misc">その他</span> <a href="sectors.html#psi">セクターψ</a> / <a href="#area6">AREA6</a> — <span style="color:var(--danger);">帝国軍 — 稼働中</span></div>
+        <p class="codex-p">AREA6の中核を成す全高2.4kmの無人戦闘ステーション。自立思考AI「タイタン」が全周囲シールドと主砲パージ・キャノンを操り、本星へ至る最後の門を塞ぐ。乗員を一人も必要としない、帝国で最も静かな要塞である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../planets/bolse.html">▶ 詳細記事を開く</a></div>
+      </div>
+      <div class="loc-thumb"><img src="../resource/LA_image/LS_F_8.png" alt="Bolse"></div>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+
+    (function() {
+      const filter = document.getElementById('locFilter');
+      if (!filter) return;
+      filter.addEventListener('click', function(event) {
+        const btn = event.target.closest('button');
+        if (!btn) return;
+        filter.querySelectorAll('button').forEach((b) => b.classList.toggle('active', b === btn));
+        const type = btn.dataset.type;
+        document.querySelectorAll('.codex-entry.loc').forEach((card) => {
+          card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+        });
+      });
+    })();
+  </script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

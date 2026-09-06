@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KATINA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#ffcc44;--accent:#ffdd88;--border:rgba(255,204,68,0.32);--border-hi:rgba(255,221,136,0.7);--dim:#3a2800;--dim2:#1a1200; }
+    .p-title { color:#fff8e0; text-shadow: 0 0 50px rgba(255,200,60,0.3); }
+    .p-tagline { border-color:#ffcc44; color:#ffcc44; }
+    body { background:#090804; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(30,22,0,0.6) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(25,15,0,0.4) 0%,transparent 55%),
+      #090804; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(255,204,68,0.32);">
+    <a href="../index.html" class="nav-back" style="color:#ffcc44;border-color:rgba(255,204,68,0.3);">◄ LYLAT MAP</a>
+    <div class="header-tag">[ 06 / KATINA — カタリナ ]</div>
+    <div class="header-status"><span class="blink" style="color:#ffcc44;">●</span> SECTOR-β — GREAT WALL</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(255,204,68,0.3);"><div class="vt" style="color:#3a2800;">LYLAT SYSTEM — KATINA — CORNERIAN DEFENSE OUTPOST — SECTOR-BETA — GREAT WALL ANCHOR</div></div>
+  <div class="side-r" style="border-color:rgba(255,204,68,0.3);"><div class="vt" style="color:#3a2800;">DATABASE RECORD: KTN-0006 — CLASSIFICATION: MILITARY PRIORITY — DEFENSE LINE KEY POINT</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(255,204,68,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#ffcc44;">[ 06 / LYLAT SYSTEM — SECTOR-β ]</div>
+        <div class="p-name-jp" style="color:#cc9922;">カタリナ (KATINA)</div>
+        <h1 class="p-title">GUARDIAN<br>OF THE<br>GREAT WALL</h1>
+        <div class="p-tagline">最終防衛ライン要石 ─ サバンナ型惑星</div>
+        <p class="p-short-desc" style="border-color:#3a2800;">グレートウォール防衛ラインの軍事的要となるサバンナ惑星。コーネリア連合軍の重要前線基地として多くの防衛施設が設置される。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(255,204,68,0.3);background:rgba(25,15,0,0.65);">
+        <div class="terminal-hdr" style="color:#ffcc44;background:rgba(255,204,68,0.1);border-color:rgba(255,204,68,0.3);">
+          <span style="background:#ffcc44;box-shadow:0 0 8px #ffcc44;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-β ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#ffcc44;">DESIGNATION</td><td class="dv">KATINA / カタリナ</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">PLANET TYPE</td><td class="dv">E1型 / SAVANNA WORLD</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">MOONS</td><td class="dv">1</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">PRIMARY STAR</td><td class="dv ok">72 ── HABITABLE</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">AVG TEMP</td><td class="dv ok">+5°C ～ +40°C</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">DAY / YEAR</td><td class="dv">28H / 298D</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">LOCATION</td><td class="dv">LYLAT 4th — Sectorβ</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">FACTION</td><td class="dv ok">コーネリア連合共和国</td></tr>
+          <tr><td class="dk" style="color:#ffcc44;">ROLE</td><td class="dv warn">⚠ 最前線基地</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(255,204,68,0.1);">
+          <div class="env-bar-label" style="color:#ffcc44;">ENVIRONMENT INDEX ── 72 / 100</div>
+          <div class="env-bar-track" style="background:#1a1200;"><div class="env-bar-fill" style="width:72%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,180,40,0.6);">
+        <img src="../LA_image/LS_P_11.png" alt="Katina" class="planet-img-detail planet-img-small">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">SAVANNA WORLD — GREAT WALL ANCHOR</span>
+            <span class="tg-jp">最終防衛ライン要石 ── サバンナ惑星</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">グレートウォール最終防衛ラインの要となるサバンナ惑星。</span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#ffcc44;">BACKGROUND</h3>
+          <p class="lore-p">ライラット星系に属する小型地球型惑星のひとつ。位置的に最終防衛ライン「グレートウォール」の要となるため、軍事的には星系内で最重要の惑星のひとつ。通信用の巨大レーダーやベースキャンプが設置されており、多くのコーネリア防衛軍関係者が常駐している。</p>
+          <p class="lore-p">プロスペローに次ぐホームタウン惑星として開発が進んでおり、一般市民の居住区も存在する。陸海の比率は陸地が多く、地表の大半はサバンナやステップ気候で覆われている。<br><span class="badge badge-ok" style="margin-top:6px;display:inline-block;">コーネリア連合管轄</span></p>
+          <p class="lore-p">惑星データによれば、カタリナは「水がコーネリアより少ないが、気候と環境はよく似ている」世界と評されており、本来はコーネリアの主要植民候補地として開発が計画されていた。しかしアンドルフの侵攻によって移民計画は凍結され、防衛軍が波状攻撃を受け止める前線基地としての役割へと変化している。</p>
+          <p class="lore-p">アサルト期には、ビル・グレイ少佐率いる「ハスキー飛行隊」が駐屯するカタリナ基地がアパロイドの猛攻を受け、通信が途絶した状態でのSOSが傍受されている。コーネリア防衛軍の前線として常に最初の攻撃にさらされる位置にあり、星系防衛における重要な緩衝地帯として機能し続けている。</p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#ffcc44;">ENVIRONMENT &amp; GEOGRAPHY</h3>
+          <p class="lore-p">海の面積よりも陸地の割合が多く、地表の大部分がサバンナ・ステップ気候となっている。季節によって降水量に大きな差があり、雨季になると一面に大雨が降り、サバンナはキノコやシダ植物の林へと変貌する。</p>
+          <p class="lore-p">暮らしやすい環境ではないが十分居住には適しており、開発が着実に進んでいる。一方で位置的な重要性から常にベノム帝国軍の攻撃リスクにさらされており、強力な防空システムと地上防衛隊が惑星全土に展開している。</p>
+          <p class="lore-p">半乾燥気候の広大な平地は航空部隊の展開に適した地形であり、軍用滑走路や大型レーダー施設の設置が比較的容易なことがカタリナの軍事拠点としての価値をさらに高めている。植民適地として設計された開けた地勢がそのまま前線基地として転用されている形となっている。</p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#ffcc44;">GREAT WALL DEFENSE LINE</h3>
+          <p class="lore-p">カタリナ軌道上の重力的ラグランジュ点に人工的に配置された巨大隕石群とそれを管理する施設の総称「グレートウォール」は、コーネリア本星への侵攻を食い止める最大の防壁。カタリナへの侵攻はこの防衛ラインの崩壊を意味するため、本惑星の防衛は星系防衛において最優先事項となっている。</p>
+        </div>
+        <div class="lore-section">
+          <h3 class="lore-h" style="color:#ffcc44;">EXPANDED LORE</h3>
+          <p class="lore-p">拡張解釈では、カタリナは植民惑星と軍事基地の境界線にある世界として描かれる。平時にはコーネリア圏の第二居住地として開発され、戦時には住民の生活圏そのものが防空網・滑走路・補給倉庫へ転用される。</p>
+          <p class="lore-p">この二重性により、カタリナの防衛戦は常に政治的な意味を持つ。ここを守ることはグレートウォールの維持だけでなく、「首都圏外にも守るべき生活がある」というコーネリア連合の正統性を示す行為でもある。<br><span class="badge badge-ok" style="margin-top:6px;display:inline-block;">FRONTIER HOMEWORLD</span></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 250; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.75).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(255,240,180,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+</body>
+</html>

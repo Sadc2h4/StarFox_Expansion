@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FACTION DATABASE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#ff8888;--accent:#ffbbaa;--border:rgba(255,136,136,0.32);--border-hi:rgba(255,187,170,0.7);--dim:#401818;--dim2:#200c0c; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../index.html" class="nav-back">◄ LYLAT MAP</a>
+    <div class="header-tag">[ CODEX / FACTION DATABASE — 勢力データベース ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CODEX 04 / FACTION DATABASE ]</div>
+      <h1 class="codex-title">FACTIONS OF THE LYLAT SYSTEM</h1>
+      <p class="codex-p">第2次ライラットウォーズ下のライラット星系は、コーネリア連合共和国とベノム帝国の二大勢力の衝突を軸に、その狭間で利を得るハクティバ通商連合が暗躍する三つ巴の構図となっている。各勢力の成り立ちと現状をここに記録する。</p>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#cornerian-republic">コーネリア連合共和国</a>
+      <a href="#venom-empire">ベノム帝国</a>
+      <a href="#hactiva-union">ハクティバ通商連合</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="stars.html">恒星</a> / <a href="sectors.html">セクター</a> / <a href="races.html">人種</a> / <a href="glossary.html">用語</a></span>
+    </nav>
+
+    <article class="codex-entry" id="cornerian-republic">
+      <h2 class="codex-h">コーネリア連合共和国 <span class="en">CORNERIAN UNITED REPUBLIC</span></h2>
+      <div class="codex-sub">首都: <a href="../planets/corneria.html">コーネリア</a>「コーネリア・ギャラクティック・シティ」 / 政体: 合議制</div>
+      <p class="codex-p"><a href="../planets/corneria.html">コーネリア</a>に拠点を構える「旧・コーディリア王国」が中心となり、コーネリア内の軍事国家「旧・グランベル」「旧・ローザリンド」、<a href="../planets/aquas.html">アクアス</a>・<a href="../planets/zoness.html">ゾネス</a>の「旧・タッドー共和国」、<a href="../planets/fichina.html">フィチナ</a>の「旧・サルジーナヤ連邦」の5国家を併合して成立した連合共和国。国章に刻まれた5つの丸い印は、大本となった5つの国・勢力を示したものとされる。</p>
+      <p class="codex-p">元は<a href="glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>で互いに勢力圏を奪い合う関係だったが、<a href="glossary.html#stephano">ステファノーの戦い</a>と惑星ステファノーの消滅を目の当たりにした各国の政治トップが停戦を決意し、現在の形に落ち着いた歴史を持つ。連合共和国となった後も各国の政治基盤は一部保持されて州として機能しており、各地域の自治が認められている。併合に際して惑星名も一部変更されており、「アリエル」は「アクアス」に、「ウンブリエル」は「ゾネス」に改名された。これはタッドー語の発音が<a href="races.html#anubisoid">アヌビソイド</a>人種には難しかったという経緯による。</p>
+      <p class="codex-p">政治は各州からの代議員、5人の元老院、各庁のトップによる協議で決定される合議制で、一つの法案可決に10年近くかかることも多々ある。軍事面は<a href="glossary.html#cdf">コーネリア防衛軍（CDF）</a>が担い、共和国憲章第1条には<a href="glossary.html#nova-blaster">質量破壊兵器</a>の研究・保有を永久に禁じる条項が明記されている。</p>
+    </article>
+
+    <article class="codex-entry" id="venom-empire">
+      <h2 class="codex-h">ベノム帝国 <span class="en">VENOM EMPIRE</span></h2>
+      <div class="codex-sub">首都: <a href="../planets/venom.html">ベノム</a>第1衛星ゴモラ「ベノム・インペリアル・シティ」 / 政体: 独裁制</div>
+      <p class="codex-p">ライラット宇宙歴3987年、コーネリア科学技術省の主任研究者兼科学省長官だった<a href="glossary.html#andorf">アンドルフ・ボウマン</a>博士は、法令禁止兵器の開発と爆発事故の首謀者として死刑を言い渡されたが、当時コーネリア軍事防衛長官に就任したばかりのZ・Z・ペパーの助命により惑星<a href="../planets/venom.html">ベノム</a>への追放処分となった。その事件から10年余りの後、ベノムの異変とともに瞬く間に結成・勃興した侵略軍の掲げる自称「帝国」がこの勢力である。</p>
+      <p class="codex-p">非公式の名称のため<a href="glossary.html#cdf">共和国軍</a>内では「アンドルフ軍」と呼ばれることも多いが、その圧倒的な技術力と侵攻速度への恐怖から「ベノム帝国」と呼ぶ者も少なくない。帝国の名の通り、既に産業惑星<a href="../planets/macbeth.html">マクベス</a>と<a href="../planets/zoness.html">ゾネス</a>を略奪・占拠しているほか、星系内の弱小国や勢力にも圧力をかけ続けており、その領地は拡大の一途をたどっている。</p>
+      <p class="codex-p">帝国軍および人口の構成は、コーネリア併合に抵抗したフィチナの旧・サルジーナヤ連邦の融和反対派国民、各地で差別されてきた<a href="races.html#paranodian">爬虫類系人種</a>、現体制への分離主義勢力、犯罪カルテルなどが合流した混沌としたものとなっている。首都はベノムの第1衛星ゴモラにある「ベノム・インペリアル・シティ」で、首都そのものが軍事要塞<a href="glossary.html#atropolis">アトロポリス</a>としての機能も持つ。政治はアンドルフによる完全な独裁で行われる。命令系統が直列であることは弱点であると同時に、作戦を察知されても即座に対応と応酬が可能な身軽さでもある。</p>
+    </article>
+
+    <article class="codex-entry" id="hactiva-union">
+      <h2 class="codex-h">ハクティバ通商連合 <span class="en">HACTIVA TRADE UNION</span></h2>
+      <div class="codex-sub">本拠地: <a href="../planets/eladard.html">エラダード</a> / 首都: <a href="../planets/kew.html">キュー</a>「アルピニア」 / 政体: 企業連合</div>
+      <p class="codex-p">ライラット星系の外側、恒星<a href="stars.html#hactiva">ハクティバ</a>圏の惑星<a href="../planets/eladard.html">エラダード</a>に本拠を置く勢力。<a href="glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>の裏で莫大な武器供与とそれによる利益を得ているとされ、共和国・帝国の双方が、この通商連合からの武器供与に依存している側面がある。</p>
+      <p class="codex-p">双方に協力すると見せかけて互いの戦意を煽り競わせることで、利益を生み出し続ける構造を作ろうとしており、両軍から嫌悪感・不快感を示されることも多い。首都は惑星<a href="../planets/kew.html">キュー</a>にある「アルピニア」。ライラット星系外縁にあるにもかかわらず、星系の全ての経済・商業とつながる大歓楽都市である。</p>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+</body></html>

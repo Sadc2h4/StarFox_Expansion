@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANDREW OIKONNY — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#8899cc;--accent:#bbc8ee;--border:rgba(136,153,204,0.32);--border-hi:rgba(136,153,204,0.7);--dim:#181c3a;--dim2:#0c0e1d; }
+    .p-title    { color: #eef0ff; text-shadow: 0 0 50px rgba(136,153,204,0.35); }
+    .p-tagline  { border-color: #8899cc; color: #8899cc; }
+    .terminal-hdr { color: #bbc8ee; }
+    .terminal-hdr::before { background: #bbc8ee; box-shadow: 0 0 8px #bbc8ee; }
+    .dk { color: #8899cc; }
+    .planet-img-detail.portrait { image-rendering: pixelated; width: min(230px, 30vw); }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../codex/characters.html" class="nav-back">◄ PERSONNEL DB</a>
+    <div class="header-tag">[ PF-13 / ANDREW OIKONNY — アンドリュー・オイッコニー ]</div>
+    <div class="header-status"><span class="blink" style="color:#bbc8ee;">●</span> HOSTILE — MERCENARY</div>
+  </header>
+
+  <div class="side-l"><div class="vt">PERSONNEL FILE — ANDREW OIKONNY — STAR WOLF — NEPHEW OF THE EMPEROR</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: PF-0013 — CLEARANCE: OPEN — THREAT ASSESSMENT: LOW-VOLATILE</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ PF-13 / PERSONNEL FILE ]</div>
+        <div class="p-name-jp">アンドリュー・オイッコニー (ANDREW OIKONNY)</div>
+        <h1 class="p-title">THE HEIR<br>NOBODY<br>ASKED FOR</h1>
+        <div class="p-tagline">スターウルフ 隊員 ─ 皇帝の甥</div>
+        <p class="p-short-desc">皇帝アンドルフの甥という血筋でスターウルフに座る問題児。腕は未熟、忠誠は本物、そしてそれゆえに危うい。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ PERSONNEL SCAN — FILE 13 ▐</div>
+        <table class="dt"><tr><td class="dk">NAME</td><td class="dv">ANDREW OIKONNY / アンドリュー・オイッコニー</td></tr><tr><td class="dk">RACE</td><td class="dv"><a href="../codex/races.html#alphoid">アルフォイド</a></td></tr><tr><td class="dk">AGE</td><td class="dv">24歳</td></tr><tr><td class="dk">HOMEWORLD</td><td class="dv"><a href="../codex/locations.html#corneria">コーネリア</a></td></tr><tr><td class="dk">AFFILIATION</td><td class="dv">傭兵部隊スターウルフ</td></tr><tr><td class="dk">RELATIVE</td><td class="dv">伯父: <a href="../codex/characters.html#andorf">アンドルフ・ボウマン</a></td></tr><tr><td class="dk">EVALUATION</td><td class="dv">技量D / 野心A+</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">敵性</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">PILOT RATING -- 55 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 55%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(136,153,204,0.55);">
+        <img src="../resource/BGM/Character/アンドリュー.png" alt="ANDREW OIKONNY" class="planet-img-detail planet-img-medium portrait" style="animation: 9s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">STAR WOLF — ROOKIE</span>
+            <span class="tg-jp">スターウルフ ── 皇帝の甥</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">ぼ、僕を誰だと思ってる！　アンドルフ様の甥だぞ！<span class="tg-note note">-交戦時の傍受通信より-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">PROFILE ─ 人物</h3>
+  <p class="lore-p"><span class="lore-quote">脅威度は低い。ただし、彼を撃墜した場合の皇帝の反応は誰にも予測できない。ゆえに扱いにくい<span class="lore-quote-src">― CDF情報部 脅威評価より</span></span></p>
+  <p class="lore-p">アンドリュー・オイッコニーは、皇帝<a href="../codex/characters.html#andorf">アンドルフ・ボウマン</a> の甥にあたる<a href="../codex/races.html#alphoid">アルフォイド</a> の青年。スターウルフの四番機だが、その技量は隊の水準に遠く及ばず、隊内での扱いは「預かりもの」に近い。</p>
+  <p class="lore-p">しかし伯父への心酔は本物であり、帝国の理念を最も純粋に信じているのは、皮肉にも帝国軍人ではなくこの青年だと言われる。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">BIOGRAPHY ─ 経歴</h3>
+  <p class="lore-p">コーネリアで育ち、「反逆者の一族」として冷たい視線に晒される少年時代を送った。彼にとって伯父は星系を敵に回した怪物ではなく、幼い日に壊れた玩具を全て直してくれた、ただ一人の家族である。</p>
+  <p class="lore-p">成人と同時にコーネリアを出奔して帝国へ渡り、伯父の指示でスターウルフに預けられた。実戦経験を積ませるための措置とされるが、「皇帝が身内を手元に置きたくない理由」を巡っては様々な憶測がある。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SERVICE ─ 戦歴・記録</h3>
+  <p class="lore-p">交戦記録では常に最初に撃墜されるか、最初に離脱している。ただし対戦したパイロットたちは「あの機体は逃げ方だけ妙に上手い」と口を揃えており、隊の誰かが彼に「死なない飛び方」だけを徹底的に仕込んだ形跡がうかがえる。</p>
+  <p class="lore-p">口を開けば「伯父上」の名を出すため、傍受記録の解析班は彼の通信を「帝国内部事情の貴重な情報源」として重宝している。本人は知らない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">ウルフは彼を「荷物」と呼ぶが、戦域で彼が狙われると誰より速く割って入るのもウルフである。契約条項なのか、別の理由なのかは不明。</p>
+  <p class="lore-p">情報部の心理評価にはこうある──「彼が最も危険になるのは、伯父を失った時である」。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) { dismissed = false; showComm(); }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+  <script src="../redact.js"></script>
+</body></html>

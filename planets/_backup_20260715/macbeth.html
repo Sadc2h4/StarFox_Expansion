@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MACBETH — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#ff5500;--accent:#ff7733;--border:rgba(255,85,0,0.35);--border-hi:rgba(255,119,51,0.7);--dim:#3a1200;--dim2:#1a0800; }
+    .p-title { color:#fff0e8; text-shadow: 0 0 50px rgba(255,85,0,0.35); }
+    .p-tagline { border-color:#ff5500; color:#ff5500; }
+    body { background:#090604; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(35,12,0,0.65) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(25,8,0,0.45) 0%,transparent 55%),
+      #090604; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(255,85,0,0.35);">
+    <a href="../console.html" class="nav-back" style="color:#ff5500;border-color:rgba(255,85,0,0.3);">◄ CONSOLE</a>
+    <div class="header-tag">[ 04 / MACBETH — マクベス ]</div>
+    <div class="header-status"><span class="blink" style="color:var(--danger);">●</span> SECTOR-ς — OCCUPIED</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(255,85,0,0.3);"><div class="vt" style="color:#3a1200;">LYLAT SYSTEM — MACBETH — VENOM EMPIRE SUPPLY DEPOT — SECTOR-SIGMA — MINING WORLD</div></div>
+  <div class="side-r" style="border-color:rgba(255,85,0,0.3);"><div class="vt" style="color:#3a1200;">DATABASE RECORD: MCB-0004 — CLASSIFICATION: ENEMY CONTROLLED — LAGRANGE BODY</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(255,85,0,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#ff5500;">[ 04 / LYLAT SYSTEM — SECTOR-ς ]</div>
+        <div class="p-name-jp" style="color:#cc6633;">マクベス (MACBETH)</div>
+        <h1 class="p-title">THE VOLCANIC<br>MINING<br>FORTRESS</h1>
+        <div class="p-tagline">ベノム帝国 最大補給拠点 ─ 採掘惑星</div>
+        <p class="p-short-desc" style="border-color:#3a1200;">かつて栄えたレアメタル採掘の惑星。今やベノム帝国軍最大の補給拠点となり、巨大弾薬倉庫が地下を埋め尽くす。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(255,85,0,0.3);background:rgba(30,8,0,0.6);">
+        <div class="terminal-hdr" style="color:#ff5500;background:rgba(255,85,0,0.1);border-color:rgba(255,85,0,0.3);">
+          <span style="background:#ff5500;box-shadow:0 0 8px #ff5500;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-ς ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#ff5500;">DESIGNATION</td><td class="dv">MACBETH / マクベス</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">PLANET TYPE</td><td class="dv">E1型 / TERRESTRIAL (VOLCANIC)</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">MOONS</td><td class="dv">なし</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">PRIMARY STAR</td><td class="dv">ライラット・プライム</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">AVG TEMP</td><td class="dv warn">+15°C ～ +45°C</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">DAY / YEAR</td><td class="dv">34H / 510D</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">LOCATION</td><td class="dv">LYLAT 3rd — Sectorς</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">FACTION</td><td class="dv bad">ベノム帝国軍</td></tr><tr><td class="dk" style="color:#ff5500;">CAPITAL</td><td class="dv">工業都市 ハムレット — 帝国占領下</td></tr>
+          <tr><td class="dk" style="color:#ff5500;">ORBITAL TYPE</td><td class="dv">ラグランジュ天体</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(255,85,0,0.1);">
+          <div class="env-bar-label" style="color:#ff5500;">ENVIRONMENT INDEX ── 65 / 100</div>
+          <div class="env-bar-track" style="background:#1a0800;"><div class="env-bar-fill" style="width:65%;background:linear-gradient(to right,var(--danger),var(--warn),#ffbb00);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(255,80,20,0.65);">
+        <img src="../resource/LA_image/LS_P_3.png" alt="Macbeth" class="planet-img-detail planet-img-small">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">MINING FORTRESS — VENOM OCCUPIED</span>
+            <span class="tg-jp">鉱山惑星 ── 帝国最大補給拠点</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">採掘後に帝国の最大補給拠点となった、火山活動が続く鉱山惑星。</span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「この星の火は消えない。掘る者がいる限り、炉は燃え続ける」<span class="lore-quote-src">― マクベス鉱山組合 旧標語</span></span></p>
+  <p class="lore-p">マクベス（Macbeth）は、<a href="../codex/sectors.html#sigma">セクターς</a>に位置するライラット星系第3惑星。発見当初より豊富なレアメタル資源を有することが判明し、鉱山惑星として栄えた星系工業の中心地である。周囲の鉱山準惑星群を含むセクター一帯には多数の中小企業が宇宙ステーション型の社屋を構え、「ライラットの鍛冶場」の異名を持つ。</p>
+  <p class="lore-p">現在は<a href="../codex/factions.html#venom-empire">ベノム帝国軍</a>の占領下にあり、鉱山跡と工業インフラは帝国最大級の兵站拠点へと転用されている。この星の補給ラインを断つことができれば戦局は大きく塗り替えられるとされるが、正面からの突破は不可能と評価されている。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 帝国軍占領下</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">マクベスは主星<a href="../codex/locations.html#lylat-prime">ライラット・プライム</a>と伴星<a href="../codex/locations.html#solar">ソーラ</a>の重力場の中間地点に位置するラグランジュ天体である。両恒星の潮汐力による摩擦熱で地殻が常に熱せられているため、地表では活発な火山活動が続き、大気の主成分は火山性ガスとなっている。このガスの温室効果により、大気保持量の少なさに反して温暖な環境が保たれている。近日点通過時にはソーラと接近し、空全体がオレンジ色に染まる「二重の夕焼け」が観測される。</p>
+  <p class="lore-p">地下には縦横無尽に採掘坑が掘られ、無秩序な開発の名残である大穴が地表のあちこちに口を開けている。落盤や崩落、坑道へのマグマ流入が日常的に発生する危険地帯だが、この極めて凹凸の激しい地形こそが、後に帝国軍が理想の弾薬庫と見込んだものだった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">第2惑星<a href="../codex/locations.html#titania">タイタニア</a>が開発困難と判断された後、マクベスは代替の資源供給地として本格的に入植された。工業惑星への飛躍を決定づけたのは第1次ライラットウォーズ後の<a href="../codex/factions.html#iga">独立星系連合（IGA）</a>討伐戦役である。セティボスの重力に航路を狂わされる当時のワープドライブ事情から、共和国艦隊はマクベス・<a href="../codex/locations.html#eladard">エラダード</a>経由の中継航路を組まざるを得ず、この航路の開通と技術者の流入が星の産業構造を一変させた。以来マクベスはセティボス産<a href="../codex/glossary.html#ember-gas">エンバーガス</a>の星系最大の卸先でもあり続けている。最盛期には星系の金属需要の6割を賄い、鉱山都市は24時間眠らなかったという。しかし数世代に及ぶ乱掘の末に資源はほぼ枯渇し、経済は緩やかな衰退期に入っていた。</p>
+  <p class="lore-p"><a href="../codex/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>の開戦とともに、帝国軍はまずこの星を急襲・占領した。狙いは残存資源よりもむしろ、精錬・兵器製造インフラと<a href="../codex/races.html#zetoid">ゼートイド</a>の技術者たちであったと言われている。占領後、鉱山跡は弾薬倉庫に、精錬所は兵器工廠に姿を変え、マクベスは帝国の戦争経済を支える心臓部となった。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">住民の中核は屈強な体力と鋭い嗅覚、そして精錬・ロボティクスの高い技術力で知られる<a href="../codex/races.html#zetoid">ゼートイド</a>である。労働と管理を一元して担える人材の多さがこの星の工業力の源泉であり、帝国が真っ先にマクベスを奪取したのはゼートイドの技術力を手中に収めるためだったとまで言われている。</p>
+  <p class="lore-p">占領下の現在、住民たちは帝国の軍需生産に従事させられている。表向きは従順に見えるが、鉱山組合を母体とする地下抵抗組織が坑道網を利用して活動を続けており、生産ラインでは原因不明の「不良品」が後を絶たないという。</p>
+  <p class="lore-p">代表都市は工業都市ハムレット。惑星中の技術者をまとめ上げる「オズリック技術者協議会」の開催地として知られ、この協議会の意向こそがマクベスの実質的な意思決定であり続けてきた。しかし現在は帝国の占領下にあり、協議会は<a href="../codex/glossary.html#lylat-wars-2">第2次ライラットウォーズ</a>開戦以来、一度も開かれていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">マクベスの防衛は堅牢を極める。惑星座標が<a href="../codex/locations.html#titania">タイタニア</a>＝<a href="../codex/locations.html#sargasso">サルガッソー宙域</a>の真後ろに位置するため大規模艦隊の接近経路が限られ、<a href="../codex/sectors.html#sigma">セクターς</a>駐留艦隊との連携も完璧とされる。加えて他惑星より重力が強く、特殊な航行技術を持たない部隊は地上戦を強いられる。地上部隊にとってはランドマスターやウォーカーの操縦技術が問われる戦場である。</p>
+  <p class="lore-p">補給物資は装甲列車網によって各地の基地へ輸送されており、この鉄路こそがマクベス兵站の大動脈である。<a href="../codex/military.html#cdf">共和国軍</a>参謀本部は「列車を止めればマクベスが止まる」と分析しているが、路線そのものが要塞化されており、作戦立案は難航している。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">占領前のマクベスには「炉端の誓い」という風習があった。新しく坑道に入る鉱夫は精錬所の炉の前で、先達から受け継いだツルハシを掲げて安全を誓う。帝国は集会を禁じたが、住民たちは今も家庭の竈の前でひそかにこの儀式を続けているという。</p>
+  <p class="lore-p">帝国の兵器工廠で製造された機体の装甲内側に、ごく稀に小さなイノシシの刻印が見つかることがある。共和国の情報部はこれを抵抗組織のサインと分析している。刻印のある機体は、なぜか決まって重要な局面で故障するらしい。</p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 240; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.15 + Math.random()*0.6).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(255,200,150,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+</body>
+</html>

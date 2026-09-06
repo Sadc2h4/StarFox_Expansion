@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORPORATE DATABASE — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>
+    :root { --primary:#ffcf5e;--accent:#ffe2a0;--border:rgba(255,207,94,0.32);--border-hi:rgba(255,226,160,0.7);--dim:#3a2c0e;--dim2:#1d1607; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ CODEX / CORPORATE DATABASE — 企業データベース ]</div>
+    <div class="header-status">● ARCHIVE ONLINE</div>
+  </header>
+
+  <main class="codex-main">
+    <div class="codex-hero">
+      <div class="p-index">[ CODEX 08 / CORPORATE DATABASE ]</div>
+      <h1 class="codex-title">CORPORATIONS OF THE LYLAT SYSTEM</h1>
+      <p class="codex-p">ライラット星系の経済を動かす主要企業の記録。艦を作る者、道を敷く者、食卓と毛並みを支える者──戦争の裏で、星系の日常はこの企業たちによって回り続けている。各記録の詳細は「▶ 企業ファイルを開く」から閲覧できる。一部の取引記録には検閲が含まれる。</p>
+    </div>
+
+    <div class="loc-filter" id="locFilter">
+      <button class="active" data-type="all">ALL</button>
+      <button data-type="heavy">重工・インフラ</button>
+      <button data-type="food">食品・飲料</button>
+      <button data-type="life">生活・消費財</button>
+      <button data-type="logi">運送・物流</button>
+    </div>
+
+    <nav class="codex-index">
+      <a href="#space-dynamics">SD社</a><a href="#vector-prime">BP社</a><a href="#grippia-works">グリッピア・ワークス</a><a href="#butchermans">ブッチャーマンズ</a><a href="#breadbasket">ブレッドバスケット</a><a href="#frostreef">フロストリーフ</a><a href="#pizza-cat">ピザ・キャット</a><a href="#awazon-primal">アワゾン・プライマル</a><a href="#q-brand">Q印良品</a><a href="#tail-and-tailor">テイル＆テイラー</a><a href="#scent-and-coat">セント＆コート</a><a href="#black-cargo">ブラックカーゴ</a><a href="#white-fang">ホワイトファング</a>
+      <span style="margin-left:auto;opacity:0.7;">関連: <a href="locations.html">ロケーション</a> / <a href="factions.html">勢力</a> / <a href="characters.html">人物</a> / <a href="glossary.html">用語</a> / <a href="military.html">軍事</a></span>
+    </nav>
+
+    <!-- ═══ 重工・インフラ ═══ -->
+
+    <article class="codex-entry loc" id="space-dynamics" data-type="heavy">
+      <div class="loc-body">
+        <h2 class="codex-h">スペース・ダイナミクス社 <span class="en">SPACE DYNAMICS CO., LTD.</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">重工・インフラ</span> 本社: <a href="locations.html#corneria">コーネリア</a> / 宇宙機開発 最大手</div>
+        <p class="codex-p">Gディフューザーシステムを核とした宇宙戦闘機開発の最大手にして、ライラットの空の形を決めてきた企業。<a href="military.html#arwing">アーウィン</a>と母艦グレートフォックスの生みの親。社長は天才設計者<a href="characters.html#yaru">ヤル・デ・ポン</a>。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/space-dynamics.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="vector-prime" data-type="heavy">
+      <div class="loc-body">
+        <h2 class="codex-h">ベクター・プライム社 <span class="en">VECTOR PRIME CONSTRUCTION</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">重工・インフラ</span> 宙域建築・航路建設 最大手</div>
+        <p class="codex-p">星間航路という「宇宙の幹線道路」を敷き、ライラットをひとつの星系にした宙域建築の巨人。派手さはないが、この会社なくして星系の日常は一日も回らない。戦時下でも両軍から「撃ってはならない船」として扱われる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/vector-prime.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="grippia-works" data-type="heavy">
+      <div class="loc-body">
+        <h2 class="codex-h">グリッピア・ワークス社 / CGM社 <span class="en">GRIPPIA WORKS &amp; CGM</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-planet">重工・インフラ</span> 本社: <a href="locations.html#grippia">グリッピア</a> / 特殊金属・採掘</div>
+        <p class="codex-p">一企業グループが一惑星と一宙域を丸ごと私有する、前例なき特殊金属企業。CGM合金は艦艇装甲の標準素材として星系全体が依存する戦略物資である。創業者は<a href="characters.html#grippy">グリッピー・トード</a>。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/grippia-works.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ 食品・飲料 ═══ -->
+
+    <article class="codex-entry loc" id="butchermans" data-type="food">
+      <div class="loc-body">
+        <h2 class="codex-h">ブッチャーマンズ・ワークス <span class="en">BUTCHERMAN'S WORKS</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">食品・飲料</span> 本社: <a href="locations.html#corneria">コーネリア</a> / 精肉・昆虫タンパク</div>
+        <p class="codex-p">肉食種族の食卓を二百年支えてきたコーネリアの老舗精肉メーカー。認可流通の旗手として「裏市」と戦い続ける一方、昆虫人工肉のパイオニアでもある。同社の品質印は「食べてよい肉」の代名詞。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/butchermans.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="breadbasket" data-type="food">
+      <div class="loc-body">
+        <h2 class="codex-h">ブレッドバスケット・コンビナート <span class="en">BREADBASKET COMBINE</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">食品・飲料</span> 本社: <a href="locations.html#corneria">コーネリア</a> / 植物性食品 最大手</div>
+        <p class="codex-p">コーネリアとプロスペローの巨大植物工場群を運営する、草食・雑食種族の台所。星系中の食卓に並ぶ野菜と穀物の過半は同社製である。プロスペロー占領により生産能力の半分を失い、今まさに正念場にある。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/breadbasket.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="frostreef" data-type="food">
+      <div class="loc-body">
+        <h2 class="codex-h">フロストリーフ・ボトラーズ <span class="en">FROSTREEF BOTTLERS</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">食品・飲料</span> 本拠: <a href="sectors.html#vau">セクターⳣ（氷晶帯）</a> / 飲料・製氷</div>
+        <p class="codex-p">氷晶帯「フロスト・リーフ」の採氷を商業化した飲料メーカー。看板商品の缶飲料『ファルコン・スロップ』は、セクターαやθで働く者たちの垂涎の的にして、星系売上首位の常連である。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/frostreef.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="pizza-cat" data-type="food">
+      <div class="loc-body">
+        <h2 class="codex-h">ピザ・キャット <span class="en">PIZZA CAT INTERSTELLAR</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">食品・飲料</span> 星間宅配ピザチェーン / 創業: バステトイド系</div>
+        <p class="codex-p">「ライラットに猫とピザ・キャットの届かない場所はない」を掲げる星間宅配ピザチェーン。食性別メニューと種族別サイズ展開の先駆けであり、前線基地への配達伝説には事欠かない。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/pizza-cat.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ 生活・消費財 ═══ -->
+
+    <article class="codex-entry loc" id="awazon-primal" data-type="life">
+      <div class="loc-body">
+        <h2 class="codex-h">アワゾン・プライマル社 <span class="en">AWAZON PRIMAL (AWSP)</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">生活・消費財</span> 本社: <a href="locations.html#prospero">プロスペロー</a> / 配信・通販・配送プラットフォーム</div>
+        <p class="codex-p">音楽・ホロ番組の配信から日用品の通販、玄関先への配送までを一社で握る星系最大のプラットフォーム。定額会員制「プライマル会員」は共和国世帯の過半に普及し、「水道・電気・プライマル」と生活インフラに数えられる。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/awazon-primal.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="q-brand" data-type="life">
+      <div class="loc-body">
+        <h2 class="codex-h">Q印良品 <span class="en">Q-BRAND</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">生活・消費財</span> 生産拠点: <a href="locations.html#eladard">エラダード</a> / 小型種向け家具・生活用品</div>
+        <p class="codex-p">キューソイドの体格に合わせて一から設計された「実生活規格」の家具・生活用品ブランド。平均体高60sm、最小30smの市民たちの暮らしは、この会社の寸法の上に成り立っている。<a href="factions.html#hactiva-union">通商連合</a>圏の家具市場の主。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/q-brand.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="tail-and-tailor" data-type="life">
+      <div class="loc-body">
+        <h2 class="codex-h">テイル＆テイラー社 <span class="en">TAIL &amp; TAILOR</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">生活・消費財</span> 本社: <a href="locations.html#corneria">コーネリア</a> / 多種族服飾 最大手</div>
+        <p class="codex-p">尻尾・翼・角──あらゆる身体に服を仕立てる多種族服飾の最大手。既製服の「テイル・スリット規格」の策定を主導し、CDF軍服の種族別仕立てを一手に請け負う。社訓は「服が身体に合わせるのだ。逆ではない」。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/tail-and-tailor.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="scent-and-coat" data-type="life">
+      <div class="loc-body">
+        <h2 class="codex-h">セント＆コート社 <span class="en">SCENT &amp; COAT</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-star">生活・消費財</span> 本社: <a href="locations.html#prospero">プロスペロー</a> / デオドラント・化粧品 最大手</div>
+        <p class="codex-p">嗅覚社会ライラットの「匂いのマナー」を支えるデオドラント・化粧品の最大手。毛皮・鱗・羽、それぞれのための製品ラインと、換毛期のヘアカラー文化を生んだ張本人。「香りは、いちばん近くの外交」。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/scent-and-coat.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <!-- ═══ 運送・物流 ═══ -->
+
+    <article class="codex-entry loc" id="black-cargo" data-type="logi">
+      <div class="loc-body">
+        <h2 class="codex-h">ブラックカーゴ社 <span class="en">BLACK CARGO</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">運送・物流</span> 星系最大の総合物流 / 創業: バステトイド系</div>
+        <p class="codex-p">「黒い箱は約束の印」──星系最大の総合物流企業。9本のメジャー航路全てに定期便を持ち、戦時下でも中立輸送を貫く。ただしその「中立」の中身については、複数の情報機関が静かに関心を寄せている。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/black-cargo.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+    <article class="codex-entry loc" id="white-fang" data-type="logi">
+      <div class="loc-body">
+        <h2 class="codex-h">ホワイトファング急便 <span class="en">WHITE FANG EXPRESS</span></h2>
+        <div class="codex-sub"><span class="loc-tag t-region">運送・物流</span> 本社: <a href="locations.html#fichina">フィチナ</a> / 極地・僻地配送専門</div>
+        <p class="codex-p">「届かない荷物はない。遅れる荷物は、ある」──星系最高難度と称されるフィチナの田舎配送で名を上げた極地運送の雄。人気ドキュメンタリー『ドッグスレッド 氷原を駆ける犬たち』の主役として、星系中にファンを持つ。</p>
+        <div class="codex-sub" style="margin-top:8px;margin-bottom:0;"><a class="rec-btn" href="../corporations/white-fang.html">▶ 企業ファイルを開く</a></div>
+      </div>
+      <div class="loc-thumb"><div class="noimg">NO VISUAL<br>AWAITING SCAN</div></div>
+    </article>
+
+  </main>
+
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+    (function() {
+      const filter = document.getElementById('locFilter');
+      if (!filter) return;
+      filter.addEventListener('click', function(event) {
+        const btn = event.target.closest('button');
+        if (!btn) return;
+        filter.querySelectorAll('button').forEach((b) => b.classList.toggle('active', b === btn));
+        const type = btn.dataset.type;
+        document.querySelectorAll('.codex-entry.loc').forEach((card) => {
+          card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+        });
+      });
+    })();
+  </script>
+  <script src="../redact.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>

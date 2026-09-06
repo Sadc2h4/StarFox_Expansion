@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FICHINA — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#88ccff;--accent:#aaddff;--border:rgba(136,204,255,0.32);--border-hi:rgba(170,221,255,0.7);--dim:#0d2035;--dim2:#06101c; }
+    .p-title { color:#eef8ff; text-shadow: 0 0 50px rgba(100,180,255,0.35); }
+    .p-tagline { border-color:#88ccff; color:#88ccff; }
+    body { background:#040709; }
+    .bg-nebula { background:
+      radial-gradient(ellipse 60% 60% at 30% 55%, rgba(5,15,30,0.65) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 75% 20%, rgba(0,10,25,0.45) 0%,transparent 55%),
+      #040709; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
+
+  <header class="hud-header" style="border-color:rgba(136,204,255,0.32);">
+    <a href="../console.html" class="nav-back" style="color:#88ccff;border-color:rgba(136,204,255,0.3);">◄ CONSOLE</a>
+    <div class="header-tag">[ 08 / FICHINA — フィチナ ]</div>
+    <div class="header-status"><span class="blink" style="color:#88ccff;">●</span> SECTOR-ξ — ICE WORLD</div>
+  </header>
+
+  <div class="side-l" style="border-color:rgba(136,204,255,0.3);"><div class="vt" style="color:#0d2035;">LYLAT SYSTEM — FICHINA — FROZEN FRONTIER — SECTOR-XI — CLIMATE CONTROL BASE</div></div>
+  <div class="side-r" style="border-color:rgba(136,204,255,0.3);"><div class="vt" style="color:#0d2035;">DATABASE RECORD: FCH-0008 — CLASSIFICATION: STRATEGIC — FORMER CORNERIAN FACILITY</div></div>
+
+  <main class="planet-main">
+    <div class="col-l" style="border-color:rgba(136,204,255,0.25);">
+      <div class="planet-hero">
+        <div class="p-index" style="color:#88ccff;">[ 08 / LYLAT SYSTEM — SECTOR-ξ ]</div>
+        <div class="p-name-jp" style="color:#6699bb;">フィチナ (FICHINA)</div>
+        <h1 class="p-title">THE FROZEN<br>FRONTIER</h1>
+        <div class="p-tagline">極寒氷結惑星 ─ 気候制御基地跡</div>
+        <p class="p-short-desc" style="border-color:#0d2035;">惑星気候制御装置クライメート・コントロールの「気候の傘」の下に都市が息づく極寒の氷結惑星。開戦緒戦で帝国軍に装置を奪われ、全土が人質となった過去を持つ。</p>
+      </div>
+
+      <div class="data-terminal" style="border-color:rgba(136,204,255,0.3);background:rgba(5,15,28,0.65);">
+        <div class="terminal-hdr" style="color:#88ccff;background:rgba(136,204,255,0.1);border-color:rgba(136,204,255,0.3);">
+          <span style="background:#88ccff;box-shadow:0 0 8px #88ccff;width:6px;height:6px;border-radius:50%;display:inline-block;animation:glow-pulse 2s infinite;"></span>
+          ▌ PLANETARY SCAN — SECTOR-ξ ▐
+        </div>
+        <table class="dt">
+          <tr><td class="dk" style="color:#88ccff;">DESIGNATION</td><td class="dv">FICHINA / フィチナ</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">PLANET TYPE</td><td class="dv">E1型 / ICE WORLD</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">MOONS</td><td class="dv">0</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">PRIMARY STAR</td><td class="dv">ライラット・プライム</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">AVG TEMP</td><td class="dv bad">−80°C ～ −20°C</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">DAY / YEAR</td><td class="dv">36H / 520D</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">LOCATION</td><td class="dv">LYLAT 8th — Sectorξ</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">FACTION</td><td class="dv">コーネリア連合共和国（フィチナ州）</td></tr><tr><td class="dk" style="color:#88ccff;">CAPITAL</td><td class="dv">サルジーナヤ州都 モスクマ</td></tr>
+          <tr><td class="dk" style="color:#88ccff;">FACILITY</td><td class="dv warn">⚠ 残存部隊掃討継続中</td></tr>
+        </table>
+        <div class="env-bar-wrap" style="border-color:rgba(136,204,255,0.1);">
+          <div class="env-bar-label" style="color:#88ccff;">ENVIRONMENT INDEX ── 30 / 100</div>
+          <div class="env-bar-track" style="background:#06101c;"><div class="env-bar-fill" style="width:30%;background:linear-gradient(to right,var(--danger),#5588aa,#88ccff);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(100,180,255,0.65);">
+        <img src="../resource/LA_image/LS_P_6.png" alt="Fichina" class="planet-img-detail planet-img-small"
+          style="filter:drop-shadow(0 0 28px rgba(100,180,255,0.65)) hue-rotate(170deg);">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">ICE WORLD — CLIMATE CONTROL</span>
+            <span class="tg-jp">極寒氷結惑星 ── 気候制御基地跡</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">かつて星系の気候制御装置が稼働していた極寒の氷結惑星。</span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「ここでは寒さは敵ではない。計器を疑い始めた自分の心が敵だ」<span class="lore-quote-src">― フィチナ観測所 越冬隊員の日誌より</span></span></p>
+  <p class="lore-p">フィチナ（Fichina）は、<a href="../codex/sectors.html#xi">セクターξ</a>に位置するライラット星系第8惑星。恒星ソーラを巡る極寒の氷結惑星である。恒星<a href="../codex/locations.html#solar">ソーラ</a>を公転する数少ない惑星の一つでありながら、その距離と厚い氷雪のアルベドにより、地表は年間を通して氷点下の世界が広がっている。<br>
+かつては<a href="../codex/factions.html#cornerian-republic">コーネリア連合共和国</a>を構成する5国家の一つ「旧・サルジーナヤ連邦」の母星であり、現在は共和国フィチナ州としてその政治基盤を引き継いでいる。</p>
+  <p class="lore-p">この辺境の氷の惑星が星系の戦略地図に太字で記されるようになったのは、惑星気候制御装置<a href="../codex/military.html#climate-control">クライメート・コントロール</a>の運用が始まってからである。第2次ライラットウォーズ緒戦では<a href="../codex/factions.html#venom-empire">ベノム帝国軍</a>に装置を掌握され、フィチナ全土の生存環境が丸ごと人質となった。<a href="../codex/military.html#starfox">スターフォックス</a>の決死の作戦により危機は回避されたものの、地下施設には今も帝国軍残存部隊が潜伏しているとされる。さらに本星には<span class="redacted">コーネリア防衛軍の秘密情報戦略本部が置かれており、星系全域の諜報・防諜活動の中枢として機能している</span>。<br><span class="badge badge-warn" style="margin-top:6px;display:inline-block;">⚠ 一部エリア係争中</span><span class="badge badge-classified" style="margin-top:6px;margin-left:6px;display:inline-block;">▮ 本記事は検閲済み</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">地表の約90%が幾層もの雪氷に覆われ、平均気温は－80℃から－20℃。オレンジ色の伴星ソーラの淡い光が氷原に反射し、この星特有の「燃える氷原」と呼ばれる夕景を作り出す。大気中の氷晶がソーラの太陽風と反応して発生する極光は星系随一の美しさと言われるが、それを観に来る観光客は皆無に等しい。<br>
+ブリザードは数週間単位で続くことがあり、屋外活動が可能な「凪」の期間は年間を通してわずかしかない。</p>
+  <p class="lore-p">例外は<a href="../codex/military.html#climate-control">クライメート・コントロール</a>の直下に広がる制御圏である。装置の稼働範囲内のみ気温と天候が人工的に調整されており、州都モスクマと基地群はこの「気候の傘」の下に築かれている。装置が停止すれば都市機能は数日で麻痺するため、フィチナの住民にとって装置は文字通りの生命線である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">旧・サルジーナヤ連邦は、居住不能とされたこの氷の惑星に地下都市網を築き上げた技術国家だった。<a href="../codex/glossary.html#lylat-wars-1">第1次ライラットウォーズ</a>末期の停戦交渉では最後まで併合に抵抗した国としても知られ、<a href="../codex/glossary.html#stephano">ステファノーの戦い</a>の後にようやく共和国への参加を決めた経緯を持つ。<br>
+このとき併合に反発した「融和反対派」の国民が大量に星を離れ、後の<a href="../codex/factions.html#venom-empire">ベノム帝国</a>の中核的な人口基盤となったことは、この星の歴史に今も暗い影を落としている。</p>
+  <p class="lore-p">共和国への併合後、サルジーナヤ連邦が自国の凍土を融かすために計画していた気候制御施設は、フィチナ全土をカバーする環境制御網として完成した。第2次ライラットウォーズでは開戦初期に帝国軍の急襲を受けて装置が掌握され、奪還作戦では<a href="../codex/military.html#starfox">スターフォックス</a>と謎の傭兵部隊スターウルフが交戦した記録が残されている。</p>
+  <p class="lore-p">なお併合直後の混乱期については、公式史の記述が不自然に薄い。<span class="redacted">共和国成立から2年後の宇宙歴3770年、残留した融和反対派による武装蜂起「サルジーナヤの三日間」が州都モスクマを中心に発生。蜂起の舞台からとった通称「モスクマの三日間」の名でも知られる。鎮圧作戦の詳細は現在も封印されており、公式記録上この事件は「大規模雪害」として処理されている。後年、教科書からの記述抹消もこの線に沿って行われた</span>。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">住民の大半は寒冷地への適応力と高い知性で知られる<a href="../codex/races.html#alphoid">アルフォイド</a>である。人口のほとんどは州都モスクマをはじめとする地下都市と、気候制御圏内の測候都市に集中している。<br>
+融和反対派の流出により人口は最盛期の半分以下まで減少しており、残った住民には共和国への忠誠と、去っていった同胞への複雑な感情が同居している。</p>
+  <p class="lore-p">それでもフィチナ州は共和国有数の頭脳供給地であり続けている。極限環境で培われた工学・気象科学の水準は高く、<a href="../codex/military.html#cdf">コーネリア防衛軍</a>の技術部門にはフィチナ出身の士官が数多く名を連ねている。</p>
+  <p class="lore-p">州都モスクマには、積雪と極低温に耐えるよう設計された独特の形状の建物が並び立つ。州知事にして惑星代表ゴリ・バチョフの像が立つ中央広場は、厳冬の中でも多くの住人が行き交う、この街随一の待ち合わせスポットである。</p>
+  <p class="lore-p">州第二の都市サルクトエテルブルグは、気候制御圏の縁に位置する古い工業都市である。都市暖房を支える巨大なボイラー網と地熱井が街の心臓部であり、住民は自らの街を「炉の街」と呼ぶ。ボイラー技師は街で最も尊敬される職業の一つであり、共和国軍の天才指揮官<a href="../codex/characters.html#amber">アンバー・シルフェイド</a>少佐が、この街のボイラー修理業の家庭から出たことは地元の誇りとなっている。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">フィチナには<a href="../codex/glossary.html#warp-route">メジャーワープドライブ航路</a>が一本も接続されておらず、州が独自に管理する州営ワープ航路だけが外部との唯一の接続手段である。州営航路の規模はメジャー航路に比肩するが、その性能はベクター・プライム社製とは比較にならないほど粗末であり、州経済の大部分はアクアス州の輸送経路に依存している──州内が今なおチケットによる配給制である要因の一つである。大艦隊の迅速な展開も困難であるため、防衛は駐留部隊と自動防衛網に大きく依存している。帝国軍が緒戦でこの星を狙ったのも、まさにこの「援軍の来ない星」という弱点を突いたものだった。</p>
+  <p class="lore-p"><a href="../codex/military.html#climate-control">クライメート・コントロール</a>は制御を奪われればフィチナ全域を人質に取る気象兵器と化すため、現在は<a href="../codex/military.html#cdf">CDF</a>直轄の厳重な管理下に置かれている。地下施設に潜伏する帝国軍残存部隊の掃討作戦は現在も断続的に続いており、雪原の下では今日も静かな戦闘が続いている。</p>
+  <p class="lore-p">また、この星が「ただの辺境」ではないことを示す事実として、<span class="redacted">氷冠の直下に情報戦略本部の中枢施設が存在する。ワープドライブ航路が通らない辺境であること、氷雪が探査波を減衰させることが、機密保管地としての適性を最高評価たらしめている</span>。当該施設に関する問い合わせには、いかなる階級であっても回答されない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">星系外の旅行者はしばしばフィチナ（Fichina）と<a href="../codex/locations.html#fortuna">フォルトナ（Fortuna）</a>の名を混同する。単なる言い間違いで済めば良いのだが、フォルトナは航路に宇宙生物が大量に生息する危険地帯であり、惑星そのものも攻撃性の強い生態系と非友好的なシャープクロウ族・レッドアイ族を擁する「誰も近づかない星」である。フィチナ行きの船舶が航路端末で誤ってフォルトナを選択し、大変なことになる事例は後を絶たず、コーネリア航行局は両星の航路コードを意図的に離して再割り当てする措置まで行っている。</p>
+  <p class="lore-p">貧相な州営航路に加え、エンジンオイルすら凍り付く劣悪な気候も相まって、フィチナの田舎町へ物資を運ぶ運送業は星系最高難度と称される。その一部始終を追ったドキュメンタリー番組『ドッグスレッド 氷原を駆ける犬たち』は星系中で大人気を博しており、帝国軍人も隠れて視聴するほどである。番組終盤、配達を終えた運送人が受取人と交わす何気ない世間話は、「星系で最も温かい放送」と評されている。</p>
+  <p class="lore-p">越冬隊員たちの間には「氷原の下から誰かに呼ばれる」という怪談が古くから伝わっている。学術的には低周波の氷震がもたらす錯覚と説明されているが、旧サルジーナヤの民話では、氷の下に眠る「最初の入植船」の乗員たちが今も帰りを待っているのだと語られている。</p>
+  <p class="lore-p"><span class="badge badge-classified">▮ 検閲済み — INTELLIGENCE ARCHIVE</span><br>
+  本星の情報アーカイブに保管されている機密ファイルのうち、臨時閲覧権限では以下の表題のみ確認できる。内容の開示には上級士官の承認が必要となる。<br>
+  ─ <span class="redacted">FCH-119:「アンドルフの反乱」に関する再調査報告 — 科学技術省爆発事故の被害記録には改竄の痕跡が認められる</span><br>
+  ─ <span class="redacted">FCH-204: サルジーナヤ州武装蜂起 鎮圧作戦全記録（別名「三日間」文書）</span><br>
+  ─ <span class="redacted">FCH-311: ブラックホール観測に伴う第4偵察艦隊 集団行方不明事件 — 生存者1名の証言記録を含む</span><br>
+  ─ <span class="redacted">FCH-450: J・マクラウドおよびP・デンガーの前歴照会 — 夜盗団『スライフォックス』関連（減刑措置の経緯を含む）</span></p>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() { return images.length > 0; }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();
+  </script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 300; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.15 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px 1px rgba(200,230,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+</body>
+</html>

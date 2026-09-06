@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OBERON II — LYLAT SYSTEM EXPLORER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../planet.css">
+  <style>/* no-flash guard: keep hover-only UI hidden until stylesheets apply */ .planet-hover-tagline{opacity:0;visibility:hidden}.comm-window{display:none}</style>
+  <style>
+    :root { --primary:#aa88ee;--accent:#ccbbff;--border:rgba(170,136,238,0.32);--border-hi:rgba(204,187,255,0.7);--dim:#241840;--dim2:#120c20; }
+    .p-title    { color: #f2ecff; text-shadow: 0 0 50px rgba(170,136,238,0.3); }
+    .p-tagline  { border-color: #aa88ee; color: #aa88ee; }
+    .terminal-hdr { color: #ccbbff; }
+    .terminal-hdr::before { background: #ccbbff; box-shadow: 0 0 8px #ccbbff; }
+    .dk { color: #aa88ee; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="bg-nebula bg-space"></div>
+  <div class="scanlines"></div>
+  <div class="hud-frame">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+  </div>
+
+  <header class="hud-header">
+    <a href="../console.html" class="nav-back">◄ CONSOLE</a>
+    <div class="header-tag">[ 15 / OBERON II — 廃棄コロニー・オベロンⅡ ]</div>
+    <div class="header-status"><span class="blink" style="color:#ccbbff;">●</span> SECTOR-ι — ABANDONED</div>
+  </header>
+
+  <div class="side-l"><div class="vt">LYLAT SYSTEM — OBERON II — DERELICT SPACE COLONY — SECTOR-IOTA — ENTRY PROHIBITED</div></div>
+  <div class="side-r"><div class="vt">DATABASE RECORD: OBR-0015 — CLASSIFICATION: ABANDONED — MISSING VESSELS REPORTED</div></div>
+
+  <main class="planet-main">
+
+    <!-- ── Left Column ── -->
+    <div class="col-l">
+      <div class="planet-hero">
+        <div class="p-index">[ 15 / LYLAT SYSTEM — SECTOR-ι ]</div>
+        <div class="p-name-jp">オベロンⅡ (OBERON II)</div>
+        <h1 class="p-title">THE COLONY<br>THAT DREAMS<br>ALONE</h1>
+        <div class="p-tagline">実験スペースコロニー ─ 廃棄宙域</div>
+        <p class="p-short-desc">理想の居住環境を追求した実験スペースコロニーの成れの果て。廃棄から数十年、無人のはずのこの宙域では、調査船の失踪が今も続いている。</p>
+      </div>
+
+      <div class="data-terminal">
+        <div class="terminal-hdr">▌ STATION SCAN — SECTOR-ι ▐</div>
+        <table class="dt"><tr><td class="dk">DESIGNATION</td><td class="dv">実験コロニー「オベロンⅡ」</td></tr><tr><td class="dk">DOMAIN</td><td class="dv">廃棄宙域</td></tr><tr><td class="dk">LOCATION</td><td class="dv">Sectorι</td></tr><tr><td class="dk">CLASS</td><td class="dv">円筒型スペースコロニー</td></tr><tr><td class="dk">LENGTH</td><td class="dv">全長 32 km</td></tr><tr><td class="dk">OPERATOR</td><td class="dv warn">なし（管理放棄）</td></tr><tr><td class="dk">POPULATION</td><td class="dv">0（公式記録）</td></tr><tr><td class="dk">POWER</td><td class="dv warn">微弱反応あり（原因不明）</td></tr><tr><td class="dk">FACTION</td><td class="dv">なし</td></tr><tr><td class="dk">STATUS</td><td class="dv bad">⚠ 立入禁止 — 失踪多発</td></tr></table>
+        <div class="env-bar-wrap">
+          <div class="env-bar-label">ENVIRONMENT INDEX -- 8 / 100</div>
+          <div class="env-bar-track"><div class="env-bar-fill" style="width: 8%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Right Column ── -->
+    <div class="col-r">
+      <div class="planet-visual" style="--p-glow:rgba(170,136,238,0.6);">
+        <img src="" alt="Oberon II" class="planet-img-detail planet-img-medium" style="animation: 13s ease-in-out 0s infinite normal none running map-float;">
+        <div class="planet-hover-tagline tagline-tr">
+          <div class="tg-inner">
+            <span class="tg-en">Sector ι — DERELICT COLONY</span>
+            <span class="tg-jp">実験コロニー廃棄宙域 ── 立入禁止</span>
+          </div>
+        </div>
+        <div class="planet-hover-tagline tagline-bl">
+          <div class="tg-inner">
+            <span class="tg-jp">ここって昔は　いろんな実験をしてたコロニーなんだよね？<br>異常な電波をキャッチしたんだけど…すっごい気にならない？<span class="tg-note note">-グレートフォックス 航行記録の会話より抜粋-</span></span>
+          </div>
+        </div>
+
+        <div class="comm-window">
+          <button class="comm-close" type="button" aria-label="close">×</button>
+          <img src="" alt="comm visual">
+        </div>
+      </div>
+
+      <div class="planet-lore">
+<div class="lore-section">
+  <h3 class="lore-h">OVERVIEW ─ 概要</h3>
+  <p class="lore-p"><span class="lore-quote">「我々は理想の楽園を建造した。問題はただ一つ──誰も住み続けられなかったことだ」<span class="lore-quote-src">― オベロン計画 最終報告書の結語より</span></span></p>
+  <p class="lore-p">オベロンⅡ（Oberon II）は、<a href="../codex/sectors.html#iota">セクターι</a>に漂う全長32kmの巨大円筒型スペースコロニーである。かつて「理想の居住環境を人工的に作り出す」壮大な実験として建造されたが、計画は放棄され、コロニーは無人のまま廃棄宙域に取り残された。</p>
+  <p class="lore-p">公式には無人。しかしこの宙域では近年、調査船や演習中の戦闘機が多数行方不明になっており、不穏な噂が絶えない。<a href="../codex/military.html#cdf">CDF</a>は宙域全体を立入禁止に指定しているが、失踪は今も続いている。<br><span class="badge badge-danger" style="margin-top:6px;display:inline-block;">⚠ 立入禁止宙域 — 失踪事案多発</span></p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">GEOGRAPHY ─ 地理・環境</h3>
+  <p class="lore-p">コロニー内部には山も湖も森も、そして街もある。全ては理想気候の再現のために設計され、人工太陽の光量から風の速度、雨の周期までもが完全に制御されていた。廃棄後の現在も一部の環境機関が謎の微弱電源で稼働を続けており、無人の街に季節が巡り、誰も見ていない桜が咲き、誰も浴びない雨が降っているという。</p>
+  <p class="lore-p">外殻には廃棄時に開けられた退去用の大破孔が複数残り、内部環境は区画によって真空から高湿潤まで極端に異なる。構造材の疲労は限界を超えており、崩落と隔壁の自動閉鎖が予測不能に発生する。物理的な危険性だけでも、この構造物は星系有数の危険地帯である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">HISTORY ─ 歴史</h3>
+  <p class="lore-p">オベロン計画は共和国成立後の楽観の時代、「戦争で荒れた惑星に頼らない第二の故郷」を掲げて始動した。初代オベロンの成功を受けて建造されたオベロンⅡは当時最大の人工居住施設であり、抽選で選ばれた10万人の入植者が新生活を始めた。</p>
+  <p class="lore-p">異変は入植3年目から記録されている。原因不明の体調不良、集団的な不眠、そして「コロニーに見られている」という訴えの急増。調査は難航し、住民の退去が相次いだ末、計画は「心理環境設計の失敗」という曖昧な結論とともに中止された。最後の住民が退去した日、コロニーの環境制御系は全停止されたはずだった──現在も稼働している電源が何なのか、記録上の説明は存在しない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">SOCIETY ─ 住民・社会</h3>
+  <p class="lore-p">公式人口はゼロである。だが宙域の縁では、廃棄コロニーから資材を剥ぎ取るサルベージャーや、立入禁止の刺激を求める無許可探検者が後を絶たない。そして彼らの一部は帰ってこない。</p>
+  <p class="lore-p">帰還した者たちの証言は奇妙に一致している。「無人の窓に灯りが点いていた」「人工太陽が勝手に朝を作った」「案内放送が自分の名を呼んだ」──精神医学者は閉鎖環境での集団幻覚と説明するが、異なる時期に入った無関係の集団が同じ体験を語る理由は、説明できていない。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">MILITARY ─ 軍事</h3>
+  <p class="lore-p">セクターιは<a href="../codex/glossary.html#warp-route">ワープドライブ航路</a>の要所からは外れており、軍事的価値は本来低い。しかし戦闘機の演習空域と隣接しているため、演習中の機体が宙域に迷い込み消息を絶つ事案が繰り返し発生。<a href="../codex/military.html#cdf">CDF</a>は演習空域そのものを移設する対応を取った。</p>
+  <p class="lore-p">一部の情報将校は、失踪が<a href="../codex/factions.html#venom-empire">帝国</a>の秘密作戦──コロニーを隠れ蓑にした潜伏基地や実験施設──によるものではないかと疑っている。皮肉なことに、共和国側にも「オベロンⅡを調査したがらない」空気があり、真相の解明よりも封鎖の維持が優先されているのが現状である。</p>
+</div>
+<div class="lore-section">
+  <h3 class="lore-h">ARCHIVES ─ 記録余話</h3>
+  <p class="lore-p">オベロンⅡの中央公園には、入植記念に植えられた「はじまりの樹」と呼ばれる大樹があった。廃棄から数十年を経た近年の長距離観測で、この樹が枯れるどころか、公園の設計区画を大きく越えて生長し続けていることが確認された。無人のコロニーの中で、何かが樹を世話しているかのように。</p>
+  <p class="lore-p">失踪した調査船の一隻から、廃棄後のものとしては唯一の通信が受信されている。ノイズに埋もれた数秒の音声に残されていたのは、悲鳴でも救難信号でもなく、穏やかな声のこう言う一言だった──「ここは、いいところだよ」。</p>
+</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>(function() {
+      var vis = document.querySelector('.planet-visual');
+      if (!vis) return;
+      var comm = vis.querySelector('.comm-window');
+      if (!comm) return;
+      var close = vis.querySelector('.comm-close');
+      var dismissed = false;
+      var index = 0;
+      var timer = null;
+      var positions = ['pos-tl'];
+      var positionIndex = 0;
+      var images = Array.prototype.slice.call(comm.querySelectorAll('img')).filter(function(img) {
+        return !!img.getAttribute('src');
+      });
+      comm.classList.add('comm-ready', positions[0]);
+      function hasImage() {
+        return images.length > 0;
+      }
+      function setImage(nextIndex, animate) {
+        if (!hasImage()) return;
+        index = (nextIndex + images.length) % images.length;
+        images.forEach(function(img, i) { img.classList.toggle('active', i === index); });
+        if (animate) {
+          comm.classList.remove('switching');
+          void comm.offsetWidth;
+          comm.classList.add('switching');
+        }
+      }
+      function startCycle() {
+        if (timer || images.length < 2) return;
+        timer = window.setInterval(function() { setImage(index + 1, true); }, 8000);
+      }
+      function stopCycle() {
+        if (!timer) return;
+        window.clearInterval(timer);
+        timer = null;
+      }
+      function showComm() {
+        if (!hasImage()) return;
+        comm.classList.add('shown');
+        setImage(index, false);
+        startCycle();
+      }
+      function hideComm() {
+        comm.classList.remove('shown');
+        stopCycle();
+      }
+      function moveComm() {
+        comm.classList.remove(positions[positionIndex]);
+        positionIndex = (positionIndex + 1) % positions.length;
+        comm.classList.add(positions[positionIndex]);
+      }
+      vis.addEventListener('mouseenter', function() {
+        vis.querySelectorAll('.planet-hover-tagline').forEach(function(t){ t.classList.add('shown'); });
+        showComm();
+      }, { once: true });
+      vis.addEventListener('click', function() {
+        if (dismissed) {
+          dismissed = false;
+          showComm();
+        }
+      });
+      comm.addEventListener('click', function(event) {
+        event.stopPropagation();
+        moveComm();
+      });
+      if (close) close.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dismissed = true;
+        hideComm();
+      });
+      setImage(0, false);
+    })();</script>
+  <script>
+    (function() {
+      const el = document.getElementById('stars');
+      const W = window.innerWidth, H = window.innerHeight;
+      const s = [];
+      for (let i = 0; i < 260; i++) {
+        const x = (Math.random()*W).toFixed(0), y = (Math.random()*H).toFixed(0);
+        const a = (0.2 + Math.random()*0.8).toFixed(2);
+        s.push(`${x}px ${y}px 0px ${Math.random()>0.96?'2px 2px':'1px 1px'} rgba(255,255,255,${a})`);
+      }
+      el.style.boxShadow = s.join(',');
+    })();
+  </script>
+<script src="../redact.js"></script>
+<script src="../visual-toggle.js"></script>
+<script src="../sector-tips.js"></script>
+</body></html>
